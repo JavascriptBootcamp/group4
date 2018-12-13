@@ -6,7 +6,7 @@ ANS: var animals;
 
 2. assign the value to "dog"
 
-ANS: animals = "dog";;
+ANS: animals = "dog";
 
 
 
