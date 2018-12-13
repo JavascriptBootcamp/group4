@@ -1,0 +1,10 @@
+var bool = true;
+var num = 24;
+var str = "hello";
+var arr = [1, 2, "3"];
+
+console.log(typeof bool, typeof num, typeof str, typeof arr);
+
+var bool = true, num = 24, str = "hello", arr = [1, 2, "3"];
+
+console.log(typeof bool, typeof num, typeof str, typeof arr);
