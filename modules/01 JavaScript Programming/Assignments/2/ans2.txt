@@ -1,0 +1,13 @@
+// ass2
+
+var MyVar1 = true;
+var MyVar2 = 6;
+var MyVar3 = "AviAdnahani";
+var MyVar4 = {FirstName:"Avi", LastName:"Adnahani", Age:"32"};
+
+console.log(typeof MyVar1);
+console.log(typeof MyVar2);
+console.log(typeof MyVar3);
+console.log(typeof MyVar4);
+
+var MyVar1 = true, MyVar2 = 6, MyVar3 = "AviAdnahani", MyVar4 = {FirstName:"Avi", LastName:"Adnahani", Age:"32"};
