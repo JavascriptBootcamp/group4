@@ -2,7 +2,7 @@
 var animals;
 
 // 2.
-var animals = dog;
+var animals = 'dog';
 
 // 3.
 console.info(typeof animals);
