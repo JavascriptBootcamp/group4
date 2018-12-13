@@ -1,0 +1,9 @@
+var animals;
+animals = "dog";
+typeof(animals);
+animals = 214;
+animals +=300;
+console.log(animals);
+animals = ['dog', 'cat', 'lion'];
+animals[2];
+//"animals array"
