@@ -1,0 +1,10 @@
+
+var bole = true;
+var num = 100;
+var str = "success";
+var obj = {};
+
+typeof bole;
+typeof num;
+typeof str;
+typeof obj;
