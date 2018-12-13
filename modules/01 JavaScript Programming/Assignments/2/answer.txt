@@ -1,9 +1,0 @@
-
-var bool=true;
-var num=4;
-var str="hello";
-var obj={};
-
-var bool=false,num=5,str="world",obj={};
-
-console.log(typeof bool,typeof num,typeof str,typeof obj);
