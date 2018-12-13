@@ -1,0 +1,5 @@
+var testVar1 = false;
+var testVar2 = 11;
+var testVar3 = "David";
+var testVar4 = [1,2,3];
+console.log(typeof testVar1,typeof testVar2 , typeof testVar3 , typeof testVar4);
