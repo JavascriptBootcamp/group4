@@ -1,1 +1,16 @@
-The code answer
+1. var animals;
+
+2. animals = "dog";
+
+3. console.log(typeof(animals));
+
+4. animals = 214;
+
+5. animals += 300;
+   console.log(animals);
+   
+6. animals = ['dog', 'cat', 'lion'];
+
+7. console.error(animals[1]);
+
+8. animals = ['dog', 'cat', 'lion']; // animals array
