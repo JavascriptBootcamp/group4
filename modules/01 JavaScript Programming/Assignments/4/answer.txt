@@ -8,8 +8,16 @@ Increment-Decrement
 */
 
 var x, y;
-++x; ++x;
-y++; y++;
-console.log(x); //2
+x = ++x; x = ++x;
+y = y++; y = y++;
+console.log(x); //NaN
 console.log(y); // NaN
+
+x = 0; y = 0;
+x = ++x; // x = 1
+x = ++x; // x = 2
+y = y++; // y= 0
+y = y++; // y= 0
+console.log(x); // 2
+console.log(y); // 0
 
