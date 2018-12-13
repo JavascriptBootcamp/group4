@@ -1,0 +1,3 @@
+create a variable “x”
+set its value as 5
+pre-increment its value 5 times
