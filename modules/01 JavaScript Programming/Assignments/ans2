@@ -1,0 +1,8 @@
+var num = 22;
+var bol = false;
+var text = "hello"
+var obj = null;
+console.log(typeof num);
+console.log(typeof bol);
+console.log(typeof text);
+console.log(typeof obj);
