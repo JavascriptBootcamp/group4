@@ -11,10 +11,7 @@ var obj= { name : "lital",
 
 }
 
-console.log(num);
-console.log(bool);
-console.log(str);
-console.log(obj);.
+
 console.log(typeof(num));
 console.log(typeof(bool));
 console.log(typeof(str));
