@@ -1,5 +1,4 @@
-var num = 11 ;
-var str = "amir";
+var num = 11 , str = "amir";
 var arr = ["a","b","c"];
 var bool = true;
 console.log(typeof num + " " + typeof str + " " + typeof arr + " " + typeof(bool));
