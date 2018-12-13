@@ -1,0 +1,11 @@
+var x=true;
+console.log(typeof x);
+
+var x1=1;
+console.log(typeof x1);
+
+var x2="hello";
+console.log(typeof x2);
+
+var obj={name:"moshiko",id:1};
+console.log(typeof obj);
