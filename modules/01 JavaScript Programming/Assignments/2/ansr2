@@ -1,0 +1,10 @@
+var b = true;
+var n = 1;
+var s = "avi";
+var ob = {id : 1,
+         name:"avi"};
+
+console.log(typeof b);
+console.log(typeof n);
+console.log(typeof s);
+console.log(typeof ob);
