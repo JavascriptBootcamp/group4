@@ -1,0 +1,8 @@
+//question number 4
+
+var x,y;
+for(var i=0; i<2; i++){
+    ++x;
+    y++;
+}
+console.log(x,y);  // x = NaN y = NaN
