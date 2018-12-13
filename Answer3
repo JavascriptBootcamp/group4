@@ -1,0 +1,8 @@
+var x = 5;
+var help = 0;
+while(help<5){
+    ++x;
+    help++;
+}
+
+console.log(x);
