@@ -3,7 +3,7 @@
 var animals;
 animals = "dog"
 
-console.info("typeof animals");
+console.info(typeof animals);
 
 animals = 214;
 animals = animals+300;
