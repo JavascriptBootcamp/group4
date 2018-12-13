@@ -1,0 +1,21 @@
+/*
+Addition vs. Concatenation
+---
+1. create a var named “numOfCats” and assign the value 200 to it
+2. create a var named “animalName” and assign the value “ cats” to it
+3. print the concatenation between “numOfCats” and “animalName”
+4. create a var named “numOfDogs” and assign the value 50 to it
+5. print the addition between “numOfCats” and “numOfDogs”
+6. change “animalName” to “number of dogs: ”
+7. print the concatenation between “animalName” and “numOfDogs”.
+*/
+
+
+var numOfCats = 200;
+var animalName = 'cats';
+console.log(numOfCats + ' ' + animalName);
+
+var numOfDogs = 50;
+console.log('numOfcats + numOfDogs = ',numOfCats + numOfDogs);
+animalName = "number of dogs:";
+console.log(animalName + ' ' + numOfDogs);
