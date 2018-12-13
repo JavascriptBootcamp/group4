@@ -1,0 +1,15 @@
+var animals;
+
+animals = "dog";
+
+consol.info(typeof(animals));
+
+animals  = 214;
+
+animals = animals + 300
+
+animals = ['dog', 'cat', 'lion']
+
+console.error(animals[1])
+
+animals//"animals array"
