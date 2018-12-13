@@ -1,0 +1,8 @@
+
+
+var x,y;
+x++;
+x++;
+y++;
+y++;
+//the values of x and y are Nan 
