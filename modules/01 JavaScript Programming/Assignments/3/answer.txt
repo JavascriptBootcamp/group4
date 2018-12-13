@@ -14,3 +14,6 @@ for (var i = 0; i < TIMES;i++) {
     ++x;
     console.log(`in pre increment number ${i+1}: x = ${x}`);
 }
+
+console.log('The final value of x is ', x);
+
