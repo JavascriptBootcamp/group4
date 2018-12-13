@@ -1,0 +1,16 @@
+var bool = true;
+var num = 12;
+var str = "String";
+var obj = {"Name":"gaby"};
+
+var bool2 = false, num2 = 11 , str2 = "String2" , obj2 = {"age":30};
+
+console.log(typeof bool);
+console.log(typeof num);
+console.log(typeof str);
+console.log(typeof obj);
+
+console.log(typeof bool2);
+console.log(typeof num2);
+console.log(typeof str2);
+console.log(typeof obj2);
