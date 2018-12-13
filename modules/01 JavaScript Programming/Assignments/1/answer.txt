@@ -1,1 +1,24 @@
-aaaa
+// 1.
+var animals;
+
+// 2.
+var animals = dog;
+
+// 3.
+console.info(typeof animals);
+
+// 4.
+animals = 214;
+
+// 5.
+console.log(animals + 300);
+
+// 6.
+animals = ['dog', 'cat', 'lion'];  
+
+// 7.
+console.log(animals[1]);
+
+// 8.
+animals = ['dog', 'cat', 'lion'];  // animals array
+
