@@ -1,0 +1,6 @@
+var x=1;
+var y=1;
+++x;++x;
+y++;y++;
+console.log ("x:",x);
+console.log ("y:",y);
