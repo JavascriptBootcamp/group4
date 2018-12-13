@@ -1,0 +1,8 @@
+var x = 5;
+var i;
+
+for(i = 0; i < 5; i++){
+    ++x;
+}
+
+console.log(x);
