@@ -1,0 +1,18 @@
+1. create a var named "animals"
+HINT: var x;
+
+2. assign the value to "dog"
+HINT: x = "hello";
+
+3. write to the console the variable's type as an info
+HINT: "typeof"
+
+4. change the value of "animals" to the number 214
+
+5. add 300 to the variable and log the new value of "animals"
+
+6. change the value of "animals" to the array ['dog', 'cat', 'lion']
+
+7. write to the console the array's second item as an error
+
+8. add a comment to the array assignment: "animals array"
