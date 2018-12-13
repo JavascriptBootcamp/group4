@@ -1,0 +1,17 @@
+var bool = true, num = 3, str = "hei", obj = {};
+
+var bool2 = true;
+var num2 = 3;
+var str2 = "hei";
+var obj2 = {};
+
+
+console.log(typeof bool);
+console.log(typeof num);
+console.log(typeof str);
+console.log(typeof obj);
+
+console.log(typeof bool2);
+console.log(typeof num2);
+console.log(typeof str2);
+console.log(typeof obj2);
