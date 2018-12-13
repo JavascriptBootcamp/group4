@@ -1,0 +1,23 @@
+var animals;
+undefined
+animals = "dog";
+"dog"
+console.info(typeof animals);
+VM130:1 string
+undefined
+animals= 214;
+214
+animals = animals + 300;
+514
+console.log(animals);
+    
+VM222:1 514
+undefined
+animals = ['dog', 'cat', 'lion'];
+(3) ["dog", "cat", "lion"]
+console.error(animals[1]);
+VM284:1 cat
+(anonymous) @ VM284:1
+undefined
+animals = ['dog', 'cat', 'lion']; // animals array
+(3) ["dog", "cat", "lion"]
