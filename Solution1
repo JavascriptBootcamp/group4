@@ -2,7 +2,7 @@ var animals;
 undefined
 animals = "dog";
 "dog"
-typeof animals;
+console.info(typeof animals);
 "string"
 animals = 214;
 214
