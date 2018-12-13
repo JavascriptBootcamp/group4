@@ -1,9 +1,0 @@
-var boo = true;
-var num = 1;
-var str = "";
-var obj = Object();
-
-console.log(typeof boo);
-console.log(typeof num);
-console.log(typeof str);
-console.log(typeof obj);
