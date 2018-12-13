@@ -1,0 +1,16 @@
+/*
+Increment / Decrement
+---
+1. create a variable “x”
+2. set its value as 5
+3. pre-increment its value 5 times
+*/
+
+var x;
+x = 5;
+
+var TIMES = 5;
+for (var i = 0; i < TIMES;i++) {
+    ++x;
+    console.log(`in pre increment number ${i+1}: x = ${x}`);
+}
