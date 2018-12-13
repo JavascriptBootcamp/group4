@@ -1,0 +1,8 @@
+var x = 0, y = 0;
+var maxRep = 2;
+
+for (var i = 0; i < maxRep; i++) {
+    console.log("x =",++x); 
+    console.log("y =",y++); 
+    console.log("");
+}
