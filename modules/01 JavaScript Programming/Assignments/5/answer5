@@ -1,0 +1,14 @@
+//1
+var numOfCats=200;
+//2
+var animalName="cats";
+//3
+console.log(numOfCats+animalName);
+//4
+var numOfDogs = 50;
+//5
+console.log(numOfCats+numOfDogs);
+//6
+animalName="number of dogs: ";
+//7
+console.log(animalName+numOfDogs);
