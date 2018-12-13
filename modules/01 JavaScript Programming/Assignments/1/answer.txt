@@ -20,5 +20,6 @@ animals = ['dog', 'cat', 'lion'];
 console.log(animals[1]);
 
 // 8.
-animals = ['dog', 'cat', 'lion'];  // animals array
+// animals array
+animals = ['dog', 'cat', 'lion'];  
 
