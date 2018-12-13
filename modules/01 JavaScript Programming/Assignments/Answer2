@@ -1,0 +1,9 @@
+var bol=false;
+var number=4;
+var text="fff";
+var object=car = {type:"Fiat", model:"500", color:"white"};
+console.log(typeof bol);
+console.log(typeof number);
+console.log(typeof text);
+console.log(typeof object);
+
