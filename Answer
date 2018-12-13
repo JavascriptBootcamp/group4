@@ -1,0 +1,8 @@
+var animel;
+animel = "dog";
+console.info(typeof animel);
+animel = 214;
+animel = animel + 300;
+animel = ['dog', 'cat', 'lion'];
+console.error(animel[1]);
+animel = ['dog', 'cat', 'lion'] //animals array
