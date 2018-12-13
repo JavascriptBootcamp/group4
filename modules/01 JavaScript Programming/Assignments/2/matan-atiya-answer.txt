@@ -1,0 +1,42 @@
+var bool1 = false;
+
+var str1 = "string";
+
+var num1 = 1;
+
+var obj1 = {str: "hi", id: 1};
+
+var  bool2 = true, str2 = "string2", num2 = 2, obj2 = {str: "hi2", id: 2};
+
+console.log(typeof bool1);
+
+boolean
+
+console.log(typeof bool2);
+
+boolean
+
+console.log(typeof str1);
+
+string
+
+console.log(typeof str2);
+
+string
+
+console.log(typeof num1);
+
+number
+
+console.log(typeof num2);
+
+number
+
+console.log(typeof obj1);
+
+object
+
+console.log(typeof obj2);
+
+object
+
