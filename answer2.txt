@@ -1,0 +1,4 @@
+var number = 1, str = 'someString', obj = {"Name": "David"}, arr = [8, "student"];
+console.log('number =', number, 'str =', str, 'obj =', obj, 'arr =', arr);
+//console.log('typeof number:', typeof number, 'typeof str:', typeof str, 'typeof obj:', typeof obj, 'typeof arr:', typeof arr);
+console.log(`typeof number: ${typeof number}, typeof str: ${typeof str}, typeof obj: ${typeof obj}, typeof arr: ${typeof arr}`);
