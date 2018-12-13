@@ -1,0 +1,18 @@
+var animals;
+undefined
+animals="dog";
+"dog"
+console.info(typeof animals);
+VM185:1 string
+undefined
+animals=214;
+214
+animals=animals+300;
+514
+animals=['dog','cat','bird'];
+(3) ["dog", "cat", "bird"]
+console.error(animals[1]);
+cat
+undefined
+//animals array
+undefined
