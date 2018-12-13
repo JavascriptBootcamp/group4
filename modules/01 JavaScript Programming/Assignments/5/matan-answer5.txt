@@ -1,0 +1,11 @@
+var numOfCats = 200, animalName = "cats";
+
+console.log("\n"+animalName+numOfCats+"\n"); 
+
+var numOfDogs = 50;
+
+console.log(numOfDogs+numOfCats+"\n"); 
+
+animalName = "number of dogs: ";
+
+console.log(animalName+numOfDogs+"\n"); 
