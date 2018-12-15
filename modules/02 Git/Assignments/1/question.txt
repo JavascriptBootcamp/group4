@@ -1,0 +1,7 @@
+Git Initial Repository
+---
+1. Login to GH
+2. Create a repository named "javascript_variables" (including Readme)
+3. Edit readme.md
+4. Write "I'm working on it..."
+5. Commit the file
