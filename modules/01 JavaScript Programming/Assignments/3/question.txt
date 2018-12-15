@@ -2,4 +2,4 @@ Increment / Decrement
 ---
 1. create a variable “x”
 2. set its value as 5
-3. pre-increment its value 5 times
+3. pre-increment its value and assign the result 5 times
