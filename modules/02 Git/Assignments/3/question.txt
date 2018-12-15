@@ -1,0 +1,6 @@
+Git Pull Request
+---
+1. Create a new folder "examples" and a new file named "number.js"
+2. Inside the new file, write a JS code which creates a variable named "hands" and contains the value: 2
+3. Commit the file
+4. Create a pull request but don't merge it yet
