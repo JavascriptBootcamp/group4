@@ -1,0 +1,15 @@
+var x = 1998;
+var y = 2001;
+if(x > y){
+    console.log(x + " is larger than " + y);
+}else{
+    console.log(y + " is larger than " + x);
+}
+x++;
+var bol;
+if(x===y){
+    bol = true;
+}else{
+    bol = false;
+}
+console.log(bol);
