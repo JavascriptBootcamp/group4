@@ -1,19 +1,1 @@
-var x = 1998;
-var y = 2001;
 
-if(x > y){
-console.log("x is larger");
-}
-else{
-console.log("y is longer");
-};
-
-++x;
-var res;
-if(x === y){
-res=true;
-}
-else{
-res=false;
-};
-console.log(res);
