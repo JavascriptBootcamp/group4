@@ -6,6 +6,6 @@ else
     console.log("The bigger one is: " + v2);
 v1++;
 var ans = false;
-if(v1 == v2)
+if(v1 === v2)
     ans = true;
 console.log(ans);
