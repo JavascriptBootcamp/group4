@@ -1,0 +1,6 @@
+ var bloodPressure = 70;                                                //Q1
+ var isNormal = false;                                                  //Q2
+ isNormal = bloodPressure < 80 || bloodPressure > 120 ? true : false;   //Q3
+ console.log(isNormal);                                                 //Q4
+ isNormal = bloodPressure < 80 || bloodPressure > 120 ? false : true;   //Q5
+ console.log(isNormal);                                                 //Q6
