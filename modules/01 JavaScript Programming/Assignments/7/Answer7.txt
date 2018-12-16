@@ -1,5 +1,5 @@
 var x;
-var y = "undefined";
+var y = undefined;
 
 console.log(x == y);
 
