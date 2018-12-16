@@ -1,0 +1,7 @@
+var x;
+var y="undefined";
+console.log(y==x);
+console.log(y===x);
+x="some string";
+console.log(y==x);
+console.log(y===x);
