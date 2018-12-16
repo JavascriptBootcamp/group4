@@ -1,0 +1,26 @@
+=== vs. ==
+---
+1. Create a variable without value
+2. Create another variable with the value: "undefined"
+3. Compare between them using two equals ==
+4. Log the result
+5. Compare between them using three equals ===
+6. Log the result
+7. Assign the value "some string" to the first variable
+8. Compare between them using two equals ==
+9. Log the result
+10. Compare between them using three equals ===
+11. Log the result
+
+var x = null;
+var y = "undefined";
+var result = x == y ? 1 : 0 ;
+console.log(x == y);
+result = x === y ? 1 : 0 ;
+console.log(x === y);
+x = "some string";
+result = x == y ? 1 : 0 ;
+console.log(x == y);
+result = x === y ? 1 : 0 ;
+console.log(x === y);
+
