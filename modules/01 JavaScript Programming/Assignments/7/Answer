@@ -1,0 +1,11 @@
+var x;                  // Q01
+var y = undefined;      // Q02
+var z = x==y;           // Q03
+console.log(z);         // Q04
+var z = x===y;          // Q05
+console.log(z);         // Q06
+x = "some string"       // Q07
+var z = x==y;           // Q08
+console.log(z);         // Q09
+var z = x===y;          // Q10
+console.log(z);         // Q11
