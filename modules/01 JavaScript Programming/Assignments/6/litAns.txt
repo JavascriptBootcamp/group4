@@ -1,0 +1,26 @@
+var x= 1998;
+var y= 2001;
+if ( x>y){
+
+    console.log(x);
+}
+else{
+    console.log(y);
+    
+
+}
+
+++x;
+
+if(x===y){
+    var bool=true;
+
+
+}
+else{
+    
+    var bool=false;
+    
+
+}   
+ console.log(bool);
