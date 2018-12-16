@@ -1,9 +1,0 @@
-var bool = true , num = 2 , str = "ofek" , names = {};
-console.log(typeof bool, typeof num, typeof str, typeof names);
-
-var bool = true;
-var num = 2;
-var str = "ofek";
-var names = {};
-
-console.log(typeof bool, typeof num, typeof str, typeof names);
