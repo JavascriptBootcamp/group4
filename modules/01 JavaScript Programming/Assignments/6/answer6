@@ -1,0 +1,11 @@
+
+var y1=1998;
+var y2=2001;
+if(y1>y2){
+    console.log(y1);
+}
+    else
+console.log(y2);
+y1++;
+var flag=(y1===y2);
+console.log(flag);
