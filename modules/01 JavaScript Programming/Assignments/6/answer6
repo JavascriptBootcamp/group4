@@ -1,0 +1,27 @@
+/*
+Conditions:
+---
+1. Create a variable and assign the following value: 1998
+2. Create a variable for 2001
+3. Print which variable is larger
+4. Post increment the first variable
+5. Check if they are equal and assign the result to a boolean variable
+6. Log the value of the boolean variable
+
+
+*/
+
+
+var year1998 = 1998;
+var year2001 = 2001;
+
+if(year2001 > year1998) console.log(year2001);
+else console.log(year1998);
+
+year1998++;
+
+var isEqual;
+if(year1998 === year2001) isEqual = true;
+else isEqual = false;
+console.log(isEqual);
+
