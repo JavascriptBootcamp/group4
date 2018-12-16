@@ -2,7 +2,7 @@
 
 var year_X = 1998;
 var year_Y = 2001;
-print(year_X>year_Y?year_X:year_Y);
+console.log(year_X>year_Y?year_X:year_Y);
 year_X++;
 var are_equal = year_X===year_Y?true:false;
 console.log(are_equal);
