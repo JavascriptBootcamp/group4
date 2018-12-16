@@ -1,0 +1,7 @@
+var x = null;
+var y;
+console.log(x == y);
+console.log(x === y);
+x = "some string";
+console.log (x == y);
+console.log (x === y);
