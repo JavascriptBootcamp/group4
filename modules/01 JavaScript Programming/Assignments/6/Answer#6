@@ -1,0 +1,20 @@
+var num_1998 = 1998;
+var num_2001 = 2001;
+if (num_1998 > num_2001)
+{
+  console.log("the biggest number is" + num_1998);
+}
+else
+{
+  console.log("the biggest number is" + num_2001);
+}
+
+num_1998++;
+
+var bool = false;
+if (num_1998 === num_2001)
+{
+  bool = true;
+}
+
+console.log(bool);
