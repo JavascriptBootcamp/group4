@@ -1,0 +1,16 @@
+var x;
+var y = undefined;
+
+var result = (x == y);
+console.log(result);
+
+result = (x === y);
+console.log(result);
+
+x = "some string";
+
+result = (x == y);
+console.log(result);
+
+result = (x === y);
+console.log(result);
