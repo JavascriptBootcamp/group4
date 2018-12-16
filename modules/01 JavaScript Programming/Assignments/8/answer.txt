@@ -1,0 +1,12 @@
+//1
+var bloodPressure = 70;
+//2
+var isNormal = false;
+//3
+(bloodPressure < 120 && bloodPressure >80)?isNormal =true:isNormal=false;
+//4
+console.log(isNormal)
+//5
+(bloodPressure > 120 || bloodPressure <80)?isNormal =true:isNormal=false;
+//6
+console.log(isNormal)
