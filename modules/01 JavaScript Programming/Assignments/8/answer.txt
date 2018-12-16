@@ -1,6 +1,6 @@
-var bloodPressure = 70;
+var bloodPressure = 85;
 var isNormal = false;
-isNormal = (bloodPressure < 120 && bloodPressure > 80)? true:false;
+isNormal = (bloodPressure < 120 && bloodPressure > 80);
 console.log(isNormal);
 isNormal = (bloodPressure<80 || bloodPressure>120)? false:true;
 console.log(isNormal);
