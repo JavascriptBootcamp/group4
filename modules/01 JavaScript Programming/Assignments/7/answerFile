@@ -1,0 +1,7 @@
+var v;
+var value=undefined;
+console.log(v==value);
+console.log(v===value);
+v="some String";
+console.log(v==value);
+console.log(v===value);
