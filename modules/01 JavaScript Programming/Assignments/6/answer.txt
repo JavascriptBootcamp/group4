@@ -1,0 +1,20 @@
+var x=1998
+var y=2001
+if(x<y)
+{
+console.log("x <y");
+} 
+else 
+{
+console.log("x > y");
+}
+++x;
+if(x===y)
+{
+result=true;
+}
+else 
+{
+result=false;
+}
+console.log(result);
