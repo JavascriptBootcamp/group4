@@ -1,0 +1,22 @@
+//1
+var x;
+//2
+var y = undefined;
+//3
+x==y;
+//4
+console.log(x==y);
+//5
+x===y;
+//6
+console.log(x===y);
+//7
+x="some string";
+//8
+x==y;
+//9
+console.log(x==y);
+//10
+x===y;
+//11
+console.log(x===y);
