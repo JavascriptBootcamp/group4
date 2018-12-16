@@ -1,0 +1,11 @@
+
+
+
+4. Log the value of the boolean variable
+5. Check if the value is lower than 80 or higher than 120 and assign the opposite result to the boolean variable
+6. Log the value of the boolean variable
+
+var bloodPressure = 70;
+var isNormal = false;
+console.log(isNormal ? bloodPressure >=80 && bloodPressure <=120);
+console.log(isNormal ? bloodPressure <80 || bloodPressure >120);
