@@ -19,3 +19,9 @@ else
   {
   console.log(y);
   }
+
+++x;
+
+var b = (x === y);
+
+console.log(b);
