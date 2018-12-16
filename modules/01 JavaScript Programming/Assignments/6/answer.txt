@@ -1,0 +1,16 @@
+var x = 1998; // Q1
+var y = 2001; // Q2
+
+//Q3
+if (x > y) {
+  console.log(x);
+}
+else {
+  console.log(y);
+}
+
+x++ // Q4
+
+var y = (x === y); // Q5
+
+console.log(y); // Q6
