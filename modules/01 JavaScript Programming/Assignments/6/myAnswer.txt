@@ -1,0 +1,13 @@
+var x = 1998, y = 2001;
+
+if (x > y) {
+    console.log(x);
+} else {
+    console.log(x);
+}
+
+++x;
+
+var check = x===y;
+
+console.log(check);
