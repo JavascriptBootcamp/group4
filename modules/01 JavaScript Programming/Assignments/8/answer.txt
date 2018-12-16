@@ -1,0 +1,3 @@
+var bloodPressure=70;
+var isNormal=false;
+bloodPressure>80&&bloodPressure<120? isNormal=true:isNormal=false
