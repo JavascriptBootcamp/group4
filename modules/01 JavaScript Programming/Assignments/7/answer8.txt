@@ -1,0 +1,7 @@
+var withoutVal;
+var und = undefined;
+console.log(withoutVal == und);
+console.log(withoutVal === und);
+withoutVal = "some string";
+console.log(withoutVal == und);
+console.log(withoutVal === und);
