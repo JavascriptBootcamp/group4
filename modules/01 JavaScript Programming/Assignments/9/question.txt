@@ -1,0 +1,11 @@
+For-Loop
+---
+1. multiply by 2 and log all numbers between 1 and 100 
+2. create an array of names and log the following message for each of them. For example:
+Array of "David", "Yoni" will return "Hello David!","Hello Yoni!"
+3. log the following pattern, using a nested for loop:
+*  
+* *  
+* * *  
+* * * *  
+* * * * *
