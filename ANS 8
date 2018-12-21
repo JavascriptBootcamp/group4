@@ -1,0 +1,9 @@
+var bloodPressure = 70;
+var isNormal = false;
+if (( bloodPressure > 80) && (bloodPressure < 120))
+isNormal = true;
+console.log(isNormal);
+isNormal = false;
+if (( bloodPressure > 80) || (bloodPressure < 120))
+isNormal = true;
+console.log(isNormal);
