@@ -1,0 +1,64 @@
+https://github.com/derldalfor100/fakebook.git
+
+PS C:\Users\da\fakebook\css> git log --pretty=format:'%h'
+bb6c8d9
+cdd3124
+f9a4b7c
+0675c87
+9312ccb
+0e12ab3
+200422e
+55c8c82
+ee60f2b
+
+PS C:\Users\da\fakebook\css> git reflog
+bb6c8d9 (HEAD -> master) HEAD@{0}: reset: moving to Head~1
+d7d8812 HEAD@{1}: reset: moving to Head~1
+e534a06 HEAD@{2}: reset: moving to Head~1
+43e42d4 (origin/master, origin/HEAD) HEAD@{3}: reset: moving to Head~1
+0ca2662 HEAD@{4}: reset: moving to Head~1
+c382b44 HEAD@{5}: revert: Revert "create fonts.css"
+0ca2662 HEAD@{6}: revert: Revert "create reset.css"
+43e42d4 (origin/master, origin/HEAD) HEAD@{7}: commit: create fonts.css
+e534a06 HEAD@{8}: commit: create reset.css
+d7d8812 HEAD@{9}: commit: create rtl.css
+bb6c8d9 (HEAD -> master) HEAD@{10}: commit: create main.css
+cdd3124 HEAD@{11}: clone: from https://github.com/derldalfor100/fakebook.git
+
+PS C:\Users\da\fakebook\css> git log --pretty=format:'%nFrom: %an%nDate: %ar%nSubject: %s'
+
+From: derldalfor100
+Date: 50 minutes ago
+Subject: create main.css
+
+From: derldalfor100
+Date: 3 days ago
+Subject: Merge branch 'followers_section'
+
+From: derldalfor100
+Date: 3 days ago
+Subject: some changes
+
+From: derldalfor100
+Date: 3 days ago
+Subject: comments
+
+From: derldalfor100
+Date: 3 days ago
+Subject: likes
+
+From: derldalfor100
+Date: 3 days ago
+Subject: posts
+
+From: derldalfor100
+Date: 3 days ago
+Subject: feed
+
+From: David Stephenson
+Date: 6 days ago
+Subject: Add a line in README
+
+From: derldalfor100
+Date: 6 days ago
+Subject: Initial commit
