@@ -1,0 +1,8 @@
+
+var str = "abccba";
+var str2 = "abccb";
+
+if (str===str2.split("").reverse().join(""))
+    console.log("palindrome");
+else
+    console.log("not palindrome");
