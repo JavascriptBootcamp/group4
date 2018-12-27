@@ -1,0 +1,7 @@
+var noValue;
+var undefinedValue = "undefined";
+console.log(noValue == undefinedValue);
+console.log(noValue === undefinedValue);
+noValue = "some string";
+console.log(noValue == undefinedValue);
+console.log(noValue === undefinedValue);
