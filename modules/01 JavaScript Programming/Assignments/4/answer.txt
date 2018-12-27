@@ -1,6 +1,0 @@
-var x,y;
-x = ++x;
-x = ++x;
-y = y++;
-y = y++;
-console.log(x, y);
