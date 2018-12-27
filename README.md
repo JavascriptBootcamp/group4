@@ -17,5 +17,3 @@
   <li>Push</li>  
   <li>Commit</li>  
 </ol>
-
-//change
