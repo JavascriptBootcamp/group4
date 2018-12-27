@@ -1,0 +1,8 @@
+var myArray=[20,32,25,21,20,14,15,0,2,1,8,35,100,102,45,68,59,45,23,02,01,20,78,54,45];
+var slicedArray=myArray.slice(9,20);
+slicedArray.forEach(function(element) {
+
+ (element%2==0) ? console.log(element , "even"):console.log(element ,"false")
+
+
+}, this);
