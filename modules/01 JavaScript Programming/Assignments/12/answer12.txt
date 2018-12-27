@@ -1,14 +1,20 @@
 var str = "aaa bbbb asda 1331 ewe";
-var arr = str.split(" ");
-var newstr = "";
-var count = 1;
 
-for (var i in arr) {
-    if (count % 2 === 0) {
-        newstr += arr[i];
-        if (i !== (arr.length - 1))
-            newstr += " ";
+console.log(evenWords(str));
+
+function evenWords(str) {
+    var arr = str.split(" ");
+    var newstr = "";
+    var count = 1;
+
+    for (var i in arr) {
+        if (count % 2 === 0) {
+            newstr += arr[i];
+            if (i !== (arr.length - 1))
+                newstr += " ";
+        }
+        count++;
     }
-    count++;
+
+    return newstr;
 }
-console.log(newstr);
