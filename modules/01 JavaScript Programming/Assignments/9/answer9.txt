@@ -1,0 +1,12 @@
+for (var index = 1; index < 101; index++)
+    console.log(2 * index)
+
+
+var names = ["David", "Yoni"];
+names.forEach(function (value) {
+    console.log("Hello", value + "!");
+});
+
+var str = "";
+for (i = 1; i < 6; i++)
+    console.log(str += "*");
