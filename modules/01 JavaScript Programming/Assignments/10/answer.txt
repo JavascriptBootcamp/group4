@@ -1,0 +1,7 @@
+console.log("even or odd?\n");
+//create array with the numbers 10-20
+var arr = Array(11).fill(10).map((e,i)=>i+10);
+//For each iteration, it will check if the current number is even or odd, and report that to the screen (e.g. "2 is even")
+arr.forEach(function (item) {
+    item%2 ? console.log(item,"is odd") : console.log(item,"is even") ;
+});
