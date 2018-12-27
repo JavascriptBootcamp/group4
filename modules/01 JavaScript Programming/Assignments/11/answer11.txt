@@ -3,7 +3,7 @@ var str = "";
 
 while (i < 51) {
     str = i.toString();
-    if (str.includes("7") || i % 7 === 0)
+    if ((str.search("7") != -1) || i % 7 === 0)
         console.log(i + " boom");
     i++;
 }
