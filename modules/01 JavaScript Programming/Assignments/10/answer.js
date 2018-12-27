@@ -3,4 +3,6 @@ for(var i=10;i<=20;i++){
      if(arr[i]%2===0){
       console.log(arr[i] + "is even");
      }
+     else
+     console.log(arr[i] + "is odd");
  }
