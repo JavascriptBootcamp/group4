@@ -1,0 +1,12 @@
+let favouriteColors = ['Red','White','Black','Green','Navy Blue'];
+
+
+for(let i = 0; i < favouriteColors.length; i++)
+{
+    console.log("My #" + Number(i+1) + converToSuffixNumber(i) + " choice is", favouriteColors[i]);
+}
+
+function converToSuffixNumber(v)
+{
+    return ["th","st","nd","rd"][Math.abs(~[1,2,3].indexOf(+(+v).toFixed().substr(-1)))];
+}
