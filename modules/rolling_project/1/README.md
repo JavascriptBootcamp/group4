@@ -11,11 +11,9 @@
 <ol>
 	<li>
 	<p><strong>Users</strong></p>
-
 	<ul>
 		<li>
 		<p><strong>Options </strong></p>
-
 		<ol>
 			<li>
 			<p><strong>Create/delete users</strong></p>
@@ -27,7 +25,6 @@
 		</li>
 		<li>
 		<p><strong>Notes </strong></p>
-
 		<ol>
 			<li>
 			<p><strong>User will have username, password and age</strong></p>
@@ -41,11 +38,9 @@
 	</li>
 	<li>
 	<p><strong>Groups</strong></p>
-
 	<ul>
 		<li>
 		<p><strong>Options </strong></p>
-
 		<ol>
 			<li>
 			<p><strong>Create/delete groups </strong></p>
@@ -57,7 +52,6 @@
 		</li>
 		<li>
 		<p><strong>Notes</strong></p>
-
 		<ol>
 			<li>
 			<p><strong>Group name are unique</strong></p>
@@ -68,38 +62,33 @@
 	</li>
 	<li>
 	<p><strong>Users to Groups association</strong></p>
-
 	<ul>
 		<li>
 		<p><strong>Options </strong></p>
-
 		<ol>
 			<li>
 			<p><strong>Add/remove users to/from group (user will input username and group name)</strong></p>
 			</li>
 			<li>
 			<p><strong>Get a list of groups and users under each group</strong></p>
-			</li>
-		</ol>
-		</li>
-	</ul>
-	</li>
-</ol>
-
-<p><strong>Example:<br />
+				<p><strong>Example:<br />
 group_name_1<br />
 user_1 (user_1_age)<br />
 user_2 (user_2_age)<br />
 group_name_2<br />
 user_3 (user_3_age)<br />
 user_4 (user_4_age)</strong></p>
-
+			</li>
+		</ol>
+		</li>
+	</ul>
+	</li>
+</ol>
 <ul>
 	<li>
 	<ul>
 		<li>
 		<p><strong>Notes</strong></p>
-
 		<ol>
 			<li>
 			<p><strong>User cannot added twice to the same group</strong></p>
@@ -112,9 +101,6 @@ user_4 (user_4_age)</strong></p>
 	</ul>
 	</li>
 </ul>
-
-<p>&nbsp;</p>
-
 <ol>
 	<li>
 	<p><strong>Bonus: Update user profile (age and password), pay attention that user-to-group association should remain the same.</strong></p>
