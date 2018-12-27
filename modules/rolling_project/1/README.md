@@ -1,54 +1,122 @@
-<h2 style="line-height: 1.38; margin-top: 18pt; margin-bottom: 6pt;"><span style="font-size: 16pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Assignment 01: Javascript Basic</span></h2>
-<p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">As our &ldquo;rolling&rdquo; project we will build a chat application. That application will be incrementally build based on the subjects that recently learned in the classroom.</span></p>
-<h2 style="line-height: 1.38; margin-top: 18pt; margin-bottom: 6pt;">&nbsp;</h2>
-<p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Build a JS application to manage users and groups of the chat app.</span></p>
-<p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The application should include the following options:</span></p>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: decimal; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Users</span>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Create/delete users</span></li>
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Get a list of users in the system (list of usernames)</span></li>
+<h2 dir="ltr"><strong>Assignment 01: Javascript Basic</strong></h2>
+
+<p dir="ltr"><strong>As our &ldquo;rolling&rdquo; project we will build a chat application. That application will be incrementally build based on the subjects that recently learned in the classroom.</strong></p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr"><strong>Build a JS application to manage users and groups of the chat app.</strong></p>
+
+<p dir="ltr"><strong>The application should include the following options:</strong></p>
+
+<ol>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Users</strong></p>
+
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><strong>Options </strong></p>
+
+		<ol>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Create/delete users</strong></p>
+			</li>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Get a list of users in the system (list of usernames)</strong></p>
+			</li>
+		</ol>
+		</li>
+		<li dir="ltr">
+		<p dir="ltr"><strong>Notes </strong></p>
+
+		<ol>
+			<li dir="ltr">
+			<p dir="ltr"><strong>User will have username, password and age</strong></p>
+			</li>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Username are unique</strong></p>
+			</li>
+		</ol>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Groups</strong></p>
+
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><strong>Options </strong></p>
+
+		<ol>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Create/delete groups </strong></p>
+			</li>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Get a list of groups in the system</strong></p>
+			</li>
+		</ol>
+		</li>
+		<li dir="ltr">
+		<p dir="ltr"><strong>Notes</strong></p>
+
+		<ol>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Group name are unique</strong></p>
+			</li>
+		</ol>
+		</li>
+	</ul>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Users to Groups association</strong></p>
+
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><strong>Options </strong></p>
+
+		<ol>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Add/remove users to/from group (user will input username and group name)</strong></p>
+			</li>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Get a list of groups and users under each group</strong></p>
+			</li>
+		</ol>
+		</li>
+	</ul>
+	</li>
 </ol>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">User will have username, password and age</span></li>
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Username are unique</span></li>
-</ol>
-</li>
-<ul style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: circle; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Options </span></li>
-<li style="list-style-type: circle; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Notes </span></li>
+
+<p dir="ltr" style="margin-left:120px"><strong>Example:<br />
+group_name_1<br />
+&nbsp; &nbsp; user_1 (user_1_age)<br />
+&nbsp; &nbsp; user_2 (user_2_age)<br />
+group_name_2<br />
+&nbsp; &nbsp; user_3 (user_3_age)<br />
+&nbsp; &nbsp; user_4 (user_4_age)</strong></p>
+
+<ul>
+	<li>
+	<ul>
+		<li dir="ltr">
+		<p dir="ltr"><strong>Notes</strong></p>
+
+		<ol>
+			<li dir="ltr">
+			<p dir="ltr"><strong>User cannot added twice to the same group</strong></p>
+			</li>
+			<li dir="ltr">
+			<p dir="ltr"><strong>Pay attention that group have to reference to full user profile (not only store user&rsquo;s name)</strong></p>
+			</li>
+		</ol>
+		</li>
+	</ul>
+	</li>
 </ul>
-<li style="list-style-type: decimal; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Groups</span>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Create/delete groups</span></li>
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Get a list of groups in the system</span></li>
+
+<p>&nbsp;</p>
+
+<ol start="4">
+	<li dir="ltr">
+	<p dir="ltr"><strong>Bonus: Update user profile (age and password), pay attention that user-to-group association should remain the same.</strong></p>
+	</li>
 </ol>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Group name are unique</span></li>
-</ol>
-</li>
-<ul style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: circle; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Options </span></li>
-<li style="list-style-type: circle; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Notes</span></li>
-</ul>
-<li style="list-style-type: decimal; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Users to Groups association</span>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Add/remove users to/from group (user will input username and group name)</span></li>
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Get a list of groups and users under each group</span></li>
-</ol>
-</li>
-<ul style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: circle; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Options </span></li>
-</ul>
-</ol>
-<p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt; margin-left: 108pt;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Example:</span><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">group_name_1</span></em><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span></em> <em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">user_1 (user_1_age)</span></em><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span></em> <em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">user_2 (user_2_age)</span></em><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span></em><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">group_name_2</span></em><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span></em> <em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">user_3 (user_3_age)</span></em><em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br /></span></em> <em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">user_4</span></em> <em><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">(user_4_age)</span></em></p>
-<ul style="margin-top: 0pt; margin-bottom: 0pt;">
-<ul style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: circle; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Notes</span></li>
-<ol style="margin-top: 0pt; margin-bottom: 0pt;">
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">User cannot added twice to the same group</span></li>
-<li style="list-style-type: lower-roman; font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre;"><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Pay attention that group have to reference to full user profile (not only store user&rsquo;s name)</span></li>
-</ol>
-</ul>
-</ul>
-<p><span style="font-size: 11pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><strong>Bonus:</strong> Update user profile (age and password), pay attention that user-to-group association should remain the same.</span></p>
