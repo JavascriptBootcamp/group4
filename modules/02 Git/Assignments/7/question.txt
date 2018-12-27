@@ -1,0 +1,6 @@
+Log
+---
+by using the terminal:
+1. push the following files to the repository: "feed.js", "posts.js", "likes.js", "comments.js"
+2. log the commits
+3. make sure that 4 commits were done
