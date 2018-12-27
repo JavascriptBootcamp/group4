@@ -1,1 +1,0 @@
-var hands = 2;
