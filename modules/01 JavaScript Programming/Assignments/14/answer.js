@@ -2,10 +2,10 @@
 
 var favouriteColors = ["Grey", "Blue", "Pink", "Green", "Some color", "No color"];
 
-for (var i = 1; i < favouriteColors.length; i++) {
+for (var i = 1; i < favouriteColors.length + 1; i++) {
     var ordin = getNumberWithOrdinal(i);
 
-    console.log("My", ordin, "choice is", favouriteColors[i]);
+    console.log("My", ordin, "choice is", favouriteColors[i - 1]);
 }
 
 function getNumberWithOrdinal(n) {
