@@ -1,0 +1,13 @@
+1. create a branch named "followers_section"
+2. remove the file "posts.js"
+3. ignore files which end with "txt" extension
+4. add the file "followers.json" to the folder "data"
+5. stash the branch
+6. go to "master" branch
+can you find the "posts.js"?
+7. go back to the stashed branch
+can you find the "posts.js"?
+8. check the difference between "master" and "followers_section"
+9. merge "followers_section" to "master"
+10. push "master"
+11. make sure that all content is included in "master" now 
