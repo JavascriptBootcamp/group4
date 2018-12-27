@@ -1,0 +1,5 @@
+var arr_colors = ["blue","yellow","green","black"];
+
+arr_colors.forEach(function(item,index){
+    console.log("My #"+(index+1),"choice is",item);
+});
