@@ -1,0 +1,6 @@
+var boom = 0;
+
+while (boom<=50) {
+    console.log(boom%7?boom:"boom");
+    boom++;
+}
