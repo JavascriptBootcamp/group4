@@ -1,1 +1,5 @@
+var arr = ["Blue", "Hamburger", "Soccer"];
 
+arr.forEach(function (value, i) {
+    console.log("My " + (++i) + "nd", value);
+});
