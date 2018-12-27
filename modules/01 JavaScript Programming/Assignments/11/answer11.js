@@ -10,7 +10,7 @@ while( i<=50)
         console.log(" boom");
         
     }
-    ;++i
+    ++i;
 }
  var j=1;
 while( j<=100)
