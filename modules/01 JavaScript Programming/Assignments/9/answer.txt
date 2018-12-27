@@ -1,0 +1,25 @@
+
+// Multiply by 2 and log all numbers between 1 and 100
+console.log('Each integer number multiplied by 2 in a range 1-100:') 
+for (var i = 1; i <= 100; i++) {
+	console.log(i * 2);
+}
+
+// Create an array of names and log the "Hello + name!" message for each of them.
+var namesArr = ['Moshe', 'Amram', 'Michael','Royi', 'Valery', 'David'];
+namesArr.forEach(name => {
+	console.log(`Hello ${name}!`)
+});
+
+
+// Log isosceles triangle pattern that has 5 asterisks on each side
+var rowsNum = 5;
+var eachRowOutput = '';
+
+for (var rowNum = 1; rowNum <= rowsNum; rowNum++) {
+    for (var asterisksNum = 1; asterisksNum <= rowNum; asterisksNum++) {
+    	eachRowOutput += '*' + ' ';    
+    }
+    console.log(eachRowOutput);
+    eachRowOutput = '';   
+}
