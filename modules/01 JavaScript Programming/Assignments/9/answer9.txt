@@ -1,0 +1,13 @@
+for(var i=1; i<=100; i++){
+    console.log(i*2);
+}
+
+var arr = [ 'Moshe', 'Elinor', 'Malak', 'Eli'];
+arr.forEach(function(item){
+    console.log('Hello ' + item + '!');
+});
+var x ="";
+for(var i=1; i<=5; i++){
+        x = x.concat("*");
+        console.log(x);
+}
