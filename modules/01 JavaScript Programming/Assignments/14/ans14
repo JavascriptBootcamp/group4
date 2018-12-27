@@ -1,0 +1,22 @@
+
+var favorite  = ["blue", "green","red", "white"];
+var suffix ="";
+var i=0;
+favorite.forEach(function(item,index) {
+    i=index+1;
+    switch (i){
+        case 1:
+        suffix="st";
+        break;
+        case 2:
+        suffix="nd";
+        break;
+        case 3:
+        suffix="rd";
+        break;
+        case 4:
+        suffix="th";
+        break;
+    }
+    console.log("My "+i+suffix+ " choice is "+item);
+  });
