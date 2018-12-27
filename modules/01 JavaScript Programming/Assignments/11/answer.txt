@@ -1,0 +1,27 @@
+//question 1
+var i=0;
+while(i<50)
+{
+    if(i%7===0)
+    console.log("boom");
+
+    i++;
+}
+
+//question 2
+var j=0;
+while(j<100)
+{
+if(j%3==0)
+{
+    console.log("fizz");
+}
+else if(j%5==0){
+console.log("buzz");
+{
+else if(j%5===0&& j%3===0)
+{
+console.log("fizzbuzz");
+}
+j++;
+}
