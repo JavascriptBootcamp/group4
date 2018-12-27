@@ -5,11 +5,8 @@ function evenWords(str) {
 
   substrArr.forEach(subStr => {
   	if (substrPositionNum % 2 === 0) output += subStr + ' ';
-  	substrPositionNum++;
-
-	
+  	substrPositionNum++;	
   });
   //console.log(output);
   return output;
-
 }
