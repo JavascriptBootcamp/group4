@@ -1,0 +1,4 @@
+While-Loop
+---
+1. Create a while loop that iterates up to 50 while logging "boom" at multiples of 7
+2. Create a while that iterates up to 100 while logging "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5
