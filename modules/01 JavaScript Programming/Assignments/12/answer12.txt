@@ -1,4 +1,4 @@
-var str = "aaa bbbb asda 1331";
+var str = "aaa bbbb asda 1331 ewe";
 var arr = str.split(" ");
 var newstr = "";
 var count = 1;
