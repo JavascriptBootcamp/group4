@@ -1,7 +1,0 @@
-var x;
-var y = "undefined";
-console.log(x==y);
-console.log(x===y);
-x="some string";
-console.log(x==y);
-console.log(x===y);
