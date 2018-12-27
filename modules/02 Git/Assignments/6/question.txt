@@ -1,0 +1,13 @@
+Setup
+---
+1. create a repository named "fakebook" in GitHub.com
+by using the terminal:
+2. go to your Documents folder
+3. clone the repository ("git clone")
+4. set you user name ("git config --global user.name")
+5. edit the README file and add the content "Welcome to Fakebook"
+6. add the file ("git add")
+7. commit the file ("git commit -m")
+8. push the file ("git push -u origin master")
+9. go to the repository page in GitHub.com
+10. verify that the content is displayed
