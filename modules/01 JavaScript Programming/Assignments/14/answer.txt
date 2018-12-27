@@ -1,6 +1,8 @@
 var arr=["susu&sons","vitrina","american burgers",];
 var i=1;
 arr.forEach(function(item){
+    if (i===1)
+    console.log("My 1st" + i + " choice is " + item);
     console.log("My #" + i + " choice is " + item);
     i++
 })
