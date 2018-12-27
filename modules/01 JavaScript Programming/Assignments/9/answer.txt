@@ -1,0 +1,38 @@
+//1. multiply by 2 and log all numbers between 1 and 100 
+for (var i = 1; i <= 100; i++) {
+    console.log(i*2);
+    
+}
+
+/*
+2. create an array of names and log the following message for each of them. For example:
+
+Array of "David", "Yoni" will return "Hello David!","Hello Yoni!"
+*/
+console.log();
+var arr = ["Yoni", "Matan", "Dror"];
+
+arr.forEach(function (elem) {
+    console.log("Hello "+elem+"!")
+});
+
+/*
+3. log the following pattern, using a nested for loop:
+
+*  
+
+* *  
+
+* * *  
+
+* * * *  
+
+* * * * *
+*/
+console.log();
+var str = "";
+
+for (var i = 0; i < 5; i++) {
+    str+="*";
+    console.log(str);
+}
