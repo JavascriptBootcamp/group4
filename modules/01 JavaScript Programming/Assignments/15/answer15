@@ -1,0 +1,17 @@
+var recipe = {
+    title: "Mole",
+    serves: 2,
+    ingredients: ["cinnamon", "cumin", "cocoa"]
+};
+
+
+for (var key in recipe) {
+    if (recipe[key] instanceof Array) {
+        console.log(key);
+        recipe[key].forEach(function (value) {
+            console.log(value);
+        });
+    }
+    else
+        console.log(key, recipe[key]);
+}
