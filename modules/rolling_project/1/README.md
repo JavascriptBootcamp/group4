@@ -73,11 +73,11 @@
 			<p><strong>Get a list of groups and users under each group</strong></p>
 				<p><strong>Example:<br />
 group_name_1<br />
-user_1 (user_1_age)<br />
-user_2 (user_2_age)<br />
+&nbsp;&nbsp;user_1 (user_1_age)<br />
+&nbsp;&nbsp;user_2 (user_2_age)<br />
 group_name_2<br />
-user_3 (user_3_age)<br />
-user_4 (user_4_age)</strong></p>
+&nbsp;&nbsp;user_3 (user_3_age)<br />
+&nbsp;&nbsp;user_4 (user_4_age)</strong></p>
 			</li>
 		</ol>
 		</li>
