@@ -1,0 +1,32 @@
+var index = 1;
+
+while (index<=50) {
+    if(index%7===0) {
+        console.log(index+"- BOOM!!!");
+    }
+
+    index++;
+}
+
+console.log();
+index = 1;
+
+while (index<=100) {
+    switch (true) {
+        case index%3===0 && index%5===0:
+            console.log(index+" fizzbuzz");
+            break;
+
+        case index%3===0:
+            console.log(index+" fizz");
+            break;
+
+        case index%5===0:
+            console.log(index+" buzz");
+            break;
+    
+        default:
+            break;
+    }
+    index++;
+}
