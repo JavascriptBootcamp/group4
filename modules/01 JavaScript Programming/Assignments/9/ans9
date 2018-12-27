@@ -1,0 +1,17 @@
+
+var arr = [2,52,23,121,88,133];
+arr.forEach(function(item) {
+    console.log(item*2);
+  });
+
+  
+var arr1 = ["david","yosi","eli"];
+arr1.forEach(function(item) {
+    console.log('hello ',item);
+  });
+
+var x ="";
+  for (var i = 1; i <= 5; i++ ) {
+      x +="*";
+        console.log(x);
+  }
