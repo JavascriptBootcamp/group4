@@ -1,0 +1,24 @@
+var arr_colors = ["blue","yellow","green","black"];
+var indx;
+
+arr_colors.forEach(function(item,index){
+    switch (index) {
+        case 0:
+            indx = "1st";
+            break;
+
+        case 1:
+            indx = "2nd";
+            break;
+
+        case 2:
+            indx = "3rd";
+            break;
+
+        case 3:
+            indx = "4th";
+            break;
+
+    }
+    console.log("My",indx,"choice is",item);
+});
