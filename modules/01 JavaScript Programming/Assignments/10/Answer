@@ -1,0 +1,5 @@
+var i = 10;
+do {
+    console.log(i,i%2?"is odd":"is even");
+    i++;
+} while (i<=20);
