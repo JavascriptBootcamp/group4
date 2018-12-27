@@ -1,0 +1,24 @@
+var myArr = [1,5,12,54,7,90,47,21,78,36,58,14,85,100];
+for (var i = 0 ;i<myArr.length;i++){
+    console.log(myArr[i]*2)
+}
+
+var filtered = myArr.filter(function(item){
+    return item<100
+})
+console.log(filtered);
+
+ var names = ["david","rina"];
+ names.forEach(function(item){
+     console.log("Hellow",item);
+ })
+var x ="";
+
+ for(var i =0;i<5;i++){
+
+    for(var j=0;j<=i;j++){
+      x =  x  + "* "; 
+    }
+    console.log(x)
+    x="";
+ }
