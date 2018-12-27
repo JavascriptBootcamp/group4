@@ -1,0 +1,21 @@
+var myFav = ["red","green","blue"];
+
+myFav.forEach(function (item, index) {
+    console.log("My #"+(index+1),"choice is",item+"." );
+});
+
+//Bonus:
+console.log();
+
+var endings = {0:"th",1:"st",2:"nd",3:"rd",4:"th",5:"th",6:"th",7:"th",8:"th",9:"th",10:"th"}
+var endingsIndex =0;
+
+myFav.forEach(function (item, index) {
+    if(index<=10){
+        endingsIndex = index+1;
+    }
+    else {
+        endingsIndex = (index+1)%10;
+    }
+    console.log("My #"+(index+1)+endings[endingsIndex],"choice is",item+"." );
+});
