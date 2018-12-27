@@ -2,4 +2,5 @@ Increment / Decrement
 ---
 1. create a variable “x”
 2. set its value as 5
-3. pre-increment its value 5 times
+3. pre-increment its value and assign the result to "x" 5 times
+4. log the value of "x"

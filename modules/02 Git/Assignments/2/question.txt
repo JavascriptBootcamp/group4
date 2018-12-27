@@ -1,0 +1,7 @@
+Git Branch
+---
+1. Create a branch named "premitive variables"
+2. Edit readme.md
+3. Write "Welcome to Javascript Variables project"
+4. Create a pull request from branch "premitive variables" to "master"
+5. Merge the pull request

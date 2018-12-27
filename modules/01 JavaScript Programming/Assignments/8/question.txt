@@ -1,0 +1,8 @@
+Logical:
+---
+1. Create a variable named "bloodPressure" and assign the value 70
+2. Create a boolean variable named "isNormal" and assign the value false
+3. Check if the value is between 80 and 120 and assign the result to the boolean variable
+4. Log the value of the boolean variable
+5. Check if the value is lower than 80 or higher than 120 and assign the opposite result to the boolean variable
+6. Log the value of the boolean variable
