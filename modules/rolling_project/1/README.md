@@ -101,8 +101,4 @@ user_4 (user_4_age)</strong></p>
 	</ul>
 	</li>
 </ul>
-<ol>
-	<li>
-	<p><strong>Bonus: Update user profile (age and password), pay attention that user-to-group association should remain the same.</strong></p>
-	</li>
-</ol>
+<p><strong>Bonus: Update user profile (age and password), pay attention that user-to-group association should remain the same.</strong></p>
