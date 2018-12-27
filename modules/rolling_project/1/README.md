@@ -4,9 +4,9 @@
 
 <p>&nbsp;</p>
 
-<p><strong>Build a nodeJS console application to manage users and groups of the chat app.</strong></p>
+<p><strong>Build a JS application to manage users and groups of the chat app.</strong></p>
 
-<p><strong>The console application should have a clear menu and will include the following options:</strong></p>
+<p><strong>The application should include the following functionality:</strong></p>
 
 <ol>
 	<li>
