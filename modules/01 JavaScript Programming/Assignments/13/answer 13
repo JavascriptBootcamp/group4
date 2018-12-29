@@ -1,10 +1,12 @@
 
-var str ="aaa bbbb asda 1331 ewe";
-var arr = [];
-var i=0;
-arr=str.split(' ');
-arr.forEach(function(item,index) {
-    i=1+index;
-    if (i%2==0)
-        console.log(item);
-  });
+var str ="ab1d1ba";
+var back=(str.length-1);
+var flag = true;
+var length =Math.floor(str.length/2);
+console.log(length);
+for (i=0; i<=length; i++){
+    if(str[i]!==str[back])
+        flag=false;
+        back--;
+}
+console.log(flag);
