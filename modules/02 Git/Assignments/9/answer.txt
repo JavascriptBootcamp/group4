@@ -1,0 +1,31 @@
+1. commited and push all files one by one.
+3. reverted with "git revert"
+5. reset with "git reset --hard b6f95e4"
+6. print the commit Hash code
+	b6f95e4
+7. git reflog
+
+
+8. command:
+
+git log --pretty=format:'Commit: %h%n From: %an%n Date: %ad%n Subject: %s'
+
+result:
+
+Commit: b6f95e4
+ From: OfekArbeli
+ Date: Sat Dec 29 09:53:26 2018 +0200
+ Subject: new css file
+Commit: 8a3d81d
+ From: OfekArbeli
+ Date: Sun Dec 23 20:52:25 2018 +0200
+ Subject: new commit
+Commit: 5e54754
+ From: OfekArbeli
+ Date: Sun Dec 23 20:50:48 2018 +0200
+ Subject: new commit
+Commit: a213792
+ From: OfekArbeli
+ Date: Sun Dec 23 20:18:59 2018 +0200
+ Subject: new files commit
+Commit: c38dad9
