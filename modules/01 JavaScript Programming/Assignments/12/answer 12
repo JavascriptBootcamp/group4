@@ -1,0 +1,12 @@
+function evenwords(str) {
+    var arr = [];
+    var i=0;
+    arr=str.split(' ');
+    arr.forEach(function(item,index) {
+        i=1+index;
+        if (i%2==0)
+            console.log(item);
+      });  
+}
+var str1 ="aaa bbbb asda 1331 ewe";
+evenwords(str1);
