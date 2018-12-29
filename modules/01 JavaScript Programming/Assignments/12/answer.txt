@@ -1,0 +1,12 @@
+function evenWords(str) {
+var input=str.split(" ");
+var output="";
+for (var i = 0; i < input.length; i++) {
+    if(i%2===1)
+    {
+        output+=(input[i]+" ");
+    }
+    
+}
+return(output);
+}
