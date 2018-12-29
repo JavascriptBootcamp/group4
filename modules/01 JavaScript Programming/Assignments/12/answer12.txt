@@ -1,0 +1,14 @@
+function evenWords(str) {
+
+    var newStr ="";
+    arr = str.split(" ");
+        arr.forEach(function(element, index) {
+        
+            if((index+1)%2===0)
+                newStr += element + " ";
+        })
+    console.log(newStr);
+}
+
+myStr ='aaa bbbb asda 1331 ewe';
+evenWords(myStr);
