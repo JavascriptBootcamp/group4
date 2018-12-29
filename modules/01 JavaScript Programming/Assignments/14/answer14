@@ -1,0 +1,9 @@
+var arrayColors=["yellow","pink","red","white","black","orange","gray","beig","green","Turkez"];
+var arrayChoice=["1st", "2nd","3rd", "4th","5th","6th","7th", "8th", "9th"," 10th"];
+for (var i=0;i<10;i++){
+console.log("My "+arrayChoice[i] +" choice is : "+ arrayColors[i]);
+
+
+
+
+}
