@@ -1,4 +1,4 @@
-1. commit and push the following files to "fakebook" repo, under the folder "css": "main.css", "rtl.css", "reset.css", "fonts.css"
+1. commit and push (one after another) the following files to "fakebook" repo, under the folder "css": "main.css", "rtl.css", "reset.css", "fonts.css"
 2. archive the repo
 can you find the archived file?
 3. revert the last 2 commits
