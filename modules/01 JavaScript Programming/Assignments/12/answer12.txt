@@ -1,12 +1,12 @@
 function evenWords(str) {
 
-    var newStr ="";
     arr = str.split(" ");
-        arr.forEach(function(element, index) {
+    var filtered = arr.filter(function(element, index) {
         
             if((index+1)%2===0)
-                newStr += element + " ";
+                return element;
         })
+    var newStr = filtered.join(' ');
     console.log(newStr);
 }
 
