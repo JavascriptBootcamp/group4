@@ -1,0 +1,25 @@
+var recipe={
+    Title:"Mole",
+    Serves:2,
+    ingredients:["cinnamon","cumin","cocoa"],
+   
+
+    
+
+};
+
+for (var key in recipe) {
+   if (key==="ingredients")
+   {
+       console.log(key+":");
+       for (var i = 0; i < recipe[key].length; i++) {
+          console.log(recipe[key][i]);
+           
+       }
+       
+   }
+   else{ 
+       console.log(key+":"+recipe[key]);
+    }
+   
+}
