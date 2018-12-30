@@ -15,4 +15,4 @@ else
         process.stdout.write('You still need to read ');     
 }
 console.log(book.title);
-process.stdout.write(" by " +book[key]);
+process.stdout.write(" by " +book.author);
