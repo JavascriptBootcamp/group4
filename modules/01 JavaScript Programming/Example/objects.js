@@ -15,6 +15,14 @@ var barcelona = {
 // var colorsWithBrackets = barcelona[key];
 // console.log(colorsWithDot);
 // console.log(colorsWithBrackets);
-for (var key in barcelona){
-    console.log(key, barcelona[key]);
-}
+// for (var key in barcelona){
+//     console.log(key, barcelona[key]);
+// }
+
+// Delete
+delete barcelona.numOfPlayers;
+console.log(barcelona);
+
+// Add
+// barcelona.budget = 10000000;
+// console.log(barcelona);
