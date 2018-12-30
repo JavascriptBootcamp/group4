@@ -14,7 +14,7 @@ for( var key in recipe )
     switch (key)
     {
       case "servings":
-        console.log(key+": "+recipe[key]);
+        console.log("Serves: "+recipe[key]);
         break;
       case "ingredients":
          console.log(key+": ");
