@@ -1,0 +1,14 @@
+var books =[
+    { title : "Harry Poter 1", author: "J.K. Rolling", alreadyRead: true},
+    { title : "Harry Poter 2", author: "J.K. Rolling", alreadyRead: true},
+    { title : "Harry Poter 6", author: "J.K. Rolling", alreadyRead: false}
+];
+
+books.forEach(function(book) {
+    console.log("\n"+book.title,"By",book.author);
+    var templet = '"'+book.title+'" By '+book.author;
+    book.alreadyRead ? console.log('You already read',templet) : 
+                       console.log('You still need to read',templet);   
+});
+
+console.log();
