@@ -1,0 +1,21 @@
+var obj = {
+
+    name: "Choocolate Cake",
+    Serves:8,
+    Ingredients: ["flour", "sugar", "baking powder", "eggs"]
+}
+
+function printInformationRecipe(){
+
+
+    console.log("* " + obj.name);
+    console.log("* Serves:" + obj.Serves);
+    console.log("* Ingredients:");
+     obj.Ingredients.forEach(function(element) {
+
+        console.log("* " + element);
+     }, this);
+
+}
+
+printInformationRecipe();
