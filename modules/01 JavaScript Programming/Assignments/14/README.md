@@ -1,4 +1,3 @@
-<h1>Array</h1>
 create an array to hold a list of your favorite (colors, food etc.).
 for each choice, log to the screen a string like: "My #1 choice is blue."
 
