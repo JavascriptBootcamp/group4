@@ -1,0 +1,14 @@
+
+function printBooksStatus(){
+
+var arrayBooks=[ {title:"The Fellowship of the Ring",author:"Roald Dahl",alreadyRead:false},   {title:"Breaking Dawn",author:"Michael Crichton",alreadyRead:true}, {title:"Memoirs of a Geisha and Arthur Golden",author:"Jim Butcher" ,alreadyRead:false} ];
+arrayBooks.forEach(function(item){
+
+        console.log(item.title +" by " + item.author);
+       
+     (item.alreadyRead) ? console.log(" You already read " + item.title +" by " + item.author) :  console.log(" You still need to read " + item.title +" by " + item.author) 
+
+
+});
+}
+printBooksStatus();
