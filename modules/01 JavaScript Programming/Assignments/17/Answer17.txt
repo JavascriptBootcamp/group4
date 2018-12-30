@@ -1,0 +1,13 @@
+function printMovieInformation(){
+
+    var movie = {
+        title: "2001 a space odyssey",
+        duration: 150,
+        stars: ["Keir Dullea", " Gary Lockwood", " William Sylvester." ]
+    };
+    var movieInformation = movie.title + " for " + movie.duration + " minutes. stars: " + movie.stars;
+    console.log(movieInformation);
+    
+}
+
+printMovieInformation();
