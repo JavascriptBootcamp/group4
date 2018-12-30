@@ -1,0 +1,28 @@
+var movie = {
+    
+    title:"thor",
+    duration:120,
+    stars:[" Chris Hemsworth","Tom Hiddleston"],
+
+        
+    }
+
+
+    function printMovieDetails(func,movie){
+
+        func(movie);
+
+    }
+
+    printMovieDetails(function(movie){
+       
+            console.log(movie["title"],"lasts for",movie["duration"],"minutes","Stars:")
+            var stars = "";
+            for (var i=0;i<movie["stars"].length;i++){
+                stars = stars + movie["stars"][i] + ","
+            }
+            console.log(stars);
+        
+    },movie)
+
+   
