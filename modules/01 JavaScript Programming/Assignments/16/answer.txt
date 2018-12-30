@@ -1,0 +1,46 @@
+
+var booksArray=[];
+booksArray=[
+    {   title:"harry potter1",
+        author: "JK Rolling",
+        alreadyRead: false},
+    {   title:"harry potter2",
+        author: "JK Rolling",
+        alreadyRead: true},
+    {   title:"harry potter3",
+        author: "JK Rolling",
+        alreadyRead: false}    
+]
+
+function booksInStock(booksArray)
+{
+    for (var i = 0; i < booksArray.length; i++) {
+   console.log('"',booksArray[i]["title"],'"',' by ',booksArray[i]["author"]);
+    
+    }
+}
+
+function checkReadenBooks(booksArray)
+ {
+     
+     for (var i = 0; i < booksArray.length; i++) {
+        var str='"'+booksArray[i]["title"]+ '" by '+booksArray[i]["author"];
+         if(booksArray[i].alreadyRead)
+         {
+             
+
+            console.log("You already read",str);
+         }
+         else
+         {
+            console.log("You still need to read",str)
+         }
+
+     }
+ }
+console.log("books in stock:");
+ booksInStock(booksArray);
+ console.log("\n");
+ console.log("my tracking books to read");
+ checkReadenBooks(booksArray);
+
