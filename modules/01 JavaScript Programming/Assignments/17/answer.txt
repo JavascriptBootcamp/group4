@@ -1,0 +1,11 @@
+var favMovie={
+    title: "Harry Potter1",
+    duration:90,
+    stars:["me","you","Shai"]
+}
+
+function printMovieInfo(favMovie)
+{
+    console.log(favMovie["title"],"last for",favMovie.duration,"minutes. Stars:",favMovie["stars"].join(","));
+}
+printMovieInfo(favMovie);
