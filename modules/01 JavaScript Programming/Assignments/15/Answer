@@ -1,0 +1,18 @@
+var recipe = {
+    name: "Cake",
+    serve: 1,
+    ingredients : ["sugar","flower","eags",]
+};
+
+for (var key in recipe) 
+{
+    if (Array.isArray(recipe[key])) 
+    {
+        console.log("ingredients");
+        recipe[key].forEach(function(element) {
+            console.log(element);
+        });
+    }
+    else
+        console.log(key,":",recipe[key]); 
+}
