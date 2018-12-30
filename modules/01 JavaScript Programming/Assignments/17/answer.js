@@ -5,7 +5,7 @@ var movie = {
 };
 
 function printmovieInfo(movieObj){
-    console.log(movieObj.title,'last for',movieObj.duration,'minutes.',Object.keys(movieObj)[2],':',movieObj['Stars'].join());
+    console.log(movieObj.title,'last for',movieObj.duration,'minutes.',Object.keys(movieObj)[2] + ': ' + movieObj['Stars'].join(', ') + '.');
 }
 
 printmovieInfo(movie);
