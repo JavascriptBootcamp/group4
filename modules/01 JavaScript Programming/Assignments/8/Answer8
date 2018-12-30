@@ -1,0 +1,7 @@
+var bloodPressure;
+var isNormal = false;
+for(var i=0 ; i<3 ; i++){
+    i === 0 ? bloodPressure = 70 : i === 1 ? bloodPressure = 81 : bloodPressure = 121;
+    isNormal = bloodPressure >= 80 && bloodPressure <= 120;
+    console.log(isNormal);
+}
