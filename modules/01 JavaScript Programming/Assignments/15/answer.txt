@@ -1,0 +1,35 @@
+var favRecipe = {
+    title : "Vanilla Cookie",
+    servings : 5, 
+    ingredients : ["vanilla", "shoger", "milk", "5 cookies from roladin -_-"],
+    printMe : function printObj() {
+        for (var key in this) {
+            
+            if (Array.isArray(this[key])){
+
+                console.log("*",key+":");
+                this[key].forEach(function (elem) {
+                    console.log("*",elem);
+                });
+            } 
+            else {
+                switch (key) {
+                    case "title":
+                        console.log("*",this[key]);
+                        break;
+
+                    case "servings":
+                        console.log("* Serves:",this[key]);
+                        break;
+                
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+
+}
+
+favRecipe.printMe();
