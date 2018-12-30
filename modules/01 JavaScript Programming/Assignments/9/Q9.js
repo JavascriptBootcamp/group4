@@ -5,7 +5,7 @@ for(var i=1; i<=100 ; i++){
 var greetings = "";
 var namesArr = ["David","Yoni"];
 var len = namesArr.length;
-for(var i=0; i<len; i++){
+for(var i=0; i<=len-1; i++){
     greetings += "Hello " + namesArr[i] + "!";
     if(i === len-1) break;
     greetings += " , " ;
