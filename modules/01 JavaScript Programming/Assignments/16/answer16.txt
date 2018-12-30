@@ -1,0 +1,18 @@
+function Book(title, author, alreadyRead) {
+    this.title = title;
+    this.author = author;
+    this.alreadyRead = alreadyRead;
+}
+
+var book = new Book("The Hobbit", "J.R.R Tolkien", true);
+var book2 = new Book("Lord Of The Ring", "J.R.R Tolkien", false);
+
+var books = [book, book2];
+
+for (var i = 0; i < books.length; i++) {
+    if (books[i]["alreadyRead"])
+        console.log("You already read " + books[i]["title"] + " by " + books[i]["author"]);
+    else
+        console.log("You still need to read " + books[i]["title"] + " by " + books[i]["author"]);
+}
+
