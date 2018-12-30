@@ -1,0 +1,27 @@
+var i=1;
+while(i<=50){
+
+    if(i%7===0)
+    console.log(i+"boom");
+
+    i++;
+}
+
+var x=1; 
+var txt="";
+while(x<=100){
+
+    if(x%3===0){
+        txt+="fizz";
+    }
+    if(x%5===0){
+        txt+="buzz";
+    }
+if(txt!=="")
+    console.log(x + " " +txt);
+
+x++;
+txt="";
+}
+
+
