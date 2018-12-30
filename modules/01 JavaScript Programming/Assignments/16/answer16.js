@@ -1,5 +1,3 @@
-
-
 var book= {
     title :"fifty shades",
      author :"shimi", 
@@ -13,11 +11,8 @@ if(book.alreadyRead=== true)
   
 }
 else
-    {
-        process.stdout.write('You still need to read ');
-        
-      
-
-    }
+{
+        process.stdout.write('You still need to read ');     
+}
 console.log(book.title);
 process.stdout.write(" by " +book[key]);
