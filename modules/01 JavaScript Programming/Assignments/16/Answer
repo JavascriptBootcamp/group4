@@ -1,0 +1,29 @@
+var arr =[
+    {
+        name: "The Hobbit",
+        auther: "J.R.R. Tolkien",
+        alreadyRead: true
+    },
+    {
+        name: "Sherlock Holmes",
+        auther: "Arthur Conan Doyle",
+        alreadyRead: false
+    },
+    {
+        name: "Around the World in Eighty Days",
+        auther: "Jules Verne",
+        alreadyRead: false
+    },
+    {
+        name: "Peter Pan",
+        auther: "J. M. Barrie",
+        alreadyRead: true
+    }
+];
+
+for (var index = 0; index < arr.length; index++) {
+    if (arr[index].alreadyRead)
+        console.log("You have already read",arr[index].name,"By",arr[index].auther);
+    else
+        console.log("You still need to read",arr[index].name,"By",arr[index].auther);
+}
