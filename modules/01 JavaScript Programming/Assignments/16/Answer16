@@ -1,0 +1,23 @@
+function printBooksStatus(){
+    var booksArray = [
+        {title: "Don Quixote", 
+        author:"Miguel De Cervantes", 
+        alreadyRead:true},
+        {title: "Amor en tiempos de colera", 
+        author:"Gabriel Garcia Marquez", 
+        alreadyRead:true},
+        {title: "Brave new world", 
+        author:"Huxley", 
+        alreadyRead:false},
+        {title: "The notebook", 
+        author:"Nicholas Spark", 
+        alreadyRead:true} ];
+
+    booksArray.forEach(function(item){
+
+        console.log(item.title + " by " + item.author);
+        item.alreadyRead ? console.log("You already read " + item.title + " by " + item.author) : console.log("You still need to read " + item.title + " by " + item.author);
+    });
+}
+
+printBooksStatus();
