@@ -1,0 +1,8 @@
+movie = {title : "Harry potter and the Java Script Bootcamp", duration: 120, stars : ["Harry","Ron","Hermaynie"]};
+
+function movieInfo(movie) {
+    //answer
+    console.log("\n"+movie.title,"lasts for",movie.duration,"minutes. Stars:",movie.stars.join(", ")+".\n");
+}
+
+movieInfo (movie);
