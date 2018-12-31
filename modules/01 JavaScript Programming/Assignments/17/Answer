@@ -1,18 +1,31 @@
-function movie(myMovieObj){
-    var str = "";
-    for (var key in myMovieObj) {
-        if (Array.isArray(myMovieObj[key]))
-            console.log("array");
-        str = str + myMovieObj[key] + " ";
-    }
-
-    return str;
-}
-
 var myMovieObj = {
     title : "Top Gun",
     duration: 120,
     stars: ["Tom Cruise", "Kelie Meckgileese", "Meg Rayen"]
 };
+
+function movie(myMovieObj){
+    var str = "";
+    for (var key in myMovieObj) {
+        
+        switch (key) {
+            case "title":
+                str = str + myMovieObj[key] + " lasts for ";
+                break;
+        
+            case "duration":
+                str = str + myMovieObj[key] + " minutes. "; 
+                break;
+
+            case "stars":
+                str = str + " Stars: "+ myMovieObj[key];
+                break;
+
+            default:
+                break;
+        }    
+    }
+    return str;
+}
 
 console.log(movie(myMovieObj));
