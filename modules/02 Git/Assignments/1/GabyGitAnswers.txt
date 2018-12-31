@@ -1,0 +1,3 @@
+link to reposetory answers 1-4
+
+https://github.com/gabybuchnik/javascript_variables
