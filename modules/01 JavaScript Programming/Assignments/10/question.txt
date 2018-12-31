@@ -1,3 +1,1 @@
-Do-While
----
-Create a for loop that prints "even or odd?" and then iterates from 10 to 20. For each iteration, it will check if the current number is even or odd, and report that to the screen (e.g. "2 is even")
+Create a loop that prints "even or odd?" and then iterates from 10 to 20. For each iteration, it will check if the current number is even or odd, and report that to the screen (e.g. "2 is even")
