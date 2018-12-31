@@ -1,6 +1,5 @@
 function evenWords(str) {
     var strWords = str.split(" ");
-    console.log(strWords);
     var newStr = '';
     for(var i=0;i<strWords.length;i++){
         if(i % 2 !== 0)
