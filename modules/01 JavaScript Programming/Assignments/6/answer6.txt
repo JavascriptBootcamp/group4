@@ -1,0 +1,11 @@
+var year1 = 1998 , year2 = 2001 , isEqual = false;
+if (year1 > year2){
+    console.log(year1);
+}
+else{
+    console.log(year2);
+}
+year1++;
+if(year1 === year2){
+    console.log(isEqual);
+}
