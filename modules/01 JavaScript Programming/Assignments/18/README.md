@@ -1,4 +1,3 @@
-<h1>Function & Object</h1>
 <ul>
  <li>Write a function called <code>register</code> that takes a shopping cart object. The object contains item names and prices (itemName: itemPrice). The function should return the total price of the shopping cart.
 
