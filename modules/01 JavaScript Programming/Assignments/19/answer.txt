@@ -1,0 +1,86 @@
+function validateCreditCard(CreditCardNumber) {
+   
+    //turn the CreditCardNumber to string array of the digits
+    var digitsArr = CreditCardNumber.toString().split("");
+
+    return !isNaN(CreditCardNumber)//check if the input is a number
+            && digitsArr.length === 16// check if we have 16 digits
+            && Number.parseInt(digitsArr[digitsArr.length-1]) % 2 === 0//check if the last digit isnt an odd number
+            //check if sum of digits not less than 16
+            && digitsArr.reduce((preDigit, currDigit) => Number.parseInt(preDigit) + Number.parseInt(currDigit), 0)>=16
+            && !digitsArr.every((currentValue) => currentValue === digitsArr[0]);//check if their is at list two different digits
+}
+
+console.log("Answer output:\n");
+console.log(validateCreditCard('9999777788880000'));//true
+console.log(validateCreditCard(6666666666661666));//true
+console.log(validateCreditCard('a92332119c011112'));//false - invalid characters
+console.log(validateCreditCard(4444444444444444));//false - only one type of number
+console.log(validateCreditCard(1111111111111110));//false - sum less than 16
+console.log(validateCreditCard(6666666666666661));//false - odd final number
+
+
+//Bonus #1: 
+function validateCreditCardBonus1(CreditCardNumber) {
+   
+    //turn the CreditCardNumber to string array of the digits
+    var digitsArr = CreditCardNumber.toString().split("").filter((digit) => digit!=="-");
+
+    return !isNaN(digitsArr.join(""))//check if the input is a number
+            && digitsArr.length === 16// check if we have 16 digits
+            && Number.parseInt(digitsArr[digitsArr.length-1]) % 2 === 0//check if the last digit isnt an odd number
+            //check if sum of digits not less than 16
+            && digitsArr.reduce((preDigit, currDigit) => Number.parseInt(preDigit) + Number.parseInt(currDigit), 0)>=16
+            && !digitsArr.every((currentValue) => currentValue === digitsArr[0]);//check if their is at list two different digits
+}
+
+console.log("\nBonus #1 output:\n");
+console.log(validateCreditCardBonus1('9999-7777-8888-0000'));//true
+console.log(validateCreditCardBonus1('6666-6666-6666-1666'));//true
+console.log(validateCreditCardBonus1('1111-1111-1111-1110'));//false - sum less than 16
+
+//Bonus #2: 
+function validateCreditCardBonus2(CreditCardNumber) {
+   
+    //turn the CreditCardNumber to string array of the digits
+    var digitsArr = CreditCardNumber.toString().split("").filter((digit) => digit!=="-");
+    //init the answer object
+    answerObj = { valid: true, number:  CreditCardNumber.toString() };
+
+    //check all validetions and insert the right error messege
+    switch (true) {
+        case isNaN(digitsArr.join("")):
+            answerObj.error = "Input is not a number";
+            answerObj.valid = false;
+            break;
+
+        case digitsArr.length !== 16:
+            answerObj.error = "The credit card number you insert don't have 16 digits";
+            answerObj.valid = false;
+            break;
+
+        case Number.parseInt(digitsArr[digitsArr.length-1]) % 2 !== 0:
+            answerObj.error = "The last digit is an odd number";
+            answerObj.valid = false;
+            break;
+
+        case digitsArr.reduce((preDigit, currDigit) => Number.parseInt(preDigit) + Number.parseInt(currDigit), 0)<16:
+            answerObj.error = "The sum of digits are less than 16";
+            answerObj.valid = false;
+            break;
+
+        case digitsArr.every((currentValue) => currentValue === digitsArr[0]):
+            answerObj.error = "Their isn't any different digits in the credit card number you insert";
+            answerObj.valid = false;
+            break;
+
+        default:
+            break;
+    }
+    return answerObj;
+}
+
+console.log("\nBonus #2 output:\n");
+console.log(validateCreditCardBonus2('9999-7777-8888-0000'));//true
+console.log(validateCreditCardBonus2('6666-6666-6666-1666'));//true
+console.log(validateCreditCardBonus2('1111-1111-1111-1110'));//false - sum less than 16
