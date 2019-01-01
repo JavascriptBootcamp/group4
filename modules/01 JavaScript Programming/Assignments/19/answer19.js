@@ -25,18 +25,12 @@ function validateCreditCard(arrDigits) {
     else if (Number(strnumber.charAt(strnumber.length - 1)) % 2 === 1)
         return { valid: false, number: creditCardNumber, error: "Final digit is odd" };
 
-    else if ((arrDigits.reduce((total, value) => Number(total) + Number(value) )) <= 16)
+    else if ((arrDigits.reduce((total, value) => Number(total) + Number(value))) <= 16)
         return { valid: false, number: creditCardNumber, error: "The sum of all the digits must be greater than 16" };
 
     else
         return { valid: true, number: creditCardNumber };
 }
 
-    if (creditCardNumber.search("-") != -1) {
-        tmparr = creditCardNumber.split("").filter((value) => value !== "-");
-        console.log(validateCreditCard(tmparr));
-    }
-    else {
-        tmparr = creditCardNumber.split("");
-        console.log(validateCreditCard(tmparr));
-    }
+tmparr = creditCardNumber.split("").filter((value) => value !== "-");
+console.log(validateCreditCard(tmparr));
