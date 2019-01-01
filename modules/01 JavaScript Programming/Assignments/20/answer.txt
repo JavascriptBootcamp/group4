@@ -1,0 +1,32 @@
+//The function fillter the array send to here by the function the user send to here, return [] if arr is not an array
+function myFilter(arr, func) {
+    var filteredArr = [];
+    //check if the input arr is an array
+    if(Array.isArray(arr)) {
+        arr.forEach(function (element) {
+            if(func(element)){
+                filteredArr.push(element);
+            }
+        });
+    }
+
+    return filteredArr; 
+}
+
+var arr = [1, 2, 5, 7];
+var filtered = myFilter(arr, function(item){
+     return item % 2 === 0;
+});
+
+var arr2 = [1, 2, 3, 9, 5, 7, 12];
+var filtered2 = myFilter(arr2, function(item){
+     return item % 3 === 0;
+});
+
+var filteredInputError = myFilter(6, function(item){
+    return item % 2 === 0;
+});
+
+console.log(filtered);
+console.log(filtered2);
+console.log(filteredInputError);
