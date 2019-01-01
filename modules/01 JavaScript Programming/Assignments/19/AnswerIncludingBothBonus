@@ -1,0 +1,72 @@
+var creditCardNum = "1234-5678-9012-3456";
+
+function validateCreditCard (creditCardNum) {
+
+    var index;
+    var sumOfDigits = 0;
+    var bool_allTheSame = true; // assumes that all are the same
+    var error = "";
+
+    // this object initiated as a valid number
+    var validatyObj = {
+        valid : true,
+        number : creditCardNum,
+    };
+    
+    // toString is used - in case it is a number
+    var arr_splited_card_number = creditCardNum.toString().split("");   
+    
+    // clear all dashes if any
+    for (index = 0; index < arr_splited_card_number.length; index++) {
+        if (arr_splited_card_number[index] === '-')
+            arr_splited_card_number.splice(index,1);
+    }
+
+    // all of them are digits i.e not characters
+    
+    if (isNaN(arr_splited_card_number.join(''))){
+        validatyObj.valid = false;
+        error += "characters are present; ";
+    }
+
+    // validate 16 digits
+    if (arr_splited_card_number.length !== 16) {
+        error += "not a 16 digits number; ";
+        validatyObj.valid = false;
+    }
+
+    // at least 2 different digits 
+    for (index = 1; index < arr_splited_card_number.length; index++) {
+        if (arr_splited_card_number[0] != arr_splited_card_number[index]) {
+            bool_allTheSame = false;
+        }
+    }
+    
+    if (bool_allTheSame) {
+        validatyObj.valid = false;
+        error += "same digit all over; ";
+    }
+
+    // sum of all greater than 16
+    for (index = 0; index < arr_splited_card_number.length; index++) {
+        sumOfDigits = sumOfDigits +parseInt(arr_splited_card_number[index],10);
+    }
+    if (sumOfDigits <= 16) {
+        validatyObj.valid = false;
+        error += "sum of digits are less than 16; ";
+    }
+
+    // last digit is even
+    if (arr_splited_card_number.pop()%2) {
+        validatyObj.valid = false;
+        error += "last digit is odd; ";
+    }
+
+    if (error) {
+        validatyObj.error = error;  
+    }
+    
+    return validatyObj;
+}
+
+console.log(validateCreditCard(creditCardNum));
