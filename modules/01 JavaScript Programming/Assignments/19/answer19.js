@@ -8,8 +8,10 @@ var cardObj = {
 // var invalid2 = 4444444444444444;
 // var invalid3 = 1111111111111110;
 // var invalid4 = 6666666666666661;
-// var invalid5 = 123456789012345; 
-// var testCardsArray = [valid1, valid2, invalid1, invalid2, invalid3, invalid4, invalid5, valid1]; //-->TEST
+// var invalid5 = 4444444466666666;
+// var invalid6 = 123456789012345; 
+// var invalid7 = '7777-7777-7777-7777'; 
+// var testCardsArray = [valid1, valid2, invalid1, invalid2, invalid3, invalid4, invalid5, invalid6, invalid7, valid1]; //-->TEST
 
 function validateCreditCard(card) {
 
@@ -48,22 +50,20 @@ function validateCreditCard(card) {
 
         var isAllSameDigits = true;
 
-        for (var i = 0; i < cardString.length - 1; i++) {
-            for (var j = i + 1; j < cardString.length; j++) {
-                if (cardString[i] !== cardString[j]) {
-                    isAllSameDigits = false;
-                    break;
-                }
-            }
+        for (var i = 1; i < cardString.length; i++) {
 
-            if (isAllSameDigits) {
-                cardObj.isValid = false;
-                cardObj.error = "card_number_digits_is_same";
+            if (cardString[0] !== cardString[i]) {
+                isAllSameDigits = false;
                 break;
             }
-            else {
-                cardObj.isValid = true;
-            }
+        }
+
+        if (isAllSameDigits) {
+            cardObj.isValid = false;
+            cardObj.error = "card_number_digits_is_same";
+        }
+        else {
+            cardObj.isValid = true;
         }
 
         return cardObj.isValid;
