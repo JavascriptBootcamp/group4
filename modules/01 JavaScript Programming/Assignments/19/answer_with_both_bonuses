@@ -13,7 +13,6 @@ function eachCharIsDigit(num) {
 //console.log(eachCharIsDigit('333346736827678'));
 
 
-
 // Returns true if all digits in numare same
 // Returns false otherwise
 function allDigitsAreSame(num) {
@@ -135,5 +134,4 @@ function validateCreditCard(cardNum) {
     };
 
     return resObj;
-
 }
