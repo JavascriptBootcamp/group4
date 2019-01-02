@@ -2,7 +2,7 @@ var arr = [1, 2, 5, 7];
 
 let myFilter = function(someArr, callbackFunc) {
      if (typeof callbackFunc === 'function') return callbackFunc(someArr);
-     else console.log('myFilter function must get a function as a second param');
+     else console.log('ERROR: myFilter function must get a function as a second param');
 }
 
 let getEvenArrNums = function(someArr) {
