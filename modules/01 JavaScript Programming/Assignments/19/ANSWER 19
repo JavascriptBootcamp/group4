@@ -1,0 +1,33 @@
+ var id = "9999-7777888-80000";
+//  var id = '6666666666661666';
+// var id = 'a92332119c011112';
+//  var id = '4444444444444444';
+// var id = '1111111111111110';
+//  var id = '6666666666666661';
+ 
+
+function validateCreditCard(ID){
+        
+         if (isNaN(ID.join("")))
+        return { valid: false, error: "Card number contains letters" };
+
+        else if (ID.length != 16)
+                return {valid:false, error:'Length not valid'};
+        
+        else if((ID.reduce((total, value) => Number(total) + Number(value))) <=16)
+                return {valid:false, error:'The sum of all the digits must be greater than 16'};
+
+        else if((ID[ID.length-1])%2 != 0)
+                return {valid:false, error:'odd final number'};
+
+        for (var i=0; i<=ID.length-1; i++){
+                if (ID[i]!=ID[0])
+                   break;
+                if (i==ID.length-1)
+                   return { valid: false, error: "There must be at least two different numbers" };
+        }
+        return ("valid!");
+}
+var ID = id.split("");
+ID =ID.filter((value) => value !== "-");
+console.log(validateCreditCard(ID));
