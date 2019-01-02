@@ -14,7 +14,6 @@ function eachCharIsDigit(num) {
 //console.log(eachCharIsDigit('333346736827678'));
 
 
-
 // Returns true if all digits in num are same
 // Returns false otherwise
 function allDigitsAreSame(num) {
