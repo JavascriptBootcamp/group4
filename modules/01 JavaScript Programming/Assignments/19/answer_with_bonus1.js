@@ -1,5 +1,3 @@
-
-
 // Returns true if every digit in num parameter is number
 // Returns false if there is one or more digit(s) in num parameter is not a number
 function eachCharIsDigit(num) {
