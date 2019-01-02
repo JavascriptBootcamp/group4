@@ -15,7 +15,7 @@ function eachCharIsDigit(num) {
 
 
 
-// Returns true if all digits in numare same
+// Returns true if all digits in num are same
 // Returns false otherwise
 function allDigitsAreSame(num) {
     var firstDigit = Number(num.substring(0, 1));
