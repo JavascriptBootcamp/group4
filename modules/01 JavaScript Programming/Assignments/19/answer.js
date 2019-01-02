@@ -77,3 +77,39 @@ console.log(validationInfo(validateCreditCard('1001-1111-1111-2114')));// true
 console.log(validationInfo(validateCreditCard('1001-0000-1111-2114')));// false
 
 console.log(validationInfo(validateCreditCard('1001-0000-111a-2114')));// false
+
+// function validateCreditCard(str){// no bonuses
+//     if(str.length !== 16){
+//         return false;
+//     }
+//     console.log(str.length);
+//     var arr = str.split('');
+//     console.log(arr);
+//     var check = arr.every((value) => {// check if all the string is consisted from digits
+//         console.log("hi mtf",value);
+//         return Number.isInteger(parseInt(value));
+//     });
+//     if(!check){
+//         return false;
+//     }
+//     check = arr.some((value) => {
+//         return arr[0] !== value;
+//     });
+//     if(!check){
+//         return false;
+//     }
+//     if(arr[arr.length -1] % 2 !== 0){
+//         return false;
+//     }
+//     var sum = arr.reduce((total, y) => {
+//         return parseInt(total) + parseInt(y);
+//     });
+//     console.log('sum:',sum);
+//     if(sum <= 16){
+//         return false
+//     }
+
+//     return true;
+// }
+
+// console.log(validateCreditCard('0001111111112114'));
