@@ -1,0 +1,7 @@
+var favColors = ["blue", "yellow", "green", "white"];
+var arrSuffix = ["1st","2nd","3rd","4th"];
+
+for(var i=0; i < favColors.length; i++){
+
+    console.log("My "+ arrSuffix[i] + " choice is "+ favColors[i]);
+}
