@@ -6,12 +6,24 @@ function Word (chars )
 }
 
 
-function arrayMax(arr) {
-    return arr.reduce(function (p, v) {
-      return ( p > v ? p : v );
-    });
-  }
-  
+function indexOfMax(arr) {
+    if (arr.length === 0) {
+        return -1;
+    }
+
+    var max = arr[0];
+    var maxIndex = 0;
+
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            maxIndex = i;
+            max = arr[i];
+        }
+    }
+
+    return maxIndex;
+}
+
 function findLongestString (sentence  )
 {
    var words = sentence.split(" ");
@@ -27,7 +39,7 @@ function findLongestString (sentence  )
         lengths.push(currLength);
    }
  
-   return arrayMax(lengths);
+   return words[indexOfMax(lengths)];
 
 
 }
