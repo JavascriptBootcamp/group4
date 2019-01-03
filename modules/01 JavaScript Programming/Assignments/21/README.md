@@ -19,7 +19,7 @@ Test Data :<br>
 </li>
 <li>
   <p>
-creates a copy of an object where the keys have become the values and the values the keys.
+creates a copy of an object where the keys have become the values and the values the keys. The original object shouldn't get changed (use "pass by value" and not "pass by reference").
     </p>
 </li>
 </ol>
