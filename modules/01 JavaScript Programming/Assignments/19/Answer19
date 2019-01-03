@@ -1,0 +1,57 @@
+
+function validateCreditCard(strCreditNumber){
+
+    var sum = 0;
+    for( var i=0; i< strCreditNumber.length; i++){
+        if(i === 4 || i === 9 || i === 14){
+            if(strCreditNumber[i] !== '-'){
+                return {valid: false, number: checkNumber, error:"Must Contain Dashes"};
+            }
+        }
+    }
+
+    var arrCreditNumber = strCreditNumber.replace(/-/g,'').split('');
+
+    if(arrCreditNumber.length != 16)
+        return {valid: false, number: checkNumber, error:"Wrong length"};
+
+
+    var isAllNumbers = arrCreditNumber.every(function(item) {
+        return !isNaN(item);
+      });
+    if(!isAllNumbers)
+        return {valid: false, number: checkNumber, error:"All must be numbers"};
+    
+
+    var isNotDiffNumbers = arrCreditNumber.every(function(item) {
+        return arrCreditNumber[0] === item;
+       });
+    if(isNotDiffNumbers)
+        return {valid: false, number: checkNumber, error:"Must be different digits"};
+
+    
+    if(Number(arrCreditNumber[arrCreditNumber.length-1])%2 !== 0)
+        return {valid: false, number: checkNumber, error:"Final digit must be even"};
+
+
+    for(var i=0; i < arrCreditNumber.length; i++){
+        var num = Number(arrCreditNumber[i]);
+        sum += num;
+        if(i === arrCreditNumber.length-1 && sum < 16)
+            return {valid: false, number: checkNumber, error:"The sum must be greater than 16"};
+    }
+
+    return {valid: true, number: checkNumber};
+}
+
+var checkNumber = "9999-8888-7777-0000"; //valid:true
+//var checkNumber = "6666-6666-6666-1666"; //valid:true
+//var checkNumber = "6666-6666-6666-16"; // false- Wrong length
+//var checkNumber = "a923-3211-9c01-1112"; // false- All must be numbers
+//var checkNumber = "4444-4444-4444-4444"; // false- Must be different digits
+//var checkNumber = "1111-1111-1111-1110"; // false- The sum must be greater than 16
+//var checkNumber = "6666-6666-6666-6661"; // false- Final digit must be even
+//var checkNumber = "9999888877770000"; // false- Must contain dashes
+
+console.log(validateCreditCard(checkNumber));
+
