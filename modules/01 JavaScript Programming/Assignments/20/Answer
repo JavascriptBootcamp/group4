@@ -8,11 +8,11 @@ var x = function(item){
 var filtered = function myFilter(arr, x) {
     
     var otherArr = [];
-    for (var index = 0; index < array.length; index++) {
+    for (var index = 0; index < arr.length; index++) {
         otherArr.push(x(arr[index]));
     }
 
     return otherArr;
 };
 
-console.log(filtered);
+console.log(filtered(arr,x));
