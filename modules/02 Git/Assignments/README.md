@@ -17,6 +17,7 @@ git push origin [ANSWER_BRANCH_NAME]
 <p>In order to reset your "master" branch and checkout from it to your answer, perform the following steps:</p>
 <code>
 <pre>
+cd [GROUP4_ROOT_FOLDER]
 git remote add upstream https://github.com/JavascriptBootcamp/group4.git
 git fetch upstream
 git checkout master
