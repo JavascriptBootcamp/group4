@@ -1,0 +1,23 @@
+var str = "abccba";
+
+function isPolindrom (poli)
+{
+    var breakPoli = poli.split("");
+    var first = 0;
+    var last = breakPoli.length-1;
+    var found = true;
+
+    console.log(breakPoli);
+
+    while ((first < (breakPoli.length)/2) && found) {
+        if (breakPoli[first] === breakPoli[last]){
+            first++;
+            last--;
+        }
+        else
+            found = false;
+    }
+    return found;
+};
+
+console.log(isPolindrom(str));
