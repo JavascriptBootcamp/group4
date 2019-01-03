@@ -8,9 +8,11 @@ Examples:
 <ol>
 <li>
 <code>
-var word = new RandomWord(['a','b','c']);<br><br>
-var result = word.randomize(3);<br><br>
+  <pre>
+var word = new RandomWord(['a','b','c']);<br>
+var result = word.randomize(3);<br>
 console.log(result);
+</pre>
 </code>
 <p>Will print:</p>
 <code>
@@ -19,16 +21,20 @@ bca
 </li>
 <li>
 <code>
-var word = new RandomWord(['a','b','g','u']);<br><br>
-var result = word.randomize(6);<br><br>
-console.log(result);<br><br>
-result = word.randomize(2);<br><br>
+    <pre>
+var word = new RandomWord(['a','b','g','u']);<br>
+var result = word.randomize(6);<br>
+console.log(result);<br>
+result = word.randomize(2);<br>
 console.log(result);
+  </pre>
 </code>
 <p>Will print:</p>
 <code>
-guubbb<br><br>
+    <pre>
+guubbb<br>
 bg
+  </pre>
 </code>
 </li>
 </ol>
