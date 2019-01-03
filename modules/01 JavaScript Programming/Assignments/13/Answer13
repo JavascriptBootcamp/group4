@@ -1,0 +1,15 @@
+var str = "abcacba";
+
+function palindrome(strPalindrome){
+    var x = str.length-1;
+    for(var i=0; i< str.length/2; i++){
+
+        if(str[i] !== str[x])
+            return { palindrome: false};
+        x--;
+
+    }
+    return { palindrome: true};
+}
+
+console.log(palindrome(str));
