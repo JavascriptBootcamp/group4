@@ -1,0 +1,26 @@
+
+
+            function palindrome(str) {
+
+                        var x=str.length-1;
+                        for(var i=0;i<str.length/2;i++){
+                               if(str.charAt(i)!==str.charAt(x)){
+                                   
+                                    console.log(str + " is not palindrome") ;
+                                    return false;
+                                } 
+                                  x--;
+                        }
+
+                        console.log( str + "  is a palindrome " );
+                      
+
+
+
+            } 
+
+
+            var str="abccba";
+            var str2="afdf";
+            palindrome(str);
+            palindrome(str2);
