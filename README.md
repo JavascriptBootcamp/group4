@@ -2,7 +2,7 @@
 <h2>Keywords</h2>
 <h3>Javascript Programming</h3>
 <ol>
-    <li>Dynamic typing vs. static typing</li>  
+    <li>Dynamic Typing vs. Static Typing</li>  
     <li><code>null</code> vs. <code>undefined</code></li>  
     <li>== vs. ===</li>  
     <li>Hoisting</li>
