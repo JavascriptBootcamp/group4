@@ -10,11 +10,11 @@ Expected Output : <code>5</code>
 <li>
 finds the highest value in an array<br><br>
   <p>
-Test Data :
+Test Data :<br>
     <code>
-console.log(max([12,34,56,1]));<br>
-console.log(max([-12,-34,0,-56,-1]));<br>
-56<br>
+console.log(max([12,34,56,1])); <br>
+console.log(max([-12,-34,0,-56,-1])); <br>
+56 <br>
 0
       </code>
     </p>
