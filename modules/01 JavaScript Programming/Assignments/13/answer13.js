@@ -1,4 +1,4 @@
-function isPoli(str)
+function isPali(str)
 {
 
     for(var i=0; i<str.length/2;i++)
