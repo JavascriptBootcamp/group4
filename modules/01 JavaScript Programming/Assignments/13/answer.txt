@@ -1,0 +1,16 @@
+function checkPolindrom(str){
+    isPolindrom = true;
+
+    for (var i = 0; i < str.length/2; i++) {
+        //check if the current char is eqwal to the char that in place index = str.length-1-i   
+        if(str[i]!==str[str.length-1-i]){
+            isPolindrom = false;
+            break;
+        }
+    }
+
+    return isPolindrom ? str+" is a polindrom!!!" : str+" is not a polindrom!!!";
+}
+
+console.log(checkPolindrom("abccba"));
+console.log(checkPolindrom("abccb"));
