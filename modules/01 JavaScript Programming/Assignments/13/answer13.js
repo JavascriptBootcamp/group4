@@ -6,4 +6,4 @@ function testPalindrom(str) {
         }
     }
     return true;
-}
+};
