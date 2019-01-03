@@ -1,0 +1,23 @@
+var sentence = "Web Development hhhhhhhhhhhhhhhhh Tutorial";
+
+function Word (chars) {
+    this.setLength = function () {
+        this.length = chars.length;
+    }
+};
+
+function findLongestString (sentence){
+    var index , w;
+    var breakArr = sentence.split(" ");
+    var longest = breakArr[0];
+    for (index = 1; index < breakArr.length; index++) {
+        w = new Word(breakArr[index]);
+        w.setLength();
+        if (w.length > longest.length) {
+            longest = breakArr[index];
+        }
+    }
+    return longest;
+}
+
+console.log(findLongestString(sentence));
