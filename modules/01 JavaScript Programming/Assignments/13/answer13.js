@@ -6,7 +6,7 @@ if(pal.length % 2 != 0){
 }
 else{
     
-        for(var j=pal.length/2, i=(pal.length/2)-1;j<pal.length;j++,i--){
+        for(var j=pal.length/2, i=(pal.length/2)-1;j<pal.length,i>=0;j++,i--){
              if(pal[i] != pal[j]){
                 palflag = false;
                 break;
