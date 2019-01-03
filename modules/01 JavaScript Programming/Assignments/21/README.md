@@ -6,7 +6,7 @@ Example string : 'The quick brown fox' <br>
 Expected Output : 5
 </li>
 <li>
-finds the highest value in an array. Go to the editor<br><br>
+finds the highest value in an array<br><br>
 Test Data :
 console.log(max([12,34,56,1]));<br>
 console.log(max([-12,-34,0,-56,-1]));<br>
