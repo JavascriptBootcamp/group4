@@ -9,7 +9,9 @@ var filtered = function myFilter(arr, x) {
     
     var otherArr = [];
     for (var index = 0; index < arr.length; index++) {
-        otherArr.push(x(arr[index]));
+        if (x(arr[index])) {
+            otherArr.push(arr[index]);
+        }
     }
 
     return otherArr;
