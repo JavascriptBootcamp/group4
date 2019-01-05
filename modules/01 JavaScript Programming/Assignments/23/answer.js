@@ -1,14 +1,8 @@
 function Word(chars){
-
     this.setLength = function(){
         this.length = chars.length;
     };
 }
-
-// var testWord = new Word("test");
-// testWord.setLength();
-// console.log(testWord.length);
-
 function findLongestString(sentence){
     var spl = sentence.split(" ");
     var longestPlace = 0;
@@ -22,5 +16,4 @@ function findLongestString(sentence){
     }
     console.log(spl[longestPlace]);
 }
-
 findLongestString("this is an example sentence");
