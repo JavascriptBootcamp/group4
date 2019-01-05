@@ -1,0 +1,2 @@
+for (var i = 10; i < 21; i++)
+    i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
