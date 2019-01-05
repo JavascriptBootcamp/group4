@@ -1,0 +1,125 @@
+
+var errorsObjects={
+    valid:true,
+    size:{
+        valid:true,
+        error:'wrong_length',
+        isSizeValide: function(array,size)
+        {
+         if(array.length!==size)
+            {
+             errorsObjects["size"]["valid"]=false;
+             errorsObjects["valid"]=false;
+            }
+           
+        }},
+    allDigits: {
+        valid:true,
+        error:'wrong_characters',
+        isAllDigits:function(array)
+        {
+            var str=array.join('');
+            if(isNaN(str))
+           {
+               errorsObjects["allDigits"]["valid"]=false;
+                errorsObjects["valid"]=false;
+           }
+          
+        }
+            
+        
+    },
+    lastDigit:{
+        valid:true,
+        error:'wrong_last_digit',
+        isLastDigitValidation:function(array)
+        {
+            if(array[array.length-1]%2!==0)
+            {
+                errorsObjects["lastDigit"]["valid"]=false;
+                errorsObjects["valid"]=false;
+            }
+            
+        
+        }},
+    digitsSum:{
+        valid:true,
+        error:'wrong_digits sum',
+        isDigitsSumValidation:function(array, neededSum)
+        {
+            var sum=0;
+            for (var i = 0; i < array.length; i++) {
+                sum+=Number(array[i]);
+                
+            }
+            if(sum<=neededSum)
+            {               
+                errorsObjects["digitsSum"]["valid"]=false;
+                errorsObjects["valid"]=false;
+            }
+        }},
+        diffDigits:{
+            valid:true,
+            error:'all_digits',
+        isDiffDigitsValidation: function(array){
+            var result = array.some(function(item){
+                return item !== array[0];
+        });
+        if(!result)
+        {
+            errorsObjects["diffDigits"]["valid"]=false;
+            errorsObjects["valid"]=false;
+        }
+     
+        
+        }},
+};
+
+//main function, validates all conditions
+function validateCreditCard (creditCardNumber)
+{
+    var creditCardNumberArray=[];
+   
+    
+    if(typeof(creditCardNumber)==="number")
+    {
+        creditCardNumber=creditCardNumber.toString('');
+    }
+  
+    //bonus #1
+    creditCardNumberArray=creditCardNumber.split('').filter(function(item){
+        return item !== "-";
+       }); 
+
+    errorsObjects.size.isSizeValide(creditCardNumberArray,16);
+    errorsObjects.allDigits.isAllDigits(creditCardNumberArray,16);
+    errorsObjects.lastDigit.isLastDigitValidation(creditCardNumberArray);
+    errorsObjects.digitsSum.isDigitsSumValidation(creditCardNumberArray,16);
+    errorsObjects.diffDigits.isDiffDigitsValidation(creditCardNumberArray);
+
+   return errorsObjects["valid"];
+}
+//bonus #2
+function printRestults(input,result)
+{
+    var errors=[];
+    var output="{valid:"+result+" number:"+input+"}";
+    
+    if(result===false)
+    {
+        
+        for (var key in errorsObjects) {
+           
+          if(errorsObjects[key]["valid"]===false)
+            {
+          errors.push(errorsObjects[key]["error"]);
+            }
+        }
+        output="{valid:"+result+" number: "+input+" errors: "+errors+"}";
+    }
+console.log(output);
+}
+var input="666666666666a661";
+var result=validateCreditCard(input);
+
+printRestults(input,result);
