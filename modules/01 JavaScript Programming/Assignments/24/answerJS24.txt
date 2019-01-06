@@ -1,0 +1,26 @@
+function RandomWord(chars)
+{
+    
+    this.randomize= function(length)
+    {
+      
+        var str="";
+        if(typeof(length)!="number")
+            return'"length" should be a number';
+        else if(!Array.isArray(chars))
+            return '"chars" should be an array';
+        else if(!chars.every((element)=> typeof(element)==="string"))
+            return '"chars" should include only strings';
+        else{
+                for (var count = 0; count < length; count++) {
+                var  i=Math.floor(Math.random()*chars.length);
+                str+=chars[i];
+                }
+        }
+       
+return str;
+    };
+}
+var word = new RandomWord(['a','b','c']);
+var result = word.randomize(3);
+console.log(result);
