@@ -1,5 +1,4 @@
 function RandomWord(chars){
-    //this.length;
     this.randomize = function(length){
         if(!Array.isArray(chars)){
             return '"chars" should be an array';
