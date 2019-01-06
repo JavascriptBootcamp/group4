@@ -22,6 +22,6 @@ function RandomWord(chars) {  // chars is array of strings/chars
     
     var word = new RandomWord(['a','b','c']);
     var result = word.randomize(3);
-    console.log(result); // bca
+    console.log(result); 
     
     
