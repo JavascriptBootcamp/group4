@@ -2,13 +2,15 @@
 <h2>Keywords</h2>
 <h3>Javascript Programming</h3>
 <ol>
-    <li>Dynamic typing vs. static typing</li>  
-    <li>null vs. undefined</li>  
+    <li>Dynamic Typing vs. Static Typing</li>  
+    <li><code>null</code> vs. <code>undefined</code></li>  
     <li>== vs. ===</li>  
-    <li>hoisting</li>
-    <li>callback</li>
-    <li><code>this</code> keyword</li>
-    <li>call vs. apply vs. bind</li>
+    <li>Hoisting</li>
+    <li>Callback</li>
+    <li><code>this</code> Keyword</li>
+    <li><code>call</code> vs. <code>apply</code> vs. <code>bind</code></li>
+    <li>Value vs. Reference</li>
+    <li>Global Scope</li>
 </ol>
 <h3>Git</h3>
 <ol>
