@@ -1,0 +1,37 @@
+var Video = function (title,uploder,seconds) {
+    this.title = title;
+    this.uploder = uploder;
+    this.seconds = seconds;
+
+    this.watch = function (sec) {
+        this.seconds = sec;
+        console.log ("You watched all",this.seconds,"seconds of",this.title);
+    };
+};
+
+
+    // var vid = new Video("Top Gun","Amitay Levi",240);
+    // vid.watch();
+
+    // var difvid = new Video("Annie","Shay Shi",148);
+    // difvid.watch();
+
+    // Bounus:
+try{
+    var arrOfVid = [], index;
+    for (index = 0; index < 5; index++) {
+        arrOfVid[index] = new Video(`Movie${index}`,"Shay",index*100);  
+    }
+
+    for (index = 0; index < 5; index++) {
+        console.log(arrOfVid[index].watch(index*3));
+    }
+}
+catch (error) {
+    console.log("an error was encountered:",error);
+}
+finally{
+    console.log("Console anyway...");
+}
+
+
