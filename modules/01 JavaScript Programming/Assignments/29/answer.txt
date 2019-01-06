@@ -1,0 +1,34 @@
+function Video (title1, uploader1 ,seconds1)
+{
+    this.title=title1;
+    this.uploader=uploader1;
+    this.seconds=seconds1;
+    // this.watch=function()
+    // {
+    //     console.log("You watched all", this.seconds, "of", this.title,"!");
+    // }
+     this.watch=function(sec)
+    {
+        try{
+            this.seconds=sec;
+        console.log("You watched all", this.seconds, "of", this.title,"!");
+        }
+        catch(ex){
+        console.log("Oops... An error occured"+ex);}
+
+    }
+}
+
+var video1=new Video("Harry Potter1","shani",60);
+var video2=new Video("Harry Potter2","Moshe",120);
+
+video1.watch(80);
+video2.watch(140);
+
+//bonus1
+var videoData=[]
+for (var i = 0; i < 5; i++) {
+    var element = new Video("harry1","shani",60+i);
+    videoData.push(element);
+    
+}
