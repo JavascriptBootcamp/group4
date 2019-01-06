@@ -1,0 +1,46 @@
+var RandomWord = function (chars ) 
+{
+
+    var x = function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+
+    this.randomize = function (length) 
+    {
+        if (!Array.isArray(chars)) 
+        {
+            console.log("'chars' should be an array.");
+        } 
+        else 
+        {
+            for (var index = 0, bool = true ; index < chars.length && bool; index++) 
+            {
+                if (chars[index] == typeof "string")
+                {
+                    console.log("'chars' should include only strings.");
+                    bool = false;
+                }
+            }
+        }
+        
+        if (!Number.isInteger(length)&& bool) {
+            console.log("'length' should be a number");
+        }
+        else 
+        { 
+            var arr = [];
+            for (var index = 0; index < length; index++) 
+            {
+                arr[index] = chars[x(0,chars.length-1)];
+            }
+            return arr;
+        }
+    };
+};
+
+var word = new RandomWord(['a','b','c']);
+var result = word.randomize(3);
+console.log(result);
