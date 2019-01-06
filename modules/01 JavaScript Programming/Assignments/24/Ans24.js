@@ -23,6 +23,6 @@ function RandomWord(chars){
 
     
 
-var word = new RandomWord(['s',5]);
-var result = word.randomize('d');
-console.log(result);
+// var word = new RandomWord(['s',5]);
+// var result = word.randomize('d');
+// console.log(result);
