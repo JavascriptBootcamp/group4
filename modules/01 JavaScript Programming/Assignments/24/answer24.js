@@ -1,35 +1,45 @@
 function RandomWord (chars)
 {
-    if( !chars instanceof(Array))
+    if( !Array.isArray(chars))
       {
              console.log("chars should be an array");
       }
-    if(chars.some(function(char)
-    {
-        typeof(char)!== String
-
-    }))
-    {
-
-        console.log("should include only strings");
-    }
-    this.randomize =function(length)
-    {
-        if(!length instanceof(Number))
+      else
+      {
+        
+        if(chars.some(function(char)
         {
-               console.log("length should be a number");
-        }
-        var str="";
-        var randIndex;
-        for(var i=0;i<chars.length;i++)
+           return typeof char !== 'string';
+        }))
         {
-            randIndex=Math.floor(Math.random() * length);     // returns a random integer from 0 to length
-            str+=chars[randIndex];
+    
+            console.log("should include only strings");
         }
-            return str;
-    }
+        else{
+            this.randomize =function(length)
+            {
+                if(isNaN(length)===false)
+                {
+                       console.log("length should be a number");
+                }
+                else{
+                    var str="";
+                    var randIndex;
+                    for(var i=0;i<chars.length;i++)
+                    {
+                        randIndex=Math.floor(Math.random() * length);     // returns a random integer from 0 to length
+                        str+=chars[randIndex];
+                    }
+                        return str;
+                }
+                
+            }
+        }
+      
+      }
+ 
 
 }
-var word = new RandomWord(['a','b','c']);
-var result = word.randomize(2);
+var word = new RandomWord(['3','b','c']);
+var result = word.randomize('s');
 console.log(result);
