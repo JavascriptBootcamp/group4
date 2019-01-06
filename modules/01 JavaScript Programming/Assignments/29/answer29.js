@@ -1,16 +1,23 @@
 function Video (title, uploader,seconds )
 {
-    this.title=title;
-    this.uploader=uploader;
-    this.seconds=seconds;
-    this.watch=function()
+    try{
+        this.title=title;
+        this.uploader=uploader;
+        this.seconds=seconds;
+        this.watch=function()
+        {
+            console.log ( "You watched all "+this.seconds+" seconds of "+ this.title +"!");
+        };
+        this.watch=function(newseconds)
+        {
+            console.log ( "You watched all "+newseconds+" seconds of "+ this.title +"!");
+        };
+    
+    }
+    catch(error)
     {
-        console.log ( "You watched all "+this.seconds+" seconds of "+ this.title +"!");
-    };
-    this.watch=function(newseconds)
-    {
-        console.log ( "You watched all "+newseconds+" seconds of "+ this.title +"!");
-    };
+        console.log ( "Oops... An error occured");
+    }
 
 }
 var myVideo= new Video("Otters Holding Hands","lit",60);
