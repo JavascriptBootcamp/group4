@@ -1,0 +1,45 @@
+
+
+
+
+                function Video(title,uploader,seconds ){
+
+
+                    this.title=title;
+                    this.uploader=uploader;
+                    this.seconds =seconds ;
+
+
+
+                        this.watch=function(seconds){
+
+
+                            console.log("You watched all : "+this.seconds +" seconds of " +this.title+ "!" );
+                        }
+
+                }
+
+
+                var obj1=new Video("Otters Holding Hands", "SARAH V SCHWEIG", 60);
+
+                var obj2=new Video("Yoga with adriene"," Adriene",80);
+
+                    var myArray=[];
+                for(var i=0;i<5 ;i++){
+
+                    var obj3=new Video("Yoga with adriene"," Adriene",80); 
+                     
+                    myArray[i]=obj3;
+                }
+
+
+                try{
+
+                obj1.watch(30);
+                }
+
+                catch(exception){
+
+                  console.error("Oops... An error occured")
+                }
+                
