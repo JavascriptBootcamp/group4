@@ -1,14 +1,15 @@
 function RandomWord(chars){
     this.chars = chars;
+    this.err = 0;
     if(!(Array.isArray(chars))){
         console.log("''chars'' should be an array" );
-        return;
+        this.err = 1;
     }
      
     chars.forEach(element => {
         if(typeof(element)!=="string"){
             console.log("''chars'' should include only strings")
-            return;
+            this.err = 1;
         }
 
     });
@@ -20,5 +21,6 @@ function RandomWord(chars){
         return(result);
     }
 }
-var charArr = new RandomWord(["a","b","c"]);
-console.log(charArr.randomize(3))
+var charArr = new RandomWord(["a","b","c","d","e",1]);
+if(!charArr.err)
+    console.log(charArr.randomize(3));
