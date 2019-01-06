@@ -46,9 +46,6 @@
 
 // }
 
-
-// var v1 = new Video('Harry Potter', 'J.K. Rowling', 120);
-
 // var arrVideos = [];
 
 // for(var i=0; i < 5; i++){
@@ -87,8 +84,6 @@ function Video(title, uploader){
 
 }
 
-
-var v1 = new Video('Harry Potter', 'J.K. Rowling', 120);
 
 var arrVideos = [];
 
