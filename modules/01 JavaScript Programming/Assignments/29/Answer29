@@ -1,0 +1,35 @@
+function Video(title, uploader, seconds){
+
+    this.title = title;
+    this.uploader = uploader;
+    this.seconds = seconds;
+
+    this.watch = function(seconds){
+
+        console.log("You watched all " + seconds + " seconds of " + this.title + "!");
+    }
+
+}
+
+var myVideo1 = new Video("Otters Holding Hands", "James", 60);
+var myVideo2 = new Video(" Funny & cute dogs", "Tiger", 30);
+
+var result = [];
+for(var i=0; i<5; i++){
+
+    var myVideo = new Video("Otters Holding Hands", "James", 60);
+    result[i] = myVideo;
+    try {
+        result[i].watch(60);
+      }
+      catch(exception) {
+        console.error("Oops... An error occured");
+      }
+
+}
+try {
+    myVideo1.watch(80);
+  }
+  catch(exception) {
+    console.error("Oops... An error occured");
+  }
