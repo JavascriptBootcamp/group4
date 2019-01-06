@@ -4,7 +4,7 @@ function RandomWord(chars) {  // chars is array of strings/chars
             var resStr = '';
             var randVal;
     
-            if (lengthNum <= 0) return 'ERROR: YOU MUST PASS A POSITIVE NUMBER AS A PARAMETERS!'
+            if (lengthNum <= 0) return 'ERROR: YOU MUST PASS A POSITIVE NUMBER AS A PARAMETER!'
     
             for (var i = 0; i < lengthNum; i++) {
                 //Math.random();  // 0 to 1 not including 1
