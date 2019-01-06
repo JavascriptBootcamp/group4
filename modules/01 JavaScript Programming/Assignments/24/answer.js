@@ -15,7 +15,7 @@ function RandomWord(chars){
     this.randomize = function(length){
         var result = "";
         for(var i = 0; i<length;i++){
-            result = result + chars[Math.floor(Math.random() * Math.floor(chars.length-1))];
+            result = result + chars[Math.floor(Math.random() * Math.floor(chars.length))];
         }
         return(result);
     }
