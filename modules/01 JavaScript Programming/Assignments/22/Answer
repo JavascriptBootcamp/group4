@@ -1,0 +1,40 @@
+function StringUtils () {
+
+    var vowel = ["A","E","I","O","U","a","e","i","o","u"];
+
+    this.getVowels = function (str) {
+        
+        var counter = 0, index;
+        for (index = 0; index < str.length; index++) {
+            if (vowel.includes(str[index])) {
+                counter++;
+            }
+        }
+        return counter;
+    };
+
+
+    this.removeChar = function (str, pos) {
+       
+        var arr = str.split("");
+        arr.splice(1,pos);
+        return arr.join('');
+    };
+
+    this.incrementLetters = function(str) {
+        
+        var index,ch,arr = [];
+        for (index = 0; index < str.length; index++) {
+            ch = str.charCodeAt(index);
+            nextCh = ch +1;
+            arr[index] = String.fromCharCode(nextCh);
+        }
+        return arr.join("");
+    };
+};
+
+
+var v = new StringUtils();
+console.log(v.getVowels('The quick brown fox'));
+console.log(v.removeChar('The quick brown fox',1));
+console.log(v.incrementLetters('abcdef'));
