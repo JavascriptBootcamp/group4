@@ -1,0 +1,10 @@
+function max (arr) {
+
+        arr.sort(function(a, b) {
+            return a - b;
+          });
+    
+        return arr;
+    };
+
+console.log(max([12,34,56,1]));
