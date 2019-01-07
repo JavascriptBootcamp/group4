@@ -1,0 +1,58 @@
+
+
+
+                function hasVowel(s){
+                    var vowelsArr =['a','u','e','i','o'];
+                    var i=0,sum=0;
+                        while(i<5){
+                            sum+=  s.split(vowelsArr[i]).length-1;
+                            i++;
+                       }
+                        console.log(sum);
+                }
+                hasVowel("Hello there is 12 vowels in this sentence!!");
+                hasVowel(" this one has less , it is : 7");
+
+                    function maxValue(arr){
+                                var max=arr[0];
+                         for(var i=0;i<arr.length;i++){
+                             if (arr[i]>max){
+                                 max=arr[i];
+                             }
+                         }
+            console.log(max);
+                    }
+
+                    var a=[-12,-34,0,-56,-1];
+                    maxValue(a);
+                    maxValue([0,-1,-2]);
+                    maxValue([12,34,56,1]);
+
+
+function TransistionObj(color,flowerKind,size){
+    this.color=color;
+    this.flowerKind=flowerKind;
+     this.size=size;
+    };
+
+    function convertKeyValue(obj){
+        if(typeof obj === 'object'){
+                    var newObj={};
+                for(var key in obj){
+                        newObj[obj[key]]=key;
+                }
+
+        }
+        return newObj;
+
+    }
+
+var original=new TransistionObj("white","Aster","medium");
+var ob2=convertKeyValue(original);
+console.log(original);
+console.log(ob2);
+
+
+
+
+
