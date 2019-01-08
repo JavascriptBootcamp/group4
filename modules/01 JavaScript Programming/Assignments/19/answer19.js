@@ -6,7 +6,7 @@ function validateCreditCard (creditCard)
     let  answer={
         valid: false,
         number: creditCard,
-        error: ""
+      //  error: ""
     }
         
         // remove "-" from CreditCard number
