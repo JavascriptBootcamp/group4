@@ -5,7 +5,7 @@ function Queue(){
     },
     this.remove = function(){
         if (this.data.length > 0){
-            return this.data.pop();
+            return this.data.shift();
         }
         else{
             return false;
