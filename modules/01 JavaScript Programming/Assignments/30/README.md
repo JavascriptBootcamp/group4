@@ -20,4 +20,4 @@ console.log("Area:", rectangleShapeArea);
 Name: rectangle<br>
 Description: a shape with four sides and four corners<br>
 Size: 10x2
-Area: 40
+Area: 20
