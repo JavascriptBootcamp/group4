@@ -18,9 +18,17 @@ function StringUtils() {
         return numOfVowles;
     }
 
+    this.removeChar = function (str, pos){
+
+        splitStr = str.split("");
+        return splitStr.join("");
+    }
   
 }
 
+
 var str = "My name is aviyot getahun";
 var word = new StringUtils();
-console.log("number of vowels on "+ str + ": " + word.getVowels(str));
+
+//console.log(word.removeChar(str , 0));
+//console.log("number of vowels on "+ str + ": " + word.getVowels(str)); */
