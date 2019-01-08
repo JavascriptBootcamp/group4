@@ -10,7 +10,7 @@
 var rectangleType = new ShapeType("rectangle", "a shape with four sides and four corners");<br>
 var rectangleShape = new Shape(rectangleType, 10, 2);<br>
 var rectangleShapeArea = rectangleShape.area();<br>
-console.log("Name:", rectangle.shapeType.name);<br>
+console.log("Name:", rectangleShape.shapeType.name);<br>
 console.log("Description:", rectangleShape.shapeType.description);<br>
 console.log("Size:", rectangleShape.width + "x" + rectangleShape.height);
 console.log("Area:", rectangleShapeArea);
