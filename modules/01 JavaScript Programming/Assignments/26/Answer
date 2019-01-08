@@ -1,0 +1,43 @@
+function switchKeyAndVal (objOrginal,keySuffix,valueSuffix) {
+    
+    var objCopy = Object.assign({}, objOrginal);
+    
+    var key;
+
+    for (key in objCopy) {
+
+        objCopy[objCopy[key]+keySuffix] = key+valueSuffix;
+        delete objCopy[key];
+    }
+
+    return objCopy;
+
+};
+
+var objExchangeKeyAndVal1 = {
+    key1 : 1,
+    key2 : 2,
+    key3 : 3,
+    key4: 4
+};
+
+var objExchangeKeyAndVal2 = {
+    key1 : 5,
+    key2 : 6,
+    key3 : 7,
+    key4: 8
+};
+var objExchangeKeyAndVal3 = {
+    key1 : 9,
+    key2 : 10,
+    key3 : 11,
+    key4: 12
+};
+
+console.log(switchKeyAndVal.call(this,objExchangeKeyAndVal1,"aaa","bbb"));
+console.log(switchKeyAndVal.call(this,objExchangeKeyAndVal2,"ccc","ddd"));
+console.log(switchKeyAndVal.call(this,objExchangeKeyAndVal3,"eee","fff"));
+
+console.log(switchKeyAndVal.apply(this,[objExchangeKeyAndVal1,"aaa","bbb"]));
+console.log(switchKeyAndVal.apply(this,[objExchangeKeyAndVal2,"ccc","ddd"]));
+console.log(switchKeyAndVal.apply(this,[objExchangeKeyAndVal3,"eee","fff"]));
