@@ -10,6 +10,8 @@
 
 var obj = {
     swapKeysValues : function(keySuffix,valueSuffix){
+        if(!keySuffix || !valueSuffix)
+            return "Wrong input!";
         copyObj = {};
         for(var key in this) {
             var value = this[key];
@@ -26,3 +28,5 @@ var obj3 = { name: "Michal" , age : 55 };
 console.log(obj.swapKeysValues.call(obj1,'a','A'),obj.swapKeysValues.call(obj2,'b','B'),obj.swapKeysValues.call(obj3,'c','C'));
 
 console.log(obj.swapKeysValues.apply(obj1,['a','A']),obj.swapKeysValues.apply(obj2,['b','B']),obj.swapKeysValues.apply(obj3,['c','C']));
+
+console.log(obj.swapKeysValues.apply(obj1,['','A']),obj.swapKeysValues.apply(obj2,['b','B']),obj.swapKeysValues.apply(obj3,['c','C']));
