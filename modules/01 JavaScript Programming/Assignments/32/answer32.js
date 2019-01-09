@@ -4,13 +4,13 @@ function Queue() {
         if (value === undefined)
             throw "You must enter a value";
         else
-            return this.data.unshift(value);
+            return this.data.push(value);
     }
     this.remove = function () {
         if (this.isEmpty())
             throw "The Queue is Empty";
         else
-            return this.data.pop();
+            return this.data.shift();
     }
     this.isEmpty = function () {
         return this.data.length === 0;
@@ -52,7 +52,7 @@ function isPalindrome(str) {
     });
 
     for (let i = 0; i < arrStr.length / 2; i++) {
-        if (arrStr[i] !== stack.remove())
+        if (queue.remove() !== stack.remove())
             return "Not palindrome."
     }
 
@@ -62,7 +62,7 @@ function isPalindrome(str) {
 var stack = new Stack();
 var queue = new Queue();
 try {
-    console.log(isPalindrome("abccb"));
+    console.log(isPalindrome("abccba"));
 } catch (error) {
     console.log(error);
 }
