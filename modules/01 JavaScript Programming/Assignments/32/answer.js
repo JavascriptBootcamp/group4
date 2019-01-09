@@ -39,32 +39,32 @@ var bracketOf = function(char){
     }
 }
 
-var isCharExists = function(char){
+var isSupportedChar = function(char){
     return char === '(' || char === '{' || char === ')' || char === '}';
 }
 var isPalindrome = function(str){
-    if( !(str.split('')).every(isCharExists)){
+    if( !(str.split('')).every(isSupportedChar)){
         return "Wrong input!";
     }
     if(str.length %2 !== 0){
         return false;
     }
-    var bracketscharsStack = new Stack();
+    var bracketsCharsStack = new Stack();
     var openCharsQueue = new Queue();
 
     for(var i=0;i<str.length;i++){
         if(str[i] === '{' || str[i] === '('){
-            bracketscharsStack.push(str[i]);
+            bracketsCharsStack.push(str[i]);
         }
         if(str[i] === '}' || str[i] === ')'){
             openCharsQueue.add(str[i]);
         }
     }
 
-    if(bracketscharsStack.data.length !== openCharsQueue.data.length)
+    if(bracketsCharsStack.data.length !== openCharsQueue.data.length)
         return false;
-    while(bracketscharsStack.data.length > 0){
-        if(bracketOf(bracketscharsStack.pop()) !== openCharsQueue.remove()){
+    while(bracketsCharsStack.data.length > 0){
+        if(bracketOf(bracketsCharsStack.pop()) !== openCharsQueue.remove()){
             return false;
         }
     }
