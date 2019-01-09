@@ -1,0 +1,15 @@
+1. commit and push (one after another) the following files to "fakebook" repo, under the folder "css": "main.css", "rtl.css", "reset.css", "fonts.css"
+2. archive the repo
+can you find the archived file?
+3. revert the last 2 commits
+verify that "reset.css" & "fonts.css" don't exist anymore
+5. reset the repo to the first commit
+verify that only "main.css" exists
+6. print the commit Hash code
+7. print the reference log
+8. print the log in the following format:
+"
+From: <author>
+Date: <author date>
+Subject: <title line>
+"
