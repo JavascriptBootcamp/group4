@@ -15,10 +15,10 @@ function Validator() {
         return !(isNaN(value));
     }
     this.isObject = function (value) {
-        return typeof value === "object" && value !== null;
+        return toString.call(value) === "[object Object]";
     }
     this.isPureJson = function isPureJson(value) {
-        return toString.call(value) === "[object Object]";
+        return this.isObject(value);
     }
     this.isRegExp = function isRegExp(value) {
         return value instanceof RegExp;
