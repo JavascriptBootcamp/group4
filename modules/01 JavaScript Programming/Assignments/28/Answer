@@ -1,0 +1,43 @@
+function BankAccount () {
+
+    this.number;
+    this.owner;
+
+    this.withdraw = function(amount) {
+        this.balance -= amount;
+    };
+
+    this.deposit = function(amount) {
+        this.balance += amount;
+    };
+
+    this.getBalance = function() {
+        
+        if (this.balance === undefined) {
+            return("No balance exists");
+        } else {
+            return this.balance;
+        }    
+        
+    };
+};
+
+var index;
+var arrOfAccounts = new Array (new BankAccount(),new BankAccount(),new BankAccount());
+
+for ( index = 0; index < arrOfAccounts.length; index++) {
+    arrOfAccounts[index].number = "Number"+`${index}` ;
+    arrOfAccounts[index].owner = "Owner"+`${index}`
+    arrOfAccounts[index].balance = 1000;
+}
+
+
+arrOfAccounts[0].withdraw(200);
+arrOfAccounts[1].withdraw(500);
+arrOfAccounts[2].withdraw(1500);
+
+for ( index = 0; index < arrOfAccounts.length; index++) {
+    console.log("Account Name",arrOfAccounts[index].number);
+    console.log("Account Owner",arrOfAccounts[index].owner);
+    console.log("Balance",arrOfAccounts[index].balance);
+}
