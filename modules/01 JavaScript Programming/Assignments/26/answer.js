@@ -15,34 +15,24 @@
 //     });
 
 // }
-
-function objectOpCopier(obj)
+function objectOpCopier (keySuffix,valueSuffix)
 {
-    var key = Object.keys(obj);
+    if (!valueSuffix){
+        valueSuffix = "";
+       }
+       if (!keySuffix){
+        keySuffix = "";
+       }
+    var key = Object.keys(this);
     var newObject = {};
-    key.forEach(item => {
-         newObject[obj[item]] = item;
-    });
+    key.forEach(item => {newObject[this[item]+keySuffix] = item + valueSuffix;});
     return newObject;
 }
 
 
-var person = {
-    name: "ofek",
-    age: "28",
-    CityAddress: "Herzeliya"
-}
+var obj1 = {name:"ofek",age: "28"};
+var obj2 = {name: "Harry Potter",year: "2005"};
+var obj3 = {name: "Lord of the ring",year: "2001"}
 
-var movie = {
-    name: "Harry Potter",
-    year: "2005",
-    auther: "J.K rolling"
-}
-
-var book = {
-    name: "Lord of the ring",
-    year: "2001",
-    auther: "Someone"
-}
-
-Opp1 = new objectOpCopier(exampleObject);
+console.log(objectOpCopier.call(obj1));
+console.log(objectOpCopier.apply(obj2,["-KS","-VS"]));
