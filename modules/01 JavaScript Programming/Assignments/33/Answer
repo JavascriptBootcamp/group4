@@ -1,0 +1,14 @@
+function circular (ll) {
+    ptr = ll.head;
+    while(ptr && ptr.next !== ll.head )
+    {
+        if (ptr === ptr.next){
+            return true;
+        }
+        else{
+            ptr = ptr.next;
+        }
+    }   
+    return false;
+}
+
