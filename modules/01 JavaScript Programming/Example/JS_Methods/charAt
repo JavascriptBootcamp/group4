@@ -4,5 +4,5 @@
 var str="hello all";
 var index=2;
 var result=str.charAt(index);
-console.log("the string in index" , i, "is '",result,"'");
-//expected to print 
+console.log("the string in index" , index, "is '",result,"'");
+//expected to print 'l'
