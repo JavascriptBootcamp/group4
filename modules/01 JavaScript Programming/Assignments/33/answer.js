@@ -50,23 +50,20 @@ function LinkedList(){
 
 function circular(list){
     var node1 = list.getFirst();
-    //var listTillNow = new LinkedList();
-    var node2 = list.getFirst();
-    var nodeLast;
     var i=0;
-    while(!node1){
-        //node2 = node1;
+    //console.log(i);
+    while( node1 !== undefined){
+        //console.log(node1);
         node1 = node1.next;
-        var node3 = list.getFirst();
+        var node2 = list.getFirst();
         i++;
         for(var j=0; j < i; j++){
-            if(node1 === node3){
+            if(node1 === node2){// to check if the current node is the same with one of the priors
                 return true;
             }
-            node3 = node3.next;
+            node2 = node2.next;
         }
     }
-
     return false;
 }
 
@@ -78,24 +75,19 @@ l.head = a;
 a.next = b;
 b.next = c;
 c.next = b;
-// ll.insertLast('z');
-// ll.insertLast('y');
-// ll.printAll();
 
-function midpoint(list){
-    var slow = list.getFirst();
-    var fast = list.getFirst();
+// function midpoint(list){
+//     var slow = list.getFirst();
+//     var fast = list.getFirst();
 
-    while (fast && fast.next) {
-        slow = slow.next;
-        fast = fast.next.next;
-    }
+//     while (fast && fast.next) {
+//         slow = slow.next;
+//         fast = fast.next.next;
+//     }
 
-    return slow;
-}
+//     return slow;
+// }
 
 //console.log("midpoint is", midpoint(ll)); 
 
 console.log(circular(l));
-
-l.printAll();
