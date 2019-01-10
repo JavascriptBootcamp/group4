@@ -2,10 +2,10 @@
 בתור ברירת מחדל המתודה הופכת את האלמנטים למחרוזות ואז משווה ביניהן ע"י רצף ערכי UTF-16 code.
 זמן ריצה ומקום תלוי ביישומה של המתודה.
 
-var array1 = [1, 30, 4, 21];
-var arr2 =array1.sort();
-console.log(array1);
-console.log(arr2);
+var months = ['March', 'Jan', 'Feb', 'Dec'];
+months.sort();
+console.log(months);
+// expected output: ["Dec", "Feb", "Jan", "March"]
 
 var array1 = [1, 30, 4, 21];
 var arr2 =array1.sort();
