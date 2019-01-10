@@ -11,3 +11,4 @@ var result = names.includes("Koko Comipoki");
 
 console.log(result);
 
+
