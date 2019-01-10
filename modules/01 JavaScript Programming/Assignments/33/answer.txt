@@ -1,0 +1,13 @@
+function circular(list)
+{
+    var head=list.getFirst();
+    var current=head;
+    while(head)
+    {
+        if(head.next===current)
+        {return true;}
+        current=head;
+        head=head.next;
+    }
+    return false;
+}
