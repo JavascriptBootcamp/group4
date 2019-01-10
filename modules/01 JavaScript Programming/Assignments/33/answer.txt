@@ -1,0 +1,12 @@
+function circular(list){
+    var node = list.getFirst();
+    while(node && node.next && node.next.next){
+        if(node.next.next === node){
+            console.log("LinkedList is circular");
+            return(true);
+        }
+        node=node.next;
+    }
+    console.log("LinkedList is not circular");
+    return(false);
+}
