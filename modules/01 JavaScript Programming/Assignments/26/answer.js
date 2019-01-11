@@ -5,7 +5,7 @@ function viceVersa(keySuffix, valueSuffix){
     keys.forEach((key, i) => {
         cloneObj[key] = values[i];
     });
-    if(keySuffix && valueSuffix){
+    if(keySuffix){
         cloneObj[keySuffix] = valueSuffix;
     }
     return cloneObj;
