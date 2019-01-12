@@ -1,0 +1,40 @@
+function BankAccount(account,owner)
+{
+    this.account=account;
+    this.owner=owner;
+    balance=0;
+    this.withdraw=function(amount)
+    {
+       if(amount>balance)
+       {
+           console.log("can't preform this action");
+           return;
+       }
+        balance-=amount;
+    }
+    this.deposit=function(amount)
+    {
+        balance+=amount;
+    }
+    this.getBalance=function()
+    {
+        return balance;
+    }
+    
+}
+
+var bAccount1=new BankAccount(5678,"Shani");
+var bA2=new BankAccount(890,"Shai");
+var bA3=new BankAccount(300,"Alon");
+
+// bAccount1.deposit(1000);
+// bA2.deposit(1000);
+bA3.deposit(1000);
+// bAccount1.withdraw(200);
+// bA2.withdraw(500);
+bA3.withdraw(1500);
+
+// console.log("bank account",bAccount1.account,"ownered by",bAccount1.owner,"with balance of",bAccount1.getBalance());
+// console.log("bank account",bA2.account,"ownered by",bA2.owner,"with balance of",bA2.getBalance());
+console.log("bank account",bA3.account,"ownered by",bA3.owner,"with balance of",bA3.getBalance());
+
