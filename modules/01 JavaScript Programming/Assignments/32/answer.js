@@ -23,6 +23,3 @@ function isPalindrome(str) {
         return isPalindrome;
     }
 }
-
-var str = 'dabaabad';
-console.log(isPalindrome(str));
