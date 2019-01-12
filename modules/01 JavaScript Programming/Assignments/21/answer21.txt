@@ -1,0 +1,12 @@
+function max(arr)
+{
+    var currentMax=0;
+    arr.forEach(element => {
+        if(element>currentMax)
+currentMax=element;
+    });
+    return currentMax;
+    
+}
+console.log(max([12,34,56,1]));
+console.log(max([-12,-34,0,-56,-1]));
