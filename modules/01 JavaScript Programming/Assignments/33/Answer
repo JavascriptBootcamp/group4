@@ -1,14 +1,20 @@
-function circular (ll) {
-    ptr = ll.head;
-    while(ptr && ptr.next !== ll.head )
-    {
-        if (ptr === ptr.next){
-            return true;
-        }
-        else{
-            ptr = ptr.next;
-        }
-    }   
-    return false;
-}
+function circular (ll) 
+{
+    var ptr = ll.head;
+    var found = false;
 
+    // checking ptr.next and ptr.next.next if just to be sure that i checking only what was allocated at first
+    while(!found && ptr && ptr.next && ptr.next.next) {
+        if (ptr === ptr.next.next){
+            found = true;
+        }
+        else
+            ptr = ptr.next;
+    }
+    if (found) {
+        return true;
+    } 
+    else {
+        return false;
+    }
+}
