@@ -1,0 +1,93 @@
+function Validator(value)
+{
+    this.isBool=function(){
+    return typeof(value)==="boolean";
+    }
+    this.isError=function(){
+        return value instanceof Error;
+    }
+    this.isNaN=function(){
+        return isNaN(value);
+    }
+    this.isNull=function(){
+        return value===null;
+    }
+    this.isNumber=function(){
+        return typeof(value)==="number";
+    }
+    this.isObject=function(){
+        return typeof(value)==="Object";
+    }
+    this.isPureJson=function(){
+        if (typeof value!=="string")
+        return false;
+        try {
+            JSON.parse(value);//to check convertion to json
+            return
+        } catch (error) {
+            return false;//failed to convert
+        }
+    }
+    this.isRegExp = function(value){
+        return (value instanceof RegExp)
+    }
+    this.isChar=function(value){
+        return typeof(value)==="string"&&value.length===1;
+    }
+    this.isSameType=function(value2){
+        return typeof(value)===typeof(value2);
+    }
+                                   
+}
+
+//---is boolean
+var validate1=new Validator("1");
+var validate2=new Validator(true);
+console.log(validate1.isBool());
+console.log(validate2.isBool());
+//---is Error
+var validate3=new Validator("1");
+var validate4=new Validator(Error());
+console.log(validate3.isError());
+console.log(validate4.isError());
+//---isNAN
+ var validate6=new Validator("1");
+var validate7=new Validator(Error());
+console.log(validate7.isNaN());
+console.log(validate6.isNaN());
+
+ //--- isNull
+var validate5=new Validator("1");
+var validate8=new Validator(null);
+console.log(validate5.isNull());
+console.log(validate8.isNull());
+
+ //--- isNumber
+var validateNum1=new Validator(10);
+var validateNum2=new Validator(null);
+console.log(validateNum1.isNumber());
+console.log(validateNum2.isNumber());
+
+ //---isObject
+
+ var valiObj=new Validator({name:"shani"});
+var validObj=new Validator(null);
+console.log (valiObj.isObject());
+console.log( validObj.isObject());
+
+
+//---isPureJson
+ console.log(new Validator(`{"name":"Shani"}`).isPureJson());
+console.log(new Validator("").isPureJson());
+
+//---isRegExp
+console.log(new Validator(/\w+/).isRegExp());
+console.log(new Validator("").isRegExp(20));
+
+//---isChar
+ console.log(new Validator('c').isChar());
+console.log(new Validator(0).isChar());
+
+//---isSameType
+ console.log(new Validator('c').isSameType('p'));
+console.log(new Validator('c').isSameType()); 
