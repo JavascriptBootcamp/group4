@@ -1,0 +1,18 @@
+function opposibleObj(a)
+{
+    var b=new Object();
+    bkeys=Object.values(a);
+  console.log(typeof bkeys[0]);
+    bvalues=Object.keys(a);
+   for (let i = 0; i < bkeys.length; i++) {
+      b[bkeys[i]]=bvalues[i];
+       
+   }
+return b;
+}
+
+a={
+    name:"shani",
+    age:31
+};
+console.log(opposibleObj(a));
