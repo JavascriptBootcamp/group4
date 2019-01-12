@@ -1,14 +1,13 @@
 function Queue(){
     var arr =[];
     this.add = (element) => {
-        arr[arr.length] = element;
+        for(var i= arr.length - 1; i >= 0; i--){
+            arr[i+1] = arr[i];
+        }
+        arr[0] = element;
         console.log(arr);
     };
     this.remove = () => {
-        for(var i= 1 ; i < arr.length; i++){
-            arr[i - 1] = arr[i];
-            //delete arr[i];
-        }
         arr.length = arr.length === 0 ? 0:arr.length - 1;
         console.log(arr);
     };
