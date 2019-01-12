@@ -1,18 +1,41 @@
-function opposibleObj(a)
-{
-    var b=new Object();
-    bkeys=Object.values(a);
-  console.log(typeof bkeys[0]);
-    bvalues=Object.keys(a);
-   for (let i = 0; i < bkeys.length; i++) {
-      b[bkeys[i]]=bvalues[i];
-       
-   }
-return b;
-}
+var oppsObj={
+    opposibleObj:function(keySuffix, valueSuffix)
+   {
+       console.log(this);
+       var b=new Object();
+      
+        bkeys=Object.values(this);
+       bvalues=Object.keys(this);
+   
+       for (let i = 0; i < bkeys.length; i++) {
 
-a={
+         b[keySuffix+bkeys[i]]=valueSuffix+bvalues[i];
+          
+      }
+      return b;
+   }
+       
+       
+
+   
+   };
+var v={
     name:"shani",
     age:31
 };
-console.log(opposibleObj(a));
+var c={
+    name:"Shai",
+    age:9
+};
+var d={
+    name:"Alon",
+    age:23
+};
+
+
+
+console.log(oppsObj.opposibleObj.call(v));
+console.log(oppsObj.opposibleObj.call(c));
+console.log(oppsObj.opposibleObj.call(d));
+
+console.log(oppsObj.opposibleObj.apply(d,["keySuffix:","valueSuffix:"]));
