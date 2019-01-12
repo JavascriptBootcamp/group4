@@ -24,6 +24,10 @@ var valid = function () {
         return (typeof value === 'object');
     }
 
+     this.isjson = function (value) {
+        return (toString.call(value) === '[object Object]');
+    }
+    
     this.isRegExp = function (value) {
         return (value instanceof RegExp);
     }
@@ -52,6 +56,8 @@ console.log("is Number: "+ valid.isNumber('number 15'));
 console.log("is Number: "+ valid.isNumber(15));
 console.log("is Object: "+ valid.isObject({obj:"hello"}));
 console.log("is Object: "+ valid.isObject('obj'));
+console.log("is pure json object? " + valid.isjson({name: 'Robert'}));
+console.log("is pure json object? " + valid.isjson('Robert'));
 console.log("is RegExp: "+ valid.isRegExp(/\n/));
 console.log("is RegExp: "+valid.isRegExp('not RegExp'));
 console.log("is Char: "+ valid.isChar("A"));
