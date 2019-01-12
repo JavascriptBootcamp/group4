@@ -1,17 +1,17 @@
 function Queue(){
     this.data = [];
-    this.push = function(record) {
+    this.add = function(record) {
         this.data.push(record);
     }
-    this.pop = function() {
+    this.remove = function() {
         return this.data.shift();
     }
 }
 
 var queue = new queue();
-queue.push(1);
-queue.push(2);
-queue.push(3);
-queue.push(4);
-queue.push(5);
-console.log(queue.pop());
+queue.add(1);
+queue.add(2);
+queue.add(3);
+queue.add(4);
+queue.add(5);
+console.log(queue.remove());
