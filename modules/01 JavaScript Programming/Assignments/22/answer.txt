@@ -1,0 +1,41 @@
+function StringUtils()
+{
+
+    this.getVowels=function(str)
+    {
+        var counter=0;
+        for (var i = 0; i < str.length; i++) {
+           if(str[i]==="A"||str[i]==='E'||str[i]==='I'||str[i]==='O'||str[i]==='U'||str[i]==="a"||str[i]==='e'||str[i]==='i'||str[i]==='o'||str[i]==='u')
+            counter++;
+        }
+        return counter;
+    }
+    this.removeChar= function (str, pos)
+    {
+        if(pos===0)
+        {
+            return str.substring(1,str.length);
+        }
+        return str.substring(0,pos)+str.substring(pos+1,str.length);
+    }
+
+    this.incrementLetters=function (str)
+    {
+        var newStr="";
+        for (var i = 0; i < str.length; i++) {            
+            newStr+=String.fromCharCode(str.charCodeAt(i)+1);
+        }
+        return newStr;
+    }
+    
+
+
+
+}
+
+
+var s=new StringUtils();
+var str="The quick brown fox";
+console.log("in ",str,"there are ",s.getVowels(str)," vowels");
+// console.log("before:",str," after removeChar:",s.removeChar(str,2));
+// console.log("before:", str,"after incrementLetters:", s.incrementLetters(str));
