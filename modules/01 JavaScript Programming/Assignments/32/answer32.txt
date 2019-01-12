@@ -1,0 +1,37 @@
+function Queue(){
+    this.data = [];
+    this.add = function(record) {
+        this.data.push(record);
+    }
+    this.remove = function() {
+        return this.data.shift();
+    }
+}
+
+function Stack(){
+    this.data = [];
+    this.push = function(record) {
+        this.data.push(record);
+    }
+    this.pop = function() {
+        return this.data.pop();
+    }
+}
+
+function isPalindrome(str)
+{
+var q=new Queue();
+var s=new Stack();
+for (let i = 0; i < str.length; i++) {
+   q.add(str[i]);
+   s.push(str[i]);
+}
+
+for (let i = 0; i < str.length/2; i++) {
+    if(q.remove()!==s.pop())
+    return false;  
+}
+return true;
+}
+console.log(isPalindrome("abccba"));
+console.log(isPalindrome("abccb"));
