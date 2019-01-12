@@ -1,0 +1,17 @@
+function queue(){
+    this.data = [];
+    this.push = function(record) {
+        this.data.push(record);
+    }
+    this.pop = function() {
+        return this.data.shift();
+    }
+}
+
+var queue = new queue();
+queue.push(1);
+queue.push(2);
+queue.push(3);
+queue.push(4);
+queue.push(5);
+console.log(queue.pop());
