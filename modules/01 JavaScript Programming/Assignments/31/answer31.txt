@@ -1,4 +1,4 @@
-function queue(){
+function Queue(){
     this.data = [];
     this.push = function(record) {
         this.data.push(record);
