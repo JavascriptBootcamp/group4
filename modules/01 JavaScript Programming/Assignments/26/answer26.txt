@@ -1,7 +1,6 @@
 var oppsObj={
     opposibleObj:function(keySuffix, valueSuffix)
    {
-       console.log(this);
        var b=new Object();
       
         bkeys=Object.values(this);
