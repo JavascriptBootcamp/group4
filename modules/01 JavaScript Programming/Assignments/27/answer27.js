@@ -33,7 +33,7 @@ function Validator() {
     }
 
     this.isSame = function (value1, value2) {
-        return value1 === value2;
+        return typeof value1 === typeof value2;
     }
 }
 
@@ -63,6 +63,5 @@ console.log("Value type is RegExp:", validator.isRegExp('RegExp'));
 console.log("Value type is Char:", validator.isChar('['));
 console.log("Value type is Char:", validator.isChar(123));
 
-var arr = [1, 2];
-console.log("Values type are same:", validator.isSame(arr, arr));
 console.log("Values type are same:", validator.isSame([1, 2], [1, 2]));
+console.log("Values type are same:", validator.isSame(1, '1'));
