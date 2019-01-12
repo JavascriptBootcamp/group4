@@ -1,0 +1,33 @@
+function ShapeType (name,description){
+
+    this.name = name;
+    this.description = description;
+
+};
+
+function Shape (type,width,height){
+
+    this.type = type;
+    this.width = width;
+    this.height = height;
+
+    this.area = function () {
+        return this.width * this.height;
+    };
+};
+
+var rectangleType = new ShapeType("rectangle", "a shape with two sides size the same but different than two others");
+var rectangle = new Shape(rectangleType, 10, 2);
+var rectangleArea = rectangle.area();
+console.log("Name:", rectangle.type.name);
+console.log("Description:", rectangle.type.description);
+console.log("Size:", rectangle.width + "x" + rectangle.height);
+console.log("Area:", rectangleArea);
+
+var squareType = new ShapeType("square", "a shape with all sides the same size");
+var square = new Shape(squareType, 20, 20);
+var squareArea = square.area();
+console.log("Name:", square.type.name);
+console.log("Description:", square.type.description);
+console.log("Size:", square.width + "x" + square.height);
+console.log("Area:", squareArea);
