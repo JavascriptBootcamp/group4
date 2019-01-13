@@ -1,11 +1,12 @@
 
-var copyValuesKeys = function(keySuffix , valueSuffix ) {
+var copyValuesKeys = function(keySuffix , valueSuffix) {
   var copyObj = {};
  
   var keys = Object.keys(this);
   var values = Object.values(this);
+  
   values.forEach(function (val , i){
-    copyObj[val] = keys[i];
+    copyObj[val+keySuffix] = keys[i]+valueSuffix;
   }) 
   
   
@@ -32,12 +33,12 @@ rackbet = {
 }
 
 
-console.log(copyValuesKeys.call(my));
-console.log(copyValuesKeys.call(car));
-console.log(copyValuesKeys.call(rackbet));
+//console.log(copyValuesKeys.call(my));
+//console.log(copyValuesKeys.call(car));
+//console.log(copyValuesKeys.call(rackbet));
 
 
-var arg = ["keySuf","valueSuf"];
+var arg = ["-key","-val"];
 console.log(copyValuesKeys.apply(my,arg));
 console.log(copyValuesKeys.apply(car,arg));
 console.log(copyValuesKeys.apply(rackbet,arg));
