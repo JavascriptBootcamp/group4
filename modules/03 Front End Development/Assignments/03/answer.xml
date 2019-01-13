@@ -1,0 +1,16 @@
+<house city="Tel Aviv" country="Israel">
+    <room size="25">
+        <tv  color="white">
+            <screen size="40">
+            </screen>
+        </tv>
+    </room>
+    <room size="20">
+        <tv  color="white">
+            <screen size="40">
+            </screen>
+        </tv>
+    </room>
+</house>
+
+
