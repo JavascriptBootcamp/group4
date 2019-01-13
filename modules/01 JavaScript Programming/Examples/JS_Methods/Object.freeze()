@@ -1,0 +1,28 @@
+Object.freeze()  
+פועלת על אובייקטים.
+האובייקט שעליו הופעלה המטודה, אינו ניתן יותר לשינוי, כלומר: 
+לא ניתן להוסיף/להסיר/לשנות שדות קיימים.
+
+אבל איננה תקפה לשדות שהם בעצמם אובייקטים. ונצטרך להפעיל את המטודה על שדות שהם אובייקים בנפרד.
+
+var employee = {
+    name: "Mariya",
+    designation: "Developer",
+    address: {
+      street: "Rotchild",
+      city: "Tel-aviv"
+    }
+  };
+  
+  Object.freeze(employee);
+
+  employee.name = "Guy"; // fails silently in non-strict mode //Output: Mariya
+  employee.address.city = "Holon"; // attributes of child object can be modified //Output: Holon
+  
+  console.log(employee.name);
+  console.log(employee.address.city);
+
+  Object.freeze(employee.address);
+
+  employee.address.city = "Ramat-Gan";
+  console.log(employee.address.city); // output: Holon
