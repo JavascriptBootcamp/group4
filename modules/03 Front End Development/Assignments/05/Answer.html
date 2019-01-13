@@ -1,0 +1,36 @@
+<html>
+    <head>
+
+        My Solution For Module 01 - Question 20
+
+    </head>
+    <body>
+        <h1>
+            Code:
+        </h1>
+        <pre>
+            var arr = [1, 2, 5, 7];
+            
+            
+            var x = function(item){
+                return item % 2 === 0;
+            }
+            
+            var filtered = function myFilter(arr, x) {
+                
+                var otherArr = [];
+                for (var index = 0; index < arr.length; index++) {
+                    if (x(arr[index])) {
+                        otherArr.push(arr[index]);
+                    }
+                }
+            
+                return otherArr;
+            };
+            
+            console.log(filtered(arr,x));
+        </pre>
+        
+        
+    </body>
+</html>
