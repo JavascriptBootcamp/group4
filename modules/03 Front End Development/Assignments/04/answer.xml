@@ -1,0 +1,16 @@
+<car name="daihatsu" model="sirion" year="2007">
+    <body>
+        <wheels>
+            <tire>
+                <diameter value="r-175-18">
+                </diameter>
+            <tire>
+        </wheels>
+        <door value="5">
+            <window>
+            </window>
+        </door>
+        <seat>
+        </seat>
+    </body>
+</car>
