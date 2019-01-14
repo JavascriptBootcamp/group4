@@ -33,3 +33,4 @@ accountsArr.forEach(function(item) {
     console.log("Account Number:", item.number, " | Account Owner:", item.owner, " | Balance:", item.getBalance());
     console.log();
 });
+

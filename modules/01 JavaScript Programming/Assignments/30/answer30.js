@@ -21,3 +21,4 @@ console.log("Name:", rectangleShape.type.name);
 console.log("Description:", rectangleShape.type.description);
 console.log("Sizes:", rectangleShape.width + "x" + rectangleShape.height);
 console.log("Area:", rectangleShapeArea + "\n");
+

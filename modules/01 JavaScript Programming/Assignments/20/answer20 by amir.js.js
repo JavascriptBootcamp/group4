@@ -16,3 +16,4 @@ var filtered = myFilter(arr, function(item){
 });
 
 console.log(filtered);
+

@@ -6,3 +6,4 @@
     console.log("Today is " + days[n] + ".");
     console.log("Current time is " + time);
 })();
+

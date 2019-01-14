@@ -76,3 +76,4 @@ console.log("isChar: " + v1.isChar("Amir"));
 
 console.log("areSameType : " + v1.areSameType("Amir", "1"));
 console.log("areSameType : " + v1.areSameType("Amir", 10));
+

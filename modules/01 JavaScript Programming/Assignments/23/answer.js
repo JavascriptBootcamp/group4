@@ -23,3 +23,4 @@ function findLongestString(sentence){
 var strMaxLength = findLongestString('Web Development Tutorial');
 
 console.log(strMaxLength);
+
