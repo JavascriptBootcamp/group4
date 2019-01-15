@@ -1,44 +1,44 @@
 function Queue () {
-
-    this.add = function (arr,item) {
-        arr[arr.length] = item;
-    };
-
-    this.remove = function (arr) {
-        return arr.shift();
-    };
-
-};
-
-function Stack () {
-
-    this.add = function (arr,item) {
-        arr[arr.length] = item;
-    };
-
-    this.remove = function (arr) {
-        return arr.pop();
-    };
-
-};
-
-function IsPalindrome (arr,stack,queue) {
     
-    var index;
-    var found = false;
+        this.add = function (arr,item) {
+            arr[arr.length] = item;
+        };
     
-        while (arr.length) {
-            if(stack.remove(arr) !== queue.remove(arr)){
-                found = true;
+        this.remove = function (arr) {
+            return arr.shift();
+        };
+    
+    };
+    
+    function Stack () {
+    
+        this.add = function (arr,item) {
+            arr[arr.length] = item;
+        };
+    
+        this.remove = function (arr) {
+            return arr.pop();
+        };
+    
+    };
+    
+    function IsPalindrome (arr,stack,queue) {
+        
+        var index;
+        var notFound = true;
+        
+            while (arr.length) {
+                if(stack.remove(arr) != queue.remove(arr)){
+                    notFound = false;
+                }
+                
             }
             
-        }
-        
-    return found;
-};
-
-var str = "abccba";
-var arr = str.split("");
-var stack = new Stack();
-var queue = new Queue();
-console.log(IsPalindrome(arr,stack,queue));
+        return notFound;
+    };
+    
+    var str = "abccda";
+    var arr = str.split("");
+    var stack = new Stack();
+    var queue = new Queue();
+    console.log(IsPalindrome(arr,stack,queue));
