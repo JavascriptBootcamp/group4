@@ -1,0 +1,10 @@
+<car name="toyota" price="78000">
+    <wheels name="michelin" size="40">
+    </wheels>
+    <door>
+        <window feature="electric">
+        </window>
+    </door>
+    <seat color="black">
+    </seat>
+</car>
