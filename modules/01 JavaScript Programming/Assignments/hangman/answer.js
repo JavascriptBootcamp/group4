@@ -22,7 +22,6 @@ function inputLetter(randomedPhrase, userGuesses, life) {
             // User input exit.
             //standard_input.resume();
             if (data.length === 3 && isLetter(data)) {// because it has also \n
-                checkLetter = true;
                 var checkIfHasTheLetter = userGuesses.some((char) =>{
                     return char === data[0];
                 });
