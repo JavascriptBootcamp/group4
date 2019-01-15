@@ -1,0 +1,14 @@
+<car color="red" company="kia" model="hibread">
+    <door carSide="left">
+        <window></window>
+    </door>
+    <door carSide="left">
+        <window></window>
+    </door>
+    <door carSide="right">
+        <window></window>
+    </door>
+    <door carSide="right">
+        <window></window>
+    </door>
+</car>
