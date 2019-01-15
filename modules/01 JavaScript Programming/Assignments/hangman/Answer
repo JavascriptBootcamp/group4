@@ -1,0 +1,63 @@
+function hangMan () {
+    
+    var setLife = 10;
+    var arrPhrases = ["There is no place like home","Two wrongs don't make a right","When in Rome do as the Romans","Hope for the best but prepare for the worst","Better late than never"];
+    var win = false;
+    var letters = [];
+    var onGoingConstructionArr =[];
+
+    var phraseSelected = (function () {
+        return Math.floor(Math.random() * (Math.floor(arrPhrases.length) - Math.ceil(0))) + Math.ceil(0);
+    })();
+
+
+    function isInPhrase(char) {
+
+        var indexLetters;
+        var found = false;
+        for (indexLetters = 0; indexLetters < lengthOfLetters && !found ; indexLetters++) {
+            if (letters.includes(char)) {
+                onGoingConstructionArr.push(char);
+                found = true;
+            }
+        }
+            
+        return found;
+    };
+
+
+    function getFindsStr() {
+
+        var indexPhase;
+        var lengthOfPhase = arrPhrases[phraseSelected].length;
+        var lengthOfLetters = letters.length;
+
+        for (indexPhase = 0; indexPhase < lengthOfPhase ; indexPhase++) {
+            
+            if (isInPhrase(arrPhrases[phraseSelected][indexPhase])) {
+                console.log(arrPhrases[phraseSelected][indexPhase]);
+            } else {
+                console.log("_");
+            }
+        }
+    };
+
+    function getInfoFromUser () {
+
+        // return ;
+    }
+
+    
+    while (!win && setLife) {
+        console.log("Remainin lifes are:",setLife);
+        console.log("Current found matches", onGoingConstructionArr);
+        console.log("input letter: ", getInfoFromUser());
+        getFindsStr();
+
+
+    }
+
+    return win;
+}
+
+console.log(hangMan());
