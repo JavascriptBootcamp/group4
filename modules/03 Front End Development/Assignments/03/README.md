@@ -13,7 +13,7 @@
     &lt;/screen&gt;
     &lt;room size="25"&gt;
     &lt;/room&gt;
-    &lt;tv  color="white"&gt;
+    &lt;tv color="white"&gt;
     &lt;/tv&gt;
     </pre>
     </code>
