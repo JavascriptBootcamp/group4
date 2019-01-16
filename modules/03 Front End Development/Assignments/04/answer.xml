@@ -1,0 +1,11 @@
+<car color="blue", size="medium", company="mazda">
+    <wheels>
+        <jants></jants>
+    </wheels>
+    <doors>
+        <handle></handle>
+    </doors>
+    <seat>
+        <seatBelt></seatBelt>
+    </seat>
+</car>
