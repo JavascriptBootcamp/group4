@@ -1,198 +1,94 @@
 function hangMan () {
-    
     var setLife = 10;
-    var arrPhrases = ["There is no place like home","Two wrongs don't make a right","When in Rome do as the Romans","Hope for the best but prepare for the worst","Better late than never"];
+    var arrPhrases = ["there is no place like home","two wrongs does not make a right","when in rome do as the romans","hope for the best but prepare for the worst","better late than never"];
     var win = false;
-    var letters = [];
-    var onGoingConstructionArr =[];
-
-    // selecting randomly a phrase
-    var phraseSelected = (function () {
-        return Math.floor(Math.random() * (Math.floor(arrPhrases.length) - Math.ceil(0))) + Math.ceil(0);
-    })();
-
-    (function () {
-        return Math.floor(Math.random() * (Math.floor(arrPhrases.length) - Math.ceil(0))) + Math.ceil(0);
-    })();
-
-
-
-
-    function isInPhrase(char) {
-
-        var indexLetters;
-        var found = false;
-        for (indexLetters = 0; indexLetters < lengthOfLetters && !found ; indexLetters++) {
-            if (letters.includes(char)) {
-                found = true;
-            }
-        }
-            
-        return found;
-    };
-
-
-    function getFindsStr() {
-
-        var indexPhase;
-        var lengthOfPhase = arrPhrases[phraseSelected].length;
-        var lengthOfLetters = letters.length;
-
-        for (indexPhase = 0; indexPhase < lengthOfPhase ; indexPhase++) {
-            
-            if (isInPhrase(arrPhrases[phraseSelected][indexPhase])) {
-                function hangMan () {
-    
-    var setLife = 10;
-    var arrPhrases = ["There is no place like home","Two wrongs don't make a right","When in Rome do as the Romans","Hope for the best but prepare for the worst","Better late than never"];
-    var win = false;
-    var letters = [];
-    var onGoingConstructionArr =[];
-
-    var phraseSelected = (function () {
-        return Math.floor(Math.random() * (Math.floor(arrPhrases.length) - Math.ceil(0))) + Math.ceil(0);
-    })();
-
-
-    function isInPhrase(char) {
-
-        var indexLetters;
-        var found = false;
-        for (indexLetters = 0; indexLetters < lengthOfLetters && !found ; indexLetters++) {
-            if (letters.includes(char)) {
-                onGoingConstructionArr.push(char);
-                found = true;
-            }
-        }
-            
-        return found;
-    };
-
-
-    function getFindsStr() {
-
-        var indexPhase;
-        var lengthOfPhase = arrPhrases[phraseSelected].length;
-        var lengthOfLetters = letters.length;
-
-        for (indexPhase = 0; indexPhase < lengthOfPhase ; indexPhase++) {
-            
-            if (isInPhrase(arrPhrases[phraseSelected][indexPhase])) {
-                function hangMan () {
-    
-    var setLife = 10;
-    var arrPhrases = ["There is no place like home","Two wrongs don't make a right","When in Rome do as the Romans","Hope for the best but prepare for the worst","Better late than never"];
-    var win = false;
-    var letters = [];
+    // var letters = [];
     var onGoingConstructionArr =[]; // the on going construction array
-    var inpt; // getting info from user
+    
 
     var phraseSelected = (function () {
         return Math.floor(Math.random() * (Math.floor(arrPhrases.length) - Math.ceil(0))) + Math.ceil(0);
     })();
 
+    var selectedArr = arrPhrases[phraseSelected];
 
-    function isInPhrase(char) {
+    // set the construction array size as the selected phase with "_"
+    (function () {
+        onGoingConstructionArr = new Array (selectedArr.length).fill("_");
+    })();
 
-        var indexLetters;
+
+    function setConstructedArr(char) {
+
+        var index;
         var found = false;
-        for (indexLetters = 0; indexLetters < lengthOfLetters && !found ; indexLetters++) {
-            if (letters.includes(char)) {
-                onGoingConstructionArr.push(char);
+        
+        for (index = 0; index < selectedArr.length ; index++) {
+            
+            if (selectedArr[index] === char) {
+                onGoingConstructionArr.splice(index,1,char);
                 found = true;
             }
         }
-            
-        return found;
+
+        return found; 
     };
 
-
-    function getFindsStr() {
-
-        var indexPhase;
-        var lengthOfPhase = arrPhrases[phraseSelected].length;
-        var lengthOfLetters = letters.length;
-
-        for (indexPhase = 0; indexPhase < lengthOfPhase ; indexPhase++) {
-            
-            if (isInPhrase(arrPhrases[phraseSelected][indexPhase])) {
-                onGoingConstructionArr.push(arrPhrases[phraseSelected][indexPhase]);
-            } else {
-                onGoingConstructionArr.push("_");
-            }
-        }
-    };
 
     function getInfoFromUser () {
 
         // return ;
     }
 
-    
+    function isWon () {
 
+        var index;
+        var won = true;
 
-    while (!win && setLife) {
-        console.log("Remainin lifes are:",setLife);
-        console.log("Current found matches", onGoingConstructionArr);
-        console.log("input letter: ", inpt = getInfoFromUser());
-        getFindsStr();
-
-
-    }
-
-    return win;
-}
-
-console.log(hangMan());
-
-            } else {
-                console.log("_");
+        for (index = 0; index < selectedArr.length; index++) {
+            if (selectedArr[index] !== " ") {  
+                if (selectedArr[index] !== onGoingConstructionArr[index]) {
+                    won = false;     
+                }      
             }
         }
+
+        return won
     };
-
-    function getInfoFromUser () {
-
-        // return ;
-    }
-
     
     while (!win && setLife) {
+        
+        var readlineSync = require('readline-sync');
+
+        var char;
+        
         console.log("Remainin lifes are:",setLife);
-        console.log("Current found matches", onGoingConstructionArr);
-        console.log("input letter: ", getInfoFromUser());
-        getFindsStr();
+        console.log("Current found matches", onGoingConstructionArr.join(' '));
+
+        char = readlineSync.question('input letter ');
+        console.log(char);
 
 
-    }
-
-    return win;
-}
-
-console.log(hangMan());
-
-            } else {
-                console.log("_");
+        if (onGoingConstructionArr.includes(char) ) {
+            console.log(char,"was used already...Try Again");
+        } else {
+            if(setConstructedArr(char)){    // returns if the char from the user is in the phrase or not
+                console.log("Good Job!",char,"in the phrase");
+                win = isWon();
+            }
+            else {
+                console.log("The",char,"is not in the phrase");
+                setLife--;
             }
         }
-    };
-
-    function getInfoFromUser () {
-
-        // return ;
-    }
-
-    
-    while (!win && setLife) {
-        console.log("Remainin lifes are:",setLife);
-        console.log("Current found matches", onGoingConstructionArr);
-        console.log("input letter: ", getInfoFromUser());
-        getFindsStr();
-
-
     }
 
     return win;
-}
+};
 
-console.log(hangMan());
+if (hangMan()) {
+    console.log("You have won");
+}
+else {
+    console.log("You Lost");
+}
