@@ -3,9 +3,20 @@
 <head>
     <title></title>
     <style>
-        body{text-align: center;}
          input{margin-top: 1%;}
          select{margin-top: 1%;}
+         .submitBTN{
+            width: 200px;
+            background-color: aquamarine;
+            color: red;
+            font-size: 20px;
+         }
+         form{
+            border: 1px solid;
+            width: 60%;
+            margin: auto;
+            text-align: center;
+         }
         </style>
 </head>
 
@@ -22,7 +33,7 @@
         <input type="tel" placeholder="Phone Number" /><br />
         <input type="email" placeholder="Email Address" />
         <h3>Misc:</h3>
-        <textarea rows="4" cols="50" placeholder="Comments"></textarea><br/>
+        <textarea rows="4" cols="50" placeholder="Comments"></textarea><br />
         <label>Hobbies:</label>
         <select>
             <option value="" selected disabled hidden>choose</option>
@@ -30,6 +41,8 @@
             <option value="football">football</option>
             <option value="computer_games">computer games</option>
         </select>
+        <br />
+        <input type="submit" value="submit" class="submitBTN" />
     </form>
 </body>
 
