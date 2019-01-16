@@ -15,7 +15,7 @@ function isLetter(c) {
 
 function inputLetter(randomedPhrase, userGuesses, life) {
     // Prompt user to input data in console.
-    console.log("Please input a letter in command line.");
+    console.log("Please input a lower case letter in command line.");
     // When user input data and click enter key.
     if (checkFirst) {
         standard_input.on('data', function (data) {
@@ -118,3 +118,4 @@ function continueTheGame(randomedPhrase, userLetters, life){
 }
 
 runGame(life);
+
