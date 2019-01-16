@@ -1,0 +1,9 @@
+
+<car type=private>
+<door>
+    <windows amount="6">
+    </windows>
+</door>
+<wheels size="27" amount="4">
+</wheels>
+</car>
