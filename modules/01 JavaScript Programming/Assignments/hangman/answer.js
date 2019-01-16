@@ -49,7 +49,7 @@ function isWon(phrase, letters){
 function runGame(phrases){
     var life = 10;
     var won = false;
-    var lettersInput = ["s","z","i","a","d","y","n","p","q","l"];
+    var lettersInput = ["p","z","i","a","d","y","n","t","q","l"];
     var index = 0;
    
     while(life>0 && !won){
