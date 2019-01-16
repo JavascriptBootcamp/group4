@@ -1,7 +1,7 @@
 //Answer 32
 function Queue(){
     this.data = [];
-    
+
     this.isEmpty = function(){
         return this.data.length === 0
     }
@@ -17,7 +17,7 @@ function Queue(){
 }
 function Stack(){
     this.data = [];
-    
+
     this.isEmpty = function(){
         return this.data.length === 0
     }
@@ -50,4 +50,5 @@ function isPalindrome(str){
 
 console.log(isPalindrome("abccba"));
 console.log(isPalindrome("abccb"));
+
 
