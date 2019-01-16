@@ -1,5 +1,11 @@
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+var life = 10;
+var won = false;  
 var phrasesArr = ["pizza","hamburger","hot dog"];
-//var phrasesArr = ["pizza"];
 var phrasesStr = phrasesArr[Math.floor(Math.random()*phrasesArr.length)];
 var arr = new Array(phrasesStr.length);
 arr.fill(null);
@@ -25,6 +31,7 @@ function getFindsStr(phrase, letter){
 }
 
 function isInPhrase(phrase, letter){
+    phrase = phrase.join();
     if(phrase.includes(letter)){
         return true;
     }
@@ -49,29 +56,26 @@ function isWon(phrase, letters){
 }
 
 function runGame(phrases){
-    var life = 10;
-    var won = false;
-    var lettersInput = ["p","z","i","t","d","y","a","t","q","l"];
-    var index = 0;
-   
-    while(life>0 && !won){
-        console.log("remaining life :",life);
-        var findStr = getFindsStr(phrases,lettersInput[index])
+    console.log("remaining life :",life);
+    if(life>0 && !won){
+        readline.question("enter value ", (letter) => { 
+        var findStr = getFindsStr(phrases,letter)   
         console.log("current match : ",findStr);
-        index++;
-        if(!isInPhrase(phrases,lettersInput[index])){
-           life--; 
+        var match = isInPhrase(phrases,letter)
+        if(!match){
+            life--; 
         }
         if(isWon(phrases,findStr)){
             won = true;
         }
-    }   
-    if(life === 0){
-            console.log("you lost");
+        runGame(phrases);   
+        })
     }
     else{
-        console.log("you won");
-    }   
+        life === 0 ? console.log("you lost") : console.log("you won");
+        readline.close();
+    }
+    
 }
 
 runGame(phrases);
