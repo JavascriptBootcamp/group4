@@ -12,6 +12,19 @@ arr.fill(null);
 var phrases = [];
 phrases.push(phrasesStr);
 
+function showLetters(phrase){
+    var arr = [];
+    phrase = phrase.join();
+        for(var i=0; i<phrase.length; i++){
+            if (phrase[i] !== " "){
+                arr.push("_");
+            }
+            else{
+                arr.push(" ");
+            }
+        }
+    console.log(arr);
+}
 function getFindsStr(phrase, letter){
         phrase = phrase.join();
         for(var i=0; i<phrase.length; i++){
@@ -77,5 +90,5 @@ function runGame(phrases){
     }
     
 }
-
+showLetters(phrases);
 runGame(phrases);
