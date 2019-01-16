@@ -1,0 +1,14 @@
+<car company="hyundai" model="getz" color="blue">
+    <door count="4">
+        <window color="black">
+        </window>
+    </door>
+    <wheel size="205mm">
+        <wheelLocks number="B321SFG000">
+        </wheelLocks>
+    </wheel>
+    <seat color="black">
+        <seatHeater size="extra large">
+        </seatHeater>
+    </seat>
+</car>
