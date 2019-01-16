@@ -1,22 +1,26 @@
 var phrasesArr = ["pizza","hamburger","hot dog"];
 //var phrasesArr = ["pizza"];
 var phrasesStr = phrasesArr[Math.floor(Math.random()*phrasesArr.length)];
-var arr = new Array(phrases.length);
+var arr = new Array(phrasesStr.length);
+arr.fill(null);
 var phrases = [];
 phrases.push(phrasesStr);
 
 function getFindsStr(phrase, letter){
-       
-        console.log(phrase);
         phrase = phrase.join();
         for(var i=0; i<phrase.length; i++){
             if (phrase[i].toLowerCase() === letter){
                  arr[i] = letter;
             }
             else if(phrase[i].toLowerCase() === " "){
-                arr[i] = " "
+                arr[i] = " ";
             }
         }
+    arr.forEach(function(item,index){
+        if (item === null){
+            arr[index] = "_";
+        }
+    });
     return arr;
 }
 
@@ -44,12 +48,10 @@ function isWon(phrase, letters){
     return res;
 }
 
-
-
 function runGame(phrases){
     var life = 10;
     var won = false;
-    var lettersInput = ["p","z","i","a","d","y","n","t","q","l"];
+    var lettersInput = ["p","z","i","t","d","y","a","t","q","l"];
     var index = 0;
    
     while(life>0 && !won){
@@ -70,16 +72,6 @@ function runGame(phrases){
     else{
         console.log("you won");
     }   
-
-//     var readline = require("readline").createInterface({
-//       input: process.stdin,
-//       output: process.stdout
-//     })
-//     readline.question("entter a letter?", (letter) => {
-//       life--;
-//       readline.close()
-//     })
-
 }
 
 runGame(phrases);
