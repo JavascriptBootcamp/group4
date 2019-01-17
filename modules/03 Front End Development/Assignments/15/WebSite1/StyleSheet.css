@@ -1,0 +1,27 @@
+﻿body {
+}
+#time{
+
+    text-align: center;
+    font-size: 100px;
+    color: rebeccapurple;
+}
+#quiz{
+
+}
+.mainDiv{
+    margin-top: 10%;
+}
+
+td{
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: antiquewhite;
+}
+button{
+margin-top: 10px;
+border-radius: 10px;
+background-color: aqua;
+color: blue;
+
+}
