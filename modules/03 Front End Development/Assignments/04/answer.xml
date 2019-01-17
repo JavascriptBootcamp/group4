@@ -1,7 +1,9 @@
 <car>
-    <door amount="4" color="black">
-        <window amount="4"></window>
-    </door>
-    <seat amount="5" color="black">
-    </seat>
+    <doors amount="4" color="black">
+        <windows amount="4"></windows>
+    </doors>
+    <seats amount="5" color="black">
+    </seats>
+    <wheals amount="4">
+    </wheals>
 </car>
