@@ -31,14 +31,14 @@ function main(phrasesArr) {
     var randPhrase = pickRandPhrase(phrasesArr);
 
     while (life > 0 && notWon) {
-        //Show remaining life
-        console.log("\nYour remaining life is -", life, "\n");
-        //get user input
-        //userLetter = getUserInput();
+    //Show remaining life
+    console.log("\nYour remaining life is -", life, "\n");
+    //get user input
+    userLetter = getUserInput();
 
-        life--;
+    life--;
     }
-
+    
     //console.log(phrasesArr);
 }
 
