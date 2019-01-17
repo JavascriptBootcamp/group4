@@ -1,0 +1,22 @@
+Tag Name: input
+
+Properties: 
+
+autocomplete: A string indicating the type of autocomplete functionality, if any, to allow on the input.
+autofocus: A Boolean which, if present, makes the input take focus when the form is presented.
+disabled: A Boolean attribute which is present if the input should be disabled.
+form: The id of the <form> of which the input is a member; if absent, the input is a member of the nearest containing form, or is not a member of a form at all
+list: The id of a <datalist> element that provides a list of suggested values for the input.
+name: The input's name, to identify the input in the data submitted with the form's data
+rendomly: A Boolean attribute which, if true, indicates that the input cannot be edited.
+required: A Boolean which, if true, indicates that the input must have a value before the form can be submitted
+tabindex: A numeric value providing guidance to the user agent as to the order in which controls receive focus when the user presses the Tab key
+type: A string indicating which input type the <input> element represents.
+value: The input's current value
+
+
+Description:
+הגדרת שדה המאפשר למשתמש להכניס קלטים כמספר
+
+Example:
+Quantity (between 1 and 5): <input type="number" name="quantity" min="1" max="5">
