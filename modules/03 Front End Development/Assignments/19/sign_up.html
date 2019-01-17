@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		input{
+			width:50%;
+			height:30px;
+			margin:10px;
+		}
+		form{
+			text-align: center;
+			max-width:800px;
+			background-color:#ccc;
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+	<form method="post" action="forgot_password.html">
+		<h1 align="center">Sign Up</h1>
+		<div>
+			<input placeholder="FullName" type="text" name="FullName" required>
+		</div>
+		<div>
+			<input placeholder="Email" type="email" name="Email" required>
+		</div>
+		<div>
+			<input placeholder="Age" type="number" name="Age" min="18" max="32" required>
+		</div>
+		<div>
+			<input placeholder="UserName" type="text" name="UserName" maxlength="10" required>
+		</div>
+		<div> 
+			<input placeholder="Password" type="password" name="Password" required/>
+		</div>
+		<div>
+			<input type="reset" value="Reset">
+			<input type="submit" value="submit">
+			<div>
+				<a href="index.html">Go Home</a>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
