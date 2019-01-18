@@ -1,0 +1,8 @@
+    <car model="Toyota" year="2009">
+        <wheels amount="4">
+        </wheels>
+        <seats type="sport" amount="5">
+        <doors amount="4">
+            <windows amount="4"></windows>
+        </doors>
+    </car>
