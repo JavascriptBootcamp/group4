@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>My Webpage</title>
+
+    <script type="text/javascript" charset="UTF-8">
+        function alertClicked() {
+            window.alert("Thanks for sharing..");
+        }
+
+        function thankYou() {
+            window.alert("Thanks you for focus me :)");
+        }
+    </script>
+
+</head>
+
+<body>
+    <a href="https://he.wikipedia.org/wiki/%D7%9E%D7%93%D7%A2%D7%99_%D7%94%D7%9E%D7%97%D7%A9%D7%91" target="_blank">
+        <img src="https://tophat.com/wp-content/uploads/2017/05/BLOG_code.jpg" alt="computer science picture" />
+    </a>
+
+    <p id="AboutGuyAgiv" class="PersonalityNotes">Hi my name is guy agiv , im from israel , thank you.</p>
+
+    <div style="background-color: red" contenteditable="false">
+        Lorem ipsum bla bla bla
+    </div>
+
+    <form name="textBoxFullName" class="nameFill">
+        First name:<br>
+        <input type="text" name="firstname"><br>
+        Last name:<br>
+        <input type="text" name="lastname">
+
+        <input type="submit" value="Popup full name" onclick="alertClicked()">
+    </form>
+
+    <h3 id="whatIlearn" onmousemove="thankYou()">Im learning in SQLabs Front End Development</h3>
+
+    <h2>An Unordered HTML List</h2>
+
+    <ul style="list-style-type:circle">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+
+    <h2>An Ordered HTML List</h2>
+
+    <ol style="list-style-type: georgian" type="A">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+</body>
+
+</html>
