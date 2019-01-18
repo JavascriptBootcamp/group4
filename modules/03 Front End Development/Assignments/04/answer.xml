@@ -1,0 +1,7 @@
+<car make="mazda" color="white">
+    <weel type="magnezium" color="silver" quantity="4"></weel>
+    <door color="white" qantity="5">
+        <window type="manual" color="tint"></window>
+    </door>
+    <seat qantity="5" type="leather" color="cream"></seat>
+</car>
