@@ -1,0 +1,17 @@
+<Car name="ford" color="blue">
+    
+    <wheel color="black">
+        <whistle sound="weak"></whistle>
+    </wheel>
+    
+    <door color="yellow">
+        <window automatic="yes"></window>
+    </door>
+
+    <seat>
+        <fabric>lether</fabric>
+        <shockabsorber level="9"></shockabsorber>
+    </seat>
+</Car>
+
+
