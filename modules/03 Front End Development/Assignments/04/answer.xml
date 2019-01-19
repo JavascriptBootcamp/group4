@@ -1,0 +1,18 @@
+<car>
+    <manufacturer>
+        <name></name>
+        <address>
+            <country></country>
+            <city></city>
+        </address>
+    </manufacturer>
+    <color></color>
+    <wheels>
+        <tire></tire>
+        <gantes></gantes>
+    </wheels>
+    <seat>
+        <color>
+        </color>
+    </seat>
+</car>
