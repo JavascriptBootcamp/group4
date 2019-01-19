@@ -1,0 +1,22 @@
+Tag Name: range
+
+Properties: min, max, step
+
+Description: מגדיר פקד שבו ניתן להשתמש כדי לבחור ערך בטווח המספרים שהזנו.
+טווח ברירת המחדל הוא 0 עד 100.
+ישנם שני מאפיינים: מינימום ומקסימום שאיתם נגדיר את טווח המספרים.
+
+Example:
+<html>
+
+<head>
+    <title>input type- range</title>
+</head>
+
+<body>
+    <form action="/action_page.php"> Points: <input type="range" name="points" min="0" max="10">
+        <inputtype="submit">
+    </form>
+</body>
+
+</html>
