@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Registration form</title>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Personal Information </legend>
+            <br><br>
+            First Name:
+            <input type="text" name="firstName" required>
+            <br><br>
+            Last Name:
+            <input type="text" name="lastName" required>
+            <br><br>
+            Age:
+            <input type="number" name="age" min="18" max="80">
+        </fieldset>
+        <fieldset>
+            <legend>Credentials </legend>
+            <br>
+            Username:
+            <input type="text" name="userName" required>
+            <br><br>
+            Password:
+            <input type="password" name="password" minlength="8" placeholder="password" required>
+
+        </fieldset>
+        <fieldset>
+            <legend>Contact </legend>
+            <br>
+            Phone Number:
+            <input type="tel" name="phoneNumber">
+            <br><br>
+            Email Address:
+            <input type="email" name="email" required>
+
+        </fieldset>
+        <fieldset>
+            <legend>Misc </legend>
+            <br>
+            Comments:<br>
+            <textarea name="comments" cols="20" rows="4">
+                    write your comments here...
+                </textarea>
+            <br><br>
+            Hobbies:<br>
+            <select name="hobbies" id="hobbies" multiple size="3">
+                <option value="cooking">Cooking</option>
+                <option value="friends">Friends</option>
+                <option value="sports">Sports</option>
+                <option value="reading">Reading</option>
+                <option value="drewing">Drewing</option>
+                <option value="music">Music</option>
+            </select>
+        </fieldset>
+        <input type="button" value="Sumbit Registration">
+    </form>
+    </form>
+</body>
+
+</html>
