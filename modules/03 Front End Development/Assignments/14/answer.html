@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ex 14</title>
+</head>
+
+<body>
+    <form id="form" action="" method="post">
+        <fieldset>
+            <legend>Personal Information:</legend>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" type="text" size="30">
+            <br><br>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" type="text" size="30">
+            <br><br>
+            <label for="age">Age:</label>
+            <input id="age" type="number" size="5" min="1" max="90">
+        </fieldset>
+
+        <fieldset>
+            <legend>Credentials:</legend>
+            <label for="userame">Userame:</label>
+            <input id="userame" type="text" size="30">
+            <br><br>
+            <label for="password">Password:</label>
+            <input id="password" type="password" size="30">
+        </fieldset>
+
+        <fieldset>
+            <legend>Contact:</legend>
+            <label for="phone">Phone Number:</label>
+            <input id="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="30">
+            <br><br>
+            <label for="email">Email Address:</label>
+            <input id="email" type="email" pattern=".+@.+.(com|co.il)" size="30">
+        </fieldset>
+
+        <fieldset>
+            <legend>Misc:</legend>
+            <label for="comment">Comments:</label>
+            <br>
+            <textarea id="comment" rows="5" cols="33"></textarea>
+            <br><br>
+            <label for="hobbies">Hobbies:</label>
+            <select id="hobbies">
+                <option value=""></option>
+                <option value="run">Runing</option>
+                <option value="photograph">Photograph</option>
+                <option value="soccer">Playing soccer</option>
+                <option value="pokemonMaster">Catch pokemon</option>
+            </select>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
