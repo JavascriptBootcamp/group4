@@ -1,0 +1,154 @@
+
+<html>
+    <head>
+        <title></title>
+    
+        <style>
+    
+            .radio_button
+            {
+                transform: scale(1.5);
+                border: 1px solid blue;	    
+            }
+    
+            .submit_button
+            {
+                font-weight: bold;
+                font-size: 24px;
+                font-family: Arial;
+                margin:10px;
+                width: 130px;
+                height: 35px;
+                border-radius: 8px;
+                color: #3399ff;
+                border:3px solid #3399ff;  
+                background-color: #ffffcc; 	
+            }
+    
+            .submit_button:hover
+            {
+                font-weight:bold;
+                font-size: 24px;
+                margin:10px;
+                color: #ff6600;
+                width: 130px;
+                height: 35px;
+                border-radius: 8px;
+                border:3px solid #18ab8b;        
+                background-color: #99ffcc;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <form method="post" action="http://localhost:3000/quiz">
+    
+            <ol>
+                <!-- Question 1 -->
+                <li>
+                    <h3> 1+2 = </h3>
+                    <input type="radio" name="q1" class="radio_button">4    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q1" class="radio_button">11   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q1" class="radio_button">3    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q1" class="radio_button">22   &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 2 -->
+                <li>
+                    <h3> 5-6+1 = </h3>
+                    <input type="radio" name="q2" class="radio_button">0    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q2" class="radio_button">1    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q2" class="radio_button">2    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q2" class="radio_button">3    &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 3 -->
+                <li>
+                    <h3> 2*2 = </h3>
+                    <input type="radio" name="q3" class="radio_button">-2   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q3" class="radio_button">4    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q3" class="radio_button">6    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q3" class="radio_button">8    &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 4 -->
+                <li>
+                    <h3> 2*3/2 = </h3>
+                    <input type="radio" name="q4" class="radio_button">12    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q4" class="radio_button">1     &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q4" class="radio_button">2     &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q4" class="radio_button">3     &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 5 -->
+                <li>
+                    <h3> 3+5*(8+2) = </h3>
+                    <input type="radio" name="q5" class="radio_button">50   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q5" class="radio_button">53   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q5" class="radio_button">56   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q5" class="radio_button">58   &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 6 -->
+                <li>
+                    <h3> 35/5+15/3*2 = </h3>
+                    <input type="radio" name="q6" class="radio_button">11   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q6" class="radio_button">14   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q6" class="radio_button">24   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q6" class="radio_button">27   &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 7 -->
+                <li>
+                    <h3> 25*4/10 = </h3>
+                    <input type="radio" name="q7" class="radio_button">4    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q7" class="radio_button">5    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q7" class="radio_button">8    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q7" class="radio_button">10   &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 8 -->
+                <li>
+                    <h3> 3+4*4+6 = </h3>
+                    <input type="radio" name="q8" class="radio_button">24    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q8" class="radio_button">25    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q8" class="radio_button">26    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q8" class="radio_button">27    &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 9 -->
+                <li>
+                    <h3> 2met+100cm= </h3>
+                    <input type="radio" name="q9" class="radio_button">2.2met   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q9" class="radio_button">3met     &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q9" class="radio_button">102cm    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q9" class="radio_button">190cm    &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+                </br>
+    
+                <!-- Question 10 -->
+                <li>
+                    <h3> 33+44/4 = </h3>
+                    <input type="radio" name="q10" class="radio_button">34   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q10" class="radio_button">38   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q10" class="radio_button">44   &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="q10" class="radio_button">48   &nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ol>
+    
+            <!-- An hidden input field "ts" with the value of "1547375825757" -->
+            <input type="hidden" name="ts" value="1547375825757">
+    
+            <input type="submit" value="submit" name="submit" class="submit_button">
+        </form>
+    </body>
+    </html> 
+    
