@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trivia quiz</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <h1>My trivia quiz:</h1>
+        <form id="form" action="http://localhost:3000/quiz" method="post">
+            <fieldset>
+                <legend>
+                    <h2>Qestions:</h2>
+                </legend>
+
+                <div id="q1">
+                    <h3>1. A Cuba Libre cocktail is made from what two main ingredients?</h3>
+                    <input type="radio" id="q1Answer1" name="q1" value="Taqila">
+                    <label for="q1Answer1">Taqila and Lemons</label>
+
+                    <input type="radio" id="q1Answer2" name="q1" value="Rum/rightAnswer">
+                    <label for="q1Answer2">Rum and Coke</label>
+
+                    <input type="radio" id="q1Answer3" name="q1" value="Vodka">
+                    <label for="q1Answer3">Vodka and orenges</label>
+
+                    <input type="radio" id="q1Answer4" name="q1" value="Wisky">
+                    <label for="q1Answer4">Wisky and Hony</label>
+                </div>
+                <br><br>
+
+                <div id="q2">
+                    <h3>2. What luxury car company introduced the Boxster roadster in 1996?</h3>
+                    <input type="radio" id="q2Answer1" name="q2" value="Porsche/rightAnswer">
+                    <label for="q2Answer1">Porsche</label>
+
+                    <input type="radio" id="q2Answer2" name="q2" value="BMW">
+                    <label for="q2Answer2">BMW</label>
+
+                    <input type="radio" id="q2Answer3" name="q2" value="Bentley">
+                    <label for="q2Answer3">Bentley</label>
+
+                    <input type="radio" id="q2Answer4" name="q2" value="Lincoln">
+                    <label for="q2Answer4">Lincoln</label>
+                </div>
+                <br><br>
+
+                <div id="q3">
+                    <h3>3. A young Isaac Newton is said to have been hit on the head by which fruit, leading him to
+                        come up with the theory of gravity?</h3>
+                    <input type="radio" id="q3Answer1" name="q3" value="Banana">
+                    <label for="q3Answer1">Banana</label>
+
+                    <input type="radio" id="q3Answer2" name="q3" value="Orenge">
+                    <label for="q3Answer2">Orenge</label>
+
+                    <input type="radio" id="q3Answer3" name="q3" value="Apple/rightAnswer">
+                    <label for="q3Answer3">Apple</label>
+
+                    <input type="radio" id="q3Answer4" name="q3" value="Mango">
+                    <label for="q3Answer4">Mango</label>
+                </div>
+                <br><br>
+
+                <div id="q4">
+                    <h3>4. Orcinus orca is the scientific name for which animal?</h3>
+
+                    <input type="radio" id="q4Answer1" name="q4" value="killerWhale/rightAnswer">
+                    <label for="q4Answer1">Killer whale</label>
+
+                    <input type="radio" id="q4Answer2" name="q4" value="sordfish">
+                    <label for="q4Answer2">Sord fish</label>
+
+                    <input type="radio" id="q4Answer3" name="q4" value="catfish">
+                    <label for="q4Answer3">Catfish</label>
+
+                    <input type="radio" id="q4Answer4" name="q4" value="dolphin">
+                    <label for="q4Answer4">Dolphin</label>
+                </div>
+                <br><br>
+
+                <div id="q5">
+                    <h3>5. Tasmania is an isolated island state belonging to which country?</h3>
+
+                    <input type="radio" id="q5Answer1" name="q5" value="Jamaica">
+                    <label for="q5Answer1">Jamaica</label>
+
+                    <input type="radio" id="q5Answer2" name="q5" value="Macau">
+                    <label for="q5Answer2">Macau</label>
+
+                    <input type="radio" id="q5Answer3" name="q5" value="marshallIslands">
+                    <label for="q5Answer3">Marshall Islands</label>
+
+                    <input type="radio" id="q5Answer4" name="q5" value="australia/rightAnswer">
+                    <label for="q5Answer4">Australia</label>
+                </div>
+                <br><br>
+
+                <!--hidden input field -->
+                <input type="text" id="ts" value="1547375825757" hidden>
+
+            </fieldset>
+            <br>
+
+            <button type="submit">Check my answers</button>
+        </form>
+    </div>
+</body>
+
+</html>
