@@ -1,0 +1,13 @@
+
+<!--
+<car manufacturer="DavidCars"> 
+
+    <door size="2X2"> 
+        <window open_close="automat">
+        </window>
+    </door>
+    <wheels width="40cm"> </wheels>
+    <seat height="1.5">  </seat>
+
+</car>
+-->
