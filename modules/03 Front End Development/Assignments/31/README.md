@@ -1,0 +1,2 @@
+<p>Build a form with the same elements as in <a href="https://www.ebay.com/sch/ebayadvsearch" target="_blank">https://www.ebay.com/sch/ebayadvsearch</a> under "Find Items".</p>
+<p>* The design shouldn't be the same - only the form elements</p>
