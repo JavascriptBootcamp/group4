@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> </title>
+</head>
+
+<body>
+
+<fieldset style="width:50%">
+        <legend>
+            <h2> Registration Form </h2>
+        </legend>
+
+        <form method="get" name="form_Reg" >
+
+            <fieldset>
+                <legend>
+                    <h3>Person Informtion</h3>
+                </legend>
+                <First Name : <input type="text" name="fn">
+                    Last Name : <input type="text" name="ln">
+                    Age : <input type="number" name="age">
+            </fieldset>`
+            <fieldset>
+                <legend>
+                    <h3> Credentials </h3>
+                </legend>
+                User Name : <input type="text" name="un">
+                Password : <input type="password" name="ps">
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <h3> Contact </h3>
+                </legend>
+
+                Tel : <input type="tel" name="tel">
+                Email : <input type="email" name="email">
+            </fieldset>
+            <fieldset>
+                <legend>
+                    <h3> Misc </h3>
+                </legend>
+
+                Comments :<textarea type="text" cols="50" rows="5" name="comm"> </textarea>
+                <br> Hobbies : <input list="Hobbies" name="hob">
+            </fieldset>
+            <datalist id="Hobbies">
+                <option value="hobby1">
+                <option value="hobby2">
+                <option value="hobby3">
+                <option value="hobby4">
+                <option value="hobby5">
+            </datalist>
+            <input type="submit" value="Regist">
+        </form>
+    </fieldset>
+</body>
+
+</html>
