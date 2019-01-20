@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>
+        My First Webpage
+    </title>
+</head>
+
+<body id="content">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <label for="FirstName"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" required><br>
+    <label for="LastName"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" required><br>
+    <label for="Age"><b>Age</b></label>
+    <input type="number" name="quantity" min="1" max="99">
+    <p>Credentials:</p>
+    <label for="Username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" required><br>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+    <p>Contact:</p>
+    <label for="phoneno"><b>Phone Number</b></label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
+    <label for="email"><b>Email</b></label>
+    <input type="email" required>
+    <p>Misc:</p>
+    <label for="comments"><b>Comments</b></label><br>
+    <textarea name="Text1" cols="40" rows="5"></textarea><br>
+    <label for="hobbies"><b>Hobbies</b></label><br>
+    <select name="hobbies" multiple>
+        <option value="sports">Sports</option>
+        <option value="traveling">Traveling</option>
+        <option value="programming">Programming</option>
+        <option value="books">Books</option>
+    </select>
+    
+</body>
+
+</html>
