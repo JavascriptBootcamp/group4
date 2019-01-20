@@ -1,0 +1,16 @@
+<car>
+    <wheels amount="5">
+        <air>
+            <oxygen>
+            </oxigen>
+        </air>
+    </wheels>
+
+    <door>
+        <window color="black">
+        </window>
+    </door>
+
+    <seat>
+    <seat>
+</car>
