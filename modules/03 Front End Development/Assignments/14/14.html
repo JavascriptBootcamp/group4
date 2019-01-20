@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form>
+        <h2>Personal Information</h2>
+        First Name: <input type="text" name="FName">
+        Last Name: <input type="text" name="LName">
+        <br><br>
+        Age: <input type="number" name="Age" min="0" max="120">
+        <h2>Credentials</h2>
+        User Name: <input type="text" name="username">
+        Password: <input type="password" name="password">
+        <h2>Contact</h2>
+        Phone: <input type="tel" name="tel">
+        Email Address: <input type="email" name="email">
+
+        <h2>Misc</h2>
+        Commets: <br>
+        <textarea rows="5" cols="30" name="comments" form="usrform">Enter text here...</textarea>
+        <br>
+        Choose Hobbie:
+        <select name="hobbies">
+            <option value="Choose" selected="selected"></option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="swimming">Swimming</option>
+        </select>
+    </form>
+    
+</body>
+
+</html>
