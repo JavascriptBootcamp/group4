@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <form>
+        <h3>Personal Information:</h3>
+        First Name: <input type="text" name="FirstName" pattern="[A-Za-z]"><br />
+        Last Name: <input type="text" name="LastName" pattern="[A-Za-z]"><br />
+        Age: <input type="number" name="Age">
+
+        <h3>Credentials:</h3>
+        Userame:<input type="text" name="Userame"><br />
+        Password:<input type="Password" name="Password">
+
+        <h3>Contact:</h3>
+        Phone Number: <input type="number" name="PhoneNumber"><br />
+        Email Address: <input type="email" name="EmailAddress">
+
+        <h3>Misc:</h3>
+        Comments: <textarea name="Comments"></textarea><br /><br /><br />
+        Hobbies:
+        <select>
+            <option value="Play Station">Play Station</option>
+            <option value="Other video games">Other video games</option>
+            <option value="CrossFit">CrossFit</option>
+            <option value="HTML">HTML</option>
+        </select><br /><br />
+
+
+        <input type="Submit" value="Submit">
+    </form>
+</body>
+
+</html>
