@@ -5,26 +5,33 @@
 </head>
 
 <body>
+    <form action="/action_page.php">
+        <h3>Personal Information</h3>
+        First Name: <input type="text" name="FirstName" value="Amitay"><br>
+        Last Name: <input type="text" name="LasttName" value="Levi"><br>
+        Age: <input type="number" name="Age" value="18"><br>
 
-    <h3>Personal Information</h3>
-    First Name: <input type="text" name="FirstName" value="Amitay"><br>
-    Last Name: <input type="text" name="LasttName" value="Levi"><br>
-    Age: <input type="number" name="Age" value="18"><br>
+        <h3>Credentials</h3>
+        User Name: <input type="text" name="UserName" value="user name"><br>
+        Password: <input type="password" name="Password" value="password"><br>
 
-    <h3>Credentials</h3>
-    First Name: <input type="text" name="FirstName" value="Amitay"><br>
-    Last Name: <input type="text" name="LasttName" value="Levi"><br>
-    Age: <input type="number" name="Age" value="18"><br>
+        <h3>Contact</h3>
+        Phone Number: <input type="tel" name="PhoneNumber" value="03-610000"><br>
+        Email: <input type="email" name="email" value="aaa@gmail.com"><br>
 
-    <h3>Contact</h3>
-    First Name: <input type="text" name="FirstName" value="Amitay"><br>
-    Last Name: <input type="text" name="LasttName" value="Levi"><br>
-    Age: <input type="number" name="Age" value="18"><br>
-
-    <h3>Misc</h3>
-    First Name: <input type="text" name="FirstName" value="Amitay"><br>
-    Last Name: <input type="text" name="LasttName" value="Levi"><br>
-    Age: <input type="number" name="Age" value="18"><br>
+        <h3>Misc</h3>
+        Comments: <textarea rows="4" cols="10"></textarea>
+        Hobbies <input list="Hobbies">
+            <datalist id="Hobbies">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+            </datalist>
+        
+        <input type="submit">
+    </form>
 
 </body>
 
