@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>תפריט</title>
+    <style>
+        body {
+            font-size: 20px;
+            background-image: url("pizza_bg.jpg");
+            color : white;
+        }
+
+        table {
+            width: 80%;
+            background-color: black;
+            
+        }
+
+        select {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    
+    <form action="">
+
+    <table>
+        <tr>
+            <th colspan="3"> <h1> תפריט הזמנת פיצה</h1> <hr> </th>
+        </tr>
+        <tr>
+            <th> סוג פיצה</th>
+            <th> גודל פיצה</th>
+            <th> תוספות </th>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="sugPizza">בחר סוג פיצה</label>
+                 <select name="sugPizza" id="">
+                     <option value=""> פיצה רגילה</option>
+                     <option value="">פיצה דקה</option>
+                     <option value=""> פיצה חיטה מלאה</option>
+                     <option value="">ללא גלוטן </option>
+                  
+                 </select>
+            </td>
+            <td>    
+                    <label for="godelPizAa">בחר גודל פיצה </label>
+                    <select name="godelPizAa" id="">
+                            
+                            <option value ="ענק"> ענק</option>
+                            <option value ="משפחתי"> משפחתי</option>
+                            <option value = "אישי">אישי</option>
+                        
+                        </select>
+            </td>
+            <td>
+                <label for="tosofet1">זיתים</label>
+                <input type="checkbox" name="tosofet1" id="" value="זיתים"> <br/>
+                <label for="tosofet2">תירס</label> 
+                <input type="checkbox" name="tosofet2" id="" value="תירס"></br>
+                <label for="tosofet3">עגבניות</label> 
+                <input type="checkbox" name="tosofet3" id="" value="עגבניות"><br/>
+                <label for="tosofet4">טונה</label> 
+                <input type="checkbox" name="tosofet4" id="" value="טונה">
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3"> 
+               
+                <input type="submit" value="הזמן">
+            </th>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
