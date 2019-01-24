@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>call func</title>
+    </head>
+    <body>
+        <script>
+        var ac1={
+            owner:"s",
+            address:"kfa",
+            balance:20
+        };
+        var ac2={
+            owner:"sh",
+            address:"ioi",
+            balance:200
+        };
+        function Withdraw(amount)
+        {
+            this.balance-=amount;
+            console.log(this.balance);
+        }
+        Withdraw.call(ac2,20);//prints 180
+        var wind=Withdraw.bind(ac1,500);
+        wind();//prints -480
+    </script>
+    </body>
+</html>
