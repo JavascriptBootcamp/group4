@@ -16,8 +16,8 @@
         Password: <input type="Password" Name="passw" placeholder="password" required>
 
         <h3>Contact:</h3>
-        Phone Number: <input type="tel" Name="phone" required><br /><br />
-        Email Address: <input type="email" Name="mail" required>
+        Phone Number: <input type="tel" Name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br /><br />
+        Email Address: <input type="email" Name="mail" pattern="[a-z0-9.]+@[a-z0-9.-]+\.[a-z]{2}" required>
 
         <h3>Misc:</h3>
         Comments:<br />
