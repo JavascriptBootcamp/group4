@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EX 32</title>
+</head>
+<body>
+    
+    <script>
+         var bankAccount1 = {owner : "matan", address : "beer sheva", balance : 1000};
+         var bankAccount2 = {owner : "dror", address : "beer sheva", balance : 3000};
+
+         function Withdraw(amount) {
+             this.balance-=amount;
+             console.log(this.balance);
+         }
+
+         //using call
+         Withdraw.call(bankAccount1, 500);
+         Withdraw.call(bankAccount2, 500);
+
+         //using bind
+         var func1 = Withdraw.bind(bankAccount1, 200);
+         var func2 = Withdraw.bind(bankAccount2, 200);
+
+         func1();
+         func2();
+    
+    </script>
+</body>
+</html>
