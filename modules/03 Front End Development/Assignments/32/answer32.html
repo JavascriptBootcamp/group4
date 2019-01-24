@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">My Chocolate Store</div>
+    <div id="content">
+        <div id="sidebar">
+            <ul>
+            <li>About Us</li>
+            <li>Contact Us</li>
+            </ul>
+        </div>
+        <div id="article">Some Text</div>
+    </div>
+    <div id="footer">&copy; 2019</div>
+    <script>
+        var obj1 = {
+    owner: "Lital",
+
+    address: "holon",
+    balance: 0,
+   
+}
+function Withdraw  (amount) {
+    this.balance -= amount;
+    console.log(this.balance);
+}
+var obj2 = {
+    owner: "shimi",
+
+    address: "tel-aviv",
+    balance: 0,
+  
+}
+
+
+Withdraw.call(obj2,6);
+Withdraw.call(obj1,9);
+
+
+
+
+
+    </script>
+</body>
+</html>
