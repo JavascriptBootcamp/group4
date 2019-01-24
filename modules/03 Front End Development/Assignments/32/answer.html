@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    var account1 = {
+        owner : "amir",
+        address : "tel aviv",
+        balance : 400
+    }
+    var account2 = {
+        owner : "moshe",
+        address : "haifa",
+        balance : 200
+    }
+    function Withdraw(amount) {
+        this.balance = amount ;
+    }
+
+    Withdraw.call(account1,500);
+    Withdraw.call(account2,1000);
+    console.log(account1);
+    console.log(account2);
+    </script>
+</body>
+</html>
