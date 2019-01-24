@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        color = "yellow";
+        // var car = {
+        //     color: "red",
+        //     getColor: function() {
+        //         console.log(this.color);
+        //     }
+        // }
+        // var car2 = {
+        //     color: "blue"
+        // }
+        function printColor(){
+            // color = "yellow"; // window.color = "yellow"
+            console.log(this.color);
+        }
+        // car.getColor.call(car2);
+        printColor();
+
+        // function add(x,y){
+        //     return x + y;
+        // }
+        // var addOne = add.bind(null, 1); //x=1,y=?
+        // var addTwo = add.bind(null, 2); //x=2,y=?
+        // var addThree = add.bind(null, 3);//x=3,y=?
+        // console.log(addTwo(5));//x=2,y=5
+        // console.log(addOne(2));//x=1,y=2
+        // console.log(addOne(3));//x=1,y=3
+        // console.log(addOne(8));//x=1,y=8
+        // console.log(addOne(80));//x=1,y=80
+        // var num;
+        // var addTwoAndFour = add.bind(null, num,"4");
+        // console.log(addTwoAndFour());
+        // function addWithContext(){
+        //     return this.x + this.y;
+        // }
+        // x = 5;
+        // y = 7;
+        // var numbers = {
+        //     x: 3,
+        //     y: 4
+        // }
+        // console.log(addWithContext.call(this));
+    </script>
+</body>
+</html>
