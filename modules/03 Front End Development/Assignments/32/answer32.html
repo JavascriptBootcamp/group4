@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+    
+    function BankAccount(owner, address, balance){
+        this.owner = owner;
+        this.address = address;
+        this.balance = balance;
+    }
+
+    var bankAcc1 = new BankAccount("Guy", "Tel-aviv", 100);
+    var bankAcc2 = new BankAccount("John", "NY", 1000);
+
+    function withdraw(amount, balance){
+        return balance - amount;
+    }
+
+    var withdrawFromBankAcc = withdraw.bind(this, 50);
+
+
+    console.log(withdrawFromBankAcc(bankAcc1.balance));
+    console.log(withdrawFromBankAcc(bankAcc2.balance));
+    
+    </script>
+</body>
+
+</html>
