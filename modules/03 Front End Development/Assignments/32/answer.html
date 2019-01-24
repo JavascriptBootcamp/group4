@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Solution to assignment 32 FED</title>
+</head>
+<body>
+    <script>
+    function BankAccount(owner, address, balance)
+    {
+        this.owner = owner;
+        this.address = address;
+        this.balance = balance;
+    }    
+
+    function Withdraw(withdraw)
+    {
+        console.log(this.balance - withdraw);
+    }
+
+    var ba1 = new BankAccount("Guy Agiv", "Rehovot", 12000);
+    var ba2 = new BankAccount("Mariya Stashevsky", "Holon", 9000);
+
+    Withdraw.call(ba1, 200);
+    Withdraw.call(ba2, 900);
+    </script>
+
+
+</body>
+</html>
