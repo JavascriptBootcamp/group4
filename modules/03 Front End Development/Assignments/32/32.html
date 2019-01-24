@@ -1,0 +1,16 @@
+
+var bank1 = { owner: "Elinor", address: "Ramat-Gan", balance: 100000000000099 };
+var bank2 = { owner: "Malak", address: "Kfar-Cana", balance: 100000000000088 };
+
+
+function withdraw(amount) {
+    this.balance = this.balance - amount;
+    console.log(this.balance);
+}
+
+
+var withdrawBank1 = withdraw.bind(bank1);
+withdrawBank1(99);
+var withdrawBank2 = withdraw.bind(bank2);
+
+withdrawBank2(88);
