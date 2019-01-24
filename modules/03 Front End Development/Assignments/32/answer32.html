@@ -1,0 +1,36 @@
+<<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <script>
+
+            var bankAccount1 = {
+                owner:"Moti",
+                address:"tzahal 12 ta",
+                balance:120000};
+            var bankAccount2 = {
+                owner:"Avi",
+                address:"masi 13 ta",
+                balance:50000};
+
+             function Withdraw (amount ){
+                this.balance=this.balance-amount;
+                console.log(this.balance);
+             }
+
+
+             Withdraw.call(bankAccount1,2500);
+             Withdraw.call(bankAccount2,2500);
+        </script>
+
+    </body>
+
+    </html>
