@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+    <div id="Sing_up" align="center">
+        <h2>Sign up</h2>
+        <form action='index.html'>
+            <table>
+                <tr>
+                    <td>
+                        <label for="fullname">
+                            Full name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="fullname" name="fullname" placeholder="Full name" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">
+                            Email Address:</label>
+                    </td>
+                    <td>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="age">
+                            Age:</label>
+                    </td>
+                    <td>
+                        <input type="number" id="age" name="age" min="18" max="32" step="1" value="18" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="username">
+                            User Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="username" name="username" maxlength="10" placeholder="User name"
+                            required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">
+                            Password:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" name="password" minlength="8" placeholder="Password"
+                            required />
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="Reset"></td>
+                    <td align="right"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
