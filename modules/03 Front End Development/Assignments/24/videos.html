@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web page</title>
+    <style>
+        #navigation li {
+            float: left;
+            margin-right: 40px;
+            list-style-type: none;
+            font-size: 20px;
+        }
+
+        .active {
+            color: #43a6af;
+        }
+
+        .notactive {
+            text-decoration: none;
+            color: black;
+        }
+
+        #header {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navigation">
+        <ul>
+            <li><a class="notactive" href="index.html">Home</a></li>
+            <li><a class="notactive" href="images.html">Images</a></li>
+            <li><a class="notactive" href="links.html">Links</a></li>
+            <li><a class="notactive" href="table.html">Table</a></li>
+            <li class="active">Videos</li>
+
+        </ul>
+    </nav>
+    <div id="header">
+        <h1>Videos</h1>
+    </div>
+    <div id="content">
+        <div id="video">
+            <video controls width="560">
+                <source src="https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4" />
+                Sorry, your browser doesn't support embedded videos.
+            </video>
+        </div>
+        <div id="youtube_video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lnFWB1K2eEQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    <div id="footer">
+        &copy; elinor 2019
+    </div>
+</body>
+
+</html>
