@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>
+            HTML Q 32
+        </title>
+    </head>
+    <body>
+        
+        <script>
+            var danielBA={owner:"Daniel" ,address:"Ashkelon", balance:1000};
+            var urielBA={owner:"Uriel" ,address:"Jerusalem", balance:2000};
+
+            function Withdraw(amount){
+                this.balance -= amount;
+                console.log(this.balance);
+            }
+
+            danielWithdraw = Withdraw.bind(danielBA, 300);
+            urielWithdraw = Withdraw.bind(urielBA, 300);
+
+            danielWithdraw();
+            urielWithdraw();
+
+        </script>
+    </body>
+</html>
