@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var b1 = {
+            owner:"gaby",
+            address:"bat-yam",
+            balance:1500
+        }
+        var b2 = {
+            owner:"maly",
+            address:"tel-aviv",
+            balance:500
+        }
+        function Withdraw(amount){
+            this.balance = this.balance - amount;
+            console.log("balance is ",this.balance);
+        }
+        var bank1 = Withdraw.bind(b1);
+        console.log(bank1(150));
+        var bank2 = Withdraw.bind(b2);
+        console.log(bank2(300));
+    </script>
+</body>
+</html>
