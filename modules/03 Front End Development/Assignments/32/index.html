@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var bankAccount1 = {owner:"Ofek" , address:"Herzeliya" , balance:3000}
+        var bankAccount2 = {owner:"Shimon" , address:"Jerusalem" , balance:100000}
+
+        function withdraw(amount){
+            this.balance = this.balance - amount;
+            console.log(this.balance);
+        }
+
+        withdraw.call(bankAccount1,2000);
+        withdraw.call(bankAccount2,1000);
+    </script>
+</body>
+</html>
