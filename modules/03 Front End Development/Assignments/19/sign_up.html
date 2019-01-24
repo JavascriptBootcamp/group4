@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="sign_up">
+        <form id="sign_up_form" action="index.html">
+            Full Name: <input type="text" placeholder="Full Name" required><br><br>
+            Email Address: <input type="email" placeholder="example@example.com" required><br><br>
+            Age: <input type="number" placeholder="18" min="18" max=32 required><br><br>
+            Username: <input type="text" placeholder="Username" maxlength=10 required><br><br>
+            Password: <input type="password" placeholder="password" required><br><br>
+            <input type="submit" href="index.html">
+            <button onclick="resetFunction()">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        function resetFunction(){
+            document.getElementById("sign_up_form").reset();
+        }
+    </script>
+</body>
+
+</html>
