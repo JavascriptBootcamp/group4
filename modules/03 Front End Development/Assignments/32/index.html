@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            owner: "moshe",
+            address: "tel aviv",
+            balance: 1000,
+            toString: function () {
+                return "owner:" + this.owner + " address:" + this.address + " balance:" + this.balance;
+            }
+        }
+
+        var obj2 = {
+            owner: "shai",
+            address: "tel aviv",
+            balance: 5000
+        }
+
+        function Withdraw(num) {
+            this.balance -= num;
+        }
+
+        var widthdrawobj1 = Withdraw.bind(obj1, 500);
+        var widthdrawobj2 = Withdraw.bind(obj2, 500);
+        widthdrawobj1();
+        widthdrawobj2();
+        console.log(obj1.toString())
+        console.log(obj1.toString.call(obj2));
+    </script>
+</body>
+
+</html>
