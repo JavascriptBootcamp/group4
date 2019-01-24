@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #categories {
+            border-bottom: 5px solid red;
+            padding: 20px;
+        }
+        #categories a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold; 
+            padding: 10px;
+        }
+        .card {
+            text-align: left;
+            width: 250px;
+            height: 450px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            display: inline-block;
+        }
+        #cart {
+            position: relative;
+            text-align:center;
+            width: 250px;
+            height: 700px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        #cart button {
+            position: absolute;
+            bottom:   0;
+        }
+        .card img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        #cards ul {
+        list-style: none;
+        padding-left: 20px;
+        padding-right: 10px;
+        }
+        .sections {
+            float: left;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <nav id="categories">
+                <a href="About_Us.html">About Us</a>
+                <a href="Vegtreables.html">Vegtreables</a>
+                <a href="Supermarket.html">Supermarket</a>
+                <a href="Our_Deals.html">Our Deals</a>
+                <a href="Contact_Us.html">Contact Us</a>
+            </nav>
+    </header>
+    <section class="sections">
+        <div id="cart">
+            <button>Buy now</button>
+        </div>
+        <div id="cards">
+            <table>
+                <tr>
+                    <td>
+                        <div class="card">
+                            <ul>
+                                <li><h2>Product1</h2></li>
+                                <li><p>details details details details details details details details details details details detailsdetails details details details details detailsdetails details details details details details</p></li>
+                                <li><img src="https://pictures.attention-ngn.com/portal/30/44192/products/1276247/f3d5e73f49e6e50059ef2102a66c9d3b_01_07_o.jpg"></li>
+                                <li><button>Add to cart</button></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+
+</body>
+</html>
