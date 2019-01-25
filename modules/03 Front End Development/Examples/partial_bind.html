@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function add(x, y, z) {
+            if (!x && y && z) {
+                console.log('result', x + y + z);
+            }
+            else if (x && !y && z) {
+                console.log('result', x + y + z);
+            }
+            
+        }
+        var addSomethingAndOne = add.bind(null, null, 1);
+        // var addOne = add.bind(null, 1, null);
+        addSomethingAndOne(5);
+        // addOne(6);
+    </script>
+</body>
+
+</html>
