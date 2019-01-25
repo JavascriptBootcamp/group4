@@ -1,0 +1,156 @@
+<html>
+
+<header>
+    <title>Search by Form </title>
+</header>
+
+<body>
+    <header>
+        <h1>Fill out the following search by form </h1>
+        <h3>to help you to find easier what are you lookinf for !!</h2>
+            <hr>
+            <br>
+
+    </header>
+
+    <section>
+
+        <form>
+            <lable for="keywords">Enter keywords or item number</lable><br>
+            <datalist id="keywords" name="keywords">
+                <option value="Outfits">Outfits</option>
+                <option value="Makeup">Makeup</option>
+                <option value="Jowellery">Jowellery</option>
+            </datalist>
+
+            <select id="searchType" name="searchType">
+                <option value="All Sentence">All Sentence</option>
+                <option value="Any Word">Any Word</option>
+            </select>
+            <br>
+            <lable for="excludeWords">Exclude words from your search
+            </lable><br>
+            <input type="text" name="excludeWords"><br>
+            <p>See general <a href="https://www.ebay.com/pages/il/help/buy/contextual/search_tips.html">search tips</a>
+                or <a href="https://www.ebay.com/help/buying/search-tips/advanced-search?id=4049"> using advanced
+                    search options</a></p>
+
+            <lable for="inCategory">In this category:<label><br>
+                    <select id="inCategory" name="inCategory">
+                        <option value="All Categories">All Categories</option>
+                        <option value="Home and Garden">Home and Garden</option>
+                    </select><br><br>
+                    <button type="submit">search</button>
+                    <br>
+                    <hr>
+
+                    <!--     seconde element-->
+
+                    <lable for="searchIncluding">Search including
+                </label><br>
+                <input type="checkbox" name="checVSearchIncluding" value="Title and description">Title and description<br>
+                <input type="checkbox" name="checV" value="Completed listings">Completed listings<br>
+                <input type="checkbox" name="checV" value="Sold listings">Sold listings<br>
+                <hr>
+                <lable for="Price">Price</label><br>
+                    <input type="checkbox" value="Show items priced from ILS ">Show items priced from ILS <input type="number"
+                        min="0"> to : <input type="number" min="0"> </p>
+                    <hr><br>
+                    <!--     new element-->
+
+                    <lable for="buyingFormats">Buying formats</label><br>
+                        <input type="checkbox" name="checkBAuction" value="Auction">Auction<br>
+                        <input type="checkbox" name="checkBoxBuyItNow" value="Buy It Now">Buy It Now<br>
+                        <hr>
+
+
+                        <lable for="Condition">Condition</label><br>
+                            <input type="checkbox" name="NewCheckBox" value="New">New <br>
+                            <input type="checkbox" name=" UsedcheckBox" value="Used"> Used<br>
+                            <input type="checkbox" name="Not SpecifiedCheckBox" value="Not Specified">Not Specified <br>
+                            <hr>
+                            <!--     new element-->
+
+                            <lable for="showResults">Show results</label><br>
+
+                                <input type="checkbox" name="listingsCheckBox" value="Listings">Listings
+                                <select>
+                                    <option>Ending Within</option>
+                                    <option>Started Within</option>
+                                </select>
+                                <select>
+                                    <option>1 hour</option>
+                                    <option>2 hours</option>
+                                </select><br>
+                                <input type="checkbox" value="Items listed as all"> Items listed as lots <a href="https://www.ebay.com/pages/il/help/sell/contextual/lots.html">
+                                    Learn more.</a><br>
+                                <input type="checkbox" value="Number of bids from"> Number of bids from: <input type="number"
+                                    min="1"> to : <input type="number" min="2"> <br>
+                                <hr>
+                                <!--     new element-->
+                                <lable for="Location">Location</label><br>
+                                    <input type="radio" name="LocationRadioChoice" value="Located">Located <select>
+                                        <option>15</option>
+                                        <option>2</option>
+
+                                    </select> miles of : <input type="number"><br>
+                                    <input type="radio" name="LocationRadioChoice" value="Located">From preferred
+                                    locations <select>
+                                        <option>US Only</option>
+                                        <option>UK</option>
+
+                                    </select><br>
+                                    <input type="radio" name="LocationRadioChoice" value="Located in">Located in
+                                    <select>
+                                        <option>US</option>
+                                        <option>UK</option>
+
+                                    </select><br>
+                                    <hr>
+                                    <lable for="Sellers">Sellers</label><br>
+                                        <input type="checkbox" value=" Only show items from:"> Only show items from:
+                                        <br>
+                                        &nbsp&nbsp&nbsp&nbsp <input type="radio" value="Specific sellers (enter seller's user IDs)">Specific
+                                        sellers (enter seller's user IDs)<br>
+                                        <select disabled>
+                                            <option>Include</option>
+                                        </select> <input type="text" disabled><br> &nbsp&nbsp&nbsp&nbsp
+                                        <input type="radio" value="My saved sellers list">My saved sellers list
+
+                                        <br>
+                                        <hr>
+                                        <!--     last element-->
+
+                                        <lable for="SortBy">Sort by</label><br>
+                                            <select>
+                                                <option>Best Match</option>
+                                                <option>Time : Newly listed</option>
+
+                                            </select><br>
+                                            <lable for="viewResults">View results</label><br>
+                                                <select>
+                                                    <option>All Items</option>
+                                                    <option>Picture Gallery</option>
+
+                                                </select><br>
+                                                <lable for="resultsPerPage">Results per page</label><br>
+                                                    <select>
+                                                        <option>50</option>
+                                                        <option>100</option>
+                                                    </select><br>
+                                                    <hr>
+                                                    <button type="submit">search</button> <input type="reset" value="Clear options">
+
+        </form>
+
+    </section>
+    <br><br><br>
+    <footer>
+        <center> &copy 2019</center>
+    </footer>
+
+
+
+</body>
+
+</html>
