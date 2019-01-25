@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign_up</title>
+</head>
+
+<body>
+    <div>
+        <form>
+            <label for="fullname">Full Name: </label>
+            <input type="text" id="fullname" placeholder="moshe a" required><br /><br />
+
+            <label for="email">Email Address: </label>
+            <input type="email" id="email" placeholder="example@gmail.com" pattern="^[a-z0-9.]+@[a-z0-9.-]+\.[a-z]{2}$" required><br /><br />
+
+            <label for="age">Age: </label>
+            <input type="number" id="age" placeholder="18-32" min="18" max="32" required><br /><br />
+
+            <label for="username">Username: </label>
+            <input type="text" id="username" placeholder="moshe1234" maxlength="10" required><br /><br />
+
+            <label for="pass">Password: </label>
+            <input type="password" id="pass" placeholder="*****" maxlength="10" required><br /><br />
+
+            <div id="buttons">
+                <input type="submit" value="Submit">&emsp;
+                <input type="reset" value="Reset">
+            </div>
+            <br />
+            <div id="anchors">
+                <a href="index.html">Back to main page</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
