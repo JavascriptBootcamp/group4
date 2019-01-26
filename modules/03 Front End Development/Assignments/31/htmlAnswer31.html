@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+    <title>Document</title>
+</head>
+<div>
+    <h3>Find Element</h3>
+    <form action="somePage">
+
+         <b>Enter item number or keywords</b>
+        <div>
+            <input type="text" placeholder="Enter item number / keywords" >
+            <select name="selected" id="selected">
+                <option value="1" selected="selected">All words, any order</option>
+                <option value="2">Any words, any order</option>
+                <option value="3">Exact words, exact order</option>
+                <option value="4">Exact words, any order</option>
+            </select>
+        </div>
+        <p>
+            Exclude words from your search <br>
+            <input type="text" placeholder="Enter keywords or item number" size="35">
+            <p>
+                <p>See general <a href="somePage.html">search tips</a> or using <a href="someOtherPage.html">advanced
+                        search options</a> </p>
+                In this category:<br>
+                <select name="s" id="s">
+                    <option value="0">All Categories</option>
+                    <option value="20081">Antiques</option>
+                    <option value="550">Art</option>
+                    <option value="267">Books</option>
+                    <option value="12576">Business & Industrial</option>
+                    <option value="625">Cameras & Photo</option>
+                    <option value="15032">Cell Phones & Accessories</option>
+                    <option value="11450">Clothing, Shoes & Accessories</option>
+                    <option value="11116">Coins & Paper Money</option>
+                    <option value="1">Collectibles</option>
+                    <option value="58058">Computers/Tablets & Networking</option>
+                    <option value="293">Consumer Electronics</option>
+                    <option value="14339">Crafts</option>
+                    <option value="237">Dolls & Bears</option>
+                    <option value="11232">DVDs & Movies</option>
+                    <option value="45100">Entertainment Memorabilia</option>
+                    <option value="172008">Gift Cards & Coupons</option>
+                    <option value="26395">Health & Beauty</option>
+                    <option value="11700">Home & Garden</option>
+                    <option value="281">Jewelry & Watches</option>
+                    <option value="11233">Music</option>
+                    <option value="619">Musical Instruments & Gear</option>
+                    <option value="1281">Pet Supplies</option>
+                    <option value="870">Pottery & Glass</option>
+                    <option value="10542">Real Estate</option>
+                    <option value="316">Specialty Services</option>
+                    <option value="888">Sporting Goods</option>
+                    <option value="64482">Sports Mem, Cards & Fan Shop</option>
+                    <option value="260">Stamps</option>
+                    <option value="220">Toys & Hobbies</option>
+                    <option value="3252">Travel</option>
+                    <option value="1249">Video Games & Consoles</option>
+                    <option value="99">Everything Else</option>
+                </select><br><br>
+                <button>Search</button>
+                <br><br>
+                <hr>
+                <fieldset class="chbx">
+                    <label for="lab">
+                        <legend>Search including</legend>
+                        <input type="checkbox">
+                            Title and description
+                    </label>
+                    <br>
+                    <label for="lab1">
+                        <input type="checkbox">                  
+					            Completed listings
+                    </label>
+                    <br>
+                    <label for="lab3">
+                        <input type="checkbox">       
+					            Sold listings
+
+                     </label>
+                </fieldset><br>
+                <b>Price</b><br>
+                <input type="checkbox">
+                Show items priced from ILS <input type="text"> to ILS <input type="text"><br><br>
+                <hr>
+                <b>Buying formats</b><br><br>
+                <input type="checkbox">Auction</input><br>
+                <input type="checkbox">Buy It Now</input>
+                <hr>
+                <b>Condition</b><br><br>
+                <input type="checkbox">New</input><br>
+                <input type="checkbox">Used</input><br>
+                <input type="checkbox">Not Specified</input>
+                <hr>
+                <b>Show results</b><br>
+                <input type="checkbox">Listings
+                    <select name="ss" >
+                        <option value="901">Ending within</option>
+                        <option value="902">Ending in more than</option>
+                        <option value="903">Started within</option>
+                    </select>
+                    <select id="ss1">
+                        <option value="1">1 Hours</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="4">4 Hours</option>
+                        <option value="5">5 Hours</option>
+                        <option value="12">12 Hours</option>
+                        <option value="24">24 Hours</option>
+                        <option value="48">2 Days</option>
+                        <option value="72">3 Days</option>
+                        <option value="96">4 Days</option>
+                        <option value="120">5 Days</option>
+                        <option value="144">6 Days</option>
+                        <option value="168">7 Days</option>
+                    </select>
+                </input><br>
+                <input type="checkbox">Number of bids from:
+                    <input type="text" size="3"> to: <input type="text" size="3">
+                </input><br>
+                <input type="checkbox">Multiple item listings from:
+                    <input type="text" size="3"> to: <input type="text" size="3">
+                </input><br>
+                <input type="checkbox"> Items listed as lots  <a href="somePage1.html"> Learn more.</a><br>
+                <input type="checkbox">Sale items <br>
+                <input type="checkbox">Best offer  <a href="sPage.html">Learn more.</a> <br>
+                <input type="checkbox"> eBay for Charity  <a href="sPage.html">Learn more.</a> <br><br>
+                <b>Shipping options</b><br>
+                <input type="checkbox">Free international shipping<br><br>
+                <hr>
+                <b>Location</b><br>
+                <input type="radio" name="loc"> 
+                    Located <select >
+                                <option >Hello</option>                                      
+                                <option >World</option> 
+                            </select>                               
+                    miles of <input type="text" size="3">
+                 </input><br>
+                </input>
+                <input type="radio" name="loc" > From preferred locations 
+                                                 <select >
+                                                     <option >Us Only</option>
+                                                     <option >Israel</option>
+                                                 </select>   <br>
+
+                 <input type="radio" name="loc" > Located in 
+                                                <select >
+                                                        <option >Us Only</option>
+                                                        <option >Israel</option>
+                                                </select> <br>  
+                <hr>
+                <b>Sellers</b><br><br>
+                <input type="checkbox">Sellers<br>
+                <div >
+                       	<input type="radio" disabled> Specific sellers (enter seller's user IDs) <br>
+                                <select disabled>
+                                    <option>Include</option>
+                                    <option>Exclude</option>
+                                </select>
+                        <input disabled type="text"><br>
+                        <input type="radio" name="rad"> My saved sellers list <br>
+                        <input type="radio" name="rad"> Sellers with eBay stores                               
+                </div><br><br>
+                <hr>
+                <b>Sort by</b><br>
+                <select >
+                    <option >Best Match</option>
+                    <option >Worst Match</option>
+                </select><br><br>
+                <b>View results</b><br>
+                <select >
+                        <option >All items</option>
+                        <option >Some items</option>
+                </select><br><br>
+                <b>Results per page</b><br>
+                <select >
+                        <option >50</option>
+                        <option >100</option>
+                </select><br><br>
+                <hr>
+                <button>Search</button>
+                <a href="Html31.html">Clear options</a>
+    </form>
+
+ </div>
+
+ <body>
+
+ </body>
+
+ </html> 
