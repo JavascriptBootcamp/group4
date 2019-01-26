@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>select_location</title>
+</head>
+
+<body>
+
+    <form id="form" class="form">
+        <div id="continent" class="continent">
+            <label for="continent">Continent:</label>
+            <input list="continents" name="continent">
+            <datalist name="continents" id="continents">
+                <option value="America">America</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+            </datalist>
+        </div>
+        <br></Br>
+        <div id="country" class="country">
+            <label for="country">Country:</label>
+            <select name="country" id="country">
+                <option value="israel">Israel</option>
+                <option value="india">India</option>
+                <option value="france">France</option>
+            </select>
+        </div>
+        <br></Br>
+        <div id="city" class="city">
+            <label for="city">Country:</label>
+            <select name="city" id="city">
+                <option value="Tel Aviv">Tel Aviv</option>
+                <option value="Hong Kong">Hong Kong</option>
+                <option value="paris">Paris</option>
+            </select>
+        </div>
+    </form>
+    <button form="form" type="submit">Submit</button>
+</body>
+
+</html>
