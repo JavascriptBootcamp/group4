@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>
+        select_location
+    </title>
+</head>
+
+<body>
+    <form>
+        <div id="ContinentList">
+            <label for="continent">Continent: </label>
+            <input list="continent" name="continent">
+            <datalist id="continent">
+                <option value="Asia"></option>
+                <option value="Europe"></option>
+                <option value="America"></option>
+            </datalist>
+        </div><br>
+        <div id="CountryList">
+            <label for="country">Country: </label>
+            <select name="country">
+                <option value="Israel">Israel</option>
+                <option value="Swiss">Swiss</option>
+                <option value="New-York">New-York</option>
+            </select>
+        </div><br>
+        <div id="CityList">
+            <label for="city">City:</label>
+            <select name="city">
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Paris">Paris</option>
+                <option value="London">London</option>
+            </select>
+        </div><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
