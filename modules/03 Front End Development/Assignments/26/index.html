@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Images | Favorites</title>
+</head>
+
+<body>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Berlin" target="_blank">
+        <img src="https://sumfinity.com/wp-content/uploads/2013/12/Brandenburg-Gate-West-Berlin.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Barcelona" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Sagradafamilia-overview.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Mexico" target="_blank">
+        <img src="https://travelhealthpro.org.uk/media_lib/mlib-uploads/full/Mexico.jpg" height="200" width="200">
+    </a>
+    <script>
+        var links = document.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+            console.log(links[i].childNodes);
+        }
+        var images = document.getElementsByTagName("img");
+        for (var i = 0; i < images.length; i++) {
+            console.log(images[i].parentNode);
+        }
+        var titles = document.getElementsByTagName("title");
+        console.log(titles[0].innerHTML);
+
+        var sources = document.querySelectorAll("[src]");
+        console.log(sources.length);
+    </script>
+</body>
+
+</html>
