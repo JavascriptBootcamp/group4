@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Do list</title>
+</head>
+
+<body>
+    <h1>Tasks list:</h1>
+    <h2>Click the tasks to open thier description</h2>
+    <ul>
+        <li id="task1" onclick="taskClickd(this.id)">
+            <a href="description.html">
+                <h3>Task 1</h3>
+            </a>
+        </li>
+        <li id="task2" onclick="taskClickd(this.id)">
+            <a href="description.html">
+                <h3>Task 2</h3>
+            </a>
+        </li>
+        <li id="task3" onclick="taskClickd(this.id)">
+            <a href="description.html">
+                <h3>Task 3</h3>
+            </a>
+        </li>
+        <li id="task4" onclick="taskClickd(this.id)">
+            <a href="description.html">
+                <h3>Task 4</h3>
+            </a>
+        </li>
+        <li id="task5" onclick="taskClickd(this.id)">
+            <a href="description.html">
+                <h3>Task 5</h3>
+            </a>
+        </li>
+    </ul>
+
+
+    <!-- using this tag till we learn css -->
+
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+
+    <script>
+        var tasks = {
+            task0 : { title: "test title",
+            description: "test description",
+            date: "1/7/2019",
+            assignee: "Matan",
+            status: "in_progress"
+            },
+            task1 : { title: "SQLabs front end course",
+            description: "Finish SQLabs front end course and finding a job",
+            date: "1/7/2019",
+            assignee: "Matan",
+            status: "in_progress"
+            },
+            task2 : {
+            title: "God of war 4",
+            description: "Finish the game god of war 4",
+            date: "1/4/2019",
+            assignee: "Matan",
+            status: "in_progress"
+            },
+            task3 : {
+            title: "Chocolate cake",
+            description: "Learn how to bake a chocolate cake for my wife birthday",
+            date: "5/10/2019",
+            assignee: "Matan",
+            status: "done"
+            },
+            task4 : {
+            title: "Clean the house",
+            description: "Clean the house",
+            date: "5/1/2019",
+            assignee: "Matan",
+            status: "done"
+            },
+            task5 : {
+            title: "Find a job",
+            description: "Finding a fullstack/front-end developer job",
+            date: "1/7/2019",
+            assignee: "Matan",
+            status: "in_progress"
+            }
+
+        }
+
+        function taskClickd(task_id) {
+            //get the right task
+            var task = tasks[task_id];
+            //save the task in the browser local storge - just for the session of the site 
+            sessionStorage.setItem('task', JSON.stringify(task));
+        }
+
+
+    </script>
+
+</body>
+
+</html>

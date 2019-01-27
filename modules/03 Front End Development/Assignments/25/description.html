@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task Description</title>
+</head>
+
+<body>
+
+    <h1>Task Description:</h1>
+    <hr>
+    <ul id="task_description"></ul>
+
+    <br>
+    <div id="footer">
+        <div class="footerBtns">
+            <a href="index.html"><button>Return to main menu</button></a>
+        </div>
+        &copy; SQLabs
+    </div>
+
+    <!-- using this tag till we learn css -->
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+    <img src="" alt="" width='300' height='200'>
+
+    <script>
+        var statusPic = {
+            in_progress : "https://www.colourbox.com/preview/7975139-in-progress-stamp.jpg",
+            done : "http://www.myagilepartner.com/blog/wp-content/uploads/2018/10/definition-of-done-dod.png"
+        }
+        //get the task from the browser storge
+        var task = JSON.parse(sessionStorage.getItem('task'));
+        //fill ul with li that have the task data
+        var ul = document.querySelector("#task_description");
+        var ultext = "<li><h2>Title - <h3>"+task["title"]+"</h3></h2></li>";
+        ultext += "<li><h2>Description - <h3>"+task["description"]+"</h3></h2></li>";
+        ultext += "<li><h2>Due Date - <h3>"+task["date"]+"</h3></h2></li>";
+        ultext += "<li><h2>Assignee - <h3>"+task["assignee"]+"</h3></h2></li>";
+        var picId = task["status"];
+        ultext += "<li><h2>Status - <div><img src='"+statusPic[picId]+"' alt='task tatus'width='300' height='200'></div></h2></li>";
+
+        ul.innerHTML = ultext;
+        console.log(ul);
+    </script>
+</body>
+
+</html>
