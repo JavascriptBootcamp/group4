@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<input type="text" id="inp1" onkeyup="Check()"/>
+<input type="text" id="inp2" />
+<div id="div"></div>
+
+
+<script>
+
+    function Check(){
+ 
+
+   var inp2 = document.getElementById("inp2") ;
+   var inp1 = document.getElementById("inp1");
+   inp2.value = inp1.value;
+    var div = document.getElementById("div");
+ 
+    div.innerText = inp1.value % 2 === 0 ?  `${inp1.value} is even` : `${inp1.value} is odd`;
+ 
+
+
+    }
+</script>
+
+
+</body>
+</html>
