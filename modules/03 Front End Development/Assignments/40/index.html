@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="number1" min="1" max="100">
+    <input type="text" id="number2" min="1" max="100">
+    <button onclick="checkEvenOrOdd()">click me</button>
+    <div id="result"></div>
+    <script>
+    var num1 = document.getElementById("number1");
+    var num2 = document.getElementById("number2");
+    var result = document.getElementById("result");
+
+    function checkEvenOrOdd(){
+        for (var i = num1.value; i < num2.value; i++) {
+            i % 2 === 0 ? result.innerHTML += i + " is even + <br>" : result.innerHTML += i + " is odd + <br>";
+        }
+    }
+
+
+    </script>
+</body>
+</html>
