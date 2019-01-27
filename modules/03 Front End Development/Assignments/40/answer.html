@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+
+    <body>
+        <input type="number" name="number" id="number1" min="1" max="100">
+        <input type="number" name="number2" id="number2" min="1" max="100">
+        <input type="button" onclick="checkIsEven">
+
+        
+        <script>
+            function checkIsEven(){
+                var fNumber = document.getElementById("number1");
+                var sNumber = document.getElementById("number2");
+                var divError = document.createElement("div");
+                if(fNumber > sNumber){
+                    divError.innerText = "The second number must be great than the first number";
+                }
+                
+                var i = fNumber.value;
+                do
+                {
+                    var evenOrOdd = "Odd";
+                    if(i % 2 === 0)
+                        evenOrOdd = "Even";
+                    console.log(i ,"is", evenOrOdd);
+                    i++;  
+                }
+                while(i<=20);
+            }
+        </script>
+    </body>
+</html>
