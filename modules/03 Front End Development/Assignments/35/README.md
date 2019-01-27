@@ -1,0 +1,2 @@
+<p>Copy the code from: <a href="https://github.com/JavascriptBootcamp/group4/blob/master/modules/03%20Front%20End%20Development/Assignments/02/answer02.html" target="_blank">answer 02</a></p>
+<p>Change the behaviour so that a click on an image will make it disappear from the page.</p>
