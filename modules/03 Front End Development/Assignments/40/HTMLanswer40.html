@@ -20,6 +20,9 @@
         function CheckNum() {
             num1 = document.getElementById("num1").value;
             num2 = document.getElementById("num2").value;
+            if (num1 < 1 || num1 > 100 || num2 < 1 || num2 > 100) {
+                console.log("second or first number are between 1-100");    
+            }
             if (num1 < num2) {
                 for (var i = num1; i < num2; i++)
                     i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
