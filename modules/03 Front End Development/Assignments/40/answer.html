@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        Low: <input type="number" min="1" max="100" id="low"><br> 
+        High: <input type="number" min="1" max="100" id="high"><br>
+        <input type="submit" onclick="check()">
+    </form>
+    <script>
+        var low = document.getElementsByName("low");
+        var high = document.getElementsByName("high");
+        function check() {
+            
+        }
+
+        for (var i = 10; i < 21; i++)
+            i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+    </script>
+</body>
+
+</html>
