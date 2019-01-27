@@ -1,23 +1,40 @@
 <html>
 
 <head>
-    <title>My Favorite Quote</title>
-    <!--A list of qoutes-->
+    <title>HTML 40</title>
 </head>
 
 <body bgcolor='#FFCCFF'>
-    <h3 align='center'>2 Numbers:</h3>
+    <h3>2 Numbers:</h3>
     <input type="number" min='1' max='100'>
     <input type="number" min='1' max='100'>
+    <button onclick="oddOrEven()">Check Odd or Even</button>
+    <div>
+
+    </div>
     <script>
-        function oddOrEven(inp1, inp2) {
-            for (var i = 10; i < 21; i++)
-                i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+        function oddOrEven() {
+            var inps = document.getElementsByTagName('input');
+            var div = document.getElementsByTagName('div')[0];
+            for (var i = 0; i < inps.length; i++){
+                var num = inps[i].value;
+                var text = num% 2 === 0 ? num + " is even" : num + " is odd";
+                div.appendChild(document.createTextNode(text));
+                div.innerHTML += '<br />';
+                if(i === 1){
+                    try{
+                        if(Number(num) > Number(inps[0].value)){
+                            throw 'Error: 2nd input value is greater than the 1st one.';
+                        }
+                    }catch (ex){
+                        text = document.createTextNode(ex);
+                        div.appendChild(text);
+                        div.innerHTML += '<br />';
+                    }
+                }
+            }
+               
         }
-        var btn = document.createElement('button');
-        btn.innerText = 'check';
-        btn.onclick = oddOrEven(inp1, inp2);
-        document.body.appendChild(btn);
     </script>
 </body>
 
