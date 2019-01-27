@@ -1,0 +1,19 @@
+Tag Name: 
+      
+      <button>
+
+Properties:
+
+  autocomplete ,id,hidden,class
+  name -שם הכפתור
+
+Description:
+
+    אלמנט המתאר כפתור שניתן ללחוץ עליו      
+
+Example:
+
+  <button class="favorite styled"
+        type="button">
+    Add to favorites
+</button>

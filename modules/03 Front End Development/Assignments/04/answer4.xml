@@ -1,0 +1,13 @@
+<car name="toyota" year="2017" color="black">
+
+<wheels>
+<tire size=""></tire >
+</wheels>
+<door>
+<window electric = true></window>
+</door>
+<seat>
+<belt><belt/>
+</seat>
+
+</car>
