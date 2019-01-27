@@ -1,0 +1,15 @@
+Tag Name:
+  <input type="submit">
+Properties:
+  None, "submit" is a value of a property called : "type".
+Description:
+  Defines a button which contain a DOMString and gives an answer to a click event.
+  It means that while clicking the submit button, the button will submit the form data.
+Example:
+
+<form action="/action_page.php">
+  Username: <input type="text" name="usrname"><br>
+  <input type="submit" value="Submit">
+</form>
+
+// When clicking the submit button , the browser will take the value of "Username" and will send at in the URL to the server et cetera.
