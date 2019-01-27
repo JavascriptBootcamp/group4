@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<html>
+    <head>
+    <title> input -> time </title>
+    </head>
+
+    <body>
+
+        <p>
+            'input' tag, 'time' property:
+            </br>
+            enables insert all parts of the time (hours, minutes, AM/PM) and manipulate them by errows in that input field.
+        </p>
+ 
+        Select a time: <input type="time" name="usr_time">
+    
+    </body>
+</html>
