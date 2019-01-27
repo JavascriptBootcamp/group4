@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/action_page.php" id="form1">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div>
+            <label for="pass">Password (8 characters minimum):</label>
+            <input type="password" id="pass" name="password" minlength="8" required>
+        </div>
+    
+        <div>
+            <button type="submit" form="form1" value="Submit">Submit</button><br>
+            <a id="anchor_signup" href="sign_up.html">Sign Up</a><br>
+            <a id="anchor_forgot" href="forgot_password.html">Forgot Your Password?</a>
+        </div>
+    </form>
+
+</body>
+
+</html>
