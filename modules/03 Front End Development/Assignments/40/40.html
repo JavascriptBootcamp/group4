@@ -8,40 +8,22 @@
 
     <input type="number" name="num1" id="num1" min="0" max="100">
     <input type="number" name="num2" id="num2" min="0" max="100">
-    <button value="go" id="go" onclick="go()"></button>
+    <button  id="go" onclick="go()">odd / even</button>
+    <div id="div"></div>
 
     <script>
         function go() {
             var num1 = document.getElementById("num1").value;
             var num2 = document.getElementById("num2").value;
-            var div = document.createElement("div");
-            document.body.appendChild(div);
-            if (num1 < num2)
-            {
-             for (var i = num1; i <= num2; i++)
-               i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+            if (num1 < num2) {
+                for (var i = num1; i <= num2; i++)
+                    //    i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+                    i % 2 == 0 ? document.getElementById("div").innerHTML += " " + i + " is odd <br> " : document.getElementById("div").innerHTML+= " " + i + " is even <br>";
             }
-            else
-            {}  
+
+            else { document.getElementById("div").innerHTML = "display an error in a div" }
         }
 
-        // var li = document.getElementsByTagName("li");
-                // for (var i = 0; i<li.length; i++)
-                // {
-                // li[i].innerHTML+="<br>";
-                // var btn = document.createElement("button");
-                // btn.innerText="Like";
-                // li[i].appendChild(btn);
-                // var btn2 = document.createElement("button");
-                // btn2.innerText="Comment";
-                // li[i].appendChild(btn2);
-                // var btn3 = document.createElement("button");
-                // btn3.innerText="Share";
-                // li[i].appendChild(btn3);
-                // }
-                // li[2].h
-                // var t = document.getElementsByTagName("title");
-                // t[0].innerText="Instush";
     </script>
 </body>
 
