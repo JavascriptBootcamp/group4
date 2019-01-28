@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>removing all duplicate words and sorting them alphanumerically.</h1>
+    </div>
+
+    <div id="content">
+        <div id="mission">
+            <label for="txt1">Enter Text:</label>
+            <input id="txt1" class="intxt" type="text" value="hello" /><br><br>
+
+            <label for="txt2">Enter Text:</label>
+            <input id="txt2" class="intxt" type="text" value="world" /><br><br>
+
+            <label for="txt3">Enter Text:</label>
+            <input id="txt3" class="intxt" type="text" value="and" /><br><br>
+
+            <label for="txt4">Enter Text:</label>
+            <input id="txt4" class="intxt" type="text" value="practice" /><br><br>
+
+            <label for="txt5">Enter Text:</label>
+            <input id="txt5" class="intxt" type="text" value="makes" /><br><br>
+
+            <label for="txt6">Enter Text:</label>
+            <input id="txt6" class="intxt" type="text" value="perfect" /><br><br>
+
+            <label for="txt7">Enter Text:</label>
+            <input id="txt7" class="intxt" type="text" value="and" /><br><br>
+
+            <label for="txt8">Enter Text:</label>
+            <input id="txt8" class="intxt" type="text" value="hello" /><br><br>
+
+            <label for="txt9">Enter Text:</label>
+            <input id="txt9" class="intxt" type="text" value="world" /><br><br>
+
+            <label for="txt10">Enter Text:</label>
+            <input id="txt10" class="intxt" type="text" value="again" /><br><br>
+
+            <button id="btn" onclick="sortAndRem()">Click Here</button>
+        </div>
+
+        <div id="result">
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+
+    <script>
+        function sortAndRem() {
+            var newDiv = document.createElement("div");
+            var txtArr = document.getElementsByClassName("intxt");
+            var tmpArr = [];
+
+            for (i = 0; i < txtArr.length; i++)
+                tmpArr[i] = txtArr[i].value;
+
+            tmpArr.sort();
+            var res = remDup(tmpArr);
+
+            newDiv.innerHTML = res;
+            document.getElementById("result").appendChild(newDiv);
+        }
+
+        function remDup(arr) {
+            var str = "<h4>The Answer:<br>";
+            for (var i = 0; i < arr.length; i++) {
+                if (arr.indexOf(arr[i]) === i) {
+                    str += arr[i];
+                    str += " ";
+                }
+            }
+            str += "</h4>";
+            return str;
+        }
+
+    </script>
+</body>
+
+</html>
