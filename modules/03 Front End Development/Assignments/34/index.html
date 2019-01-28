@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input class="txt" type="text" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <input type="text" class="txt" /><br>
+    <button onclick="createDiv()" id="btn">Submit</button>
+
+    <script>
+        function createDiv() {
+            var newDiv = document.createElement("div");
+            var elementArray = document.getElementsByClassName('txt');
+            var txtArray = [];
+            for (i = 0; i < elementArray.length; i++) {
+                txtArray[i] = elementArray[i].value;
+            }
+            txtArray.sort();
+            function removeDups(names) {
+                let unique = {};
+                names.forEach(function (i) {
+                    if (!unique[i]) {
+                        unique[i] = true;
+                    }
+                });
+                return Object.keys(unique);
+            }
+            newArray = removeDups(txtArray);
+            newDiv.innerText = newArray.join(" ");
+            document.body.appendChild(newDiv);
+        }
+    </script>
+</body>
+
+</html>
