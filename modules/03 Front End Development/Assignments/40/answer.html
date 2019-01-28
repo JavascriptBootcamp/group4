@@ -10,19 +10,38 @@
 
 <body>
     <form action="">
-        Low: <input type="number" min="1" max="100" id="low"><br> 
+        Low: <input type="number" min="1" max="100" id="low"><br>
         High: <input type="number" min="1" max="100" id="high"><br>
         <input type="submit" onclick="check()">
+        <dir id="di"></dir><br>
     </form>
+
     <script>
-        var low = document.getElementsByName("low");
-        var high = document.getElementsByName("high");
+
         function check() {
-            
+
+            var low = document.getElementById("low").value;
+            var high = document.getElementById("high").value;
+            var d = document.getElementById("di");
+
+            if (Number(low) <= Number(high)) {
+                for (var i = low; i <= high; i++) {
+                    if (i % 2 === 0) {
+                        var newDiv = document.createElement("div");
+                        newDiv.innerText = i + " is even";
+                        d.appendChild(newDiv);
+                    }
+                    else{
+                        var newDiv = document.createElement("div");
+                        newDiv.innerText = i + " is odd";
+                        d.appendChild(newDiv);
+                    }
+                }
+            } else {
+                d.innerText = " Error: Low is higher than High ";
+            }
         }
 
-        for (var i = 10; i < 21; i++)
-            i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
     </script>
 </body>
 
