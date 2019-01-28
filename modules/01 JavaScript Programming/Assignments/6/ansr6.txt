@@ -1,0 +1,27 @@
+/*
+Conditions:
+---
+1. Create a variable and assign the following value: 1998
+2. Create a variable for 2001
+3. Print which variable is larger
+4. Post increment the first variable
+5. Check if they are equal and assign the result to a boolean variable
+6. Log the value of the boolean variable
+*/
+
+var x = 1998;
+var y = 2001;
+
+if (x  >  y ){
+   console.log(x);
+   }
+else 
+  {
+  console.log(y);
+  }
+
+++x;
+
+var b = (x === y);
+
+console.log(b);
