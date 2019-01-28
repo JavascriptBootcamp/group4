@@ -1,0 +1,15 @@
+var x ;
+var uf = undefined;
+
+var res = (x == uf);
+console.log(res);
+
+res = (x === uf);
+console.log(res);
+
+x = "some string";
+res = (x == uf);
+console.log(res);
+
+res = (x === uf);
+console.log(res);
