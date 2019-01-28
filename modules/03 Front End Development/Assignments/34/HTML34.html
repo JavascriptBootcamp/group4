@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Html 34</title>
+</head>
+
+<body>
+
+    <h1>Html 34</h1>
+    <hr>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+    <input type="txt" class="txt"><br>
+
+    <button id="sort" onclick="sort()">&nbsp&nbsp&nbsp&nbsp&nbspSORT&nbsp&nbsp&nbsp&nbsp & 
+        &nbsp&nbsp&nbsp&nbspPRINT&nbsp&nbsp&nbsp&nbsp</button>
+    <br>
+    <div id="div"></div>
+
+    <script>
+
+        function sort() {
+            var arrWords = [];
+            var obj = {};
+            document.getElementById("div").innerText="";
+            var words = document.getElementsByClassName("txt");
+            for (var i = 0; i < words.length; i++) {
+                if (!(words[i].value in obj)) {
+                    obj[words[i].value] = "";
+                    arrWords[i] = words[i].value;
+                }
+            }
+            arrWords.sort();
+            arrWords.forEach(function (item) {
+                if (item != "")
+                    document.getElementById("div").innerHTML+= item+"&nbsp";
+            });
+
+        }
+            // var num1 = document.getElementById("num1").value;
+            // var num2 = document.getElementById("num2").value;
+            // if (num1 < num2) {
+            //     for (var i = num1; i <= num2; i++)
+            //         //    i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+            //         i % 2 == 0 ? document.getElementById("div").innerHTML += " " + i + " is odd <br> " : document.getElementById("div").innerHTML+= " " + i + " is even <br>";
+            // }
+
+            // else { document.getElementById("div").innerHTML = "display an error in a div" }
+
+
+    </script>
+</body>
+
+</html>
