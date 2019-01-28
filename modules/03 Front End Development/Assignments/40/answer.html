@@ -6,30 +6,35 @@
     </head>
 
     <body>
-        <input type="number" name="number" id="number1" min="1" max="100">
+        <input type="number" name="number1" id="number1" min="1" max="100">
         <input type="number" name="number2" id="number2" min="1" max="100">
-        <input type="button" onclick="checkIsEven">
+        <input type="button" onclick="checkIsEven()" value="check">
 
         
         <script>
             function checkIsEven(){
-                var fNumber = document.getElementById("number1");
-                var sNumber = document.getElementById("number2");
-                var divError = document.createElement("div");
+                var fNumber = +document.getElementById("number1").value;
+                var sNumber = +document.getElementById("number2").value;
+                var divMessage = document.createElement("div");
                 if(fNumber > sNumber){
-                    divError.innerText = "The second number must be great than the first number";
+                    divMessage.innerHTML = "The second number must be great than the first number";
                 }
-                
-                var i = fNumber.value;
-                do
-                {
-                    var evenOrOdd = "Odd";
-                    if(i % 2 === 0)
-                        evenOrOdd = "Even";
-                    console.log(i ,"is", evenOrOdd);
-                    i++;  
+
+                else{
+                    var divText = '';
+                    var i = fNumber;
+                    do
+                    {
+                        var evenOrOdd = "Odd";
+                        if(i % 2 === 0)
+                            evenOrOdd = "Even";
+                            divText += i + " is "+ evenOrOdd + "<br>";
+                        i++;  
+                    }
+                    while(i<=sNumber);
+                    divMessage.innerHTML = divText;
                 }
-                while(i<=20);
+                document.body.appendChild(divMessage);
             }
         </script>
     </body>
