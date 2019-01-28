@@ -1,0 +1,1 @@
+var hairColor = "Brown";
