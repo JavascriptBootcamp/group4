@@ -63,10 +63,10 @@
         function sortAndRem() {
             var newDiv = document.createElement("div");
             var txtArr = document.getElementsByClassName("intxt");
-            var tmpArr = [];
+            var tmpArr = new Array(txtArr.length);
 
             for (i = 0; i < txtArr.length; i++)
-                tmpArr[i] = txtArr[i].value;
+                tmpArr.push(txtArr[i].value);
 
             tmpArr.sort();
             var res = remDup(tmpArr);
