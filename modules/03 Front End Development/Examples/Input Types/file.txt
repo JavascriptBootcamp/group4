@@ -1,0 +1,13 @@
+Input Type:
+  File
+Properties:
+   accept - One or more unique file type specifiers describing file types to allow
+   capture - What source to use for capturing image or video data
+   files - A FileList object that lists every selected file. This list has no more than one member unless the multiple attribute is specified.
+   multiple - When the multiple Boolean attribute is specified, the file input allows the user to select more than one file.
+Description:
+  האלמנט מאפשר למשתמש לבחור קובץ אחד או יותר מתוך האחסון של המכשיר. את הקבצים אפשר לעלות בעזרת טופס שליחה(אלמנט אחר) 
+Example:
+    <label for="image_uploads">Choose images to upload (PNG, JPG)</label>
+    <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+  
