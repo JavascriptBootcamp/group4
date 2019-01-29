@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="range" id="bloodRange" min="0" max="200">
+    <button onclick="checkBlood()">click</button>
+    <div id="result"></div>
+    <script>
+        function checkBlood(){
+        var bloodPressure = document.getElementById("bloodRange").value;
+        var isNormal = "";
+        console.log(bloodPressure);
+        (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = "blood pressures normal range :-)" : isNormal="blood pressures <u>NOT</u> in normal range. you need to visit a doctor!";
+            document.getElementById("result").innerHTML = isNormal;
+        }
+    </script>
+</body>
+</html>
