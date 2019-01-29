@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> html 34</title>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname1" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname2" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+        <div>
+            <label for="uname">enter your word</label>
+            <input type="text" id="uname" class="word">
+        </div>
+
+        <div>
+            <input type="button" onclick="removeDups()" value="Submit"/>
+        </div>
+    </form>
+    <script>
+        function removeDups() {
+            var newDiv = document.createElement("div");
+
+            var Elements = document.getElementsByClassName('word');
+            var words = [];
+            for (i = 0; i < Elements.length; i++) {
+                words[i] = Elements[i].value;
+            }
+            words.sort();
+            for (i = 0; i < words.length; i++) {
+        
+
+               if( words[i] === words[i+1] ) 
+               {
+
+                 words.splice(i,1)
+                 i--;
+               }
+            }
+            newDiv.innerText= words;
+            document.body.appendChild(newDiv);
+
+        }
+    </script>
+
+
+</body>
+
+</html>
