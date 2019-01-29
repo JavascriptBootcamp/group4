@@ -1,0 +1,7 @@
+Tag Name: <Input>
+
+Properties: value - it will set the initial color to be appear at first
+
+Description: provide a user interface element that lets a user specify/select a color
+
+Example: <input type="color" value="#ff0000">
