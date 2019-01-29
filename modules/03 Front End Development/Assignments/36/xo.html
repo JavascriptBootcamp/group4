@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr bgcolor="red">
+            <th colspan="3"><center><h1><font color=white>Tic-Tac-Toe</font></h1></center></th>
+        </tr>
+        <tr>
+            <td><button class="play_btn" id="1" onclick="clickBtn(this);"><img id="img1" src="unknown.png" width="100" height="100"/></button></td>
+            <td><button class="play_btn" id="2" onclick="clickBtn(this);"><img id="img2" src="unknown.png" width="100" height="100"/></button></td>
+            <td><button class="play_btn" id="3" onclick="clickBtn(this);"><img id="img3" src="unknown.png" width="100" height="100"/></button></td>
+        </tr>
+        <tr>
+            <td><button class="play_btn" id="4" onclick="clickBtn(this);"><img id="img4" src="unknown.png" width="100" height="100"/></button></td>
+            <td><button class="play_btn" id="5" onclick="clickBtn(this);"><img id="img5" src="unknown.png" width="100" height="100"/></button></td>
+            <td><button class="play_btn" id="6" onclick="clickBtn(this);"><img id="img6" src="unknown.png" width="100" height="100"/></button></td>
+        </tr>
+            <tr>
+                <td><button class="play_btn" id="7" onclick="clickBtn(this);"><img id="img7" src="unknown.png" width="100" height="100"/></button></td>
+                <td><button class="play_btn" id="8" onclick="clickBtn(this);"><img id="img8" src="unknown.png" width="100" height="100"/></button></td>
+                <td><button class="play_btn" id="9" onclick="clickBtn(this);"><img id="img9" src="unknown.png" width="100" height="100"/></button></td>
+            </tr>
+            <tr bgcolor="blue">
+                <td id="message" colspan="2"></td>
+                <td><center><button id="reset" onclick="reset()"><h4>New Game</h4></button></center></td>
+            </tr>                   
+    </table>
+    <script>
+    var countClicks = 0;
+    var img_x = "x.png";
+    var img_o = "o.png";
+    var allButtons = document.getElementsByClassName("play_btn");
+
+    function clickBtn(press){
+        if (countClicks % 2 == 0) {
+            press.childNodes[0].src = img_x;
+            countClicks++;
+        }
+        else {
+            press.childNodes[0].src = img_o;
+            countClicks++;   
+        }
+        press.disabled=true;
+        check();
+    }
+    function check(){
+        //alert(document.getElementById("img1").src.endsWith("x.png"));
+        if ((document.getElementById("img1").src.endsWith("x.png") && document.getElementById("img2").src.endsWith("x.png") && document.getElementById("img3").src.endsWith("x.png")) || (document.getElementById("img4").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img6").src.endsWith("x.png")) || (document.getElementById("img7").src.endsWith("x.png") && document.getElementById("img8").src.endsWith("x.png") && document.getElementById("img9").src.endsWith("x.png")) || (document.getElementById("img1").src.endsWith("x.png") && document.getElementById("img4").src.endsWith("x.png") && document.getElementById("img7").src.endsWith("x.png")) || (document.getElementById("img2").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img8").src.endsWith("x.png")) || (document.getElementById("img3").src.endsWith("x.png") && document.getElementById("img6").src.endsWith("x.png") && document.getElementById("img9").src.endsWith("x.png")) || (document.getElementById("img1").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img9").src.endsWith("x.png")) || (document.getElementById("img3").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img7").src.endsWith("x.png"))) {
+            document.getElementById("message").innerHTML = "<center><h4><font color=yellow>X IS THE WINNER!!</font></h4></center>";
+            for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].disabled = true;
+            }
+        }
+        if ((document.getElementById("img1").src.endsWith("o.png") && document.getElementById("img2").src.endsWith("o.png") && document.getElementById("img3").src.endsWith("o.png")) || (document.getElementById("img4").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img6").src.endsWith("o.png")) || (document.getElementById("img7").src.endsWith("o.png") && document.getElementById("img8").src.endsWith("o.png") && document.getElementById("img9").src.endsWith("o.png")) || (document.getElementById("img1").src.endsWith("o.png") && document.getElementById("img4").src.endsWith("o.png") && document.getElementById("img7").src.endsWith("o.png")) || (document.getElementById("img2").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img8").src.endsWith("o.png")) || (document.getElementById("img3").src.endsWith("o.png") && document.getElementById("img6").src.endsWith("o.png") && document.getElementById("img9").src.endsWith("o.png")) || (document.getElementById("img1").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img9").src.endsWith("o.png")) || (document.getElementById("img3").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img7").src.endsWith("o.png"))) {
+            document.getElementById("message").innerHTML = "<center><h4><font color=yellow>O IS THE WINNER!</font></h4></center>";
+            for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].disabled = true;
+            }
+        }
+        if (countClicks == 9) {
+            document.getElementById("message").innerHTML = "<center><h4><font color=yellow>Game Over!</font></h4></center>";
+        }
+    }
+    function reset() {
+        countClicks=0;
+        document.getElementById("message").innerHTML = "";
+        for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].disabled = false;
+                allButtons[i].childNodes[0].src = "unknown.png";
+        }
+    }
+    </script>
+</body>
+</html>
