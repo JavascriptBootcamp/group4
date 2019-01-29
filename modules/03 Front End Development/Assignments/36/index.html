@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var count = 0;
+    </script>
+</head>
+
+<body>
+        <label for="nameX">Name for player X</label>
+        <input type="text" id="nameX" />
+        <label for="name0">Name for player 0</label>
+        <input type="text" id="name0" />
+    <table border="1" width="400" height="400">
+        <tr>
+            <td id="1" onclick="func('1')"></td>
+            <td id="2" onclick="func('2')"></td>
+            <td id="3" onclick="func('3')"></td>
+        </tr>
+        <tr>
+            <td id="4" onclick="func('4')"></td>
+            <td id="5" onclick="func('5')"></td>
+            <td id="6" onclick="func('6')"></td>
+        </tr>
+        <tr>
+            <td id="7" onclick="func('7')"></td>
+            <td id="8" onclick="func('8')"></td>
+            <td id="9" onclick="func('9')"></td>
+        </tr>
+    </table>
+
+    <script>
+        var namex = document.getElementById("nameX");
+        var name0 = document.getElementById("name0");
+        function func(n) {
+            var place = document.getElementById(n);
+            place.style.fontSize = "x-large";
+            if (place.innerText === "") {
+                if (count % 2 === 0) {
+                    place.innerText = "X";
+                    count++;
+                }
+                else {
+                    place.innerText = "0";
+                    count++;
+                }
+            }
+            if (count === 9) {
+                alert("A Tie");
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === 'X' && document.getElementById('2').innerText === 'X' && document.getElementById('3').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('6').innerText === 'X' && document.getElementById('4').innerText === 'X' && document.getElementById('5').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('7').innerText === 'X' && document.getElementById('8').innerText === 'X' && document.getElementById('9').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === 'X' && document.getElementById('4').innerText === 'X' && document.getElementById('7').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('2').innerText === 'X' && document.getElementById('5').innerText === 'X' && document.getElementById('8').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === 'X' && document.getElementById('6').innerText === 'X' && document.getElementById('9').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === 'X' && document.getElementById('5').innerText === 'X' && document.getElementById('9').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === 'X' && document.getElementById('5').innerText === 'X' && document.getElementById('7').innerText === 'X'){
+                alert(namex.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === '0' && document.getElementById('2').innerText === '0' && document.getElementById('3').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('6').innerText === '0' && document.getElementById('4').innerText === '0' && document.getElementById('5').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('7').innerText === '0' && document.getElementById('8').innerText === '0' && document.getElementById('9').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === '0' && document.getElementById('4').innerText === '0' && document.getElementById('7').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('2').innerText === '0' && document.getElementById('5').innerText === '0' && document.getElementById('8').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === '0' && document.getElementById('6').innerText === '0' && document.getElementById('9').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === '0' && document.getElementById('5').innerText === '0' && document.getElementById('9').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === '0' && document.getElementById('5').innerText === '0' && document.getElementById('7').innerText === '0'){
+                alert(name0.value + ' wins');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>
