@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Click on an image will make it disappear from the page.</h1>
+    </div>
+
+    <div id="content">
+        <div id="mission">
+
+            <img id="img1" src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg"
+                height="200" width="300" onclick="hideimg(this)" />
+
+            <img id="img2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg"
+                height="200" width="220" onclick="hideimg(this)" />
+
+            <img id="img3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tel_Aviv_Promenade_panoramics.jpg/800px-Tel_Aviv_Promenade_panoramics.jpg"
+                height="200" width="300" onclick="hideimg(this)" />
+
+            <img id="img4" src="https://www.prague.eu/img/pragueeu/u/property/logo-for-share-v2.jpg" height="200" width="300"
+                onclick="hideimg(this)" />
+
+            <img id="img5" src="https://www.israel21c.org/wp-content/uploads/2016/06/Photo-of-Beersheva-by-Leonard-ZhukovskyShutterstock.com_-1000x657.jpg"
+                height="200" width="300" onclick="hideimg(this)" />
+
+            <img id="img6" src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg"
+                height="200" width="300" onclick="hideimg(this)" />
+
+            <img id="img7" src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg"
+                height="200" width="300" onclick="hideimg(this)" />
+
+            <img id="img8" src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg"
+                height="200" width="300" onclick="hideimg(this)" />
+
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+        function hideimg(ele) {
+            //ele.setAttribute("hidden", "");
+            ele.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
