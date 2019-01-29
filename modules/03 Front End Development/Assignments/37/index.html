@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <form oninput="out.value=blood.value">
+        Enter blood Pressure: <input name="blood" id="blood" type="range" value="80" name="points" min="0" max="150" onmouseup="func()">
+        <output name="out">80</output>
+    </form>
+    <script>
+        function func() {
+            var bloodPressure = document.getElementById("blood").value;
+
+            var isNormal = false;
+            var newDiv = document.createElement("div");
+            (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
+
+            if (isNormal)
+                newDiv.innerText = "Blood pressure is normal";
+            else
+                newDiv.innerText = "Blood pressure is not normal";
+
+            document.body.appendChild(newDiv);
+            // console.log(isNormal);
+
+            // (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
+
+            // console.log(isNormal);
+        }
+    </script>
+</body>
+
+</html>
