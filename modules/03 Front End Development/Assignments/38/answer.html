@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div >
+        <form action="">
+            <div>
+                <input type="text" name="color1" id="color1">
+            </div>
+            <div>
+                <input type="text" name="color2" id="color2">
+            </div>
+            <div>
+                <input type="text" name="color3" id="color3">
+            </div>
+            <button value="Add" onclick="addFavorites()"></button>
+
+            <ol id="favoritesOL"></ol>
+        </form>
+    </div>
+    
+
+    <script>
+        var myFav = ["red", "green", "blue"];
+
+        function printMyFavoritesOL(myFav){
+            
+            // myFav.forEach(function (item, index) {
+            //     console.log("My #" + (index + 1), "choice is", item + ".");
+            // });
+
+            var endings = { 0: "th", 1: "st", 2: "nd", 3: "rd", 4: "th", 5: "th", 6: "th", 7: "th", 8: "th", 9: "th", 10: "th" }
+            var endingsIndex = 0;
+
+            var ol = document.getElementById("favoritesOL");
+
+            myFav.forEach(function (item, index) {
+                if (index <= 10) {
+                    endingsIndex = index + 1;
+                }
+                else {
+                    endingsIndex = (index + 1) % 10;
+                }
+                var li = document.createElement("li");
+                ol.appendChild(li);
+                li.value = "My #" + (index + 1) + endings[endingsIndex], "choice is", item + ".";
+            });
+        }
+
+        function addFavorites(){
+            var myFav = new Array();
+            var favorites = document.getElementsByTagName("input");
+            for(var favorite in favorites){
+                if(favorites.hasOwnProperty(key)){
+                    myFav.push(favorites[key].value);
+                }   
+            }
+            printMyFavoritesOL(myFav);
+
+        }
+    </script>
+</body>
+
+</html>
