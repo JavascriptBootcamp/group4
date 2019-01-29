@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 37</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Blood pressure is normal or not.</h1>
+    </div>
+
+    <div id="content">
+        <div id="rangeblood">
+            <input type="range" id="bloodInId" value="110" oninput="bloodOutId.value=bloodInId.value" onchange="checkPressure()"
+                min="20" max="200" step="5"> &nbsp;
+            <output name="bloodOutpName" id="bloodOutId">110</output>
+        </div>
+
+        <div id="indicates">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+        function checkPressure() {
+            var bloodPressure = document.getElementById("bloodInId").value;
+            var indicates = document.getElementById("indicates");
+            var isNormal = false;
+
+            (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
+            (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
+
+            if (isNormal)
+                indicates.innerHTML = "<h4 style='color: green'>Normal</h4>";
+            else
+                indicates.innerHTML = "<h4 style='color: red'>Not Normal <br>You must be checked by a doctor</h4>";
+        }
+    </script>
+</body>
+
+</html>
