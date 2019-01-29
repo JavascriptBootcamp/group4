@@ -38,18 +38,18 @@
     </a>
 
     <script>
-    aArr = document.getElementsByTagName("img");
+    aArr = document.getElementsByTagName("a");
     for(var key in aArr){
         if(aArr.hasOwnProperty(key)){
-        aArr[key].onclick=deleteMe;
-        aArr[key].parentElement.href ="";
+        var element = aArr[key];
+        element.href ="#";
+        element.onclick = hideMe.bind(null,element);
         }
-
     }
 
-    function deleteMe(){
-        console.log(element);
-        element.style.visiblity = "hidden";
+    function hideMe(element){
+        element.style.visibility = 'hidden';
+        //element.style.display = "none";
     }
     </script>
 
