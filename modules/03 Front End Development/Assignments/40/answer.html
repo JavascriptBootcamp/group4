@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    <form action="">
+    <form onsubmit="return false">
         Low: <input type="number" min="1" max="100" id="low"><br>
         High: <input type="number" min="1" max="100" id="high"><br>
         <input type="submit" onclick="check()">
         <div id="di"></div><br>
     </form>
+
 
     <script>
 
@@ -31,7 +32,7 @@
                         newDiv.innerText = i + " is even";
                         d.appendChild(newDiv);
                     }
-                    else{
+                    else {
                         var newDiv = document.createElement("div");
                         newDiv.innerText = i + " is odd";
                         d.appendChild(newDiv);
