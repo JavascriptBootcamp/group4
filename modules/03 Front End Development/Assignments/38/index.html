@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="loadSelectItems();">
+
+        <label for="food">food : </label><select id="food"></select><button id="foodBtn" onclick="addFood();">Add</button><br>
+        <br>
+        <label for="beverage">beverage : </label><select id="beverage"></select> <button id="beverageBtn" onclick="addBeverage();">Add</button> <br>
+        <br>
+        <label for="colors">colors : </label><select id="colors"></select> <button id="colorsBtn" onclick="addColors();">Add</button> <br>
+        <br>
+        <h2>food : </h2>
+        <ol type="a" id="foodResult"></ol><br>
+        <h2>beverage : </h2>
+        <ol type="a" id="beverageResult"></ol><br>
+        <h2>colors : </h2>
+        <ol type="a" id="colorsResult"></ol><br>
+
+    <script>
+        var foodCount = 0;
+        var beverageCount = 0;
+        var colorsCount = 0;
+
+        function loadSelectItems(){
+            var food = ['hamburger', 'BBQ', 'salad'];
+            var beverage = ['beer', 'vodka', 'coke'];
+            var colors = ['blue', 'green', 'black'];
+            
+            for (var i = 0; i < food.length; i++)
+            {
+                var option = document.createElement("option");
+                option.text = food[i];
+                option.value= food[i];
+                document.getElementById("food").add(option);
+            }
+            for (var i = 0; i < beverage.length; i++)
+            {
+                var option = document.createElement("option");
+                option.text = beverage[i];
+                option.value= beverage[i];
+                document.getElementById("beverage").add(option);
+            }
+            for (var i = 0; i < colors.length; i++)
+            {
+                var option = document.createElement("option");
+                option.text = colors[i];
+                option.value= colors[i];
+                document.getElementById("colors").add(option);
+            }
+        } 
+        
+        function addFood(){
+            foodCount++;
+            var li = document.createElement("LI");
+            li.innerText =  "My "+ foodCount + switchSuffix(foodCount) +" choice is " + document.getElementById("food").value;
+            document.getElementById("foodResult").appendChild(li);
+        }
+        function addBeverage(){
+            beverageCount++;
+            var li = document.createElement("LI");
+            li.innerText =  "My "+ beverageCount + switchSuffix(beverageCount) +" choice is " + document.getElementById("beverage").value;
+            document.getElementById("beverageResult").appendChild(li);
+        }
+        function addColors(){
+            colorsCount++;
+            var li = document.createElement("LI");
+            li.innerText =  "My "+ colorsCount + switchSuffix(colorsCount) +" choice is " + document.getElementById("colors").value;
+            document.getElementById("colorsResult").appendChild(li);
+        }        
+
+        function switchSuffix(num){
+            switch(num) {
+                case 1:
+                    return 'st'
+                case 2:
+                    return 'nd'
+                case 3:
+                    return 'rd';
+                case 4:
+                    return 'th';
+            }
+        }
+    </script>
+</body>
+</html>
