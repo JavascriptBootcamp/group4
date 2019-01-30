@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 39</title>
+    <style>
+        body{
+                text-align: center;
+        }
+        table {
+                border-collapse: collapse;
+                width: 60%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            th,
+            td {
+                border: 4px solid rgb(202, 202, 202);
+                text-align: center;
+            }
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>Shopping Cart</h1>
+    </div>
+
+    <div id="content">
+        <div id="shopcart">
+            <div id=tshop>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><select id="items">
+                                    <option value="bread">bread</option>
+                                    <option value="milk">milk</option>
+                                    <option value="eggs">eggs</option>
+                                    <option value="cheese">cheese</option>
+                                    <option value="meat">meat</option>
+                                    <option value="rice">rice</option>
+                                    <option value="pasta">pasta</option>
+                                    <option value="ketchup">ketchup</option>
+                                    <option value="oil">oil</option>
+                                </select>
+                            </td>
+                            <td><input type="text" id="price" placeholder="exmaple 10.00"></td>
+                            <td><button type="button" onclick="addItem()">Add</button></td>
+                        </tr>
+                    </tbody>
+                    <tfoot id="tdata">
+
+                    </tfoot>
+                </table>
+            </div>
+
+            <div id="totalprice">
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <div id="payment">
+            <div id="payheader">
+                <h3>Payment Method</h3>
+            </div>
+            <div id="paycontent">
+                <form id="formpay" method="post" action="http://localhost:3000/Order" onsubmit="return validate()">
+                    <input type="text" id="cardNumber" placeholder="Card Number" required>
+                    <input type="text" id="nameOnCard" pattern="[a-z A-z]*" placeholder="Name on card" required>
+                    <input type="date" id="expiryDate" placeholder="Expiry date" required>
+                    <input type="text" id="cvvcode" pattern="[0-9]{3}" placeholder="CVV code" required>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+        ///////////////////////Set Min Date///////////////////////
+        var today = new Date(),
+            day = today.getDate() + 1, //for tomorrow
+            month = today.getMonth() + 1, //January is 0
+            year = today.getFullYear();
+        if (day < 10) {
+            day = '0' + day
+        }
+        if (month < 10) {
+            month = '0' + month
+        }
+        today = year + '-' + month + '-' + day;
+
+        document.getElementById("expiryDate").setAttribute("min", today);
+        ////////////////////////////////////////////////////////////////
+
+        var total = 0;
+        function addItem() {
+            var price = document.getElementById("price").value;
+            if (price.match(/^(([0-9]{2})+\.[0-9]{2})$/) && price !== "00.00") {
+                var tdata = document.getElementById("tdata");
+                var item = document.getElementById("items").value;
+                var row = document.createElement("tr");
+                var tdArr = [];
+                createTd(tdArr, item, price);
+                addTdToTr(tdArr, row);
+                tdata.appendChild(row);
+                addOrRemTotal(price, true);
+            }
+            else
+                alert("Incorrect price Try again: example(10.00)");
+        }
+        function createTd(arr, item, price) {
+            for (var i = 0; i < 3; i++) {
+                var td = document.createElement("td");
+                if (i === 0)
+                    td.innerText = item;
+                else if (i === 1)
+                    td.innerText = price;
+                else {
+                    var rem = document.createElement("button");
+                    rem.type = "button";
+                    rem.onclick = function removeTr() {
+                        addOrRemTotal(price, false);
+                        this.parentNode.parentNode.remove()
+                    }
+                    rem.innerText = "Remove";
+                    td.appendChild(rem);
+                }
+                arr.push(td);
+            }
+            return arr;
+        }
+        function addTdToTr(arr, tr) {
+            for (var i = 0; i < arr.length; i++) {
+                tr.appendChild(arr[i]);
+            }
+        }
+        function addOrRemTotal(price, addOrRem) {
+            var divPrice = document.getElementById("totalprice");
+            if (addOrRem)
+                total += Number(price);
+            else
+                total -= Number(price);
+
+            divPrice.innerHTML = "<h4>Total Price: " + total + ".</h4>";
+        }
+        function validate() {
+            if (total !== 0) {
+                var curDiv = document.getElementById("payment");
+                var cardValidate = validateCreditCard();
+                var error = document.getElementById("error");
+
+                if (!(cardValidate.valid)) {
+                    if (error) {
+                        error.innerHTML = cardValidate.error;
+                    }
+                    else {
+                        var newDiv = document.createElement("div");
+                        newDiv.innerHTML = cardValidate.error;
+                        newDiv.id = "error";
+                        curDiv.appendChild(newDiv);
+                    }
+                    return false;
+                }
+            }
+            else {
+                alert("You need to add to the cart");
+                return false;
+            }
+        }
+        function validateCreditCard() {
+            var cardArr = document.getElementById("cardNumber").value.split("").filter((value) => value !== "-");
+            var cardStr = cardArr.join("");
+
+            if (cardArr.length !== 16)
+                return { valid: false, number: cardStr, error: "<h4>Error:<br>Worng Length</h4>" };
+
+            else if (isNaN(Number(cardStr)))
+                return { valid: false, number: cardStr, error: "<h4>Error:<br>Card number contains letters</h4>" };
+
+            else if (cardArr.every((value, i, arr) => value === arr[0]))
+                return { valid: false, number: cardStr, error: "<h4>Error:<br>There must be at least two different numbers</h4>" };
+
+            else if (Number(cardStr.charAt(cardStr.length - 1)) % 2 === 1)
+                return { valid: false, number: cardStr, error: "<h4>Error:<br>Final digit is odd</h4>" };
+
+            else if ((cardArr.reduce((total, value) => Number(total) + Number(value))) <= 16)
+                return { valid: false, number: cardStr, error: "<h4>Error:<br>The sum of all the digits must be greater than 16</h4>" };
+            else
+                return { valid: true, number: cardStr };
+        }
+    </script>
+</body>
+
+</html>
