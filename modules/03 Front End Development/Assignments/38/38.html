@@ -4,6 +4,7 @@
 	<title></title>
 </head>
 <body>
+	 <form onsubmit="return false">
 		<select id="food" multiple="true">
 			<option>hamburger</option>
 			<option>BBQ</option>
@@ -12,6 +13,7 @@
 		<ol id="olist">
 		</ol>
 		<button onclick="add()">Add</button>
+	</form>
 	<script type="text/javascript">
 		var food = document.getElementById("food");
 		var arrFood = [];
