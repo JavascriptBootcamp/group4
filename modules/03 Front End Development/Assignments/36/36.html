@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		table,tr,td{
+			border:1px solid;
+		}
+		td{
+			width:100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="p1">
+	<input type="text" id="p2">
+	<div id="winner">
+
+	</div>
+	<table>
+		<tr rowIndex="0">
+			<td index="0"></td>
+			<td index="1"></td>
+			<td index="2"></td>
+		</tr>
+		<tr rowIndex="1"> 
+			<td index="0"></td>
+			<td index="1"></td>
+			<td index="2"></td>
+		</tr>
+		<tr rowIndex="2">
+			<td index="0"></td>
+			<td index="1"></td>
+			<td index="2"></td>
+		</tr>
+	</table>
+	<button onclick="start()">start new game</button>
+	<script type="text/javascript">
+		var arr = [[0,1,2],[3,4,5],[6,7,8]];
+		var numberOfClick =0;
+		var turn =true;
+		var res = document.getElementById("winner");
+		function initialGame(){
+			var cell = document.getElementsByTagName("td");
+			arr = [[0,1,2],[3,4,5],[6,7,8]];
+			res.innerText = "";
+			turn = true;
+			numberOfClick =0;
+			for(var i=0; i<cell.length; i++){
+				cell[i].innerText = "";
+			}
+			for (var i=0; i<cell.length; i++)
+			{
+				cell[i].onclick = function(){
+					setTextAndFillArray(this);
+					turn = checkTurn();
+				}
+			}
+		}
+		function start(){
+			var cell = document.getElementsByTagName("td");
+			initialGame();
+		}
+		function setTextAndFillArray(thisEl){
+			var rowIndex = thisEl.parentNode.getAttribute("rowIndex");
+			var index = thisEl.getAttribute("index");
+			if(turn){
+				thisEl.innerText = "X";
+				arr[rowIndex][index] = "X";
+			}
+			else{
+				thisEl.innerText = "O";
+				arr[rowIndex][index] = "O";
+			}
+			checkWin(rowIndex, index);
+		}
+		function checkTurn(){
+			if(turn){
+				console.log(1)
+				return false;
+
+			}
+			else{
+				console.log(2)
+				return true;
+			}			
+		}
+		function checkWin(rowIndex, index){
+			numberOfClick++;
+			var player = "";
+			if(turn){
+				player = document.getElementById("p1").value;
+			}
+			else{
+				player = document.getElementById("p2").value;
+			}
+			if(arr[rowIndex][0] === arr[rowIndex][1] && arr[rowIndex][1] === arr[rowIndex][2])
+			{
+				res.innerText = player;
+			}
+			else if(arr[0][index] === arr[1][index] && arr[1][index] === arr[2][index])
+			{
+				res.innerText = player;
+			}
+			else if(arr[0][0] === arr[1][1] && arr[1][1] === arr[2][2])
+			{
+				res.innerText = player;
+			}
+			else if(arr[2][0] === arr[1][1] && arr[1][1] === arr[0][2])
+			{
+				res.innerText = player;
+			}
+			else if (numberOfClick === 9){
+				res.innerText = "A Tie";
+			}
+		}
+	</script>
+</body>
+</html>
