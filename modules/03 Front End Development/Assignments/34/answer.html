@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Answer 34</title>
+</head>
+<body>
+    <input type="text" id="input1" value="hello">
+	<input type="text" id="input2" value="world">
+	<input type="text" id="input3" value="and">
+	<input type="text" id="input4" value="practice">
+	<input type="text" id="input5" value="makes">
+	<input type="text" id="input6" value="perfect">
+	<input type="text" id="input7" value="and">
+	<input type="text" id="input8" value="hello">
+	<input type="text" id="input9" value="world">
+    <input type="text" id="input10" value="again">
+    
+    <input type="submit" onclick="sortUniqueWords()" value="Submit">
+
+    <div id="newDiv"></div>
+
+    <script>
+        function sortUniqueWords()
+        {
+            var uniqueWords = [];
+            var theNewDiv = document.getElementById("newDiv");
+            var theInputs = document.getElementsByTagName("input");
+
+            for(var i = 0; i < theInputs.length; ++i)
+            {
+                if(!uniqueWords.includes(theInputs[i].value))
+                {
+                    uniqueWords.push(theInputs[i].value);
+                }
+            }
+
+            if(uniqueWords.length > 0)
+            {
+                uniqueWords = uniqueWords.sort();
+                var uniqueWordsStr = uniqueWords.toString();
+                theNewDiv.innerText = uniqueWordsStr.replace(/,/g," ");
+            }
+        }
+    </script>
+</body>
+</html>
