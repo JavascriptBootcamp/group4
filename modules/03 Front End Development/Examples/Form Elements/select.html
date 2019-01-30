@@ -1,1 +1,29 @@
 
+
+Tag Name: Select
+
+
+
+Properties: multiple, disabled, size, required, selected
+
+
+
+Description: תגית שמשתמשים בה בכדי לייצר אפשרויות בחירה עבור המשתמש. 
+בעזרת תגית זו נוכל לקבל מלחיצת המשתמש את האופציה שהוא בחר לשרת. 
+תגית הסלקט צריכה להיות עם ת"ז או שם כדי שנוכל לגשת אליה מהקוד. 
+בתוך תגית זו יהיו תגיות האפשרויות שיכילו את הערכים שניתן למשתמש לבחור מהם.
+לכל תגית אפשרויות נמלא ערך אותו נוכל לקחת כאשר המשתמש יבחר באפשרות זו.
+
+
+
+Example:
+
+<select id="pet-select" multiple size="4" required>
+    <option value="">--Please choose an option--</option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish" disabled>Goldfish</option>
+</select>
