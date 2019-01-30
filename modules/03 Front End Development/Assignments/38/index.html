@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 38</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>List of your favorites (colors, food etc.).</h1>
+    </div>
+
+    <div id="content">
+        <div id="addlist">
+            <form action="#" onsubmit="return false;">
+                <label for="things">Choose your favorite thing:</label>&nbsp;
+                <select id="things">
+                    <option value="choice">Choose favorite</option>
+                    <option value="hamburger">hamburger</option>
+                    <option value="pizza">pizza</option>
+                    <option value="shawarma">shawarma</option>
+                    <option value="coke">coke</option>
+                    <option value="vodka">vodka</option>
+                    <option value="beer">beer</option>
+                    <option value="blue">blue</option>
+                    <option value="yellow">yellow</option>
+                    <option value="white">white</option>
+                </select>
+                &nbsp;
+                <button onclick="addToList();">Add</button>
+            </form>
+
+        </div>
+
+        <div id="mylist">
+            <ol id="listfav">
+
+            </ol>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+        var index = 1;
+        var checkdup = [];
+        function addToList() {
+            var fav = document.getElementById("things").value;
+
+            if (fav !== "choice") {
+                if (checkdup.indexOf(fav) === -1) {
+                    checkdup.push(fav);
+                    var mylist = document.getElementById("listfav");
+                    mylist.innerHTML += "<li>My #" + (index++) + " choice is " + fav + ".</li>";
+                }
+                else
+                    alert("Your selection is already in the list");
+            }
+            else
+                alert("You need to choose");
+        }
+    </script>
+</body>
+
+</html>
