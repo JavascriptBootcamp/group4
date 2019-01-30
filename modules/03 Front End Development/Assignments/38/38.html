@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+		<select id="food" multiple="true">
+			<option>hamburger</option>
+			<option>BBQ</option>
+			<option>salad</option>
+		</select>
+		<ol id="olist">
+		</ol>
+		<button onclick="add()">Add</button>
+	<script type="text/javascript">
+		var food = document.getElementById("food");
+		var arrFood = [];
+		for (var i=0; i<food.length; i++)
+		{
+			arrFood.push(food[i].innerHTML);
+		}
+		// var beverage = ['beer', 'vodka', 'coke'];
+		// var colors = ['blue', 'green', 'black'];
+		function add(){
+			var count = 0;
+			var ol = document.getElementById("olist");
+			ol.innerText = "food";
+			arrFood.forEach(function(item,index){
+				var selected = food.options[index].selected;
+				if (selected)
+				{
+					var li = document.createElement("li");
+					var str = 'My ' + (count+1) + switchSuffix(count + 1) + ' choice is ' + item;
+					var liText = document.createTextNode(str);
+					li.appendChild(liText);
+					ol.appendChild(li);
+					count++;
+				}
+			})
+		}
+		
+		function switchSuffix(num){
+		    switch(num) {
+		        case 1:
+		            return 'st';
+		        case 2:
+		            return 'nd';
+		        case 3:
+		            return 'rd';
+		        case 4:
+		            return 'th';
+		    }
+		}
+	</script>
+</body>
+</html>
