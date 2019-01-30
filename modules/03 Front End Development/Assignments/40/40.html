@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+		<input type="text" id="input1" placeholder="input1">
+		<input type="text" id="input2" placeholder="input2"> 
+		<input type="button" value="submit" onclick="go()">
+		<div id="res">
+		</div>
+	<script type="text/javascript">
+		function go(){
+			var res = "";
+			var input1 = document.getElementById("input1").value;
+			var input2 = document.getElementById("input2").value;
+			var result = document.getElementById("res");
+			if ((input1 < 1 || input1 > 100) || (input2 < 1 || input2 > 100))
+			{
+				res = "<div>enter values between 1 - 100</div>";
+				result.innerHTML = res;
+			}
+			else if (input2 < input1){
+				res = "<div>second number is larger than the first</div>";
+				result.innerHTML = res;
+			}
+			else{
+				for (var i = input1; i <= input2; i++)
+				{
+					if(i % 2 === 0)
+					{
+						res+= "<div>" + i + " is even" + "</div>";
+					}
+					else
+					{
+						res+= "<div>" + i + " is odd" + "</div>";
+					}
+				}
+				result.innerHTML = res;
+			}
+		}	
+	</script>
+</body>
+</html>
