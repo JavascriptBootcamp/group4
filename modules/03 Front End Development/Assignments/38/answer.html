@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form>
+        <select id="food">
+            <option>Steak</option>
+            <option>Pasta</option>
+        </select>
+
+        <ol id="olFood"></ol>
+
+        <input type="button" value="Add" onclick="add()">
+
+    </form>
+    <script>
+
+        var existFoodList = document.getElementById("food");
+        var foodArr = [];
+
+        for(var i = 0; i < existFoodList.length; i++)
+        {
+            foodArr.push(existFoodList[i].innerHTML);
+        }
+
+        function add()
+        {
+            var orderedFoodList = document.getElementById("olFood");
+
+            for(var i = 0; i < foodArr.length; i++)
+            {
+                var foodToAdd = existFoodList.options[i].selected;
+
+                if(foodToAdd)
+                {
+                    var listItem = document.createElement("li");
+                    var theText = "My #" + Number(orderedFoodList.getElementsByTagName("li").length+1) + " choice is " +  foodArr[i];
+                    var liText = document.createTextNode(theText);
+                    listItem.appendChild(liText);
+                    orderedFoodList.appendChild(listItem);
+                }
+
+
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
