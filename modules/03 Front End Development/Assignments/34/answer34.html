@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ans34</title>
+</head>
+
+<body>
+
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="text" class="myText"><br><br>
+    <input type="submit" onclick="alphanumericallySort()">
+
+    <div id="divText"></div>
+
+    <script>
+        function alphanumericallySort() {
+            var srtArray = [];
+            var divStr;
+            var inputsCounter = document.getElementsByClassName("myText").length;
+
+            for (var i = 0; i < inputsCounter; i++) {
+                srtArray[i] = document.getElementsByClassName("myText")[i].value;
+            }
+
+            srtArray.sort();
+            var unique = [...new Set(srtArray)];
+
+            divStr = unique.toString().replace(/,/g, " ");
+            document.getElementById("divText").innerHTML = divStr;
+
+        }
+    </script>
+</body>
+
+</html>
