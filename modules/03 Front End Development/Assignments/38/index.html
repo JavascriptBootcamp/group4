@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>var count = 1;</script>
+</head>
+
+<body>
+    <select id="select" onchange="func()">
+        <option disabled selected>Select A Favorite</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+    </select>
+    <ul id="list">My choices: <br>
+    </ul>
+
+    <script>
+        function func() {
+            var li = document.createElement("li");
+            li.innerText = "My #" + count + " choice is " + document.getElementById("select").value;
+            document.getElementById("list").appendChild(li);
+            count++;
+        }
+
+    </script>
+</body>
+
+</html>
