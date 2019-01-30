@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        Word 1 : <input type="text" id="word1"><br>
+        Word 2 : <input type="text" id="word2"><br>
+        Word 3 : <input type="text" id="word3"><br>
+        Word 4 : <input type="text" id="word4"><br>
+        Word 5 : <input type="text" id="word5"><br>
+        Word 6 : <input type="text" id="word6"><br>
+        Word 7 : <input type="text" id="word7"><br>
+        Word 8 : <input type="text" id="word8"><br>
+        Word 9 : <input type="text" id="word9"><br>
+        Word 10 : <input type="text" id="word10"><br>
+        
+        
+        <input type="submit" onclick="sort()">
+        <div id="di"></div><br>
+    </form>
+
+
+    <script>
+
+        function sort() {
+
+            var inputs = document.getElementsByTagName("input");
+            var d = document.getElementById("di");
+            
+            var arrOfStrs = [];
+
+            for (var index = 0; index < inputs.length; index++) {
+                arrOfStrs.push(inputs[index].value);
+            }
+
+            arrOfStrs.sort();
+            
+            for (index = 0; index < inputs.length; index++) {
+                if (arrOfStrs.lastIndexOf(arrOfStrs[index]) === index) {
+                    d.innerText += arrOfStrs[index];
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
