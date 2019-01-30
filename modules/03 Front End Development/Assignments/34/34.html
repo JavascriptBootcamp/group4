@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="text" id="input1" value="hello">
+	<input type="text" id="input2" value="world">
+	<input type="text" id="input3" value="and">
+	<input type="text" id="input4" value="practice">
+	<input type="text" id="input5" value="makes">
+	<input type="text" id="input6" value="perfect">
+	<input type="text" id="input7" value="and">
+	<input type="text" id="input8" value="hello">
+	<input type="text" id="input9" value="world">
+	<input type="text" id="input10" value="again">
+	<button onclick="sortWithoutDup()">Click</button>
+	<div id="res"></div>
+	<script type="text/javascript">
+		function sortWithoutDup(){
+			var arr = [];
+			var res = document.getElementById("res");
+			var inputs = document.getElementsByTagName("input");
+			for (var i=0; i<inputs.length; i++){
+					if (!arr.includes(inputs[i].value))
+					{
+						arr.push(inputs[i].value);
+					}	
+			}
+			arr = arr.sort();
+			res.innerHTML = arr;
+		}
+	</script>
+</body>
+</html>
