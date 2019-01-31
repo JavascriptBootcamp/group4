@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input onchange="bprange()" id="bprange" type="range" min="20" max="200">
+        <input type="text" id="bpans" ><br>
+
+
+    <script>
+        function bprange(){
+        var bloodPressure=0;
+        bloodPressure = document.getElementById("bprange").value;
+(bloodPressure >= 80 && bloodPressure <= 120) ? document.getElementById("bpans").value="isNormal" : document.getElementById("bpans").value="isNotNormal";
+(bloodPressure <= 80 || bloodPressure >= 120) ? document.getElementById("bpans").value="isNotNormal" : document.getElementById("bpans").value="isNormal";
+
+
+        }
+    </script>
+</body>
+</html>
+
