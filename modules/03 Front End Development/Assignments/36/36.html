@@ -54,7 +54,6 @@
 			{
 				cell[i].onclick = function(){
 					setTextAndFillArray(this);
-					turn = checkTurn();
 				}
 			}
 		}
@@ -66,14 +65,23 @@
 			var rowIndex = thisEl.parentNode.getAttribute("rowIndex");
 			var index = thisEl.getAttribute("index");
 			if(turn){
+				if(thisEl.innerText === "X" || thisEl.innerText==="O")
+				{
+					return;
+				}
 				thisEl.innerText = "X";
 				arr[rowIndex][index] = "X";
 			}
 			else{
+				if(thisEl.innerText === "X" || thisEl.innerText==="O")
+				{
+					return;
+				}
 				thisEl.innerText = "O";
 				arr[rowIndex][index] = "O";
 			}
 			checkWin(rowIndex, index);
+			turn = checkTurn();
 		}
 		function checkTurn(){
 			if(turn){
