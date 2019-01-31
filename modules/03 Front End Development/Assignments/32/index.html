@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 32</title>
+</head>
+
+<body>
+    <script>
+        var account1 = {
+            owner: 'david',
+            address: 'hapalmach 12',
+            balance: 1200
+        }
+        var account2 = {
+            owner: 'ariela',
+            address: 'hayarkon 32',
+            balance: 123000
+        }
+        function withdraw(amount) {
+            this.balance = this.balance - amount;
+            console.log(this.balance);
+        }
+        withdraw.call(account1, 100);
+        withdraw.call(account2, 100);
+    </script>
+</body>
+
+</html>

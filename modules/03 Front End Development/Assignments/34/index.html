@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt1" name="txt1" minlength="1">
+    <input type="text" id="txt2" name="txt2" minlength="1">
+    <input type="text" id="txt3" name="txt3" minlength="1">
+    <input type="text" id="txt4" name="txt4" minlength="1">
+    <input type="text" id="txt5" name="txt5" minlength="1">
+    <input type="text" id="txt6" name="txt6" minlength="1">
+    <input type="text" id="txt7" name="txt7" minlength="1">
+    <input type="text" id="txt8" name="txt8" minlength="1">
+    <input type="text" id="txt9" name="txt9" minlength="1">
+    <input type="text" id="txt10" name="txt10" minlength="1">
+    <button id="btn" onclick="filterAndSort();">Click Me</button><br>
+    <script>
+        function filterAndSort() {
+            var div = document.createElement("div");
+            var inputValues = [];
+            var uniqueNames = [];
+
+            for (var i = 1; i <= 10; i++) {
+                inputValues.push(document.getElementById("txt"+i).value);
+            }
+            inputValues.forEach(function(item){
+                if (!uniqueNames.includes(item)) {
+                    uniqueNames.push(item);
+                }
+            });
+            uniqueNames = uniqueNames.sort();
+            div.innerHTML=uniqueNames.join(" ");
+            document.body.appendChild(div);
+        }
+    </script>
+</body>
+</html>
