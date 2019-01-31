@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+
+
+
+    <h1>Tic Tac Toe</h1>
+    <!-- <button class="btn" onclick="reset()">התתחל משחק </button> -->
+    <input id="name1" type="text" placeholder="הכנס שם של שחקן ראשון.." />
+    <input id="name2" type="text" placeholder="הכנס שם של שחקן שני.." />
+
+    <input type="button" onclick="reset()" value="התתחל משחק " />
+    <table id="board" class="board">
+        <tr>
+            <td id="0" class="even"> <button style="display: inline-block;
+                padding: 5vh 5vw;	border: 4px solid black;	font-size: 50px;
+"
+                    value="0" onclick="startPlay(0,this.value)"></button></td>
+            <td id="1"> <button style="display: inline-block;
+                padding: 5vh 5vw;color:red;	border: 4px solid black;font-size: 50px;"
+                    value="1" onclick="startPlay(0,this.value)"></button></td>
+            <td id="2" class="even"> <button style="display: inline-block;
+                padding: 5vh 5vw;	border: 4px solid black;font-size: 50px;"
+                    value="2" onclick="startPlay(0,this.value)"></button></td>
+        </tr>
+        <tr>
+            <td id="3"> <button style="display: inline-block;
+                padding: 5vh 5vw;color:red;	border: 4px solid black;font-size: 50px;"
+                    value="3" onclick="startPlay(1,this.value)"></button></td>
+            <td id="4" class="even"> <button style="display: inline-block;
+                padding: 5vh 5vw;	border: 4px solid black;font-size: 50px;"
+                    value="4" onclick="startPlay(1,this.value)"></button></td>
+            <td id="5"> <button style="display: inline-block;
+                padding: 5vh 5vw;color:red;	border: 4px solid black;font-size: 50px;"
+                    value="5" onclick="startPlay(1,this.value)"></button></td>
+        </tr>
+        <tr>
+            <td id="6" class="even"> <button style="display: inline-block;
+                padding: 5vh 5vw;	border: 4px solid black;font-size: 50px;"
+                    value="6" onclick="startPlay(2,this.value)"></button></td>
+            <td id="7"> <button style="display: inline-block;
+                padding: 5vh 5vw;color:red;	border: 4px solid black;font-size: 50px;"
+                    value="7" onclick="startPlay(2,this.value)"></button></td>
+            <td id="8" class="even"> <button style="display: inline-block;
+                padding: 5vh 5vw;	border: 4px solid black;font-size: 50px;"
+                    value="8" onclick="startPlay(2,this.value)"></button></td>
+        </tr>
+        <div id="display" style="color:red;font-size: 50px;"></div>
+
+    </table>
+    <script>
+        var board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+        turn = 1;
+        function gameOver() {
+            return board.some(function (row) {
+                // console.log(cell);
+                   return row.some(function (cell) {
+                        return (cell !== 'X' && cell !== 'O')
+
+                    }
+
+                    );
+                // if (cell === 'X' || cell === 'O') {
+                //     return true;
+                // }
+                // return false;
+            }
+
+            );
+
+        }
+        function mod(n, m) {
+            //java script % bug on negative number, hance re-definishion
+            return ((n % m) + m) % m;
+        }
+        function reset() {
+            turn = 1;
+            board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+            window.location.reload();
+
+        }
+        function win(row, col) {
+            console.log(row, col);
+            var playerSign = turn === 1 ? 'X' : 'O';
+            return (board[row][(col + 1) % 3] === playerSign && board[row][mod((col - 1), 3)] === playerSign) ||
+                (board[(row + 1) % 3][col % 3] === playerSign && board[mod(row - 1, 3)][col % 3] === playerSign) ||
+                (board[0][0] === playerSign && board[1][1] === playerSign && board[2][2] === playerSign) || (board[0][2] === playerSign && board[1][1] === playerSign && board[2][0] === playerSign);
+            // ([row,col]!==([0,1],[1,0],[1,2],[2,1])&&board[(row + 1) % 3][(col + 1) % 3] === playerSign && board[mod(row - 1, 3)][mod(col - 1, 3)] === playerSign) ||
+            // ([row,col]!==([0,1],[1,0],[1,2],[2,1])&&board[mod(row - 1, 3)][(col + 1) % 3] === playerSign && board[mod(row + 1, 3)][mod(col - 1, 3)] === playerSign);
+            //     (board[row][col % 3] === playerSign && board[row][col % 3] === playerSign);
+
+
+        }
+        function startPlay(row, col) {
+            // reset();
+
+            var playerOne = document.getElementById("name1").value;
+            var playerTwo = document.getElementById("name2").value
+
+            console.log(document.getElementsByTagName("tr"))
+            // turn === 1 ? board[row][col % 3] = 'X' document.getElementById("id").innerText += : board[row][col % 3] = 'O';
+            if (turn === 1) {
+                board[row][col % 3] = 'X'
+                //document.getElementById(col).innerHTML ="<h1> 'X'</h1>";
+                document.getElementsByTagName("button")[col].innerHTML = 'X';
+
+
+            }
+            else {
+                board[row][col % 3] = 'O'
+                document.getElementsByTagName("button")[col].innerHTML = 'O';
+            }
+
+            if (win(row, col)) {
+                turn === 1 ? document.getElementById("display").innerText += " the winner is " + playerOne
+                    : document.getElementById("display").innerText += "gameOver the winner is " + playerTwo;
+                console.log("win");
+            }
+            console.log(board);
+            if (gameOver()===false) {
+
+                document.getElementById("display").innerText += "Its A Tie! ";
+                // reset();
+            }
+            turn === 1 ? turn = 2 : turn = 1;
+        
+            // for (let index = 0; index < numbers.length - 1; index++) {
+
+            //     if (numbers[index].value % 2 === 0) {
+            //         document.getElementById("id").innerText += index + " is even ";
+
+
+            //     }
+            //     else {w
+            //         document.getElementById("answer").innerText += index + " is odd ";
+
+            //     }
+
+            // }
+            // if (numbers[1].value > numbers[0].value) {
+            //     document.getElementById("answer").innerText = " ERROR!! ";
+
+            // }
+            // document.getElementById("answer").innerHTML += "<br>";
+
+        }
+    </script>
+</body>
+
+</html>
