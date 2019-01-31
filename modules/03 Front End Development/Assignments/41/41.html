@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="text" id="input1" onkeyup="palindrome()">
+	<div id="res">
+	</div>
+	<script type="text/javascript">
+		var res = document.getElementById("res");
+		function palindrome(){	
+			var str = document.getElementById("input1").value;
+		    var x = str.length-1;
+		    console.log(x ,str);
+		    for(var i=0; i< str.length/2; i++){
+		        if(str[i] !== str[x])
+		        {
+		            res.innerText = "not palindrome";
+		            return;
+		        }
+		        x--;
+
+		    } 
+		    res.innerText = "palindrome";;
+		}
+	</script>
+</body>
+</html>
