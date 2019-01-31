@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label for="player1">player 1:</label>
+    <input type="text" name="player1" id="player1" required maxlength="1"><br>
+    <label for="player2">player 2:</label>
+    <input type="text" name="player2" id="player2" required maxlength="1"><br>
+
+    <table id="xoMatrix">
+        <tr width="50" height="50">
+            <td><button width="50" height="50"> </button> </td>
+            <td><button width="50" height="50"> </button> </td>
+            <td><button width="50" height="50"> </button> </td>
+        </tr>
+        <tr width="50px" height="50px">
+            <td><button width="50px" height="50px"> </button> </td>
+            <td><button width="50px" height="50px"> </button> </td>
+            <td><button > </button> </td>
+        </tr>
+        <tr width="50px" height="50px">
+            <td><button width="50px" height="50px"> </button> </td>
+            <td><button width="50px" height="50px"> </button> </td>
+             <td><button width="50px" height="50px"> </button> </td>
+            </tr>
+    </table>
+
+    <button onclick="startGame()">Start Game</button>
+
+    <script>
+        function drawSymbol(btn,indexBtn,symbol){
+            if(btn.value !== ''){
+                return;
+            }
+            btn.value = symbol;
+            checkForWinner();
+
+        }
+
+        function checkForWinner(){
+            for(var btn in buttons){
+                if(buttons.hasOwnProperty(btn)){
+                    
+                }
+            }
+        }
+
+        function startGame(){
+            var symbolPlayer1 = document.getElementById("player1").textContent;
+            var symbolPlayer2 = document.getElementById("player2").textContent;
+            var matrix = document.getElementById("xoMatrix");
+
+            var currentSymbol = '';
+
+            var buttons = document.getElementsByTagName("button");
+            for(var btn in buttons){
+                if(buttons.hasOwnProperty(btn)){
+                    if(i % 2 === 0){
+                        currentSymbol = symbolPlayer1;
+                    }
+                    else{
+                        currentSymbol = symbolPlayer2;
+                    }
+                btn.onclick=drawSymbol.bind(null,btn,i++,currentSymbol);
+                }
+            }
+
+            if(symbolPlayer1 === symbolPlayer2){
+                console.log("The symbols of the players are same!");
+                return;
+            }
+        }
+    </script>
+</body>
+</html>
