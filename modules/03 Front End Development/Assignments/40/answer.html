@@ -26,7 +26,7 @@
             var d = document.getElementById("di");
 
             if (Number(low) <= Number(high)) {
-                for (var i = low; i <= high; i++) {
+                for (var i = Number(low); i <= Number(high); i++) {
                     if (i % 2 === 0) {
                         var newDiv = document.createElement("div");
                         newDiv.innerText = i + " is even";
