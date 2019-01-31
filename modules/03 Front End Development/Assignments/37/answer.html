@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blood pressure</title>
+</head>
+
+<body>
+    <div>
+        <input type="range" name="rangeBP" id="rangeBP" min="0" max="160" step="5" onchange="updateStatusBP()">
+    </div>
+    <div id="resultBP">Normal</div>
+
+    <script>
+        function updateStatusBP(){
+            var bloodPressure = document.getElementById("rangeBP").value;
+            var isNormal = false;
+            var status = "Not normal";
+
+            isNormal = bloodPressure > 80 && bloodPressure < 120;
+            //isNormal = bloodPressure < 80 || bloodPressure > 120;
+
+            if(isNormal){
+                status = "Normal";
+            }
+
+            var divResult = document.getElementById("resultBP");
+            divResult.innerText = status;
+        }
+
+    </script>
+</body>
+
+</html>
