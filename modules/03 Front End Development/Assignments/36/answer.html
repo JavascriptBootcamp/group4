@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <label for="pl1">Player 1 (X)</label>
+        <input type="text" id="pl1"><br>
+
+
+        <label for="pl2">Player 2 (O)</label>
+        <input type="text" id="pl2"><br>
+
+        <input type="submit" value="Start Game" name="submit" onclick="start()"><br>
+        <div id="di"></div><br>
+
+        <table border="2">
+            <tr>
+                <td>
+                    <input type="button" name="0 0" onclick="selectXorO(`0 0`)">
+                </td>
+                <td>
+                    <input type="button" name="1 0" onclick="selectXorO(`1 0`)">
+                </td>
+                <td>
+                    <input type="button" name="2 0" onclick="selectXorO(`2 0`)">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" name="0 1" onclick="selectXorO(`0 1`)">
+                </td>
+                <td>
+                    <input type="button" name="1 1" onclick="selectXorO(`1 1`)">
+                </td>
+                <td>
+                    <input type="button" name="2 1" onclick="selectXorO(`2 1`)">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" name="0 2" onclick="selectXorO(`0 2`)">
+                </td>
+                <td>
+                    <input type="button" name="1 2" onclick="selectXorO(`1 2`)">
+                </td>
+                <td>
+                    <input type="button" name="2 2" onclick="selectXorO(`2 2`)">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+    <script>
+
+        var turn;
+        var board = [];
+        var fin;
+        var d;
+
+        function start() {
+            // if the player press 'start game' button after the game is finished.
+            if (fin === 1 || fin === 2) {
+                return false;
+            }
+
+            turn = 1;
+            d = document.getElementById("di");
+            d.innerText = document.getElementById("pl1").value + " is your turn";
+            document.getElementsByName("submit")[0].disabled = true;
+
+            board = new Array(3);
+            for (var i = 0; i < board.length; i++) {
+                board[i] = new Array(3);
+            }
+
+        }
+
+
+        function selectXorO(str) {
+
+            var x_y = str.split(" ");
+            var x = x_y[0];
+            var y = x_y[1];
+
+            //var name = element.getAttribute("name");
+
+            if (turn === 1) {       // player 1's turn
+                // button's view change to X and disabled it
+                document.getElementsByName(str)[0].value = "X";
+                document.getElementsByName(str)[0].disabled = true;
+                board[x][y] = "1";
+                // turn goes to the other playerd.
+                d.innerText = document.getElementById("pl2").value + " is your turn";
+                turn = 2;
+            } else {                // player 2's turn
+                // button's view change to O and disabled it
+                document.getElementsByName(str)[0].value = "O";
+                document.getElementsByName(str)[0].disabled = true;
+                // turn goes to the other playerd.
+                d.innerText = document.getElementById("pl1").value + " is your turn";
+                board[x][y] = "2";
+                turn = 1;
+            }
+
+            fin = finish(); // 1 if player 1 wins, 2 if player 2 wins and 0 if game needs to contuniue  
+            if (fin === 1) {
+                d.innerText = document.getElementById("pl1").value + " WIN!!!!";
+            } else if (fin === 2) {
+                d.innerText = document.getElementById("pl2").value + " WIN!!!!";
+            }
+
+        }
+
+        function finish() {
+            if (check_if_player_wins(1)) {
+                return 1;
+            }
+            if (check_if_player_wins(2)) {
+                return 2;
+            }
+            return 0; // game still on
+        }
+
+        function check_if_player_wins(player) {
+
+            var x, y;
+            var row_win = true;
+            var col_win = true;
+            var diag_win = true;
+            var cross_win = true;
+
+            function isTheSamePlayer(currentValue) {
+                return currentValue == player;
+            }
+
+            // check row
+            for (x = 0; x < board.length; x++) {
+                
+                for (y = 0; y < board.length; y++) {
+                    if (board[x][y] != player) {
+                        col_win = false;
+                    }
+                    
+                    if (board[y][x] != player) {
+                        row_win = false;
+                    }
+
+                }
+
+                
+                // check diag
+                if (board[x][x] != player) {
+                    diag_win = false;
+                }
+                // check cross
+                if (board[board.length - x - 1][x] != player) {
+                    cross_win = false;
+                }
+
+                // check col
+                
+
+                if (diag_win || cross_win || col_win || row_win) {
+                    return player;
+                }
+
+                col_win = true;
+                row_win = true;
+
+            }
+
+            return 0;
+        }
+
+    </script>
+</body>
+
+</html>
