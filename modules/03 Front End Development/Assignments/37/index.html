@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body onload="change_bloodPressure(70)">
+
+    <div>
+        bloodPressure: <input type="range" value="70" onchange="change_bloodPressure(this.value)" id="bloodPressure" name="bloodPressure" min="0" max="120">
+    </div>
+    <div id="isNormal">
+
+    </div>
+
+    <script>
+        function change_bloodPressure(bloodPressure) {
+            var isNormal = false;
+            isNormal = (bloodPressure >= 80 && bloodPressure <= 120);
+            isNormal = (bloodPressure <= 80 || bloodPressure >= 120);
+            document.getElementById("isNormal").innerText = isNormal ? `${bloodPressure} is Normal` : `${bloodPressure} is unNormal`;
+        }
+
+
+    </script>
+</body>
+
+</html>
