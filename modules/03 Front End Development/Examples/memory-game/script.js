@@ -4,7 +4,6 @@ function Board(_images) {
     var selectedFirstCard = null, selectedSecondCard = null;
     var cards = [];
     var matches = [];
-    var zeroIndexSelected = false;//
     (function shuffle() { //IIFE
         var randomImage, randomIndex;
         while (images.length > 0) {
@@ -40,7 +39,7 @@ function Board(_images) {
         setSelectedCards(currentCardIndex);
     }
     function setSelectedCards(currentCardIndex) {
-        if (selectedFirstCard) {
+        if (selectedFirstCard !== null) {// changed because index 0
             selectedSecondCard = currentCardIndex;
             checkMatch();
         }
@@ -58,14 +57,11 @@ function Board(_images) {
             checkWin();
             matches.push(selectedFirstCard);
             matches.push(selectedSecondCard);
-            zeroIndexSelected = (zeroIndexSelected || selectedFirstCard === 0 || selectedSecondCard === 0) ? true:false;// 'includes' has a problem with index 0
-            // check the constraint as == and not ===
             selectedFirstCard = null;
             selectedSecondCard = null;
         }
         else {
             toggleState(true);
-            //disableAll();
             setTimeout(function(){
                 resetImages(document.getElementById("image" + selectedFirstCard), document.getElementById("image" + selectedSecondCard));
                 selectedFirstCard = null;
@@ -75,10 +71,7 @@ function Board(_images) {
         }
     }
     function toggleState(enable) {
-        if(!zeroIndexSelected){
-            document.getElementById("image0").disabled = enable;
-        }
-        for (var i=1;i<cards.length;i++){
+        for (var i=0;i<cards.length;i++){
             if (!matches.includes(i)){// the change
                 document.getElementById("image" + i).disabled = enable;
             }
@@ -111,3 +104,4 @@ var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 board.display(document.getElementById("board"));
+console.log('ds');
