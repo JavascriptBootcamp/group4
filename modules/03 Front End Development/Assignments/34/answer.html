@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 34</title>
+</head>
+<body>
+    <input type="text" id="txt1" name="txt1" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt2" name="txt2" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt3" name="txt3" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt4" name="txt4" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt5" name="txt5" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt6" name="txt6" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt7" name="txt7" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt8" name="txt8" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt9" name="txt9" pattern="[^' ']+" minlength="1">
+    <input type="text" id="txt10" name="txt10" pattern="[^' ']+" minlength="1">
+    <button id="btn" onclick="getSortedString()">Click Me</button><br>
+    <script>
+        function getSortedString() {
+            var div = document.createElement("div");
+            var inputs = [];
+            var uniqueStrings = [];
+
+            for (var i = 1; i <= 10; i++) {
+                inputs.push(document.getElementById("txt" + i).value.split(' ')[0]);
+            }
+            inputs.forEach(function(item){
+                if (!uniqueStrings.includes(item)) {
+                    uniqueStrings.push(item);
+                }
+            });
+            uniqueStrings = uniqueStrings.sort();
+            div.innerHTML=uniqueStrings.join(' ');
+            document.body.appendChild(div);
+        }
+    </script>
+</body>
+</html>
