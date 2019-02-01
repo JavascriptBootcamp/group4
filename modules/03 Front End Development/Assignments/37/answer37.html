@@ -7,23 +7,23 @@
 <body>
         <h2>BloodPressure</h2>
     
-        <input type="range" onchange="isNormal('bloodPressure')" id="bloodPressure" min="20" max="200" step="5"> 
-        <label id="l"></label>
+        <input type="range" onchange="isNormal('bloodPressure')" id="bloodPressure" min="20" max="200" > 
+        <label id="displayBloodPressure></label>
     
         <br>
     
-        <div id="indicates" style="color:red"></div>
+        <div id="newDiv" style="color:red"></div>
         <script>
             function isNormal(id) {
                 var bloodPressure = document.getElementById(id).value;
-                document.getElementById("l").innerText = bloodPressure;
+                document.getElementById("displayBloodPressure").innerText = bloodPressure;
                 var isNormal = false;
                 (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
                 (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
                 if (isNormal)
-                    document.getElementById("indicates").innerText = "NORMAL";
+                    document.getElementById("newDiv").innerText = "NORMAL";
                 else
-                    document.getElementById("indicates").innerText = "NOT NORMAL";
+                    document.getElementById("newDiv").innerText = "NOT NORMAL";
             }
         </script>
     </body>
