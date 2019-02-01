@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>  favorite list</title>
+</head>
+
+<body>
+   
+    <form>
+        <select id="food">
+            <option>hamburger</option>
+            <option>BBQ</option>
+            <option>salad</option>
+
+        </select>
+        <select id="beverage">
+            <option>beer</option>
+            <option>vodka</option>
+            <option>coke</option>
+
+        </select>
+       
+
+        <input type="button" value="Add" onclick="add()">
+
+    </form>
+    <ol id="favoriteFoodlist" style="color:red"></ol>
+    <ol id="favoriteBeveragelist"></ol>
+
+    <script>
+    var counter=1;
+    function add(){
+        var choosenFood=document.getElementById("food").value;
+        var choosenBeverage=document.getElementById("beverage").value;
+        document.getElementById("favoriteFoodlist").innerText+=`My #${counter} choice is ${choosenFood}`
+        document.getElementById("favoriteBeveragelist").innerText+=`My #${counter} choice is ${choosenBeverage}`
+        counter++;
+        document.getElementById("favoriteFoodlist").innerHTML+="<br>";
+        document.getElementById("favoriteBeveragelist").innerHTML+="<br>";
+    }
+    
+    
+    </script>
+</body>
+
+</html>
