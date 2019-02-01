@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe</title>
+</head>
+
+<body>
+    Player 1:<br>
+    <input type="text" id="player1"><br>
+    Player 2:<br>
+    <input type="text" id="player2"><br><br>
+    <button id="start" onclick="startGame()">Play!</button>
+    <br><br><br>
+    <div id="game zone">
+        <table id="game table" border="1">
+            <tr>
+                <td><button id="0" class="marks" style="width: 60px; height: 60px;"></button></td>
+                <td><button id="1" class="marks" style="width: 60px; height: 60px;"></button></td>
+                <td><button id="2" class="marks" style="width: 60px; height: 60px;"></button></td>
+            </tr>
+
+            <tr>
+                <td><button id="3" class="marks" style="width: 60px; height: 60px;"></button></td>
+                <td><button id="4" class="marks" style="width: 60px; height: 60px;"></button></td>
+                <td><button id="5" class="marks" style="width: 60px; height: 60px;"></button></td>
+            </tr>
+
+            <tr>
+                <td><button id="6" class="marks" style="width: 60px; height: 60px;"></button></td>
+                <td><button id="7" class="marks" style="width: 60px; height: 60px;"></button></td>
+                <td><button id="8" class="marks" style="width: 60px; height: 60px;"></button></td>
+            </tr>
+
+        </table>
+        <br>
+        <button id="replay" onclick="startGame()">Retry</button>
+    </div>
+
+    <div id="winnerZone"></div>
+
+
+    <script>
+        document.getElementById("game zone").style.visibility = "hidden";
+
+        var originalBoard;
+        var player1 = "X";
+        var player2 = "O";
+        var turnsCounter = 0;
+
+        // 0 1 2
+        // 3 4 5 
+        // 6 7 8
+        var wimCombination = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        var cells = document.querySelectorAll(".marks");
+
+        function startGame() {
+            document.getElementById("game zone").style.visibility = "visible";
+            turnsCounter = 0;
+            originalBoard = [0,1,2,3,4,5,6,7,8];
+
+            for (var i = 0; i < cells.length; i++) { //for reset the game
+                cells[i].innerText = "";
+                cells[i].disabled = false;
+                cells[i].addEventListener('click', turnClick, false);
+                document.getElementById('winnerZone').innerText = "";
+            }
+        }
+
+        function turnClick(square) {
+            this.disabled = true;
+            turnsCounter++;
+            if (turnsCounter % 2 !== 0) {
+                turn(square.target.id, player1);
+            }
+            else {
+                turn(square.target.id, player2);
+            }
+        }
+
+        function turn(squareId, player) {
+            originalBoard[squareId] = player;
+            document.getElementById(squareId).innerText = player;
+            var isWinner = checkWin(originalBoard, player);
+            if (isWinner) {
+                gameOver(isWinner)
+            }
+        }
+
+        function checkWin(board, player) {
+            var plays = board.reduce((acc, element, i) =>
+                (element === player) ? acc.concat(i) : acc, []);
+
+            var isWinner = null;
+            console.log(plays);
+
+            for (var [index, win] of wimCombination.entries()) {
+                if (win.every(elem => plays.indexOf(elem) > -1)) {
+                    isWinner = { player: player };
+                    break;
+                }
+            }
+            return isWinner;
+        }
+
+        function gameOver(isWinner) {
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].removeEventListener('click', turnClick, false);
+            }
+
+            if (isWinner.player === "X") {
+                document.getElementById("winnerZone").innerText = "The winner is: " + document.getElementById('player1').value;
+            }
+            else {
+                document.getElementById("winnerZone").innerText = "The winner is: " + document.getElementById('player2').value;
+            }
+
+        }    
+    </script>
+</body>
+
+</html>
