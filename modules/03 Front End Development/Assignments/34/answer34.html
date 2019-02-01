@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>sorted input words</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   
+</head>
+
+<body>
+    <h3>enter 10 words to sort</h3>
+    <form onsubmit="return false">
+       <input type="text" name="words" id="word1"><br><br>
+        <input type="text" name="words" id="word2"><br><br>
+        <input type="text" name="words" id="word3"><br><br>
+        <input type="text" name="words" id="word4"><br><br>
+        <input type="text" name="words" id="word5"><br><br>
+        <input type="text" name="words" id="word6"><br><br>
+        <input type="text" name="words" id="word7"><br><br>
+        <input type="text" name="words" id="word8"><br><br>
+        <input type="text" name="words" id="word9"><br><br>
+        <input type="text" name="words" id="word10"><br><br>
+        <input type="submit" onclick="sortWords()">
+        <div id="divShow"></div>
+    </form>
+    
+    
+    <script>
+        function sortWords() {
+            var words = [],sortWords=[];
+          
+            var wordsElements = document.getElementsByName("words");
+            var show=document.getElementById("divShow");
+            for (let i = 0; i < wordsElements.length; i++) {
+                words.push(wordsElements[i].value);
+
+            }
+            
+            words.sort();
+            for (let i = 0; i < wordsElements.length; i++) {
+              
+                    if (words.lastIndexOf(words[i])=== i) {
+                        sortWords.push(words[i]);
+                    }
+            }
+            show.innerHTML=sortWords.join(' ');
+        }
+    </script>
+</body>
+
+</html>
