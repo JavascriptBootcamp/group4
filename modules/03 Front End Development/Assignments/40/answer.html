@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Even or Odd??</title>
+</head>
+
+<body>
+  
+		<input type="number" id="number1" min="1" max="100" required>
+		<input type="number" id="number2" min="1" max="100" required> 
+    <input type="button" value="Check!" onclick="evenOroddChecker()">
+        
+		<div id="result"></div>
+
+
+    <script>
+        function evenOroddChecker()
+        {
+            var num1 = document.getElementById("number1").value;
+            var num2 = document.getElementById("number2").value;
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+            
+            if(num1 > num2)
+            {
+                
+                var error = document.createElement("div");
+                error.innerHTML = "second number is larger than the first";
+                resultDiv.appendChild(error);
+            }
+            
+            else if( num1 < 1 || num1 > 100 || num2 < 1 || num2 > 100)
+            {
+                var error = document.createElement("div");
+                error.innerHTML = "only numbers between 1 - 100 accepted!";
+                resultDiv.appendChild(error);
+            }
+
+            else
+            {
+                for (let i = num1 ; i <  num2; i++)
+                {
+                    let answer = i % 2 === 0 ? "even" : "odd";
+
+                    let output = document.createElement("div");
+                    output.innerHTML = i + " is " + answer;
+
+                    resultDiv.appendChild(output);
+                   
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
