@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	select your blood Pressure :
+	<input type="range" id="range" min="0" max="200">
+	<div id="res">
+	</div>
+	<script type="text/javascript">
+
+		var res = document.getElementById("res");
+		var bloodPressure = document.getElementById("range");
+
+		bloodPressure.onchange = function () {
+			var value = bloodPressure.value;
+			var isNormal = false;
+			isNormal = (value < 80 && value > 120) ? false : true;
+			if (isNormal)
+				res.innerHTML = value + " " + "is normal";
+			else
+				res.innerHTML = value + " " + "not normal";
+
+		}
+	</script>
+</body>
+
+</html>
