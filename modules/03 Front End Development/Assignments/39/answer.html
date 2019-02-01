@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission 39 FED</title>
+</head>
+
+<body>
+    <table id="shoppingCartTable">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+
+        <tr>
+            <td>
+                <select id="productsName">
+                    <option>PS4</option>
+                    <option>PC</option>
+                    <option>Laptop</option>
+                    <option>God of War PC-Game</option>
+                    <option>Levis jeans</option>
+                    <option>Nothing :D</option>
+                </select>
+            </td>
+            <td>
+                <input id="productPrice" type="number">
+            </td>
+            <td>
+                <button id="productAction" onclick="addProduct()">Add</button>
+            </td>
+        </tr>
+    </table>
+
+    <h4>Total Cost:</h4><br>
+    <div id="totalCost"></div>
+
+    <form id="paymentInfo" action="http://localhost:3000/Order" method="POST" onsubmit="return false">
+        Card Number:<input id="cardNumber" type="text" required><br><br>
+        Name on card:<input id="nameOnCard" type="text" required><br><br>
+        Expiry date:<input id="expiryDate" type="date" required><br><br>
+        Security Code<input id="securityCode" type="number" minlength="3" maxlength="3" required><br><br>
+        <input type="submit" id="submitBtn" value="Submit" onclick="validateInputs()">
+    </form>
+
+    <div id="errorDiv"></div>
+
+    <script>
+        // accumulator
+        var pTotal = 0;
+        function addProduct() {
+            // ref to the table
+            var tShoppingCart = document.getElementById("shoppingCartTable");
+            var pName = document.getElementById("productsName").value;
+            var pPrice = document.getElementById("productPrice").value;
+            // ref to the div
+            var pTotalPH = document.getElementById("totalCost");
+
+            pTotal += register({ pName: pPrice });
+            pTotalPH.innerHTML = pTotal;
+
+            var new_tr = document.createElement("tr");
+            var new_name_td = document.createElement("td");
+            var new_price_td = document.createElement("td");
+            var new_action_td = document.createElement("td");
+            var new_rmvBtn = document.createElement("button");
+            new_rmvBtn.innerText = "Remove";
+            new_name_td.innerText = pName;
+            new_price_td.innerText = pPrice;
+            new_rmvBtn.onclick = function () {
+                this.parentNode.parentNode.remove();
+                pTotal -= register({ pName: pPrice });
+                pTotalPH.innerHTML = pTotal;
+            }
+
+            //cascading...
+            new_tr.appendChild(new_name_td);
+            new_tr.appendChild(new_price_td);
+            new_tr.appendChild(new_action_td);
+            new_action_td.appendChild(new_rmvBtn);
+            tShoppingCart.appendChild(new_tr);
+        }
+
+        function register(cart) {
+            var totalCost = 0;
+
+            for (var c in cart) {
+                totalCost += Number(cart[c]);
+            }
+
+            return totalCost;
+        }
+
+        function validateInputs() {
+            var theCreditCardNumber = document.getElementById("cardNumber").value;
+            
+            var errorDivRef = document.getElementById("errorDiv");
+            errorDivRef.innerHTML = " ";
+            var paymentInfo = document.getElementById("paymentInfo");
+            var result = validateCreditCard(theCreditCardNumber);
+
+            if (result.valid) {
+                errorDivRef.innerHTML = " ";
+                paymentInfo.onsubmit = true;
+            }
+
+            else {
+                errorDivRef.innerHTML = result.error;
+            }
+        }
+
+
+        function validateCreditCard(creditCard) {
+            var CreditCardAnalyzer =
+            {
+                valid: false,
+                number: creditCard,
+                error: "wrong_input_type",
+            }
+
+            // first we wanna see if the value of creditCard is null/undefined/0/false et cetera and some more validations..
+            if (creditCard && (typeof creditCard == 'string' || creditCard instanceof String || !isNaN(creditCard))) {
+                // convert the input to a string so will be more comfortable to validate the input.
+                var creditCardStr = String(creditCard);
+
+                switch (creditCardStr.length) {
+                    // Rule No.1
+                    case 16:
+                        {
+                            CreditCardAnalyzer = StandardRulesExaminer(creditCardStr, CreditCardAnalyzer);
+                            break;
+                        }
+                    //Bonus rule No.1
+                    case 19:
+                        {
+                            if (isCreditCardContainValidDashes(creditCardStr)) {
+                                creditCardStr = removeDashesFromCreditCard(creditCardStr);
+
+                                CreditCardAnalyzer = StandardRulesExaminer(creditCardStr, CreditCardAnalyzer);
+                            }
+                            else {
+                                CreditCardAnalyzer.error = "invalid_dashes";
+                            }
+                            break;
+                        }
+
+                    default:
+                        {
+                            CreditCardAnalyzer.error = "wrong_length";
+                            break;
+                        }
+                }
+            }
+
+            return CreditCardAnalyzer;
+        }
+
+        // Helper Function for rule No.4.
+        function sumDigitsOfNumber(theNumber) {
+            var sum = 0;
+
+            while (theNumber) {
+                sum += theNumber % 10;
+                theNumber = Math.floor(theNumber / 10);
+            }
+
+            return sum;
+        }
+
+
+        // Rule No.4
+        function isSumOfAllDigitsGreaterThan16(theNumber) {
+            return sumDigitsOfNumber(theNumber) > 16;
+        }
+
+        // Rule No.3
+        function isLastDigitEven(theNumber) {
+            return theNumber[theNumber.length - 1] % 2 === 0;
+        }
+
+        // Helper function for bonus No. 1
+        function isCreditCardContainValidDashes(creditCard) {
+            var creditCardStr = String(creditCard);
+            var isValid = true;
+
+            if (creditCardStr.match(/-/g).length !== 3) {
+                isValid = false;
+            }
+            else {
+                for (var i = 4; i < creditCardStr.length; i += 5)
+                //1111-1111-1111-1111
+                {
+                    if (creditCardStr[i] !== "-") {
+                        isValid = false;
+                        break;
+                    }
+                }
+            }
+
+            return isValid;
+        }
+
+        // Rule No.2
+        function isTwoDigitsAtLeastDiff(theNumber) {
+            digitsArray = Array.from(theNumber.toString()).map(Number);
+
+            digitsArray = digitsArray.sort(function (a, b) { return a - b });
+
+            return digitsArray[0] !== digitsArray[digitsArray.length - 1];
+        }
+        function removeDashesFromCreditCard(theNumber) {
+            return theNumber.replace(/\-/g, '');
+        }
+
+        function StandardRulesExaminer(creditCardStr, CreditCardAnalyzer) {
+            if (isSumOfAllDigitsGreaterThan16(Number(creditCardStr))) {
+
+                if (isLastDigitEven(creditCardStr)) {
+                    if (isTwoDigitsAtLeastDiff(Number(creditCardStr))) {
+                        delete CreditCardAnalyzer.error;
+                        CreditCardAnalyzer.valid = true;
+                    }
+                    else {
+                        CreditCardAnalyzer.error = "there_is_no_two_diff_digits_atleast";
+                    }
+                }
+                else {
+                    CreditCardAnalyzer.error = "last_digit_isnt_even";
+                }
+            }
+            else {
+                CreditCardAnalyzer.error = "sum_of_digits_isnt_greater_than_16";
+            }
+
+            return CreditCardAnalyzer;
+        }
+
+    </script>
+</body>
+
+</html>
