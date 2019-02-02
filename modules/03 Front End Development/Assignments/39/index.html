@@ -119,23 +119,23 @@
             var CreditCardNum = updateCreditCardFormat(CreditCardNumber);
             var div = document.getElementById("submitValidation");
             if (!numberLengthValidation(CreditCardNum)) {
-                div.innerText = "wrong_length";
+                div.innerText = "Credit Card Number:wrong_length";
                 return;
             }
             if (!areNumbers(CreditCardNum)) {
-                div.innerText = "only one type of number";
+                div.innerText = "Credit Card Number:only one type of number";
                 return;
             }
             if (areTheSameDigits(CreditCardNum)) {
-                div.innerText = "invalid characters";
+                div.innerText = "Credit Card Number:invalid characters";
                 return;
             }
             if (!isFinalDigitEven(CreditCardNum)) {
-                div.innerText = "odd final number";
+                div.innerText = "Credit Card Number:odd final number";
                 return;
             }
             if (!isSumGreaterThanSixTeen(CreditCardNum)) {
-                div.innerText = "sum less than 16";
+                div.innerText = "Credit Card Number:sum less than 16";
                 return;
             }
 
