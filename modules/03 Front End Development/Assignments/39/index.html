@@ -1,0 +1,99 @@
+<html>
+
+<head>
+
+    <title>shopping cart</title>
+    <script type="text/javascript" src="validCard.js"></script>
+</head>
+
+<body>
+
+    <fieldset>
+        <legend> Cart:
+        </legend>
+        <table border="2" id="table">
+            <tr bgcolor="grey">
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <tr bgcolor="grey">
+                <td>
+                    <select id="name">
+                        <option value="T-shirt">T-shirt</option>
+                        <option value="cap">cap</option>
+                        <option value="Iphone-8s">Iphone-8s</option>
+                        <option value="book">book</option>
+                        <option value="Watch">Watch</option>
+                        <option value="Glasses">Glasses</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Hat">Hat</option>
+                        <option value="speaker">speaker</option>
+                        <option value="Bag">Bag</option>
+                    </select>
+                </td>
+                <td><input type="number" id="price" min="0" placeholder="0">$</td>
+                <td><input type="button" id="add" onclick="add()" value="  Add   "></td>
+            </tr>
+        </table>
+        <br>
+        <div>
+            <label for="total">Total:</label><input type="text" name="total" id="total" disabled size="3">
+        </div>
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend> payment:
+        </legend>
+        <form id="payment" method="post" action="http://localhost:3000/Order" onsubmit="return false">
+            <input type="text" id="CardNumber" placeholder="Card Number" required><br>
+            <input type="text" id="NameOnCard" placeholder="Name on card" required><br>
+            <input type="date" id="ExpiryDate" placeholder="Expiry date" required><br>
+            <input type="text" pattern="[0-9]{3}" id="SecurityCode" placeholder="Security code" maxlength="3" oninput="submitEnable()"
+                required><br>
+            <input type="submit" id="submit" value="submit" onclick="validate()" disabled>
+        </form>
+    </fieldset>
+
+    <script>
+        var prodactId = 0;
+        var total = 0;
+        function add() {
+            var name = document.getElementById("name").value;
+            var price = Number(document.getElementById("price").value);
+            total += price;
+            document.getElementById("total").value = total;
+            prodactId++;
+            if (price) {
+                document.getElementById("table").innerHTML += '<tr id="' + prodactId + '" bgcolor="#00aabb"><td>' +
+                    name + '</td><td disabled>' + price + '$</td><td><input type="button" id="remove" onclick="remove(' +
+                    prodactId + ',' + price + ')" value="remove"></td></tr>';
+            }
+            else
+                alert("Please enter price..");
+        }
+
+        function remove(prodactId, price) {
+            total -= price;
+            document.getElementById("total").value = total;
+            document.getElementById(prodactId).remove();
+        }
+
+        function submitEnable() {
+            document.getElementById("submit").disabled = false;
+
+        }
+        function validate() {
+            var card = document.getElementById("CardNumber").value;
+            if (document.getElementById("SecurityCode").value && validateCreditCard(card).valid)
+                payment.onsubmit = true;
+            else
+                alert(validateCreditCard(card).error);
+
+
+        }
+
+    </script>
+</body>
+
+</html>
