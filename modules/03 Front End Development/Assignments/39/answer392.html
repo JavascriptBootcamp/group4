@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:3000/Order" method="post" onsubmit="return Validate();">
+        <p>Card Number : </p><input type="text" id="CardNumber" required>
+        <p>Name : </p><input type="text" id="Name" required>
+        <p>Expiry date : </p><input type="date" id="ExpDate" required>
+        <p>Security code : </p><input type="text" id="SecurityCode" required><br><br>
+        <button type="submit">Submit</button>
+        <div id="message"></div>
+    </form>
+    <script>
+        function Validate() {
+            var card = document.getElementById("CardNumber").value;
+            result = validateCreditCard(card);
+            if ( result.error != undefined) {
+                document.getElementById("message").innerText = result.error;
+            }
+            return result.valid;
+        }
+        function validateCreditCard(creditCard) {
+        var creditCardNumbers;
+        var creditCardNumbersSum = 0;
+        var creditCardWithNoDashes;
+
+        creditCardWithNoDashes = creditCard.split("-");
+        creditCardWithNoDashes = creditCardWithNoDashes.join(""); 
+        creditCardNumbers =  creditCardWithNoDashes.split("").map(Number);
+
+        function checkLength(creditCardWithNoDashes) {
+            return (creditCardWithNoDashes.length == 16);
+        }
+
+        function checkAllItemsNumbers(creditCardNumbers) {
+            var isAllItemsNumbers = creditCardNumbers.every(function(element){
+                creditCardNumbersSum += element;
+                return (element >=0 && element <=9);
+            });
+
+            return isAllItemsNumbers;
+        }
+
+        function checkDigitsSum() {
+            return (creditCardNumbersSum > 16);
+        }
+
+        function checkIfAllDigitsSame(creditCardNumbers) {
+            var isAllDigitsSame = creditCardNumbers.every(function(element){
+                return element === creditCardNumbers[0];
+            });
+            return !isAllDigitsSame;
+        }
+
+        function CheckLastDigitEven(creditCardNumbers) {
+            return (creditCardNumbers[creditCardNumbers.length - 1] % 2 == 0)
+        }
+
+        if (checkLength(creditCardNumbers)){
+            if (checkAllItemsNumbers(creditCardNumbers)){
+                if (checkDigitsSum()){
+                    if (checkIfAllDigitsSame(creditCardNumbers)){
+                        if (CheckLastDigitEven(creditCardNumbers)){
+                            return {valid : true, number : creditCard}
+                        }
+                        else {
+                            return {valid : false, error : "odd final number", number : creditCard}
+                        }
+                    }
+                    else {
+                        return {valid : false, error : "only one type of number", number : creditCard}
+                    }
+                }
+                else {
+                    return {valid : false, error : "sum less than 16", number : creditCard}
+                }
+            }
+            else {
+                return {valid : false, error : "invalid characters", number : creditCard}
+            }
+        }
+        else {
+            return {valid : false, error : "Credit Card Length Must Be 16 Digits", number : creditCard}
+        }
+    }
+
+    </script>
+</body>
+</html>
