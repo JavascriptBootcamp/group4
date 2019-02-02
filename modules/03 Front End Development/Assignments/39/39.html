@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EX 39</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select id="products"></select>
+                </td>
+                <td>
+                    <input type="number" id="price" min="1">
+                </td>
+                <td><button onclick="addRow()">Add</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="totalPrice"></div>
+
+    <form action="http://localhost:3000/Order" method="post" onsubmit="return checkCreditValid()">
+            <fieldset>
+                    <legend>Payment</legend>
+
+                    <label for="card_number">Card Number: </label><br/>
+                    <input type="number" id="card_number" name="card_number" required><br/>
+
+                    <label for="name_on_card">Name on card: </label><br/>
+                    <input type="text" id="name_on_card" name="name_on_card" required><br/>
+
+                    <label for="expiry_date">Expiry date: </label><br/>
+                    <input type="date" id="expiry_date" name="expiry_date" required><br/>
+
+                    <label for="security_code">Security code: </label><br/>
+                    <input type="number" id="security_code" name="security_code" pattern="[0-9]{3}" required><br/>
+
+                    <br><br>
+                    <button type="submit">Submit</button>
+            </fieldset>
+    </form>
+    <div id="errorMsg" style="color:red"></div>
+
+    <script src="creditValedtion.js"></script>
+    <script>
+        var products = ["Nuts", "Onions", "Mushrooms", "Iceberg", "Carrots", "Tomatoes", "Avocados", "Potatoes", "Fish", "Meat"];
+        var totalPrice = 0;
+
+        var table = document.querySelector("tbody");
+        var selectTag = document.querySelector("select");
+        var priceInput = document.querySelector("#price");
+        var totalPriceDiv = document.querySelector("#totalPrice");
+        var form = document.querySelector("form");
+
+
+        function addRow() {
+            var row = document.createElement("tr");
+            var td1 = document.createElement("td");
+            td1.innerText = selectTag.value;
+
+            var td2 = document.createElement("td");
+            td2.innerText = priceInput.value;
+            totalPrice += Number(priceInput.value);
+            totalPriceDiv.innerHTML = '<h3>Total Price: ' + totalPrice + '</h3>'
+            priceInput.value = "";
+
+            var td3 = document.createElement("td");
+            td3.innerHTML = '<button onclick="remove(event)">Remove</button>';
+
+            row.appendChild(td1);
+            row.appendChild(td2);
+            row.appendChild(td3);
+
+            table.appendChild(row);
+        }
+
+        function remove(event) {
+            //btn was click > perent = td > perent = tr
+            var tr = event.target.parentElement.parentElement;
+            var price = Number(tr.childNodes[1].innerText);
+            tr.remove();
+            totalPrice -= price;
+            totalPriceDiv.innerHTML = '<h3>Total Price: ' + totalPrice + '</h3>'
+        }
+
+        function initProducts() {
+            var option = "";
+            for (let i = 0; i < products.length; i++) {
+                option = '<option value="' + products[i] + '">' + products[i] + '</option>';
+                selectTag.innerHTML += option;
+            }
+        }
+
+        function checkCreditValid() {
+            //input EXAMPLES - true 6666666666661666, false - 666666666666666
+            var cardNumber = form.card_number.value;
+            var validetionObj = validateCreditCard(cardNumber);
+            if(!validetionObj.valid){
+                //show alert on screen
+                document.querySelector("#errorMsg").innerHTML='<h3>'+validetionObj.error+'</h3>'
+                //prevent the form to submit
+                return false;
+            }
+
+            return true;
+        }
+
+        initProducts();
+    </script>
+</body>
+
+</html>
