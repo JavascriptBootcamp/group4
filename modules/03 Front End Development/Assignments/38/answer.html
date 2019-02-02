@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Answer 38</title>
+</head>
+
+<body>
+
+    <form>
+        <select id="colors">
+            <option>green</option>
+            <option>blue</option>
+            <option>black</option>
+            <option>#66ccff</option>
+            <option>#ccffcc</option> 
+        </select>
+
+        <ol id="olColors"></ol>
+
+        <input type="button" value="Add" onclick="addColor()">
+
+    </form>
+
+
+    <script>
+        var myColorsList = document.getElementById("colors");
+        //console.log(myColorsList);
+        var colorsArr = [];
+
+        for(var i = 0; i < myColorsList.length; i++) {
+            colorsArr.push(myColorsList[i].innerHTML);
+        }
+        //console.log(colorsArr);
+
+        function addColor()  {
+            var orderedColorsList = document.getElementById("olColors");
+
+            for(var i = 0; i < colorsArr.length; i++) {
+                var colorToAdd = myColorsList.options[i].selected;
+
+                if(colorToAdd) {
+                    var listItem = document.createElement("li");
+                    
+                    var content = "My #" + Number(orderedColorsList.getElementsByTagName("li").length+1) + " choice is " +  colorsArr[i];
+                    var liContent = document.createTextNode(content);
+                    listItem.appendChild(liContent);
+                    orderedColorsList.appendChild(listItem);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
