@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <title>fev food</title>
+</head>
+
+<body>
+    <form id="fevFood">
+        <select name="food" id="food">
+            <option value="hamburger">hamburger</option>
+            <option value="BBQ">BBQ</option>
+            <option value="salad">salad</option>
+        </select>
+        <button id="foodButton" onclick="foodSelector() ; return false;">add fev food</button>
+        <br>
+        <select name="beverage" id="beverage">
+            <option value="beer">beer</option>
+            <option value="vodka">vodka</option>
+            <option value="coke">coke</option>
+        </select>
+        <button id="beverageButton" onclick="beverageSelector() ; return false;">add fev beverage </button>
+        <br>
+        <select name="color" id="color">
+            <option value="blue">blue</option>
+            <option value="green">green</option>
+            <option value="black">black</option>
+        </select>
+        <button id="colorsButton" onclick="colorSelector(); return false;">add fev colors </button>
+    </form>
+    <br><br>
+    <h1>my fevs:</h1>
+    <h3>food:</h3>
+    <ol id="myFood"></ol><br><br>
+    <h3>beverage:</h3>
+    <ol id="myBeverage"></ol><br><br>
+    <h3>color:</h3>
+    <ol id="myColor"></ol><br><br>
+    <script>
+        var fCount=0;
+        var bCount=0;
+        var cCount=0;
+        function foodSelector() {
+            fCount++;
+            if(fCount>document.getElementById("food").length){
+            alert("cannot add item, too much selected already");
+            return;}
+            var li = document.createElement("li");
+            li.innerText = "My "+ fCount+switchSuffix(fCount) +" food is " + document.getElementById("food").value;
+
+            document.getElementById("myFood").appendChild(li);
+        }
+        function beverageSelector() {
+            bCount++;
+            if(bCount>document.getElementById("beverage").length){
+            alert("cannot add item, too much selected already");
+            return;}
+            var li = document.createElement("li");
+            li.innerText = "My "+ bCount+switchSuffix(bCount) +" fev beverage is " + document.getElementById("beverage").value;
+
+            document.getElementById("myBeverage").appendChild(li);
+        }
+        function colorSelector() {
+            cCount++;
+            if(cCount>document.getElementById("color").length){
+            alert("cannot add item, too much selected already");
+            return;}
+            var li = document.createElement("li");
+            li.innerText = "My "+ cCount+switchSuffix(cCount) +" color is " + document.getElementById("color").value;
+
+            document.getElementById("myColor").appendChild(li);
+        }
+        function switchSuffix(num){
+    switch(num) {
+        case 1:
+            return 'st'
+        case 2:
+            return 'nd'
+        case 3:
+            return 'rd';
+        case 4:
+            return 'th';
+    }
+}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<script>
+document.title="meBay";
+console.log(document.getElementsByTagName("input"));
+var idItems=document.getElementById("gh-l-h1");
+console.log(idItems);
+document.getElementsByClassName("gh-td");
+var imgItems=document.getElementsByTagName("img");
+for (let i = 0; i < imgItems.length; i++) {
+    console.log(imgItems[i].src);
+    
+}
+var startsWinthItems=document.querySelectorAll("[class*=gh]");
+for (let i = 0; i < startsWinthItems.length; i++) {
+  console.log(startsWinthItems[i].className);
+    
+}
+
+document.body.style.backgroundColor = "yellow";
+</script>
