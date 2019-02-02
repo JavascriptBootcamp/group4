@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Answer 36 - Tic-Tac-Toe game</title>
+    
+    <style type="text/css">
+        table, tr, td {
+            border: 1.5px solid;
+        }
+        td {
+            width: 80px;
+            height: 80px;
+        }
+        table.center {
+            margin-top: 60px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .playersNamesInput {
+            margin-top: 50px;
+            background-color:beige;
+        }
+        .inputElem
+        {
+            color: blue;
+            font-weight: bolder;
+            font-size: 20px;
+            margin: 2px 1px;
+            border:  3px solid #262626;
+            border-radius: 8px;
+            box-sizing: border-box;
+            text-align:center;
+        }
+    
+        .runGameButton
+        {
+            font-weight: bold;
+            font-size: 26px;
+            font-family: Arial;
+            margin:10px;
+            height: 40px;
+            border-radius: 8px;
+            color: #0000cc;
+            border:3px solid #0000cc;  
+            background-color: #c4ecff; 
+
+        }
+
+        .runGameButton:hover
+        {
+            font-weight:bold;
+            font-size: 27px;
+            margin:10px;
+            color: #ff9b06;
+            height: 40px;
+            border-radius: 8px;
+            border:4px solid #18ab8b;        
+            background-color: #99ffcc;
+        }
+        #message
+        {
+            font-size: 40px;
+            color:crimson;
+        }
+    </style>
+</head>
+
+
+<body style="text-align: center">
+
+    <div class="playersNamesInput">
+        <form>
+            <input type="text" id="player1" class="inputElem" placeholder="Input here player 1 name" required>
+            <br><br>
+            <input type="text" id="player2" class="inputElem" placeholder="Input here player 2 name" required>
+            <br><br>
+
+            <input type="button" value="Start Game" class="runGameButton" onclick="runGame()">
+        </form>
+    </div>
+
+
+    <table class="center">
+        <!--Row 1-->
+        <tr id="row1">
+            <td id="row0col0"></td>
+            <td id="row0col1"></td>
+            <td id="row0col2"></td>
+        </tr>
+        <!--Row 2-->
+        <tr id="row2">
+            <td id="row1col0"></td>
+            <td id="row1col1"></td>
+            <td id="row1col2"></td>
+        </tr>
+        <!--Row 3-->
+        <tr id="row3">
+            <td id="row2col0"></td>
+            <td id="row2col1"></td>
+            <td id="row2col2"></td>
+        </tr>
+    </table>
+
+
+    <div id="message"></div>
+
+
+    <script src="answer.js"></script>
+
+</body>
+
+</html>
