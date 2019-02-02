@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="form">
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <input type="text" placeholder="insert any word"><br>
+        <button onclick="orderByAlphanumeric()">insert</button>
+    </div>
+
+    <script>
+        function orderByAlphanumeric(){
+            var allInputs = document.getElementById("form").getElementsByTagName("input");
+            var listOfValues = [];
+            var h1, text;
+            for(i=0;i<10;i++){
+                if(!listOfValues.includes(allInputs[i].value))
+                    listOfValues.push(allInputs[i].value);
+            }
+            h1 = document.createElement("h1");
+            text = document.createTextNode(listOfValues.sort());
+            h1.appendChild(text);
+            document.getElementById("form").appendChild(h1);
+        }
+    </script>
+</body>
+</html>
