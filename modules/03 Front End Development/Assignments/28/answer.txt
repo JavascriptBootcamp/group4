@@ -1,0 +1,8 @@
+//change document title:
+document.getElementsByTagName("TITLE")[0].text = "Ofek";
+
+//remove the logo:
+document.getElementById("gh-logo").parentNode.removeChild(document.getElementById("gh-logo"));
+
+//change the search input:
+document.getElementById("gh-ac").value = "Ofek's Search";
