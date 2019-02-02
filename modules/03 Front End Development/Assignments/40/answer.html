@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 40</title>
+</head>
+
+<body>
+    <form onsubmit="return displayOddEven(event)">
+        <label for="num1">First Number:</label>
+        <input type="number" id="num1" min="1" max="100" required>
+
+        <label for="num2">Second Number:</label>
+        <input type="number" id="num2" min="1" max="100" required><br>
+        <br>
+
+        <button type="submit">Check odd and even numbers in range</button>
+    </form>
+    <div id="listOfNums"></div>
+
+    <script>
+        var showNumsDiv = document.querySelector("#listOfNums");
+
+        function displayOddEven(event) {
+            var form = event.target;
+            var max = form.num1.value >= form.num2.value ? form.num1.value : form.num2.value;
+            var min = form.num1.value <= form.num2.value ? form.num1.value : form.num2.value;
+            var even_odd = '';
+            //clean previos list if shown on the screen
+            showNumsDiv.innerHTML='';
+
+            for (let i = min; i <= max; i++) {
+                even_odd = i%2===0 ? 'even' : 'odd';
+                var content = document.createElement("div");
+                content.innerHTML ='<h3>'+i+' is '+even_odd+' number</h3>'
+                showNumsDiv.appendChild(content);
+            }
+            //prevent the form to submit
+            return false;
+        }
+    </script>
+</body>
+
+</html>
