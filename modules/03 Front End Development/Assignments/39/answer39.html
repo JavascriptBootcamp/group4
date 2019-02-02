@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shopping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>Shopping Cart</h1>
+    </div>
+    <div id="content">
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="selectProduct" id="selectProduct">
+                            <option value="apple">Apple</option>
+                            <option value="candy">Candy</option>
+                            <option value="water">Water</option>
+                            <option value="carrot">Carrot</option>
+                            <option value="umbrella">Umbrella</option>
+                            <option value="proteinShake">Protein Shake</option>
+
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="price" id="price" min="0.99" max="100" placeholder="0.99">
+                    </td>
+                    <td><button type="button" onclick="addItem()">Add</button></td>
+                </tr>
+            </tbody>
+            <tfoot id="itemsTable">
+
+            </tfoot>
+        </table>
+        </tbody>
+    </div>
+    <div>
+        <h3 id="totalPrice">Total Price:</h3>
+    </div><Br>
+    <div id="payment">
+        <h2>Payment</h2></Br>
+        <form method="post" id="formPayment" action="http://localhost:3000/Order" onsubmit="return validate()">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" name="cardNumber" id="cardNumber" required><br><br>
+            <label for="cardOwner">Name on card:</label>
+            <input type="text" name="cardOwner" id="cardOwner" required><br><br>
+            <label for="expirationDate">Expiry date:</label>
+            <input type="date" name="expirationDate" id="expirationDate" required><br><br>
+            <label for="cvv">CVV Number:</label>
+            <input type="text" name="cvv" id="cvv" pattern="[0-9]{3}" required><br><br>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    <script>
+        var total = 0;
+        function addItem() {
+            var data = [];
+            var price = Number(document.getElementById("price").value);
+            var selectedProduct = document.getElementById("selectProduct").value;
+
+            var items = document.getElementById("itemsTable");
+
+            var tr = document.createElement("tr");
+            data = createTd(data, price, selectedProduct);
+            addToTr(data, tr);
+            addOrRemTotal(price, true);
+            items.appendChild(tr);
+        }
+        function createTd(arr, price, item) {
+            var remove, td;
+
+            for (let i = 0; i < 3; i++) {
+                td = document.createElement("td");
+                if (i === 0) {
+                    td.innerText = item;
+                }
+                else if (i === 1) {
+                    td.innerText = price;
+                }
+                else {
+                    remove = document.createElement("button");
+                    remove.type = "button";
+                    remove.innerText = "Remove";
+                    remove.onclick = function removeTr() {
+
+                        addOrRemTotal(price, false);
+
+                        this.parentNode.parentNode.remove();
+                    }
+                    td.appendChild(remove);
+                }
+                arr.push(td);
+            }
+            return arr;
+        }
+        function addToTr(arr, tr) {
+            for (let i = 0; i < arr.length; i++) {
+                tr.appendChild(arr[i]);
+
+            }
+        }
+        function addOrRemTotal(price, action) {
+            var out = "Total Price:"
+
+            var divP = document.getElementById("totalPrice");
+            if (action) {
+                total += price;
+            }
+            else {
+                total -= price;
+            }
+
+            divP.innerText = out + total;
+        }
+        function validate() {
+            var currentDiv = document.getElementById("payment");
+            var cardNum, cardValid;
+            var error = document.getElementById("error");
+            if (total !== 0) {
+                cardNum = document.getElementById(cardNumber).value;
+                cardValid = validateCreditCard(cardNum);
+
+                if (!(cardValid.valid)) {
+                    if (error) {
+                        error.innerText = cardValid.error;
+                    }
+                    else {
+                        var div = document.createElement("div");
+                        div.innerHTML = cardValid.error;
+                        div.id = "error";
+                        currentDiv.appendChild(div);
+                    }
+                    return false;
+                }
+            }
+            else {
+                alert("you must have at least 1 item in the cart");
+                return false;
+            }
+        }
+        
+        function validateCreditCard(creditCard) {
+            var creditCardNumbers;
+            var creditCardNumbersSum = 0;
+            var creditCardWithNoDashes;
+
+            creditCardWithNoDashes = creditCard.split("-").join("");
+            creditCardNumbers = creditCardWithNoDashes.split("").map(Number);
+
+            function checkLength(creditCardWithNoDashes) {
+                return (creditCardWithNoDashes.length === 16);
+            }
+
+            function checkAllItemsNumbers(creditCardNumbers) {
+                var isAllItemsNumbers = creditCardNumbers.every(function (element) {
+                    creditCardNumbersSum += element;
+                    return (element >= 0 && element <= 9);
+                });
+
+                return isAllItemsNumbers;
+            }
+
+            function checkDigitsSum() {
+                return (creditCardNumbersSum > 16);
+            }
+
+            function checkIfAllDigitsSame(creditCardNumbers) {
+                var isAllDigitsSame = creditCardNumbers.every(function (element) {
+                    return element === creditCardNumbers[0];
+                });
+                return !isAllDigitsSame;
+            }
+
+            function CheckLastDigitEven(creditCardNumbers) {
+                return (creditCardNumbers[creditCardNumbers.length - 1] % 2 == 0)
+            }
+
+            if (checkLength(creditCardNumbers)) {
+                if (checkAllItemsNumbers(creditCardNumbers)) {
+                    if (checkDigitsSum()) {
+                        if (checkIfAllDigitsSame(creditCardNumbers)) {
+                            if (CheckLastDigitEven(creditCardNumbers)) {
+                                return { valid: true, number: creditCard }//returns ob
+                            }
+                            else {
+                                return { valid: false, error: "odd final number", number: creditCard }
+                            }
+                        }
+                        else {
+                            return { valid: false, error: "only one type of number", number: creditCard }
+                        }
+                    }
+                    else {
+                        return { valid: false, error: "sum less than 16", number: creditCard }
+                    }
+                }
+                else {
+                    return { valid: false, error: "invalid characters", number: creditCard }
+                }
+            }
+            else {
+                return { valid: false, error: "Credit Card Length Must Be 16 Digits", number: creditCard }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
