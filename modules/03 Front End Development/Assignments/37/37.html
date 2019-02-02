@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main">
+        <br><br>
+        <center> <input type="range" min="1" max="200" step="1" id="rangeId" onchange="scrollFunc();"> </center>
+        <p id="mainP"></p>
+    </div>
+    <script>
+        function scrollFunc() {
+            var main = document.getElementById("main");
+            var rangeElem = document.getElementById("rangeId");
+
+            var bloodPressure = rangeElem.value;
+            var isNormal = false;
+
+            (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
+
+            (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
+
+            if (isNormal)
+                mainP.innerHTML = "<center><b>" + bloodPressure + " Normal<center><b>";
+            else
+                mainP.innerHTML = "<center><b>" + bloodPressure + " Not Normal <center><b>";
+        }
+    </script>
+
+</body>
+
+</html>
