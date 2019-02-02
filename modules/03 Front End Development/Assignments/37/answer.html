@@ -1,0 +1,43 @@
+
+<html>
+
+    <head>
+        <title>BloodPressure</title>
+        <style>
+            #bloodPressureRange
+            {
+                width: 300px;
+            }
+            #isNormal
+            {
+                color:red;
+                font-size: 22px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1>Blood Pressure Checking</h1>
+    
+        <input type="range" min="0" max="300" step="1" id="bloodPressureRange" onchange="isValid('bloodPressureRange')" > 
+        <label id="bloodPressureDisplay"></label><br><br>
+    
+        <div id="isNormal"></div>
+
+        <script>
+            function isValid(id) {
+                var bloodPressure = document.getElementById(id).value;
+                document.getElementById("bloodPressureDisplay").innerText = bloodPressure;
+
+                var isNormal = false;
+                (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
+                (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
+
+                if (isNormal) document.getElementById("isNormal").innerText = "Normal Blood Pressure"; 
+                else document.getElementById("isNormal").innerText = "NOT Normal Blood Pressure!!!";
+                    
+            }
+        </script>
+    </body>
+    
+</html>
