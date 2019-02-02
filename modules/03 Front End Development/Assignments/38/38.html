@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My favorite colors</title>
+</head>
+
+<body>
+    <div id="main">
+        <select id="colors">
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+            <option value="orange">orange</option>
+            <option value="green">green</option>
+            <option value="black">black</option>
+            <option value="white">white</option>
+            <option value="grey">grey</option>
+            <option value="gold">gold</option>
+            <option value="pink">pink</option>
+            <option value="purple">purple</option>
+        </select>
+        <button onclick="addToMyList();">submit</button>
+
+        <br><br>
+        <h2>My Selection:</h2>
+        <ol id="colorsOl">
+
+        </ol>
+
+    </div>
+    <script>
+        var selectedColors = [];
+
+
+        function addToMyList() {
+            var myColorSelectoin = document.getElementById("colors").value;
+            var olElement = document.getElementById("colorsOl");
+            if (selectedColors.indexOf(myColorSelectoin) === -1) {
+                selectedColors.push(myColorSelectoin);
+
+                var li = document.createElement("li");
+                li.innerText = myColorSelectoin;
+                olElement.appendChild(li);
+            }
+            else alert("you have chosen this color already");
+
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
