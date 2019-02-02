@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My favorite colors</title>
+</head>
+
+<body>
+    <div id="main">
+        first Number : <input type="number" id="fiNumber" min="1" max="100"><br><br>
+        second Number : <input type="number" id="secNumber" min="1" max="100">
+        <button onclick="start();"> start</button>
+        <br><br><br>
+        <p id="resultPara"></p>
+
+
+    </div>
+
+    <script>
+        function start() {
+            document.getElementById("resultPara").innerHTML="";
+            var firstNum = document.getElementById("fiNumber").value;
+            var sectNum = document.getElementById("secNumber").value;
+            if (firstNum < sectNum)
+                for (var i = firstNum; i <= sectNum; i++)
+                    i % 2 === 0 ? document.getElementById("resultPara").innerHTML += i + " is even <br>" : document.getElementById("resultPara").innerHTML += i + " is odd <br>";
+            else document.getElementById("resultPara").innerHTML += "check validity of your inputs , both of them must be numbers and not empty furthermore the second input must be greater than the first input :) please, try again! ";
+        }
+    </script>
+
+</body>
+
+</html>
