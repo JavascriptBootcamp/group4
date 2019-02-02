@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="number1" min="1" max="100" />
+    <input type="number" id="number2" min="1" max="100"  />
+    <button onclick="OddOrEven()">Click</button>
+    <br>
+    <div id="result"></div>
+    <script>
+    function OddOrEven(){
+        var num1 = document.getElementById("number1").value;
+        var num2 = document.getElementById("number2").value;
+
+        document.getElementById("result").innerHTML = "";
+        if (num1 > num2) {
+            document.getElementById("result").innerHTML = "ERROR: NUMBER 1 > NUMBER 2";
+        } else {
+            for (var i =num1; i < num2; i++)
+                i % 2 === 0 ? document.getElementById("result").innerHTML += (i + " is even")+"<br>" : document.getElementById("result").innerHTML += (i + " is odd") + "<br>";
+        }
+    }
+
+    </script>
+</body>
+</html>
+
