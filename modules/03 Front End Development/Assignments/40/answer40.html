@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <form onsubmit="displayResult();return false"> 
+    <label for="firstNumber">First number:</label>
+    <input type="number" id="firstNumber" min="1" max="100"><br><br>
+
+    <label for="secondNumber">Second number:</label>
+    <input type="number" id="secondNumber" min="1" max="100"><br><br>
+<input type="submit" value="submit">    
+</form>
+<div id="show"></div>
+<script>
+function displayResult(){
+var shw=document.getElementById("show");
+var firstNum=document.getElementById("firstNumber").value;
+
+var secondNum=document.getElementById("secondNumber").value;
+
+if(firstNum<secondNum)
+{
+    for (var i = firstNum; i < secondNum; i++)
+        {
+            i%2===0?shw.innerHTML+=i+" is even<br>":shw.innerHTML+=i+"is odd<br>";
+        }
+        
+    }
+else
+{
+    shw.innerHTML="check validity of your inputs , both of them must be numbers and not empty furthermore the second input must be greater than the first input, please try again! "
+}
+
+}
+</script>
+</body>
+</html>
