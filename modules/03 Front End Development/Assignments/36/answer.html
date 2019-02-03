@@ -8,73 +8,138 @@
 </head>
 <body>
     <label for="player1">player 1:</label>
-    <input type="text" name="player1" id="player1" required maxlength="1"><br>
+    <input type="text" name="player1" id="player1TI" required maxlength="1" oninput="setStartGameVisibility()"><br>
     <label for="player2">player 2:</label>
-    <input type="text" name="player2" id="player2" required maxlength="1"><br>
-
-    <table id="xoMatrix">
-        <tr width="50" height="50">
-            <td><button width="50" height="50"> </button> </td>
-            <td><button width="50" height="50"> </button> </td>
-            <td><button width="50" height="50"> </button> </td>
-        </tr>
-        <tr width="50px" height="50px">
-            <td><button width="50px" height="50px"> </button> </td>
-            <td><button width="50px" height="50px"> </button> </td>
-            <td><button > </button> </td>
-        </tr>
-        <tr width="50px" height="50px">
-            <td><button width="50px" height="50px"> </button> </td>
-            <td><button width="50px" height="50px"> </button> </td>
-             <td><button width="50px" height="50px"> </button> </td>
-            </tr>
-    </table>
-
-    <button onclick="startGame()">Start Game</button>
+    <input type="text" name="player2" id="player2TI" required maxlength="1" oninput="setStartGameVisibility()"><br>
 
     <script>
-        function drawSymbol(btn,indexBtn,symbol){
-            if(btn.value !== ''){
-                return;
+
+        var combinations = [['12','36','48'],['02','47'],['10','58','46'],['06','45'],['08','26','35'],['28','43'],['30','42','78'],['41','68'],['52','76','40']];
+        var currentSymbol = '';
+        var symbolPlayer1 = document.getElementById("player1TI").textContent;
+        var symbolPlayer2 = document.getElementById("player2TI").textContent;
+        var p1SelectedIndexes = '';
+        var p2SelectedIndexes = '';
+        drawControlls();
+
+        function drawControlls(){
+            document.body.appendChild(createBR());
+            var matrix = document.createElement("table");
+            matrix.disabled = true;
+            var buttonIndex = 0;
+            for(var i=0;i<3;i++){
+                var tr = document.createElement("tr");
+                for(var j=0;j<3;j++){
+                    var td = document.createElement("td");
+                    var button = document.createElement("button");
+                    button.style.width = "50px";
+                    button.style.height = "50px";
+                    button.id = "button" + buttonIndex++;
+                    button.disabled = true;
+                    td.appendChild(button);
+                    tr.appendChild(td);
+                }
+                matrix.appendChild(tr);
             }
-            btn.value = symbol;
-            checkForWinner();
+            document.body.appendChild(matrix);
+            document.body.appendChild(createBR());
+
+            var startBtn = document.createElement("button");
+            startBtn.innerText = 'Start Game';
+            startBtn.id = "strtBtn";
+            startBtn.onclick = startGame;
+            document.body.appendChild(startBtn);
+            setStartGameVisibility();
+
+            document.body.appendChild(createBR());
+            document.body.appendChild(createBR());
 
         }
 
-        function checkForWinner(){
-            for(var btn in buttons){
-                if(buttons.hasOwnProperty(btn)){
-                    
-                }
-            }
+        function setStartGameVisibility(){
+            symbolPlayer1 = document.getElementById("player1TI").value;
+            symbolPlayer2 = document.getElementById("player2TI").value;
+            var startGameBtn = document.getElementById("strtBtn");
+            
+            startGameBtn.disabled = !( symbolPlayer1 !== '' && symbolPlayer2 !== '' && symbolPlayer1 !== symbolPlayer2);
         }
 
         function startGame(){
-            var symbolPlayer1 = document.getElementById("player1").textContent;
-            var symbolPlayer2 = document.getElementById("player2").textContent;
-            var matrix = document.getElementById("xoMatrix");
+            currentSymbol = symbolPlayer1;
+            divCurrentTurn = document.createElement("div");
+            divCurrentTurn.id = "turnID";
+            divCurrentTurn.innerText = "Turn: " + currentSymbol;
+            document.body.appendChild(divCurrentTurn);
+            setOnClickButtons();
+        }
 
-            var currentSymbol = '';
-
-            var buttons = document.getElementsByTagName("button");
-            for(var btn in buttons){
-                if(buttons.hasOwnProperty(btn)){
-                    if(i % 2 === 0){
-                        currentSymbol = symbolPlayer1;
-                    }
-                    else{
-                        currentSymbol = symbolPlayer2;
-                    }
-                btn.onclick=drawSymbol.bind(null,btn,i++,currentSymbol);
-                }
-            }
-
-            if(symbolPlayer1 === symbolPlayer2){
-                console.log("The symbols of the players are same!");
-                return;
+        function setOnClickButtons(){
+            var buttonIndex = 0;
+            while(buttonIndex < 9){
+                var buttonId = "button" + buttonIndex;
+                var button = document.getElementById(buttonId);
+                button.onclick = onButtonClick.bind(button,buttonIndex++);
+                button.disabled = false;
             }
         }
+
+        function onButtonClick(index){
+            if(currentSymbol === symbolPlayer1){
+                p1SelectedIndexes += index;
+            }
+            else{
+                p2SelectedIndexes += index;
+            }
+            if(this.innerText != ''){
+                return;
+            }
+            this.innerText = currentSymbol;
+            this.disabled = true;
+            var isWinner = checkForWin(index);
+            if(isWinner){
+                endGame(currentSymbol);
+                disabledAllButtons();
+                return;
+            }
+            currentSymbol = currentSymbol == symbolPlayer1 ? symbolPlayer2: symbolPlayer1;
+
+            var divCurrentTurn = document.getElementById("turnID");
+            divCurrentTurn.innerText = "Turn: " + currentSymbol;
+        }
+
+        function checkForWin(index){
+            var comb = combinations[index];
+            var selectedIndexes = currentSymbol === symbolPlayer1 ? p1SelectedIndexes : p2SelectedIndexes;
+            for(var i=0;i<comb.length;i++){
+                var c1 = comb[i][0];
+                var c2 = comb[i][1];
+                if(selectedIndexes.indexOf(c1) !== -1 && selectedIndexes.indexOf(c2) !== -1){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function endGame(winner){
+            var winnerMessage = "The Winner is: " + winner + "!!!";
+            var divWinner = document.createElement("div");
+            divWinner.innerText = winnerMessage;
+            document.body.appendChild(divWinner);
+        }
+
+        function disabledAllButtons(){
+            var buttonIndex = 0;
+            while(buttonIndex < 9){
+                var buttonId = "button" + buttonIndex++;
+                var button = document.getElementById(buttonId);
+                button.disabled = true;
+            }
+        }
+
+        function createBR(){
+            return document.createElement("br");
+        }
+
     </script>
 </body>
 </html>
