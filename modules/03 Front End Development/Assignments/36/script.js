@@ -254,7 +254,7 @@ function Board() {
                     tileClicked(turn);
                     board.style.pointerEvents = 'initial';
                 }, 2000);
-            } else if (row1 === row2 && !tiles[row1 * 3 - 1].isFilled()) {
+            } else if (row1 === row2 && !tiles[row1 * 3 - 3].isFilled()) {
                 turn = {
                     target: tiles[row1 * 3 - 3].getBtn()
                 }
