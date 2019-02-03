@@ -1,0 +1,9 @@
+Tag Name:  <input type="url">
+
+Properties: maxlengthSection , minlength , pattern , placeholder, readonly , size , spellcheck .
+
+Description:  תגית שמשמשת לקליטת כתובת אתר , ניתן לבצע ולידציה כבר בקלט עצמו. 
+              
+
+Example:
+        <input type="url" placeholder="https://example.com"  pattern="https://.*" size="30"  >

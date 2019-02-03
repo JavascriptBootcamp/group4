@@ -1,0 +1,71 @@
+<html>
+    
+<head>
+    <title>"Images | Favorites"</title>
+</head>
+    
+<body>
+    <a href="https://en.wikipedia.org/wiki/Amsterdam">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Moon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg" height="200" width="220"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Tel_Aviv">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tel_Aviv_Promenade_panoramics.jpg/800px-Tel_Aviv_Promenade_panoramics.jpg" height="200" width="300"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Prague">
+        <img src="https://www.prague.eu/img/pragueeu/u/property/logo-for-share-v2.jpg" height="200" width="300"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Holon">
+        <img src="https://www.israel21c.org/wp-content/uploads/2016/06/Photo-of-Beersheva-by-Leonard-ZhukovskyShutterstock.com_-1000x657.jpg" height="200" width="300"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Amsterdam">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Amsterdam">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+    </a>
+
+    <a href="https://en.wikipedia.org/wiki/Amsterdam">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+    </a>
+
+
+    <script>
+
+        var linkElements = document.getElementsByTagName('a');
+
+        for(var i = 0; i < linkElements.length; i++) {
+            console.log(`${linkElements[i]} contains next childNodes:`)
+            console.log(linkElements[i].childNodes);
+            console.log('\n\n');
+        }
+
+
+        var imageTags = document.getElementsByTagName('img');
+
+        for(var i = 0; i < imageTags.length; i++) {
+            console.log(`${imageTags[i]} contains next parrentNode:`);
+            console.log(imageTags[i].parentNode);
+            console.log('\n\n');
+        }
+
+
+        var titles = document.getElementsByTagName('title');
+        console.log('innerHTML of title:', titles[0].innerHTML);
+
+        var sources = document.querySelectorAll('*[src]');
+        console.log('Total sources:', sources.length);
+        
+    </script>
+    
+</body>
+
+</html>

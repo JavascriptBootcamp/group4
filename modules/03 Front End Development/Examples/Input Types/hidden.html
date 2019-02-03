@@ -1,0 +1,72 @@
+<html>
+        <head>
+            <title>
+                My First Webpage
+            </title>
+            <style>
+                html {
+  font-family: sans-serif;
+}
+
+form {
+  width: 500px;
+}
+
+div {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+label {
+  flex: 2;
+  line-height: 2;
+  text-align: right;
+  padding-right: 20px;
+}
+
+input, textarea {
+  flex: 7;
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  padding: 5px;
+}
+
+textarea {
+  height: 60px;
+}
+            </style>
+        </head>
+        <body >
+            <h1 >input hidden</h1>
+
+            <input id="prodId1" name="prodId1" type="hidden" value="xm234jq"> 
+            
+
+            <h2>
+                
+                elements of type "hidden" let web developers include data  <br>
+                that cannot be seen or modified by users when a form is submitted. <br>
+                For example, the ID of the content that is currently being ordered or edited,<br>
+                 or a unique security token. Hidden inputs are completely <br>
+                invisible in the rendered page, and there is no way to make it <br>
+                visible in the page's content.
+            </h2>
+
+            <form>
+                    <div>
+                      <label for="title">Post title:</label>
+                      <input type="text" id="title" name="title" value="My excellent blog post">
+                    </div>
+                    <div>
+                      <label for="content">Post content:</label>
+                      <textarea id="content" name="content" cols="60" rows="5">
+                  This is the content of my excellent blog post. I hope you enjoy it!
+                      </textarea>
+                    </div>
+                    <div>
+                      <button type="submit">Update post</button>
+                    </div>
+                    <input type="hidden" id="postId" name="postId" value="34657">
+                  </form>
+        </body>
+    </html>
