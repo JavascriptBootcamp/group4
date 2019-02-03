@@ -58,6 +58,7 @@
         function chooseWord() {
             var Level;
             var Level_El = document.getElementById("selectedLevel");
+            document.getElementById("answer").innerText = "";
             if (step == 1) {
                 Level = Level_El.options[Level_El.selectedIndex].text;
                 step = Level_El.selectedIndex;
@@ -90,7 +91,7 @@
             var w = randomiseWord_Selected.options[randomiseWord_Selected.selectedIndex].text;
             var answer_div = document.getElementById("answer");
             var index = correct_answer.indexOf(w);
-            if (index == answer_div.innerText.length) {
+            if (correct_answer[answer_div.innerText.length] == w) {
                 answer_div.innerText += w;
             }
             else {
@@ -100,11 +101,13 @@
             if (answer_div.innerText == correct_answer) {
                 answer_div.innerText = "you won!";
                 step++;
-                chooseWord();
+                if(step<4){
+                    chooseWord();
+                }
+                else{
+                    step=1;
+                }
             }
-            console.log(index);
-            console.log(answer_div.innerText.length);
-
         }
     </script>
 </body>
