@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guess The Rnadom Word</title>
+</head>
+
+<body>
+    <select id="levelChoose">
+        <option id="easyLevel" selected>Easy</option>
+        <option id="mediumLevel">Medium</option>
+        <option id="hardLevel">Hard</option>
+    </select>
+
+    <button id="startGame" onclick="startGame()">Start Game!</button>
+
+    <div id="alphaBeticalOptions"></div>
+
+
+    <script>
+        var easyWords = ['MAN', 'RUN', 'EAT', 'DIE', 'FUN'];
+        var mediumWords = ['TASTE', 'DRINK', 'LAUGH', 'FUNNY', 'MONEY'];
+        var hardWords = ['WINDOWS', 'EXPLORE', 'REQUEST', 'ENCODER'];
+
+        var optionalLettersDiv = document.getElementById("alphaBeticalOptions");
+
+        var theChosenWord = "";
+        var possibleWord = "";
+        var lettersClicked = 0;
+        function startGame() {
+
+            var x = document.getElementById("levelChoose");
+            var theChosenLevel = x.options[x.selectedIndex].text;
+
+            theChosenWord = randomizeWordByLevel(theChosenLevel);
+
+            var theOptions = theChosenWord.split('').sort();
+            
+        }
+
+        function displayLetters(theOptions)
+        {
+            for(var i = 0; i < theOptions.length; i++)
+            {
+                var newBtn = document.createElement("button");
+                newBtn.innerText = theOptions[i];
+                newBtn.onclick = function()
+                {
+                    this.disabled = true;
+                    lettersClicked++;
+                    possibleWord += this.innerText;
+
+                    if(lettersClicked === theChosenWord.length)
+                    {
+                        checkForWin();
+                    }
+                }
+
+                optionalLettersDiv.appendChild(newBtn);
+            }
+        }
+
+        function randomizeWordByLevel(theChosenLevel)
+        {
+            if (theChosenLevel === 'Easy') {
+                theChosenWord = easyWords[Math.floor(Math.random() * easyWords.length)];
+            }
+            else if (theChosenLevel === 'Medium') {
+                theChosenWord = mediumWords[Math.floor(Math.random() * mediumWords.length)];
+            }
+
+            else if (theChosenLevel === 'Hard') {
+                theChosenWord = hardWords[Math.floor(Math.random() * hardWords.length)];
+            }
+
+            return theChosenWord;
+        }
+
+        function checkForWin()
+        {
+            var theResultText = document.createElement("h3");
+            var thePopupResult;
+
+            if(theChosenWord === possibleWord)
+            {
+                theResult.innerText = "YOU WON";
+                thePopupResult = confirm("MOVE TO NEXT LEVEL?");
+
+                if(thePopupResult == true)
+                {
+                    optionalLettersDiv.innerHTML = "";
+                }
+            }
+
+            else
+            {
+                theResult.innerText = "YOU LOST";
+
+                thePopupResult = confirm("TRY AGAIN?");
+
+                if(thePopupResult == true)
+                {
+                    location.reload();
+                }
+            }
+
+            optionalLettersDiv.appendChild(theResult);
+
+            
+
+        }
+    </script>
+</body>
+
+</html>
