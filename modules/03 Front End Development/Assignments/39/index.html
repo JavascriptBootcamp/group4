@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 39</title>
+</head>
+
+<body onload="initProducts()">
+    <table border='1'>
+        <tr>
+            <th>Name
+                <select id='items' onchange="updateSelection()">
+
+                </select>
+            </th>
+            <th>Price
+                <input type="number" name="price" id="price" pattern="[0-9]*" min='1' oninput="updatePrice()" />
+            </th>
+            <th>Action
+                <button onclick="addItem()">Add</button>
+            </th>
+        </tr>
+    </table>
+    <script>
+        var products = {
+            apple: "4",
+            candy: "1",
+            water: "25",
+            carrot: "3",
+            umbrella: "10",
+            proteinShake: "22",
+            laptop: "3500",
+            book: "78",
+            beer: "25"
+        };
+        var cart = {
+
+        }
+        function initProducts() {
+            var items = document.getElementById('items');
+            var price = document.getElementById('price');
+            var count = 0;
+            for (key in products) {
+                count++;
+                var item = document.createElement('option');
+                item.value = key;
+                item.innerText = key;
+                items.appendChild(item);
+                if (count === 1) {
+                    price.value = Number(products[key]);
+                }
+            }
+        }
+        function updateSelection() {
+            var items = document.getElementById('items');
+            var price = document.getElementById('price');
+            var key = items.options[items.selectedIndex].text;
+            price.value = Number(products[key]);
+        }
+        function addItem() {
+            var items = document.getElementById('items');
+            var price = document.getElementById('price');
+            var table = document.getElementsByTagName('table')[0];
+            var tr = document.createElement('tr');
+            table.appendChild(tr);
+            var td = document.createElement('td');
+            td.innerText = items.options[items.selectedIndex].text;
+            tr.appendChild(td);
+            td = document.createElement('td');
+            td.innerText = price.value;
+            tr.appendChild(td);
+            td = document.createElement('td');
+            var btn = document.createElement('button');
+            btn.setAttribute('class', 'removeBTN');
+            btn.innerHTML = 'Remove';
+            btn.onclick = removeItem;
+            td.appendChild(btn);
+            tr.appendChild(td);
+        }
+        function removeItem(event) {
+            var table = document.getElementsByTagName('table')[0];
+            var btn = event.target;
+            var td = btn.parentNode;
+            var tr = td.parentNode;
+            table.removeChild(tr);
+        }
+        function updatePrice(){
+            var items = document.getElementById('items');
+            var price = document.getElementById('price');
+            var key = items.options[items.selectedIndex].text;
+            if(price.value === ''){
+                price.value = Number(products[key]);
+            }
+        }
+        function register(cartObj) {
+            var sum = 0;
+            for (key in cartObj) {
+                sum += Number(cartObj[key]);
+            }
+            return sum;
+        }
+        console.log(register(cart));
+    </script>
+    <script src='/group4/modules/01 JavaScript Programming/Assignments/19/answer19.js'></script>
+</body>
+
+</html>
