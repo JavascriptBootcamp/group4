@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input onclick="setDifficultyLevel(this.id,this.value)" type="radio" id="easy" value="3" name="difL" checked><lable for="easy">Easy</lable>
+        <input onclick="setDifficultyLevel(this.id,this.value)" type="radio" id="medium" value="5" name="difL"><lable for="medium">Medium</lable>
+        <input onclick="setDifficultyLevel(this.id,this.value)" type="radio" id="hard" value="7" name="difL"><lable for="hard">Hard</lable>
+    </div>
+    <button onclick="startGame()">Start Game</button>
+    <table border="1">
+        <tr id="board">
+        </tr>
+    </table>
+    <div id="insert"></div>
+
+    <script>
+    var level = 'easy';
+    var amountOfChars = 3;
+    function setDifficultyLevel(diffecultyLevel,charsCount){
+        level = diffecultyLevel;
+        amountOfChars = charsCount;
+    }
+    function gameReset(){
+        var board = document.getElementById("board");
+            while (board.firstChild) {
+                board.removeChild(board.firstChild);
+            }
+        var insertDiv = document.getElementById("insert");
+        while (insertDiv.firstChild) {
+            insertDiv.removeChild(insertDiv.firstChild);
+        }
+    }
+    function createTable(){
+        for(var i=0;i<amountOfChars;i++)
+            {
+                var td = document.createElement("td");
+                td.style.height="60px";
+                td.style.width="60px";
+                document.getElementById("board").appendChild(td);
+            }
+    }
+    function createLettersList(word){
+        var arrWord = word.split("");
+        var select = document.createElement("select");
+        select.id=""
+        arrWord.sort();
+        for(var i=0;i<arrWord.length;i++){
+            var option = document.createElement("option");
+            option.value=arrWord[i];
+            option.innerText=arrWord[i];
+            option.id="option"+i;
+            select.appendChild(option);
+        }
+        document.getElementById("insert").appendChild(select);
+    }
+    function randomizeWords(lengthOfWord){
+        var abc = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        var randomWord = "";
+        for(var i=0;i<lengthOfWord;i++)
+        {
+            randomWord += abc[Math.floor(Math.random() * abc.length)];
+        }
+        return randomWord;
+    }
+    function createButton(){
+        btn = document.createElement("button");
+        btn.innerText="Insert";
+        btn.onclick="insertLetter()";
+        document.getElementById("insert").appendChild(btn);
+    }
+    function insertLetter(){
+        var options = document.getElementsByTagName("option");
+        for(var i=0;i<amountOfChars;i++)
+        {
+            if(options[i].selected)
+            {
+                //insert this option into the table to the right index
+                //delete this option from the list
+            }
+        }
+    }
+    function startGame(){
+            gameReset();
+            createTable();
+            createLettersList(randomizeWords(amountOfChars));
+            createButton();
+    }
+    </script>
+</body>
+</html>
