@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="start">choose level:</label> <br>
+        <input type="button" id="start" onclick="startGame(this.value)" value="Easy">
+        <input type="button" id="start" onclick="startGame(this.value)" value="Medium">
+        <input type="button" id="start" onclick="startGame(this.value)" value="Hard">
+
+
+        <br> <br>
+    </form>
+
+    <div id="SelectDiv"></div>
+
+    <div id="answer"></div>
+    <div id="indicate"></div>
+
+    <script>
+        var word1 = new RandomWord(['a', 'b', 'c']);
+        var level;
+        var textCorrect;
+        var textArr = [];
+        var answerWord = "";
+
+        function startGame(value) {
+            switch (value) {
+                case "Hard":
+                    level = 7;
+                    break;
+                case "Medium":
+                    level = 5;
+                    break;
+                case "Easy":
+                    level = 3;
+                    break;
+            }
+            console.log(word1.randomize(level));
+
+        }
+
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    textCorrect = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++)
+                        textCorrect += possible.charAt(Math.floor(Math.random() * possible.length));
+
+                    createTextInList(textCorrect);
+                    return textCorrect;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+
+        function createTextInList(text) {
+            textArr = text.split('').sort();
+            document.getElementById("SelectDiv").innerHTML = "";
+            var selectListChar = document.createElement("select");
+            document.getElementById("SelectDiv").appendChild(selectListChar);
+            selectListChar.onchange = selectChar;
+            var charOption = document.createElement("option");
+            selectListChar.appendChild(charOption);
+            for (var i = 0; i < level; i++) {
+                var charOption = document.createElement("option");
+                selectListChar.appendChild(charOption);
+                charOption.value = textArr[i];
+                charOption.innerText = textArr[i];
+            }
+
+            function selectChar(event) {
+                var char = event.target.value;
+                answerWord += char;
+                document.getElementById("answer").innerText += char;
+                ////cheack win////
+
+
+                if (textCorrect == answerWord) {
+
+                    if (level < 7) {
+                        document.getElementById("indicate").innerHTML = "<h1>WIN</h1>"
+                        document.getElementById("SelectDiv").innerHTML = "";
+                        console.log(word1.randomize(level + 2));
+                    }
+                    else
+                        document.getElementById("indicate").innerHTML = "<h1>WIN all levels</h1>"
+
+
+                }
+
+
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
