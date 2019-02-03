@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table id="cartTable">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <th>
+            <select name="" id="phonesDDL">
+                    <option value="LG">LG</option>
+                    <option value="SAMSUNG">SAMSUNG</option>
+                    <option value="XIAOMI">XIAOMI</option>
+                    <option value="HTC">HTC</option>
+                    <option value="NOKIA">NOKIA</option>
+                    <option value="SONY">SONY</option>
+                    <option value="APPLE">APPLE</option>
+                    <option value="ONEPLUS">ONEPLUS</option>
+                    <option value="HUAWEI">HUAWEI</option>
+                    <option value="GOOGLE">GOOGLE</option>
+            </th>
+            <th>
+                <input type="number" name="" id="priceH" value="0" min="0">
+            </th>
+            <th>
+                <button onclick="addRow()">Add</button>
+            </th>
+            </select>
+        </tr>
+    </table>
+    
+    <div id="totalSum">Total: 0</div>
+
+
+
+    <script>
+        var sum = 0;
+        var rowIndex = 2;
+        function addRow(){
+            var cartTable = document.getElementById("cartTable");
+            var selectedPhone = document.getElementById("phonesDDL").value;
+            var priceH = document.getElementById("priceH").value;
+
+            var phone = document.createElement("label");
+            phone.textContent = selectedPhone;
+
+            var price = document.createElement("label");
+            price.textContent = priceH;
+
+            var removeButton = document.createElement("button");
+            removeButton.textContent = 'Remove';
+            removeButton.onclick = onRemoveRow.bind(null,priceH,rowIndex);
+
+            var tr = document.createElement("tr");
+            removeButton.onclick = onRemoveRow.bind(null,priceH,tr.rowIndex);
+
+            var tdPhone = document.createElement("td");
+            var tdPrice = document.createElement("td");
+            var tdButton = document.createElement("td");
+
+            tdPhone.appendChild(phone);
+            tdPrice.appendChild(price);
+            tdButton.appendChild(removeButton);
+
+            tr.appendChild(tdPhone);
+            tr.appendChild(tdPrice);
+            tr.appendChild(tdButton);
+            tr.id = "tr" + rowIndex++;
+
+            cartTable.appendChild(tr);
+            
+            updateSum(+priceH);
+            console.log(sum,priceH);
+        }
+
+        function updateSum(price){
+            sum += price;
+            var totalSum = document.getElementById("totalSum");
+            totalSum.innerText = "Total: " + sum;
+        }
+
+        function onRemoveRow(priceToSub,indexRow){
+            updateSum(-priceToSub);
+            var cartTable = document.getElementById("cartTable");
+            cartTable.deleteRow(indexRow);
+            indexRow--;
+        }
+
+        function register(cart){
+            var sum = 0;
+            for(var key in cart){
+                sum += +cart[key];
+            }
+            return sum;
+        }
+
+    </script>
+</body>
+
+</html>
