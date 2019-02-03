@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Guess The Random Word</h1>
+
+    Please choose difficulty level:<br><br>
+    <div id="difficulty_level">
+        <button id="Easy" onclick="randomize(3)">Easy</button>
+        <button id="Medium" onclick="randomize(5)">Medium</button>
+        <button id="Hard" onclick="randomize(7)">Hard</button><br><br>
+    </div>
+
+    <div>
+        <select id="mySelect" onchange="checkWinFunction()">
+                <option disabled selected value> -- select an option -- </option>
+        </select>
+    </div>
+
+    <button id="reset" onclick=""></button>
+
+    <script>
+        var easyWordsArray = ['aid', 'fly', 'hat', 'fog', 'gym'];
+        var mediumWordsArray = ['abear', 'abort', 'after', 'gourd', 'pills'];
+        var hardWordsArray = ['abalone', 'abaxial', 'gearbox', 'onboard', 'trellis'];
+        var randomString = "";
+        var randomStringArray;
+        var alphabetRandomString = "";
+        var i = 0;
+
+        function randomize(wordLength) {
+            var selectbox = document.getElementById('mySelect');
+            removeOptions(selectbox);
+
+            if (wordLength === 3) {
+                randomString = easyWordsArray[Math.floor(Math.random() * easyWordsArray.length)];
+
+            }
+            else if (wordLength === 5) {
+                randomString = mediumWordsArray[Math.floor(Math.random() * mediumWordsArray.length)];
+            }
+            else if (wordLength === 7) {
+                randomString = hardWordsArray[Math.floor(Math.random() * hardWordsArray.length)];
+            }
+
+            alphabetRandomString = randomString.split('').sort();
+            randomStringArray = randomString.split('');
+
+            for (var i = 0; i < wordLength; i++) {
+                var opt = document.createElement('option');
+                opt.id = i;
+                opt.value = alphabetRandomString[i];
+                opt.innerText = alphabetRandomString[i];
+                document.getElementById('mySelect').appendChild(opt);
+            }
+
+            console.log(randomString);
+            console.log(alphabetRandomString);
+        }
+
+        function removeOptions(selectbox) {
+            for (i = selectbox.options.length - 1; i >= 1; i--) {
+                selectbox.remove(i);
+            }
+        }
+
+        function checkWinFunction() {
+
+            if (document.getElementById('mySelect').value !== randomStringArray[i++]) {
+                console.log("LOSER!!!!!!!!!!!!!!!!!");
+
+            }
+        }
+    </script>
+</body>
+
+</html>
