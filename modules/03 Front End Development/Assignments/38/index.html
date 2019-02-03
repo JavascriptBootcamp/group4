@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>Favorites</title>
+</head>
+
+<body>
+    <label for="food">Food:</label>
+    <select id="food">
+        <option value="hamburger">hamburger</option>
+        <option value="BBQ">BBQ</option>
+        <option value="salad">salad</option>
+    </select>
+    <button id="foodBtn" onclick="addFood(event);">Add</button><br>
+    <br>
+    <label for="drink">Drink: </label>
+    <select id="drink">
+        <option value="beer">beer</option>
+        <option value="vodka">vodka</option>
+        <option value="coke">coke</option>
+    </select>
+    <button id="drinkBtn" onclick="adddrink(event);">Add</button> <br>
+    <br>
+    <label for="colors">Colors: </label>
+    <select id="colors">
+        <option value="blue">blue</option>
+        <option value="black">black</option>
+        <option value="green">green</option>
+    </select>
+    <button id="colorsBtn" onclick="addColors(event);">Add</button> <br>
+    <br>
+
+    <h2>My favorites </h2>
+    <h3>food: </h3>
+    <ol id="myFood"></ol><br>
+    <h3>drink: </h3>
+    <ol id="myDrink"></ol><br>
+    <h3>color: </h3>
+    <ol id="myColors"></ol><br>
+
+    <script>
+        var foodCount = 0;
+        var drinkCount = 0;
+        var colorsCount = 0;
+
+        function addFood(event) {
+            foodCount++;
+            var selectFood = document.getElementById('food');
+            if (selectFood.length !== 0) {
+                var li = document.createElement("li");
+                document.getElementById("myFood").appendChild(li);
+                li.innerText = "My #" + foodCount + " choice is " + document.getElementById("food").value + ".";
+                selectFood.remove(selectFood.selectedIndex);
+                if (selectFood.length === 0) {
+                    selectFood.disabled = true;
+                    event.target.disabled = true;
+                }
+            }
+
+        }
+        function adddrink(event) {
+            drinkCount++;
+            var selectDrink = document.getElementById('drink');
+            if (selectDrink.length !== 0) {
+                var li = document.createElement("li");
+                document.getElementById("myDrink").appendChild(li);
+                li.innerText = "My #" + drinkCount + " choice is " + document.getElementById("drink").value + ".";
+
+                selectDrink.remove(selectDrink.selectedIndex);
+                if (selectDrink.length === 0) {
+                    selectDrink.disabled = true;
+                    event.target.disabled = true;
+                }
+            }
+        }
+        function addColors(event) {
+            colorsCount++;
+            var selectColor = document.getElementById('colors');
+            if (selectColor.length !== 0) {
+                var li = document.createElement("li");
+                document.getElementById("myColors").appendChild(li);
+                li.innerText = "My #" + colorsCount + " choice is " + document.getElementById("colors").value + ".";
+
+                selectColor.remove(selectColor.selectedIndex);
+                if (selectColor.length === 0) {
+                    selectColor.disabled = true;
+                    event.target.disabled = true;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
