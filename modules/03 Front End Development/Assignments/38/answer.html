@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form onsubmit="return false">
+        
+        <input list="colors">
+
+        <datalist id="colors">
+            <option value="red">
+            <option value="blue">
+            <option value="green">
+            <option value="pink">
+            <option value="yellow">
+        </datalist>
+
+        <input type="submit" value="add" onclick="add()">
+
+    </form>
+
+    <ol id="mylist">
+    </ol>
+
+    <script>
+
+        var counter =1;
+
+        function add() {
+            var getColor = document.getElementsByTagName("input")[0].value;
+            var newColor = document.createElement("li");
+            newColor.innerText = "My #"+counter+ " is " +getColor;
+            document.getElementById("mylist").appendChild(newColor);
+            counter++;
+        }
+    </script>
+</body>
+
+</html>
