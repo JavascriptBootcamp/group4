@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2> choose difficulty level:</h2>
+    <button type="button" onClick="startGame(3)">Easy</button>
+    <button type="button" onclick="startGame(5)">Medium</button>
+    <button type="button" onclick="startGame(7)">Hard</button>
+    <div id="DisSelect"></div>
+    <script>
+        str = "";
+
+        function changeFunc(randomWord) {
+            console.log(str.length);
+
+            if (randomWord.substring(str.length, str.length+1) === document.getElementById("selectid").value) {
+                str += document.getElementById("selectid").value
+                console.log(str);
+                if (str.length === randomWord) {
+                    console.log("win");
+
+                }
+            }
+            else {
+                reset()
+            }
+            // turn = 1;
+            // board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+            // window.location.reload();
+        }
+        function reset() {
+            // turn = 1;
+            // board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+            window.location.reload();
+        }
+        function startGame(wordLength) {
+            // reset();
+            var abc = new RandomWord(['a', 'b', 'c']);
+
+            randomWord = Array.from(abc.randomize(Number(wordLength))).sort();
+            console.log(randomWord);
+
+            var select = document.createElement("select");
+            select.onchange = function () { changeFunc(randomWord.toString()) };
+           //change to optipn
+            select.id = "selectid";
+            randomWord.forEach(function (char) {
+                // var select = document.createElement("select");
+
+                var newOption = document.createElement("option");
+                // newOption.id=""
+                newOption.value = char;
+                newOption.text = char;
+                // console.log (newOption);
+                // console.log (select);
+
+                select.appendChild(newOption);
+            });
+            document.getElementById("DisSelect").appendChild(select);
+            var i = wordLength;
+            // str="";
+            // while (i > 0) {
+            //     // console.log(i);
+            //     // var div = document.createElement("div");
+            //     // div.id="div"+i;
+            //     str+=document.getElementById("selectid").value
+            //     // document.getElementById("DisSelect").innerHTML+="<br>"
+            //     // document.getElementById("div"+i).appendChild(select);
+            //     // document.getElementById("div"+i).innerHTML+="<br>";
+            //     i--;
+            // }
+            // console.log(document.getElementById("f").value);
+            console.log(str);
+
+
+
+        }
+
+        //ass 24
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    var text = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++)
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+
+        var word1 = new RandomWord(['a', 'b', 'c']);
+        console.log(word1.randomize(10));
+    </script>
+</body>
+
+</html>
