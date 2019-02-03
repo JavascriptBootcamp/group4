@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select id="level">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <button id="playBtn" onclick="play()">Play</button>
+    <div id="game"></div>
+    <div id="lettersShow"></div>
+    <div id="result"></div>
+
+    <script>
+        var wordToFind = [];
+        var UserInputLetters = [];
+
+        function RandomWord (charsArray) {
+            this.randomize = function(length){
+                    var text = "";
+                    var possible = charsArray.join("");
+
+                    for (var i = 0; i < length; i++)
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+            }
+    }
+    function play(){
+        var level = document.getElementById("level").value;
+
+        document.getElementById("game").innerHTML="";
+        document.getElementById("lettersShow").innerHTML="";
+        document.getElementById("result").innerHTML="";
+
+        switch(level) {
+            case "easy":
+                randomWord = new RandomWord(['a','b','c','d','e']).randomize(3)
+                break;
+            case "medium":
+                randomWord = new RandomWord(['a','b','c','d','e']).randomize(4)
+                break;
+            case "hard":
+                randomWord = new RandomWord(['a','b','c','d','e']).randomize(5)
+                break;
+            default:
+        }
+        setGameElementsInDom();
+    }
+    function setGameElementsInDom() {
+        UserInputLetters = [];
+
+        document.getElementById("game").innerHTML = "";
+        var lettersArray = randomWord.split("");
+        var select = document.createElement("SELECT");
+        select.setAttribute("id","selectChar");
+        var setCharBtn =  document.createElement("button");
+        wordToFind = lettersArray;
+        lettersArray.sort();
+        for (var i = 0; i < lettersArray.length; i++) {
+            var option = document.createElement("OPTION");
+            option.value = lettersArray[i];
+            option.text = lettersArray[i];
+            select.appendChild(option);
+        }
+        document.getElementById("game").innerHTML += "<br>";
+        document.getElementById("game").appendChild(select);
+        setCharBtn.innerHTML = "Add Char";
+        setCharBtn.value="setChar";
+        setCharBtn.setAttribute("onclick","setCharBtn()");
+        document.getElementById("game").appendChild(setCharBtn);
+    }
+    function setCharBtn(){
+            var stringToFind = wordToFind.join(",");
+            var stringUserInput = UserInputLetters.join(",");
+
+            lettersShow.innerHTML += document.getElementById("selectChar").value + " ";
+            UserInputLetters.push(document.getElementById("selectChar").value);
+            document.getElementById("selectChar").remove(0);
+
+            if (stringToFind.length == stringUserInput.length) {
+                document.getElementById("result").innerHTML = "Game Over";
+                if (stringToFind == stringUserInput) {
+                    document.getElementById("result").innerHTML += " you win!";
+                }
+                else {
+                 document.getElementById("result").innerHTML += " you lose!"; 
+                }
+            }
+                 
+            console.log(wordToFind);
+        console.log(UserInputLetters);
+            
+        }
+
+
+    </script>
+</body>
+</html>
