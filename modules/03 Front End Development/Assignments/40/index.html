@@ -1,0 +1,24 @@
+<html>
+
+<head>
+    <title>My Favorite Quote</title>
+    <!--A list of qoutes-->
+</head>
+
+<body bgcolor='#FFCCFF'>
+    <h3 align='center'>2 Numbers:</h3>
+    <input type="number" min='1' max='100'>
+    <input type="number" min='1' max='100'>
+    <script>
+        function oddOrEven(inp1, inp2) {
+            for (var i = 10; i < 21; i++)
+                i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+        }
+        var btn = document.createElement('button');
+        btn.innerText = 'check';
+        btn.onclick = oddOrEven(document.getle, inp2);
+        document.body.appendChild(btn);
+    </script>
+</body>
+
+</html>

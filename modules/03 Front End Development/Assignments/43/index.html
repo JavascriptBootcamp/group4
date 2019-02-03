@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Word</title>
+</head>
+
+<body>
+    <select name="levels" id="levels" onclick="updateLevel()">
+        <option value='easy'>Easy</option>
+        <option value='medium'>Medium</option>
+        <option value='hard'>Hard</option>
+    </select>
+    <button id='start' onclick='play()'>Start Game</button>
+    <div id='guessTheWord'>
+
+    </div>
+    <div id='choose' style='margin-top:5px;'>
+
+    </div>
+    <div id='msg' style='margin-top:5px;'>
+
+    </div>
+    <script>
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    var text = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++)
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+
+        // var word1 = new RandomWord(['a', 'b', 'c']);
+        // console.log(word1.randomize(10));
+
+        function Game() {
+            var levels = document.getElementById('levels');
+            var selectedLevel = levels.options[levels.selectedIndex];
+            console.log(selectedLevel.value);
+            var word = null;
+            this.setWord = (_word) => {
+                word = _word;
+                console.log(word);
+            }
+        }
+
+        function play() {
+            var levels = document.getElementById('levels');
+            var btn = document.getElementById('start');
+            var div = document.getElementById('guessTheWord');
+            var divChoose = document.getElementById('choose');
+            var message = document.getElementById('msg');
+            btn.disabled = true;
+            levels.disabled = true;
+            var arr;
+            var num;
+            if (levels.selectedIndex == 0) {
+                num = 3;
+            } else if (levels.selectedIndex == 1) {
+                num = 5;
+            } else {
+                num = 7;
+            }
+            arr = randomLetters(num);
+            console.log(arr);
+            var correctWord = new RandomWord(arr);
+            var game = new Game();
+            var word = correctWord.randomize(num);
+            console.log('the word is:' + word);
+            var txt = '';
+            var selectLetters = document.createElement('select');
+            selectLetters.setAttribute('id', 'selectLetters');
+            selectLetters.onchange = guess;
+            selectLetters.ondblclick = guess;
+            var opt;
+            for (var i = 0; i < num; i++) {
+                txt += '_ ';
+                opt = document.createElement('option');
+                opt.value = arr[i];
+                opt.innerText = arr[i];
+                selectLetters.appendChild(opt);
+            }
+            div.innerText = txt;
+            divChoose.appendChild(selectLetters);
+            var count = 0;
+            function guess() {
+                console.log(selectLetters.options[selectLetters.selectedIndex].value, word[count]);
+                if (selectLetters.options[selectLetters.selectedIndex].value === word[count]) {
+                    var str = div.innerText.substring(0, count) + word[count];
+                    console.log(str);
+                    txt = '';
+                    for (var i = count + 1; i < num; i++) {
+                        txt += '_ ';
+                    }
+                    str += txt;
+                    div.innerText = str;
+                    if (count + 1 === word.length) {
+                        message.innerText = 'Nice! You guessed the word.';
+                        if (num === 7) {
+                            message.innerText += ' Game Over.';
+                        } else {
+                            resetDivs();
+                            levels.selectedIndex = levels.selectedIndex + 1;
+                            play();
+                        }
+                    }
+                } else {
+                    resetDivs();
+                    play();
+                }
+                count++;
+
+            }
+
+            function resetDivs() {
+                div.innerText = '';
+                divChoose.removeChild(selectLetters);
+                message.innerText = '';
+            }
+        }
+
+        function updateLevel() {
+            var selectedLevel = levels.options[levels.selectedIndex];
+            console.log(selectedLevel.value);
+        }
+
+        function randomLetters(length) {
+            var randomLettersArr = [];
+            for (var i = 0; i < length; i++) {
+                randomLettersArr.push(('abcdefghijklmnopqrstuvwxyz').split('')[(Math.floor(Math.random() * 26))]);
+            }
+            randomLettersArr.sort();
+            return randomLettersArr;
+        }
+    </script>
+</body>
+
+</html>
