@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 43</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Guess The Random Word</h1>
+        <div id="selectLetters"></div>
+        <button onclick="nextLevel()" hidden>Next Level</button>
+        <div id="msg"></div>   
+    </div>
+
+    <style>
+        h1 {
+            color:rgb(81, 81, 248);
+        }
+        .letter {
+            background: rgb(201, 198, 198);
+            margin: 5px;
+            font-size: large;
+        }
+
+        .letter:hover {
+            cursor:pointer;
+        }
+
+        .clicked {
+            background: rgb(81, 81, 248);
+        }
+
+        #msg {
+            color: rgb(252, 173, 38);
+            font-size: large;
+        }
+
+    </style>
+
+    <script src="randomWord.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
