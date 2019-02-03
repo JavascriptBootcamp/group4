@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML 37</title>
+</head>
+<body>
+	<input type="range" id="bloodRange" min="0" max="200">
+	<div id="msg">
+	</div>
+	<script>
+		
+		var message = document.getElementById("msg");
+		var bloodRange = document.getElementById("bloodRange");
+		
+		bloodRange.onchange  = function(){
+			var bloodVlaue = bloodRange.value;
+			var isNormal;
+			(bloodVlaue >= 90 && bloodVlaue <= 120) ? isNormal = true : false;
+
+			message.innerHTML =  isNormal ? bloodVlaue + " is normal.":bloodVlaue + " isn't in a normal range.";
+
+		}
+	</script>
+</body>
+</html>
