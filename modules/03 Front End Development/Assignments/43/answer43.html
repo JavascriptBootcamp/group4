@@ -35,7 +35,6 @@
         var hardWordsArray = ['abalone', 'abaxial', 'gearbox', 'onboard', 'trellis'];
 
         var randomString = "";
-        var randomStringArray;
         var alphabetRandomString = "";
 
         // document.getElementById("mySelect").addEventListener("change", myFunction);
@@ -44,12 +43,8 @@
             var selectbox = document.getElementById('mySelect');
             resetGame(selectbox);
             randomString = createRandomString(wordLength);
-
-            randomStringArray = randomString.split('');
-
             createSelectOptions(randomString, wordLength);
-            console.log(randomString);
-            console.log(alphabetRandomString);
+        
         }
 
         function createRandomString(length) {
@@ -88,9 +83,6 @@
             var x = document.getElementById("mySelect").value;
             var userGuess = document.getElementById("user_choice").innerHTML += x;
 
-            console.log(userGuess.length);
-            console.log(document.getElementById("mySelect").options.length - 1);
-
             if(userGuess.length > (document.getElementById("mySelect").options.length - 1)){
                 document.getElementById("user_choice").innerHTML = "YOU NEVER WIN!!!";
             }
@@ -101,7 +93,7 @@
             }
         }
 
-        // function myFunction(){
+        // function myFunction(){ //event listener
         //     var x = document.getElementById("mySelect").value;
         //     document.getElementById("user_choice").innerHTML += x;
         // }
