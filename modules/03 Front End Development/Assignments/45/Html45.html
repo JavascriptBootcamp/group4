@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="chrom">
+    <title>Document</title>
+</head>
+
+<body>
+    <div align="center" id="main">
+        <h3>Wellcome to game... Choose Level</h3>
+        <button id="es" onclick="Easy()">"Easy" - 3 letters </button><br><br>
+        <button id="med" onclick="Medium()">"Medium" - 5 letters</button><br><br>
+        <button id="h" onclick="hard()">"Hard" - 7 letters</button><br><br>
+
+    </div><br><br>
+    <div align="center" id="res">
+
+        <!-- <select id="sel">
+            <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+        </select> -->
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script>
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    var text = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++)
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+        function Easy() {
+            var word1 = new RandomWord(['a', 'b', 'c']);
+            start( word1,3);
+            
+        }
+        function Medium() {
+            var word1 = new RandomWord(['a', 'b', 'c', 'd', 'e']);
+            start( word1.randomize(5).split(''),5);
+        }
+        function hard() {
+            var word1 = new RandomWord(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
+            start( word1.randomize(7).split(''),7);
+        }
+        function start(word, size) {
+            console.log(word);
+            var ddL = document.getElementById("res");
+            var sel = document.createElement("select");
+            ddL.appendChild(sel);
+            for(var i=0; i<word.length; i++){
+                opt = document.createElement("option");
+                opt.innerHTML = word[i];
+                sel.appendChild(opt);
+            }
+
+
+
+
+        }
+
+        // var word1 = new RandomWord(['a', 'b', 'c']);
+        // console.log(word1.randomize(3));
+    </script>
+</body>
+
+</html>
