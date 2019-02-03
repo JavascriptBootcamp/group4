@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <select onchange="chooseWord()" id="selectedLevel">
+        <option value="0" selected disabled hidden>Choose a level</option>
+        <option value="1">Easy</option>
+        <option value="2">Medium</option>
+        <option value="3">Hard</option>
+    </select>
+    </div>
+    <div>
+        <select onchange="check()" id="word">
+            
+        </select>
+    </div>
+    <div id="answer"></div>
+    <script>
+        obj = {
+            Easy: ["dog", "run", "leg", "log", "sun"],
+            Medium: ["board", "asder", "htyru", "hewri", "hfrte"],
+            Hard: ["boarxmd", "asdvxer", "htyrpvu", "hepwrri", "hfrttel"]
+        }
+        correct_answer = null;
+        step = 1;
+
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    var text = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++)
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+
+
+        function chooseWord() {
+            var Level;
+            var Level_El = document.getElementById("selectedLevel");
+            if (step == 1) {
+                Level = Level_El.options[Level_El.selectedIndex].text;
+                step = Level_El.selectedIndex;
+            }
+            else {
+                Level_El.options[Level_El.selectedIndex].text = Level_El.options[step].text;
+                Level = Level_El.options[step].text;
+            }
+            var r = Math.floor(Math.random() * obj[Level].length);
+            var word = obj[Level][r];
+            var wordArr = word.split("");
+            var randomWord = new RandomWord(wordArr);
+            var result = randomWord.randomize(obj[Level][r].length);
+            correct_answer = result;
+            result = result.split("").sort();
+            var randomiseWord_Selected = document.getElementById("word");
+            randomiseWord_Selected.innerHTML = '<option value="" selected disabled hidden>Choose</option>';
+            for (var item in result) {
+                if (result.hasOwnProperty(item)) {
+                    var opt = document.createElement("option");
+                    opt.innerText = result[item];
+                    randomiseWord_Selected.appendChild(opt);
+                }
+            }
+        }
+
+        function check() {
+
+            var randomiseWord_Selected = document.getElementById("word");
+            var w = randomiseWord_Selected.options[randomiseWord_Selected.selectedIndex].text;
+            var answer_div = document.getElementById("answer");
+            var index = correct_answer.indexOf(w);
+            if (index == answer_div.innerText.length) {
+                answer_div.innerText += w;
+            }
+            else {
+                randomiseWord_Selected.innerHTML = '<option value="" selected disabled hidden>Choose</option>';
+                chooseWord();
+            }
+            if (answer_div.innerText == correct_answer) {
+                answer_div.innerText = "you won!";
+                step++;
+                chooseWord();
+            }
+            console.log(index);
+            console.log(answer_div.innerText.length);
+
+        }
+    </script>
+</body>
+
+</html>
