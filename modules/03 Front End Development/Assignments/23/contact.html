@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+
+<body>
+    <div>
+        <img src="https://prego.co.il/wp-content/uploads/2018/05/Prego_Logo_NewSlogan-01.png" alt="pizza">
+    </div>
+    <div id="navigation">
+        <ul>
+            <li><a href="index.html" class="link">Home</a></li>
+            <li><a href="about.html" class="link">About Us</a></li>
+            <li><a href="contact.html" class="link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <div id="content">
+            <h1>Contact Us</h1>
+            <p>Address: Lishansky 27 St. Holon
+                <br>
+                Phone:03-941-0808
+                <br>
+                Activity time:
+                <br>
+                Sunday-Thursday: 11:00-23:15,&emsp;Friday: 16:00-02:30,&emsp;Saturday: 12:00-23:30
+            </p>
+        </div>
+
+        <div>
+            <form>
+                <label for="fullname">Full Name: </label>
+                <input type="text" id="fullname" placeholder="Your Name" required><br /><br />
+
+                <label for="email">Email Address: </label>
+                <input type="email" id="email" placeholder="example@gmail.com" pattern="^[a-z0-9.]+@[a-z0-9.-]+\.[a-z]{2}$"
+                    required><br /><br />
+
+                <label for="phone">Phone Number: </label>
+                <input type="tel" id="phone" placeholder="050-111-1111" pattern="^[0-9]{3}-[0-9]{3}-[0-9]{4}$" required><br /><br />
+
+                <textarea name="comments" rows="4" cols="50" placeholder="Enter text here..."></textarea><br /><br />
+
+                <div id="buttons">
+                    <input type="submit" value="Submit">&emsp;
+                    <input type="reset" value="Reset">
+                    <br /><br />
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+
+    <div id="footer">
+        &copy pizza prego
+    </div>
+</body>
+
+</html>
