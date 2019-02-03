@@ -1,0 +1,20 @@
+Tag Name:
+  <input type="email">
+  
+Properties:
+  None.
+  
+Description:
+  The input value is automatically validated to ensure it is a properly formatted e-mail address.
+  
+Example:
+<html>
+  <body>
+
+    <form>
+      E-mail: <input type="email" name="emailaddress">
+      <input type="submit">
+    </form>
+
+  </body>
+</html>
