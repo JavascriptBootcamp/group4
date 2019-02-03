@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Payment Form</title>
+</head>
+
+<body>
+    <form action="http://localhost:3000/Order" method="POST" onsubmit="return isValidNum()" >
+
+
+        <h1>Payment form </h1>
+        <table>
+            <tr>
+                <td>Card Number:</td>
+                <td> <input type="text" name="cardNum" id="cardNum" required> </td>
+            </tr>
+            <tr>
+                <td>Name on card:</td>
+                <td><input type="text" name="cardName" id="" required></td>
+            </tr>
+            <tr>
+                <td>Expiry date:</td>
+                <td><input type="date" name="exDate" id="" required></td>
+            </tr>
+            <tr>
+                <td>Security code:</td>
+                <td><input type="number" name="secCode" id="" required maxlength="3" minlength="3"></td>
+            </tr>
+            <tr>
+                <td>Submit:</td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="validationTest"> </div>
+
+    <script>
+
+
+        //var inputString = "6666666666661666";
+
+
+        function validateCreditCard() {
+
+            var cardNum = document.forms[0].cardNum.value;
+
+
+            var splitedString = cardNum.split("");
+
+            splitedString = splitedString.filter(function (ch) {
+                return ch !== "-";
+            });
+
+            function checkLength() {
+
+                return splitedString.length === 16;
+            }
+
+            function isAllNum() {
+
+                return splitedString.every(function (ch) {
+                    return !isNaN(ch);
+                });
+            }
+
+            function checkDiff() {
+
+                return splitedString.some(function (ch, i, arr) {
+
+                    if (i > 0)
+                        return arr[i - 1] !== arr[i];
+                });
+            }
+
+            function isFinalEven() {
+
+                return ((splitedString[splitedString.length - 1]) % 2 === 0);
+            }
+
+            function sumIsGreter16() {
+
+                function sumOfNum() {
+                    return splitedString.reduce(function (sum, ch) {
+                        return Number(sum) + Number(ch);
+                    }, 0);
+                }
+
+                return sumOfNum() > 16;
+            }
+
+            if (checkLength() && isAllNum() && checkDiff() && isFinalEven() && sumIsGreter16())
+                return { valid: true, number: cardNum };
+            else {
+                var errorOb = { valid: false, number: cardNum, error: [] };
+
+                if (!checkLength())
+                    errorOb.error.push("worng length");
+                if (!isAllNum())
+                    errorOb.error.push("all of them must be numbers");
+                if (!checkDiff())
+                    errorOb.error.push("all of the digits cannot be the same");
+                if (!isFinalEven())
+                    errorOb.error.push("The final digit must be even");
+                if (!sumIsGreter16())
+                    errorOb.error.push("The sum of all the digits must be greater than 16");
+
+
+
+
+
+                return errorOb;
+            }
+
+
+
+        }
+
+        function isValidNum() {
+
+
+            var validateResult = validateCreditCard();
+           
+
+            if (!validateResult.valid) {
+
+                document.getElementById("validationTest").innerHTML = `<h3>The Number Card :${validateResult.number} 
+                                                          <mark>Is Not Valid</mark> becuse : <br/>
+                                                          ${validateResult.error.join("</br>")}</h3>`
+                event.preventDefault;
+
+               
+            }
+
+            return validateResult.valid;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
