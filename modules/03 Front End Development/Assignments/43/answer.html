@@ -38,23 +38,19 @@
             theChosenWord = randomizeWordByLevel(theChosenLevel);
 
             var theOptions = theChosenWord.split('').sort();
-            
+
         }
 
-        function displayLetters(theOptions)
-        {
-            for(var i = 0; i < theOptions.length; i++)
-            {
+        function displayLetters(theOptions) {
+            for (var i = 0; i < theOptions.length; i++) {
                 var newBtn = document.createElement("button");
                 newBtn.innerText = theOptions[i];
-                newBtn.onclick = function()
-                {
+                newBtn.onclick = function () {
                     this.disabled = true;
                     lettersClicked++;
                     possibleWord += this.innerText;
 
-                    if(lettersClicked === theChosenWord.length)
-                    {
+                    if (lettersClicked === theChosenWord.length) {
                         checkForWin();
                     }
                 }
@@ -63,8 +59,7 @@
             }
         }
 
-        function randomizeWordByLevel(theChosenLevel)
-        {
+        function randomizeWordByLevel(theChosenLevel) {
             if (theChosenLevel === 'Easy') {
                 theChosenWord = easyWords[Math.floor(Math.random() * easyWords.length)];
             }
@@ -79,38 +74,41 @@
             return theChosenWord;
         }
 
-        function checkForWin()
-        {
+        function checkForWin() {
             var theResultText = document.createElement("h3");
             var thePopupResult;
 
-            if(theChosenWord === possibleWord)
-            {
+            if (theChosenWord === possibleWord) {
                 theResult.innerText = "YOU WON";
                 thePopupResult = confirm("MOVE TO NEXT LEVEL?");
 
-                if(thePopupResult == true)
-                {
+                if (thePopupResult == true) {
                     optionalLettersDiv.innerHTML = "";
                 }
             }
 
-            else
-            {
+            else {
                 theResult.innerText = "YOU LOST";
 
                 thePopupResult = confirm("TRY AGAIN?");
 
-                if(thePopupResult == true)
+                if (thePopupResult == true) {
+                    location.reload();
+                }
+                else
                 {
                     location.reload();
                 }
             }
 
             optionalLettersDiv.appendChild(theResult);
+        }
 
-            
-
+        function initializeComponents() {
+            theChosenWord = "";
+            possibleWord = "";
+            lettersClicked = 0;
+            optionalLettersDiv.innerHTML = "";
         }
     </script>
 </body>
