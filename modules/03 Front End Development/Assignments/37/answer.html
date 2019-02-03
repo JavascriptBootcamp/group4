@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="range" min="50" max="200" id="bloodRange" oninput="showVal(this.value)">
+    <div id="bloodDiv"></div>
+
+    <script>
+        function showVal(val) {
+            if (val >= 80 && val <= 120) {
+                document.getElementById("bloodDiv").innerHTML = val + " is normal for blood presure";
+            } else {
+                document.getElementById("bloodDiv").innerHTML = val + " is ab normal for blood presure";
+            }
+        }
+    </script>
+</body>
+
+</html>
