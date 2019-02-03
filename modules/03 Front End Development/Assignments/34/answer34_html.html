@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p> Enter Word </p>
+    <div id ="words">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+</div>
+<br/><br/>
+    <input type="button" name ="btn" value = "Remove duplicate and sort" onclick="getAllwords()">
+    <br/><br/>
+
+    
+    <div id ="displayWords"> </div>
+   
+    <script>
+       
+      function getAllwords() {
+       var words = document.getElementById("words").children;
+       var displayDiv = document.getElementById("displayWords");
+
+       var wordsArr = [];
+       for (var i = 0 ; i < words.length ; i++) {
+  
+           wordsArr.push((words[i].value).toString().trim());
+       }
+
+      var wordsWithotDuplicte =  wordsArr.filter(function(val ,index , arr){ 
+            
+            return (arr.indexOf(val) >= index);
+       });
+
+        displayDiv.innerText = wordsWithotDuplicte.sort().join(" ");
+
+       }
+
+      
+    </script>
+</body>
+</html>
