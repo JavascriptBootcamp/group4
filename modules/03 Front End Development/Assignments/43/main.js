@@ -50,7 +50,7 @@ function catchChoice(el) {
     }
 
     if(userSeqense.length === levels[3]){
-        document.querySelector("#msg").innerText ="Amizzing!! You were right!! the correct word is "+wordOfTheLevel+"/nYou WIN!!!!";
+        document.querySelector("#msg").innerText ="Amizzing!! You were right!! the correct word is "+wordOfTheLevel+"\nYou WIN!!!!";
         document.querySelector("button").hidden= true;
     }
 
