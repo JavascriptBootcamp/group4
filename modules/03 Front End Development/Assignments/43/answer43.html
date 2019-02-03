@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form" onsubmit="return false;">
+        <div id="header">
+            <h1>Guess the Word</h1>
+
+            <div id="divDifficulty">
+                <select name="difficulty" id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <input type="submit" value="Start" onclick="randomWord();">
+            </div>
+        </div>
+        <div id="content">
+            <select name="letters" id="letters" on>
+            </select>
+            <input type="submit" value="Check" onclick="checkWord();">
+            
+        </div>
+    </form>
+    <div id="footer"></div>
+    <script>
+        var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        var wordLetters=[],lettersToDisplay=[];
+        var word="";
+        var inProgress=false,win=false;
+        var count=0;
+        var levels = document.getElementById("difficulty");
+        var selectedLevel;
+        function checkWord()
+        {
+            var selectedletter=document.getElementById("letters").options[document.getElementById("letters").selectedIndex].value;
+            var display=document.getElementById("footer");
+            wordLetters=word.split("");
+            if(wordLetters[count]===selectedletter)
+            {
+                inProgress=true;
+                count++;
+                display.innerText="You are correct!";
+                if(count===wordLetters.length)
+                {
+                    display.innerHTML="you win!<br> you're moving to the next level";
+
+                }
+            }
+            else{
+                display.innerText="YOU FAILED!";
+                
+                return;
+            }
+
+        }
+        function randomWord() {
+            if(word!==null)
+            {
+                word=null;
+                lettersToDisplay=null;
+                document.getElementById("letters").innerHTML="";
+            }
+            
+            selectedLevel=levels.options[levels.selectedIndex].value;
+            
+            if (selectedLevel === "easy")
+                {
+                    word = new RandomWord(letters).randomize(3);
+                }
+            else if (selectedLevel === "medium")
+                {
+                    word = new RandomWord(letters).randomize(5);
+                }
+            else if (selectedLevel === "hard")
+                {
+                    word = new RandomWord(letters).randomize(7);                    
+                }
+                lettersToDisplay = word.split("").sort();
+                setListOptions(lettersToDisplay);
+            
+        }
+        function setListOptions(lettersToDisplay)
+        {
+            var option;
+            var selectElm=document.getElementById("letters");
+            for (var i = 0; i < lettersToDisplay.length; i++) {
+                option=document.createElement("option");
+                option.value=lettersToDisplay[i];
+                option.innerText=lettersToDisplay[i];
+                selectElm.appendChild(option);
+                
+            }
+        }
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    var text = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++)
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    return text;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
