@@ -18,66 +18,93 @@
         <button id="Hard" onclick="randomize(7)">Hard</button><br><br>
     </div>
 
-    <div>
+    <form>
         <select id="mySelect" onchange="checkWinFunction()">
-                <option disabled selected value> -- select an option -- </option>
+            <option disabled selected value> -- select an option -- </option>
         </select>
-    </div>
+    </form>
+    <br>
 
-    <button id="reset" onclick=""></button>
+    <p id="user_choice"></p>
+
+    <button id="reset" onclick="randomize()">Retry!</button>
 
     <script>
         var easyWordsArray = ['aid', 'fly', 'hat', 'fog', 'gym'];
         var mediumWordsArray = ['abear', 'abort', 'after', 'gourd', 'pills'];
         var hardWordsArray = ['abalone', 'abaxial', 'gearbox', 'onboard', 'trellis'];
+
         var randomString = "";
         var randomStringArray;
         var alphabetRandomString = "";
-        var i = 0;
+
+        // document.getElementById("mySelect").addEventListener("change", myFunction);
 
         function randomize(wordLength) {
             var selectbox = document.getElementById('mySelect');
-            removeOptions(selectbox);
+            resetGame(selectbox);
+            randomString = createRandomString(wordLength);
 
-            if (wordLength === 3) {
-                randomString = easyWordsArray[Math.floor(Math.random() * easyWordsArray.length)];
-
-            }
-            else if (wordLength === 5) {
-                randomString = mediumWordsArray[Math.floor(Math.random() * mediumWordsArray.length)];
-            }
-            else if (wordLength === 7) {
-                randomString = hardWordsArray[Math.floor(Math.random() * hardWordsArray.length)];
-            }
-
-            alphabetRandomString = randomString.split('').sort();
             randomStringArray = randomString.split('');
 
-            for (var i = 0; i < wordLength; i++) {
-                var opt = document.createElement('option');
-                opt.id = i;
-                opt.value = alphabetRandomString[i];
-                opt.innerText = alphabetRandomString[i];
-                document.getElementById('mySelect').appendChild(opt);
-            }
-
+            createSelectOptions(randomString, wordLength);
             console.log(randomString);
             console.log(alphabetRandomString);
         }
 
-        function removeOptions(selectbox) {
+        function createRandomString(length) {
+            if (length === 3) {
+                return easyWordsArray[Math.floor(Math.random() * easyWordsArray.length)];
+            }
+            else if (length === 5) {
+                return mediumWordsArray[Math.floor(Math.random() * mediumWordsArray.length)];
+            }
+            else if (length === 7) {
+                return hardWordsArray[Math.floor(Math.random() * hardWordsArray.length)];
+            }
+        }
+
+        function createSelectOptions(randomString, wordLength) {
+
+            var alphabetRandomString = randomString.split('').sort();
+            for (var i = 0; i < wordLength; i++) {
+                var opt = document.createElement('option');
+                opt.id = i;
+                opt.innerText = alphabetRandomString[i];
+                document.getElementById('mySelect').appendChild(opt);
+            }
+        }
+
+        function resetGame(selectbox) {
             for (i = selectbox.options.length - 1; i >= 1; i--) {
                 selectbox.remove(i);
             }
+            document.getElementById("mySelect").selectedIndex = 0;
+            document.getElementById("user_choice").innerHTML = "";
+            document.getElementById("mySelect").disabled = false;
         }
 
         function checkWinFunction() {
+            var x = document.getElementById("mySelect").value;
+            var userGuess = document.getElementById("user_choice").innerHTML += x;
 
-            if (document.getElementById('mySelect').value !== randomStringArray[i++]) {
-                console.log("LOSER!!!!!!!!!!!!!!!!!");
+            console.log(userGuess.length);
+            console.log(document.getElementById("mySelect").options.length - 1);
 
+            if(userGuess.length > (document.getElementById("mySelect").options.length - 1)){
+                document.getElementById("user_choice").innerHTML = "YOU NEVER WIN!!!";
+            }
+
+            else if(document.getElementById("user_choice").innerText === randomString){
+                document.getElementById("user_choice").innerHTML = "WINNER!!!";
+                document.getElementById("mySelect").disabled = true;
             }
         }
+
+        // function myFunction(){
+        //     var x = document.getElementById("mySelect").value;
+        //     document.getElementById("user_choice").innerHTML += x;
+        // }
     </script>
 </body>
 
