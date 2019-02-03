@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>"Images | Favorites"</title>
+</head>
+<body>
+    
+        <a href="https://en.wikipedia.org/wiki/Amsterdam" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Moon" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg" height="200" width="220"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Tel_Aviv" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tel_Aviv_Promenade_panoramics.jpg/800px-Tel_Aviv_Promenade_panoramics.jpg" height="200" width="300"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Prague" target="_blank" >
+            <img src="https://www.prague.eu/img/pragueeu/u/property/logo-for-share-v2.jpg" height="200" width="300"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Holon" target="_blank">
+            <img src="https://www.israel21c.org/wp-content/uploads/2016/06/Photo-of-Beersheva-by-Leonard-ZhukovskyShutterstock.com_-1000x657.jpg" height="200" width="300"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Amsterdam" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Amsterdam" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
+    
+        <a href="https://en.wikipedia.org/wiki/Amsterdam" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
+
+        <script>
+
+ 
+             var anchorImg = document.getElementsByTagName("a");
+
+            for (let i = 0 ; i < anchorImg.length ; i++) {
+            
+                    anchorImg[i].addEventListener("click" , function(){
+                        anchorImg[i].removeChild(anchorImg[i].childNodes[1]);
+                    });
+                 
+                };
+            
+            
+        </script>
+</body>
+</html>
