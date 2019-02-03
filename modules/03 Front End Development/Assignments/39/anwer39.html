@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> favorite list</title>
+</head>
+
+<body>
+    <table id="table">
+        <tr>
+            <th> Name</th>
+            <th> Price</th>
+            <th> Action</th>
+        </tr>
+        <tr>
+            <td>
+                <select id="productsName">
+                    <option>shirt</option>
+                    <option>dress</option>
+                    <option>nail-polish</option>
+                    <option>heels</option>
+                    <option>jeans</option>
+                    <option>gym</option>
+                </select>
+            </td>
+            <td>
+                <input id="productPrice" type="number">
+            </td>
+            <td>
+                <button id="productAction" onclick="add()">Add</button>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Total Price:</h2>
+    <div id="totalPrice"></div>
+
+    <form id="paymentInfo" action="http://localhost:3000/Order" method="POST" onsubmit="return false">
+        Card Number:<input id="cardNumber" type="text" required><br><br>
+        Name on card:<input id="nameOnCard" type="text" required><br><br>
+        Expiry date:<input id="expiryDate" type="date" required><br><br>
+        Security Code<input id="securityCode" type="number" minlength="3" maxlength="3" required><br><br>
+        <input type="submit" id="submitBtn" value="Submit" onclick="validateInputs()">
+    </form>
+
+    <div id="errorDiv"></div>
+    <script>
+        var totalPrice = 0;
+        function displayTotalPrice() {
+            document.getElementById("totalPrice").innerText = totalPrice;
+
+        }
+        function remove(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            totalPrice -= Number(document.getElementById("table").rows[i].cells.item(1).innerText);
+
+            document.getElementById("table").deleteRow(i);
+            displayTotalPrice();
+        }
+        function add() {
+            var newRow = document.getElementById("table").insertRow(document.getElementById("table").rows.length);
+            var newName = newRow.insertCell(0);
+            var newPrice = newRow.insertCell(1)
+            var newAaction = newRow.insertCell(2)
+
+            var newButton = document.createElement("button");
+            newButton.innerText = "remove"
+            newButton.onclick = function () { remove(this) };
+            newAaction.appendChild(newButton);
+            totalPrice += Number(document.getElementById("productPrice").value);
+            displayTotalPrice();
+
+            newName.innerText = document.getElementById("productsName").value;
+            newPrice.innerText = document.getElementById("productPrice").value;
+
+
+        }
+        function validateInputs() {
+            var CardNumber = document.getElementById("cardNumber").value;
+            
+            var errorDivRef = document.getElementById("errorDiv");
+            errorDivRef.innerHTML = " ";
+            var paymentInfo = document.getElementById("paymentInfo");
+            var result = validateCreditCard(CardNumber);
+            if (result.valid) {
+                errorDivRef.innerHTML = " ";
+                paymentInfo.onsubmit = true;
+            }
+            else {
+                errorDivRef.innerHTML = result.error;
+            }
+        }
+
+        //19.answer
+        function validateCreditCard(creditCard) {
+            var creditCardNumbers;
+            var creditCardNumbersSum = 0;
+            var creditCardWithNoDashes;
+
+            creditCardWithNoDashes = creditCard.split("-");
+            creditCardWithNoDashes = creditCardWithNoDashes.join("");
+            creditCardNumbers = creditCardWithNoDashes.split("").map(Number);
+
+            function checkLength(creditCardWithNoDashes) {
+                return (creditCardWithNoDashes.length == 16);
+            }
+
+            function checkAllItemsNumbers(creditCardNumbers) {
+                var isAllItemsNumbers = creditCardNumbers.every(function (element) {
+                    creditCardNumbersSum += element;
+                    return (element >= 0 && element <= 9);
+                });
+
+                return isAllItemsNumbers;
+            }
+
+            function checkDigitsSum() {
+                return (creditCardNumbersSum > 16);
+            }
+
+            function checkIfAllDigitsSame(creditCardNumbers) {
+                var isAllDigitsSame = creditCardNumbers.every(function (element) {
+                    return element === creditCardNumbers[0];
+                });
+                return !isAllDigitsSame;
+            }
+
+            function CheckLastDigitEven(creditCardNumbers) {
+                return (creditCardNumbers[creditCardNumbers.length - 1] % 2 == 0)
+            }
+
+            if (checkLength(creditCardNumbers)) {
+                if (checkAllItemsNumbers(creditCardNumbers)) {
+                    if (checkDigitsSum()) {
+                        if (checkIfAllDigitsSame(creditCardNumbers)) {
+                            if (CheckLastDigitEven(creditCardNumbers)) {
+                                return { valid: true, number: creditCard }
+                            }
+                            else {
+                                return { valid: false, error: "odd final number", number: creditCard }
+                            }
+                        }
+                        else {
+                            return { valid: false, error: "only one type of number", number: creditCard }
+                        }
+                    }
+                    else {
+                        return { valid: false, error: "sum less than 16", number: creditCard }
+                    }
+                }
+                else {
+                    return { valid: false, error: "invalid characters", number: creditCard }
+                }
+            }
+            else {
+                return { valid: false, error: "Credit Card Length Must Be 16 Digits", number: creditCard }
+            }
+        }
+
+        //OUTPUT EXAMPLES
+        console.log(validateCreditCard("a92332119c011112"));
+        console.log(validateCreditCard("4444444444444444"));
+        console.log(validateCreditCard("1111111111111110"));
+        console.log(validateCreditCard("6666666666666661"));
+        console.log(validateCreditCard("9999-7777-8888-0000"));
+        console.log(validateCreditCard("6666-6666-6666-1666"));
+
+    </script>
+</body>
+
+</html>
