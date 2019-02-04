@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <label for="" id="requiredWord"></label><br>
+    <select name="" id="lettersToSelect">
+    </select>
+    <button onclick="addLetter()" id="chooseBtn">choose</button><br>
+    <label for="" id="foundWord"></label><br>
+
+    <script>
+        var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+        var currentLevel = 3;
+        var isWin = false;
+        var word = letters.slice(letters.length - currentLevel);
+        var randomWord = new RandomWord(word).randomize(currentLevel);
+
+        var userSelected = ""; 
+        document.getElementById("requiredWord").innerText = randomWord;
+        var lettersToSelect = document.getElementById("lettersToSelect");
+        for(var i=0; i<randomWord.length;i++){
+            var option = document.createElement("option");
+            option.text = word[i];
+            lettersToSelect.appendChild(option);
+        }
+
+
+        function addLetter(){
+            if(isWin){
+                return;
+            }
+            var lettersToSelect = document.getElementById("lettersToSelect");
+            userSelected += lettersToSelect.value;
+            document.getElementById("foundWord").innerHTML = userSelected;
+
+            if(userSelected === randomWord){
+                nextLevel();
+            }
+            else if(!randomWord.startsWith(userSelected)){
+                goToStart();
+            }
+        }
+
+        function nextLevel(){
+            if(currentLevel === 7){
+                win();
+                document.getElementById("chooseBtn").disabled = true;
+                return;
+            }
+
+            console.log("Next Level!");
+            var length = lettersToSelect.options.length;
+            for (i = 0; i < length; i++) {
+                lettersToSelect.remove(0);
+            }
+            currentLevel += 2;
+            word = letters.slice(letters.length - currentLevel);
+            randomWord = new RandomWord(word).randomize(currentLevel);
+
+            lettersToSelect.childNodes = null;
+
+            for(var i=0; i<randomWord.length;i++){
+                var option = document.createElement("option");
+                option.text = word[i];
+                lettersToSelect.appendChild(option);
+            }
+            userSelected = ""; 
+            document.getElementById("requiredWord").innerText = randomWord;
+            document.getElementById("foundWord").innerHTML = userSelected;
+        }
+
+        function goToStart(){
+
+            console.log("Start Again!");
+            word = letters.slice(letters.length - currentLevel);
+            randomWord = new RandomWord(word).randomize(currentLevel);
+            userSelected = ""; 
+            document.getElementById("requiredWord").innerText = randomWord;
+            document.getElementById("foundWord").innerHTML = userSelected;
+        }
+
+        function win(){
+            document.getElementById("foundWord").innerHTML = userSelected + "     And you win!!!";
+        }
+
+        function RandomWord(charsArray) {
+            if (typeof charsArray === 'object') {
+                //this.result = randomize(charsArray); 
+            }
+            else {
+                console.log('"chars" should be an array.');
+            }
+            this.randomize = function (length) {
+                if (typeof length === 'number') {
+                    var text = "";
+                    var possible = charsArray.join("");
+                    for (var i = 0; i < length; i++){
+                        var t = possible.charAt(Math.floor(Math.random() * possible.length));
+                        if(text.indexOf(t) === -1){
+                            text += t;
+                        }
+                        else{
+                            i--;
+                        }
+                    }
+                    return text;
+                }
+                else {
+                    console.log('"length" should be a number.');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
