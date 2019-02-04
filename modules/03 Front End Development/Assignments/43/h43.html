@@ -5,34 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+        body{
+              text-align: center;
+             }
+
+             #answer{
+                 font-size:30px;
+             }
+    </style>
     <title>Document</title>
 </head>
 
 <body>
     <form>
         <label for="start">choose level:</label> <br>
-        <input type="button" id="start" onclick="startGame(this.value)" value="Easy">
-        <input type="button" id="start" onclick="startGame(this.value)" value="Medium">
-        <input type="button" id="start" onclick="startGame(this.value)" value="Hard">
+        <input type="button" id="btn1" onclick="selectedLevel(event)" value="Easy">
+        <input type="button" id="btn2" onclick="selectedLevel(event)" value="Medium">
+        <input type="button" id="btn3" onclick="selectedLevel(event)" value="Hard">
 
 
         <br> <br>
     </form>
 
-    <div id="SelectDiv"></div>
-
-    <div id="answer"></div>
+    <div id="SelectDiv"></div><br>
+    <div id="answer"></div><br>
     <div id="indicate"></div>
+    <div id="levelNow"></div>
 
     <script>
-        var word1 = new RandomWord(['a', 'b', 'c']);
+        var word = new RandomWord(['a', 'b', 'c']);
         var level;
-        var textCorrect;
+        var correctString;
         var textArr = [];
         var answerWord = "";
+        var indexChar;
 
-        function startGame(value) {
-            switch (value) {
+        function selectedLevel(event) {
+            switch (event.target.value) {
                 case "Hard":
                     level = 7;
                     break;
@@ -43,36 +54,39 @@
                     level = 3;
                     break;
             }
-            console.log(word1.randomize(level));
+            ;
+            NewGame();
+        }
 
+        function NewGame() {
+            document.getElementById("levelNow").innerHTML = "Level :" + level;
+            answerWord = "";
+            indexChar = -1;
+            document.getElementById("answer").innerText = "";
+            document.getElementById("SelectDiv").innerHTML = "";
+            console.log(word.randomize(level));
         }
 
         function RandomWord(charsArray) {
             if (typeof charsArray === 'object') {
                 //this.result = randomize(charsArray); 
             }
-            else {
-                console.log('"chars" should be an array.');
-            }
+            else { console.log('"chars" should be an array.'); }
             this.randomize = function (length) {
                 if (typeof length === 'number') {
-                    textCorrect = "";
+                    correctString = "";
                     var possible = charsArray.join("");
                     for (var i = 0; i < length; i++)
-                        textCorrect += possible.charAt(Math.floor(Math.random() * possible.length));
-
-                    createTextInList(textCorrect);
-                    return textCorrect;
+                        correctString += possible.charAt(Math.floor(Math.random() * possible.length));
+                    createTextInList(correctString);
+                    return correctString;
                 }
-                else {
-                    console.log('"length" should be a number.');
-                }
+                else console.log('"length" should be a number.');
             }
         }
 
         function createTextInList(text) {
             textArr = text.split('').sort();
-            document.getElementById("SelectDiv").innerHTML = "";
             var selectListChar = document.createElement("select");
             document.getElementById("SelectDiv").appendChild(selectListChar);
             selectListChar.onchange = selectChar;
@@ -85,31 +99,45 @@
                 charOption.innerText = textArr[i];
             }
 
-            function selectChar(event) {
-                var char = event.target.value;
-                answerWord += char;
-                document.getElementById("answer").innerText += char;
-                ////cheack win////
-
-
-                if (textCorrect == answerWord) {
-
-                    if (level < 7) {
-                        document.getElementById("indicate").innerHTML = "<h1>WIN</h1>"
-                        document.getElementById("SelectDiv").innerHTML = "";
-                        console.log(word1.randomize(level + 2));
-                    }
-                    else
-                        document.getElementById("indicate").innerHTML = "<h1>WIN all levels</h1>"
-
-
-                }
-
-
-            }
-
-
         }
+        function selectChar(event) {
+            var char = event.target.value;
+            answerWord += char;
+            document.getElementById("answer").innerText += char;
+            console.log(indexChar);
+            indexChar++;
+            checkWin(answerWord);
+        }
+
+        function checkWin() {
+            //checkWin
+            console.log(correctString);
+            console.log(answerWord);
+            console.log(indexChar);
+            console.log(answerWord[indexChar]);
+
+            console.log(correctString[indexChar]);
+
+            if (correctString == answerWord) {
+                if (level < 7) {
+                    level = level + 2;
+                    document.getElementById("indicate").innerHTML = "<h1>You WIN!</h1><h3>try level: " + level + "</h3>";
+                    setTimeout(function () { document.getElementById("indicate").innerHTML = "" }, 2500);
+                    NewGame();
+                }
+                else document.getElementById("indicate").innerHTML = "<h1>WIN all levels!!</h1>"
+            }
+            //checkWrong
+            else
+                if ((correctString[indexChar]) != (answerWord[indexChar])) {
+                    document.getElementById("indicate").innerHTML = "<h1>Game Over</h1><h3>try again... </h3>";
+                    setTimeout(function () { document.getElementById("indicate").innerHTML = "" }, 2500);
+                    NewGame();
+                }
+        }
+
+
+
     </script>
 </body>
 
