@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inputLetter" maxlength="1">
+    <button onclick="addLetter()">Add</button>
+    <label for="" id="divMessage"></label>
+
+
+    <script>
+
+
+        var strPalindrome = '';
+
+        function addLetter(){
+            strPalindrome += document.getElementById("inputLetter").value;
+            var divMessageValue = "The Word " + '"' + strPalindrome + '"' + " is ";
+            var isPalindrom = isPalindrome(strPalindrome);
+            divMessageValue += isPalindrom ? "palindrom!" : "not palindrom!";
+            document.getElementById("divMessage").textContent = divMessageValue;
+            var br = document.createElement('br');
+            document.body.appendChild(br);
+        }
+
+        function isPalindrome() {
+            var x = strPalindrome.length - 1;
+            for (var i = 0; i < strPalindrome.length / 2; i++) {
+
+                if (strPalindrome[i] !== strPalindrome[x])
+                    return  false;
+                x--;
+
+            }
+            return true;
+        }
+
+        //console.log(isPalindrome(str));
+    </script>
+</body>
+
+</html>
