@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Blood Preassure</h1>
+
+    <form name="form_bloodPreass">
+        <input type="range" name="preassure" id="bloodPreassureInput" onchange="bloodPreassure(bloodPreassureInput.value)"
+            value="80" min="1" max="220" oninput="preassureOutputId.value = bloodPreassureInput.value">
+        <output name="preassureOutput" id="preassureOutputId">80</output>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+
+        var currentDiv = document.getElementById("result");
+        var p = document.createElement("p");
+
+        function bloodPreassure(bloodPressure) {
+            var isNormal = false;
+
+            (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
+
+            (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
+
+            printToUser(isNormal);
+        }
+
+        function printToUser(isNormal) {
+
+            p.innerText = "isNormal: " + isNormal;
+            currentDiv.appendChild(p);
+        }
+    </script>
+</body>
+
+</html>
