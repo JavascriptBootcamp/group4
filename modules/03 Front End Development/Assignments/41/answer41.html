@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> palindrome</title>
+</head>
+
+<body>
+    <input id="stringEntered" type="text">
+    <button  onclick="add()">Add</button>
+
+
+
+    <h2>is palindrome or not:</h2>
+    <div id="indicates"></div>
+
+
+    <script>
+        var str = "";
+        function displayans(ispali) {
+            document.getElementById("indicates").innerText = ispali;
+
+        }
+        function isPali() {
+
+            for (var i = 0; i < str.length / 2; i++) {
+
+                if (str[i] !== str[str.length - 1 - i]) {
+                    displayans("input is not palindrome ")
+                    return;
+                }
+
+
+            }
+            displayans("input is palindrome ");
+
+
+        }
+        function add() {
+
+
+            str += document.getElementById("stringEntered").value;
+            console.log(str);
+            isPali();
+
+        }
+
+
+    </script>
+</body>
+
+</html>
