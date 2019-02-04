@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inputLetter" maxlength="1">
+    <button onclick="addLetter()">Add</button>
+    <label for="" id="outputLetters"></label>
+    <script>
+        var currentLetter = '';
+        var capitalLetters = '';
+        var lastLetter = '';
+        function addLetter(){
+            currentLetter = document.getElementById("inputLetter").value;
+            if(lastLetter){
+                capitalLetters += lastLetter.toUpperCase();
+            }
+            lastLetter = currentLetter;
+
+            document.getElementById("outputLetters").textContent = capitalLetters + lastLetter;
+        }
+    </script>
+</body>
+</html>
