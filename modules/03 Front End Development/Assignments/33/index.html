@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" name="txt_box" id="txt_box" onkeyup="change()" />
+        <br>
+    <script>
+   var abc={
+        a:"A",
+        b:"B",
+        c:"C",
+        d:"D",
+        e:"E",
+        f:"F",
+        g:"G",
+        h:"H",
+        i:"I",
+        j:"J",
+        k:"K",
+        l:"L",
+        m:"M",
+        n:"N",
+        o:"O",
+        p:"P",
+        q:"Q",
+        r:"R",
+        s:"S",
+        t:"T",
+        u:"U",
+        v:"V",
+        w:"W",
+        x:"X",
+        y:"Y",
+        z:"Z"
+    };
+    function change(){
+        x=document.getElementById("txt_box");
+        x.value[x.value.length-1]=toUpperCase1(x.value[x.value.length-1]);
+
+    }
+    function toUpperCase1(char){
+          return abc[char];
+}
+   // console.log(toUpperCase1("a"));
+    </script>
+</body>
+</html>
