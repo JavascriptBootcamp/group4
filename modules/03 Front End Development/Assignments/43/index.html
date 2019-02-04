@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <select name="levels" id="levels" onclick="updateLevel()">
+    <select name="levels" id="levels">
         <option value='easy'>Easy</option>
         <option value='medium'>Medium</option>
         <option value='hard'>Hard</option>
@@ -46,20 +46,6 @@
             }
         }
 
-        // var word1 = new RandomWord(['a', 'b', 'c']);
-        // console.log(word1.randomize(10));
-
-        function Game() {
-            var levels = document.getElementById('levels');
-            var selectedLevel = levels.options[levels.selectedIndex];
-            console.log(selectedLevel.value);
-            var word = null;
-            this.setWord = (_word) => {
-                word = _word;
-                console.log(word);
-            }
-        }
-
         function play() {
             var levels = document.getElementById('levels');
             var btn = document.getElementById('start');
@@ -80,15 +66,19 @@
             arr = randomLetters(num);
             console.log(arr);
             var correctWord = new RandomWord(arr);
-            var game = new Game();
             var word = correctWord.randomize(num);
+            arr = sortLetters(word);
+            console.log(arr);
             console.log('the word is:' + word);
             var txt = '';
             var selectLetters = document.createElement('select');
             selectLetters.setAttribute('id', 'selectLetters');
             selectLetters.onchange = guess;
-            selectLetters.ondblclick = guess;
             var opt;
+            opt = document.createElement('option');
+            opt.value = 'instruction';
+            opt.innerText = 'choose letter one by one';
+            selectLetters.appendChild(opt);
             for (var i = 0; i < num; i++) {
                 txt += '_ ';
                 opt = document.createElement('option');
@@ -100,7 +90,6 @@
             divChoose.appendChild(selectLetters);
             var count = 0;
             function guess() {
-                console.log(selectLetters.options[selectLetters.selectedIndex].value, word[count]);
                 if (selectLetters.options[selectLetters.selectedIndex].value === word[count]) {
                     var str = div.innerText.substring(0, count) + word[count];
                     console.log(str);
@@ -110,17 +99,25 @@
                     }
                     str += txt;
                     div.innerText = str;
+                    deleteOption(selectLetters.selectedIndex);
                     if (count + 1 === word.length) {
                         message.innerText = 'Nice! You guessed the word.';
                         if (num === 7) {
                             message.innerText += ' Game Over.';
+                            setTimeout(() => {
+                                resetDivs();
+                                levels.disabled = false;
+                                btn.disabled = false;
+                            }, 1500);
                         } else {
-                            resetDivs();
-                            levels.selectedIndex = levels.selectedIndex + 1;
-                            play();
+                            setTimeout(() => {
+                                resetDivs();
+                                levels.selectedIndex = levels.selectedIndex + 1;
+                                play();
+                            }, 1500);
                         }
                     }
-                } else {
+                } else if (selectLetters.selectedIndex !== 0) {
                     resetDivs();
                     play();
                 }
@@ -132,21 +129,28 @@
                 div.innerText = '';
                 divChoose.removeChild(selectLetters);
                 message.innerText = '';
-            }
-        }
 
-        function updateLevel() {
-            var selectedLevel = levels.options[levels.selectedIndex];
-            console.log(selectedLevel.value);
-        }
-
-        function randomLetters(length) {
-            var randomLettersArr = [];
-            for (var i = 0; i < length; i++) {
-                randomLettersArr.push(('abcdefghijklmnopqrstuvwxyz').split('')[(Math.floor(Math.random() * 26))]);
             }
-            randomLettersArr.sort();
-            return randomLettersArr;
+            function randomLetters(length) {// to choose 3/5/7 unique letters
+                var randomLettersArr = [];
+                var abc = 'abcdefghijklmnopqrstuvwxyz';
+                abc = abc.split('');
+                for (var i = 0; i < length; i++) {
+                    randomLettersArr.push(abc.splice(Math.floor(Math.random() * (26 - i)), 1)[0]);
+                }
+                randomLettersArr.sort();
+                return randomLettersArr;
+            }
+
+            function sortLetters(str) {
+                var letters = str.split('');
+                letters.sort();
+                return letters;
+            }
+
+            function deleteOption(k) {
+                selectLetters.removeChild(selectLetters.options[k]);
+            }
         }
     </script>
 </body>
