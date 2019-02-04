@@ -22,11 +22,13 @@
     <script>
     var level = 'easy';
     var amountOfChars = 3;
+    var counter = 0;
     function setDifficultyLevel(diffecultyLevel,charsCount){
         level = diffecultyLevel;
         amountOfChars = charsCount;
     }
     function gameReset(){
+        counter=0;
         var board = document.getElementById("board");
             while (board.firstChild) {
                 board.removeChild(board.firstChild);
@@ -71,19 +73,39 @@
     function createButton(){
         btn = document.createElement("button");
         btn.innerText="Insert";
-        btn.onclick="insertLetter()";
+        btn.setAttribute("onclick","insertLetter()");
         document.getElementById("insert").appendChild(btn);
     }
     function insertLetter(){
         var options = document.getElementsByTagName("option");
-        for(var i=0;i<amountOfChars;i++)
+        var tds = document.getElementsByTagName("td");
+        for(var i=amountOfChars-1;i>=0;i--)
         {
-            if(options[i].selected)
+            if((options[i].selected)&&(!options[i].disabled))
             {
-                //insert this option into the table to the right index
+                //insert this option into the table to the correct index
+
+                // console.log(options[i].value);
+                // console.log(tds[i]);
+                tds[counter].innerText = options[i].value;
+                options[i].disabled = true;
+                options[i].style="display:none";
+                // options[i].parentNode.appendChild(options[i]);
+                if(!(counter===amountOfChars-1)){
+                    console.log("check");
+                    options[i+1].setAttribute("selected",true);
+                }
+                console.log(i);
+                console.log(counter);
+                console.log(amountOfChars-1);
+                counter ++;
                 //delete this option from the list
+                //console.log[i];
             }
         }
+    }
+    function checkWin(){
+
     }
     function startGame(){
             gameReset();
