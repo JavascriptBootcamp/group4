@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .bookCard {
+            border: 1px solid black;
+            width: 35%;
+            background-color: brown;
+            color: aliceblue;
+            margin-bottom: 5%;
+            float: left;
+            height: 400px;
+            margin-left: 1%;
+        }
+        .books{
+            float: left;
+            width: 85%;
+        }
+        .form{
+            border: 1px solid black;
+            margin-left: 65%;
+            background-color: yellow;
+            position: absolute;
+        }
+        .add{
+            border-radius: 20px;
+            background-color: aqua;
+            color: red;
+            font-size: 18px;
+            width: 50%;
+            margin-left: 20%;
+        }
+        h1{
+            color: yellow;
+        }
+        body{
+            background-color: blue;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <h1>My Top Books:</h1>
+    </div>
+    <div>
+        <div class="books" id="booksList">
+            <div class="bookCard">
+                <h1>Title: "IT"</h1>
+                <h2>Author: Stephen King</h2>
+                <h3>Publication date: <span>2019-02-20</span></h3>
+                <h4>Publisher: Viking</h4>
+                <h5>Pages: 1,138</h5>
+                <p>comments: perfect author, perfect book.</p>
+            </div>
+            <div class="bookCard">
+                <h1>Title: The Dark Tower: The Gunslinger</h1>
+                <h2>Author: Stephen King</h2>
+                <h3>Publication date: <span>2018-02-20</span></h3>
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 300</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+            <div class="bookCard">
+                <h1>Title: The Dark Tower Book II: The Drawing of the Three</h1>
+                <h2>Author: Stephen King</h2>
+                <h3>Publication date: <span>2017-05-27</span></h3>
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 463</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+            <div class="bookCard">
+                <h1>Title: The Dark Tower III: The Waste Lands</h1>
+                <h2>Author: Stephen King</h2>
+                <h3>Publication date: <span>2018-08-20</span></h3>
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 512</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+            <div class="bookCard">
+                <h1>Title: The Dark Tower IV: Wizard and Glass</h1>
+                <h2>Author: Stephen King</h2>
+                <h3>Publication date: <span>2018-11-06</span></h3>
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 787</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+        </div>
+
+        <div class="form">
+            <center>
+                <table>
+                    <form>
+                        <tr>
+                            <td>
+                                <input type="text" id="title" placeholder="Title" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="author" placeholder="Author" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="date" id="date" placeholder="date" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="publisher" placeholder="Publisher" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="pages" placeholder="Pages" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea id="comment" placeholder="comments" cols="20" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="add" onclick="addBook(event)">Add</button>
+                            </td>
+                        </tr>
+                    </form>
+                </table>
+            </center>
+        </div>
+
+        <div class="dateOrder_div">
+            <select id="select" onchange="changeOrder()">
+                <option value="" selected disabled hidden>Choose Order</option>
+                <option value="1">oldest to newest</option>
+                <option value="2">newest to oldest</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+
+function campareObjects(a, b) {
+  if (a.date < b.date) {
+    return -1;
+  }
+  if (a.date > b.date) {
+    return 1;
+  }
+  return 0;
+}
+
+        function changeOrder(){
+
+          var select = document.getElementById("select");
+          var order = select.options[select.selectedIndex].value;
+          var dates = [];
+          var dates_span = document.getElementsByTagName("span");
+          for(var item in dates_span){
+              if(dates_span.hasOwnProperty(item)){
+                dates.push({
+                    span:dates_span[item],
+                    date:dates_span[item].innerText
+                    });
+              }
+          }
+          dates.sort(campareObjects);
+          if(order == 2){
+              dates.reverse();
+          }
+          var booksList = document.getElementById("booksList");
+          booksList.innerHTML = "";
+          for(var i=0;i<dates.length;i++){
+
+              var input_date = dates[i].span.parentElement;
+              var div = input_date.parentElement;
+              booksList.appendChild(div);
+          }
+        }
+
+        function addBook(e) {
+
+            e.preventDefault();
+
+            var title = document.getElementById("title").value;
+            var author = document.getElementById("author").value;
+            var date = document.getElementById("date").value;
+            var publisher = document.getElementById("publisher").value;
+            var pages = document.getElementById("pages").value;
+            var comment = document.getElementById("comment").value;
+
+            var div = document.createElement("div");
+            div.className = "bookCard";
+            var h1 = document.createElement("h1");
+            h1.innerText = `Title:${title}`;
+            div.appendChild(h1);
+            var h2 = document.createElement("h2");
+            h2.innerText = `Author:${author}`;
+            div.appendChild(h2);
+            var h3 = document.createElement("h3");
+            h3.innerText = `Publication date:${date}`;
+            div.appendChild(h3);
+            var h4 = document.createElement("h4");
+            h4.innerText = `Publisher:${publisher}`;
+            div.appendChild(h4);
+            var h5 = document.createElement("h5");
+            h5.innerText = `Pages:${pages}`;
+            div.appendChild(h5);
+            var p = document.createElement("p");
+            p.innerText = `comments:${comment}`;
+            div.appendChild(p);
+
+            var booksList = document.getElementById("booksList");
+            booksList.appendChild(div);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
