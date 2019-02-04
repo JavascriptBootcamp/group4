@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <th>
-            <select name="" id="phonesDDL">
+                <select name="" id="phonesDDL">
                     <option value="LG">LG</option>
                     <option value="SAMSUNG">SAMSUNG</option>
                     <option value="XIAOMI">XIAOMI</option>
@@ -39,15 +39,23 @@
             </select>
         </tr>
     </table>
-    
-    <div id="totalSum">Total: 0</div>
+
+    <div id="totalSum">Total: 0</div><br>
+
+    <form action="http://localhost:3000/Order" method="GET" onsubmit="return false">
+        <input type="number" name="" id="cardNumber" minlength="8" maxlength="16" placeholder="Card Number" required>
+        <input type="text" name="" id="cardName" placeholder="Name on card" required>
+        <input type="text" name="" id="expDate" placeholder="Expiry date" onfocus="(this.type='date')" required>
+        <input type="password" name="" id="secCode" minlength="3" maxlength="3" placeholder="Security code" required>
+        <input type="submit" value="Submit" onclick="checkout()">
+    </form>
 
 
 
     <script>
         var sum = 0;
         var rowIndex = 2;
-        function addRow(){
+        function addRow() {
             var cartTable = document.getElementById("cartTable");
             var selectedPhone = document.getElementById("phonesDDL").value;
             var priceH = document.getElementById("priceH").value;
@@ -60,10 +68,10 @@
 
             var removeButton = document.createElement("button");
             removeButton.textContent = 'Remove';
-            removeButton.onclick = onRemoveRow.bind(null,priceH,rowIndex);
+            removeButton.onclick = onRemoveRow.bind(removeButton, priceH);
 
             var tr = document.createElement("tr");
-            removeButton.onclick = onRemoveRow.bind(null,priceH,tr.rowIndex);
+            //removeButton.onclick = onRemoveRow.bind(null,priceH,tr.rowIndex);
 
             var tdPhone = document.createElement("td");
             var tdPrice = document.createElement("td");
@@ -76,35 +84,106 @@
             tr.appendChild(tdPhone);
             tr.appendChild(tdPrice);
             tr.appendChild(tdButton);
-            tr.id = "tr" + rowIndex++;
+            //tr.id = "tr" + rowIndex++;
 
             cartTable.appendChild(tr);
-            
+
             updateSum(+priceH);
-            console.log(sum,priceH);
         }
 
-        function updateSum(price){
+        function updateSum(price) {
             sum += price;
             var totalSum = document.getElementById("totalSum");
             totalSum.innerText = "Total: " + sum;
         }
 
-        function onRemoveRow(priceToSub,indexRow){
+        function onRemoveRow(priceToSub) {
+            var i = this.parentNode.parentNode.rowIndex;
             updateSum(-priceToSub);
             var cartTable = document.getElementById("cartTable");
-            cartTable.deleteRow(indexRow);
-            indexRow--;
+            cartTable.deleteRow(i);
         }
 
-        function register(cart){
+        function checkout() {
+            var cardNumber = document.getElementById("cardNumber").value;
+            var cartTable = document.getElementById("cartTable");
+            var validation = validateCreditCard(cardNumber);
+            var validationDiv = document.createElement("div");
+            validationDiv.innerHTML = 'validation:' + validation['valid'];
+            document.body.appendChild(validationDiv);
+           if(validation['valid'] === false){
+               return;
+           }
+            var cart = {};
+            for (var i = 0; i < cartTable.length; i++) {
+                cart[cartTable[i].tr.tdPhone] = cartTable[i].tr.tdPrice;
+            }
+            var sum = register(cart);
+        }
+
+
+        function register(cart) {
             var sum = 0;
-            for(var key in cart){
+            for (var key in cart) {
                 sum += +cart[key];
             }
             return sum;
         }
 
+        var errorMessage =
+        {
+            digitsErr: "Number must be 16 digits",
+            notDigitErr: "All of digits must be numbers",
+            allDigitsSameErr: "You must have at least two different digits represented",
+            finalDigitsErr: "The final digit must be even",
+            sumLess17Err: "The sum of all the digits must be greater than 16"
+        };
+
+        function validateCreditCard(creditCardNumber) {
+            var message = "", errMsgArr = new Array();
+            var reduceChar = "-";
+            var digitsArr = (creditCardNumber.split("").filter(item => item !== reduceChar));
+            var finalDigit = digitsArr.slice(digitsArr.length - 1);
+
+            function getSum(arr) {
+                var sum = 0;
+                arr.forEach(element => {
+                    if (!isNaN(Number(element)))
+                        sum += Number(element);
+                });
+                return sum;
+            }
+
+            if (digitsArr.some(digit => isNaN(Number(digit))))
+                errMsgArr.push(errorMessage.notDigitErr);
+
+            if (digitsArr.length !== 16)
+                errMsgArr.push(errorMessage.digitsErr);
+
+            if (digitsArr.every(digit => digit === finalDigit))
+                errMsgArr.push(errorMessage.allDigitsSameErr);
+
+            if ((finalDigit % 2) !== 0)
+                errMsgArr.push(errorMessage.finalDigitsErr);
+
+            if (getSum(digitsArr) <= 16)
+                errMsgArr.push(errorMessage.sumLess17Err);
+
+            // No errors
+            if (errMsgArr.length === 0)
+                return { valid: true, number: creditCardNumber };
+            // At least on error
+            else
+                return { valid: false, number: creditCardNumber, error: errMsgArr }
+            //return errMessage === ""; // origin return
+        }
+
+        // var inputCreditCardNumbers = ['9999777788880000', '6666666666661666', '4444444444444444', '1111111111111110', 'a111111111111110', 'a92332119c011112', '9999-7777-8888-0000', '6666-6666-6666-1666'];
+
+        // inputCreditCardNumbers.forEach(element => {
+        //     var result = validateCreditCard(element);
+        //     console.log(result);
+        // });
     </script>
 </body>
 
