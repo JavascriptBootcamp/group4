@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+
+<body onload="startGame()">
     <h2>choose difficulty level</h2>
     <select id="level">
         <option>easy</option>
@@ -16,91 +17,108 @@
     </select>
     <select id="values">
     </select>
-    <button onclick="startGame()">Go</button>
+    <!-- <button onclick="startGame()">Start Game</button> -->
     <div id="result"></div>
     <script>
-         var len;
-         var level = document.getElementById("level");
-         var selectDifficult = level.options.selectedIndex;
-         var randomWord = "";
-         function startGame(){
-            len = 0;
-            var values = document.getElementById("values");
-            var result = document.getElementById("result");
-            result.innerText = "";
-            values.innerText = "";
-            
-        
-            var word = getLevel();
-            console.log(word);
-
-            (function drawSelect(){
-                var op = document.createElement("option");
-                var arr = [];
-                var win = false;
-                for(var i=0; i<randomWord.length; i++)
-                {
-                    arr.push(randomWord[i]);
-                }
-                op.innerText = "";
-                values.appendChild(op);
-                arr = arr.sort();
-                arr.forEach(function(item,index){
-                    var option = document.createElement("option");
-                    option.innerText = item;
-                    values.appendChild(option);
-                });
-                for(var i=0; i<values.length; i++)
-                {
-                    values.onchange  = function(e){
-                        var letter = e.target.selectedOptions[0].innerText;
-                        var res = checkLetter(letter,randomWord);
-                        if(res && len<arr.length  && !win)
-                        {
-                            if(len === arr.length-1)
-                            {
-                                win = true;
-                            }
-                            result.innerText+=letter;
-                        }
-                        else if(len === arr.length && win)
-                        {
-                            result.innerText = "you win";
-                            nextLevel();
-                        }
-                        else if(len === arr.length && !win || !res)
-                        {
-                            result.innerText = "game over";
-                        }
-                    }
-                }
-            })();
-            
+        var randomWord;
+        var values;
+        var counter;
+        var level = document.getElementById("level").options.selectedIndex;
+        var win;
+        function startGame() {
+            initialGame();
+            createLetters();
+            createEvents();
+            console.log(randomWord);
         }
-        function getLevel(){
-            var word1 = new RandomWord(['a', 'k', 'r']);
-            var word2 = new RandomWord(['a', 'b', 'c','t','z']);
-            var word3 = new RandomWord(['a', 'b', 'c','d','e','f','g']);
-            if(selectDifficult === 0)
-            {
-                return randomWord = word1.randomize(3);
-            }
-            else if(selectDifficult === 1)
-            {
-                return randomWord = word2.randomize(5);
+        function createEvents() {
+            values.onchange = onLetterClick;
+        }
+        function onLetterClick(e) {
+            var newLevel = document.getElementById("level");
+            var selected = e.target.selectedIndex;
+            if (counter < randomWord.length && checkLetter(selected)) {
+                showLetter(selected);
             }
             else{
-                return randomWord = word3.randomize(7);
+                newLevel.selectedIndex = 0;
+            }
+            if (win) {
+                checkWin();
+            }
+            else {
+                level = 0;
+            }
+
+        }
+        function checkWin() {
+            var newLevel = document.getElementById("level");
+            if (counter === randomWord.length) {
+                result.innerText = "you win";
+                newLevel.selectedIndex = level;
+                setTimeout(function () {
+                    startGame();
+                }, 2000);
             }
         }
-        function checkLetter(letter,randomWord){
-            if(letter !== randomWord[len])
-            {
+        function showLetter(selected) {
+            var letter = values[selected].innerText;
+            result.innerText += letter;
+        }
+        function checkLetter(selected) {
+            var letter = values[selected].innerText;
+            if (letter === randomWord[counter]) {
+                counter++;
+                win = true;
+                return true;
+            }
+            else {
+                setTimeout(function () {
+                    startGame();
+                }, 2000);
+                result.innerText = "you lose";
+                values.disabled = true;
+                counter = 0;
+                win = false;
                 return false;
             }
-            else{
-                len++;
-                return true;
+        }
+        function createLetters() {
+            var arr = [];
+            var option;
+            arr = randomWord.split("");
+            values.innerHTML = "";
+            option = document.createElement("option");
+            option.innerText = "";
+            values.appendChild(option);
+            arr = arr.sort();
+            arr.forEach(element => {
+                option = document.createElement("option");
+                option.innerText = element;
+                values.appendChild(option);
+            });
+        }
+        function initialGame() {
+            var word1 = new RandomWord(['a', 'k', 'r']);
+            var word2 = new RandomWord(['a', 'b', 'c', 't', 'z']);
+            var word3 = new RandomWord(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
+            counter = 0;
+            win = false;
+            result = document.getElementById("result");
+            values = document.getElementById("values");
+            values.disabled = false;
+            result.innerText = "";
+            if (level === 0) {
+                level++;
+                randomWord = word1.randomize(3)
+            }
+            else if (level === 1) {
+                level++;
+                randomWord = word2.randomize(5)
+            }
+            else if (level === 2) {
+                level = 0;
+                randomWord = word3.randomize(7)
             }
         }
         function RandomWord(charsArray) {
