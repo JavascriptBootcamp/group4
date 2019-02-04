@@ -1,7 +1,0 @@
-var numOfCats = 200;
-var animalName = " cats";
-console.log(numOfCats + animalName);
-var numOfDogs = 50;
-console.log(numOfCats + numOfDogs);
-animalName = "number of dogs: ";
-console.log(animalName + numOfDogs);

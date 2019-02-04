@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My favorite List</title>
+</head>
+
+<body>
+
+    <form action="">
+        <h1>My favorite List :</h1>
+        <select name="myfavorite" id="myfavorite">
+        </select>
+        <input type="button" value="Add" id="addButton">
+        <ol id="mylist"> </ol>
+    </form>
+    <script>
+
+        var myfavorite = ["blue",
+            "piza",
+            "honda",
+            "footbol",
+            "yellow",
+            "spageti",
+            "volvo",
+            "tennis",
+            "red",
+            "angera",
+            "mazda",
+            "rice"];
+
+        for (let i = 0; i < myfavorite.length; i++) {
+            var select = document.getElementById("myfavorite");
+            var opthion = document.createElement("option");
+            opthion.text = myfavorite[i];
+            select.add(opthion);
+        }
+
+
+        var addButton = document.getElementById("addButton");
+        var counter = 1;
+
+        function addTolist() {
+
+            var ilElement = document.createElement("li");
+            ilElement.innerText = `My #${counter} choice is ${select.value}.`;
+            document.getElementById("mylist").appendChild(ilElement);
+            counter++;
+        }
+
+        addButton.onclick = addTolist;
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<style>
+#listWord span {
+   margin:10px;
+   font-size:20px;
+}
+</style>
+<body>
+    
+
+    <input type="button" value = "Start Game : Guess The Random Word" onclick="showListWord()">
+
+    <div id ="listWord"> </div>
+
+    <h3 id = "listGuest"></h3>
+
+    <script>
+    
+
+
+var RandomWord = function (chars) {
+
+    this.randomize = function (length) {
+
+        var errors = [];
+        if (!Array.isArray(chars))
+            errors.push('"chars" should be an array');
+
+        if (isNaN(length))
+            errors.push('length" should be a number');
+
+       if((Array.isArray(chars))){
+        var isString  = chars.some( function(val){
+          return ((typeof val) == String);
+       })
+        
+       if(isString)
+          errors.push(' "chars" should include only strings.') 
+          
+    }
+    
+        
+        if(errors.length > 0)
+          return console.error(errors);
+
+        var randomString = "";
+
+        for (var i = 0; i < length; i++) {
+           
+            var index = Math.floor((Math.random() * chars.length));
+            randomString += chars[index];
+            chars.splice(index,1);
+            
+
+        }
+
+        return randomString;
+
+    }
+}
+
+
+   var guess = true;
+
+var numGess = 0;
+var listOfWord =["ran","group" ,"terminal"];
+var str = listOfWord[numGess];
+  console.log(typeof str);
+
+  function showListWord(str){
+
+    var arrStr1 = str.split("");
+    var arrStr2 = str.split("");
+
+    
+    var word = new RandomWord(arrStr1);
+    var randW = word.randomize(str.length);
+  
+
+    arrW = randW.split("").sort();
+var listWord = document.getElementById("listWord");
+for(var i = 0 ; i < arrW.length ;i++)
+  listWord.innerHTML += `<span>  ${arrW[i]} </span>`;
+
+  var listGuest = document.querySelector("#listGuest");
+ var liElm = document.querySelectorAll("span");
+
+ for(var i = 0 ; i < liElm.length ; i++){
+ liElm[i].onclick =  function(event) {
+
+      var letter = event.currentTarget.innerHTML;
+      listGuest.innerHTML += letter;
+   
+      
+     if(arrStr2.length > 0 && guess) {
+      if (letter.trim() === arrStr2[0].trim()){
+       console.log("good guess");
+       arrStr2.splice(0,1);
+      }
+      else 
+      guess = false;
+
+      if (!guess) {
+        console.log("error");
+      }
+
+      if (arrStr2.length == 0) {
+        console.log("Gess ALL");
+        str = listOfWord[++numGess];
+         showListWord(str);
+      }
+        
+    }
+    
+    
+
+    }
+   
+ };
+ }
+  
+ //showListWord("ran");
+
+// showListWord("love");
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe game</title>
+    <style>
+        td {
+   
+           
+            text-align: center;
+            align-content: center;
+        }
+
+         .btn {
+           width:100px;
+           height: 100px;
+           font-size: 20px;
+         }
+    </style>
+</head>
+
+<body>
+    <label for="">player X </label>
+    <input type="text" name="player1" id="player1" placeholder="Enter Name" value="AVI">
+    <label for="">player O </label>
+    <input type="text" name="player2" id="player2" placeholder="Enter Name" value="YOSI">
+    <br />
+    <input type="button" id="startNewGame" value="Start New Game" onclick="startNewGame()">
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    Next Player: <div id="displayTurn"> </div>
+    Game Status : <div id="gameStatus"></div>
+
+    <script>
+        var isMyTurn = true;
+        var gameCount = 0;
+        var theTDes = document.getElementsByTagName("td");
+        var displayTurn = document.getElementById("displayTurn");
+        var btns;
+        var myButtons;
+       
+
+        function startNewGame() {
+             isMyTurn = true;
+            document.getElementById("startNewGame").disabled = true;
+            document.getElementById("gameStatus").innerHTML = "";
+
+
+            gameCount = 0;
+
+            for (var i = 0; i < theTDes.length; i++) {
+                theTDes[i].innerHTML = `<input type="button" 
+                class="btn" value ="" style="" onclick = "markXorO()">`;
+            }
+
+            btns = document.querySelectorAll("table input[type = button]");
+           //var myButtons = document.getElementsByClassName("btn");
+        }
+
+       
+        var palyerName1 = document.getElementsByName("player1")[0].value;
+        var palyerName2 = document.getElementsByName("player2")[0].value;
+
+        function markXorO() {
+            var mark;
+
+            if (gameCount < btns.length) {
+                
+                event.currentTarget.disabled = true;
+                //document.getElementById("startNewGame").disabled = true;
+
+                if (isMyTurn) {
+                    mark = "X";
+                    isMyTurn = !isMyTurn;
+                    displayTurn.innerHTML = `<mark> ${palyerName2}</marK>`
+                    event.currentTarget.value = mark;
+                   
+                    if (checkWin(mark)) {
+                        document.getElementById("gameStatus").innerHTML = `<h2>The winner is ${palyerName1} </h2>`;
+                        for(var i = 0 ; i < btns.length ; i ++)
+                        btns[i].disabled = true;
+                      
+                    }
+                }
+                else {
+                    mark = "O";
+                    isMyTurn = !isMyTurn;
+                    displayTurn.innerHTML = `<mark> ${palyerName1}</marK>`
+                    event.currentTarget.value = mark;
+                   
+                    if (checkWin(mark)) {
+                        document.getElementById("gameStatus").innerHTML = `<h2>The Winner is ${palyerName2} </h2>`;
+                        for(var i = 0 ; i < btns.length ; i ++)
+                        btns[i].disabled = true;
+                      
+                    }
+                }
+
+
+                /*   
+                 event.currentTarget.parentElement.cellIndex;
+                 console.log(event.currentTarget.parentElement.parentElement.sectionRowIndex);
+                
+               */
+
+
+
+                gameCount++;
+
+                if(gameCount == btns.length)
+                   document.getElementById("gameStatus").innerHTML = "<mark><h2> A Tie  </h2> </mark>";
+                   document.getElementById("startNewGame").disabled = false;
+                   gameCount = 0;
+            }
+
+
+        }
+
+        function checkWin(m) {
+
+            if ((btns[0].value === m) && ( btns[1].value === m ) && ( btns[2].value ===m )) {
+                return true;
+              
+            }
+            if ((btns[3].value === m) && ( btns[4].value === m ) && ( btns[5].value ===m )) {
+                return true;
+            }
+            if ((btns[6].value === m) && ( btns[7].value === m ) && ( btns[8].value ===m )) {
+                return true;
+            }
+            if ((btns[0].value === m) && ( btns[3].value === m ) && ( btns[6].value ===m )) {
+                return true;
+            }
+            if ((btns[1].value === m) && ( btns[4].value === m ) && ( btns[7].value ===m )) {
+                return true;
+            }
+            if ((btns[2].value === m) && ( btns[5].value === m ) && ( btns[8].value ===m )) {
+                return true;
+            }
+            if ((btns[0].value === m) && ( btns[4].value === m ) && ( btns[8].value ===m )) {
+                return true;
+            }
+            if ((btns[2].value === m) && ( btns[4].value === m ) && ( btns[6].value ===m )) {
+                return true;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

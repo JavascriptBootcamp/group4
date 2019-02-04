@@ -1,9 +1,0 @@
-Git Branch & Pull Request
----
-1. Under the folder "examples", create a new file named "string.js"
-2. Inside the new file, write a JS code which creates a variable named "hairColor" and contains the value: "Brown"
-3. Commit the file
-4. Merge the pull request from before. Notice that it contains two files
-5. Create files for the rest of the premitive variables, commit, create pull requests and merge them. The result should be: "examples" folder with files which contain all premitive variables examples.
-6. Create a new branch "object variables"
-7. Add files which conatin examples of this kind of variable, commit them, create a pull request for this branch and merge it

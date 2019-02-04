@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <label for="num1">NUM1</label>
+    <input type="number" name="num1" id="num1" value = "0" ></br>
+    <label for="num2">NUM2</label>
+    <input type="number" name="num2" id="num2" value = "100"> <br/>
+    <input type="button" value="Check even or odd in this range" onclick="isEvenOrOdd()">
+    <div id = "resultTest"></div>
+     
+    <script>
+
+        function isEvenOrOdd() {
+        var resultTest = document.getElementById("resultTest");
+        var num1 = Number(document.getElementById("num1").value);
+        var num2 = Number(document.getElementById("num2").value);
+        var range = num2-num1
+        
+        if (range < 0 ) {
+          resultTest.innerHTML="Error :  must number2 > number1 ";
+        }
+        else {
+        for (var i = num1; i < num2; i++) {
+              i % 2 === 0 ? resultTest.innerHTML += `${i}: is even <br/>` : resultTest.innerHTML += `${i}: is odd  <br/>`;
+           }
+        }
+
+         }
+
+    </script>
+</body>
+</html>
