@@ -17,15 +17,14 @@
    <script>
 var olEl = document.querySelector("ol");
 var str0 = "0";
-for(var i = 0; i < 43 ; i++){
-    if (i < 10);
+for(var i = 1; i < 43 ; i++){
+    if (i > 10)
         str0="";
     olEl.innerHTML += `<li> <a 
-        href ="modules/03 Front End Development/Assignments/01/answer${str0}${i}_html.html">
+        href ="modules/03 Front End Development/Assignments/${str0}${i}/answer${str0}${i}_html.html">
 
              answer${str0}${i} </li>`;
-}
+    }
 </script>
-}
-</script>
+
 </html>
