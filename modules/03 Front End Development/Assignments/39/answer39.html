@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <table id="shoppingCart">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+
+        <tr>
+            <td>
+                <select id="itemName">
+                    <option>jeans</option>
+                    <option>t-shirt</option>
+                    <option>boots</option>
+                    <option>gloves</option>
+                    <option>helmet</option>
+                    <option>glasses</option>
+                    <option>jaket</option>
+                    <option>knee armor</option>
+                </select>
+            </td>
+
+            <td>
+                <input id="itemPrice" type="number">
+            </td>
+
+            <td>
+                <button id="itemAction" onclick="addProduct()">Add</button>
+            </td>
+        </tr>
+    </table><br>
+
+    Total Price:<br><br>
+    <div id="totalPrice"></div>
+
+    <form id="paymentInfo" action="http://localhost:3000/Order" method="POST" onsubmit="return false">
+        Card Number:<input id="cardNumber" type="text" required><br><br>
+        Name on card:<input id="nameOnCard" type="text" required><br><br>
+        Expiry date:<input id="expiryDate" type="date" required><br><br>
+        Security code:<input id="securityCode" type="number" minlength="3" maxlength="3" required><br><br>
+        <input type="submit" id="submitBtn" value="Submit" onclick="validateUserInput()">
+    </form>
+
+    <div id="error"></div>
+
+    <script>
+
+        var totalPrice = 0;
+
+        function addProduct() {
+
+            var cartTable = document.getElementById("shoppingCart");
+            var newItemName = document.getElementById("itemName").value;
+            var newItemPrice = document.getElementById("itemPrice").value;
+            var userTotalPrice = document.getElementById("totalPrice");
+
+
+            totalPrice += cartAction({ newItemName: newItemPrice });
+            userTotalPrice.innerHTML = totalPrice;
+
+            var tr = document.createElement("tr");
+            var tdName = document.createElement("td");
+            var tdPrice = document.createElement("td");
+            var tdAction = document.createElement("td");
+            var removeBtn = document.createElement("button");
+
+            tdName.innerText = newItemName;
+            tdPrice.innerText = newItemPrice;
+
+            removeBtn.innerText = "Remove";
+            removeBtn.onclick = function () {
+                this.parentNode.parentNode.remove();
+                totalPrice -= cartAction({ newItemName: newItemPrice });
+                userTotalPrice.innerHTML = totalPrice;
+            }
+
+            tr.appendChild(tdName);
+            tr.appendChild(tdPrice);
+            tr.appendChild(tdAction);
+            tdAction.appendChild(removeBtn);
+            cartTable.appendChild(tr);
+        }
+
+        function cartAction(cartObj) {
+
+            var totalSum = 0;
+            for (var key in cartObj) {
+                totalSum += Number(cartObj[key]);
+            }
+            return totalSum;
+        }
+
+        function validateUserInput() {
+
+            var card = document.getElementById("cardNumber").value;
+            var userErrors = document.getElementById("error");
+
+            
+            var paymentInfo = document.getElementById("paymentInfo");
+            validateCreditCard(card);
+            if (cardObj.isValid) {
+                paymentInfo.onsubmit = true;
+            }
+            else {
+                userErrors.innerHTML = cardObj.error;
+            }
+        }
+
+        //card validation:
+        var cardObj = {
+            isValid: true,
+        }
+
+        function validateCreditCard(card) {
+
+            cardObj.number = card;
+            var cardString = String(card);
+            cardString = cardString.replace(/-/g, ''); // regex: /-/g means replace all "-" g-global with "" (nothing).
+            var cardNumber = Number(cardString);
+
+            function isValidNumber() {
+
+                if (isNaN(cardNumber)) {
+                    cardObj.isValid = false;
+                    cardObj.error = "invalid_characters";
+                }
+                else {
+                    cardObj.isValid = true;
+                }
+
+                return cardObj.isValid;
+            }
+
+            function isValidLength() {
+
+                if (cardString.length !== 16) {
+                    cardObj.isValid = false;
+                    cardObj.error = "wrong_length";
+                }
+                else {
+                    cardObj.isValid = true;
+                }
+
+                return cardObj.isValid;
+            }
+
+            function isDifferentDigits() {
+
+                var isAllSameDigits = true;
+
+                for (var i = 1; i < cardString.length; i++) {
+
+                    if (cardString[0] !== cardString[i]) {
+                        isAllSameDigits = false;
+                        break;
+                    }
+                }
+
+                if (isAllSameDigits) {
+                    cardObj.isValid = false;
+                    cardObj.error = "card_number_digits_is_same";
+                }
+                else {
+                    cardObj.isValid = true;
+                }
+
+                return cardObj.isValid;
+            }
+
+            function isCheckFinalDigit() {
+                if (cardNumber % 2 !== 0) {
+                    cardObj.isValid = false;
+                    cardObj.error = "final_digit_must_be_even";
+                }
+                else {
+                    cardObj.isValid = true;
+                }
+
+                return cardObj.isValid;
+            }
+
+            function isDigitsSum() {
+
+                var sum = 0;
+
+                while (cardNumber) {
+                    sum += (cardNumber % 10);
+                    cardNumber = Math.floor(cardNumber / 10);
+                }
+
+                if (sum < 16) {
+                    cardObj.isValid = false;
+                    cardObj.error = "The_sum_of_all_digits_is_less_then_16"
+                }
+                else {
+                    cardObj.isValid = true;
+                }
+
+                return cardObj.isValid;
+            }
+
+            if (!isValidNumber()) {
+                return cardObj.isValid;
+            }
+            if (!isValidLength()) {
+                return cardObj.isValid;
+            }
+            if (!isDifferentDigits()) {
+                return cardObj.isValid;
+            }
+            if (!isCheckFinalDigit()) {
+                return cardObj.isValid;
+            }
+            if (!isDigitsSum()) {
+                return cardObj.isValid;
+            }
+
+            return cardObj.isValid;
+        }
+    </script>
+
+</body>
+
+</html>
