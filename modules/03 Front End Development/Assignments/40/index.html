@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="firstnum">Enter number between 1-100</label>
+    <input type="number" id="firstnum" min="1" max="100"><br>
+    <label for="secondnum">Enter number between 1-100(bigger then the last one)</label>
+    <input type="number" id="secondnum" min="1" max="100"><br>
+    <button type="button" onclick="iterate()">Click Me!</button><br>
+    <div id="output"></div>
+
+    <script>
+        function iterate() {
+            var output = document.getElementById("output");
+            var first = document.getElementById("firstnum").value;
+            var second = document.getElementById("secondnum").value;
+            while (first <= second) {
+                if (first % 2 === 0) {
+                    output.innerHTML += "<br>";
+                    output.innerHTML += first + " - is even";
+                }
+                else {
+                    output.innerHTML += "<br>";
+                    output.innerHTML += first + " - is odd";
+                }
+                first++;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
