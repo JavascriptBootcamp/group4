@@ -12,7 +12,7 @@
         <input onclick="setDifficultyLevel(this.id,this.value)" type="radio" id="medium" value="5" name="difL"><lable for="medium">Medium</lable>
         <input onclick="setDifficultyLevel(this.id,this.value)" type="radio" id="hard" value="7" name="difL"><lable for="hard">Hard</lable>
     </div>
-    <button onclick="startGame()">Start Game</button>
+    <button onclick="startGame()">Start New Game</button>
     <table border="1">
         <tr id="board">
         </tr>
@@ -23,11 +23,13 @@
     var level = 'easy';
     var amountOfChars = 3;
     var counter = 0;
+    var generatedWord = "";
     function setDifficultyLevel(diffecultyLevel,charsCount){
         level = diffecultyLevel;
         amountOfChars = charsCount;
     }
     function gameReset(){
+        generatedWord = "";
         counter=0;
         var board = document.getElementById("board");
             while (board.firstChild) {
@@ -50,7 +52,7 @@
     function createLettersList(word){
         var arrWord = word.split("");
         var select = document.createElement("select");
-        select.id=""
+        select.id="letterList"
         arrWord.sort();
         for(var i=0;i<arrWord.length;i++){
             var option = document.createElement("option");
@@ -68,44 +70,55 @@
         {
             randomWord += abc[Math.floor(Math.random() * abc.length)];
         }
+        generatedWord = randomWord;
         return randomWord;
     }
     function createButton(){
-        btn = document.createElement("button");
+        var btn = document.createElement("button");
+        btn.id = "insertButton";
         btn.innerText="Insert";
         btn.setAttribute("onclick","insertLetter()");
         document.getElementById("insert").appendChild(btn);
     }
     function insertLetter(){
-        var options = document.getElementsByTagName("option");
+        // var options = document.getElementsByTagName("option");
         var tds = document.getElementsByTagName("td");
-        for(var i=amountOfChars-1;i>=0;i--)
+        var letterList = document.getElementById("letterList");
+        var index = letterList.selectedIndex;
+        tds[counter].innerText = letterList.childNodes[index].value;
+        letterList.removeChild(letterList.childNodes[index]);
+        letterList.selectedIndex=0;
+        counter++;
+        if(!(tds[amountOfChars-1].innerText===""))
         {
-            if((options[i].selected)&&(!options[i].disabled))
-            {
-                //insert this option into the table to the correct index
-
-                // console.log(options[i].value);
-                // console.log(tds[i]);
-                tds[counter].innerText = options[i].value;
-                options[i].disabled = true;
-                options[i].style="display:none";
-                // options[i].parentNode.appendChild(options[i]);
-                if(!(counter===amountOfChars-1)){
-                    console.log("check");
-                    options[i+1].setAttribute("selected",true);
-                }
-                console.log(i);
-                console.log(counter);
-                console.log(amountOfChars-1);
-                counter ++;
-                //delete this option from the list
-                //console.log[i];
-            }
+            removeListandButton(letterList);
+            createCheckWinButton();
         }
     }
+    function createCheckWinButton(){
+        var newBtn =  document.createElement("button");
+        newBtn.id = "checkWinButton";
+        newBtn.innerText="Check Answer";
+        newBtn.setAttribute("onclick","checkWin()");
+        document.getElementById("insert").appendChild(newBtn);
+    }
+    function removeListandButton(letterList){
+        letterList.parentNode.removeChild(letterList);
+        var btn = document.getElementById ("insertButton");
+        btn.parentNode.removeChild(btn);
+    }
     function checkWin(){
-
+        var answer = "";
+        var tds = document.getElementsByTagName("td");
+        for(var i =0;i<amountOfChars;i++){
+            answer += tds[i].innerText;
+        }
+        console.log(answer);
+        console.log(generatedWord);
+        if(answer===generatedWord)
+            console.log("you Won");
+        else
+            console.log("you Lost");
     }
     function startGame(){
             gameReset();
@@ -113,6 +126,30 @@
             createLettersList(randomizeWords(amountOfChars));
             createButton();
     }
+
+
+
+
+
+                //     //insert this option into the table to the correct index
+
+                // // console.log(options[i].value);
+                // // console.log(tds[i]);
+                // tds[counter].innerText = options[i].value;
+                // options[i].disabled = true;
+                // options[i].style="display:none";
+                // // options[i].parentNode.appendChild(options[i]);
+                // if(!(counter===amountOfChars-1)){
+                //     console.log("check");
+                //     options[i+1].setAttribute("selected",true);
+                // }
+                // console.log(i);
+                // console.log(counter);
+                // console.log(amountOfChars-1);
+                // counter ++;
+                // //delete this option from the list
+                // //console.log[i];
     </script>
 </body>
 </html>
+
