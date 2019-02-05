@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" id="mychar" name="char" maxlength="1"><br>
+        <input type="submit" value="Type a letter" onclick="convert()">
+        <h1 id="display"></h1>
+    <script>
+    upCase  = 'abcdefghijklmnopqrstuvwxyz';
+    LowCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    conv = {};
+    for(var i=0;i<upCase.length;i++) conv[upCase[i]] = LowCase[i];
+    function convert() {
+        var char = document.getElementById("mychar").value;
+        document.getElementById("mychar").value = '';
+        //var disp = document.getElementById("display").innerText;
+        document.getElementById("display").innerText += conv[char];
+    }
+    </script>
+</body>
+</html>
