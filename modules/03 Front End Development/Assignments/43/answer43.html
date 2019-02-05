@@ -9,75 +9,105 @@
 </head>
 
 <body>
+
     <h2> choose difficulty level:</h2>
     <button type="button" onClick="startGame(3)">Easy</button>
     <button type="button" onclick="startGame(5)">Medium</button>
     <button type="button" onclick="startGame(7)">Hard</button>
-    <div id="DisSelect"></div>
+    <div id="DisSelect" style='margin-top:10px;'><b> please pick a char: </b> </div>
+    <button type="button" onClick="reset()" style='margin-top:10px;'>restart</button>
+    <div id="msg" style='margin-top:10px; color: red; font-size:30px;'></div>
+
     <script>
         str = "";
+        function win() {
 
+            return str.length === randomWord.length
+        }
+        function reStartGame(newWordLength) {
+
+            setTimeout(function () {
+                startGame(newWordLength);
+            }, 1000);
+        }
         function changeFunc(randomWord) {
             console.log(str.length);
+            console.log(randomWord.substring(str.length, str.length + 1));
 
-            if (randomWord.substring(str.length, str.length+1) === document.getElementById("selectid").value) {
+            if (randomWord.substring(str.length, str.length + 1) === document.getElementById("selectid").value) {
                 str += document.getElementById("selectid").value
                 console.log(str);
-                if (str.length === randomWord) {
-                    console.log("win");
+                if (win()) {
+                    str = "";
+                    document.getElementById("DisSelect").innerHTML = "<b> please pick a char: </b>"
+
+                    console.log("you win!");
+                    // for (var i = 0; i < 3; i++) {
+                    //     document.getElementsByTagName("button")[i].disabled = false;
+                    document.getElementById("msg").innerText = "you won! moving to the next level..(:"
+                    // }
+                    if (randomWord.length !== 7) {
+                        reStartGame(randomWord.length + 2);
+
+                    }
+                    else {
+
+                        reStartGame(randomWord.length);
+
+                    }
 
                 }
             }
             else {
-                reset()
+                str = "";
+                document.getElementById("DisSelect").innerHTML = "<b> please pick a char: </b>"
+                document.getElementById("msg").innerText = "you lost:( try again.."
+                reStartGame(randomWord.length);
+
             }
-            // turn = 1;
-            // board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
-            // window.location.reload();
+
         }
         function reset() {
-            // turn = 1;
-            // board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+
             window.location.reload();
+        }
+        function disableButton() {
+
+            for (var i = 0; i < 3; i++) {
+                document.getElementsByTagName("button")[i].disabled = true;
+
+            }
         }
         function startGame(wordLength) {
             // reset();
+            disableButton();
             var abc = new RandomWord(['a', 'b', 'c']);
 
             randomWord = Array.from(abc.randomize(Number(wordLength))).sort();
             console.log(randomWord);
 
             var select = document.createElement("select");
-            select.onchange = function () { changeFunc(randomWord.toString()) };
-           //change to optipn
+            select.onchange = function () { changeFunc(randomWord.join('')) };
+            //change to optipn
             select.id = "selectid";
+            select.style = "width:50px"
+
+
+            //enter empty value for "onchange" 
+            var newOption = document.createElement("option");
+            newOption.style = "display:none"
+            select.appendChild(newOption);
+
             randomWord.forEach(function (char) {
-                // var select = document.createElement("select");
 
                 var newOption = document.createElement("option");
-                // newOption.id=""
                 newOption.value = char;
                 newOption.text = char;
-                // console.log (newOption);
-                // console.log (select);
+
 
                 select.appendChild(newOption);
             });
             document.getElementById("DisSelect").appendChild(select);
-            var i = wordLength;
-            // str="";
-            // while (i > 0) {
-            //     // console.log(i);
-            //     // var div = document.createElement("div");
-            //     // div.id="div"+i;
-            //     str+=document.getElementById("selectid").value
-            //     // document.getElementById("DisSelect").innerHTML+="<br>"
-            //     // document.getElementById("div"+i).appendChild(select);
-            //     // document.getElementById("div"+i).innerHTML+="<br>";
-            //     i--;
-            // }
-            // console.log(document.getElementById("f").value);
-            console.log(str);
 
 
 
@@ -105,8 +135,6 @@
             }
         }
 
-        var word1 = new RandomWord(['a', 'b', 'c']);
-        console.log(word1.randomize(10));
     </script>
 </body>
 
