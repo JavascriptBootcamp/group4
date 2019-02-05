@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 33</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Upper Case Letter.</h1>
+    </div>
+
+    <div id="content">
+        <div id="inputs">
+            <label for="intext">Enter Tesxt: </label>
+            <input type="text" id="intext" onkeyup="toUpperCase()">
+        </div>
+        <br><br>
+        <div id="afteruppercase">
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+
+        var letters = {
+            a: "A",
+            b: "B",
+            c: "C",
+            d: "D",
+            e: "E",
+            f: "F",
+            g: "G",
+            h: "H",
+            i: "I",
+            j: "J",
+            k: "K",
+            l: "L",
+            m: "M",
+            n: "N",
+            o: "O",
+            p: "P",
+            q: "Q",
+            r: "R",
+            s: "S",
+            t: "T",
+            u: "U",
+            v: "V",
+            w: "W",
+            x: "X",
+            y: "Y",
+            z: "Z",
+        }
+        var str = "";
+        var tmpstr = "";
+        var inputValue;
+        var input;
+        var count = 1;
+        var afterUpper = document.getElementById("afteruppercase");
+
+        function toUpperCase() {
+            inputValue = document.getElementById("intext").value;
+            if (count === inputValue.length) {
+                count++;
+                if (inputValue.length > 1) {
+                    input = inputValue[inputValue.length - 2];
+                    if (input >= "a" && input <= "z") {
+                        tmpstr += letters[input]
+                        str = tmpstr + inputValue[inputValue.length - 1];
+                    }
+                    else {
+                        tmpstr += input;
+                        str = tmpstr;
+                    }
+                }
+                else
+                    str += inputValue;
+
+                afterUpper.innerHTML += "<h4>" + str + "<h4>";
+            }
+            else {
+                tmpstr = inputValue;
+                str = tmpstr;
+                afterUpper.innerHTML = "";
+                count = 1;
+            }
+        }
+    </script>
+</body>
+
+</html>
