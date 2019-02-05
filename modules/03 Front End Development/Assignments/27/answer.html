@@ -64,22 +64,28 @@
         var elems = document.getElementsByTagName("li");
 
 
-        for (var index = 0; index < elems.length; index++) {
-            var btn1 = document.createElement("button");
-            var btn2 = document.createElement("button");
-            var btn3 = document.createElement("button");
+        // for (var index = 0; index < elems.length; index++) {
+        //     var btn1 = document.createElement("button");
+        //     var btn2 = document.createElement("button");
+        //     var btn3 = document.createElement("button");
 
-            var t1 = document.createTextNode("Like");
-            var t2 = document.createTextNode("Comment");
-            var t3 = document.createTextNode("Share");
+        //     var t1 = document.createTextNode("Like");
+        //     var t2 = document.createTextNode("Comment");
+        //     var t3 = document.createTextNode("Share");
 
-            btn1.appendChild(t1);
-            btn2.appendChild(t2);
-            btn3.appendChild(t3);
+        //     btn1.appendChild(t1);
+        //     btn2.appendChild(t2);
+        //     btn3.appendChild(t3);
 
-            elems[index].appendChild(btn1);
-            elems[index].appendChild(btn2);
-            elems[index].appendChild(btn3);
+        //     elems[index].appendChild(btn1);
+        //     elems[index].appendChild(btn2);
+        //     elems[index].appendChild(btn3);
+        // }
+        for (var key in elems) {
+            if (elems[key].hasOwnProperty(key)){
+                console.log(elems[key]);
+            }
+            console.log(elems[key]);
         }
     </script>
 
