@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Even Or Odd</title>
+</head>
+
+<body>
+
+    <input type="number" id="first" min="1" max="100" required>
+    <input type="number" id="second" min="1" max="100" required>
+    <input type="button" onclick="evenOrOdd()">
+    <div id="result"></div>
+
+    <script>
+        function evenOrOdd() {
+            var first = document.getElementById("first").value;
+            var second = document.getElementById("second").value;
+            var result = document.getElementById("result");
+            result.innerHTML = "";
+
+            if (first > second) {
+                var error = document.createElement("div");
+                error.innerHTML = "second number is larger than the first ";
+                result.appendChild(error);
+            }
+
+            else if (first < 1 || first > 100 || second < 1 || second > 100) {
+                var error = document.createElement("div");
+                error.innerHTML = "wrong range, please enter number between 1-100";
+                result.appendChild(error);
+            }
+            else {
+                for (var i = first; i <= second; i++) {
+                    var answer = (i % 2 === 0 ? i + " is " + "even" : i + " is " + "odd");
+                    var output = document.createElement("div");
+                    output.innerHTML = answer;
+                    result.appendChild(output);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
