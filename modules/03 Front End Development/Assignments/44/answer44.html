@@ -4,10 +4,28 @@
     <title>
         "Books | Favorites"
     </title>
+    <style>
+        form{
+       margin: auto; 
+       text-align:center;
+    }
+    #books{
+        width: 100%;
+        background-color: rgb(184, 207, 207);
+    }
+    .book{
+        border:1px solid rgb(114, 114, 114);
+        text-align: center;
+    }
+    #topBook{
+        text-align: center;
+    }
+    </style>
 </head>
 
 <body>
     <form onsubmit="return false;">
+        <h2>Add book</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="author" placeholder="author">
         <input type="date" id="publication">
@@ -15,15 +33,15 @@
         <input type="number" id="pages" placeholder="pages">
         <input type="text" id="comments" placeholder="comments">
         <input type="submit" onclick="addBook()">
+        <select id="order" onchange="orderBooks()">
+            <option disabled selected hidden>select order</option>
+            <option value="1">oldest to newest</option>
+            <option value="2">newest to oldest</option>
+        </select>
     </form>
-    <select id="order" onchange="orderBooks()">
-        <option disabled selected hidden>select order</option>
-        <option value="1">oldest to newest</option>
-        <option value="2">newest to oldest</option>
-    </select>
     <div id="books">
-        <h1>My Top 5 Books:</h1>
-        <div>
+        <h1 id="topBook">My Top <span id="topNumber">5</span> Books:</h1>
+        <div class="book">
             <h1>Title: "IT"</h1>
             <h2>Author: Stephen King</h2>
             <h3>Publication date:<span class="PublicationDate">2019-01-23</span></h3>
@@ -31,7 +49,7 @@
             <h5>Pages: 138</h5>
             <p>comments: perfect author, perfect book.</p>
         </div>
-        <div>
+        <div class="book">
             <h1>Title: The Dark Tower: The Gunslinger</h1>
             <h2>Author: Stephen King</h2>
             <h3>Publication date:<span class="PublicationDate">2019-01-05</span></h3>
@@ -40,7 +58,7 @@
             <p>comments: perfect author, perfect series.</p>
 
         </div>
-        <div>
+        <div class="book">
             <h1>Title: The Dark Tower Book II: The Drawing of the Three</h1>
             <h2>Author: Stephen King</h2>
             <h3>Publication date:<span class="PublicationDate">2018-05-23</span></h3>
@@ -49,7 +67,7 @@
             <p>comments: perfect author, perfect series.</p>
 
         </div>
-        <div>
+        <div class="book">
             <h1>Title: The Dark Tower III: The Waste Lands</h1>
             <h2>Author: Stephen King</h2>
             <h3>Publication date:<span class="PublicationDate">2014-06-23</span></h3>
@@ -58,7 +76,7 @@
             <p>comments: perfect author, perfect series.</p>
 
         </div>
-        <div>
+        <div class="book">
             <h1>Title: The Dark Tower IV: Wizard and Glass</h1>
             <h2>Author: Stephen King</h2>
             <h3>Publication date:<span class="PublicationDate">2016-09-27</span></h3>
@@ -85,10 +103,12 @@
             var publisher = document.getElementById("publisher");
             var pages = document.getElementById("pages");
             var comments = document.getElementById("comments");
+            var topBook = document.getElementById("topNumber");
             var book;
             if (title.value !== "" && author.value !== "" && publication.value !== "" && publisher.value !== "" && pages.value !== "" && comments.value !== "") {
                 book = new Book(title.value, author.value, publication.value, publisher.value, pages.value, comments.value);
                 books.push(book);
+                topBook.innerText= parseInt(topBook.innerText) + 1;
                 displayBook(book);
                 clearInputContent(title, author, publication, publisher, pages, comments);
             }
@@ -113,7 +133,7 @@
             if (select === 1) {
                 arr.sort(function (a, b) {
                     keyA = a.innerText;
-                    keyB = b.innerText;      
+                    keyB = b.innerText;
                     if (keyA < keyB) return -1;
                     if (keyA > keyB) return 1;
                     return 0;
@@ -122,7 +142,7 @@
             else {
                 arr.sort(function (a, b) {
                     keyA = a.innerText;
-                    keyB = b.innerText;      
+                    keyB = b.innerText;
                     if (keyA < keyB) return 1;
                     if (keyA > keyB) return -1;
                     return 0;
@@ -139,6 +159,7 @@
             var h5 = document.createElement("h5");
             var p = document.createElement("p");
             var div = document.createElement("div");
+            div.className = "book";
             h1.innerText = "Title: " + book.title;
             h2.innerText = "Author: " + book.author;
             h3.innerHTML = "Publication date: " + "<span class='PublicationDate'>" + book.publication + "</span>";
