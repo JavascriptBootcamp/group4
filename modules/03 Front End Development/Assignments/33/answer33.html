@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>uppercase input</title>
+
+    <style>
+        .uppercase{
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    Input:<br>
+    <input type="text" id="toUpperCase" onkeyup="uppercase()">
+
+    <script>
+
+        function uppercase() {
+            document.getElementById("toUpperCase").className = "uppercase";
+        }
+    </script>
+
+</body>
+
+</html>
