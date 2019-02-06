@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt" />
+    <button onclick="createDiv()" id="btn">Click Me</button>
+    <button onclick="logAllDivs()" id="btn2">Log All Divs</button>
+
+    <div id="placeholder"></div>
+
+    <script>
+    function createDiv() {
+        var txt1 = document.getElementById("txt");
+        var newDiv = document.createElement("div");
+        // var ph = document.getElementById("placeholder");
+        var scriptElement = document.getElementsByTagName("script")[0];
+        newDiv.innerText = txt1.value;
+        // ph.appendChild(newDiv);
+        // ph.innerHTML += txt1.value + "<br />";
+        // document.body.insertBefore(newDiv, scriptElement);
+        document.body.appendChild(newDiv);
+    }
+
+    function logAllDivs(){
+        var divs = document.getElementsByTagName("div");
+        for (var i=0;i<=divs.length;i++){
+            console.log(divs[i]);
+        }
+    }
+    </script>
+</body>
+</html>

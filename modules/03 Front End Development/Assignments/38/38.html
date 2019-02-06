@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Favorites</title>
+</head>
+<body>
+    <label for="food">Food:</label>
+    <select id="food">
+        <option value="hamburger">hamburger</option>
+        <option value="BBQ">BBQ</option>
+        <option value="salad">salad</option>
+    </select>
+    <button id="foodBtn" onclick="addFood();">Add</button><br>
+    <br>
+    <label for="drink">Drink: </label>
+    <select id="drink">
+        <option value="beer">beer</option>
+        <option value="vodka">vodka</option>
+        <option value="coke">coke</option>
+    </select>
+    <button id="drinkBtn" onclick="adddrink();">Add</button> <br>
+    <br>
+    <label for="colors">Colors: </label>
+    <select id="colors">
+        <option value="blue">blue</option>
+        <option value="black">black</option>
+        <option value="green">green</option>
+    </select>
+    <button id="colorsBtn" onclick="addColors();">Add</button> <br>
+    <br>
+
+    <h2>My favorites </h2>
+    <h3>food: </h3>
+    <ol id="myFood"></ol><br>
+    <h3>drink: </h3>
+    <ol id="myDrink"></ol><br>
+    <h3>color: </h3>
+    <ol id="myColors"></ol><br>
+
+    <script>
+        var foodCount = 0;
+        var drinkCount = 0;
+        var colorsCount = 0;
+
+        function addFood() {
+            foodCount++;
+            var li = document.createElement("li");
+            document.getElementById("myFood").appendChild(li);
+            li.innerText = "My " + foodCount + switchSuffix(foodCount) + " choice is " + document.getElementById("food").value;
+        }
+        function adddrink() {
+            drinkCount++;
+            var li = document.createElement("li");
+            document.getElementById("myDrink").appendChild(li);
+            li.innerText = "My " + drinkCount + switchSuffix(drinkCount) + " choice is " + document.getElementById("drink").value;
+        }
+        function addColors() {
+            colorsCount++;
+            var li = document.createElement("li");
+            document.getElementById("myColors").appendChild(li);
+            li.innerText = "My " + colorsCount + switchSuffix(colorsCount) + " choice is " + document.getElementById("colors").value;
+        }
+
+        function switchSuffix(num) {
+            switch (num) {
+                case 1:
+                    return 'st'
+                case 2:
+                    return 'nd'
+                case 3:
+                    return 'rd';
+                case 4:
+                    return 'th';
+            }
+        }
+    </script>
+</body>
+
+</html>
