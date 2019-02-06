@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title>
+                Books | Favorites
+        </title>
+    </head>
+    <body>
+
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Authors">
+        <input type="text" onfocus="type='date'" placeholder="Published Date">
+        <input type="text" placeholder="Publishers">
+        <input type="number" placeholder="Page Count">
+        <input type="text" placeholder="Comments"> 
+        <button onclick="addBook()">Add</button>
+        <select name="" id="sort" onchange="sort()">
+            <option value="newest to oldest">newest to oldest</option>
+            <option value="oldest to newest">oldest to newest</option>
+        </select>
+
+        <!-- <h1>
+            My Top 5 Books:
+        </h1>
+        <h1>Harry Potter 1</h1>
+        <h2>J.K.Rolling</h3>
+        <h3>1.1.2000</h3>
+        <h4>Unknown</h4>
+        <h5>250</h5>
+        <p>Very good!!!</p>
+
+        <h1>Harry Potter 2</h1>
+        <h2>J.K.Rolling</h3>
+        <h3>1.1.2002</h3>
+        <h4>Unknown</h4>
+        <h5>300</h5>
+        <p>Very good!!!</p>
+
+        <h1>Harry Potter 3</h1>
+        <h2>J.K.Rolling</h3>
+        <h3>1.1.2004</h3>            
+        <h4>Unknown</h4>
+        <h5>500</h5>
+        <p>Very good!!!</p>
+
+        <h1>Harry Potter 4</h1>
+        <h2>J.K.Rolling</h3>
+        <h3>1.1.2006</h3>            
+        <h4>Unknown</h4>
+        <h5>700</h5>
+        <p>Very good!!!</p>
+
+        <h1>Harry Potter 5</h1>
+        <h2>J.K.Rolling</h3>
+        <h3>1.1.2008</h3>                      
+        <h4>Unknown</h4>
+        <h5>1000</h5>
+        <p>Very good!!!</p> -->
+    </body>
+
+    <script>
+    var books = {};
+    var booksName = new Array();
+    var isAsc = true;
+
+    function Book(title,authors,pDate,publishers,pageCount,comments){
+        this.title = title;
+        this.authors = authors;
+        this.pDate = pDate;
+        this.publishers = publishers;
+        this.pageCount = pageCount;
+        this.comments = comments;
+
+    }
+
+    function addBook(bookNode){
+        var bookObj = getBookObj(bookNode);
+        var name = book.title;
+        var publishDate = book.title;
+
+        books[publishDate + name] = book;
+        booksName.push(name);
+
+        sort(isAsc);
+    }
+
+    function sort(ascOrDesc){
+        console.log(isAsc)
+    }
+
+    function addBook(){
+        
+    }
+
+    function getBookObj(bookNode){
+
+        var title = bookNode.getElementsByTagName('h1')[0].innerText;
+        var authors = bookNode.getElementsByTagName('h2')[0].innerText;
+        var pDate = bookNode.getElementsByTagName('h3')[0].innerText;
+        var publishers = bookNode.getElementsByTagName('h4')[0].innerText;
+        var pageCount = bookNode.getElementsByTagName('h5')[0].innerText;
+        var comments = bookNode.getElementsByTagName('p')[0].innerText;
+
+        return new Book(title,authors,pDate,publishers,pageCount,comments);
+    }
+
+    function createBookNode(title,authors,pDate,publishers,pageCount,comments){
+        title_h1 = document.createElement('h1');
+        authors_h2 = document.createElement('h2');
+        pDate_h3 = document.createElement('h3');
+        publishers_h4 = document.createElement('h4');
+        pageCount_h5 = document.createElement('h5');
+        comments_p = document.createElement('p');
+
+        title_h1.innerText = title;
+
+
+    }
+
+    </script>
+
+</html>
