@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <br><br><br>
+    <div align="center">
+        <table id="tictacto" border="1px">
+            <tr>
+                <td id="0" width=50 height=50></td>
+                <td id="1" width=50 height=50></td>
+                <td id="2" width=50 height=50></td>
+            </tr>
+            <tr>
+                <td id="3" width=50 height=50></td>
+                <td id="4" width=50 height=50></td>
+                <td id="5" width=50 height=50></td>
+            </tr>
+            <tr>
+                <td id="6" width=50 height=50></td>
+                <td id="7" width=50 height=50></td>
+                <td id="8" width=50 height=50></td>
+            </tr>
+        </table><br><br><br>
+        <div id="whowon">
+
+
+        </div>
+
+    </div>
+
+    <script>
+        function onClickLisiner(e){
+            if(e.srcElement.nodeName === "TD" && e.srcElement.innerHTML === ""){
+                e.srcElement.innerHTML = "X"
+                coumputerMove();
+                isWon();
+            }
+        }
+
+        document.addEventListener("click",onClickLisiner,false)
+        
+        function coumputerMove(){
+            var rand  = document.getElementById(Math.floor(Math.random() * 9));
+            var count = 0;
+            while(rand.innerHTML === "X" || rand.innerHTML === "O"){
+                console.log(rand)
+                rand = document.getElementById(Math.floor(Math.random() * 9))
+                count++;
+                if(count === 4)
+                    break;
+            }
+            if(rand.innerHTML === "")   
+                rand.innerHTML = "O";
+        }
+        function isWon(){
+            var xo = [];
+            for(var i=0; i<9; i++){
+                xo.push(document.getElementById(i).innerHTML)
+            }
+            if(!xo.includes(""))
+                document.getElementById("whowon").innerHTML = "A Tie!!"
+
+            if(xo[0] === xo[1] && xo[1] === xo[2] && xo[1] !== ""){
+                document.getElementById("whowon").innerHTML = xo[0] + " wins!!";
+                document.removeEventListener("click",onClickLisiner);   
+            }
+            if(xo[3] === xo[4] && xo[4] === xo[5] && xo[4] !== ""){
+                document.getElementById("whowon").innerHTML = xo[4] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+            if(xo[6] === xo[7] && xo[7] === xo[8] && xo[7] !== ""){
+                document.getElementById("whowon").innerHTML = xo[7] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+            if(xo[0] === xo[3] && xo[3] === xo[6] && xo[3] !== ""){
+                document.getElementById("whowon").innerHTML = xo[3] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+            if(xo[1] === xo[4] && xo[4] === xo[7] && xo[4] !== ""){
+                document.getElementById("whowon").innerHTML = xo[4] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+            if(xo[2] === xo[5] && xo[5] === xo[8] && xo[5] !== ""){
+                document.getElementById("whowon").innerHTML = xo[5] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+            if(xo[0] === xo[4] && xo[4] === xo[8] && xo[4] !== ""){
+                document.getElementById("whowon").innerHTML = xo[4] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+            if(xo[2] === xo[4] && xo[4] === xo[6] && xo[4] !== ""){
+                document.getElementById("whowon").innerHTML = xo[4] + " wins!!";
+                document.removeEventListener("click",onClickLisiner)      
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
