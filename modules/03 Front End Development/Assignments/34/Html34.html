@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div align="center">
+        <h2>Please enter your inputs</h2>
+        <div id="inputs">
+            <input type="text" id="0"><br><br>
+            <input type="text" id="1"><br><br>
+            <input type="text" id="2"><br><br>
+            <input type="text" id="3"><br><br>
+            <input type="text" id="4"><br><br>
+            <input type="text" id="5"><br><br>
+            <input type="text" id="6"><br><br>
+            <input type="text" id="7"><br><br>
+            <input type="text" id="8"><br><br>
+            <input type="text" id="9"><br><br>
+        </div>
+        <button id="btn" onclick="start()">Submit</button>
+    </div><br><br>
+    <div align="center" id="output">
+        <!-- Result here --> 
+    </div>
+</body>
+
+<script>
+    function sortByAlphabet(arr) {
+        arr.sort(function (word1, word2) {
+            if (word1[0] < word2[0])
+                return -1;
+            if (word1[0] > word2[0])
+                return 1;
+            return 0;
+        })
+        return arr;
+    }
+    function removeDuplicate(arr){
+        var noDupArr = []
+        for(var i=0; i<arr.length; i++){
+            if(!noDupArr.includes(arr[i]))
+                noDupArr.push(arr[i]);
+        }
+        noDupArr.splice(noDupArr.indexOf(""),1);
+        return noDupArr;
+
+    }
+    function start() {
+        var inputWords = [];
+        var numOfFields = document.getElementById("inputs").getElementsByTagName("input").length;
+        var inputsObj = document.getElementById("inputs").getElementsByTagName("input");
+        for (var i = 0; i < numOfFields; i++) {
+            inputWords.push(inputsObj[i].value);
+        }
+        document.getElementById("output").innerHTML = sortByAlphabet(removeDuplicate( inputWords)).join(' ');
+
+    }
+</script>
+
+</html>
