@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>my shopping cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" " />
+</head>
+
+<body>
+    <h1 align=" center">your cart </h1>
+    <table align="center" border="1">
+        <tr rowspan="2">
+            <td>Name</td>
+            <td>Price</td>
+            <td>Action</td>
+
+        </tr>
+        <tr>
+            <td rowspan="2" id=""><select id="product">
+                    <option id="op1" vlaue="Banana">Banana</option>
+                    <option id="op2" vlaue="Milk">Milk</option>
+                    <option id="op3" vlaue="Apple">Apple</option>
+                    <option id="op4" vlaue="Orange">Orange</option>
+                    <option id="op5" vlaue="Water">Water</option>
+                    <option id="op6" vlaue="Juice">Juice</option>
+                    <option id="op7" vlaue="Butter">Butter</option>
+                    <option id="op8" vlaue="Cake">Cake</option>
+                    <option id="op9" vlaue="Chocolade">Chocolade</option>
+                    <option id="op10" vlaue="Meat">Meat</option>
+
+                </select></td>
+            <td rowspan="2"><input type="number" id="price"></td>
+            <td><button id="addbut" onclick="cartColle();totalPrice();">add</button></td>
+        </tr>
+        <tr>
+            <td><button id="removebut">remove</button></td>
+        </tr>
+    </table>
+    <p align="center" id="cartColle"></p>
+    <p align="center" id="cartColleAmou"></p>
+    <div>
+        <form id="myForm">
+            Card Number : <input id="CN" type="text" required><br><br>
+            Name on card :<input type="text" required><br><br>
+            Expiry date : <input type="date" required><br><br>
+            Security code : <input type="text" size="3" maxlength="3" required><br><br>
+            <input type="submit" onclick="validate();">
+        </form>
+        <p id="notValidCard"></p>
+
+        <script>
+            amount = 0;
+            function cartColle() {
+                var product = document.getElementById("product").value;
+
+                var price = document.getElementById("price").value;
+
+                pCatr = document.getElementById("cartColle");
+                pCatrAmou = document.getElementById("cartColleAmou");
+
+                pCatr.innerHTML += product + "  " + price + " " + "<br>";
+                amount += +price;
+
+
+            }
+            function totalPrice() {
+                pCatrAmou.innerHTML = " total amount is : " + amount;
+
+            }
+
+            function validate() {
+                var notValidCard = document.getElementById("notValidCard");
+                var x = document.getElementById("CN").value;
+                var arrNumbers = x.split("");
+                var flag = true;
+                var validationStatus = "NOT VALEID : ";
+                var total = 0;
+                if (arrNumbers.length !== 16) {
+                    validationStatus += " --you have to fill 16 numbers";
+                    flag = false;
+
+                }
+                var bool = arrNumbers.some(function (item) {
+                    return ((typeof +item !== 'NAN') && (arrNumbers.some(function (item2) {
+
+                        return (typeof +item2 !== 'NAN' && +item2 !== +item);
+
+                    })));
+                });
+                if (!bool) {
+                    validationStatus = " --you must have 2 different numbers";
+                    flag = false;
+
+                }
+                var isNumbers = arrNumbers.every(function (item) {
+                    return !isNaN(+item);
+                });
+
+                if (!isNumbers) {
+                    validationStatus += " --you have to enter just numbers without chars";
+                    flag = false;
+                }
+                if (!(+arrNumbers[arrNumbers.length - 1] % 2 === 0)) {
+                    validationStatus += " --the last digit must be even ";
+                    flag = false;
+                }
+                for (var i in arrNumbers) {
+                    total += +arrNumbers[i];
+                }
+                if (total <= 16) {
+                    validationStatus += " --you must have sum of numbers that is greater than 16  ";
+
+                    flag = false;
+
+                }
+                if (flag === true) {
+                    document.getElementById("myForm").method = "POST";
+                    document.getElementById("myForm").action = "http://localhost:3000/Order";
+                }
+                else {
+                    notValidCard.innerHTML = validationStatus;
+                }
+            }
+
+       </script>
+
+        </body>
+
+</html>
