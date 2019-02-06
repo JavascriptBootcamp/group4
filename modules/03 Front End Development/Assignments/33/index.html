@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fe 33</title>
+    <script>var count=0;</script>
+</head>
+
+<body>
+    <input type="text" id="sequence" onkeyup="func()">
+    <script>
+        function func() {
+            //console.log("function started");
+            var sequence = document.getElementById("sequence").value;
+            var arr = sequence.split("");
+            //console.log(arr);
+            var char = arr[count];
+            var num = char.charCodeAt(0);
+            //console.log(num);
+            arr[count] = String.fromCharCode(num - 32);
+            count++;
+            document.getElementById("sequence").value = arr.join("");
+        }
+    </script>
+</body>
+
+</html>
