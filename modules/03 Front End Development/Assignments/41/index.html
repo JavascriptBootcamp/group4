@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <label for="string">Enter string:</label><input name="string" type="text" oninput="palindrome(this.value)">
+
+    <div>
+        <span>your string is palindrome? => </span>
+        <span id="answer"></span>
+    </div>
+    <script>
+
+        function palindrome(str) {
+            var x = str.length - 1;
+            var pali = true;
+            for (var i = 0; i < str.length / 2; i++) {
+                if (str[i] !== str[x])
+                    // return { palindrome: false };
+                    pali = false;
+                x--;
+            }
+            // return { palindrome: true };
+            document.querySelector("#answer").innerText = pali;
+
+        }
+    </script>
+</body>
+</html>
