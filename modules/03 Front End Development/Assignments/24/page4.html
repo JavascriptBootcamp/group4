@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 18</title>
+</head>
+
+<body>
+
+    <div id="videos">
+        <video controls width="250">
+            <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/webm">
+            <!-- show to the user only when the browser dont support the video -->
+            Sorry, your browser doesn't support embedded videos,
+            but don't worry, you can <a href="https://archive.org/details/BigBuckBunny_124">download it</a>
+            and watch it with your favorite video player!
+        </video>
+
+        <video controls width="250" poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
+            <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/webm">
+        </video>
+
+        <video controls width="250">
+            <source src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4" type="video/webm">
+            <!-- adding subtitels to a video -->
+            <track label="English" kind="subtitles" srclang="en" src="captions/vtt/sintel-en.vtt" default>
+            <track label="Deutsch" kind="subtitles" srclang="de" src="captions/vtt/sintel-de.vtt">
+        </video>
+    </div>
+
+    <br>
+    <div id="footer">
+        <div class="footerBtns">
+            <a href="index.html"><button>Return to main menu</button></a>
+        </div>
+        &copy; SQLabs
+    </div>
+</body>
+
+</html>
