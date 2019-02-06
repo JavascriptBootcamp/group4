@@ -110,45 +110,67 @@
     function checkWin(){
         var answer = "";
         var tds = document.getElementsByTagName("td");
+        var message = document.createElement("h2");
+        var domParent = document.getElementById("insert");
+        var levelButtons = document.getElementsByName("difL");
         for(var i =0;i<amountOfChars;i++){
             answer += tds[i].innerText;
+            if(tds[i].innerText===generatedWord[i])
+                tds[i].style.backgroundColor = 'green';
+            else
+                tds[i].style.backgroundColor = 'red';
         }
         console.log(answer);
         console.log(generatedWord);
         if(answer===generatedWord)
-            console.log("you Won");
+        {
+            message.innerText = "You won";
+
+            // domParent.appendChild(message);
+            domParent.replaceChild(message,domParent.firstChild)
+            for(var i=0;i<3;i++)
+                levelButtons[i].disabled = false;
+            nextLevel();
+        }
         else
-            console.log("you Lost");
+        {
+            message.innerText = "You Lost";
+            // domParent.appendChild(message);
+            domParent.replaceChild(message,domParent.firstChild)
+            for(var i=0;i<3;i++)
+                levelButtons[i].disabled = false;
+        }
+    }
+    function nextLevel(){
+        if(amountOfChars===3){
+            setTimeout(() => {
+                setDifficultyLevel("medium",5)
+                document.getElementById("medium").checked=true;
+                startGame();
+            }, 900);
+        }
+        else if(amountOfChars===5){
+            setTimeout(() => {
+                setDifficultyLevel("high",7)
+                document.getElementById("high").checked=true;
+                startGame();
+            }, 900)
+        }
+        else{
+            console.log("no more levels")
+        }
+    
     }
     function startGame(){
+            var levelButtons = document.getElementsByName("difL");
+            for(var i=0;i<3;i++){
+                levelButtons[i].disabled = true;
+            }
             gameReset();
             createTable();
             createLettersList(randomizeWords(amountOfChars));
             createButton();
     }
-
-
-
-
-
-                //     //insert this option into the table to the correct index
-
-                // // console.log(options[i].value);
-                // // console.log(tds[i]);
-                // tds[counter].innerText = options[i].value;
-                // options[i].disabled = true;
-                // options[i].style="display:none";
-                // // options[i].parentNode.appendChild(options[i]);
-                // if(!(counter===amountOfChars-1)){
-                //     console.log("check");
-                //     options[i+1].setAttribute("selected",true);
-                // }
-                // console.log(i);
-                // console.log(counter);
-                // console.log(amountOfChars-1);
-                // counter ++;
-                // //delete this option from the list
-                // //console.log[i];
     </script>
 </body>
 </html>
