@@ -14,7 +14,7 @@
     <input type="text" id="letter" placeholder="please enter a letter..">
 
     <button type="button" onClick="toUpperCase()" style='margin-top:10px;'>restart</button>
-    <div id="msg" style='margin-top:10px; color: red; font-size:30px;'></div>
+    <div id="display" style='margin-top:10px; color: red; font-size:30px;'></div>
     <button type="button" onClick="reset()" style='margin-top:10px;'>restart</button>
 
     <script>
@@ -35,7 +35,7 @@
             var input = document.getElementById("letter").value;
             document.getElementById("letter").value='';
             str += UpparLetters[input];
-            document.getElementById("msg").innerText = str;
+            document.getElementById("display").innerText = str;
 
 
 
