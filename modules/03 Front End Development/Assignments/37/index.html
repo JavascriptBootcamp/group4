@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div id="showNum"></div>
+	<input id="range" type="range" min="0" max="250">
+	<div id="res"></div>
+	<script>
+		var bloodPressure=document.getElementById("range");
+		var res=document.getElementById("res");
+		var num=document.getElementById("showNum");
+		num.innerHTML=`<h2>Blood Presure:<br>${range.value} </h2>`;
+		bloodPressure.onchange = function(){
+			num.innerHTML=`<h2>Blood Presure:<br>${range.value} </h2>`;
+			if(range.value<50)
+			{
+				res.innerHTML="<h3 style=color:red>pressure is too low</h3>";
+			}
+			else if (range.value>=50 && range.value<=120)
+			{
+				res.innerHTML="<h3 style=color:green>pressure normal</h3>";
+			}
+			else
+			{
+				res.innerHTML="<h3 style=color:red>pressure is too high</h3>";
+			}
+		}
+	</script>
+</body>
+</html>

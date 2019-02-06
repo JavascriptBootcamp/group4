@@ -1,0 +1,166 @@
+g<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div id="preGameInputsContainer">
+        <input type="text" id="player1" placeholder="Player 1 (X)"><br>
+        <input Type="text" id="player2" placeholder="Player 2 (O)"><br>
+        <button onclick="startNewGame()">Start New Game</button><br>
+    </div>
+    <div id="won"></div>
+    <table border="2">
+        <tr>
+            <td><button id="box0" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+            <td><button id="box1" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+            <td><button id="box2" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+        </tr>
+        <tr>
+            <td><button id="box3" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+            <td><button id="box4" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+            <td><button id="box5" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+        </tr>
+        <tr>
+            <td><button id="box6" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+            <td><button id="box7" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+            <td><button id="box8" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
+        </tr>
+    </table>
+
+    <script>
+    var turn = true;
+    var table=[];
+    var player1, player2;
+    var counter=0;
+    var winFlag = false;
+    function startNewGame(){
+        resetBoard();
+        insertPlayers();
+        removeNamesInputs();
+    }
+    function insertValueToBoard(ClickedElementId){
+        //check if already pressed, check if already win, if not - enter X if counter is odd, O if even
+        if(turn)
+        {
+            var indexOfId = ClickedElementId.replace('box','');
+            var x = document.getElementById(ClickedElementId);
+            var img = x.firstElementChild;
+            table[indexOfId] = 1;
+            x.removeAttribute("onclick");
+            img.setAttribute("src","images/X.jpg");
+            console.log(table);
+            turn = false;
+            counter++;
+            hasWon(turn);
+        }
+        else
+        {
+            var indexOfId = ClickedElementId.replace('box','');
+            var o = document.getElementById(ClickedElementId);
+            var img = o.firstElementChild;
+            table[indexOfId] = 0;
+            o.removeAttribute("onclick");
+            img.setAttribute("src","images/O.jpg");
+            turn = true;
+            console.log(table);
+            counter++;
+            hasWon(turn);
+        }
+
+    }
+    function hasWon(){
+        //check if some player is won, if some has won, disable all board and display h2 element above with the alert "player x won"
+        if(checkPlayerOneStatus())
+        {
+            document.getElementById("won").innerHTML=`<h2>${player1} has won</h2>`;
+            disableBoard();
+            showPlayerNameInputs();
+            winFlag = true;
+        }
+        if(checkPlayerTwoStatus())
+        {
+            document.getElementById("won").innerHTML=`<h2>${player2} has won</h2>`;
+            disableBoard();
+            showPlayerNameInputs();
+            winFlag = true;
+        }
+        if((!winFlag)&&(counter===9))
+        {
+            document.getElementById("won").innerHTML="<h2>It's a tie, try again</h2>";
+            disableBoard();
+            showPlayerNameInputs();
+        }
+    }
+    function checkPlayerOneStatus(){
+        return ((table[0]+table[1]+table[2]===3)||(table[3]+table[4]+table[5]===3)||(table[6]+table[7]+table[8]===3)||(table[0]+table[3]+table[6]===3)||(table[1]+table[4]+table[7]===3)||(table[2]+table[5]+table[8]===3)||(table[0]+table[4]+table[8]===3)||(table[2]+table[4]+table[6]===3))
+    }
+    function checkPlayerTwoStatus(){
+        return ((table[0]+table[1]+table[2]===0)||(table[3]+table[4]+table[5]===0)||(table[6]+table[7]+table[8]===0)||(table[0]+table[3]+table[6]===0)||(table[1]+table[4]+table[7]===0)||(table[2]+table[5]+table[8]===0)||(table[0]+table[4]+table[8]===0)||(table[2]+table[4]+table[6]===0))
+    }
+    function insertPlayers(){
+        player1 = document.getElementById("player1").value;
+        player2 = document.getElementById("player2").value;
+    }
+    function removeNamesInputs(){
+        var preGameInputsContainer = document.getElementById("preGameInputsContainer");
+        preGameInputsContainer.innerHTML="";
+    }
+    function showPlayerNameInputs(){
+        var preGameInputsContainer = document.getElementById("preGameInputsContainer");
+        preGameInputsContainer.innerHTML='<input type="text" id="player1" placeholder="Player 1 (X)"><br>\
+        <input Type="text" id="player2" placeholder="Player 2 (O)"><br>\
+        <button onclick="startNewGame()">Start New Game</button><br>';
+    }  
+    function resetBoard(){
+        var boardTable = document.querySelectorAll('body table');
+        counter=0;
+        winFlag = false;
+        turn = true;
+        table=[];
+        if(document.getElementById("player1").value==="")
+            document.getElementById("player1").value = "player1";
+        if(document.getElementById("player2").value==="")
+            document.getElementById("player2").value = "player2";
+        document.getElementById("won").innerHTML="";
+        boardTable[0].innerHTML='<tr>\
+            <td><button id="box0" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+            <td><button id="box1" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+            <td><button id="box2" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+        </tr>\
+        <tr>\
+            <td><button id="box3" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+            <td><button id="box4" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+            <td><button id="box5" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+        </tr>\
+        <tr>\
+            <td><button id="box6" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+            <td><button id="box7" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+            <td><button id="box8" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
+        </tr>';
+        var boardButtons = document.querySelectorAll('td button');
+        for(var i=0;i<9;i++){
+            boardButtons[i].style.backgroundColor = "white";
+        }
+    }
+    function disableBoard(){
+        var boardButtons = document.querySelectorAll('td button');
+        for(var i=0;i<9;i++){
+            boardButtons[i].disabled = true;
+            boardButtons[i].style.backgroundColor = "gray";
+        }
+
+
+    }
+    </script>
+    <style>
+        td button {
+            background-Color:gray;
+        }
+    </style>
+</body>
+</html>
