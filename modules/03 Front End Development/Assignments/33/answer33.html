@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>toUpperCase</title>
+</head>
+
+<body>
+    <h2> please enter a letter:</h2>
+
+    <input type="text" id="letter" placeholder="please enter a letter..">
+
+    <button type="button" onClick="toUpperCase()" style='margin-top:10px;'>restart</button>
+    <div id="msg" style='margin-top:10px; color: red; font-size:30px;'></div>
+    <button type="button" onClick="reset()" style='margin-top:10px;'>restart</button>
+
+    <script>
+        var str = '';
+        var UpparLetters = {};
+        var UpparLetter = 'A'.charCodeAt(0);
+        for (var index = 'a'.charCodeAt(0); index <= 'z'.charCodeAt(0); index++) {
+            UpparLetters[String.fromCharCode(index)] = String.fromCharCode(UpparLetter);
+            UpparLetter++;
+            // console.log(String.fromCharCode(index))
+
+
+        }
+        function reset() {
+            window.location.reload();
+        }
+        function toUpperCase() {
+            var input = document.getElementById("letter").value;
+            document.getElementById("letter").value='';
+            str += UpparLetters[input];
+            document.getElementById("msg").innerText = str;
+
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
