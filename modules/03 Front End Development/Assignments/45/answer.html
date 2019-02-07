@@ -66,6 +66,10 @@
                 } else {
                     // div by 6
                     // create a next element - add another <a> to the div "next"
+                    nextDiv = document.createElement("a");
+                    nextDiv.setAttribute("href","javascript:void(0)");
+                    nextDiv.setAttribute("onclick","Show(event)";
+                    nextDiv.innerHTML
                     nextDiv.appendChild(newNextElem);
                 }
 
@@ -80,15 +84,13 @@
                         imageDiv.removeChild(imageDiv.firstChild);
                     }
                 }
-                
-                selectedPage = event.target.innerText;    
+
+                selectedPage = event.target.innerText;
 
                 for (var index = selectedPage * 6; index < (selectedPage * 6) + 11; index++) {
                     imageDiv.appendChild(arrOfEvents[index]);
                 }
             }
-
-
         }
     </script>
 
