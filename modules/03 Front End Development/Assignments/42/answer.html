@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watching List</title>
+</head>
+
+<body>
+<div id="formRow">
+    <form>
+        Title: <input type="text" id="title"  required>
+        Uploader: <select id="uploader">
+            <option>Prophessor</option>
+            <option>Tokyo</option>
+            <option>Berlin</option>
+        </select>
+        Seconds:<input type="number" id="seconds" required>
+        <button type="button" id="watchBtn" onclick="watch()">Watch!</button>
+        <button type="button" id="addBtn" onclick="addRow()">+</button>
+        <button type="button" id="watchAllBtn" onclick="watchAll()">Watch All!</button>
+    </form>
+</div>
+
+    <div id="additionalRows"></div>
+
+    <div id="result"></div>
+
+
+
+
+    <script>
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.watchMsg = function () {
+               var msg = this.uploader + " Watched all " + this.seconds + " seconds of " + this.title + "!";
+               return msg;
+            }
+        }
+
+        function watch()
+        {
+            var title = document.querySelector("#title").value;
+            var uploader = document.querySelector("#uploader");
+            uploader = uploader.options[uploader.selectedIndex].innerText;
+            var duration = document.querySelector("#seconds").value;
+            var resultDiv = document.querySelector("#result");
+            var obj = new Video(title, uploader, duration);
+            resultDiv.innerHTML += obj.watchMsg() + "<br>";
+        }
+
+        function watchAll()
+        {
+            
+        }
+
+        function addRow()
+        {
+            var row = document.querySelector("#formRow");
+            var theAdditionalDiv = document.querySelector("#additionalRows");
+            theAdditionalDiv.innerHTML += row.innerHTML;
+        }
+    </script>
+</body>
+
+</html>
