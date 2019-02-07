@@ -24,6 +24,7 @@
             </th>
         </tr>
     </table>
+    <div id="total"></div>
     <script>
         var products = {
             apple: "4",
@@ -79,13 +80,23 @@
             btn.onclick = removeItem;
             td.appendChild(btn);
             tr.appendChild(td);
+            updateTotal(price.value);
         }
         function removeItem(event) {
             var table = document.getElementsByTagName('table')[0];
             var btn = event.target;
             var td = btn.parentNode;
             var tr = td.parentNode;
+            var tdOfPrice = tr.childNodes[1];
+            var priceValue = tdOfPrice.innerText;
             table.removeChild(tr);
+            updateTotal('-' + priceValue);
+        }
+        function updateTotal(newItem){
+            var div = document.getElementById('total');
+            var total = div.innerText !== '' ? Number(div.innerText):0;
+            total += Number(newItem);
+            div.innerText = total;
         }
         function updatePrice(){
             var items = document.getElementById('items');
