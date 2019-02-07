@@ -1,6 +1,4 @@
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,11 +35,13 @@
         var arrOfEvents = [];
         var imageDiv = document.getElementById("collection");
         var nextDiv = document.getElementById("next");
+        var newNextElem;
+        var newImageElem;
 
 
         function addToCollection (event) {
-            // create an obj 
-            arrOfEvents.push(event); // push the obj to arr
+            // create an obj - add a newImageElem to the div collection
+            arrOfEvents.push(newImageElem); // push the obj to arr
             checkDivitionBy6(); // check if there is another number to add to the "next" div
         }
 
@@ -52,6 +52,8 @@
 
             } else {
                 // div by 6
+                // create a next element - add another <a> to the div "next"
+                nextDiv.appendChild(newNextElem);
             }
             
         }
