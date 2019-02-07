@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form >
+        <label for="title">Enter video title:</label>
+        <input type="text" id="title" required><br>
+        <label for="uploader">Choose uploader:</label>
+        <select id="uploader">
+            <option value="john">John</option>
+            <option value="dean">Dean</option>
+            <option value="linda">Linda</option>
+            <option value="dudu">Dudu</option>
+        </select><br>
+        <label for="seconds">Enter video length (in seconds):</label>
+        <input type="number" id="seconds" required><br>
+
+        <input type="submit" value="Submit" onclick="Video(event)">
+
+        <div id="output"></div>
+    </form>
+
+    <script>
+        function Video() {
+            var title = document.getElementById("title").value;
+            var selector = document.getElementById("uploader");
+            var uploader = selector.options[selector.selectedIndex];
+            var seconds = document.getElementById("seconds").value;
+            var outputDiv = document.getElementById("output");
+
+            outputDiv.innerText="You watched all " + seconds + " seconds of " + title + "!";
+            event.preventDefault();
+        }
+
+    </script>
+</body>
+
+</html>
