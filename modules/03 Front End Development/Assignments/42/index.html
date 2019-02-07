@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 42</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="title" id="title" minlength="1">
+        <select name="up" id="up">
+            <option value="David">David</option>
+            <option value="Sarah">Sarah</option>
+            <option value="Jack">Jack</option>
+            <option value="Viki">Viki</option>
+        </select>
+        <input type="number" name="sec" id="sec" min='1'>
+        <button type="button" id='watching' onclick="watch()">Watch</button>
+    </form>
+    <div id="info"></div>
+    <button type="button" id='plusBtn' onclick="addForm(event)">Plus</button>
+    <button type="button" id='watchAllBtn' onclick="watchAll()">Watch All</button>
+    <div id="videosDiv"></div>
+    <script>
+        var videos = [];
+        function watch() {
+            var name = document.querySelector('#title');
+            var up = document.querySelector('#up');
+            var duration = document.querySelector('#sec');
+            var info = document.querySelector('#info');
+            var video = new Video(name.value, up.options[up.selectedIndex].value, duration.value);
+            addVideo(video);
+            info.innerText = video.watch();
+        }
+        function addVideo(video) {
+            videos.push(video);
+        }
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.watch = function () {
+                try {
+                    if (this.seconds === '' || this.title === '') {
+                        throw "Oops... An error occured";
+                    }
+                    return `You watched all ${this.seconds} seconds of ${this.title}!`;
+                } catch (error) {
+                    return error;
+                }
+            }
+        }
+
+        function addForm(event) {
+            if (videos.length !== 0) {
+                var plus = document.getElementById('plusBtn');
+                var nameOrigin = document.querySelector('#title');
+                var uploaderOrigin = document.querySelector('#up');
+                var durationOrigin = document.querySelector('#sec');
+                var form = document.createElement('form');
+                var name = document.createElement('input');
+                var theUploader = document.createElement('select');
+                var duration = document.createElement('input');
+                var option = document.createElement('option');
+
+                name.value = videos[videos.length - 1].title;
+                name.disabled = true;
+                option.value = videos[videos.length - 1].uploader;
+                option.innerHTML = option.value;
+                theUploader.appendChild(option);
+                theUploader.disabled = true;
+                duration.value = videos[videos.length - 1].seconds;
+                duration.disabled = true;
+                form.appendChild(name);
+                form.appendChild(theUploader);
+                form.appendChild(duration);
+                document.body.insertBefore(form, plus);
+            }
+        }
+
+        function watchAll() {
+            var videosDiv = document.querySelector('#videosDiv');
+            videos.forEach((video) => {
+                videosDiv.innerHTML += 'Title: ' + video.title + ', uploader: ' + video.uploader + ', seconds: ' + video.seconds + '<br />';
+            });
+        }
+    </script>
+</body>
+
+</html>
