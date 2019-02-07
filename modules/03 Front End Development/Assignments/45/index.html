@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        img {
+            width:100px;
+            height:100px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="page_click(0)">
+    <form onsubmit="return false;">
+        <lable for="txtURL">URL : </lable><input type="text" id="txtURL" /><br><br>
+        <label for="txtPictureUrl">Picture URL : </label><input type="text" id="txtPictureUrl" /><br><br>
+        <button id="add" onclick="addPicture();">Add</button><br><br>
+    </form>
+    <div id="pictures_list"></div><br>
+    <div id="paging"></div>
+    <script src="script.js"></script>
+</body>
+</html>
