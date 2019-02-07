@@ -1,1 +1,58 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" id="title" placeholder="title" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="name">
+                            <option value="" selected disabled hidden>uploader</option>
+                            <option value="1">nnnn</option>
+                            <option value="2">xxxx</option>
+                            <option value="3">dddd</option>
+                            <option value="4">eeeee</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" id="sec" placeholder="seconds" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="watch(event)">Add</button>
+                    </td>
+                </tr>       
+            </table>
+        </form>
+    </div>
+    <div id="ph"></div>
+
+    <button onclick="addVideoForm()">+</button>
+    <div id="videoDiv"></div>
+
+    <button onclick="WatchAll()">Watch All</button>
+    <div id="WatchAll"></div>
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
