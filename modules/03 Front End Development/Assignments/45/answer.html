@@ -2,14 +2,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Answer 45</title>
 </head>
+
 <body>
-    
+
     <form onsubmit="return false">
         <input type="url" name="" id="img">
         <input type="url" name="" id="wiki">
@@ -32,54 +34,62 @@
 
 
     <script>
-
         var arrOfEvents = [];
+        var selectedPage = 1;
         var imageDiv = document.getElementById("collection");
         var nextDiv = document.getElementById("next");
         var newNextElem;
         var newImageElem;
 
 
-        function addToCollection (event) {
+        function addToCollection() {
 
             newImageElem = document.createElement("a");
-            newImageElem.setAttribute("href",document.getElementById("wiki").value);
+            newImageElem.setAttribute("href", imageDiv.value);
             var imgChild = document.createElement("img");
-            imgChild.setAttribute("src",document.getElementById("img").value);
+            imgChild.setAttribute("src", nextDiv.value);
             newImageElem.appendChild(imgChild);
+
 
             arrOfEvents.push(newImageElem); // push the obj to arr
             checkDivitionBy6(); // check if there is another number to add to the "next" div
-        }
 
-        function checkDivitionBy6(event) {
-            // if there is a full divition of 6 add to the "next" div another number
-            if (arrOfEvents.length %6) {
-                // not div by 6
-
-            } else {
-                // div by 6
-                // create a next element - add another <a> to the div "next"
-                nextDiv.appendChild(newNextElem);
+            if (selectedPage == nextDiv.lastChild.innerText) {
+                Show();
             }
-            
-        }
 
-        function Show(event) {
-            // loads the right 6 images
-            var numOfPage = event.target.innerText;
-            loadTheRight6ToDiv (numOfPage);
-            
-            
-        }
+            function checkDivitionBy6() {
+                // if there is a full divition of 6 add to the "next" div another number
+                if (arrOfEvents.length) {
+                    // not div by 6
 
-        // according to the number load the next 12 to the "next" div
-        function loadTheRight6ToDiv (index) {
-            // load all items in that range arrOfEvents [index*6] till arrOfEvents[(index*6)+11]
-        }
+                } else {
+                    // div by 6
+                    // create a next element - add another <a> to the div "next"
+                    nextDiv.appendChild(newNextElem);
+                }
 
+            }
+
+            function Show(event) {
+                // loads the right 6 images
+                selectedPage = event.target.innerText;
+                
+                //removes all elements from div collection 
+                while (imageDiv.firstChild) {
+                    imageDiv.removeChild(imageDiv.firstChild);
+                }
+
+                for (var index = selectedPage*6 ; index < (selectedPage*6)+11 ; index++) {
+                    imageDiv.appendChild(arrOfEvents[index]);
+                }
+            }
+
+
+        }
     </script>
-    
+
 
 </body>
+
 </html>
