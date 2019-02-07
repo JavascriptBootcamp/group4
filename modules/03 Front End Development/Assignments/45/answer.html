@@ -1,1 +1,75 @@
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Answer 45</title>
+</head>
+<body>
+    
+    <form onsubmit="return false">
+        <input type="url" name="" id="img">
+        <input type="url" name="" id="wiki">
+        <input type="button" value="Add" onclick="addToCollection(event)">
+    </form>
+
+
+    <!-- the div that holds the images  -->
+    <div id="collection">
+
+    </div>
+
+
+    <!-- the div that holds the number  -->
+    <div id="next">
+        <a href="javascript:void(0)" onclick="Show(event)">1</a>
+    </div>
+
+
+
+
+    <script>
+
+        var arrOfEvents = [];
+        var imageDiv = document.getElementById("collection");
+        var nextDiv = document.getElementById("next");
+
+
+        function addToCollection (event) {
+            // create an obj 
+            arrOfEvents.push(event); // push the obj to arr
+            checkDivitionBy6(); // check if there is another number to add to the "next" div
+        }
+
+        function checkDivitionBy6(event) {
+            // if there is a full divition of 6 add to the "next" div another number
+            if (arrOfEvents.length %6) {
+                // not div by 6
+
+            } else {
+                // div by 6
+            }
+            
+        }
+
+        function Show(event) {
+            // loads the right 6 images
+            var numOfPage = event.target.innerText;
+            loadTheRight6ToDiv (numOfPage);
+            
+        }
+
+        // according to the number load the next 12 to the "next" div
+        function loadTheRight6ToDiv (index) {
+            // load all items in that range arrOfEvents [index*6] till arrOfEvents[(index*6)+11]
+        }
+
+    </script>
+    
+
+</body>
+</html>
