@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="title" id="title">
+        <select id="uploader">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+        </select>
+        <input type="number" name="seconds" id="seconds">
+        <button onclick="watch(event);">Click</button>
+    </form>
+    <div id="div"></div>
+    <script>
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+        }
+        var data = []
+        var i = 0;
+        function watch(event) {
+            event.preventDefault();
+            var title = document.getElementById("title").value;
+            var uploader = document.getElementById("uploader").value;
+            var seconds = document.getElementById("seconds").value;
+            var v = new Video(title, uploader, seconds);
+            data.push(v);
+            try {
+                var div = document.getElementById("div");
+                div.innerText = "You watched all " + seconds + " seconds of " + title;
+            } catch (error) {
+                div.innerText = "Oops... An error occured";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
