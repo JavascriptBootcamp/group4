@@ -1,4 +1,5 @@
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
     <form onsubmit="return false">
         <input type="url" name="" id="img">
         <input type="url" name="" id="wiki">
-        <input type="button" value="Add" onclick="addToCollection(event)">
+        <input type="button" value="Add" onclick="addToCollection()">
     </form>
 
 
@@ -40,7 +41,13 @@
 
 
         function addToCollection (event) {
-            // create an obj - add a newImageElem to the div collection
+
+            newImageElem = document.createElement("a");
+            newImageElem.setAttribute("href",document.getElementById("wiki").value);
+            var imgChild = document.createElement("img");
+            imgChild.setAttribute("src",document.getElementById("img").value);
+            newImageElem.appendChild(imgChild);
+
             arrOfEvents.push(newImageElem); // push the obj to arr
             checkDivitionBy6(); // check if there is another number to add to the "next" div
         }
@@ -62,6 +69,7 @@
             // loads the right 6 images
             var numOfPage = event.target.innerText;
             loadTheRight6ToDiv (numOfPage);
+            
             
         }
 
