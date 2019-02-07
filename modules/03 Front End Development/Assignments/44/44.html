@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>
+        "Books | Favorites"
+    </title>
+</head>
+
+<body>
+    <h1>My Top 5 Books:</h1>
+
+    <div id="booksArea">
+        <h1>Title: "IT"</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: 1986-3-16</h3>
+        <h4>Publisher: Viking</h4>
+        <h5>Pages: 1,138</h5>
+        <p>comments: perfect author, perfect book.</p>
+    </div>
+    <div align="center" id="sortByDateDiv">
+        <select id="seleSort" onchange="sortByDate();">
+            <option id="oldest" value="oldest">oldest to newest</option>
+            <option id="newest" value="newest">newest to oldest</option>
+        </select><br> <br>
+    </div>
+    <div align="center" id="newBookInputs">
+        Title: <input type="text" id="title"><br><br>
+        Author: <input type="text" id="author"><br><br>
+        Publication date: <input type="date" id="pubDate"><br><br>
+        Publisher:<input type="text" id="publisher"><br><br>
+        Pages: <input type="number" id="pages"><br><br>
+        comments: <textarea id="comments"> </textarea> <br><br>
+        <button onclick="addBook();">add</button>
+    </div>
+
+    <script>
+        booksArr = [];
+        var booksArea = document.getElementById("booksArea");
+        var book1ForExample = { title: "IT", author: "Stephen King", pubDate: "15/9/1986", publisher: "Viking", pages: 1138, comments: "perfect author, perfect book." };
+        booksArr.push(book1ForExample);
+        var newBookInputs = document.getElementById("newBookInputs");
+        function addBook() {
+            var book = {
+                title: document.getElementById("title").value,
+                author: document.getElementById("author").value,
+                pubDate: document.getElementById("pubDate").value,
+
+                publisher: document.getElementById("publisher").value,
+                pages: document.getElementById("pages").value,
+                comments: document.getElementById("comments").value
+            };
+            var div = document.createElement("div");
+            div.innerHTML = "<h1>Title: " + book.title + "</h1><br>" +
+                "<h2>Author: " + book.author + "</h2><br>" +
+                "<h3>Publication date: " + book.pubDate + "</h3><br>" +
+                "<h4>Publisher: " + book.publisher + "</h4><br>" +
+                "<h5>Pages: " + book.pages + "</h5><br>" +
+                "<p>comments: " + book.comments + "</p><br>";
+            booksArr.push(book);
+            booksArea.appendChild(div);
+        }
+        function sortByDate() {
+            var selecSort = document.getElementById("seleSort").value;
+            if (selecSort === "newest")
+                booksArr.sort((a, b) => (a.pubDate > b.pubDate) ? -1 : ((b.pubDate > a.pubDate) ? 1 : 0));
+            else booksArr.sort((a, b) => (a.pubDate > b.pubDate) ? 1 : ((b.pubDate > a.pubDate) ? -1 : 0));
+            var booksArea = document.getElementById("booksArea");
+            booksArea.innerHTML = "";
+            for (var i = 0; i < booksArr.length; i++) {
+                booksArea.innerHTML += "<h1>Title: " + booksArr[i].title + "</h1><br>" +
+                    "<h2>Author: " + booksArr[i].author + "</h2><br>" +
+                    "<h3>Publication date: " + booksArr[i].pubDate + "</h3><br>" +
+                    "<h4>Publisher: " + booksArr[i].publisher + "</h4><br>" +
+                    "<h5>Pages: " + booksArr[i].pages + "</h5><br>" +
+                    "<p>comments: " + booksArr[i].comments + "</p><br>";
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
