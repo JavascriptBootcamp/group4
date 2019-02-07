@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2> choose difficulty level:</h2>
+    <form id="myForm">
+        <div class="form-group">
+            <label> Title: </label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="book Title">
+        </div>
+
+        <div class="form-group" id="select">
+            <label> uploader : </label>
+            <select>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+        </div>
+
+        <div class="form-group">
+            <label> seconds : </label>
+            <input type="number" id="seconds" name="price" class="form-control" placeholder="seconds ">
+        </div>
+
+        <div class="text-center">
+            <input type="button" onclick="watch()" value="Submit" />
+
+        </div>
+
+
+    </form>
+
+    <div id="DisSelect"></div>
+    <script>
+        function watch() {
+            var Title = document.getElementById("Title").value;
+            var seconds = document.getElementById("seconds").value;
+            var select = document.getElementById("select").value;
+            document.getElementById("DisSelect").innerText = `You watched all ${seconds} seconds of  ${Title}!`;
+            document.getElementById("myForm").reset();
+
+        }
+    </script>
+</body>
+
+</html>
