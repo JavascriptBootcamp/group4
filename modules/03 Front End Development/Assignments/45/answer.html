@@ -72,15 +72,18 @@
             }
 
             function Show(event) {
-                // loads the right 6 images
-                selectedPage = event.target.innerText;
-                
-                //removes all elements from div collection 
-                while (imageDiv.firstChild) {
-                    imageDiv.removeChild(imageDiv.firstChild);
-                }
+                // loads the right 12 images
 
-                for (var index = selectedPage*6 ; index < (selectedPage*6)+11 ; index++) {
+                if (selectedPage !== event.target.innerText) {
+                    //removes all elements from div collection     
+                    while (imageDiv.firstChild) {
+                        imageDiv.removeChild(imageDiv.firstChild);
+                    }
+                }
+                
+                selectedPage = event.target.innerText;    
+
+                for (var index = selectedPage * 6; index < (selectedPage * 6) + 11; index++) {
                     imageDiv.appendChild(arrOfEvents[index]);
                 }
             }
