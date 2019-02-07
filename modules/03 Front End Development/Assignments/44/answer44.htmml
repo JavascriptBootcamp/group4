@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        "Books | Favorites"
+    </title>
+    <style>
+    
+        .form-group{
+            margin: 10px; 
+        }
+   
+        </style>
+</head>
+
+<body>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+
+    <form id="myForm">
+        <div class="form-group">
+            <label> Title: </label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="book Title">
+        </div>
+
+        <div class="form-group">
+            <label> Author: </label>
+            <input type="text" class="form-control" id="Author" name="author" placeholder="book author">
+        </div>
+
+        <div class="form-group">
+            <label> Publication: </label>
+            <input type="text" class="form-control" id="PublicationDate" name="category" placeholder="book Category">
+        </div>
+        <div class="form-group">
+            <label> Publisher: </label>
+            <input type="text" class="form-control" id="form10" name="Publisher" placeholder="book Publisher">
+        </div>
+        <div class="form-group">
+            <label> Publisher: </label>
+            <input type="number" id="Publisher" name="price" class="form-control" placeholder="book Price">
+        </div>
+        <div class="form-group">
+            <label> Pages: </label>
+            <input type="number" id="Pages" name="price" class="form-control" placeholder="book Price">
+        </div>
+
+        <div class="form-group">
+            <label> comments: </label>
+            <input type="text" class="form-control" id="comments" name="comments" placeholder="book comments">
+        </div>
+
+
+        <div class="text-center">
+            <input type="button" onclick="addBook()" value="Submit" />
+
+        </div>
+    </form><br> <br>
+    <select id="order" onchange="orderBooks()">
+        <option value=" 0" style="display:none;">select order</option>
+        <option value="oldest">oldest to newest</option>
+        <option value="newest">newest to oldest</option>
+    </select><br>
+    <div id="books" style="">
+        <h1 id="topBook">My Top <span id="topNumber">5</span> Books:</h1>
+        <div class="book" style= "      ">
+            <h1>Title: IT</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date:<span class="PublicationDate">2019-01-23</span></h3>
+            <h4>Publisher: Viking</h4>
+            <h5>Pages: 138</h5>
+            <p>comments: perfect author, perfect book.</p>
+        </div>
+        <div class="book">
+            <h1>Title: The Dark Tower- The Gunslinger</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date:<span class="PublicationDate">2019-01-05</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 300</h5>
+            <p>comments: perfect author, perfect series.</p>
+
+        </div>
+        <div class="book">
+            <h1>Title: The Dark Tower Book II-The Drawing of the Three</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date:<span class="PublicationDate">2018-05-23</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 463</h5>
+            <p>comments: perfect author, perfect series.</p>
+
+        </div>
+        <div class="book">
+            <h1>Title: The Dark Tower III- The Waste Lands</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date:<span class="PublicationDate">2014-06-23</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 512</h5>
+            <p>comments: perfect author, perfect series.</p>
+
+        </div>
+        <div class="book">
+            <h1>Title: The Dark Tower IV- Wizard and Glass</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date:<span class="PublicationDate">2016-09-27</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 787</h5>
+            <p>comments: perfect author, perfect series.</p>
+        </div>
+    </div>
+
+
+    <script>
+        var books = [];
+        function Book() {
+            this.Title = ""
+            this.Author = ""
+            this.PublicationDate = ""
+            this.Publisher = ""
+            this.Pages = ""
+            this.comments = ""
+        }
+
+        // function reset() {
+        //     window.location.reload();
+        // } 
+        function addBook() {
+
+            var newBook = new Book();
+            for (var key in newBook) {
+                console.log(key)
+
+                newBook[key] = document.getElementById(key).value;
+            }
+            books.push(newBook);
+            document.getElementById("books").appendChild(displayBook(newBook));
+            document.getElementById("myForm").reset();
+        }
+        function orderBooks() {
+            var allbooks = document.getElementsByClassName("book");
+            for (let index = 0; index < allbooks.length; index++) {
+                var book = allbooks[index];
+                var newBook = new Book();
+
+                for (let bookselement = 0; bookselement < book.children.length; bookselement++) {
+                    const element = book.children[bookselement].innerText.split(":");
+                    // console.log(key)
+                    if (bookselement === 2) {
+
+                        newBook['PublicationDate'] = element[1];
+                    }
+                    else {
+
+
+                        newBook[element[0]] = element[1];
+                    }
+
+
+
+                }
+                console.log(newBook)
+
+                books.push(newBook);
+            }
+            // var booksDiv = document.getElementById("order").value===1 ?;
+
+            books = (document.getElementById("order").value === "oldest") ? _.sortBy(books, 'PublicationDate') : _.sortBy(books, 'PublicationDate').reverse();
+            // books.sort(function (obj1, obj2) {
+            //     return obj1.PublicationDate > obj2.PublicationDate;
+            // });
+            // console.log(o)
+
+            var booksDiv = document.getElementById("books");
+            booksDiv.innerHTML = "";
+            books.forEach(function (bookel) {
+                // console.log(bookel)
+                booksDiv.appendChild(displayBook(bookel));
+                //   allbooks.appendChild(displayBook(bookel));
+            })
+        }
+
+        function displayBook(newBook) {
+            // var b = document.getElementById("books");
+            var tag_names = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'div']
+            for (let index = 0; index < tag_names.length; index++) {
+
+                tag_names[index] = document.createElement(tag_names[index]);
+            }
+            tag_names[6].className = "book";
+            var index = 0;
+            for (var key in newBook) {
+                // console.log(key)
+                if (index !== 2) {
+                    tag_names[index].innerText = key + ": " + newBook[key];
+                }
+                index++
+
+            }
+            tag_names[2].innerHTML = "Publication date: " + "<span class='PublicationDate'>" + newBook.PublicationDate + "</span>";
+            for (let index = 0; index < tag_names.length - 1; index++) {
+
+                tag_names[6].appendChild(tag_names[index]);
+            }
+            // console.log(tag_names[6])
+            return tag_names[6];
+            // books.innerHTML="";
+            // books.replaceWith
+            // b.replaceWith(tag_names[6]);
+        }
+
+
+    </script>
+</body>
+
+</html>
