@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h1>Pictures Of Placed I Visted</h1>
+        <input type="text" id="imageName" placeholder="insert place name">
+        <input type="url" id="imageUrl" placeholder="insert image url">
+        <input type="url" id="wikiUrl" placeholder="insert wikipedia url">
+        <button onclick="insertImage(event)">Insert</button>
+    </form>
+    <div id="containPage">
+    </div>
+    <script>
+        var indexOfImage=0;
+        var amountOfPages=0;
+        var pagesArray=[];
+        function insertImage(e){
+            e.preventDefault();
+            var imageName = document.getElementById("imageName");
+            var imageUrl = document.getElementById("imageUrl");
+            var wikiUrl = document.getElementById("wikiUrl");
+
+            var bakedDiv = createImageDiv(imageName,imageUrl,wikiUrl);
+            var bakedPage = appendDivOnPage(bakedDiv);
+            render();
+        }
+        function createImageDiv(imageName,imageUrl,wikiUrl){
+            var div = document.createElement("div");
+            var a = document.createElement("a");
+            var img = document.createElement("img");
+            var h2 = document.createElement("h2");
+            div.id="image"+indexOfImage;
+            a.href=wikiUrl;
+            h2.innerText=imageName;
+            img.src=imageUrl;
+            img.width="300";
+            img.height="200";
+            a.appendChild(h2);
+            a.appendChild(img);
+            div.appendChild(a);
+            // div.innerHtml=`<a href="${wikiUrl}">\
+            //                 <h2>${imageName}</h2>\
+            //                 <img src="${imageUrl}" width="300" height="200" />\
+            //                 </a>`
+            return div;
+        }
+        function appendDivOnPage(bakedDiv){
+            if(indexOfImage%12===0){
+                createNewPage();
+                amountOfPages++;
+            }
+            indexOfImage++;
+            console.log(pagesArray[amountOfPages]);
+            console.log(typeof bakedDiv);
+            pagesArray[amountOfPages].appendChild(bakedDiv);
+            return pagesArray[amountOfPages-1];
+        }
+        function createNewPage(){
+            var page = document.createElement("div");
+            page.id="page"+amountOfPages;
+            pagesArray.push(page);
+        }
+        function render(bakedPage){
+            containPage=getElementById("containPage");
+            containPage.appendChild(bakedPage);
+        }
+    </script>
+</body>
+</html>
+
+<!-- <div id=image01>
+    <a href="https://en.wikipedia.org/wiki/Rio_de_Janeiro">
+        <h2>Brazil - Rio De Janerio</h2>
+        <img src="https://images.alphacoders.com/177/177703.jpg" width="300" height="200" />
+    </a>
+</div> -->
