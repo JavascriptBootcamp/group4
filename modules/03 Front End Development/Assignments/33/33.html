@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Insert next Letter</h1>
+    <div align="center">
+        <input type="text" name="letter" id="letter"><button onclick="addLetter();">add</button>
+        <p id="presentTxt"></p>
+    </div>
+    
+    <script>
+        word = "";
+        index = 0;
+        function addLetter() {
+            var presenTxt = document.getElementById("presentTxt");
+            var letterValue = document.getElementById("letter").value;
+            if (letterValue) {
+                if (index >= 1) {
+                    --index;
+                    var letterToupper = String.fromCharCode(word.charCodeAt(index) - 32);
+                    word = word.substr(0, index) + letterToupper + word.substr(index + 1);
+                    index++;
+                }
+                word += letterValue;
+                index++;
+            }
+            presenTxt.innerHTML = word;
+        }
+    </script>
+</body>
+</html>
