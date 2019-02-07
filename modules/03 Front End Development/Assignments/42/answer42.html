@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="formsDiv">
+        <form id="movieForm" onsubmit="return false">
+            Title:<input type="text" id="title">
+            <select id="fakeNames">
+            <option value="mike">Mike</option>
+            <option value="mariya">Mariya</option>
+            <option value="guy">Guy</option>
+        </select> Duration:
+            <input type="number" id="duration">
+            <button id="watchBtn" onclick="watch()">Watch!</button>
+            <button id="add" onclick="addForm()">+</button>
+        </form>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+        var outputDiv = document.getElementById("output");
+        var forms = document.getElementById("formsDiv");
+
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.watchMovie = function () {
+
+                outputDiv.innerHTML = this.uploader + " watch all " + this.seconds + " seconds of " + this.title;
+            }
+        }
+
+        function watch() {
+
+            var title = document.getElementById("title").value;
+            var fakeName = document.getElementById("fakeNames").value;
+            var duration = document.getElementById("duration").value;
+
+            var movie = new Video(title, fakeName, duration);
+            movie.watchMovie();
+        }
+
+        function addForm() {
+            var form = document.createElement("form");
+            var title = document.createElement("input");
+            var select = document.createElement("select");
+             select = document.getElementById("fakeNames").cloneNode(true);
+            var watchBtn = document.createElement("button");
+            // var option1 = document.createElement("option");
+            // var option2 = document.createElement("option");
+            // var option3 = document.createElement("option");
+            var duration = document.createElement("input");
+            form.appendChild(title);
+            form.appendChild(select);
+            form.appendChild(duration);
+            form.appendChild(watchBtn);
+
+            forms.appendChild(form);
+            // var newForm = document.createElement("form");
+            // newForm = document.getElementById("movieForm").cloneNode(true);
+
+            // forms.appendChild(newForm);
+
+        }
+    </script>
+</body>
+
+</html>
