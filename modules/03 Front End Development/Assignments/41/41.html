@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Insert next Letter</h1>
+    <div align="center">
+        <input type="text" name="letters" onkeyup="checkPalindrom();" id="letters">
+        <p id="presentTxt"></p>
+    </div>
+    <script>
+        function checkPalindrom() {
+            var currentWord = document.getElementById("letters").value;
+            var currentWordLength = currentWord.length - 1;
+            var presentTxt = document.getElementById("presentTxt");
+            var palindrom = true;
+            for (var i = 0; i < currentWord.length / 2; i++) {
+                if (currentWord[i] !== currentWord[currentWordLength]) {
+                    presentTxt.innerHTML = "NO , ITS NOT PALINDROM";
+                    palindrom = false;
+                }
+                currentWordLength--;
+            }
+            if (palindrom) {
+                presentTxt.innerHTML = "YES , IT IS PALINDROM";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
