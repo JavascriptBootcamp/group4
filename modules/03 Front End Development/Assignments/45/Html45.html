@@ -1,93 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="chrom">
-    <title>Document</title>
+    <title>"Images | Favorites"</title>
 </head>
 
 <body>
-    <div align="center" id="main">
-        <h3>Wellcome to game... Choose Level</h3>
-        <button id="es" onclick="Easy()">"Easy" - 3 letters </button><br><br>
-        <button id="med" onclick="Medium()">"Medium" - 5 letters</button><br><br>
-        <button id="h" onclick="hard()">"Hard" - 7 letters</button><br><br>
+    <div id="imgHolder">
+        <a href="https://en.wikipedia.org/wiki/Amsterdam">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
 
+        <a href="https://en.wikipedia.org/wiki/Moon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg" height="200" width="220"/>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Tel_Aviv">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tel_Aviv_Promenade_panoramics.jpg/800px-Tel_Aviv_Promenade_panoramics.jpg" height="200" width="300"/>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Prague">
+            <img src="https://www.prague.eu/img/pragueeu/u/property/logo-for-share-v2.jpg" height="200" width="300"/>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Holon">
+            <img src="https://www.israel21c.org/wp-content/uploads/2016/06/Photo-of-Beersheva-by-Leonard-ZhukovskyShutterstock.com_-1000x657.jpg" height="200" width="300"/>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Amsterdam">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Amsterdam">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
+
+        <a href="https://en.wikipedia.org/wiki/Amsterdam">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
+        </a>
     </div><br><br>
-    <div align="center" id="res">
-
-        <!-- <select id="sel">
-            <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-        </select> -->
 
 
-
+    <div id="add">
+        <b>Add Image:</b><br><br> Enter Wiki Link: <input type="text" id="wiki"><br><br> Enter Image Link: <input type="text"
+            id="img"><br><br>
+        <button id="add" onclick="addImg()">Add</button>
     </div>
 
-
-
-
-
-
-
-    <script>
-        function RandomWord(charsArray) {
-            if (typeof charsArray === 'object') {
-                //this.result = randomize(charsArray); 
-            }
-            else {
-                console.log('"chars" should be an array.');
-            }
-            this.randomize = function (length) {
-                if (typeof length === 'number') {
-                    var text = "";
-                    var possible = charsArray.join("");
-                    for (var i = 0; i < length; i++)
-                        text += possible.charAt(Math.floor(Math.random() * possible.length));
-                    return text;
-                }
-                else {
-                    console.log('"length" should be a number.');
-                }
-            }
-        }
-        function Easy() {
-            var word1 = new RandomWord(['a', 'b', 'c']);
-            start( word1,3);
-            
-        }
-        function Medium() {
-            var word1 = new RandomWord(['a', 'b', 'c', 'd', 'e']);
-            start( word1.randomize(5).split(''),5);
-        }
-        function hard() {
-            var word1 = new RandomWord(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
-            start( word1.randomize(7).split(''),7);
-        }
-        function start(word, size) {
-            console.log(word);
-            var ddL = document.getElementById("res");
-            var sel = document.createElement("select");
-            ddL.appendChild(sel);
-            for(var i=0; i<word.length; i++){
-                opt = document.createElement("option");
-                opt.innerHTML = word[i];
-                sel.appendChild(opt);
-            }
-
-
-
-
-        }
-
-        // var word1 = new RandomWord(['a', 'b', 'c']);
-        // console.log(word1.randomize(3));
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
