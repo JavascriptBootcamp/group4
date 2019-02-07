@@ -1,0 +1,118 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <h1>Guess the word game!</h1>
+
+    <div align="center">
+        <br><br>
+        <p>choose game level : </p>
+        <select id="levelSelec">
+            <option id="1">easy</option>
+            <option id="2">medium</option>
+            <option id="3">hard</option>
+        </select>
+        <button id="optWord" onclick="randomWord();">choose word</button>
+
+        <select id="myLetters" onchange=" guessLetter();">
+
+
+        </select>
+        <br><br>
+        <div id="result">
+            <p id="pResult"></p>
+            <p id="note"></p>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function randomWord() {
+            numberOfTrue = 0;
+            var levelSelec = document.getElementById("levelSelec");
+
+            var level = document.getElementById("levelSelec").value;
+            var note = document.getElementById("note");
+            note.innerHTML = "";
+            var easy = ["cat", "dog", "now", "pen", "eye", "sit", "car"];
+            var medium = ["mouse", "final", "level", "phone"];
+            var hard = ["Malizea", "college", "country", "telaviv"];
+            var pResult = document.getElementById("pResult");
+            var selectLetters = document.getElementById("myLetters");
+            selectLetters.innerHTML = "";
+            if (level === "easy") {
+                pResult.innerHTML = "";
+
+                word = easy[Math.floor(Math.random() * easy.length)];
+                for (var x = 0; x < 3; x++) {
+                    var newInput = document.createElement("input");
+                    newInput.size = 1;
+                    newInput.id = "inpu" + x;
+                    pResult.appendChild(newInput);
+
+                }
+            }
+            if (level === "medium") {
+                pResult.innerHTML = "";
+                word = medium[Math.floor(Math.random() * medium.length)];
+                for (var x = 0; x < 5; x++) {
+                    var newInput = document.createElement("input");
+                    newInput.size = 1;
+                    newInput.id = "inpu" + x;
+                    pResult.appendChild(newInput);
+                }
+            }
+            if (level === "hard") {
+                pResult.innerHTML = "";
+                word = hard[Math.floor(Math.random() * hard.length)];
+                for (var x = 0; x < 7; x++) {
+                    var newInput = document.createElement("input");
+                    newInput.id = "inpu" + x;
+                    newInput.size = 1;
+                    pResult.appendChild(newInput);
+                }
+            }
+            var myArrayWord = word.split("");
+            myArrayWord.sort();
+            for (var i = 0; i < myArrayWord.length; i++) {
+                var newOpt = document.createElement("option");
+                newOpt.id = "opt" + i;
+                newOpt.innerText = myArrayWord[i];
+                selectLetters.appendChild(newOpt);
+            }
+        }
+        numberOfTrue = 0;
+        function guessLetter() {
+            var letterValue = document.getElementById("myLetters").value;
+            if (letterValue === word[numberOfTrue]) {
+                var inputLetter = document.getElementById("inpu" + numberOfTrue);
+                inputLetter.value = letterValue;
+                numberOfTrue++;
+            }
+            if (numberOfTrue === word.length) {
+                numberOfTrue = 0;
+                var level = document.getElementById("levelSelec").value;
+                var note = document.getElementById("note");
+                note.innerHTML = "";
+                if (level === "easy") {
+                    note.innerText = "you moved to Medium level";
+                    levelSelec.value = levelSelec.options[1].value;
+                } if (level === "medium") {
+                    note.innerText = "you moved to hard level";
+                    levelSelec.value = levelSelec.options[2].value;
+                }
+                if (level === "hard") {
+                    note.innerText = "WOW , you finished all levels";
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
