@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="forms">
+        <form action="">
+            <input type="text" name="" id="ip_title" placeholder="title">
+            <select name="" id="ip_uploader">
+                <option value="Daniel">Daniel</option>
+                <option value="Uriel">Uriel</option>
+                <option value="Nadav">Nadav</option>
+            </select>
+            <input type="number" name="" id="ip_seconds" min="0" placeholder="seconds">
+            <button onclick="watch()" onsubmit="return false">Watch</button>
+        </form>
+    </div>
+    <button onclick="addForm()">Plus</button>
+
+
+    <script>
+        var allVideos = new Array();
+        function watch() {
+            console.log(this);
+            //e.preventDefault();
+             var title = this.querySelector('#ip_title').value;
+             var uploader = this.querySelector("#ip_uploader");
+             var seconds = this.querySelector('#ip_seconds').value;
+            var video = new Video(title, uploader, seconds);
+
+            video.watch();
+        }
+
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.watch = function () {
+                var message = null;
+                try {
+                    message = 'You watched all ' + this.seconds + ' seconds of ' + this.title + '!';
+                    allVideos.push(message);
+                } catch (error) {
+                    message = "Oops... An error occured";
+                }
+                var divMessage = document.createElement('div');
+                divMessage.innerText = message;
+
+                document.body.appendChild(divMessage);
+
+            }
+
+        }
+        function addForm() {
+                var forms = document.getElementById("forms");
+                var form = document.createElement("form");
+                var title = document.createElement("input");
+                var uploaders = document.createElement("select");
+                var seconds = document.createElement("input");
+                var uploader1 = document.createElement("option");
+                var uploader2 = document.createElement("option");
+                var watchButton = document.createElement("button");
+
+                uploader1.textContent = "Daniel";
+                uploader2.textContent = "Uriel";
+
+                uploaders.appendChild(uploader1);
+                uploaders.appendChild(uploader2);
+
+                title.type = "text";
+                title.placeholder = "title";
+
+                seconds.type = "number";
+                seconds.placeholder = "seconds";
+                seconds.min = 0;
+
+                watchButton.textContent = "Watch";
+                watchButton.onclick= watch.bind(form);
+
+                form.appendChild(title);
+                form.appendChild(uploaders);
+                form.appendChild(seconds);
+                form.appendChild(watchButton);
+
+                forms.appendChild(form);
+            }
+    </script>
+
+</body>
+
+</html>
