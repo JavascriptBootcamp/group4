@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="book" type="text" placeholder="title">
+        <select id="uploder">
+            <option>Ofek</option>
+            <option>Shimon</option>
+        </select>
+        <input id="seconds" type="number" placeholder="seconds">
+        <button onclick="watch(event)">watch</button>
+        <div id="message"></div>
+    </form>
+
+
+
+    <script>
+        function watch(e){
+            e.preventDefault();
+            var div = document.getElementById("message");
+            var seconds = document.getElementById("seconds").value;
+            var book = document.getElementById("book").value;
+            div.innerHTML=`<h2>You watched all ${seconds} seconds of ${book}!</h2>`
+        }
+    </script>
+</body>
+</html>
