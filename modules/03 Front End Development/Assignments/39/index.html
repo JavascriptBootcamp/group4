@@ -24,7 +24,22 @@
             </th>
         </tr>
     </table>
+    <br />
     <div id="total"></div>
+    <br />
+    <hr />
+    <form action="http://localhost:3000/Order" method="post">
+        <label for="card">Card Number: </label>
+        <input type="number" name="card" id="cardNum" required>
+        <label for="name">Name on card: </label>
+        <input type="text" name="name" id="name" required>
+        <label for="date">Expiry date: </label>
+        <input type="date" name="date" id="expDate" required>
+        <label for="code">Security code: </label>
+        <input type="password" name="code" id="code" minlength="3" maxlength="3" pattern='[0-9]*' required>
+        <button type="button" onclick="validateCard()">Submit</button>
+    </form>
+    <div id="result"></div>
     <script>
         var products = {
             apple: "4",
@@ -37,9 +52,7 @@
             book: "78",
             beer: "25"
         };
-        var cart = {
 
-        }
         function initProducts() {
             var items = document.getElementById('items');
             var price = document.getElementById('price');
@@ -92,30 +105,104 @@
             table.removeChild(tr);
             updateTotal('-' + priceValue);
         }
-        function updateTotal(newItem){
+        function updateTotal(newItem) {
             var div = document.getElementById('total');
-            var total = div.innerText !== '' ? Number(div.innerText):0;
+            var total = div.innerText.length !== 0 ? Number(div.innerText.substring(13)) : 0;
             total += Number(newItem);
-            div.innerText = total;
+            div.innerText = 'Total price: ' + total;
         }
-        function updatePrice(){
+        function updatePrice() {
             var items = document.getElementById('items');
             var price = document.getElementById('price');
             var key = items.options[items.selectedIndex].text;
-            if(price.value === ''){
+            if (price.value === '') {
                 price.value = Number(products[key]);
+            } else {
+                products[key] = price.value
             }
         }
-        function register(cartObj) {
-            var sum = 0;
-            for (key in cartObj) {
-                sum += Number(cartObj[key]);
+
+        function validateCreditCard(creditCard) {
+            var creditCardNumbers;
+            var creditCardNumbersSum = 0;
+            var creditCardWithNoDashes;
+
+            creditCardWithNoDashes = creditCard.split("-");
+            creditCardWithNoDashes = creditCardWithNoDashes.join("");
+            creditCardNumbers = creditCardWithNoDashes.split("").map(Number);
+
+            function checkLength(creditCardWithNoDashes) {
+                return (creditCardWithNoDashes.length == 16);
             }
-            return sum;
+
+            function checkAllItemsNumbers(creditCardNumbers) {
+                var isAllItemsNumbers = creditCardNumbers.every(function (element) {
+                    creditCardNumbersSum += element;
+                    return (element >= 0 && element <= 9);
+                });
+
+                return isAllItemsNumbers;
+            }
+
+            function checkDigitsSum() {
+                return (creditCardNumbersSum > 16);
+            }
+
+            function checkIfAllDigitsSame(creditCardNumbers) {
+                var isAllDigitsSame = creditCardNumbers.every(function (element) {
+                    return element === creditCardNumbers[0];
+                });
+                return !isAllDigitsSame;
+            }
+
+            function CheckLastDigitEven(creditCardNumbers) {
+                return (creditCardNumbers[creditCardNumbers.length - 1] % 2 == 0)
+            }
+
+            if (checkLength(creditCardNumbers)) {
+                if (checkAllItemsNumbers(creditCardNumbers)) {
+                    if (checkDigitsSum()) {
+                        if (checkIfAllDigitsSame(creditCardNumbers)) {
+                            if (CheckLastDigitEven(creditCardNumbers)) {
+                                return { valid: true, number: creditCard }
+                            }
+                            else {
+                                return { valid: false, error: "odd final number", number: creditCard }
+                            }
+                        }
+                        else {
+                            return { valid: false, error: "only one type of number", number: creditCard }
+                        }
+                    }
+                    else {
+                        return { valid: false, error: "sum less than 16", number: creditCard }
+                    }
+                }
+                else {
+                    return { valid: false, error: "invalid characters", number: creditCard }
+                }
+            }
+            else {
+                return { valid: false, error: "Credit Card Length Must Be 16 Digits", number: creditCard }
+            }
         }
-        console.log(register(cart));
+
+        function validateCard() {
+            var cardNum = document.getElementById('cardNum');
+            var validObj = validateCreditCard(cardNum.value);
+            var divResult = document.getElementById('result');
+            if(validObj.valid){
+                divResult.innerHTML = '';
+                var form = document.getElementsByTagName('form')[0];
+                form.submit();
+            } else {
+                divResult.innerHTML = Object.keys(validObj)[0] + ' : ' + validObj.valid + '<br />';
+                divResult.innerHTML += Object.keys(validObj)[1] + ' : ' + validObj.number + '<br />';
+                divResult.innerHTML += Object.keys(validObj)[2] + ' : ' + validObj.error;
+            }
+        }
+
     </script>
-    <script src='/group4/modules/01 JavaScript Programming/Assignments/19/answer19.js'></script>
 </body>
 
 </html>
