@@ -7,110 +7,94 @@
 <body>
     <form action="#" onsubmit="return addItem(event);">
 
-        URL:<input type="url" name="url" id="url"><br> Image URL:<input type="url" name="urlForImg" id="urlForImg"><br>
+        URL:<input type="url" name="url" id="url"><br>
+        Image URL:<input type="url" name="urlForImg" id="urlForImg"><br>
         <button type="submit">ADD</button>
 
     </form>
 
     <div id="page">
 
-        <!--<a href="https://en.wikipedia.org/wiki/Amsterdam">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
-        </a>-->
-        <!-- 
-        <a href="https://en.wikipedia.org/wiki/Moon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg" height="200" width="220"/>
-        </a>
-    
-        <a href="https://en.wikipedia.org/wiki/Tel_Aviv">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Tel_Aviv_Promenade_panoramics.jpg/800px-Tel_Aviv_Promenade_panoramics.jpg" height="200" width="300"/>
-        </a>
-    
-        <a href="https://en.wikipedia.org/wiki/Prague">
-            <img src="https://www.prague.eu/img/pragueeu/u/property/logo-for-share-v2.jpg" height="200" width="300"/>
-        </a>
-    
-        <a href="https://en.wikipedia.org/wiki/Holon">
-            <img src="https://www.israel21c.org/wp-content/uploads/2016/06/Photo-of-Beersheva-by-Leonard-ZhukovskyShutterstock.com_-1000x657.jpg" height="200" width="300"/>
-        </a>
-    
-        <a href="https://en.wikipedia.org/wiki/Amsterdam">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
-        </a>
-    
-        <a href="https://en.wikipedia.org/wiki/Amsterdam">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
-        </a>
-    
-        <a href="https://en.wikipedia.org/wiki/Amsterdam">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg" height="200" width="300"/>
-        </a> -->
+        <!-- all the items -->
 
     </div>
 
-    <div id="pageNumber">
+    <br>
+    <hr>
+    <div id="btnPageNum">PAGE: <br>
         <button id="btn1" value="0" onclick="showPage(event)">1</button>
-        <button id="btn2" value="1" onclick="showPage(event)">2</button>
     </div>
 
     <script>
         var pages = [];
         var item = { "url": null, "img": null };
-        var i = 0;
-        var j = 0;
+        var pageNumber = 0;
+        var countImg = 0;
         var page = document.getElementById("page");
 
         function addItem(e) {
+
+            // pageNumber = pages.length-1;
+            // countImg = pages[pageNumber].length-1;
+
             item.url = document.getElementById("url").value;
             item.img = document.getElementById("urlForImg").value;
 
-            var a = document.createElement("a");
-            a.href = item.url;
-
-            var imgSrc = document.createElement("img");
-            imgSrc.src = item.img;
-            imgSrc.style.width = 300;
-            imgSrc.style.height = 200;
-
-            if (j <= 11) {
-                if (j === 0)
+            if (countImg <= 11) {
+                if (countImg === 0)
                     pages.push(new Array());
-
-                pages[i].push(item);
-                j++;
-               
+                pages[pageNumber].push(item);
+                countImg++;
             }
             else {
-                i++;
-                j = 0;
-                page.innerHTML = "";
-                pages[i].push(item);
-                // createPage()
-            }
-            a.appendChild(imgSrc);
-            page.appendChild(a);
-            e.preventDefault();
+                pageNumber = pages.length - 1;
+                pageNumber++;  //next page
+                countImg = 0;  //count of img 0 again 
+                page.innerHTML = "";    //clean page to "new page"
 
+                pages.push(new Array());  //new array of img   
+                pages[pageNumber].push(item);
+                countImg++;
+                createBtn();
+            }
+
+            createImgAndA();
+            
+            e.preventDefault(); //no submit
         }
-        function createPage() {
-            //  showPage();
+
+        function createBtn() {
+            var btnPage = document.createElement("button");
+            btnPage.value = pageNumber;
+            btnPage.innerText = pageNumber + 1;
+            btnPage.addEventListener('click', showPage, event);
+            document.getElementById("btnPageNum").appendChild(btnPage);
         }
 
         function showPage(event) {
             page.innerHTML = "";
             var value = event.target.value;
-            for (var k = 0; k < pages[value].length; k++) {
-                var a = document.createElement("a");
-                a.href = item.url;
+            pageNumber = value;
+            countImg = pages[value].length;
 
-                var imgSrc = document.createElement("img");
-                imgSrc.src = item.img;
-                imgSrc.style.width = 300;
-                imgSrc.style.height = 200;
-                a.appendChild(imgSrc);
-                page.appendChild(a);
+            for (var k = 0; k < pages[value].length; k++) {
+                createImgAndA();
             }
         }
+
+        function createImgAndA ()
+        {
+            var a = document.createElement("a");
+            a.href = item.url;
+            var imgSrc = document.createElement("img");
+            imgSrc.src = item.img;
+            imgSrc.style.width = 300;
+            imgSrc.style.height = 200;
+            a.appendChild(imgSrc);
+            page.appendChild(a);
+        }
+
+
     </script>
 
 </body>
