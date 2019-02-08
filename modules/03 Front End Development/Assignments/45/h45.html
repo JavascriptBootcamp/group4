@@ -7,8 +7,8 @@
 <body>
     <form action="#" onsubmit="return addItem(event);">
 
-        URL:<input type="url" name="url" id="url"><br>
-        Image URL:<input type="url" name="urlForImg" id="urlForImg"><br>
+        URL:<input type="url" name="url" id="url" required><br>
+        Image URL:<input type="url" name="urlForImg" id="urlForImg" required><br>
         <button type="submit">ADD</button>
 
     </form>
@@ -29,37 +29,35 @@
         var pages = [];
         var item = { "url": null, "img": null };
         var pageNumber = 0;
+        pages.push(new Array());
         var countImg = 0;
         var page = document.getElementById("page");
 
         function addItem(e) {
-
-            // pageNumber = pages.length-1;
-            // countImg = pages[pageNumber].length-1;
-
-            item.url = document.getElementById("url").value;
-            item.img = document.getElementById("urlForImg").value;
-
-            if (countImg <= 11) {
-                if (countImg === 0)
-                    pages.push(new Array());
-                pages[pageNumber].push(item);
-                countImg++;
+            if (pageNumber != pages.length - 1) {  //valid for adding image just in last page
+                alert("Please add only to the last page");
             }
             else {
-                pageNumber = pages.length - 1;
-                pageNumber++;  //next page
-                countImg = 0;  //count of img 0 again 
-                page.innerHTML = "";    //clean page to "new page"
+                item.url = document.getElementById("url").value;
+                item.img = document.getElementById("urlForImg").value;
 
-                pages.push(new Array());  //new array of img   
-                pages[pageNumber].push(item);
-                countImg++;
-                createBtn();
+                if (countImg <= 11) {
+                    pages[pageNumber].push(item);
+                    countImg++;
+                }
+                else {
+                    pageNumber++;  //next page
+                    countImg = 0;  //count of img 0 again 
+                    page.innerHTML = "";    //clean page to "new page"
+                    pages.push(new Array());  //new array of img   
+                    pages[pageNumber].push(item);
+                    countImg++;
+                    createBtn();
+                }
+
+                createImgAndA();
+
             }
-
-            createImgAndA();
-            
             e.preventDefault(); //no submit
         }
 
@@ -82,8 +80,7 @@
             }
         }
 
-        function createImgAndA ()
-        {
+        function createImgAndA() {
             var a = document.createElement("a");
             a.href = item.url;
             var imgSrc = document.createElement("img");
