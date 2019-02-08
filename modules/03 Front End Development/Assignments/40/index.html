@@ -10,21 +10,21 @@
     <input id="firstNum" type="number" min="1" max="100">
     <input id="secondNum" type="number" min="1" max="100">
     <button type="submit" onclick="evenOrOdd()">Check</button>
-
+    <div id="message"></div>
     <script>
         function evenOrOdd(){
             firstNum = document.getElementById("firstNum").value;
             secondNum = document.getElementById("secondNum").value;
+            message = document.getElementById("message");
             if(secondNum>firstNum)
             {
+                message.innerHTML="";
                 for (var i = firstNum; i<=secondNum; i++)
-                    i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+                    i % 2 === 0 ? message.innerHTML+=`<h4>${i} is even</h4>` : message.innerHTML+=`<h4>${i} is odd</h4>`;
             }
             else
             {
-                error = document.createElement("div");
-                error.document.innerHTML("h2");
-                error.document.innerText("Error, first number must be lower then second number");
+                message.innerHTML="<h2>Error, first number must be lower then second number</h2>";
             }
         }
 
