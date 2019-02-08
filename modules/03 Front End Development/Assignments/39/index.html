@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" id="shoppingCart">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>
+                    <select id="products">
+                        <option id="option0" value="tomatos">Tomatos</option>
+                        <option id="option1" value="carrots">Carrots</option>
+                    </select>
+                </td>
+                <td>
+                    <input id="price" type="number">
+                </td>
+                <td>
+                    <button onclick="addToCart()">Add</button>
+                </td>
+            </tr>
+        </thead>
+        <tbody id="customerProducts"></tbody>
+        <tfoot>
+            <tr id="lastRaw">
+                <td style=text-align:center; colspan="3">Total price: <span id="totalPrice"></span></td>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        var totalPrice =0;
+        function addToCart(){
+            var tbody = document.getElementById("customerProducts");
+            var index = document.getElementById("products").selectedIndex;
+            var product = document.getElementById("products")[index].value;
+            var price = document.getElementById("price").value;
+            var productRaw = createNewRaw(product,price);
+            tbody.appendChild(productRaw);
+            addPrice(price);
+        }
+        function createNewRaw(product,price){
+            var raw = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            td1.innerText=product;
+            td2.innerText=price;
+            td3.innerHTML='<button onclick="removeRaw(this)">remove</button>'
+            raw.appendChild(td1);
+            raw.appendChild(td2);
+            raw.appendChild(td3);
+            return raw;
+        }
+        function removeRaw(clickedElement){
+
+        }
+        function addPrice(price){
+            var priceSpan = document.getElementById("totalPrice");
+            totalPrice += parseInt(price, 10);
+            priceSpan.innerText = totalPrice;
+        }
+        function decPrice(price){
+            totalPrice -= price;
+        }
+    </script>
+</body>
+</html>
