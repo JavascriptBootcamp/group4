@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Check palindrom right after each letter insertion</h4>
+    <input type="text" placeholder="write anything" onkeyup="isPalindrom(event)">
+    <div id="message"></div>
+    <script>
+        function isPalindrom(event){
+            var message = document.getElementById("message");
+            var value = event.target.value;
+            var reversedVal = value.split("").reverse().join("");
+            if(value===reversedVal&&value){
+                message.innerHTML=`<h4 style="color:green">"${value}" is palindrom<h4>`;
+            }
+            else
+                message.innerHTML=`<h4 style="color:red">"${value}" is no palindrom<h4>`; 
+        }
+    </script>
+</body>
+</html>
