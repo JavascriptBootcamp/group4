@@ -37,13 +37,14 @@
         </tfoot>
     </table>
     <br>
-    <form method="POST" onsubmit="return validateCreditCard(this);">
-        <input type="text" required placeholder="Card Number"><br>
+    <form method="POST" onsubmit="return validateCreditCard(event);">
+        <input type="text" id="cardNum" required placeholder="Card Number"><br>
         <input type="text" required placeholder="Name on Card"><br>
         <input type="date" required id="date" value="2019-02-09" min="2019-02-09" max="2030-02-09"><br>
         <input type="text" required placeholder="CVV"><br>
         <button type="submit">Submit</button>
     </form>
+    <div id="message"></div>
     <script>
         var totalPrice =0;
         function addToCart(){
@@ -79,11 +80,14 @@
         function decPrice(price){
             totalPrice -= price;
         }
-        function validateCreditCard(cardNumber) {
-            cardNumber.preventDefault();
+        function validateCreditCard(event) {
+            event.preventDefault();
+            var cardNumber = document.getElementById("cardNum").value;
             var Certification = {
                 number: cardNumber
             }
+            main();
+            showMessage();
             function doesTwoDiffDigits(cardNumberAsArray) {
                 var result = cardNumberAsArray.some(function (item) {
                     return item !== cardNumberAsArray[0];
@@ -103,48 +107,55 @@
                         if (cardNumberAsArray[cardNumberAsArray.length - 1] % 2 === 0) {
                             if (sumOfNumbers(cardNumberAsArray) > 16) {
                                 Certification.valid = true;
+                                Certification.message = "Thank you"
                                 return Certification;
                             }
                             else {
                                 Certification.valid = false;
-                                Certification.error = "Not Valid - Sum is smaller than 16";
+                                Certification.message = "Not Valid - Sum is smaller than 16";
                                 return Certification;
                             }
                         }
                         else {
                             Certification.valid = false;
-                            Certification.error = "Not Valid - Last digit is not even";
+                            Certification.message = "Not Valid - Last digit is not even";
                             return Certification;
                         }
                     }
                     else {
                         Certification.valid = false;
-                        Certification.error = "Not Valid - All digit are the same";
+                        Certification.message = "Not Valid - All digit are the same";
                         return Certification;
                     }
                 }
                 else {
                     Certification.valid = false;
-                    Certification.error = "Not Valid - Number of digit is not 16";
+                    Certification.message = "Not Valid - Number of digit is not 16";
                     return Certification;
                 }
             }
-            if (typeof (cardNumber) === "string") {
-                cardNumber = cardNumber.split('-');
-                cardNumber = cardNumber.join('');
-                if (isNaN(cardNumber)) {
-                    Certification.valid = false;
-                    Certification.error = "Not Valid - contain not numeric characters";
-                    return Certification;
+            function main(){
+                if (typeof (cardNumber) === "string") {
+                    cardNumber = cardNumber.split('-');
+                    cardNumber = cardNumber.join('');
+                    if (isNaN(cardNumber)) {
+                        Certification.valid = false;
+                        Certification.message = "Not Valid - contain not numeric characters";
+                        return Certification;
+                    }
+                    else {
+                        var cardNumberAsArray = cardNumber.split('');
+                        return isValid(cardNumberAsArray);
+                    }
                 }
-                else {
-                    var cardNumberAsArray = cardNumber.split('');
+                else if (typeof (cardNumber) === "number") {
+                    cardNumberAsArray = cardNumber.toString().split('');
                     return isValid(cardNumberAsArray);
                 }
             }
-            else if (typeof (cardNumber) === "number") {
-                cardNumberAsArray = cardNumber.toString().split('');
-                return isValid(cardNumberAsArray);
+            function showMessage(){
+                div=document.getElementById("message");
+                div.innerHTML=`<h3>${Certification.message}</h3>`;
             }
         }
     </script>
