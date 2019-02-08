@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="firstNum" type="number" min="1" max="100">
+    <input id="secondNum" type="number" min="1" max="100">
+    <button type="submit" onclick="evenOrOdd()">Check</button>
+
+    <script>
+        function evenOrOdd(){
+            firstNum = document.getElementById("firstNum").value;
+            secondNum = document.getElementById("secondNum").value;
+            if(secondNum>firstNum)
+            {
+                for (var i = firstNum; i<=secondNum; i++)
+                    i % 2 === 0 ? console.log(i + " is even") : console.log(i + " is odd");
+            }
+            else
+            {
+                error = document.createElement("div");
+                error.document.innerHTML("h2");
+                error.document.innerText("Error, first number must be lower then second number");
+            }
+        }
+
+    </script>
+     
+</body>
+</html>
