@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="con" align="center">
+    <b>Choose Level</b><br><br>
+    <select onclick="choose()" id="emh">
+        <option value="none">choose</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+</div><br><br>
+<div align="center" id="handler">
+
+
+</div><br>
+<p align="center" id="result"></p>
+<script>
+function choose(){
+    var level = document.querySelector("#emh").value;
+    if(level === "easy"){
+        var rand = new RandomWord(['b','c','a']);
+        putInDropDown(3,rand); 
+    }
+    if(level === "medium"){
+        var rand = new RandomWord(['b','c','a','d','e']);
+        putInDropDown(5,rand); 
+    }
+    if(level === "hard"){
+        var rand = new RandomWord(['b','c','a','d','e','f','g']);
+        putInDropDown(7,rand); 
+    }
+}
+function isWon(arr){
+    var pVal = document.querySelector("#result").innerHTML;
+    var optVal = document.querySelector("#gess").value;
+    if(arr[pVal.length] === optVal){
+        document.querySelector("#result").innerHTML += optVal;
+    }
+    else{
+        alert("You Lost");
+        window.location.reload();
+    }
+    if(pVal.length + 1 === arr.length){
+            if(document.querySelector("#emh").value === "easy"){
+                document.querySelector("#gess").remove();
+                document.querySelector("#result").innerHTML = "";
+                document.querySelector("#emh").value = "medium";
+                choose();
+            }
+            else if(document.querySelector("#emh").value === "medium"){
+                document.querySelector("#gess").remove();
+                document.querySelector("#result").innerHTML = "";
+                document.querySelector("#emh").value = "hard";
+                choose();
+            }
+            else{
+                alert("You Win!!");
+                window.location.reload();
+            }
+            
+        }
+        
+    }
+function putInDropDown(size,rand){
+    var toBeGuessed = rand.randomize(size).split('');
+    console.log(toBeGuessed);
+    var sorted = toBeGuessed.slice().sort();
+    var dpdl = document.createElement("select");
+    dpdl.id = "gess";
+    dpdl.onclick = function(){isWon(toBeGuessed)}
+    opt = document.createElement("option");
+    opt.innerHTML = "select"
+    dpdl.appendChild(opt);
+    for(var i=0; i<sorted.length; i++){
+        opt = document.createElement("option");
+        opt.value = sorted[i];
+        opt.innerHTML = sorted[i];
+        dpdl.appendChild(opt);
+    }
+    document.querySelector("#handler").appendChild(dpdl);
+    
+}
+function RandomWord (charsArray) {
+    if (typeof charsArray === 'object'){
+        //this.result = randomize(charsArray); 
+    }
+    else {
+        console.log ('"chars" should be an array.');
+    }
+    this.randomize = function(length){
+        if (typeof length === 'number')
+        {
+            var text = "";
+            var possible = charsArray.join("");
+            for (var i = 0; i < length; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        } 
+        else {
+            console.log('"length" should be a number.');
+        }
+    }
+}    
+</script>
+</body>
+</html>
