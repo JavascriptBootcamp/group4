@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br>
+    <div align="center" id="input">
+        <b>Enter input:</b> <input type="text" id="inputField" oninput="start()">
+    </div>
+    <br><br><br>
+    <div align="center" id="res">
+        <!-- result here -->
+
+    </div>
+<script>
+function start(){
+    var userInput = document.querySelector("#inputField").value;
+    document.querySelector("#res").innerHTML = isPalindrome(userInput);
+}
+function isPalindrome(str){
+    var x = str.length-1;
+    for(var i=0; i< str.length/2; i++){
+
+        if(str[i] !== str[x])
+            return "Palindrom: False";
+        x--;
+
+    }
+    return "Palindrom: True";
+}
+
+
+</script>
+</body>
+</html>
