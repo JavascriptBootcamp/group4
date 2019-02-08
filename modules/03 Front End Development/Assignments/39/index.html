@@ -36,6 +36,14 @@
             </tr>
         </tfoot>
     </table>
+    <br>
+    <form method="POST" onsubmit="return validateCreditCard(this);">
+        <input type="text" required placeholder="Card Number"><br>
+        <input type="text" required placeholder="Name on Card"><br>
+        <input type="date" required id="date" value="2019-02-09" min="2019-02-09" max="2030-02-09"><br>
+        <input type="text" required placeholder="CVV"><br>
+        <button type="submit">Submit</button>
+    </form>
     <script>
         var totalPrice =0;
         function addToCart(){
@@ -54,14 +62,14 @@
             var td3 = document.createElement("td");
             td1.innerText=product;
             td2.innerText=price;
-            td3.innerHTML='<button onclick="removeRaw(this)">remove</button>'
+            td3.innerHTML='<button onclick="removeRaw(this.parentNode.parentNode)">remove</button>'
             raw.appendChild(td1);
             raw.appendChild(td2);
             raw.appendChild(td3);
             return raw;
         }
         function removeRaw(clickedElement){
-
+            clickedElement.parentNode.removeChild(clickedElement);
         }
         function addPrice(price){
             var priceSpan = document.getElementById("totalPrice");
@@ -70,6 +78,74 @@
         }
         function decPrice(price){
             totalPrice -= price;
+        }
+        function validateCreditCard(cardNumber) {
+            cardNumber.preventDefault();
+            var Certification = {
+                number: cardNumber
+            }
+            function doesTwoDiffDigits(cardNumberAsArray) {
+                var result = cardNumberAsArray.some(function (item) {
+                    return item !== cardNumberAsArray[0];
+                });
+                return result;
+            }
+            function sumOfNumbers(cardNumberAsArray) {
+                var sum = 0;
+                cardNumberAsArray.forEach(function (item) {
+                    sum += parseInt(item);
+                });
+                return sum;
+            }
+            function isValid(cardNumberAsArray) {
+                if (cardNumberAsArray.length === 16) {
+                    if (doesTwoDiffDigits(cardNumberAsArray)) {
+                        if (cardNumberAsArray[cardNumberAsArray.length - 1] % 2 === 0) {
+                            if (sumOfNumbers(cardNumberAsArray) > 16) {
+                                Certification.valid = true;
+                                return Certification;
+                            }
+                            else {
+                                Certification.valid = false;
+                                Certification.error = "Not Valid - Sum is smaller than 16";
+                                return Certification;
+                            }
+                        }
+                        else {
+                            Certification.valid = false;
+                            Certification.error = "Not Valid - Last digit is not even";
+                            return Certification;
+                        }
+                    }
+                    else {
+                        Certification.valid = false;
+                        Certification.error = "Not Valid - All digit are the same";
+                        return Certification;
+                    }
+                }
+                else {
+                    Certification.valid = false;
+                    Certification.error = "Not Valid - Number of digit is not 16";
+                    return Certification;
+                }
+            }
+            if (typeof (cardNumber) === "string") {
+                cardNumber = cardNumber.split('-');
+                cardNumber = cardNumber.join('');
+                if (isNaN(cardNumber)) {
+                    Certification.valid = false;
+                    Certification.error = "Not Valid - contain not numeric characters";
+                    return Certification;
+                }
+                else {
+                    var cardNumberAsArray = cardNumber.split('');
+                    return isValid(cardNumberAsArray);
+                }
+            }
+            else if (typeof (cardNumber) === "number") {
+                cardNumberAsArray = cardNumber.toString().split('');
+                return isValid(cardNumberAsArray);
+            }
         }
     </script>
 </body>
