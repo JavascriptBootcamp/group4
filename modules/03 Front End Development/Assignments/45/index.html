@@ -16,16 +16,25 @@
     </form>
     <div id="containPage">
     </div>
+    <div id="pagesNavigatorContainer">
+        <table>
+            <tr>
+                <th>current page</th>
+            </tr>
+            <tr id="pagesNavigator">
+            </tr>
+        </table>
+    </div>
     <script>
-        var indexOfImage=0;
+        var amountOfImages=0;
         var amountOfPages=0;
+        var currentPage=0
         var pagesArray=[];
         function insertImage(e){
             e.preventDefault();
-            var imageName = document.getElementById("imageName");
-            var imageUrl = document.getElementById("imageUrl");
-            var wikiUrl = document.getElementById("wikiUrl");
-
+            var imageName = document.getElementById("imageName").value;
+            var imageUrl = document.getElementById("imageUrl").value;
+            var wikiUrl = document.getElementById("wikiUrl").value;
             var bakedDiv = createImageDiv(imageName,imageUrl,wikiUrl);
             var bakedPage = appendDivOnPage(bakedDiv);
             render();
@@ -35,7 +44,8 @@
             var a = document.createElement("a");
             var img = document.createElement("img");
             var h2 = document.createElement("h2");
-            div.id="image"+indexOfImage;
+            div.id="image"+amountOfImages;
+            div.className="card"
             a.href=wikiUrl;
             h2.innerText=imageName;
             img.src=imageUrl;
@@ -44,39 +54,57 @@
             a.appendChild(h2);
             a.appendChild(img);
             div.appendChild(a);
-            // div.innerHtml=`<a href="${wikiUrl}">\
-            //                 <h2>${imageName}</h2>\
-            //                 <img src="${imageUrl}" width="300" height="200" />\
-            //                 </a>`
             return div;
         }
         function appendDivOnPage(bakedDiv){
-            if(indexOfImage%12===0){
+            if(amountOfImages%12===0){
                 createNewPage();
                 amountOfPages++;
             }
-            indexOfImage++;
-            console.log(pagesArray[amountOfPages]);
-            console.log(typeof bakedDiv);
-            pagesArray[amountOfPages].appendChild(bakedDiv);
+            amountOfImages++;
+            pagesArray[amountOfPages-1].appendChild(bakedDiv);
             return pagesArray[amountOfPages-1];
         }
         function createNewPage(){
             var page = document.createElement("div");
-            page.id="page"+amountOfPages;
             pagesArray.push(page);
+            currentPage++;
+            addPageToNavBar();
         }
-        function render(bakedPage){
-            containPage=getElementById("containPage");
-            containPage.appendChild(bakedPage);
+        function render(){
+            document.getElementById("containPage").innerHTML=pagesArray[currentPage-1].innerHTML;
+        }
+        function addPageToNavBar(){
+            tr=document.getElementById("pagesNavigator");
+            td=document.createElement("td");
+            btn=document.createElement("button");
+            btn.setAttribute("onclick","changePage(this.innerText)");
+            btn.innerText=amountOfPages+1;
+            console.log(btn.innerText);
+            td.appendChild(btn);
+            tr.appendChild(td);
+            //<th><button onclick="changePage(this.value)""></button></th>
+        }
+        function changePage(toPage){
+            console.log(toPage);
+            currentPage=toPage;
+            render();
         }
     </script>
+    <style>
+        .card{
+            display: inline-block;
+            border-style: solid;
+            border-width: 2px;
+            border-color: red;
+            padding: 4px;
+            margin: 8px;
+        }
+        #pagesNavigatorContainer{
+            position: fixed;
+            bottom: 10px;
+            right: 50vw;
+        }
+    </style>
 </body>
 </html>
-
-<!-- <div id=image01>
-    <a href="https://en.wikipedia.org/wiki/Rio_de_Janeiro">
-        <h2>Brazil - Rio De Janerio</h2>
-        <img src="https://images.alphacoders.com/177/177703.jpg" width="300" height="200" />
-    </a>
-</div> -->
