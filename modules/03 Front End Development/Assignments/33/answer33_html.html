@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>letter capitalizing function</title>
+</head>
+<body>
+    <h1>letter capitalizing function</h1>
+    <label for="letter"></label>
+    <input type="text" name="letter" id="letter" placeholder="Start type..." 
+       onkeyup ="capitalizeLetter()">
+
+       <script>
+        function capitalizeLetter(){
+           var letter = document.querySelector("#letter").value;
+           var lastCh = letter[letter.length-1];
+           var lastChCap = String.fromCharCode((letter).charCodeAt(letter.length-1) & 223);
+           letter = document.querySelector("#letter");
+           letter.value = letter.value.slice(0,-1) + lastChCap; 
+        } 
+
+       </script>
+</body>
+</html>
