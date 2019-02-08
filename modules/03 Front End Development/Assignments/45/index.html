@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 45</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Images Album.</h1>
+    </div>
+    <div id="content">
+        <div id="inputs">
+            <form action="#" onsubmit="return addItem(event);">
+                <label for="urlwiki">Enter Wiki URL: </label>
+                <input type="url" id="urlwiki">
+                &emsp;&emsp;
+                <label for="urlForImg">Enter Image URL: </label>&nbsp;
+                <input type="url" id="urlForImg">
+                &emsp;&emsp;
+                <button type="submit">ADD</button>
+            </form>
+        </div>
+
+        <div id="page"></div>
+        <br><br>
+        <div id="pagesNumbers"></div>
+    </div>
+
+    <br><br>
+
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+        var images = [];
+        var item = { "url": null, "img": null };
+        var pageCount = 0;
+        var pageIndex = 0;
+        var countImg;
+        var imgPerPage = 12;
+        var page = document.getElementById("page");
+        var pagesNumbers = document.getElementById("pagesNumbers");
+
+        function addItem(e) {
+            if (pageIndex !== pageCount) {
+                alert("You have reached the limit of images on the page");
+            }
+            else {
+                item.url = document.getElementById("urlwiki").value;
+                item.img = document.getElementById("urlForImg").value;
+                var aWithImg = createAWithImg();
+
+                if (countImg === imgPerPage || !pagesNumbers.innerHTML) {
+                    if (countImg === imgPerPage) {
+                        pageCount++;
+                        pageIndex++
+                    }
+
+                    createNewPage();
+                    countImg = 0;
+                }
+                images.push(aWithImg);
+                countImg++;
+
+                page.innerHTML += aWithImg;
+            }
+            e.preventDefault();
+
+        }
+        function createAWithImg() {
+            return "<a href=" + item.url + "> <img src=" + item.img + " style='width:300px; height:200px;'></a>";
+        }
+        function createNewPage() {
+            page.innerHTML = "";
+            pagesNumbers.innerHTML += "<button value=" + pageCount + " onclick=showPage(event)>" + (pageCount + 1) + "</button>";
+        }
+        function showPage(e) {
+            page.innerHTML = "";
+            pageIndex = Number(e.target.value);
+            for (var i = (pageIndex * imgPerPage); i < (pageIndex * imgPerPage) + imgPerPage; i++) {
+                if (images[i]) {
+                    page.innerHTML += images[i];
+                }
+                else
+                    break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
