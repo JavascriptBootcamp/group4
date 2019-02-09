@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    image : <input type="url" id="url">
+    Wiki : <input type="url" id="wiki">
+    <button id="addBtn" onclick="addBtn()">add</button>
+    <div id="div"></div>
+    <nav id="nav"></nav>
+    <br><br>
+    <script>
+        counter = 0;
+        images = [];
+        function addBtn() {
+            counter++;
+            var url = document.getElementById("url").value;
+            var wiki = document.getElementById("wiki").value;
+            var div = document.getElementById("div");
+            var img = document.createElement("img");
+            var div = document.getElementById("div");
+            img.src = url;
+            img.width = 50;
+            img.height = 50;
+            div.appendChild(img);
+            images.push(img);
+            if (counter % 12 === 0) {
+                pageNum = (counter / 12).toFixed(1);
+                var a = document.createElement("a");
+                a.href = "#div";
+                a.innerText = +pageNum + " ";
+                a.onclick = function () {
+                    div.innerHTML = "";
+                    for (var i = +a.innerText * 12 - 12; i < +a.innerText * 12; i++) {
+                        div.appendChild(images[i]);
+                    }
+                }
+                document.body.appendChild(a);
+                pageNum--;
+            }
+        }
+    </script>
+</body>
+</html>
