@@ -1,0 +1,164 @@
+<html>
+<head>
+    <title> Books | Favorites </title>
+
+    <style>
+        body{
+            background-color: #d1d1e0;
+        }
+
+        .bookDetails { 
+            color: #003399;
+            background-color: #99ccff;
+            font-size: 30px;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            margin-left: 15px;
+            border: 8px solid #3333cc;
+            width: 30%;
+        }
+
+        .booksList{
+             
+            margin-left: 3%; 
+        }
+        
+        .form{
+            border: 1px solid black;
+            background-color: #99ffcc;
+            width: 30%;
+            margin-left: 3%; 
+            font-size: 40px;
+            border: 8px solid #003300;
+            text-align: center;   
+        }
+
+        .add{
+            border-radius: 20px;
+            background-color: #ffccff;
+            color: #000099;
+            font-size: 20px;
+        }
+
+        h1{
+            color: #ff9933;
+        }
+
+        h2{ 
+            color: #33cc33;
+        }
+
+        #selectSortingByDate{
+            margin-left: 3%; 
+            background-color: #33ccff;
+            font-size: 25px;
+        }
+    
+          
+    </style>
+</head>
+
+
+<body>
+    
+    <div class="form">  
+        <h4><b><u>Fill a new book details and press add button to add a book</u></b></h4> 
+        <form>  
+            <input type="text" id="bookTitle" placeholder="Book title" /> <br/>
+
+            <input type="text" id="bookAuthor" placeholder="Author name" />  <br/>
+        
+            <input type="date" id="publicationDate" placeholder="Publication date" />  <br/>
+        
+            <input type="text" id="publishersNames" placeholder="Publishers names" />  <br/>
+        
+            <input type="text" id="pagesNum" placeholder="Pages number" />  <br/><br/>
+
+            <textarea id="comments" placeholder="comments" cols="30" rows="5"></textarea>  <br/><br/>
+            
+            <button class="add" onclick="addBook(event)">Add</button>           
+        </form>  
+    </div>
+    <br/><br/><br/>
+
+    
+    <select id="selectSortingByDate" onchange="getSortingByDates()">
+        <option value="" selected disabled hidden>Choose how to order books</option>
+        <option value="oldest to newest">oldest to newest</option>
+        <option value="newest to oldest">newest to oldest</option>
+    </select>
+
+    <br/><br/>
+   
+    
+
+    <div id="booksList" class="booksList" >
+        <h1 style="color:#0000cc; font-size: 45px;">My Top 5 (or more) Books</h1>  </br>
+
+        <div class="bookDetails">
+            <h1>Title: Book1</h1>
+            <h2>Author: Author1</h2>
+            <h3>Published Date: <date>01-01-19</date></h3>
+            <h4>Publishers: Aa, Bb</h4>
+            <h5>Page Count: 111</h5>
+            <p>My comments about the book1</p>
+        </div>
+        <br/>
+        <div class="bookDetails">
+            <h1>Title: Book2</h1>
+            <h2>Author: Author2</h2>
+            <h3>Published Date: <date>02-02-19</date></h3>
+            <h4>Publishers: Aa, Bb</h4>
+            <h5>Page Count: 222</h5>
+            <p>My comments about the book2</p>
+        </div>
+
+        <div class="bookDetails">
+            <h1>Title: Book3</h1>
+            <h2>Author: Author3</h2>
+            <h3>Published Date: <date>03-03-19</date></h3>
+            <h4>Publishers: Aa, Bb</h4>
+            <h5>Page Count: 333</h5>
+            <p>My comments about the book3</p>
+        </div>
+
+        <div class="bookDetails">
+            <h1>Title: Book4</h1>
+            <h2>Author: Author4</h2>
+            <h3>Published Date: <date>04-04-19</date></h3>
+            <h4>Publishers: Aa, Bb</h4>
+            <h5>Page Count: 444</h5>
+            <p>My comments about the book4</p>
+        </div>
+
+        <div class="bookDetails">
+            <h1>Title: Book5</h1>
+            <h2>Author: Author5</h2>
+            <h3>Published Date: <date>05-05-19</date></h3>
+            <h4>Publishers: Aa, Bb</h4>
+            <h5>Page Count: 555</h5>
+            <p>My comments about the book5</p>
+        </div>
+    </div>
+
+
+   
+    <script src="answer.js"></script>
+</body>
+
+</html>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
