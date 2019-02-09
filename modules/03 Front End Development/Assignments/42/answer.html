@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Answer 42</title>
+
+    <style>
+    
+        .form{
+            border: 1px solid black;
+            background-color: #99ffcc;
+            width: 30%;
+            margin-left: 3%; 
+            font-size: 40px;
+            border: 8px solid #003300;
+            text-align: center;   
+        }
+        #resultTextContainer {
+            margin-left: 3%; 
+            color:blue;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div class="form">  
+        <h4><b><u>Fill a new movie details and press add button to add a movie</u></b></h4> 
+        <form>  
+            <input type="text" id="movieTitle" placeholder="Movie title" /> <br/>
+
+            <input type="text" id="movieUploader" placeholder="Movie uploader" />  <br/>
+        
+            <input type="number" id="movieDuration" placeholder="Movie duration in seconds" min="0"/>  <br/><br/>
+
+            
+            <button id="addMovieButton" class="addMovieButton">Add Movie</button>           
+        </form>  
+    </div>
+
+    <div id="resultTextContainer"> </div>
+
+   
+
+    <script src="answer.js"></script>
+    
+</body>
+</html>
