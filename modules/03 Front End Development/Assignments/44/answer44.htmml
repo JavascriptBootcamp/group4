@@ -29,21 +29,18 @@
         </div>
 
         <div class="form-group">
-            <label> Publication: </label>
-            <input type="text" class="form-control" id="PublicationDate" name="category" placeholder="book Category">
+            <label> Publication Date: </label>
+            <input type="date" class="form-control" id="PublicationDate" name="category" placeholder="book Publication Date">
         </div>
         <div class="form-group">
             <label> Publisher: </label>
-            <input type="text" class="form-control" id="form10" name="Publisher" placeholder="book Publisher">
-        </div>
-        <div class="form-group">
-            <label> Publisher: </label>
-            <input type="number" id="Publisher" name="price" class="form-control" placeholder="book Price">
+            <input type="text" class="form-control" id="Publisher" name="Publisher" placeholder="book Publisher">
         </div>
         <div class="form-group">
             <label> Pages: </label>
-            <input type="number" id="Pages" name="price" class="form-control" placeholder="book Price">
+            <input type="number" id="Pages" name="Pages" class="form-control" placeholder="book Pages">
         </div>
+    
 
         <div class="form-group">
             <label> comments: </label>
