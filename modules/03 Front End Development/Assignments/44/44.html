@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 44</title>
+</head>
+
+<body>
+
+    <h1>My Book List:</h1>
+    <form onsubmit="addBookInput(this); return false;" id="addBook">
+        <fieldset>
+            <legend>Add a book</legend>
+
+            <label for="title">Title</label>
+            <input type="text" id="title" required>
+            
+            <label for="author">Author</label>
+            <input type="text" id="author" required>
+
+            <label for="date">Publication date</label>
+            <input type="date" id="date" required>
+
+            <label for="publisher">Publisher</label>
+            <input type="text" id="publisher" required>
+
+            <label for="pages">Pages</label>
+            <input type="number" id="pages" required min="1">
+
+            <label for="comment">Comments</label>
+            <textarea id="comment" cols="30" rows="10"></textarea>
+
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+    <select onchange="sortDisplay(this)">
+        <option value="default"></option>
+        <option value="new">Newest</option>
+        <option value="old">Oldest</option>
+    </select>
+
+    <div id="books"></div>
+
+
+    <style>
+        .book {
+            background: rgb(228, 227, 227);
+            border-radius: 10px;
+            padding: 0 10px 10px 10px;
+        }
+
+        p {
+            background: rgb(247, 245, 245);
+            border-radius: 10px;
+            padding-left: 10px;
+            height: 100px;
+        }
+
+        input {
+            display: block;
+        }
+
+        textarea {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <script src="44.js"></script>
+</body>
+
+</html>
