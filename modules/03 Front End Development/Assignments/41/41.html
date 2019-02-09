@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 41</title>
+</head>
+
+<body>
+    <input type="text" id="txtInput">
+    <div id="output"></div>
+
+    <script>
+        var txtInput = document.querySelector("#txtInput");
+        var output = document.querySelector("#output");
+        var userTxt = "";
+
+        function palindrome(str) {
+            var x = str.length - 1;
+            for (var i = 0; i < str.length / 2; i++) {
+                if (str[i] !== str[x] || str.length === 1)
+                    return false ;
+                x--;
+            }
+            return true ;
+        }
+
+
+        txtInput.addEventListener("keyup", (e) => {
+            var input = e.target.value;
+            output.innerText = "Is Palindrome: "+palindrome(input);
+
+        }, false);
+
+    </script>
+</body>
+
+</html>
