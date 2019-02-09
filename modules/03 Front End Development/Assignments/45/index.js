@@ -26,6 +26,7 @@ for(var i=0;i<numOfPages;i++){
     var sp = document.createElement("span");
     sp.innerText = ">>>"; 
     sp.style.color = "blue";
+    span.style.cursor = "pointer";
     var num = Number(i)+1;
     if(numOfPages===1){
         span.innerText = num ;  
