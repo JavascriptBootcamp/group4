@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="forms">
+        <form onsubmit="return false">
+            <input type="text" id="title" placeholder="title">
+            <select id="uploader">
+                <option>gaby</option>
+                <option>yosi</option>
+                <option>maly</option>
+            </select>
+            <input type="number" id="seconds" placeholder="seconds">
+            <button onclick="watch(event)">Watch</button>
+            <button onclick="plus()">+</button>
+            <button onclick="watchAll()">watch all</button>
+        </form>
+    </div>
+    <div id="res">
+
+    </div>
+    <script>
+        var counter = 0;
+        var forms = document.getElementById("forms");
+        function watchAll() {
+            var title = document.querySelectorAll('input[type=text]');
+            var seconds = document.querySelectorAll('input[type=number]');
+            var uploader = document.querySelectorAll('select');
+            var v;
+            for (var i = 0; i < title.length; i++) {
+                v = new Video(title[i].value, uploader[i].options.selectedIndex, seconds[i].value);
+                v.watch(seconds[i].value);
+            }
+        }
+        function plus() {
+            var myform = document.createElement("form");
+            var title = document.createElement("input");
+            var select = document.createElement("select");
+            var option = document.createElement("option");
+            var option2 = document.createElement("option");
+            var number = document.createElement("input");
+            var btn = document.createElement("button");
+            title.type = "text";
+            title.id = "title" + counter;
+            title.placeholder = "title";
+            select.id = "uploader" + counter;
+            option.innerText = "daniel";
+            option2.innerText = "nissan";
+            select.appendChild(option);
+            select.appendChild(option2);
+            number.type = "number";
+            number.id = "seconds" + counter;
+            number.placeholder = "seconds";
+            btn.innerText = "watch";
+            btn.onclick = watch;
+            myform.appendChild(title);
+            myform.appendChild(select);
+            myform.appendChild(number);
+            myform.appendChild(btn);
+            forms.appendChild(myform);
+            counter++;
+        }
+
+        function watch(e) {
+            e.preventDefault();
+            var title = e.target.parentNode[0].value;
+            var uploader = e.target.parentNode[1].options.selectedIndex;
+            var seconds = e.target.parentNode[2].value;
+            var v = new Video(title, uploader, seconds);
+            v.watch(seconds);
+        }
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.watch = function (sec) {
+                try {
+                    document.getElementById("res").innerHTML += "<div>You watched all " + sec + " seconds of " + this.title + "</div>";
+                } catch (error) {
+                    console.log("Oops... An error occured");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
