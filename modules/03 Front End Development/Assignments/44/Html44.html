@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>
+            "Books | Favorites"
+        </title>
+    </head>
+
+<body>
+    <h1>My Top 5 Books:</h1>
+    <select id="sort" onclick="mySort()">
+        <option value="none">Sort By</option>
+        <option value="oldtonew">Old to New</option>
+        <option value="newtoold">New to Old</option>
+    </select>
+    <div id="booksContainer">
+            <div id="0">
+                <h1>Title: "IT"</h1>
+                <h2>Author: Stephen King</h2>
+                Date: <input type="date" value="1986-09-15">
+                <h4>Publisher: Viking</h4>
+                <h5>Pages: 1,138</h5>
+                <p>comments: perfect author, perfect book.</p>
+            </div>
+            <div id="1">
+                <h1>Title: The Dark Tower: The Gunslinger</h1>
+                <h2>Author: Stephen King</h2>
+                Date: <input type="date" value="1982-06-10">
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 300</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+            <div id="2">
+                <h1>Title: The Dark Tower Book II: The Drawing of the Three</h1>
+                <h2>Author: Stephen King</h2>
+                Date: <input type="date" value="1987-10-04">
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 463</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+            <div id="3">
+                <h1>Title: The Dark Tower III: The Waste Lands</h1>
+                <h2>Author: Stephen King</h2>
+                Date: <input type="date" value="1991-11-04">
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 512</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+            <div id="4">
+                <h1>Title: The Dark Tower IV: Wizard and Glass</h1>
+                <h2>Author: Stephen King</h2>
+                Date: <input type="date" value="1997-11-04">
+                <h4>Publisher: Grant</h4>
+                <h5>Pages: 787</h5>
+                <p>comments: perfect author, perfect series.</p>
+            </div>
+    </div>
+    
+    
+    <div align="center" id="book">
+            <b>Add Book</b><br><br>
+            Title: <input type="text" id="title"><br><br>
+            Author:<input type="text" id="author"><br><br>
+            Publication Date: <input type="date" id="date"><br><br>
+            Publisher: <input type="text" id="pub"><br><br>
+            Pages: <input type="number" id="pages"><br><br>
+            Comments: <input type="text" id="comm"><br><br>
+            <button id="add" onclick="add()">Add</button>
+    </div>
+<script>
+    function bookDetails(title, author, publicationDate, publisher, pages, comments){
+        this.title = title;
+        this.author = author;
+        this.publicationDate = publicationDate;
+        this.publisher = publisher;
+        this.pages = pages;
+        this.comments = comments;
+    }
+    function add(){
+        //var booksArr = addToArray();
+        var bookDiv = document.createElement("div");
+        var booksContainer = document.querySelector("#bookscontainer");
+        bookDiv.id = document.querySelector("#bookscontainer").children.length;
+        var h1 = document.createElement("h1");
+        var h2 = document.createElement("h2");
+        var date = document.createElement("input");
+        var h4 = document.createElement("h4");
+        var h5 = document.createElement("h5");
+        var p = document.createElement("p");
+        h1.innerHTML = document.querySelector("#title").value;
+        h2.innerHTML = document.querySelector("#author").value;
+        date.type = "date";
+        date.value = document.querySelector("#date").value;
+        h4.innerHTML = document.querySelector("#pub").value;
+        h5.innerHTML = document.querySelector("#pages").value;
+        p.innerHTML = document.querySelector("#comm").value
+        bookDiv.appendChild(h1);
+        bookDiv.appendChild(h2);
+        bookDiv.appendChild(date);
+        bookDiv.appendChild(h4);
+        bookDiv.appendChild(h5);
+        bookDiv.appendChild(p);
+        booksContainer.appendChild(bookDiv);
+
+    }
+    function addToArray(){
+        var booksArr = [];
+        var numOfbooks = document.querySelector("#bookscontainer").children.length;
+        for(var i=0; i<numOfbooks; i++){
+            title = document.getElementById(i).children[0].innerHTML;
+            author = document.getElementById(i).children[1].innerHTML;
+            publicationDate = document.getElementById(i).children[2].value;
+            publisher = document.getElementById(i).children[3].innerHTML;
+            pages = document.getElementById(i).children[4].innerHTML;
+            comments = document.getElementById(i).children[5].innerHTML;
+            booksArr.push(new bookDetails(title, author, publicationDate, publisher, pages, comments));
+        }
+        
+        return booksArr;
+
+    }
+    function mySort(){
+        var booksArr = addToArray();
+        var sortby = document.querySelector("#sort").value;
+        if(sortby === "oldtonew"){
+            booksArr.sort(function(d1,d2){
+                if( d1.publicationDate > d2.publicationDate ) return 1;
+                if( d1.publicationDate < d2.publicationDate ) return -1;
+                return 0;
+            })
+        }
+        if(sortby === "newtoold"){
+            booksArr.sort(function(d1,d2){
+                if( d1.publicationDate > d2.publicationDate ) return -1;
+                if( d1.publicationDate < d2.publicationDate ) return 1;
+                return 0;
+            })
+        }
+        for(var i=0; i<booksArr.length; i++){
+            document.getElementById(i).remove()
+        }
+        var booksContainer = document.querySelector("#bookscontainer");
+        for(var i=0; i<booksArr.length; i++){
+            var book = document.createElement("div");
+            book.id = i;
+            var h1 = document.createElement("h1");
+            var h2 = document.createElement("h2");
+            var date = document.createElement("input");
+            var h4 = document.createElement("h4");
+            var h5 = document.createElement("h5");
+            var p = document.createElement("p");
+            h1.innerHTML = booksArr[i].title;
+            h2.innerHTML = booksArr[i].author;
+            date.type = "date";
+            date.value = booksArr[i].publicationDate;
+            h4.innerHTML = booksArr[i].publisher;
+            h5.innerHTML = booksArr[i].pages;
+            p.innerHTML = booksArr[i].comments;
+            book.appendChild(h1);
+            book.appendChild(h2);
+            book.appendChild(date);
+            book.appendChild(h4);
+            book.appendChild(h5);
+            book.appendChild(p);
+            booksContainer.appendChild(book);
+        }
+    }
+    
+</script>
+</body>
+</html>
