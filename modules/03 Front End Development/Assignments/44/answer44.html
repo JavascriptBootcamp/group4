@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> "Books | Favorites"</title>
+</head>
+
+<body>
+    <h1 id="mainHeader">My Top <span id="booksAmount">5</span> Books:</h1>
+
+    <form onsubmit="return false;">
+        Title:<input type="text" id="title" required /><br><br>
+        Author: <input type="text" id="author" required /><br><br>
+        Publication date: <input type="date" id="publicationDate" required /><br><br>
+        Publisher: <input type="text" id="publisher" required /><br><br>
+        Pages: <input type="number" min="0" id="pages" required /><br><br>
+        Comments: <input type="text" id="comments" /><br><br>
+        <button type="submit" onclick="addBook()">Add</button>
+
+        <select id="order" onchange="orderBooks()">
+            <option disabled selected hidden>--sorting the books--</option>
+            <option value="oldestToNewest">oldest to newest</option>
+            <option value="newestToOldest">newest to oldest</option>
+        </select>
+    </form>
+
+    <div id="booksList">
+        <h1>Title: "IT"</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: <span class="publication">1986-09-15</span></h3>
+        <h4>Publisher: Viking</h4>
+        <h5>Pages: 1138</h5>
+        <p>comments: perfect author, perfect book.</p>
+
+        <h1>Title: The Dark Tower: The Gunslinger</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: <span class="publication">1982-06-10</span></h3>
+        <h4>Publisher: Grant</h4>
+        <h5>Pages: 300</h5>
+        <p>comments: perfect author, perfect series.</p>
+
+
+        <h1>Title: The Dark Tower Book II: The Drawing of the Three</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: <span class="publication">1987-05-01</span></h3>
+        <h4>Publisher: Grant</h4>
+        <h5>Pages: 463</h5>
+        <p>comments: perfect author, perfect series.</p>
+
+
+        <h1>Title: The Dark Tower III: The Waste Lands</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: <span class="publication">1991-08-01</span></h3>
+        <h4>Publisher: Grant</h4>
+        <h5>Pages: 512</h5>
+        <p>comments: perfect author, perfect series.</p>
+
+
+        <h1>Title: The Dark Tower IV: Wizard and Glass</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: <span class="publication">1997-11-04</span></h3>
+        <h4>Publisher: Grant</h4>
+        <h5>Pages: 787</h5>
+        <p>comments: perfect author, perfect series.</p>
+    </div>
+
+    <script>
+        var booksAmount = document.getElementById("booksAmount").innerText;
+        var booksArray = [];
+
+        function Book(title, author, date, publisher, pages, comments) {
+            this.title = title.value;
+            this.author = author.value;
+            this.date = date.value;
+            this.publisher = publisher.value;
+            this.pages = pages.value;
+            this.comments = comments.value;
+        }
+
+        function addBook() {
+
+            var title = document.getElementById("title");
+            var author = document.getElementById("author");
+            var date = document.getElementById("publicationDate");
+            var publisher = document.getElementById("publisher");
+            var pages = document.getElementById("pages");
+            var comments = document.getElementById("comments");
+            if (validForm(title.value, author.value, date.value, publisher.value, pages.value)) {
+                var book = new Book(title, author, date, publisher, pages, comments);
+                booksArray.push(book);
+                console.log(booksArray);
+                increaseBooksAmount();
+                createBookElement(book);
+                clearUserInput(title, author, date, publisher, pages, comments);
+            }
+        }
+
+        function validForm(a, b, c, d, e) {
+            if (a == undefined || a == "", b == undefined || b == "", c == undefined || c == "", d == undefined || d == "", e == undefined || e == "") {
+                alert("Please Fill All Required Field");
+                return false;
+            }
+            return true;
+        }
+
+        function increaseBooksAmount() {
+            document.getElementById("booksAmount").innerText = Number(booksAmount) + booksArray.length;
+        }
+
+        function createBookElement(book) {
+            var h1 = document.createElement("h1");
+            var h2 = document.createElement("h2");
+            var h3 = document.createElement("h3");
+            var h4 = document.createElement("h4");
+            var h5 = document.createElement("h5");
+            var p = document.createElement("p");
+            var div = document.createElement("div");
+
+            var booksList = document.getElementById("booksList");
+
+            h1.innerText = "Title: " + book.title;
+            h2.innerText = "Author: " + book.author;
+            h3.innerHTML = "Publication date: " + "<span class='publication'>" + book.date + "</span>";
+            h4.innerText = "Publisher: " + book.publisher;
+            h5.innerText = "Pages: " + book.pages;
+            book.comments === "" ? p.innerText = " " : p.innerText = "comments: " + book.comments;
+
+            div.appendChild(h1);
+            div.appendChild(h2);
+            div.appendChild(h3);
+            div.appendChild(h4);
+            div.appendChild(h5);
+            div.appendChild(p);
+
+            booksList.appendChild(div);
+        }
+
+        function clearUserInput(title, author, date, publisher, pages, comments) {
+            title.value = "";
+            author.value = "";
+            date.value = "";
+            publisher.value = "";
+            pages.value = "";
+            comments.value = "";
+        }
+    </script>
+</body>
+
+</html>
