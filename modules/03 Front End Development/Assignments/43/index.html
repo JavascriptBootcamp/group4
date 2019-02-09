@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    Select Difficulty:<br>
+    <button type="button" onclick="start(3)">Easy</button>
+    <button type="button" onclick="start(5)">Medium</button>
+    <button type="button" onclick="start(7)">Hard</button><br>
+
+
+    <select id="letters" onchange="selectLetter()"></select><br>
+    Answer:<br>
+    <div id="answer"></div>
+    <button type="button" onclick="checkAnswer()">Submit Answer</button>
+    <div id="result"></div>
+    <script src="myscripts.js"></script>
+</body>
+</html>
