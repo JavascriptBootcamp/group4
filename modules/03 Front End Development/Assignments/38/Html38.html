@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>Favorites</title>
+</head>
+
+<body>
+    <div id="container" align="center">
+        Food:
+        <select id="food">
+            <option value="hamburger">hamburger</option>
+            <option value="BBQ">BBQ</option>
+            <option value="salad">salad</option>
+        </select>
+        <button id="foodB" onclick="add(event);">Add Food</button><br><br>
+        Drink:
+        <select id="drink">
+            <option value="beer">beer</option>
+            <option value="vodka">vodka</option>
+            <option value="coke">coke</option>
+        </select>
+        <button id="drinkB" onclick="add(event);">Add Drink</button> <br><br>
+        Colors:
+        <select id="colors">
+            <option value="blue">blue</option>
+            <option value="black">black</option>
+            <option value="green">green</option>
+        </select>
+        <button id="colorsB" onclick="add(event);">Add Colores</button> <br><br>
+
+        <h2>My favorites </h2>
+        <h3>food: </h3>
+        <ol id="Food"></ol><br>
+        <h3>drink: </h3>
+        <ol id="Drink"></ol><br>
+        <h3>color: </h3>
+        <ol id="Colors"></ol><br>
+    </div>
+    <script>
+        var fCount = 0;
+        var dCount = 0;
+        var cCount = 0;
+        function add(e) {
+
+            var fav = e.currentTarget.attributes.id.nodeValue;
+            if (fav === "foodB") {
+                fCount++;
+                var li = document.createElement("li");
+                document.getElementById("Food").appendChild(li);
+                li.innerText = "My " + fCount + switchSuffix(fCount) + " choice is " + document.getElementById("food").value;
+            }
+
+            if (fav === "drinkB") {
+                dCount++;
+                var li = document.createElement("li");
+                document.getElementById("Drink").appendChild(li);
+                li.innerText = "My " + dCount + switchSuffix(dCount) + " choice is " + document.getElementById("drink").value;
+            }
+            if (fav === "colorsB") {
+                cCount++;
+                var li = document.createElement("li");
+                document.getElementById("Colors").appendChild(li);
+                li.innerText = "My " + cCount + switchSuffix(cCount) + " choice is " + document.getElementById("colors").value;
+            }
+        }
+
+        function switchSuffix(num) {
+            switch (num) {
+                case 1:
+                    return 'st'
+                case 2:
+                    return 'nd'
+                case 3:
+                    return 'rd';
+                case 4:
+                    return 'th';
+            }
+        }
+    </script>
+</body>
+
+</html>
