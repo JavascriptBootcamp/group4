@@ -23,12 +23,18 @@ var footer = document.getElementById("footer");
 footer.innerHTML = "";
 for(var i=0;i<numOfPages;i++){
     var span = document.createElement("span");
+    var sp = document.createElement("span");
+    sp.innerText = ">>>"; 
+    sp.style.color = "blue";
     var num = Number(i)+1;
     if(numOfPages===1){
-        span.innerText = num + "   ";  
+        span.innerText = num ;  
     }
     else{
-        span.innerText = num + "   ";
+        if(i>0){
+        footer.appendChild(sp);
+        }
+        span.innerText = num ;
     }
     span.onclick = function(){
         page = this.innerText[0];
