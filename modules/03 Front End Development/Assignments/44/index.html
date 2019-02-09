@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="title" placeholder="insert title"><br>
+        <input type="text" id="author" placeholder="insert author"><br>
+        <input type="date" id="date"><br>
+        <input type="text" id="publisher" placeholder="insert publisher"><br>
+        <input type="number" id="pages" placeholder="insert pages"><br>
+        <textarea placeholder="comments" id="comments" cols="40" rows="5"></textarea><br>
+        <button onclick="insertBook(event)">Submit</button>
+    </form>
+    <div id="books"></div>
+    <script>
+        function insertBook(event){
+            event.preventDefault();
+            var title = document.getElementById("title").value;
+            var author = document.getElementById("author").value;
+            var date = document.getElementById("date").value;
+            var publisher = document.getElementById("publisher").value;
+            var pages = document.getElementById("pages").value;
+            var comments = document.getElementById("comments").value;
+            var container = document.getElementById("books");
+            container.innerHTML+=`<div class="book"><h2>title: ${title}</h2><h3>author: ${author}</h3><h4>date: ${date}</h4><h5>publisher: ${publisher}</h5><h5>pages: ${pages}</h5><p>comments: ${comments}</p></div>`;
+        }
+    </script>
+    <style>
+        .book{
+            border-style:solid;
+            border-width: 2px;
+            border-color: black;
+            width: 300px;
+            padding: 8px;
+            margin: 8px;
+            display: inline-block;
+        }
+    </style>
+</body>
+</html>
