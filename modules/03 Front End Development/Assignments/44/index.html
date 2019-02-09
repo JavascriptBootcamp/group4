@@ -8,26 +8,60 @@
 </head>
 <body>
     <form>
-        <input type="text" id="title" placeholder="insert title"><br>
+        <input type="text" required id="title" placeholder="insert title"><br>
         <input type="text" id="author" placeholder="insert author"><br>
-        <input type="date" id="date"><br>
+        <input type="date" required id="date"><br>
         <input type="text" id="publisher" placeholder="insert publisher"><br>
         <input type="number" id="pages" placeholder="insert pages"><br>
         <textarea placeholder="comments" id="comments" cols="40" rows="5"></textarea><br>
         <button onclick="insertBook(event)">Submit</button>
     </form>
+    <select onchange="sort()">
+        <option id="fromOldest">oldest to newest</option>
+        <option id="fromNewest">newest to oldest</option>
+    </select>
     <div id="books"></div>
     <script>
+        var libary = [];
         function insertBook(event){
             event.preventDefault();
-            var title = document.getElementById("title").value;
-            var author = document.getElementById("author").value;
-            var date = document.getElementById("date").value;
-            var publisher = document.getElementById("publisher").value;
-            var pages = document.getElementById("pages").value;
-            var comments = document.getElementById("comments").value;
-            var container = document.getElementById("books");
-            container.innerHTML+=`<div class="book"><h2>title: ${title}</h2><h3>author: ${author}</h3><h4>date: ${date}</h4><h5>publisher: ${publisher}</h5><h5>pages: ${pages}</h5><p>comments: ${comments}</p></div>`;
+            var book = new Book();
+            libary.push(book);
+            render();
+        }
+        function Book(){
+            this.title = document.getElementById("title").value;
+            this.author = document.getElementById("author").value;
+            this.date = document.getElementById("date").value;
+            this.valueAsDate = document.getElementById("date").valueAsDate;
+            this.publisher = document.getElementById("publisher").value;
+            this.pages = document.getElementById("pages").value;
+            this.comments = document.getElementById("comments").value;
+            this.div = document.createElement("books");
+            this.div.className = "book";
+            this.div.innerHTML+=`<h2>title: ${this.title}</h2><h3>author: ${this.author}</h3><h4>date: ${this.date}</h4><h5>publisher: ${this.publisher}</h5><h5>pages: ${this.pages}</h5><p>comments: ${this.comments}</p>`;
+            this.getDiv = function() {return this.div};
+        }
+        function render(){
+            var books = document.getElementById("books");
+            for(i=0;i<libary.length;i++){
+                books.appendChild(libary[i].getDiv());
+            }
+        }
+        function sort(){
+            var fromOldest = document.getElementById("fromOldest");
+            var fromNewest = document.getElementById("fromNewest");
+            if(fromOldest.selected){
+                libary.sort(function(a,b){
+                return a.valueAsDate - b.valueAsDate;
+                });
+            }
+            else if (fromNewest.selected){
+                libary.sort(function(a,b){
+                return b.valueAsDate - a.valueAsDate;
+                });
+            }
+            render()
         }
     </script>
     <style>
