@@ -1,4 +1,4 @@
-<p>use your answer from <code>group4/Modules/03 Front End Development/Assignments/07/README.md</code><p>
+<p>use your answer from <code>group4/Modules/03 Front End Development/Assignments/07</code><p>
 <p>use Sibling Selector in order to add a top border to each list item.</p>
 <p>set the border as "DarkSlateGrey", 3 pixels wide, dashed</p>
 <p>set the page's background color as "LightSlateGray"</p>
