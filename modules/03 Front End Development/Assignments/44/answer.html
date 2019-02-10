@@ -7,57 +7,63 @@
 <body>
 
     <form>
-        Name:<input type="text"> 
-        Author: <input type="text"> 
-        Published Date: <input type="date"> 
-        Publishers: <input type="text">
-        Page Count: <input type="number">
-        Comments: <input type="text">
+        Name:<input type="text" id="name" required>
+        Author: <input type="text" id="author" required>
+        Published Date: <input type="date" id="publishDate" required>
+        Publishers: <input type="text" id="publishers" required>
+        Page Count: <input type="number" id="pageCount" required>
+        Comments: <input type="text" id="comments">
 
-        <Button type="button">Add</Button>
+        <Button type="button" onclick="add()">Add</Button>
+
+        <select id="sortSelector" onchange="sortBooks()">
+            <option value="1">Oldest to Newest</option>
+            <option value="2">Newest to Oldest</option>
+        </select>
 
     </form>
-    <select>
 
-
-
-    </select>
-    <h1>My Top 5 Books:</h1>
     <div id="bookList">
-        <h1>Name: Harry Potter</h1>
-        <h2>Author: J.K Rolling</h2>
-        <h3>Published Date: 1/2/1997</h3>
-        <h4>Publishers: The Potters</h4>
-        <h5>Page count: 756</h5>
-        <p>Cant wait for the next chapter in the serie! lovely!</p>
-
-        <h1>Name: Lord of the rings</h1>
-        <h2>Author: RR Tolkin</h2>
-        <h3>Published Date: 21/2/1991</h3>
-        <h4>Publishers: SparksLTD</h4>
-        <h5>Page count: 900</h5>
-        <p>Genious! never read a book like this before</p>
-
-        <h1>Name: Apartment for rent</h1>
-        <h2>Author: Lea Goldberg</h2>
-        <h3>Published Date: 8/10/1980</h3>
-        <h4>Publishers: Chinuhit21</h4>
-        <h5>Page count: 50</h5>
-        <p>Nostalgy book and a great story for our kids</p>
-
-        <h1>Name: The man who wasnt there</h1>
-        <h2>Author: Olga Zadorov</h2>
-        <h3>Published Date: 1/12/2018</h3>
-        <h4>Publishers: Amihod</h4>
-        <h5>Page count: 345</h5>
-        <p>Heart-breaker,very dramatic</p>
-
-        <h1>Name: Spiderman</h1>
-        <h2>Author: Tim Berners-Lee</h2>
-        <h3>Published Date: 1/2/1997</h3>
-        <h4>Publishers: Marvel Comics</h4>
-        <h5>Page count: 256</h5>
-        <p>Hilarious , must!</p>
+        <div class="book">
+            <h1>Name: Harry Potter</h1>
+            <h2>Author: J.K Rolling</h2>
+            <h3>Published Date: <span class="bookDate">1/2/1997</span></h3>
+            <h4>Publishers: The Potters</h4>
+            <h5>Page count: 756</h5>
+            <p>Cant wait for the next chapter in the serie! lovely!</p>
+        </div>
+        <div class="book">
+            <h1>Name: Lord of the rings</h1>
+            <h2>Author: RR Tolkin</h2>
+            <h3>Published Date: <span class="bookDate">21/2/1991</span></h3>
+            <h4>Publishers: SparksLTD</h4>
+            <h5>Page count: 900</h5>
+            <p>Genious! never read a book like this before</p>
+        </div>
+        <div class="book">
+            <h1>Name: Apartment for rent</h1>
+            <h2>Author: Lea Goldberg</h2>
+            <h3>Published Date: <span class="bookDate">8/10/1980</span></h3>
+            <h4>Publishers: Chinuhit21</h4>
+            <h5>Page count: 50</h5>
+            <p>Nostalgy book and a great story for our kids</p>
+        </div>
+        <div class="book">
+            <h1>Name: The man who wasnt there</h1>
+            <h2>Author: Olga Zadorov</h2>
+            <h3>Published Date: <span class="bookDate">1/12/2018</span></h3>
+            <h4>Publishers: Amihod</h4>
+            <h5>Page count: 345</h5>
+            <p>Heart-breaker,very dramatic</p>
+        </div>
+        <div class="book">
+            <h1>Name: Spiderman</h1>
+            <h2>Author: Tim Berners-Lee</h2>
+            <h3>Published Date: <span class="bookDate">1/2/1997</span></h3>
+            <h4>Publishers: Marvel Comics</h4>
+            <h5>Page count: 256</h5>
+            <p>Hilarious , must!</p>
+        </div>
     </div>
 
     <script>
@@ -68,12 +74,103 @@
             this.publishers = publishers;
             this.pageCount = pageCount;
             this.comment = comment;
+
+            this.createDOMbookNode = function () {
+                var h1, h2, h3, h4, h5, h6, spanBookDate;
+                h1 = document.createElement("h1");
+                h1.innerText = "Name: " + this.name;
+                h2 = document.createElement("h2");
+                h2.innerText = "Author: " + this.author;
+
+                spanBookDate = document.createElement("span");
+                spanBookDate.className = "bookDate";
+                spanBookDate.innerText = this.publishedDate;
+
+                h3 = document.createElement("h3");
+                h3.innerHTML = "Published Date: " + spanBookDate.outerHTML;
+                h4 = document.createElement("h4");
+                h4.innerText = "Publishers: " + this.publishers;
+                h5 = document.createElement("h5");
+                h5.innerText = "Page count: " + this.pageCount;
+                h6 = document.createElement("h6");
+                h6.innerText = this.comment;
+
+                return h1.outerHTML + h2.outerHTML + h3.outerHTML + h4.outerHTML + h5.outerHTML + h6.outerHTML;
+            }
+        }
+        function convertDate(inputFormat) {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date(inputFormat);
+            return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/');
         }
 
         function add() {
             var theBookListDiv = document.querySelector("#bookList");
+            var name = document.querySelector("#name").value;
+            var author = document.querySelector("#author").value;
+            var publishedDateStr = document.querySelector("#publishDate").value;
+            var publishedDate = new Date(publishedDateStr);
+            publishedDate = convertDate(publishedDate);
+            var publishers = document.querySelector("#publishers").value;
+            var pageCount = document.querySelector("#pageCount").value;
+            var comments = document.querySelector("#comments").value
 
-            var theNewbook = new Book()
+            var newBook = new Book(name, author, publishedDate, publishers, pageCount, comments);
+
+            if (!name || !author || !publishedDate || !publishers || !pageCount || !comments) {
+                alert("Please fill all the fields in order to add new book!");
+            }
+            else {
+                var theNewNodeHTML = newBook.createDOMbookNode();
+                theBookListDiv.innerHTML += '<div class="book">' + theNewNodeHTML + '</div>';
+            }
+        }
+
+        function sortBooks() {
+            var bookListDiv = document.querySelector("#bookList");
+            var allBooksDates = document.querySelectorAll(".bookDate");
+            var sortingSelector = document.querySelector("#sortSelector");
+            sortingSelector = sortingSelector.options[sortingSelector.selectedIndex].value;
+            
+            // thats an object
+            var dates = {};
+            for (var i = 0; i < allBooksDates.length; ++i) {
+                dates[i] = allBooksDates[i].innerText;
+            }
+            // thats an array
+            var datesArr = Object.values(dates);
+            // Newest to oldest
+            if(sortingSelector === '2')
+            {
+                datesArr = datesArr.sort(function (a, b) {
+                var aa = a.split('/').reverse().join(),
+                    bb = b.split('/').reverse().join();
+                return aa > bb ? -1 : (aa < bb ? 1 : 0);
+            });
+            }
+            // Oldest to newest
+            else
+            {
+                datesArr = datesArr.sort(function (a, b) {
+                var aa = a.split('/').reverse().join(),
+                    bb = b.split('/').reverse().join();
+                return aa < bb ? -1 : (aa > bb ? 1 : 0);
+            });
+            }
+
+
+            bookListDiv.innerHTML = "";
+            for(var i = 0; i < datesArr.length; ++i)
+            {
+                for(var j = 0; j < datesArr.length; j++)
+                {
+                    if(allBooksDates[j].innerText === datesArr[i])
+                    {
+                        bookListDiv.appendChild(allBooksDates[j].parentNode.parentNode);
+                    }
+                }
+            }
+
         }
     </script>
 </body>
