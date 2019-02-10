@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+
+    <table>
+         <tr>
+            <td>
+            food
+            <select id="food">
+                <option>hamburger</option>
+                <option>BBQ</option>
+                <option>salad</option>
+            </select>
+            </td>
+            <td>
+            beverage 
+            <select id="beverage">
+                 <option>beer</option>
+                 <option>vodka</option>
+                 <option>coke</option>
+            </select>
+            </td>
+            <td>
+            colors        
+            <select id="colors">
+                <option>blue</option>
+                <option>green</option>
+                <option>black</option>
+            </select>
+            </td>
+        </tr>
+    </table>
+        <button id="add1" onclick="add()" >Add</button>
+        <ul id="newli">
+
+        </ul>
+    </form>
+    <script>
+        counter = 1;
+    function add(){
+        var foodSelect = document.getElementById("food")
+        var foodSel = foodSelect.options[foodSelect.selected].value
+        var beverageSelect = document.getElementById("beverage")
+        var beverageSel = beverageSelect.options[beverageSelect.selected].value
+        var colorsSelect = document.getElementById("colors")
+        var colorsSel = colorsSelect.options[colorsSelect.selected].value
+        if(counter===1){
+            li = document.createElement("li")
+            li.innerText = `My food st choice is ${foodSel}`+`My beverage st choice is ${beverageSel}`+`My color st choice is ${colorsSel}`;
+            document.getElementById("newli").appendChild(li);
+        }
+        if(counter===2){
+            li = document.createElement("li")
+            li.innerText = `My food nd choice is ${foodSel}`+`My beverage nd choice is ${beverageSel}`+`My color nd choice is ${colorsSel}`;
+            document.getElementById("newli").appendChild(li);
+        }
+        if(counter===3){
+            li = document.createElement("li")
+            li.innerText = `My food rd choice is ${foodSel}`+`My beverage rd choice is ${beverageSel}`+`My color rd choice is ${colorsSel}`;
+            document.getElementById("newli").appendChild(li);
+        }
+        counter++;
+
+    }
+    </script>
+</body>
+</html>
