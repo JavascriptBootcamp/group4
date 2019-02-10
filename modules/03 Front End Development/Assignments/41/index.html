@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="str" type="text" onchange="checkpal()">
+    <div id="massage"></div>
+    <script>
+    function checkpal(){
+        str = document.getElementById("str").value
+    var x = str.length-1;
+    for(var i=0; i< str.length/2; i++){
+
+        if(str[i] !== str[x]){
+            div = document.getElementById("massage")
+            h1 = document.createElement("h1")
+            h1.innerText= "is not a pal"
+            div.appendChild(h1)
+            return "d"
+        }
+        x--;
+
+    }
+    div = document.getElementById("massage")
+    h1 = document.createElement("h1")
+    h1.innerText= "is a pal"
+    div.appendChild(h1);
+    
+}
+    </script>
+</body>
+</html>
