@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+<div align="center" id="container">
+    First Number:<input type="number" min="1" max="100" id="first"><br><br>
+    Second Number:<input type="number" min="1" max="100" id="second"><br><br>
+    <button id="btn" onclick="oddOrEven()">Submit</button>
+
+</div>
+<div align="center" id="res">
+
+
+
+</div>
+
+<body>
+
+
+    <script>
+        function oddOrEven() {
+            document.querySelector("#res").innerHTML = "";
+            var first = Number(document.querySelector("#first").value);
+            var second = Number(document.querySelector("#second").value);
+            if ( second > first) {
+                for (var i = first; i <= second; i++) {
+                    if (i % 2 === 0)
+                        document.querySelector("#res").innerHTML += i + " is even <br><br>";
+                    else
+                        document.querySelector("#res").innerHTML += i + " is odd <br><br>";
+
+                }
+            }
+            else
+                document.querySelector("#res").innerHTML = "Error... the first number is larger then the second";
+        }
+
+    </script>
+</body>
+
+</html>
