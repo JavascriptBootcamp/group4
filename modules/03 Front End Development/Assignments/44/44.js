@@ -29,7 +29,7 @@ function creatBookEl(book){
     h = creatEl("h2","Author: "+book.author);
     div.appendChild(h);
 
-    h = creatEl("h3","Date: "+book.date.getDay()+"/"+book.date.getMonth()+"/"+book.date.getFullYear());
+    h = creatEl("h3","Date: "+book.date.getDate()+"/"+book.date.getMonth()+"/"+book.date.getFullYear());
     div.appendChild(h);
 
     h = creatEl("h4","Publisher: "+book.publisher);
@@ -50,7 +50,9 @@ function addBook(book) {
 }
 
 function addBookInput(formInput) {
-    var book = new Book(formInput.title.value, formInput.author.value, formInput.date.value, formInput.publisher.value,
+    var dateArr = formInput.date.value.split("-")
+    var date = new Date(Number(dateArr[0]), Number(dateArr[1]), Number(dateArr[2]));
+    var book = new Book(formInput.title.value, formInput.author.value, date, formInput.publisher.value,
         formInput.pages.value, formInput.comment.value);
 
     books.push(book);
@@ -67,11 +69,10 @@ function onPageInit() {
 
 function sortDisplay(userChoice) {
     if (userChoice.value=== "new") {
-        books.sort(function(a, b){return b.date.getFullYear() > a.date.getFullYear()});
-        console.log("new");
+        books.sort(function(a, b){return (a.date < b.date) ? 1:-1});
     }
     else if (userChoice.value=== "old") {
-
+        books.sort(function(a, b){return (a.date > b.date) ? 1:-1});
     }
 
     onPageInit();

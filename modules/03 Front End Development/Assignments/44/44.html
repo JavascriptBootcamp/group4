@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <h1>My Book List:</h1>
     <form onsubmit="addBookInput(this); return false;" id="addBook">
         <fieldset>
@@ -36,7 +35,8 @@
             <button type="submit">Add</button>
         </fieldset>
     </form>
-    <select onchange="sortDisplay(this)">
+    <label for="sortSelect">Sort by</label>
+    <select onchange="sortDisplay(this)" id="sortSelect">
         <option value="default"></option>
         <option value="new">Newest</option>
         <option value="old">Oldest</option>
