@@ -1,4 +1,4 @@
-<p>Use your answer from <code>group4/Modules/03 Front End Development/Assignments/01/README.md</code></p>
+<p>Use your answer from <code>group4/Modules/03 Front End Development/Assignments/01</code></p>
 
 <p>link a stylesheet named "linked.css" to the page. Set the page background color as dark blue inside that stylesheet.</p>
 
