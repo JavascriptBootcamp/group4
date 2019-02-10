@@ -1,0 +1,92 @@
+<html>
+<title>Images | Favorites</title>
+
+<head>
+  <style>
+    .pager {
+      cursor: pointer;
+      display: inline-block;
+      background-color: rgb(118, 118, 124);
+      color: white;
+      text-align: center;
+      width: 15px;
+      margin: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <form onsubmit="return false;">
+    <input type="text" id="imgUrl" placeholder="link to image">
+    <input type="text" id="linkUrl" placeholder="link to wikipedia">
+    <button id="add" onclick="addPicture()">Add</button>
+  </form>
+  <div id="pic"></div>
+  <div id="res"></div>
+  <script type="text/javascript">
+    var arr = [];
+    var maxImagesPerPage = 12;
+    function addPicture() {
+      var pages;
+      putInArray();
+      createPages();
+      displayImages(0);
+    }
+    function putInArray() {
+      var imgUrl = document.getElementById("imgUrl").value;
+      var linkUrl = document.getElementById("linkUrl").value;
+      var a = document.createElement("a");
+      var img = document.createElement("img");
+      a.href = linkUrl;
+      img.width = "200";
+      img.height = "100";
+      img.src = imgUrl;
+      a.appendChild(img);
+      arr.push(a);
+    }
+    function createPages() {
+      var counter = 0;
+      var res = document.getElementById("res");
+      res.innerHTML = "";
+      var len = arr.length;
+      var pages = Math.ceil(len / maxImagesPerPage);
+      for (var i = 0; i < pages; i++) {
+        var link = document.createElement("a");
+        link.id = "number" + counter;
+        link.className = "pager";
+        link.innerText = i;
+        link.onclick = displayImages;
+        res.appendChild(link);
+        counter++;
+      }
+    }
+    function displayImages(e) {
+      var page;
+      var len = arr.length;
+      var pages = Math.ceil(len / maxImagesPerPage);
+      var from;
+      var to;
+      var pic = document.getElementById("pic");
+      pic.innerHTML = "";
+      if (e === 0) {
+        for (var i = 0; i < maxImagesPerPage; i++) {
+          if (arr[i]) {
+            pic.append(arr[i]);
+          }
+        }
+      }
+      else {
+        page = e.target.innerText;
+        from = maxImagesPerPage * (page);
+        to = from + 12;
+        for (var i = from; i < to; i++) {
+          if (arr[i]) {
+            pic.append(arr[i]);
+          }
+        }
+      }
+    } 
+  </script>
+</body>
+
+</html>
