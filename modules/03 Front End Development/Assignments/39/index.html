@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <h1 align="center">Shopping Cart</h1>
+	<br>
+    <table align="center" border="2">
+        <tr>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Action</td>
+        </tr>
+		<tr>
+            <td id="">
+				<select  id="product">
+					<option id="option1" vlaue="ps2Console">ps2 Console</option>
+					<option id="option2" vlaue="keyboard">Keyboard</option>
+					<option id="option3" vlaue="screen">Screen</option>
+					<option id="option4" vlaue="dvd">Dvd</option>
+					<option id="option5" vlaue="boat">Boat</option>
+					<option id="option6" vlaue="Car">Car</option>
+					<option id="option7" vlaue="bus">Bus</option>
+					<option id="option8" vlaue="bicycle">Bicycle</option>
+					<option id="option9" vlaue="pizza">Pizza</option>
+					<option id="option10" vlaue="iceCream">Ice Cream</option>
+				</select>
+			</td>
+            <td><input type="number" id="price"></td>
+            <td><button id="addProduct" onclick="addProduct();">Add Product</button></td>
+        </tr>
+        <tr>
+		<td></td>
+		<td></td>
+        <td><button id="rmvProd" onclick="removeProduct();">Remove Product</button></td>
+        </tr>
+    </table>
+	<br><br><br><br>
+    <div align="center" id="calculation"></div>
+	<br><br>
+    <div align="center" id="payment">
+        <form id="myForm">
+            Credit Card Number: <input type="text" id="creditCardNumber"  placeholder="   -    -    -    " required><br><br>
+            Name:<input type="text" placeholder="first name" required><br><br>
+            Expire Date: <input type="date" required><br><br>
+            Security Code: <input type="password" placeholder="***" size="3" maxlength="3" required><br><br>
+            <input type="submit" onclick="checkCardValidation();">
+        </form>
+        <div id="notValidCardMessage"></div>
+    </div>
+    <script>
+        totalAmount = 0;
+        productsArr = [];
+        function addProduct() {
+            var product = document.getElementById("product").value;
+            var price = document.getElementById("price").value;
+            productObj = { productName: product, 
+						   productPrice: price 
+						 };
+            productsArr.push(productObj);
+            div = document.getElementById("calculation");
+            div.innerHTML = "";
+            for (var i = 0; i < productsArr.length; i++) {
+				var h4 = document.createElement("h4")
+                h4.innerHTML += productsArr[i].productName + " " + productsArr[i].productPrice + "<br>";
+				div.appendChild(h4)
+                totalAmount += Number(productsArr[i].productPrice);
+            }
+			var h4 = document.createElement("h4")
+			h4.innerHTML += "Total price is : " + totalAmount + " NIS";
+            div.appendChild(h4)
+            totalAmount = 0;
+        }
+        function removeProduct() {
+            productsArr.pop();
+            div.innerHTML = "";
+            for (var i = 0; i < productsArr.length; i++) {
+                var h4 = document.createElement("h4")
+                h4.innerHTML += productsArr[i].productName + " " + productsArr[i].productPrice + "<br>";
+				div.appendChild(h4)
+                totalAmount += Number(productsArr[i].productPrice);
+            }
+			var h4 = document.createElement("h4")
+			h4.innerHTML += "Total price is : " + totalAmount + " NIS";
+            div.appendChild(h4)
+            totalAmount = 0;
+        }
+        function checkCardValidation() {
+            var strCreditCardNumber = document.getElementById("creditCardNumber").value;
+            var str = "";
+            var sum = 0;
+            for (var i = 0; i < strCreditCardNumber.length; i++) {
+                if (i === 4 || i === 9 || i === 14) {
+                    if (strCreditCardNumber[i] !== '-') {
+                        str += "Must Contain Dashes <br>";
+                    }
+                }
+            }
+            var arrCreditNumber = strCreditCardNumber.replace(/-/g, '').split('');
+            if (arrCreditNumber.length != 16)
+                str += "Wrong length <br>";
+            var isAllNumbers = arrCreditNumber.every(function (item) {
+                return !isNaN(item);
+            });
+            if (!isAllNumbers)
+                str += "All must be numbers <br>";
+            var isNotDiffNumbers = arrCreditNumber.every(function (item) {
+                return arrCreditNumber[0] === item;
+            });
+            if (isNotDiffNumbers)
+                str += "Must be different digits <br>";
+            if (Number(arrCreditNumber[arrCreditNumber.length - 1]) % 2 !== 0)
+                str += "Final digit must be even <br>";
+            for (var i = 0; i < arrCreditNumber.length; i++) {
+                var num = Number(arrCreditNumber[i]);
+                sum += num;
+                if (i === arrCreditNumber.length - 1 && sum < 16)
+                    str += "The sum must be greater than 16 <br>";
+            }
+            if (str) {
+                var notValidCard = document.getElementById("notValidCardMessage");
+				var h4 = document.createElement("h4")
+				h4.innerHTML = "NOT VALID CARD: <br> " + str;
+                notValidCard.appendChild(h4);
+            }
+            else {
+                document.getElementById("myForm").method = "POST";
+                document.getElementById("myForm").action = "http://localhost:3000/Order";
+            }
+        }
+    </script>
+</body> 
+
+</html>
