@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>37</title>
+</head>
+
+<body>
+    <input type="range" id="range" min="10" max="200">
+    <button onclick="checkBP()">Click</button>
+    <script>
+        function checkBP() { 
+            var newDiv = document.createElement("div");
+            var bloodPressure = document.getElementById("range").value;
+            var isNormal = false;
+            (bloodPressure >= 80 && bloodPressure <= 120) ? isNormal = true : isNormal;
+            newDiv.innerHTML = "blood pressure is normal? " + isNormal;
+            (bloodPressure <= 80 || bloodPressure >= 120) ? isNormal : isNormal = true;
+            newDiv.innerHTML = "blood pressure is normal? " + isNormal;
+            document.body.appendChild(newDiv);
+        }
+    </script>
+</body>
+
+</html>
