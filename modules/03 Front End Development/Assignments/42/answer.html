@@ -10,7 +10,7 @@
 
 <body>
     <div id="forms">
-        <form action="">
+        <form action="" >
             <input type="text" name="" id="ip_title" placeholder="title">
             <select name="" id="ip_uploader">
                 <option value="Daniel">Daniel</option>
@@ -18,20 +18,29 @@
                 <option value="Nadav">Nadav</option>
             </select>
             <input type="number" name="" id="ip_seconds" min="0" placeholder="seconds">
-            <button onclick="watch()" onsubmit="return false">Watch</button>
+            <button onclick="watch(event)">Watch</button>
         </form>
     </div>
-    <button onclick="addForm()">Plus</button>
+    <button onclick="addForm()">Plus</button><br>
+    <button onclick="watchAll()">Watch All</button>
+    <div id="books_messages"></div><br>
+    <div id="all_books_message"></div>
 
 
     <script>
+        var allWatched = ''
         var allVideos = new Array();
-        function watch() {
-            console.log(this);
-            //e.preventDefault();
-             var title = this.querySelector('#ip_title').value;
-             var uploader = this.querySelector("#ip_uploader");
-             var seconds = this.querySelector('#ip_seconds').value;
+
+        function watchAll(){
+            document.getElementById("all_books_message").innerHTML = allWatched;
+        }
+
+        function watch(e) {
+            e.preventDefault();
+            var currentNode = e.target.parentNode;
+            var title = currentNode[0].value;
+            var uploader = currentNode[1].selectedIndex;
+            var seconds = currentNode[2].value;
             var video = new Video(title, uploader, seconds);
 
             video.watch();
@@ -50,10 +59,13 @@
                 } catch (error) {
                     message = "Oops... An error occured";
                 }
+                var divMessages = document.getElementById("books_messages");
                 var divMessage = document.createElement('div');
                 divMessage.innerText = message;
 
-                document.body.appendChild(divMessage);
+                allWatched += message + '<br>';
+
+                divMessages.appendChild(divMessage);
 
             }
 
@@ -68,8 +80,8 @@
                 var uploader2 = document.createElement("option");
                 var watchButton = document.createElement("button");
 
-                uploader1.textContent = "Daniel";
-                uploader2.textContent = "Uriel";
+                uploader1.textContent = "Michal";
+                uploader2.textContent = "Yael";
 
                 uploaders.appendChild(uploader1);
                 uploaders.appendChild(uploader2);
@@ -82,7 +94,7 @@
                 seconds.min = 0;
 
                 watchButton.textContent = "Watch";
-                watchButton.onclick= watch.bind(form);
+                watchButton.onclick= watch;
 
                 form.appendChild(title);
                 form.appendChild(uploaders);
