@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shoping List</title>
 </head>
-<body>
+<body align='center'>
     <div align='center' ><h1 id="pricedisplay">Total Price: 0$</h1></div>
     <table id="myTable" align='center' border='1'>
         <col width="130">
@@ -31,6 +31,18 @@
             <th><input type="submit" value="Add item" onclick="InsertRowToTable(); return false;"></th>
         </tr>
     </table>
+    <h1 align='center'>Pay Now</h1>
+    <div align='center'> 
+            
+        <form>
+                <br><input type="number" placeholder="Card Number" >
+                <br><input type="date" placeholder="Expiry dater" >
+                <br><input type="number" placeholder="Security code" >
+                <br><input type="submit" id="sub" >
+                <input type="reset" id="sub" >
+
+        </form>
+    </div >
     <script src="script.js"></script>
 </body>
 </html>
