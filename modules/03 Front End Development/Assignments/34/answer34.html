@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10 words and sort</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" placeholder="enter word 1"><br />
+        <input type="text" placeholder="enter word 2"><br />
+        <input type="text" placeholder="enter word 3"><br />
+        <input type="text" placeholder="enter word 4"><br />
+        <input type="text" placeholder="enter word 5"><br />
+        <input type="text" placeholder="enter word 6"><br />
+        <input type="text" placeholder="enter word 7"><br />
+        <input type="text" placeholder="enter word 8"><br />
+        <input type="text" placeholder="enter word 9"><br />
+        <input type="text" placeholder="enter word 10"><br />
+        <input type="submit" value="remove duplcate, sort and display" onclick="engin(); return false;"><br />
+
+    </form>
+    <div id="display"></div>
+    <script>
+        function engin() {
+            function removeDuplcate(arr){
+                var temp = [];
+                var n = arr.length;
+                for (var i=0; i<n ; i++){
+                    if (!temp.includes(arr[i])){
+                        temp.push(arr[i]);
+                    }
+                }
+                return temp.sort().join(' ');
+            }
+            var input = document.getElementsByTagName('input');
+            var words = [] 
+            for (var i=0 ; i<input.length-1; i++){
+                words.push(input[i].value);
+            }
+            var display = document.getElementById('display');
+            display.innerText = removeDuplcate(words);
+        }
+    </script>
+</body>
+</html>
