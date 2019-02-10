@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 44</title>
+    <style>
+        #header {
+            text-align: center;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        #sidebar {
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #content {
+            text-align: center;
+            margin: auto;
+        }
+
+        .book {
+            border-style: solid;
+            border-width: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Fav Books</h1>
+    </div>
+    <div id="container">
+        <div id="sidebar">
+            <form action="#" onsubmit="return addbook(event);">
+                <fieldset>
+                    <h2>Add Book</h2>
+                    <input type="text" id="title" placeholder="title" required><br><br>
+                    <input type="text" id="author" placeholder="author" required><br><br>
+                    <input type="date" id="date" required><br><br>
+                    <input type="text" id="publisher" placeholder="publisher" required><br><br>
+                    <input type="number" id="pages" placeholder="pages" min="1" max="2000" required><br><br>
+                    <textarea id="comments" placeholder="comments" cols="30" rows="5" required></textarea><br><br>
+                    <button type="submit">ADD</button>
+                </fieldset>
+            </form>
+            <br>
+            <select id="order" onchange="orderBooks(event)">
+                <option disabled selected>select order</option>
+                <option value="1">oldest to newest</option>
+                <option value="2">newest to oldest</option>
+            </select>
+        </div>
+        <div id="content">
+            <div id=books></div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+
+    <script>
+        var myBooks = [
+            {
+                title: "IT", author: "Stephen King", date: "1986-09-15", publisher: "Viking", pages: 1138, comments: "perfect author, perfect book.",
+                innerHTML: function () {
+                    return "<h2>Title: " + this.title + "</h2><h3>Author: " + this.author + "</h3><h4>Date: " + this.date + "</h4><h5>Publisher: " + this.publisher + "</h5><h5>Pages: " + this.pages + "</h5><p>Comments: " + this.comments + "</p>"
+                }
+            },
+            {
+                title: "The Dark Tower: The Gunslinger", author: "Stephen King", date: "1982-06-10", publisher: "Grant", pages: 300, comments: "perfect author, perfect series.",
+                innerHTML: function () {
+                    return "<h2>Title: " + this.title + "</h2><h3>Author: " + this.author + "</h3><h4>Date: " + this.date + "</h4><h5>Publisher: " + this.publisher + "</h5><h5>Pages: " + this.pages + "</h5><p>Comments: " + this.comments + "</p>"
+                }
+            },
+            {
+                title: "The Dark Tower Book II: The Drawing of the Three", author: "Stephen King", date: "1987-05-10", publisher: "Grant", pages: 463, comments: "perfect author, perfect series.",
+                innerHTML: function () {
+                    return "<h2>Title: " + this.title + "</h2><h3>Author: " + this.author + "</h3><h4>Date: " + this.date + "</h4><h5>Publisher: " + this.publisher + "</h5><h5>Pages: " + this.pages + "</h5><p>Comments: " + this.comments + "</p>"
+                }
+            },
+            {
+                title: "The Dark Tower III: The Waste Lands", author: "Stephen King", date: "1991-08-10", publisher: "Grant", pages: 512, comments: "perfect author, perfect book.",
+                innerHTML: function () {
+                    return "<h2>Title: " + this.title + "</h2><h3>Author: " + this.author + "</h3><h4>Date: " + this.date + "</h4><h5>Publisher: " + this.publisher + "</h5><h5>Pages: " + this.pages + "</h5><p>Comments: " + this.comments + "</p>"
+                }
+            },
+            {
+                title: "The Dark Tower IV: Wizard and Glass", author: "Stephen King", date: "1986-11-04", publisher: "Grant", pages: 787, comments: "perfect author, perfect book.",
+                innerHTML: function () {
+                    return "<h2>Title: " + this.title + "</h2><h3>Author: " + this.author + "</h3><h4>Date: " + this.date + "</h4><h5>Publisher: " + this.publisher + "</h5><h5>Pages: " + this.pages + "</h5><p>Comments: " + this.comments + "</p>"
+                }
+            }
+        ];
+        var books = document.getElementById("books");
+        showBook();
+
+        function Book(title, author, date, publisher, pages, comments) {
+            var title = title;
+            var author = author;
+            this.date = date;
+            var publisher = publisher;
+            var pages = pages;
+            var comments = comments;
+            this.innerHTML = function () {
+                return "<h2>Title: " + title + "</h2><h3>Author: " + author + "</h3><h4>Date: " + this.date + "</h4><h5>Publisher: " + publisher + "</h5><h5>Pages: " + pages + "</h5><p>Comments: " + comments + "</p>";
+            }
+        }
+        function addbook(e) {
+            var inputs = e.target;
+            var book = new Book(inputs.title.value, inputs.author.value, inputs.date.value, inputs.publisher.value, inputs.pages.value, inputs.comments.value);
+            books.appendChild(createDivBook(book));
+            myBooks.push(book);
+            e.preventDefault();
+        }
+        function createDivBook(book) {
+            var newBookDiv = document.createElement("div");
+            newBookDiv.className = "book";
+            newBookDiv.innerHTML = book.innerHTML();
+            return newBookDiv;
+        }
+        function orderBooks(e) {
+            var value = e.target.value;
+
+            if (value === "1") {
+                myBooks.sort(function (a, b) {
+                    return new Date(a.date) - new Date(b.date);
+                });
+            }
+            else {
+                myBooks.sort(function (a, b) {
+                    return new Date(b.date) - new Date(a.date);
+                });
+            }
+            showBook();
+        }
+        function showBook() {
+            books.innerHTML = "";
+
+            for (var i = 0; i < myBooks.length; i++) {
+                books.appendChild(createDivBook(myBooks[i]));
+            }
+
+        }
+    </script>
+</body>
+
+</html>
