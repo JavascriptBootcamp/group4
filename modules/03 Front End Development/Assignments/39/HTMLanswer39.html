@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shoping List</title>
+</head>
+<body>
+    <div align='center' ><h1 id="pricedisplay">Total Price: 0$</h1></div>
+    <table id="myTable" align='center' border='1'>
+        <col width="130">
+        <col width="130">
+        <col width="130">
+        <tr>
+            <th><h1>Product</h1></th>
+            <th><h1>Price</h1></th>
+            <th><h1>Action</h1></th>
+        </tr>
+        <tr>
+            <th>
+                <select id="item_name" required>
+                    <option value="" selected disabled hidden>Choose Item</option>
+                    <option value="house">house</option>
+                    <option value="car">car</option>
+                    <option value="plain">plain</option>
+                </select>
+
+            </th>
+            <th><input id="item_price" type="number" min='1' max="100000000" placeholder="item price" required></th>
+            <th><input type="submit" value="Add item" onclick="InsertRowToTable(); return false;"></th>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
