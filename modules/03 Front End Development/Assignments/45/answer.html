@@ -1,0 +1,118 @@
+<html>
+ <head>
+        <title>Images | Favorites</title>
+</head>
+
+ <body>
+  <form onsubmit="return false;">
+    <input type="text" id="imgUrl" placeholder="link to image" required>
+    <input type="text" id="linkUrl" placeholder="link to wikipedia" required>
+    <button id="add" onclick="addPicture()">Add</button><br>
+
+  </form>
+  <!-- <div id="pictures"></div> -->
+  <div id="resources"></div>
+  <div  id="div_page_count"></div>
+
+  <script type="text/javascript">
+
+    var imageLinks = new Array();
+    var wikipediaLinks = new Array();
+    var imagesCount = 0;
+    var pageCount = 0;
+    var currentPage = 1;
+
+    function addPicture(){
+        var image = document.getElementById('imgUrl').value;
+        var resource = document.getElementById('linkUrl').value;
+        if(!image || !resource){
+            return;
+        }
+        imagesCount++;
+
+        imageLinks.push(image);
+        wikipediaLinks.push(resource);
+
+        if(imagesCount % 12 === 1){
+            pageCount++;
+            var pageButton = document.createElement("button");
+            pageButton.value = pageCount;
+            pageButton.textContent = pageCount;
+            pageButton.id = "page_button_" + pageCount;
+            pageButton.onclick = changePage.bind(null,pageCount);
+            pageButton.style.color = "red";
+            document.getElementById("div_page_count").appendChild(pageButton);
+            changePage(pageCount);
+        }
+        else{
+            drawImage(imagesCount-1);
+        }
+    }
+
+    function setPageButtonDisabled(buttonId){
+        console.log(document.querySelector("#" + buttonId));
+        document.querySelector("#" + buttonId).style.disabled = false;
+    }
+
+    function setPageButtonsEnabled(){
+        for(var i=0; i< pageCount; i++){
+            console.log(pageCount,"#" + "page_button_" +(i+1));
+            document.querySelector("#" + "page_button_" + (i+1)).style.disabled = true;
+        }
+    }
+
+        function changePage(pCount){
+            console.log(currentPage,pCount);
+            setPageButtonsEnabled();
+            setPageButtonDisabled("page_button_" + pCount);
+            if(currentPage !== pCount){
+                clearPageData();
+                var toImageIndex = pCount * 12 < imagesCount ? pCount * 12 : imagesCount;
+                for(var i=(pCount-1)*12; i< toImageIndex; i++){
+                    drawImage(i);
+                }
+            }
+            else if(this !== null){
+                drawImage(imagesCount -1);
+            }
+            currentPage = pCount;
+        }
+
+        function drawImage(imageIndex){
+            var divImages = document.getElementById("pictures");
+            var divResources = document.getElementById("resources");
+
+            var image = document.createElement("img");
+            var resource = document.createElement("a");
+
+            image.src = imageLinks[imageIndex];
+            image.width = "300";
+            image.height = "200";
+            resource.href = wikipediaLinks[imageIndex];
+
+            resource.appendChild(image);
+            resource.target = "_blank";
+            //divImages.appendChild(image);
+            divResources.appendChild(resource);
+        }
+
+        function clearPageData(){
+            //var divPictures = document.getElementById("pictures");
+            var divResources = document.getElementById("resources");
+
+            console.log(divResources);
+
+            //removeChildNodes(divPictures);
+            removeChildNodes(divResources);
+        }
+
+        function removeChildNodes(node) {
+            while (node.hasChildNodes()) {
+                node.removeChild(node.lastChild);
+            }
+    }
+
+  </script>
+</body>
+
+ </html> 
