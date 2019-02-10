@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="str" value="Mouse"><br><br>
+        <input type="submit" onclick="removedup()" value="Submit">
+      </form>
+      <div id="message"></div>
+<script>
+function removedup(){
+
+    str = document.getElementById("str").value;
+    strArr = str.split(" ");
+    strArr.sort();
+    var ans = ""
+    for(var i=0;i<strArr.length;i++){
+        ans+=" "+strArr[i];
+    }
+    var removedup = [...new Set(str)];
+    var div = document.getElementById("message");
+    var h6 = document.createElement(h6);
+    h6.innerText=ans;
+    div.appendChild(h6);
+
+}
+</script>
+
+</body>
+</html>
