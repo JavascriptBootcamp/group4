@@ -1,0 +1,15 @@
+body {
+    background-color: lightgray
+}
+a > img {
+    border-color: darkgreen;
+    border-width: 3px;
+    border-style: solid;
+}
+#wrapper img {
+    border-color: darkred;
+    border-width: 2px;
+    border-style: solid;
+}
+
+
