@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>l Books | Favorites</title>
+    <style>
+        form {
+            font-size: 20px;
+        }
+    .book {
+background-color:honeydew;
+    }
+
+    .newbook {
+        background-color: antiquewhite
+    }
+
+    input,label {
+      margin: 10px;
+      padding: 5px;
+      font-size: 20px;
+    }
+
+p {
+    font-size: 20px;
+}
+
+.book:hover {
+    background-color:chocolate;
+    color: white;
+    }
+    </style>
+</head>
+
+<body dir="rtl">
+
+    <div id="myBooks">
+
+        <h1>My Top Books</h1>
+
+        <label for="">Sort Books BY</label>
+        <select name="typeOrder" id="typeOrder" onchange="sortDate()" value="">
+            <option value=""></option>
+            <option value="acs">oldest to newest </option>
+            <option value="des"> newest to oldest</option>
+        </select>
+
+        <h3> <a href="#addBook">Add new book </a> </h3>
+        <div id="selectedBooks">
+
+            <div class="book">
+                <h1>המשחק של אנדר</h1>
+                <h2>אורסון סקוט קארד</h2>
+                <h2>1985</h2>
+                <h2>הוצאת אופס</h2>
+                <h2>308</h2>
+                <p>אין לי מה לחפור על הספר כי אפשר להגיד עליו הכל במשפט אחד:
+
+                    אחד הספרים (ובכללי הסדרה) הטובים ביותר שקראתי אם לא הכי טוב.</p>
+            </div>
+            <div class="book">
+                <h1> צד שמאל של החושך
+                </h1>
+                <h2> אורסולה לה-גווין</h2>
+                <h2>2005</h2>
+                <h2>ינשוף </h2>
+                <h2> 352</h2>
+                <p>"צד שמאל של החושך" כל כך נקי ומזוקק, עמוק ומרחיק לכת, עד שכמעט ולא היה לי זמן לבחון אותו מכל צדדיו
+                    כי
+                    נסחפתי פנימה.
+
+                    איזה כיף זה היה.</p>
+            </div>
+            <div class="book">
+                <h1> חולית</h1>
+                <h2>פרנק הרברט</h2>
+                <h2>1997</h2>
+                <h2>עם עובד</h2>
+                <h2>644</h2>
+                <p>חולית הוא ספר מד"ב שפורץ את גבולות הז'אנר לכוון אחר - מרתק ומיוחד שהפכו אותו לספר מעולה בעשיריה
+                    הראשונה
+                    של המד"ב מאז ומעולם. </p>
+            </div>
+
+            <div class="book">
+                <h1> היפריון</h1>
+                <h2> דן סימונס</h2>
+                <h2>1999</h2>
+                <h2> הוצאת אופוס</h2>
+                <h2>444</h2>
+                <p>עלילת הספר מרתקת וסוחפת, יפה איך סיפורי הדמויות- נובלות עצמאיות, שלכאורה אינן קשורות, נשזרות זו בזו
+                    בסופו של דבר ונטמעות בסיפור המרכזי בצורה שאינה מאפשרת לעזוב את הספר.</p>
+            </div>
+
+
+            <div class="book">
+                <h1>המוסד השמיימי</h1>
+                <h2> אייזק אסימוב</h2>
+                <h2>1951</h2>
+                <h2> עם עובד</h2>
+                <h2> 300</h2>
+                <p>אולי זה קצת קלישאתי, אבל הספר הזה, שיצא בשנת 1951 ותורגם לעברית בשנת 1978 הצית לבבות של מיליוני
+                    קוראים
+                    ברחבי העולם, ועורר תהייה לגבי גלקסיות רחוקות הרבה לפני מלחמת הכוכבים</p>
+            </div>
+
+        </div>
+
+        <div id="addBook">
+            <form action="">
+                <fieldset>
+                    <legend> Add Favorite Book </legend>
+
+                    <table>
+                    </table>
+                    <label for="title">Title: </label>
+                    <input type="text" name="title" id="title"> <br />
+
+                    <label for="authors">Authors: </label>
+                    <input type="text" name="authors" id="authors"><br />
+
+                    <label for="publishedDate">Published Date : </label>
+                    <input type="number" min="1900" max="2099" step="1" name="publishedDate" id="publishedDate"><br />
+
+                    <label for="publishers">Publishers</label>
+                    <input type="text" name="publishers" id="publishers"><br />
+
+                    <label for="">Page Count: </label>
+                    <input type="text" name="pageCount" id="pageCount"><br />
+
+                    <label for="comments">Comments : </label><br />
+                    <textarea name="comments" id="comments" cols="50" rows="10" placeholder="write your comments about the book">
+
+              </textarea><br />
+                    <input type="button" value="Add To Favorites Books" onclick="addBook()">
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        function addBook() {
+
+            document.querySelector("#selectedBooks").innerHTML += `
+                <div class ="book newbook">
+                <h1>${document.querySelector("#title").value}</h1>
+                 <h2>${document.querySelector("#authors").value}</h2>
+                 <h2>${document.querySelector("#publishedDate").value}</h2>
+                 <h2>${document.querySelector("#publishers").value}</h2>
+                 <h2>${document.querySelector("#pageCount").value}</h2>
+                 <p>${document.querySelector("#comments").value}</p>
+                 </div> `
+        }
+
+
+
+
+
+        function sortDate() {
+
+            var sortTypeChioce = document.querySelector("#typeOrder").value;
+
+            var favoriteBooks = document.querySelectorAll(".book");
+            var allBooks = document.querySelector("#selectedBooks");
+            var favoriteBooksArr = Array.from(favoriteBooks);
+
+            var _a;
+            var _b;
+
+            //console.log(favoriteBooksArr[0]);
+            var sortedVal = favoriteBooksArr.sort(function (a, b) {
+                _a = Number(a.children[2].innerHTML);
+                _b = Number(b.children[2].innerHTML);
+
+                if (sortTypeChioce === "acs")
+                    return _a - _b;
+                if (sortTypeChioce === "des")
+                    return _b - _a;
+                return 0;
+            });
+
+
+
+            allBooks.innerHTML = "";
+            sortedVal.forEach(function (val, index) {
+
+                allBooks.innerHTML += `<div class = "book"> ${val.innerHTML} </div> `;
+            });
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
