@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>38</title>
+</head>
+
+<body>
+    <form>
+        <label for="colors">
+            My favorite colors:
+        </label>
+        <select id="colors">
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+            <option value="black">black</option>
+            <option value="red">red</option>
+        </select>
+        <button onclick="addFav(event)">Add</button>
+    </form>
+    <ol id="olList"></ol>
+    <script>
+        var count = 0;
+        function addFav(event) {
+            event.preventDefault();
+            var listFavorits = document.getElementById("colors");
+            var li = document.createElement("li");
+            count++;
+            li.innerText = 'My ' + (count) + switchSuffix(count) + ' choice is ' + listFavorits.value;
+            document.getElementById("olList").appendChild(li);
+            function switchSuffix(num) {
+                switch (num) {
+                    case 1:
+                        return 'st'
+                    case 2:
+                        return 'nd'
+                    case 3:
+                        return 'rd';
+                    case 4:
+                        return 'th';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
