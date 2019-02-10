@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Up me to Upper Case</title>
+</head>
+
+<body>
+        <div align="center" id="toUpper">
+          Enter input:<input type="text" id="input" oninput="toUpper(event)">
+    
+    
+        </div>
+        <script>
+                        ABC = {
+                'a': 'A', 'b': 'B', 'c': 'C', 'd':'D', 'e':'E', 'f':'F', 'g':'G','h':'H',
+                'i':'I', 'j':'J', 'k':'K', 'l':'L', 'm':'M','n':'N','o':'O','p':'P', 'q':'Q',
+                'r':'R', 's':'S','t':'T','u':'U','v':'V','w':'W','x':'X', 'y':'Y','z':'Z'
+            }
+        function toUpper(e){
+        var regExp = /^[a-z]/;
+        if(regExp.test(e.data) && e.data != null){
+                console.log("hi");
+                var value = document.querySelector("#input").value;
+                sVal = value.split('');
+                var last = sVal.splice(sVal.length - 1 , 1);
+                value = sVal.join('');
+                value += ABC[last];
+                setTimeout(function(){
+                    document.querySelector("#input").value = value;
+                }, 150);
+            }
+        }
+        </script>
+    </body>
+    </html> 
