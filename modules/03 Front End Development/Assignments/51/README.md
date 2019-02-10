@@ -1,4 +1,4 @@
-<p>use your answer from <code>group4/Modules/03 Front End Development/Assignments/08/README.md</code><p>
+<p>use your answer from <code>group4/Modules/03 Front End Development/Assignments/08</code><p>
 <p>set the background image using CSS instead of using HTML.</p>
 <p>
 use attibute selectors in order to:
