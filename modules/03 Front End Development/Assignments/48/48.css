@@ -1,0 +1,11 @@
+body {
+    background: lightgray;
+}
+
+#wrapper img {
+    border: 2px solid darkred; 
+}
+
+a > img {
+    border: 3px solid darkgreen; 
+}
