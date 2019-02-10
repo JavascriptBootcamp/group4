@@ -1,0 +1,24 @@
+<html>
+        
+        <head>
+            <title>"Images | Favorites"</title>
+            <link rel="stylesheet" href="45.css">
+        </head>
+        <body>
+            <form onsubmit="addPic(this);return false;">
+                <h3>Add pictuer:</h3>
+                <div>
+                    <label for="url">Imag URL:</label>
+                    <input type="text"  id="url" required>
+
+                    <label for="wiki">Wikipedia URL:</label>
+                    <input type="text" id="wiki" required>
+                </div>
+                <button type="submit">Add</button>
+            </form>
+
+            <div id="pics"></div>
+
+        <script src="45.js"></script>
+        </body>
+</html>
