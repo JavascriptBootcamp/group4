@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TickTakTow</title>
+</head>
+
+<body>
+    <h1 align='center' id="player">Player 1</h1>
+    <p align='center'>
+        <table align='center' width='30%'>
+            <tr>
+                <td>
+                    <form>
+                        <input type=submit id='00' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=submit id='01' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=submit id='02' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form>
+                        <input type=submit id='10' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=submit id='11' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=submit id='12' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form>
+                        <input type=submit id='20' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=submit id='21' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=submit id='22' value="" style="width:100%" onclick="game(this.id); return false;">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </p>
+    <br>
+    <div id="newgamediv" align='center'><input type=submit align="center" id='newgamesubmit' value="New Game" onclick="window.location.reload(false)"></div>
+    <script>
+        var mat = [[false, false, false],[false, false, false],[false, false, false]];
+        var player = true; 
+        var bit2char = {0:'X',1:'O'};
+        var char2bit = {'X':0,'O':1};
+        var bit2num = {true:1 ,false:2};
+        var endgame;
+        var win;
+        // get bool return playyer number (true=1, false=2) 
+        function getPlayerNumber(player) {
+            if (player) {
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+        // test if there is a win
+        function win(mat) {
+            var row1 = mat[0][0] !== false &&  ((mat[0][0] === mat[0][1]) && (mat[0][1] === mat[0][2]));
+            var row2 = mat[1][0] !== false &&  ((mat[1][0] === mat[1][1]) && (mat[1][1] === mat[1][2]));
+            var row3 = mat[2][0] !== false &&  ((mat[2][0] === mat[2][1]) && (mat[2][1] === mat[2][2]));
+            var col1 = mat[0][0] !== false &&  ((mat[0][0] === mat[1][0]) && (mat[1][0] === mat[2][0]));
+            var col2 = mat[0][1] !== false &&  ((mat[0][1] === mat[1][1]) && (mat[1][1] === mat[2][1]));
+            var col3 = mat[0][2] !== false &&  ((mat[0][2] === mat[1][2]) && (mat[1][2] === mat[2][2]));
+            var crs1 = mat[0][0] !== false &&  ((mat[0][0] === mat[1][1]) && (mat[1][1] === mat[2][2]));
+            var crs2 = mat[0][2] !== false &&  ((mat[0][2] === mat[1][1]) && (mat[1][1] === mat[2][0]));
+            return row1 || row2 || row3 || col1 || col2 || col3 || crs1 || crs2;
+        }
+        //test the matrix to see if game over (checks empty cells)
+        function gameOver(mat){
+            var n = 3;
+            for (var i=0; i<n ; i++){
+                for (var j=0; j<n ; j++){
+                    if (mat[i][j] === false) return false;
+                }
+            }
+            return true;
+        }
+        function game(clicked_id){
+            if (mat[parseInt(clicked_id[0])][parseInt(clicked_id[1])]===false){
+                mat[parseInt(clicked_id[0])][parseInt(clicked_id[1])] = getPlayerNumber(player);
+                document.getElementById(clicked_id).value = bit2char[getPlayerNumber(player)];
+                if(win(mat)) {
+                    document.getElementById('player').innerText = 'Player '+bit2num[player]+" WON!!!!!!!";
+                    return false;
+                }
+                else if(gameOver(mat)){ 
+                    document.getElementById('player').innerText = " GAME OVER!!!!!!!";
+                    return false;
+                }
+                else {
+                    player = !player; 
+                    document.getElementById('player').innerText = 'Player '+ bit2num[player];
+                    return false;
+                }
+            }
+            
+        }
+        </script>
+</body>
+
+</html>
