@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>34</title>
+</head>
+
+<body>
+    <input type="text" id="text1"><br>
+    <input type="text" id="text2"><br>
+    <input type="text" id="text3"><br>
+    <input type="text" id="text4"><br>
+    <input type="text" id="text5"><br>
+    <input type="text" id="text6"><br>
+    <input type="text" id="text7"><br>
+    <input type="text" id="text8"><br>
+    <input type="text" id="text9"><br>
+    <input type="text" id="text10"><br>
+    <button onclick="sortNotDup()">Sumbit</button>
+
+    <script>
+        function sortNotDup() {
+            var newDiv = document.createElement("div");
+            var arr = [];
+            var words = document.getElementsByTagName("input");
+            for (var i = 0; i < words.length; i++) {
+                if (!arr.includes(words[i].value)) {
+                    arr.push(words[i].value);
+                }
+            }
+            newArr = arr.sort();
+            newDiv.innerHTML = newArr;
+            document.body.appendChild(newDiv);
+        }
+    </script>
+</body>
+
+</html>
