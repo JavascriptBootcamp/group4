@@ -71,8 +71,6 @@
     var isAsc = true;
 
     setConstBooks();
-    booksArray = booksArray.concat(constBooks);
-    sort(isAsc);
 
     function Book(title, authors, pDate, publishers, pageCount, comments) {
         this.title = title;
@@ -85,20 +83,18 @@
 
     // Excecute only on start page
     function setConstBooks(){
-        var titles = document.getElementsByTagName('h1');
-        var authors = document.getElementsByTagName('h2');
-        var pDates = document.getElementsByTagName('h3');
-        var publishers = document.getElementsByTagName('h4');
-        var pageCounts = document.getElementsByTagName('h5');
-        var comments = document.getElementsByTagName('p');
-
-        console.log(authors[0].textContent);
+        var bookContentNode = document.getElementById("contentBooks");
+        var titles = bookContentNode.getElementsByTagName('h1');
+        var authors = bookContentNode.getElementsByTagName('h2');
+        var pDates = bookContentNode.getElementsByTagName('h3');
+        var publishers = bookContentNode.getElementsByTagName('h4');
+        var pageCounts = bookContentNode.getElementsByTagName('h5');
+        var comments = bookContentNode.getElementsByTagName('p');
 
         for(var i=0;i<titles.length;i++){
             var title = titles[i].textContent;
             var _authors = authors[i].textContent;
-            console.log(i,titles[i].textContent);
-            var pDate = pDates[i].value;
+            var pDate = pDates[i].textContent;
             var _publishers = publishers[i].textContent;
             var pageCount = pageCounts[i].textContent;
             var _comments = comments[i].textContent;
@@ -124,14 +120,11 @@
         var book = new Book(title, authors, pDate, publishers, pageCount, comments);
         var bookNode = createBookNode(book);
 
-        //var bookObj = getBookObj(bookNode);
         var name = book.title;
         var publishDate = book.pDate;
 
         booksDict[publishDate + name] = book;
         booksKey.push(publishDate + name);
-
-        console.log(bookNode,book);
 
         sort(isAsc);
     }
@@ -140,22 +133,15 @@
     function sort(ascOrDesc) {
         var selected = document.getElementById('ascOrDesc').value;
         isAsc = (selected === 'oldest to newest' ? true : false);
-        console.log(isAsc)
         booksKey = booksKey.sort();
         if (!isAsc) {
             booksKey = booksKey.reverse();
         }
-
-        console.log(booksArray);
         clearArray(booksArray);
-        booksArray = booksArray.concat(constBooks);
 
         booksKey.forEach(element => {
             booksArray.push(booksDict[element]);
         });
-
-
-        console.log(booksArray);
 
         var divBooksContent = document.getElementById("contentBooks");
         removeChildNodes(divBooksContent);
@@ -166,8 +152,6 @@
     function fillPage() {
         var divBooksContent = document.getElementById("contentBooks");
         booksArray.forEach(element => {
-            console.log(element);
-            console.log(createBookNode(element));
             divBooksContent.appendChild((createBookNode(element)));
         });
 
