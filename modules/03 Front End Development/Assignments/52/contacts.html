@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+    <h1>DMail</h1>
+    <div id="leftMenu">
+        <ul>
+            <li><a href="inbox.html">Inbox</a></li>
+            <li><a href="sent.html">Sent</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+    </div>
+    <div id="MainArea">
+        <div>
+            <table id="contact-links">
+                <tr>
+                    <td>
+                        <a data-contact="0" class="contact">contact 1</a>
+                        <a data-contact="1" class="contact">contact 2</a>
+                        <a data-contact="2" class="contact">contact 3</a>
+                        <a data-contact="3" class="contact">contact 4</a>
+                        <a data-contact="4" class="contact">contact 5</a>
+                    </td>
+                </tr>
+            </table>
+            <table id="contact-table">
+                <tr class="tr-contact">
+                    <th id="first-name-header" class="theader">first name</th>
+                    <th id="last-name-header" class="theader">last name</th>
+                    <th id="email-header" class="theader">email</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>

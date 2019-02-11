@@ -1,0 +1,90 @@
+body{
+    background-color: lightgrey;
+}
+ul,li{
+    margin:0;
+    padding: 0;
+    text-align: center
+}
+a{
+    color:darkblue;
+}
+a:active{
+    color:darkgreen;
+}
+a:hover{
+    font-weight: 900;
+}
+h1{
+    text-align: center;
+    background-color: #000;
+    color:#FFF;
+    padding:10px;
+}
+h2{
+    color:darkblue;
+}
+.email{
+    font-size: 16px;
+    cursor: pointer;
+    margin-left:30px;
+}
+.contact{
+    font-size: 20px;
+    cursor: pointer;
+    margin-left:30px;
+}
+#inbox-table tr:nth-child(-n+4){
+    font-weight: bold;
+}
+#leftMenu{
+    float: left;
+    width:20%;
+    min-height: 800px;
+    background-color: azure;
+}
+#leftMenu ul{
+    list-style: none;
+}
+#MainArea{
+    float:left;
+    width:75%;
+    border:1px solid darkgrey;
+    min-height: 800px;
+}
+#table-header{
+    width:100%;
+    height: 50px;
+    display: block;
+}
+#inbox-table , #contact-table{
+    width:85%;
+    float: right;
+    margin-top:20px;
+}
+#inbox-table,#inbox-table th,#inbox-table tr,#inbox-table td{
+    border:1px solid darkgrey;
+}
+#contact-table,#contact-table th,#contact-table tr,#contact-table td{
+    border:1px solid darkgrey;
+}
+#inbox-table th,#inbox-table td{
+    height: auto;
+    text-align: center;
+}
+#contact-table th,#contact-table td{
+    height: auto;
+    text-align: center;
+}
+#email-links ,#contact-links{
+    width:10%;
+    float: left;
+}
+.theader{
+    cursor: pointer;
+    background-color: darkred;
+}
+.tr-email:hover , .tr-contact:hover{
+    background-color: DimGrey;
+    color:white;
+}
