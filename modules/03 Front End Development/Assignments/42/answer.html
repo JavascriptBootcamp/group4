@@ -36,13 +36,11 @@
             this.title = title;
             this.uploader = uploader;
             this.seconds = seconds;
-
             this.watchMsg = function () {
                var msg = this.uploader + " Watched all " + this.seconds + " seconds of " + this.title + "!";
                return msg;
             }
         }
-
         function watch()
         {
             var title = document.querySelector("#title").value;
@@ -53,12 +51,10 @@
             var obj = new Video(title, uploader, duration);
             resultDiv.innerHTML += obj.watchMsg() + "<br>";
         }
-
         function watchAll()
         {
             
         }
-
         function addRow()
         {
             var row = document.querySelector("#formRow");
