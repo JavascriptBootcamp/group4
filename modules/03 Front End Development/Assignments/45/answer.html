@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Images | Favorites</title>
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+            padding: 20px;
+        }
+
+        * {
+            text-align:  center;
+        }
+        </style>
+
+    <script src="script.js"></script>
+</head>
+
+<body onload="initializeReferences()">
+
+    <h2>Add images to your album</h2>
+
+    Image URL: <input type="text" id="imgUrl"> Wikipedia URL: <input type="text" id="wikiUrl"> <button type="button" id="add"
+        onclick="add()">Add</button>
+
+
+    <div id="picsDisplayer"></div>
+    <div id="pageCounter"></div>
+</body>
+
+</html>
