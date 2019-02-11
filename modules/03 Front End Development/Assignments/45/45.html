@@ -1,24 +1,31 @@
-<html>
-        
-        <head>
-            <title>"Images | Favorites"</title>
-            <link rel="stylesheet" href="45.css">
-        </head>
-        <body>
-            <form onsubmit="addPic(this);return false;">
-                <h3>Add pictuer:</h3>
-                <div>
-                    <label for="url">Imag URL:</label>
-                    <input type="text"  id="url" required>
+<!DOCTYPE html>
+<html lang="en">
 
-                    <label for="wiki">Wikipedia URL:</label>
-                    <input type="text" id="wiki" required>
-                </div>
-                <button type="submit">Add</button>
-            </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>"Images | Favorites"</title>
+    <link rel="stylesheet" href="45.css">
+</head>
 
-            <div id="pics"></div>
+<body>
+    <form onsubmit="addPic(this);return false;">
+        <h3>Add pictuer:</h3>
+        <label for="url">Imag URL:</label>
+        <input type="text" id="url" required>
 
-        <script src="45.js"></script>
-        </body>
+        <label for="wiki">Wikipedia URL:</label>
+        <input type="text" id="wiki" required>
+
+        <button type="submit">Add</button>
+    </form>
+
+
+    <div id="pics"></div>
+    <div id="pages"><span onclick="pageClicked(this)">1</span></div>
+
+    <script src="45.js"></script>
+</body>
+
 </html>

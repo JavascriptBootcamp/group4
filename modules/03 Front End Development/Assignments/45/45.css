@@ -1,5 +1,31 @@
+body {
+    text-align: center;
+}
+
 img {
     height: 200px; 
     width : 300px;
     margin: 1px;
+}
+
+span {
+    padding-left: 2px;
+}
+
+form {
+    margin-bottom: 5px;
+}
+
+#pages {
+    color: rgb(82, 82, 253);
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.clicked {
+    color: rgb(128, 0, 128);
+}
+
+span:hover {
+    cursor: pointer;
 }
