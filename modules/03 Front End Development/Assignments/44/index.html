@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <title>
+        "Books | Favorites"
+    </title>
+</head>
+
+<body onload="enableBtn(event)">
+    <div style='border-style: solid; border-color: coral;padding: 15px;'>
+        <form>
+            <label for="bookName">Name: </label>
+            <input type="text" name="bookName" id="bookName" onkeyup="enableBtn(event)" required>
+            <br />
+            <br />
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author" onkeyup="enableBtn(event)" required>
+            <br />
+            <br />
+            <label for="pDate">Publication date: </label>
+            <input type="date" name="pDate" id="pDate" onchange="enableBtn(event)" required>
+            <br />
+            <br />
+            <label for="publisher">Publisher: </label>
+            <input type="text" name="publisher" id="publisher" onkeyup="enableBtn(event)" required>
+            <br />
+            <br />
+            <label for="pages" required>Pages</label>
+            <input type="number" name="pages" id="pages" min="1" onkeyup="enableBtn(event)" required>
+            <br />
+            <br />
+            <label for="comments">Comments: </label>
+            <br />
+            <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+            <br />
+            <br />
+            <button id='add' type='button' onclick='addBook()' disabled>Add Book</button>
+        </form>
+        <select name="order" id="order">
+            <option value="oldest">oldest to newest</option>
+            <option value="newest">newest to oldest</option>
+        </select>
+        <button type='button' onclick="toSort()">Sort</button>
+    </div>
+    <div id='content'></div>
+    <script>
+        function enableBtn(e) {
+            var btn = document.getElementById('add');
+            var name = document.querySelector('#bookName').value;
+            var author = document.querySelector('#author').value;
+            var date = document.querySelector('#pDate').value;
+            var publisher = document.querySelector('#publisher').value;
+            var pages = document.querySelector('#pages').value;
+            if (name !== '' && author !== '' && date !== "" && publisher !== '' && pages !== '') {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            }
+        }
+        function addBook() {
+            var content = document.getElementById('content');
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var name = document.querySelector('#bookName').value;
+            var author = document.querySelector('#author').value;
+            var date = document.querySelector('#pDate').value;
+            var publisher = document.querySelector('#publisher').value;
+            var pages = document.querySelector('#pages').value;
+            var comments = document.querySelector('#comments').value;
+            var dateArr = date.split('-');
+            var book = document.createElement('div');
+            book.setAttribute('id', date);
+            var h1 = document.createElement('h1');
+            h1.innerText = 'Title: ' + name;
+            var h2 = document.createElement('h2');
+            h2.innerText = 'Author: ' + author;
+            var h3 = document.createElement('h3');
+            h3.innerText = 'Publication date: ' + months[Number(dateArr[1]) - 1] + ' ' + dateArr[2] + ', ' + dateArr[0];
+            var h4 = document.createElement('h4');
+            h4.innerText = 'Publisher: ' + publisher;
+            var h5 = document.createElement('h5');
+            h5.innerText = 'Pages: ' + pages;
+
+            book.appendChild(h1);
+            book.appendChild(h2);
+            book.appendChild(h3);
+            book.appendChild(h4);
+            book.appendChild(h5);
+            if (comments !== '') {
+                var p = document.createElement('p');
+                p.innerText = 'Comments: ' + comments;
+                book.appendChild(p);
+            }
+
+            content.appendChild(book);
+        }
+        function toSort() {
+            var select = document.querySelector('#order');
+            var index = select.selectedIndex;
+            var content = document.getElementById('content');
+            var books = content.childNodes;
+            books = [].slice.call(books);
+            books.sort((book1, book2) => {
+                var dateArr1 = book1.id.split('-');
+                var dateArr2 = book2.id.split('-');
+                var date1 = new Date(Number(dateArr1[0]), Number(dateArr1[1]), Number(dateArr1[2]));
+                var date2 = new Date(Number(dateArr2[0]), Number(dateArr2[1]), Number(dateArr2[2]));
+                var num = index === 0 ? (date1 - date2) : (date2 - date1);
+                return num;
+            });
+            var newContent = '';
+            books.forEach((book) => {
+                newContent += book.outerHTML;
+            });
+            content.innerHTML = newContent;
+        }
+    </script>
+</body>
+
+</html>
