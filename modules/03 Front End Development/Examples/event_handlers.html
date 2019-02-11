@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Handlers</title>
+</head>
+
+<body>
+    <!-- <form onsubmit="return false"> -->
+    <form onsubmit="submitForm(event, 'Guy');">
+        <input id="username" type="text" placeholder="Enter your name" />
+        <!-- <button onmouseover="convertToUpperCase(event)" onmouseout="convertToLowerCase(event)" >Click here</button> -->
+
+        <button id="btnClickHere" type="submit">Click here</button>
+    </form>
+    <script src="event_handlers.js"></script>
+</body>
+
+</html>
