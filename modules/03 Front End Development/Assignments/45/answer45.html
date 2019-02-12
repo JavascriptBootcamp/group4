@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        "images | Favorites"
+    </title>
+    <style>
+       img{
+           height: 160px;
+           width: 160px;
+       }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        Insert image url: <input type="url" id="image" required placeholder="https://example.com" pattern="https://.*"
+            size="30" required>
+        Insert wiki url: <input type="url" id="wiki" required placeholder="https://example.com" pattern="https://.*"
+            size="30" required>
+        <input type="submit" value="Submit" onclick="addImage()">
+    </form>
+
+    <div id="dispic">
+
+    </div>
+
+    <div id="page">
+
+    </div>
+
+    <script>
+        var pictures = [];
+        var pageAmount = 1;
+        document.getElementById("page").innerHTML += "<a href='#' onclick='page_click(" + (pageAmount-1) + ")'>" + (pageAmount) + "</a> ";
+
+        function needToAddPAGE() {
+            // console.log(Math.trunc(pictures.length / 12 ))
+            if (Math.trunc(pictures.length / 12 ) === pageAmount - 1) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        function createPAGE() {
+            pageAmount++;
+            document.getElementById("page").innerHTML += "<a href='#' onclick='page_click(" + (pageAmount-1) + ")'>" + (pageAmount) + "</a> ";
+
+        }
+        function page_click(pageIndex) {
+            document.getElementById("dispic").innerText="";
+            for (let index = pageIndex*12; index < pictures.length &&index< pageIndex*12+12; index++) {
+                document.getElementById("dispic").appendChild(pictures[index]);           
+                
+            }
+            
+        }
+ 
+        function addImage() {
+
+            var image = document.getElementById("image").value;
+            
+            var urlVik = document.getElementById("wiki").value;
+
+            var Vikel = document.createElement('a');
+            Vikel.href = urlVik;
+            var imgel = document.createElement('img');
+            imgel.src = image
+            Vikel.appendChild(imgel);
+            // pictures.push(pic);
+            pictures.push(Vikel)
+            if (needToAddPAGE()) {
+                createPAGE();
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
