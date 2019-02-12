@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="forms">
+        <form action="" >
+            <input type="text" name="" id="ip_title" placeholder="title">
+            <select name="" id="ip_uploader">
+                <option value="Daniel">Daniel</option>
+                <option value="Uriel">Uriel</option>
+                <option value="Nadav">Nadav</option>
+            </select>
+            <input type="number" name="" id="ip_seconds" min="0" placeholder="seconds">
+            <button onclick="watch(event)">Watch</button>
+        </form>
+    </div>
+    <button onclick="addForm()">Plus</button><br>
+    <button onclick="watchAll()">Watch All</button>
+    <div id="books_messages"></div><br>
+    <div id="all_books_message"></div>
+
+
+    <script>
+        var allWatched = ''
+        var allVideos = new Array();
+
+        function watchAll(){
+            document.getElementById("all_books_message").innerHTML = allWatched;
+        }
+
+        function watch(e) {
+            e.preventDefault();
+            var currentNode = e.target.parentNode;
+            var title = currentNode[0].value;
+            var uploader = currentNode[1].selectedIndex;
+            var seconds = currentNode[2].value;
+            var video = new Video(title, uploader, seconds);
+
+            video.watch();
+        }
+
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.watch = function () {
+                var message = null;
+                try {
+                    message = 'You watched all ' + this.seconds + ' seconds of ' + this.title + '!';
+                    allVideos.push(message);
+                } catch (error) {
+                    message = "Oops... An error occured";
+                }
+                var divMessages = document.getElementById("books_messages");
+                var divMessage = document.createElement('div');
+                divMessage.innerText = message;
+
+                allWatched += message + '<br>';
+
+                divMessages.appendChild(divMessage);
+
+            }
+
+        }
+        function addForm() {
+                var forms = document.getElementById("forms");
+                var form = document.createElement("form");
+                var title = document.createElement("input");
+                var uploaders = document.createElement("select");
+                var seconds = document.createElement("input");
+                var uploader1 = document.createElement("option");
+                var uploader2 = document.createElement("option");
+                var watchButton = document.createElement("button");
+
+                uploader1.textContent = "Michal";
+                uploader2.textContent = "Yael";
+
+                uploaders.appendChild(uploader1);
+                uploaders.appendChild(uploader2);
+
+                title.type = "text";
+                title.placeholder = "title";
+
+                seconds.type = "number";
+                seconds.placeholder = "seconds";
+                seconds.min = 0;
+
+                watchButton.textContent = "Watch";
+                watchButton.onclick= watch;
+
+                form.appendChild(title);
+                form.appendChild(uploaders);
+                form.appendChild(seconds);
+                form.appendChild(watchButton);
+
+                forms.appendChild(form);
+            }
+    </script>
+
+</body>
+
+</html>
