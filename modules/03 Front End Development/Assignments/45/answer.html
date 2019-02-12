@@ -20,7 +20,7 @@
     var wikipediaLinks = new Array();
     var imagesCount = 0;
     var pageCount = 0;
-    var currentPage = 1;
+    var currentPage = 0;
 
     function addPicture(){
         var image = document.getElementById('imgUrl').value;
@@ -49,22 +49,30 @@
         }
     }
 
-    function setPageButtonDisabled(buttonId){
+    function freezePageButton(buttonId){
         console.log(document.querySelector("#" + buttonId));
-        document.querySelector("#" + buttonId).style.disabled = false;
+        var pageButton =  document.querySelector("#" + buttonId);
+        pageButton.style.disabled = false;
+        pageButton.style.color = "red";
     }
 
-    function setPageButtonsEnabled(){
+    function unfreezePageButtonsEnabled(){
         for(var i=0; i< pageCount; i++){
             console.log(pageCount,"#" + "page_button_" +(i+1));
-            document.querySelector("#" + "page_button_" + (i+1)).style.disabled = true;
+            var pageButton = document.querySelector("#" + "page_button_" + (i+1));
+            pageButton.style.disabled = true;
+            pageButton.style.color = "black";
+
         }
     }
 
         function changePage(pCount){
+            if(currentPage === pCount){
+                return;
+            }
             console.log(currentPage,pCount);
-            setPageButtonsEnabled();
-            setPageButtonDisabled("page_button_" + pCount);
+            unfreezePageButtonsEnabled();
+            freezePageButton("page_button_" + pCount);
             if(currentPage !== pCount){
                 clearPageData();
                 var toImageIndex = pCount * 12 < imagesCount ? pCount * 12 : imagesCount;
