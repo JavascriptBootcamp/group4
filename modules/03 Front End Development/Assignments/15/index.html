@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="http://localhost:3000/quiz" method="POST">
+  <h4>1. Name the largest freshwater lake in the world </h4>
+    <button class="q1" id="rAns1" onclick="rightAns(1)">Lake Superior</button>
+    <button class="q1" id="wAns1" onclick="wrongAns(1)">The Moon</button>
+    <button class="q1" id="wAns1" onclick="wrongAns(1)">A farrier</button>
+    <button class="q1" id="wAns1" onclick="wrongAns(1)">A sword</button><br>
+  <h4>2. Where would you find the Sea of Tranquility?</h4>
+    <button class="q2" id="wAns2" onclick="wrongAns(2)">Lake Superior</button>
+    <button class="q2" id="rAns2" onclick="rightAns(2)">The Moon</button>
+    <button class="q2" id="wAns2" onclick="wrongAns(2)">A farrier</button>
+    <button class="q2" id="wAns2" onclick="wrongAns(2)">A Mackintosh</button>
+  <br>
+  <h4>3. What is someone who shoes horses called?</h4> 
+    <button class="q3" id="wAns3" onclick="wrongAns(3)">Lake Superior</button>
+    <button class="q3" id="wAns3" onclick="wrongAns(3)">The Moon</button>
+    <button class="q3" id="rAns3" onclick="rightAns(3)">A farrier.</button>
+    <button class="q3" id="wAns3" onclick="wrongAns(3)">A Mackintosh</button>
+  <br>
+  <h4>4. What item of clothing was named after its Scottish inventor?</h4> 
+    <button class="q4" id="wAns4" onclick="wrongAns(4)">Lake Superior</button>
+    <button class="q4" id="wAns4" onclick="wrongAns(4)">The Moon</button>
+    <button class="q4" id="rAns4" onclick="rightAns(4)">A Mackintosh</button>
+    <button class="q4" id="wAns4" onclick="wrongAns(4)">A farrier</button>
+  <br>
+  <h4>5. What kind of weapon is a falchion?</h4>
+    <button class="q5" id="wAns5" onclick="wrongAns(5)">The Moon</button>
+    <button class="q5" id="rAns5" onclick="rightAns(5)">A sword</button>
+    <button class="q5" id="wAns5" onclick="wrongAns(5)">The Moon</button>
+    <button class="q5" id="wAns5" onclick="wrongAns(5)">A farrier</button>
+  <br>
+  <h4>6. Which word goes before vest, beans and quartet?</h4>
+    <button class="q6" id="wAns6" onclick="wrongAns(6)">The Moon</button>
+    <button class="q6" id="rAns6" onclick="rightAns(6)">String</button>
+    <button class="q6" id="wAns6" onclick="wrongAns(6)">A sword</button>
+    <button class="q6" id="wAns6" onclick="wrongAns(6)">Dictionary</button>
+  <br>
+  <h4>7. What is another word for lexicon?</h4>
+    <button class="q7" id="wAns7" onclick="wrongAns(7)">The Moon</button>
+    <button class="q7" id="wAns7" onclick="wrongAns(7)">String</button>
+    <button class="q7" id="rAns7" onclick="rightAns(7)">Dictionary</button>
+    <button class="q7" id="wAns7" onclick="wrongAns(7)">A farrier</button>
+  <br>
+  <h4>8. Name the seventh planet from the sun.</h4>
+    <button class="q8" id="wAns8" onclick="wrongAns(8)">A farrier</button>
+    <button class="q8" id="wAns8" onclick="wrongAns(8)">String</button>
+    <button class="q8" id="wAns8" onclick="wrongAns(8)">Dictionary</button>
+    <button class="q8" id="rAns8" onclick="rightAns(8)">Uranus</button>
+  <br>
+  <h4>9. Who invented the rabies vaccination?</h4> 
+    <button class="q9" id="wAns9" onclick="wrongAns(9)">Dictionary</button>
+    <button class="q9" id="wAns9" onclick="wrongAns(9)">Uranus</button>
+    <button class="q9" id="rAns9" onclick="rightAns(9)">Pasteur</button>
+    <button class="q9" id="wAns9" onclick="wrongAns(9)">Perignon</button>
+  <br>
+  <h4>10. Who was the legendary Benedictine monk who invented champagne </h4>
+    <button class="q10" id="rAns10" onclick="rightAns(10)">Perignon</button>
+    <button class="q10" id="wAns10" onclick="wrongAns(10)">Dictionary</button>
+    <button class="q10" id="wAns10" onclick="wrongAns(10)">Uranus</button>
+    <button class="q10" id="wAns10" onclick="wrongAns(10)">Pasteur</button>
+  <br>
+  <div id="message"></div>
+
+  <input type="submit" value="Submit">
+  <input type="hidden" name="ts" value="1547375825757">
+</form>
+  <script>
+  var rightAnsSum = 0;
+  var wrongAnsSum = 0;
+  function rightAns(qnumber){
+    var qutionArr = document.getElementsByClassName("q"+qnumber)
+    for(var i=0;i<4;i++){
+      qutionArr[i].disabled = true;
+      if(qutionArr[i].id==="wAns"+qnumber){
+      qutionArr[i].style.backgroundColor = "red";
+      
+      }      
+      if(qutionArr[i].id==="rAns"+qnumber){
+      qutionArr[i].style.backgroundColor = "green";
+      
+      }
+    }
+
+    console.log(rightAnsSum+wrongAnsSum)
+
+    rightAnsSum +=1;
+    checkAnswers()
+  }
+    function wrongAns(qnumber){
+    var qutionArr = document.getElementsByClassName("q"+qnumber)
+    for(var i=0;i<4;i++){
+      
+      if(qutionArr[i].id==="wAns"+qnumber){
+      qutionArr[i].style.backgroundColor = "red";
+      
+      }      
+      if(qutionArr[i].id==="rAns"+qnumber){
+      qutionArr[i].style.backgroundColor = "green";
+      
+      }
+      qutionArr[i].disabled = true;
+    }
+      wrongAnsSum +=1;
+      checkAnswers()
+    }
+    function checkAnswers(){
+      if(rightAnsSum+wrongAnsSum===10){
+          var divMessage = document.getElementById("message")
+          var h5 = document.createElement("h5")
+          h5.innerText = "you right "+rightAnsSum+" Answers";
+          divMessage.appendChild(h5)
+      }
+    }
+  
+  </script>
+</body>
+</html>
