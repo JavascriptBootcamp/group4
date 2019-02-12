@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="import" href="/import/buy.html">
+    <title>inbox</title>
+    <script type="text/javascript" src="print.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/import/style.css">
+    <style>
+        #table {
+
+            font-size: 16px;
+
+        }
+
+        #table tr:nth-child(-n+4) {
+            font: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        DMail
+    </div>
+    <div id="menu">
+            <ul>
+                <li><a href="inbox.html">inbox</a></li>
+                <li><a href="sent.html">sent</a></li>
+                <li><a href="contacts.html">contacts</a></li>
+            </ul>
+     
+        </div>
+    <div id="content">
+        <h3>please enter an email number you would like to see its contact:</h3>
+        <input type="number" max=9 id="emailNumber" placeholder="Eenter number 0-9..">
+        <button onclick="printEmail(incomingEmails)">print email </button>
+        <table id="email-table">
+
+            <tr>
+                <th>from</th>
+                <th>subject</th>
+                <th>date</th>
+
+
+            </tr>
+
+        </table>
+
+    </div>
+</body>
+
+</html>

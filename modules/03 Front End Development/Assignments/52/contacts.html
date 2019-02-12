@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/import/style.css">
+
+    <style>
+        #table {
+
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body onload="printEmail(contacts)">
+
+    <body>
+        <div id="header">
+            DMail
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="inbox.html">inbox</a></li>
+                <li><a href="sent.html">sent</a></li>
+                <li><a href="contacts.html">contacts</a></li>
+            </ul>
+
+        </div>
+        <div id="content">
+            <table id="table">
+
+                <tr>
+                    <th><a href='#' onclick="order('firstName')"> first name </a></th>
+                    <th><a href='#' onclick="order('lastName')"> last name </a></th>
+                    <th><a href='#' onclick="order('email')"> email address </a></th>
+
+
+                </tr>
+
+                <!-- <div data-include="/path/to/include.html"></div> -->
+            </table>
+
+        </div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+
+
+        <script>
+
+
+            var contacts = [
+                { firstName: "lital", lastName: "rab", email: "lital@gamil.com" },
+                { firstName: "lea", lastName: "rab", email: "lea@gamil.com" },
+                { firstName: "shimi", lastName: "levi", email: "shimi@gamil.com" },
+                { firstName: "dor", lastName: "buchnik", email: "dor@gamil.com" },
+                { firstName: "omer", lastName: "cohrn", email: "omer@gamil.com" }
+            ]
+
+            function printEmail(arraName) {
+                // var emailIndex = document.getElementById("emailNumber").value;
+                // document.getElementsByClassName("row").innerText="";
+
+                var table = document.getElementById("table");
+
+                // table.removeChild(document.getElementsByClassName("row")[0])
+                // var email = arraName[emailIndex];
+                for (let index = 0; index < arraName.length; index++) {
+                    const element = arraName[index];
+                    var row = document.createElement("tr");
+                    for (var key in element) {
+                        var td = document.createElement("td")
+                        td.innerText = element[key];
+                        row.appendChild(td);
+                    }
+                    table.appendChild(row)
+
+                }
+
+                // document.getElementById("emailNumber").value=""
+
+            }
+            function order(orderBy) {
+                var table = document.getElementById("table");
+
+                for (var index = 1; index < 6; index++) {
+                    table.deleteRow(1)
+
+                }
+                contacts = _.sortBy(contacts, orderBy);
+                // window.location.reload();
+                printEmail(contacts)
+                console.log(contacts)
+            }
+
+        </script>
+    </body>
+
+</html>

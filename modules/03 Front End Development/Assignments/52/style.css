@@ -1,0 +1,46 @@
+body {
+    background-color: lightgray;
+
+}
+
+#header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+#content{
+    border:5px solid darkgrey;
+
+font: bold;
+
+}
+#menu{
+
+    float: left;
+    width:15%;
+}
+#table{
+    cursor: pointer;
+
+    font-size: 20px;
+    margin-left: 30px;
+
+}
+th {
+    color: darkred;
+}
+ 
+a{
+    color:darkblue;
+}
+td:hover {
+    background-color: DimGrey;
+    color:white;
+} 
+a:active{
+    color:darkgreen;
+}
+a:hover{
+    font-weight:bold;
+}
