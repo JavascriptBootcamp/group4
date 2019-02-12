@@ -50,7 +50,6 @@
     }
 
     function freezePageButton(buttonId){
-        console.log(document.querySelector("#" + buttonId));
         var pageButton =  document.querySelector("#" + buttonId);
         pageButton.style.disabled = false;
         pageButton.style.color = "red";
@@ -58,7 +57,6 @@
 
     function unfreezePageButtonsEnabled(){
         for(var i=0; i< pageCount; i++){
-            console.log(pageCount,"#" + "page_button_" +(i+1));
             var pageButton = document.querySelector("#" + "page_button_" + (i+1));
             pageButton.style.disabled = true;
             pageButton.style.color = "black";
@@ -70,7 +68,6 @@
             if(currentPage === pCount){
                 return;
             }
-            console.log(currentPage,pCount);
             unfreezePageButtonsEnabled();
             freezePageButton("page_button_" + pCount);
             if(currentPage !== pCount){
@@ -100,17 +97,13 @@
 
             resource.appendChild(image);
             resource.target = "_blank";
-            //divImages.appendChild(image);
             divResources.appendChild(resource);
         }
 
         function clearPageData(){
-            //var divPictures = document.getElementById("pictures");
             var divResources = document.getElementById("resources");
 
-            console.log(divResources);
 
-            //removeChildNodes(divPictures);
             removeChildNodes(divResources);
         }
 
