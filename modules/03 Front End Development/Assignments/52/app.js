@@ -23,3 +23,67 @@ var contacts = [
 	{ firstName: "dalya", lastName: "buchnik", email: "dalyabuchnik@gamil.com" },
 	{ firstName: "zuri", lastName: "buchnik", email: "buchnikzuri@gamil.com" },
 	{ firstName: "nissan", lastName: "ninio", email: "nissanninio@gamil.com" }];
+
+
+	function fillIncomingMails(){
+		var divIncomeMail = document.querySelector("#list_incoming_emails");
+
+		for(var i=0; i<emailArr.length; i++){
+			var emailButton = document.createElement("button");
+			emailButton.textContent = "Email" +(i+1);
+			emailButton.onclick = addIncomingEmail.bind(emailButton,i);
+			divIncomeMail.appendChild(emailButton);
+			divIncomeMail.appendChild(document.createElement("br"));
+
+		}
+		
+	}
+	
+	function addIncomingEmail(emailIndex){
+		var divIncomeMail = document.querySelector("#list_incoming_emails");
+		// divIncomeMail.appendChild(document.createElement("br"));
+		var isBoldNeeded = emailIndex < 3;
+		var email = emailArr[emailIndex];
+		var incomeEmailTable = document.querySelector("#ie_tabel");
+		console.log(incomeEmailTable);
+		var tr = document.createElement("tr");
+		if(isBoldNeeded){
+			tr.style.fontWeight = 'bold';
+		}
+		var tdFrom = document.createElement("td");
+		var tdSubject = document.createElement("td");
+		var tdDate = document.createElement("td");
+
+		tdFrom.textContent = email["from"];
+		tdSubject.textContent = email["subject"];
+		tdDate.textContent = email["date"];
+
+		tr.appendChild(tdFrom);
+		tr.appendChild(tdSubject);
+		tr.appendChild(tdDate);
+
+		incomeEmailTable.appendChild(tr);
+
+		this.disabled = true;
+	}
+
+	function fillContacts(){
+		var divContactPersons = document.querySelector("#list_contact_persons");
+		console.log(divContactPersons);
+
+		for(var i=0; i<contacts.length; i++){
+			var contactPersonButton = document.createElement("button");
+			contactPersonButton.textContent = "Contact" +(i+1);
+			contactPersonButton.onclick = addContactPerson.bind(contactPersonButton,i);
+			divContactPersons.appendChild(contactPersonButton);
+			divContactPersons.appendChild(document.createElement("br"));
+		}
+	}
+
+	function addContactPerson(contactIndex){
+
+	}
+
+	fillIncomingMails();
+
+	fillContacts();

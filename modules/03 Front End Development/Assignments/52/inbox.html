@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1 align="center">DMail</h1>
+    <h1 >DMail</h1>
     <div id="div_menu">
         <a href="inbox.html">Inbox</a><br>
         <a href="sent.html">Sent</a> <br>
@@ -17,7 +17,10 @@
 
     <div class="div_main_area">
         <div id="div_incoming_emails">
-            <table >
+            <div id="list_incoming_emails">
+                
+            </div>
+            <table id="ie_tabel">
                 <tr>
                     <th>from</th>
                     <th>subject</th>
@@ -25,13 +28,9 @@
                 </tr>
             </table>
         </div>
-        <div class="outcoming_emails">
-
-        </div>
-        <div class="contact_persons">
-
-        </div>
     </div>
+
+    <script src="app.js"></script>
     
 </body>
 </html>
