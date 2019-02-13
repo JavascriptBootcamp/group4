@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Answer 42</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        form {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Video</h1>
+    </div>
+    <div id="content">
+        <div id="inputs">
+            <div id="videoforms">
+                <form action="#" onsubmit="return watch(event);">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" placeholder="title" autofocus required>&emsp;
+                    <label for="uploader">Uploader:</label>
+                    <select id="uploader" required>
+                        <option value="moshiko">Moshiko</option>
+                        <option value="moshe">Moshe</option>
+                        <option value="shai">Shai</option>
+                    </select>&emsp;
+                    <label for="seconds">Seconds:</label>
+                    <input type="number" id="seconds" min="1" placeholder="seconds" required>&emsp;
+                    <button type="submit">Watch</button>
+                </form>
+            </div>
+            <br><br>
+            <div id="buttons">
+                <button onclick="addForm()">Plus</button>&nbsp;
+                <button onclick="watchAll()">Watch All</button>&nbsp;
+            </div>
+        </div>
+        <div id="mess"></div>
+        <br><br>
+        <div id="pagesNumbers"></div>
+    </div>
+    <br><br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+    <script>
+        var divMess = document.getElementById("mess");
+        var allWatch = "";
+
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+            this.videoWatch = function () {
+                var mess = '<h3>You watched all ' + this.seconds + ' seconds of ' + this.title + "</h4>";
+                divMess.innerHTML = mess;
+                allWatch += mess;
+            }
+        }
+
+        function watch(e) {
+            var formnode = e.target;
+            var title = formnode[0].value;
+            var uploader = formnode[1].value;
+            var seconds = formnode[2].value;
+            var video = new Video(title, uploader, seconds);
+
+            video.videoWatch();
+
+            e.preventDefault();
+        }
+        function watchAll() {
+            divMess.innerHTML = allWatch;
+        }
+        function addForm() {
+            var forms = document.getElementById("videoforms");
+            var form = document.createElement("form");
+
+            var titleLabel = document.createElement("label");
+            titleLabel.innerText = "Title: "
+            var title = document.createElement("input");
+            title.type = "text";
+            title.placeholder = "title";
+            title.required = true;
+
+            var uploaderLabel = document.createElement("label");
+            uploaderLabel.innerText = "Uploader: "
+            var uploaders = createSelect();
+
+            var secondLabel = document.createElement("label");
+            secondLabel.innerText = "Seconds: "
+            var seconds = document.createElement("input");
+            seconds.type = "number";
+            seconds.placeholder = "seconds";
+            seconds.min = 1;
+            seconds.required = true;
+
+            var watchBtn = document.createElement("button");
+            watchBtn.innerText = "Watch";
+            watchBtn.type = "submit";
+
+
+            form.action = "#";
+            form.onsubmit = watch;
+            form.appendChild(titleLabel);
+            form.appendChild(title);
+            form.innerHTML += "&nbsp;&emsp;"
+            form.appendChild(uploaderLabel);
+            form.appendChild(uploaders);
+            form.innerHTML += "&nbsp;&emsp;"
+            form.appendChild(secondLabel);
+            form.appendChild(seconds);
+            form.innerHTML += "&nbsp;&emsp;"
+            form.appendChild(watchBtn);
+
+
+            forms.appendChild(form);
+        }
+        function createSelect() {
+            var options = document.getElementById("uploader").children;
+            var select = document.createElement("select");
+            for (i = 0; i < options.length; i++) {
+                var option = document.createElement("option");
+                option.value = options[i].value;
+                option.innerText = options[i].innerText;
+                select.appendChild(option);
+            }
+
+            return select;
+        }
+
+    </script>
+</body>
+
+</html>
