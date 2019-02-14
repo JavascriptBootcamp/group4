@@ -8,20 +8,20 @@ emailData ={
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
     },
     {
-        from:"roni",
+        from:"yaron",
         subject:"job interview",
         date:"04/05/2019",
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
 
     },
     {
-        from:"roni",
+        from:"tomer",
         subject:"job interview",
         date:"04/05/2019",
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
     },
     {
-        from:"roni",
+        from:"ben",
         subject:"job interview",
         date:"04/05/2019",
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
@@ -71,14 +71,14 @@ emailData ={
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
     },
     {
-        from:"roni",
+        from:"ben",
         subject:"job interview",
         date:"04/05/2019",
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
 
     },
     {
-        from:"roni",
+        from:"tomer",
         subject:"job interview",
         date:"04/05/2019",
         content:"hi,We are happy to inform you that you passed the exem and we would like to continue with you to the next level."
