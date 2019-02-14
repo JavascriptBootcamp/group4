@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body onload="init_email_List('inbox')">
+
+    <div>
+        <div class="header">
+            <h1 class="title">DMail</h1>
+            <div class="menu" onclick="openMenu()">
+                <div class="menuLine"></div>
+                <div class="menuLine"></div>
+                <div class="menuLine"></div>
+                <div class="menuLine"></div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="menuDiv" id="menuDiv">
+                <ul>
+                    <li class="category" onclick="init_email_List('inbox')">Inbox</li>
+                    <li class="category" onclick="init_email_List('sent')">Sent</li>
+                    <li class="category" onclick="init_contact_list(null)">Contacts</li>
+                </ul>
+            </div>
+            <div class="main_content">
+                  <div id="ph"></div>
+                  <ul id="contentList"> 
+
+                  </ul>
+            </div>
+        </div>
+    </div>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+body{
+    background-color: lightgray;
+}
+.header{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.menu{
+    border: 1px solid white;
+    width: 25px;
+    height: 25px;
+}
+.menuLine{
+    width: 17px;
+    background-color: white;
+    height: 2px;
+    margin-top: 12%;
+    margin-left: 10%;
+}
+.main{
+    width: 100%;
+}
+.menuDiv{
+
+    width: 15%;
+    background-color: white;
+    height: 498px;
+    margin-top: -16px;
+    visibility:hidden;
+    float: left;
+}
+.main_content{
+    width: 80%;
+    text-align: center;
+}
+#contentList{
+    margin-left: 30px;
+}
+.category{
+    color: darkblue;
+    margin-top: 15%;
+    cursor: pointer;
+}
+.category:hover{
+    color: red;
+}
+ul{
+    list-style-type:none;
+}
+.list_header{
+color:darkred;
+border: 1px solid darkgrey;
+padding: 5px;
+}
+.li-info{
+    font-size: 16px;
+    border: 1px solid darkgrey;
+    padding: 5px;
+}
+.firstColumn{
+float: left;
+}
+
+.secondColumn{
+float:right;
+}
