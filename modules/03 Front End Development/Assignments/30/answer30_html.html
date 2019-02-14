@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select location</title>
+    <style>
+        form ,input , select ,label {
+         font-size: 20px;
+         margin: 20px;
+         padding: 12px;
+        }
+        table {
+            border: 1px black solid;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: blue;
+            color:white;
+        }
+
+        input[type = "submit"]{
+color:red;
+background-color: blue;
+color: white;
+text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <th colspan="2">
+                    <h1>Select Location</h1>
+                </th>
+
+            </tr>
+            <tr>
+                <td>
+
+                    <label for="continent">Continent : </label>
+
+
+                </td>
+                <td>
+                    <input type="text" name="continent" list="continentes" placeholder="select from list"> <br />
+
+                    <datalist id="continentes">
+                        <option value="Africa"></option>
+                        <option value="Asia"></option>
+                        <option value="Europe"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <label for="country"> Country :</label>
+                </td>
+                <td>
+
+                    <select name="country">
+                        <option value="">select choice</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italey">Italey</option>
+                    </select>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <label for="city"> City :</label>
+                </td>
+                <td>
+                    <select name="city">
+                        <option value="">select choice</option>
+                        <option value="Adis Abba">Adis Abba</option>
+                        <option value="Tel Aviv">Tel Aviv</option>
+                        <option value="Roma">Roma</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+
+    </form>
+
+</body>
+
+</html>

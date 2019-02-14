@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="productTable">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>
+                <select id="productName">
+                    <option value="apple">apple</option>
+                    <option value="candy">candy</option>
+                    <option value="water">water</option>
+                    <option value="carrot">carrot</option>
+                    <option value="umbrella">umbrella</option>
+                    <option value="proteinShake">proteinShake</option>
+                    <option value="bread">bread</option>
+                    <option value="shnizel">shlizel</option>
+                    <option value="shekolad">shkolad</option>
+                    <option value="milk">milk</option>
+                </select>
+            </td>
+            <td>
+                <input type="number" id="price" required>
+            </td>
+            <td>
+                <input type="button" value="Add" id="addButton" onclick="addToRow()">
+            </td>
+        </tr>
+
+    </table>
+      <h3> <mark>Total price :</mark> <div id = "totalPrice"> </div> </h3>
+    <script>
+        var totalPriceDiv = document.getElementById("totalPrice");
+        var addButton = document.getElementById("addButton");
+        var productTable = document.getElementById("productTable");
+        var price = document.getElementsByClassName("price");
+
+        function addToRow(){
+
+            
+            var productName = document.getElementById("productName");
+            var productPrice = document.getElementById("price");
+      
+           if (productPrice.value) {
+            productTable.innerHTML += `<tr>
+                                           <td>${productName.value}</td>
+                                           <td class ="price">${productPrice.value}</td>
+                                           <td> <input type="button" value="Remove" 
+                                           class="removeButton" onclick=" remove(event)"></td>
+                                        </tr>`;
+        
+
+             
+           totalPriceFun();
+       
+           }
+           else 
+           alert("Enter Price!")
+
+        }
+       
+        
+        function totalPriceFun(){
+           var totalPrice = 0;
+           for(var i = 0 ; i < price.length ;i++){
+           totalPrice += Number(price[i].textContent);
+          // totalPrice += 1;
+           }
+           totalPriceDiv.textContent = totalPrice;
+           }
+
+            function remove(event){
+                var pn = event.currentTarget.parentNode.parentNode;
+
+                while(pn.firstChild)
+                   pn.removeChild(pn.firstChild);
+               
+                   totalPriceFun();
+           }
+
+      
+
+    </script>
+</body>
+
+</html>

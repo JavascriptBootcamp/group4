@@ -1,0 +1,11 @@
+var bloodPressure = 70;
+var isNormal = false;
+
+var res = (bloodPressure > 80  && bloodPressure  < 120) ;
+
+console.log(res); 
+
+
+var res = (bloodPressure < 80  || bloodPressure  > 120) ;
+
+console.log(res); 

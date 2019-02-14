@@ -1,6 +1,0 @@
-Increment-Decrement
----
-1. create 2 variables “x” and “y”
-2. pre-increment "x" and assign the result to “x” 2 times
-3. post-increment “y” and assign the result to "y" 2 times
-4. log the final values of “x” and “y”

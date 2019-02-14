@@ -1,4 +1,0 @@
-typeof – Possible Return Values
----
-1. create variables and assign the following types to them: boolean, number, string and object
-2 .print each of the types

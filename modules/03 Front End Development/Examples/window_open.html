@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="openPopup('https://google.com')">Open Google</button>
+    <button onclick="openPopup('https://facebook.com')">Open Facebook</button>
+
+    <script>
+        function openPopup(url){
+            var popup = window.open(url, "_blank", "width=500,height=200");
+        }
+    </script>
+</body>
+</html>
