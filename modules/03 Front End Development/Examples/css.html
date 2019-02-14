@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- External -->
+    <link rel="stylesheet" href="stylesheet.css" />
+    <!-- Embedded -->
+    <style>
+        li {
+            color: darkorchid;
+            background-color: lightskyblue;
+        }
+
+        a:visited {
+            color: red;
+        }
+
+        a:active {
+            color: green;
+        }
+
+        .red-background {
+            background-color: red;
+        }
+
+        .thick-border {
+            border: 5px solid darkblue;
+        }
+
+        
+        [data-caption="Button"] {
+            color: green;
+        }
+        button {
+            color: red
+        }
+        .btn {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="changeListColor()">Click here to change task list color</button>
+    <h1 class="active">Task List</h1>
+    <ul id="task-list" class="thick-border">
+        <!-- Inline -->
+        <li class="active task-list-item" style="font-size: 20px; text-decoration: underline">Wash dishes</li>
+        <li class="task-list-item"><a href="#">Homework</a></li>
+        <li class="task-list-item">Design</li>
+        <li class="task-list-item">Programming</li>
+    </ul>
+    <p>
+        Lorem Ipsum is <a href="http://wikipedia.org">simply dummy text</a> of the printing and typesetting industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+        type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+    </p>
+    <a href="http://www.google.com">Google</a>
+    <div>
+        <button id="btn1" class="btn" data-caption="Button" style="width: 700px">Button</button>
+    </div>
+
+    <script>
+        function changeListColor() {
+            document.querySelector('#task-list').className += " red-background";
+        }
+    </script>
+</body>
+
+</html>

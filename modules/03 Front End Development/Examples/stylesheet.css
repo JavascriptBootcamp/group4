@@ -1,0 +1,72 @@
+@import url("stylesheet2.css"); 
+
+* {
+    border-bottom: solid 5px black;
+}
+
+body {
+    background-color: lightsalmon;
+    font-size: 18px;
+    
+    border: solid 3px red;
+
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+}
+
+#task-list {
+    font-style: italic;
+}
+
+.task-list-item {
+    color: red;
+}
+
+.task-list-item.active {
+    font-weight: bold;
+}
+
+ul .task-list-item {
+    margin-left: 50px;
+}
+
+#task-list li {
+
+}
+
+#task-list .task-list-item {
+
+}
+
+#task-list > a {
+    color: green;
+}
+
+.active + li {
+    background: darkorange;
+}
+
+.active ~ li {
+    background: darkviolet;
+}
+
+li + li {
+    background: black;
+}
+
+button {
+    width: 200px !important;
+}
+
+/* a[href] {
+    color: lightgreen;
+}
+
+a[href*="wikipedia"] {
+    color: darkmagenta;
+}
+
+a[href="http://wikipedia.org"] {
+    color: lightseagreen;
+} */
