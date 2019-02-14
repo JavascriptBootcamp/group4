@@ -55,7 +55,11 @@ li + li {
     background: black;
 }
 
-a[href] {
+button {
+    width: 200px !important;
+}
+
+/* a[href] {
     color: lightgreen;
 }
 
@@ -65,4 +69,4 @@ a[href*="wikipedia"] {
 
 a[href="http://wikipedia.org"] {
     color: lightseagreen;
-}
+} */
