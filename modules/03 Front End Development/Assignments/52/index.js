@@ -69,9 +69,10 @@ function showEmailContent() {
     var subject = document.createElement("h3");
     subject.innerText = this.subject;
     var from = document.createElement("label");
-    from.innerText = this.from;
+    from.innerText = `from:${this.from}`;
+    from.className = "showFrom";
     var date = document.createElement("label");
-    date.innerText = this.date;
+    date.innerText = `date:${this.date}`;
     var content = document.createElement("p");
     content.innerText = this.content;
 
