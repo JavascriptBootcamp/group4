@@ -13,6 +13,21 @@ function openMenu() {
 }
 
 
+function activeLink(linkNmae){
+    var ul_links = document.querySelectorAll("#ul_links li");
+    for(var li in ul_links){
+        if(ul_links.hasOwnProperty(li)){
+            var link = ul_links[li];
+            if(link.id == linkNmae){
+                link.className += " active";
+            }
+            else
+            link.className = "category";
+        }
+    }
+}
+
+
 function Email(from, subject, date, content) {
 
     this.from = from;
@@ -22,6 +37,8 @@ function Email(from, subject, date, content) {
 }
 
 function init_email_List(emailType) {
+
+    activeLink(emailType);
     var main_div = document.getElementById("ph");
     main_div.innerHTML = "";
     var ul = document.getElementById("contentList");
@@ -74,6 +91,7 @@ function Contact(firstName,lastName, emailAddress) {
 }
 
 function init_contact_list(data){
+    activeLink("contacts");
     var arr;
     var main_div = document.getElementById("ph");
     main_div.innerHTML = "";

@@ -23,10 +23,10 @@
         </div>
         <div class="main">
             <div class="menuDiv" id="menuDiv">
-                <ul>
-                    <li class="category" onclick="init_email_List('inbox')">Inbox</li>
-                    <li class="category" onclick="init_email_List('sent')">Sent</li>
-                    <li class="category" onclick="init_contact_list(null)">Contacts</li>
+                <ul id="ul_links">
+                    <li class="category" id="inbox" onclick="init_email_List('inbox')">Inbox</li>
+                    <li class="category" id="sent" onclick="init_email_List('sent')">Sent</li>
+                    <li class="category" id="contacts" onclick="init_contact_list(null)">Contacts</li>
                 </ul>
             </div>
             <div class="main_content">
