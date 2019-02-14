@@ -1,0 +1,14 @@
+[href]{
+ color: darkgreen;   
+}
+img[alt*="4 stars rating"]{
+    width: 200%;
+    height: 200%;
+} 
+img[alt~="stars"]{
+  background-color: #000000;
+} 
+img[src$=".png"]{
+    width: 50%;
+    height: 50%;
+}
