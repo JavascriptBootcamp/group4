@@ -1,0 +1,24 @@
+body {
+    background: url("https://static.hashulchan.co.il/www/uploads/terms-images/ingredient/%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99-%D7%A8%D7%99%D7%9E%D7%95%D7%9F-1-medium.jpg")
+  }
+  
+  a[href] {
+    color: darkgreen;
+  }
+  
+  
+  
+  img[alt^="5"] {
+    width: 200%;
+    height: 200%
+  }
+  
+  
+  img[alt*="star"] {
+    background-color: #000000;
+  }
+  
+  img[src$=".png"] {
+    width: 50%;
+    height: 50%
+  }
