@@ -24,6 +24,8 @@ var contacts = [
 	{ firstName: "zuri", lastName: "buchnik", email: "buchnikzuri@gamil.com" },
 	{ firstName: "nissan", lastName: "ninio", email: "nissanninio@gamil.com" }];
 
+var incomingFirst3Counter = 0;
+var sentFirst3Counter = 0;
 
 	function fillIncomingMails(){
 		var divIncomeMail = document.querySelector("#list_incoming_emails");
@@ -40,12 +42,9 @@ var contacts = [
 	}
 	
 	function addIncomingEmail(emailIndex){
-		var divIncomeMail = document.querySelector("#list_incoming_emails");
-		// divIncomeMail.appendChild(document.createElement("br"));
-		var isBoldNeeded = emailIndex < 3;
+		var isBoldNeeded = incomingFirst3Counter < 3;
 		var email = emailArr[emailIndex];
 		var incomeEmailTable = document.querySelector("#ie_tabel");
-		console.log(incomeEmailTable);
 		var tr = document.createElement("tr");
 		if(isBoldNeeded){
 			tr.style.fontWeight = 'bold';
@@ -65,11 +64,11 @@ var contacts = [
 		incomeEmailTable.appendChild(tr);
 
 		this.disabled = true;
+		incomingFirst3Counter++;
 	}
 
 	function fillContacts(){
 		var divContactPersons = document.querySelector("#list_contact_persons");
-		console.log(divContactPersons);
 
 		for(var i=0; i<contacts.length; i++){
 			var contactPersonButton = document.createElement("button");
@@ -79,11 +78,78 @@ var contacts = [
 			divContactPersons.appendChild(document.createElement("br"));
 		}
 	}
-
+	
 	function addContactPerson(contactIndex){
+		var contactPerson = contacts[contactIndex];
+		var contactsTable = document.querySelector("#c_table");
+		var tr = document.createElement("tr");
 
+		var tdFirstName = document.createElement("td");
+		var tdLastName = document.createElement("td");
+		var tdEmailAddress = document.createElement("td");
+
+		tdFirstName.textContent = contactPerson["firstName"];
+		tdLastName.textContent = contactPerson["lastName"];
+		tdEmailAddress.textContent = contactPerson["email"];
+
+		// tdFirstName.onclick = ;
+		// tdLastName.onclick = ;
+		// tdEmailAddress.onclick = ;
+
+		tr.appendChild(tdFirstName);
+		tr.appendChild(tdLastName);
+		tr.appendChild(tdEmailAddress);
+
+		contactsTable.appendChild(tr);
+
+		this.disabled = true;
 	}
 
-	fillIncomingMails();
+	function fillSentMails(){
+		var divSentMail = document.querySelector("#list_sent_emails");
 
-	fillContacts();
+		for(var i=0; i<emailArrOut.length; i++){
+			var emailButton = document.createElement("button");
+			emailButton.textContent = "Email" +(i+1);
+			emailButton.onclick = addSentEmail.bind(emailButton,i);
+			divSentMail.appendChild(emailButton);
+			divSentMail.appendChild(document.createElement("br"));
+		}
+	}
+
+	function addSentEmail(emailIndex){
+		var isBoldNeeded = sentFirst3Counter < 3;
+		var email = emailArrOut[emailIndex];
+		var sentEmailTable = document.querySelector("#oe_tabel");
+		var tr = document.createElement("tr");
+		if(isBoldNeeded){
+			tr.style.fontWeight = 'bold';
+		}
+		var tdFrom = document.createElement("td");
+		var tdSubject = document.createElement("td");
+		var tdDate = document.createElement("td");
+
+		tdFrom.textContent = email["from"];
+		tdSubject.textContent = email["subject"];
+		tdDate.textContent = email["date"];
+
+		tr.appendChild(tdFrom);
+		tr.appendChild(tdSubject);
+		tr.appendChild(tdDate);
+
+		sentEmailTable.appendChild(tr);
+
+		this.disabled = true;
+		sentFirst3Counter++;
+	}
+
+	var page = document.location.href;
+	if (page.includes("contacts")) {
+		fillContacts();
+	}
+	else if(page.includes("inbox")) {
+		fillIncomingMails();
+	}
+	else if(page.includes("sent")) {
+		fillSentMails();
+	}
