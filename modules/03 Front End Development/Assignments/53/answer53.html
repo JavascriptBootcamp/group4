@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <title></title>
+    <style>
+        .header {
+            width: 100%
+        }
+
+        #scroll-top {
+
+            position: fixed
+        }
+
+
+        table {
+            width: 700px;
+        }
+
+
+        [href] {
+
+            color: darkgreen
+        }
+
+        img[src="https://www.butterflyfields.com/wp-content/uploads/2016/02/4-star-rating.png"] {
+            width: 200%;
+            height: 200%;
+        }
+
+        [alt*="stars"] {
+
+            background-color: #000000;
+        }
+
+        img[src$=".png"] {
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="top" class="header">
+        Our Research
+
+    </div>
+    <div class="contant">
+        <table id="table">
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+
+            </tr>
+        </table>
+
+    </div>
+    <div class="side-menu">
+        <form onsubmit="return false">
+            <label for="Student-Name">Student Name:</label>
+
+            <select id="Stu-select">
+                    <option value="">--Please choose an option--</option>
+                    <option value=" ameer89"> ameer89</option>
+                    <option value=" amitayl"> amitayl</option>
+                    <option value="lital">lital</option>
+                </select>
+                <input type="text" id="Subject">Subject</inout>
+                
+            <button onclick="insertToTable()" type="submit">submit </button>
+        </form>
+    </div>
+    <a href="#top" id="scroll-top">Back to top</a>
+
+</body>
+<script>
+    function insertToTable(params) {
+        var table = document.getElementById("table").value;
+        var Stu = document.getElementById("Stu-select").value;
+        var Subject = document.getElementById("Subject").value;
+        var tr=document.createElement("tr");
+   
+        var tdStu=document.createElement("td");
+        tdStu.innerText=Stu;
+        var tdSubject=document.createElement("td");
+        tdSubject.innerText=Subject;
+        tr.appendChild(tdStu);
+        tr.appendChild(tdSubject);
+        table.appendChild(tr);
+
+
+    }
+
+</script>
+
+</html>
