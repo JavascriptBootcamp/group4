@@ -1,0 +1,20 @@
+
+a[href] {
+    color: darkgreen;
+}
+
+img[alt="5 star rating"] {
+    width: 200%;
+    height: 200%;
+
+}
+
+img[alt~="star"] {
+background-color:#000000;
+padding: 5px;
+}
+
+img[src$=".png"] {
+    width: 50%;
+    height: 50%;
+}
