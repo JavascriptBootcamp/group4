@@ -1,0 +1,25 @@
+body,h1{
+    margin:0;
+}
+#top{
+    width: 100%;
+    height: 50px;
+    background-color:lightblue;
+    text-align: center;
+}
+#footer{
+    position: fixed;
+    bottom: 0;
+    background-color:lightcoral;
+}
+#table{
+    width: 700px;
+    margin:0 auto;
+}
+table,tr,td{
+    border:1px solid;
+}
+#sidemenu{
+    display: inline-block;
+    width: 100px;
+}
