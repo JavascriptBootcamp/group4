@@ -1,0 +1,17 @@
+*{
+    border: 1px solid red;
+}
+#top{
+    width:100%;
+}
+#bottom{
+    position: fixed;
+    bottom: 0;
+}
+#center-table{
+    width:700px;
+    margin: 0 auto;
+}
+#side-menu{
+    width:100px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Our Research</title>
+</head>
+<body>
+    <header id="top"><h1>Our Research</h1></header>
+    <section>
+        <div>
+            <table id="center-table">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subject</th>
+                </tr>
+            </table>
+            <button onclick="pickOne()">Pick One</button>
+        </div>
+        <div id="side-menu">
+            <form >
+                <input list="students-list" id="students" placeholder="select student">
+                <datalist id="students-list">
+                    <option value="Ofek">Ofek</option>
+                </datalist>
+                <button type="submit" onclick="addStudent()">Submit</button>
+            </form>
+        </div>
+    </section>
+    <footer id="bottom"><a href="#top">Back To Top</a></footer>
+</body>
+</html>
