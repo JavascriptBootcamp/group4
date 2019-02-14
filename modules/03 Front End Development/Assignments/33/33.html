@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ex 33</title>
+</head>
+<body>
+    <input type="text" id="txtInput">
+    <div id="output"></div>
+    
+    <script>
+        var txtInput = document.querySelector("#txtInput");
+        var output = document.querySelector("#output");
+        var userTxt = "";
+        var upperCase = {a:"A", b:"B",c:"C",d:"D",e:"E",f:"F",g:"G",h:"H",i:"I",j:"J",k:"K",m:"M",
+        n:"N",l:"L",o:"O",p:"P",q:"Q",r:"R",s:"S",t:"T",v:"V",u:"U",w:"W",x:"X",y:"Y",z:"Z"}
+
+        txtInput.addEventListener("keyup", (e) => {
+            var input = e.target.value;
+            if(e.keyCode === 8){
+                userTxt = userTxt.slice(0,-1);
+            }
+            else {
+                var letter = input.slice(-1);
+                userTxt = (letter in upperCase) ? userTxt += upperCase[letter] : userTxt += letter;
+            }
+            output.innerText = userTxt;
+
+        }, false);
+
+    </script>
+</body>
+</html>
