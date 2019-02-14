@@ -10,10 +10,10 @@
 
 <body>
 
-    <form onsubmit="return false">
-        <input type="url" name="" id="img">
-        <input type="url" name="" id="wiki">
-        <input type="button" value="Add" onclick="addToCollection()">
+    <form>
+        Enter Image link:<input type="url" id="img"><br>
+        Enter Wikipedia link:<input type="url" id="wiki"><br>
+        <input type="button" value="Add" onclick="addToCollection(event)">
     </form>
 
 
@@ -25,70 +25,93 @@
 
     <!-- the div that holds the number  -->
     <div id="next">
-        <a href="javascript:void(0)" onclick="Show(event)">1</a>
+        <!-- <a href="javascript:void(0)" onclick="Show(event)">1</a> -->
     </div>
 
 
 
 
     <script>
-        var arrOfEvents = [];
+        var arrOfImages = [];
         var selectedPage = 1;
+        var inputImage = document.getElementById("img");
+        var inputWiki = document.getElementById("wiki");
         var imageDiv = document.getElementById("collection");
         var nextDiv = document.getElementById("next");
         var newNextElem;
         var newImageElem;
+        var numOfPages = 0;
 
 
-        function addToCollection() {
-
+        function createImageElem() {
+            var newImageElem;
             newImageElem = document.createElement("a");
-            newImageElem.setAttribute("href", imageDiv.value);
+            newImageElem.setAttribute("href", inputWiki.value);
             var imgChild = document.createElement("img");
-            imgChild.setAttribute("src", nextDiv.value);
+            imgChild.setAttribute("src", inputImage.value);
+            imgChild.setAttribute("height", "100");
+            imgChild.setAttribute("width", "200");
             newImageElem.appendChild(imgChild);
+            return newImageElem;
+        }
 
+        function cretaeNumElem() {
+            newNextElem = document.createElement("a");
+            newNextElem.setAttribute("href", "javascript:void(0)");
+            newNextElem.setAttribute("onclick", "showImage(event)");
+            newNextElem.innerText = numOfPages;
+            return newNextElem;
+        }
 
-            arrOfEvents.push(newImageElem); // push the obj to arr
-            checkDivitionBy6(); // check if there is another number to add to the "next" div
+        function showImage(event) {
+            // loads the right 12 images
 
-            if (selectedPage == nextDiv.lastChild.innerText) {
-                Show();
-            }
-
-            function checkDivitionBy6() {
-                // if there is a full divition of 6 add to the "next" div another number
-                if (arrOfEvents.length) {
-                    // not div by 6
-
-                } else {
-                    // div by 6
-                    // create a next element - add another <a> to the div "next"
-                    nextDiv = document.createElement("a");
-                    nextDiv.setAttribute("href","javascript:void(0)");
-                    nextDiv.setAttribute("onclick","Show(event)";
-                    nextDiv.innerHTML
-                    nextDiv.appendChild(newNextElem);
-                }
-
-            }
-
-            function Show(event) {
-                // loads the right 12 images
-
-                if (selectedPage !== event.target.innerText) {
-                    //removes all elements from div collection     
-                    while (imageDiv.firstChild) {
-                        imageDiv.removeChild(imageDiv.firstChild);
+            if (event.target.tagName == "INPUT") {     // Add was pressed
+                
+                if (selectedPage == numOfPages) {
+                    if (arrOfImages.length % 13 !== 0) {
+                        imageDiv.appendChild(arrOfImages[arrOfImages.length - 1]);
                     }
                 }
 
-                selectedPage = event.target.innerText;
 
-                for (var index = selectedPage * 6; index < (selectedPage * 6) + 11; index++) {
-                    imageDiv.appendChild(arrOfEvents[index]);
+            } else {    // page number was pressed - event.target.tagNmae === "A"
+
+                if (selectedPage !== numOfPages) {
+                    while (imageDiv.firstChild) {
+                        imageDiv.removeChild(imageDiv.firstChild);
+                    }
+
+                    selectedPage = event.target.innerText;
+
+                    var lastIndex = ((selectedPage * 12) - 1 < arrOfImages.length - 1) ? (selectedPage * 12) - 1 : arrOfImages.length -1;
+                    for (var index = selectedPage * 12 - 12; index <= lastIndex; index++) {
+                        imageDiv.appendChild(arrOfImages[index]);
+                    }
                 }
             }
+
+
+        }
+
+
+        function addToCollection(event) {
+            // create an image element
+            newImageElem = createImageElem();
+
+            // add it to the array
+            arrOfImages.push(newImageElem); // push the obj to arr
+
+
+            // check if another number must be added
+            if (arrOfImages.length % 13 === 0 || arrOfImages.length === 1) {
+                numOfPages++;
+                newNextElem = cretaeNumElem();
+                nextDiv.appendChild(newNextElem);
+                nextDiv.appendChild(document.createTextNode("  "));
+            }
+
+            showImage(event);
         }
     </script>
 
