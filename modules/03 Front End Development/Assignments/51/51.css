@@ -1,0 +1,23 @@
+body {
+    background-image: url("https://st4.depositphotos.com/5934840/20525/v/600/depositphotos_205256214-stock-video-vegetables-falling-background-hd-animation.jpg");
+}
+
+a[href] {
+    color: darkgreen;
+}
+
+img[src*="4-star-rating"] {
+    width: 200px;
+    height: 200px;
+}
+
+img[alt*="star"] {
+    background: #000000;
+}
+
+img[src$=".png"] {
+    width: 50%;
+    height: 50%;
+}
+
+
