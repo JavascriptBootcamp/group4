@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        span {
+            
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Code:</h1>
+    <pre>
+        <span>var arr = [1, 2, 5, 7];</span>
+        <span>function myFilter(arr,callback){</span>
+        <span>var evenArr=[];</span>
+        <span>for (var i = 0 ; i < arr.length ; i ++){</span></arr.length>
+        <span>if (callback(arr[i]))</span>
+        <span>evenArr.push(arr[i]);</span>
+        <span>}</span>
+        <span>return evenArr;</span>
+        <span>}</span>
+        <span>var filtered = myFilter(arr, function(item){</span>
+        <span>return item % 2 === 0;</span>
+        <span>});</span>
+        <span>console.log(filtered);</span>
+    </pre>
+</body>
+</html>
