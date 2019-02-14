@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #header{
+
+    }
+    #footer{
+        position: fixid;
+
+    }
+    #main{
+        display: inline-block;
+    }
+    #students-table{
+        width:700px;
+    }
+    #students-table tr th{
+        border: 1px solid black;
+    }
+    #students-table tr td{
+        border: 1px solid black;
+    }
+    #side-menu{
+        width: 100px;
+        display: inline-block;
+        position: fixed;
+    }
+    #footer{
+        position: fixed;
+        bottom: 0px;
+    }
+
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Our Research</h1>
+    </header>
+    <section id="main">
+        <table id="students-table">
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+            </tr>
+
+        </table>
+    </section>
+    <aside id="side-menu">
+        <form onsubmit="return false;">
+            <label for="">Student Name</label>
+            <select id="students-list">
+                <option id="ameer89">ameer89</option>
+                <option id="amitayl"> amitayl</option>
+                <option id="AviAdnahani">AviAdnahani</option>
+                <option id="aviyotGhub">aviyotGhub</option>     
+                <option id="danielbr08">danielbr08</option>
+                <option id="DavidLev1">DavidLev1</option>    
+                <option id="DavidSabag">DavidSabag</option>
+                <option id="derldalfor100">derldalfor100</option>    
+                <option id="elinorga">elinorga</option>
+                <option id="EvyatarD">EvyatarD</option>               
+            </select>
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" />
+            <button type="submit" onclick="addStudent();">Submit</button>
+        </form>
+    </aside>
+    <footer id="footer">
+        <a href="#header">Back To TOP</a> 
+    </footer>
+    <script>
+    function addStudent(){
+        var student = document.getElementById("students-list").value;
+        var subject = document.getElementById("subject").value;
+        var tr = document.createElement("tr");
+        var td_student = document.createElement("td");
+        var td_subject = document.createElement("td");
+        var table = document.getElementById("students-table");
+        var td_student_txt = document.createTextNode(student);
+        var td_subject_txt = document.createTextNode(subject);
+
+        table.appendChild(tr);
+        tr.appendChild(td_student);
+        tr.appendChild(td_subject);
+        td_student.appendChild(td_student_txt);
+        td_subject.appendChild(td_subject_txt);    
+
+
+    }
+    </script>
+</body>
+</html>
