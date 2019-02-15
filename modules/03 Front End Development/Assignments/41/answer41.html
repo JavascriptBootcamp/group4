@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>palindrome</title>
+</head>
+
+<body>
+    <input type="text" name="input" id="input" onkeyup="palindrome(this.value)">
+    <div id="result"></div>
+
+    <script>
+        function palindrome(strPalindrome) {
+            var x = strPalindrome.length - 1;
+            for (var i = 0; i < strPalindrome.length / 2; i++) {
+
+                if (strPalindrome[i] !== strPalindrome[x]) {
+                    document.getElementById("result").innerText = "NOT Palindrome";
+                    return;
+                }
+                x--;
+
+            }
+            document.getElementById("result").innerText = "Palindrome!"
+        
+        }
+
+
+    </script>
+</body>
+
+</html>
