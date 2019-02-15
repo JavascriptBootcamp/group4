@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contacts</title>
+  <link href="mystyle.css" type="text/css" rel="stylesheet" >
+  <script src="scripts.js"></script>
+</head>
+
+<body onload="printContacts(arrContacts)">
+  
+  <div class="sidenav">
+    <a href="inbox.html">Inbox</a>
+    <a href="sent.html" >Sent</a>
+    <a href="contacts.html" class="thispage">Contacts</a>
+  </div>
+
+  <div class="main">
+    <h1>DMail</h1>
+    <h3>Contacts</h3>
+
+    <table id="tableContacts" border="2">
+      <th id="firstname" onclick="sortCol(event)">First name </th>
+      <th id="lastname" onclick="sortCol(event)">Last name</th>
+      <th id="mail" onclick="sortCol(event)">Email address</th>
+    </table>
+ </div>
+
+</body>
+
+</html>
