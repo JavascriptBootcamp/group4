@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="text" onkeyup="palindrome(this.value)"/>
+
+<div id="ph"></div>
+
+
+<script>
+
+function palindrome(str){
+
+    var x = str.length-1;
+    for(var i=0; i< str.length/2; i++){
+
+        if(str[i] !== str[x]){
+            document.getElementById("ph").innerText = "it is not a palindrome";
+            return;
+        }
+        x--;
+    }
+    document.getElementById("ph").innerText = "it is a palindrome";
+}
+
+</script>
+</body>
+</html>
