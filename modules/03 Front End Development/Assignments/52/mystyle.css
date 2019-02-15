@@ -1,0 +1,84 @@
+body {
+    font-family: "Lato", sans-serif;
+    background-color: lightgray;
+  }
+
+
+
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 160px;
+  }
+
+
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    font-weight: bold;
+  }
+
+  .main {
+    margin-left: 160px;
+    /* Same as the width of the sidenav */
+    font-size: 28px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  .main h1 {
+    background-color: black;
+    text-align: center;
+    color: #f1f1f1;
+    padding: 10px;
+  }
+
+  a.thispage {
+    color: darkgreen;
+  }
+
+  th {
+    color: darkred
+  }
+
+  .firstMails {
+    font-weight: bold;
+  }
+
+  #tableMails {
+    font-size: 16px;
+    border: 5px darkgray;
+    margin-left: 30px;
+    width: 50%;
+
+  }
+  #tableContacts{
+    font-size: 20px;
+    border: 5px darkgray;
+    margin-left: 30px;
+    width: 50%;
+  }
+
+  .tdSubject {
+    color: darkblue;
+  }
+
+
+
+  tr:hover {
+    background-color: dimgrey;
+    color: #f1f1f1;
+  }
