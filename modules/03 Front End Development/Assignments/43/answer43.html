@@ -5,120 +5,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>The Rnadom Word</title>
 </head>
 
 <body>
-    <form id="form" onsubmit="return false;">
-        <div id="header">
-            <h1>Guess the Word</h1>
+    <div id="header"></div>
+    <div id="selectLevel">
+        <select id="levelChoose">
+            <option id="easy" selected>Easy</option>
+            <option id="medium">Medium</option>
+            <option id="hard">Hard</option>
+        </select>
 
-            <div id="divDifficulty">
-                <select name="difficulty" id="difficulty">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
-                <input type="submit" value="Start" onclick="randomWord();">
-            </div>
-        </div>
-        <div id="content">
-            <select name="letters" id="letters" on>
-            </select>
-            <input type="submit" value="Check" onclick="checkWord();">
-            
-        </div>
-    </form>
-    <div id="footer"></div>
+        <button id="startGame" onclick="startGame()">Start Game!</button>
+    </div>
+    <div id="selectedLetter"></div>
     <script>
-        var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-        var wordLetters=[],lettersToDisplay=[];
-        var word="";
-        var inProgress=false,win=false;
-        var count=0;
-        var levels = document.getElementById("difficulty");
-        var selectedLevel;
-        function checkWord()
-        {
-            var selectedletter=document.getElementById("letters").options[document.getElementById("letters").selectedIndex].value;
-            var display=document.getElementById("footer");
-            wordLetters=word.split("");
-            if(wordLetters[count]===selectedletter)
-            {
-                inProgress=true;
-                count++;
-                display.innerText="You are correct!";
-                if(count===wordLetters.length)
-                {
-                    display.innerHTML="you win!<br> you're moving to the next level";
+        var letters = ['a', 'b', 'c','d', 'e', 'f','g', 'h', 'i','j', 'k', 'l','m', 'n', 'o','p', 'q', 'r','s', 't', 'u','v', 'w', 'x','y', 'z',];
+        var wordLetters = [];
+        var currentLetterP = 0;
+        var theChosenLevel;
+        var selectedWord = "";
 
+        function startGame() {
+            document.getElementById("selectLevel").style.visibility = 'hidden';
+            var theChosenLevelElm = document.getElementById("levelChoose");
+            theChosenLevel = theChosenLevelElm.options[theChosenLevelElm.selectedIndex].text;
+            selectedWord = wordByLevel(theChosenLevel);
+            wordHandler(selectedWord);
+
+        }
+        function wordHandler(selectedWord) {
+            
+            wordLetters = selectedWord.split("");
+            temp = selectedWord.split("");
+            var lettersToDisplay = temp.sort();
+            displyLetters(lettersToDisplay);
+        }
+        function displyLetters(lettersToDisplay) {
+            var d = document.getElementById("selectedLetter");
+
+
+            // var newBtn=document.createElement("button");
+            for (let i = 0; i < lettersToDisplay.length; i++) {
+                var newBtn = document.createElement("button");
+                newBtn.innerText = lettersToDisplay[i];
+                newBtn.id = i;
+
+                newBtn.onclick = function () {
+
+
+                    if (wordLetters[currentLetterP] === this.innerText) {
+                        currentLetterP++;
+                        alert("right");
+                        this.parentNode.removeChild(this);
+                        if (currentLetterP === wordLetters.length) {
+                            alert("you win this round!");
+                            moveLevel(wordLetters.length, "up");
+                            return;
+                        }
+                    }
+                    else {
+                        alert("you lost this round!");
+
+                        moveLevel(wordLetters.length, "down");
+
+                    }
                 }
+                d.appendChild(newBtn);
             }
-            else{
-                display.innerText="YOU FAILED!";
-                
+
+        }
+        function restartGame() {
+            location.reload();
+            return false;
+        }
+        function moveLevel(length, direction) {
+            var head=document.getElementById("header");
+            var startOverBtn;
+
+            if(head.innerHTML!=null)
+            {
+                head.innerHTML=null;
+            }
+            var d = document.getElementById("selectedLetter");
+            var displayMessage = document.createElement("h2");
+            d.innerHTML = null;
+
+            if (length === 7 && direction === "up") {
+                ("you win The Rando Game, start over");
+                displayMessage.innerText = "you win The Rando Game, start over";
+                head.appendChild(displayMessage);
+                startOverBtn=document.createElement("button");
+                startOverBtn.innerText="Start Over";
+                startOverBtn.onclick=function(){
+                    restartGame();
+                }
+                head.appendChild(startOverBtn);
                 return;
             }
+            else if (length === 3 && direction === "down") {
+                ("you lost The Rando Game, start over");
+                displayMessage.innerText = "you lost The Rando Game, start over!!";
+                head.appendChild(displayMessage);
+                startOverBtn=document.createElement("button");
+                startOverBtn.innerText="Start Over";
+                startOverBtn.onclick=function(){
+                    restartGame();
+                }
+                head.appendChild(startOverBtn);
+                return false;
+            }
+            else if ((length === 3 || length === 5) && direction === "up") {
+                length += 2;
+                displayMessage.innerText = "Level:" + levelWordL(length);
+                head.appendChild(displayMessage);
+            }
+            else if ((length === 5 || length === 7) && direction === "down") {
+                length -= 2;
+                displayMessage.innerText = "Level:" + levelWordL(length);
+                head.appendChild(displayMessage);
 
-        }
-        function randomWord() {
-            if(word!==null)
-            {
-                word=null;
-                lettersToDisplay=null;
-                document.getElementById("letters").innerHTML="";
             }
+            selectedWord = (new RandomWord(letters, length)).text;
+            wordHandler(selectedWord);
             
-            selectedLevel=levels.options[levels.selectedIndex].value;
             
-            if (selectedLevel === "easy")
-                {
-                    word = new RandomWord(letters).randomize(3);
-                }
-            else if (selectedLevel === "medium")
-                {
-                    word = new RandomWord(letters).randomize(5);
-                }
-            else if (selectedLevel === "hard")
-                {
-                    word = new RandomWord(letters).randomize(7);                    
-                }
-                lettersToDisplay = word.split("").sort();
-                setListOptions(lettersToDisplay);
-            
+            currentLetterP = 0;
         }
-        function setListOptions(lettersToDisplay)
-        {
-            var option;
-            var selectElm=document.getElementById("letters");
-            for (var i = 0; i < lettersToDisplay.length; i++) {
-                option=document.createElement("option");
-                option.value=lettersToDisplay[i];
-                option.innerText=lettersToDisplay[i];
-                selectElm.appendChild(option);
-                
+        function wordByLevel(level) {
+            var wordS = null;
+            if (level === "Easy") {
+                wordS = new RandomWord(letters, 3);
+
+            }
+
+            if (level === "Medium") {
+                wordS = new RandomWord(letters, 5);
+
+            }
+            if (level === "Hard") {
+                wordS = new RandomWord(letters, 7);
+
+            }
+            selectedWord = wordS.text;
+            return selectedWord;
+        }
+
+        function levelWordL(length) {
+
+            if (length === 3) {
+                return "Easy";
+
+            }
+            if (length === 5) {
+                return "Medium";
+
+            }
+
+            if (length === 7) {
+                return "Hard";
+
             }
         }
-        function RandomWord(charsArray) {
+        function RandomWord(charsArray, length) {
             if (typeof charsArray === 'object') {
-                //this.result = randomize(charsArray); 
+                this.text = randomize(length);
+
             }
             else {
                 console.log('"chars" should be an array.');
             }
-            this.randomize = function (length) {
-                if (typeof length === 'number') {
-                    var text = "";
-                    var possible = charsArray.join("");
-                    for (var i = 0; i < length; i++)
-                        text += possible.charAt(Math.floor(Math.random() * possible.length));
-                    return text;
-                }
-                else {
-                    console.log('"length" should be a number.');
-                }
+
+        }
+        this.randomize = function (length) {
+            if (typeof length === 'number') {
+                var text = "";
+                var possible = letters.join("");
+                for (var i = 0; i < length; i++)
+                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+                return text;
+            }
+            else {
+                console.log('"length" should be a number.');
             }
         }
+
     </script>
 </body>
 
