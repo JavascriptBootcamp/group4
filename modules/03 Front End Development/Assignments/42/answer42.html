@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>video watch list</title>
+</head>
+<body>
+<div id="forms">
+    <form id="form1">
+        <input type="text" name="title" id="vTitle" placeholder="video title">
+        <select name="vUploader" id="vUploader">
+                <option value="Daniel">Daniel</option>
+                <option value="Uriel">Uriel</option>
+                <option value="Nadav">Nadav</option>
+        </select>
+        <input type="number" name="" id="seconds"min="0" placeholder="seconds" >
+        <button onclick="watch(event);return false;">Watch</button>
+    </form>
+</div>   
+<div id="display"></div> 
+<script>
+    function watch(event)
+    {
+        var currentElem=event.target.parentNode;
+        event.preventDefault();
+var video=new Video(currentElem[0].value,currentElem[1].selectedIndex,currentElem[2].value);
+video.watch();    
+}
+function Video(title, uploader, seconds){
+    this.title = title;
+    this.uploader = uploader;
+    this.seconds = seconds;
+
+    this.watch = function () {
+        var message="";
+        try {
+            message=`You watched all ${this.seconds} seconds of ${this.title}!`;
+        } catch (error) {
+            message="Oops... An error occured";
+        }
+   var divM=document.getElementById("display");
+   divM.innerText=message;
+    }
+}
+
+
+</script>
+
+</body>
+</html>
