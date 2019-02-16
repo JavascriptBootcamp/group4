@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body onload="showContacts(contacts)">
+    <div id="header">
+        DMail
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="inbox.html">Inbox</a></li>
+            <li><a href="sent.html">Sent Emails</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+    </div>
+    <div id="content">
+    <div id="table"></div>
+    </div>
+   
+<script>
+
+    var contacts = [{firstName:"shimon",lastName:"hazan",email:"shimon@gmail.com"},
+                    {firstName:"david",lastName:"cohen",email:"david@gmail.com"},
+                    {firstName:"moshe",lastName:"levi",email:"moshe@gmail.com"}]; //"first name", "last name", "email address"
+function showContacts(contacts1){
+//console.log("hello")
+var table = document.getElementById("table")
+var tr = document.createElement("tr")
+
+var fName = document.createElement("td");
+var afName=document.createElement("a")
+afName.innerText="First Name ";
+afName.href='#'
+afName.setAttribute('onclick',"ascendOrder('firstName')")
+fName.appendChild(afName)
+tr.appendChild(fName)
+
+var lName = document.createElement("td");
+var alName=document.createElement("a")
+alName.innerText="Last Name ";
+alName.href='#'
+alName.setAttribute('onclick',"ascendOrder('lastName')")
+lName.appendChild(alName)
+tr.appendChild(lName)
+
+var eAdress = document.createElement("td");
+var aeAdress=document.createElement("a")
+aeAdress.innerText="Email Address";
+aeAdress.href='#'
+aeAdress.setAttribute('onclick',"ascendOrder('email')")
+eAdress.appendChild(aeAdress)
+tr.appendChild(eAdress)
+
+table.appendChild(tr)
+
+for(var i=0;i<contacts1.length;i++){
+    var row = document.createElement("tr")
+    for(var key in contacts1[i]){
+        var td = document.createElement("td")
+        td.innerText=contacts1[i][key];
+        if(i<4){
+            td.id="tdBold"
+        }
+        row.appendChild(td)
+    }
+    table.appendChild(row)
+}
+
+document.getElementById("inbox").appendChild(table)
+}
+
+function  ascendOrder(orderBy){
+    var table = document.getElementById("table")
+    table.innerHTML="";
+    contactsOrder=contacts.sort((a, b) => (a.orderBy > b.orderBy) ? 1 : -1);
+    showContacts(contactsOrder)
+}
+</script>
+</body>
+</html>
