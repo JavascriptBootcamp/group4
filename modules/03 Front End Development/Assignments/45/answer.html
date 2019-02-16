@@ -13,19 +13,17 @@
     <form>
         Enter Image link:<input type="url" id="img"><br>
         Enter Wikipedia link:<input type="url" id="wiki"><br>
-        <input type="button" value="Add" onclick="addToCollection(event)">
+        <input type="button" value="Add" onclick="add(event)">
     </form>
 
 
     <!-- the div that holds the images  -->
     <div id="collection">
-
     </div>
 
 
     <!-- the div that holds the number  -->
     <div id="next">
-        <!-- <a href="javascript:void(0)" onclick="Show(event)">1</a> -->
     </div>
 
 
@@ -58,44 +56,42 @@
         function cretaeNumElem() {
             newNextElem = document.createElement("a");
             newNextElem.setAttribute("href", "javascript:void(0)");
-            newNextElem.setAttribute("onclick", "showImage(event)");
+            newNextElem.setAttribute("onclick", "num()");
             newNextElem.innerText = numOfPages;
             return newNextElem;
         }
+
+        function num() {
+            if (selectedPage !== numOfPages) {
+                while (imageDiv.firstChild) {
+                    imageDiv.removeChild(imageDiv.firstChild);
+                }
+
+                selectedPage = event.target.innerText;
+
+                var lastIndex = ((selectedPage * 12) - 1 < arrOfImages.length - 1) ? (selectedPage * 12) - 1 : arrOfImages.length - 1;
+                for (var index = selectedPage * 12 - 12; index <= lastIndex; index++) {
+                    imageDiv.appendChild(arrOfImages[index]);
+                }
+            }
+        }
+
 
         function showImage(event) {
             // loads the right 12 images
 
             if (event.target.tagName == "INPUT") {     // Add was pressed
-                
+
                 if (selectedPage == numOfPages) {
-                    if (arrOfImages.length % 13 !== 0) {
+                    if (imageDiv.childElementCount <= 12) {
                         imageDiv.appendChild(arrOfImages[arrOfImages.length - 1]);
                     }
                 }
-
-
-            } else {    // page number was pressed - event.target.tagNmae === "A"
-
-                if (selectedPage !== numOfPages) {
-                    while (imageDiv.firstChild) {
-                        imageDiv.removeChild(imageDiv.firstChild);
-                    }
-
-                    selectedPage = event.target.innerText;
-
-                    var lastIndex = ((selectedPage * 12) - 1 < arrOfImages.length - 1) ? (selectedPage * 12) - 1 : arrOfImages.length -1;
-                    for (var index = selectedPage * 12 - 12; index <= lastIndex; index++) {
-                        imageDiv.appendChild(arrOfImages[index]);
-                    }
-                }
             }
-
-
         }
 
 
-        function addToCollection(event) {
+        function add(event) {
             // create an image element
             newImageElem = createImageElem();
 
@@ -104,7 +100,7 @@
 
 
             // check if another number must be added
-            if (arrOfImages.length % 13 === 0 || arrOfImages.length === 1) {
+            if (arrOfImages.length % 12 === 1) {
                 numOfPages++;
                 newNextElem = cretaeNumElem();
                 nextDiv.appendChild(newNextElem);
