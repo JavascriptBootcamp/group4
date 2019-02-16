@@ -1,0 +1,42 @@
+
+body {
+    display: block;
+    margin: 0px 0px 0px 0px ;
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    padding: 1%;
+
+    text-shadow: 3px 2px gray;
+    text-align: center;
+    color: white;
+}
+
+.row {
+    display: inline;
+    padding: 1%;
+    font-size: 100%;
+}
+
+#dummy_text {
+    font-size: 50px;
+}
+
+#body {
+    background-color: #f1f1f1;
+}
+.img-box {
+    display: inline-block;
+    height: 50%;
+    width: 31%;
+    margin: 1%;
+    background-color: #ffffff;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
