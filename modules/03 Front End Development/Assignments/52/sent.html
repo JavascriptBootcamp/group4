@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        #table {
+            font-size: 16px;
+        }
+        #table tr:nth-child(-n+4) {
+            font: bold;
+        }
+    </style>
+</head>
+<body onload="showSentMails()">
+    <div id="header">DMail</div>
+    <div id="menu">
+        <ul>
+            <li><a href="inbox.html">Inbox</a></li>
+            <li><a href="sent.html">Sent Emails</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+
+    </div>
+    <div id="content">
+        <table id="email-table"></table>
+    </div>
+<script>
+    var outComingMails = [{to:"david",subject:"work",date:"10-02-19",content:"arrive in 3"},
+                          {to:"moshe",subject:"tour",date:"10-02-19",content:"bla1 bla1"},
+                          {to:"ahron",subject:"trip",date:"10-02-19",content:"bla bla 3"},
+                          {to:"yosef",subject:"studies",date:"10-02-19",content:"bla bla vla 4"},
+                          {to:"miriam",subject:"date",date:"10-02-19",content:"bla bla 5"}];
+    
+
+    function showSentMails(){
+        var table = document.getElementById("email-table")
+        var tr = document.createElement("tr")
+        var colFrom = document.createElement("td");
+        colFrom.innerText="To";
+        tr.appendChild(colFrom)
+        var colSubject = document.createElement("td");
+        colSubject.innerText="Subject";
+        tr.appendChild(colSubject)
+        var colDate = document.createElement("td");
+        colDate.innerText="Date";
+        tr.appendChild(colDate)
+        var colContent = document.createElement("td");
+        colContent.innerText="Content";
+        tr.appendChild(colContent)
+        table.appendChild(tr)
+        for(var i=0;i<outComingMails.length;i++){
+            var row = document.createElement("tr")
+            for(var key in outComingMails[i]){
+                
+                var td = document.createElement("td")
+                if(i<3){
+                td.id="tdBold"
+                }
+                td.innerText=outComingMails[i][key];
+                row.appendChild(td)
+            }
+            table.appendChild(row)
+        }
+        
+        document.getElementById("inbox").appendChild(table)
+    }
+
+</script>
+</body>
+</html>
