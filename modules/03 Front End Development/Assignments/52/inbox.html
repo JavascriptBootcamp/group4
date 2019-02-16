@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        #table {
+            font-size: 16px;
+        }
+        #table tr:nth-child(-n+4) {
+            font: bold;
+        }
+    </style>
+</head>
+<body onload="shoeIncomingMails()">
+    <div id="header">
+        DMail
+    </div>
+    <div id="menu" align='left'>
+        <ul>
+            <li><a href="inbox.html">Inbox</a></li>
+            <li><a href="sent.html">Sent Emails</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+
+    </div>
+    <div id="content">
+        <table id="email-table">
+        </table>
+    </div>
+
+<script>
+    var incomingMails = [{from:"david",subject:"work",date:"10-02-19",content:"arrive in 3"},//"from", "subject", "date" , "content" 
+                         {from:"moshe",subject:"work",date:"10-03-19",content:"bla bla bla"},
+                         {from:"ahron",subject:"work",date:"10-05-19",content:"bla bla bla3"},
+                         {from:"yosef",subject:"work",date:"10-07-19",content:"bla bla bla4"},
+                         {from:"david",subject:"work",date:"10-08-19",content:"bla bla bla5"},
+                         {from:"shlomo",subject:"work",date:"10-03-19",content:"bla bla bla6"},
+                         {from:"ester",subject:"work",date:"10-01-19",content:"bla bla bla7"},
+                         {from:"hana",subject:"work",date:"10-11-19",content:"bla bla bla8"},
+                         {from:"natali",subject:"work",date:"10-01-19",content:"bla bla bla9"},
+                         {from:"david",subject:"work",date:"10-11-19",content:"bla bla bla10"},
+    ];
+
+    function shoeIncomingMails(){
+        console.log("hello")
+        var table = document.getElementById("email-table")
+        var tr = document.createElement("tr")
+        var colFrom = document.createElement("td");
+        colFrom.innerText="From";
+        tr.appendChild(colFrom)
+        var colSubject = document.createElement("td");
+        colSubject.innerText="Subject";
+        tr.appendChild(colSubject)
+        var colDate = document.createElement("td");
+        colDate.innerText="Date";
+        tr.appendChild(colDate)
+        var colContent = document.createElement("td");
+        colContent.innerText="Content";
+        colContent.id="000"
+        tr.appendChild(colContent)
+        table.appendChild(tr)
+        var countContent=0
+        for(var i=0;i<incomingMails.length;i++){
+            var row = document.createElement("tr")
+            for(var key in incomingMails[i]){
+                countContent++
+                console.log(incomingMails[i][key])
+                var td = document.createElement("td")
+                if(i<4){
+                   td.id="tdBold"
+                }
+                if(countContent%4!==0){
+                td.innerText=incomingMails[i][key];
+                td.setAttribute('onclick',`shoeContent(${i})`)
+                }
+                if(countContent%4===0){
+                td.id="tdBold"+i;
+                }
+                row.appendChild(td)
+            }
+            table.appendChild(row)
+        }
+        
+        document.getElementById("inbox").appendChild(table)
+    }
+function shoeContent(rowNumber){
+    document.getElementById("tdBold"+rowNumber).innerText=incomingMails[rowNumber]['content'];
+
+}
+</script>
+</body>
+</html>
