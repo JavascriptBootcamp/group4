@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    background-color: lightgray;
+}
+
+header {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+a {
+   color: darkblue;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+a:active {
+    color: darkgreen;
+}
+
+#main {
+    display: flex;
+    height: 600px;
+    font-size: 16px;
+}
+
+#side-bar {
+  background: gray;
+  height: 100%; 
+  width: 20%;
+}
+
+#content {
+    background: lightgray;
+    height: 100%; 
+    width: 80%;
+}
+
+.email {
+    margin-left: 30px;
+}
+
+.email:hover {
+    cursor: pointer;
+    background-color: dimgray;
+    color: white;
+}
+
+.email span {
+    margin-right: 10px; 
+}
+
+.email label {
+    color: darkred;
+    font-weight:bold;
+}
+
+.email:nth-child(1) , .email:nth-child(2) , .email:nth-child(3) {
+    font-weight: bolder;
+}
+
+.hide {
+    display: none;
+}
+
+th {
+    padding-right: 20px; 
+    color: darkred;
+}
+
+th:hover {
+    cursor: pointer;
+}
+
+tr {
+    font-size: 20px;
+}
+
+tr:hover {
+    background-color: dimgray;
+    color: white;
+}
+
+table {
+    margin-left: 30px;
+}
