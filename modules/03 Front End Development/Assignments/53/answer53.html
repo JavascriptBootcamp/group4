@@ -133,11 +133,11 @@
     }
     function PickOne() {
         var rowSize = document.getElementById("table").rows.length;
-        var randomRow = Math.floor(Math.random() * rowSize) ;  // returns a random integer from 1 to 
+        var randomRow = Math.floor(Math.random() * rowSize) + 1;  // returns a random integer from 1 to 
         document.getElementById("opacity").style.opacity = "0.25"
         var middleDiv = document.getElementById("middle");
 
-        middleDiv.innerText = (document.getElementsByTagName("tr")[randomRow ].innerText)
+        middleDiv.innerText = (document.getElementsByTagName("tr")[randomRow - 1].innerText)
         middleDiv.style.opacity = "1"
      
         var Xbutton = document.createElement("button");
@@ -145,7 +145,7 @@
         Xbutton.onclick = "framedisappear();"
         Xbutton.innerText = "x"
         middleDiv.appendChild(Xbutton);
-        document.getElementById("table").deleteRow(randomRow);
+        document.getElementById("myTable").deleteRow(randomRow-1);
 
     }
 
