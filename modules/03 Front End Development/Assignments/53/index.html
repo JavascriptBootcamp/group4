@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #top {
+            width: 100%;
+            margin-left: 160px;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            margin: 0px auto;
+            width: 700px;
+        }
+
+        #middle {
+            margin-left: 160px
+        }
+
+        #menu {
+            height: 100%;
+            width: 100px;
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            background-color: gray;
+            padding-top: 20px;
+        }
+
+        #btn {
+            margin: auto;
+        }
+
+        #background {
+            background-color: gray;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.6;
+            display: none;
+        }
+
+        #pick {
+            background-color: khaki;
+            height: 250px;
+            width: 250px;
+            margin:auto auto;
+            position: relative;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top">
+        <h1>Our Research</h1>
+    </div>
+
+    <div id="middle">
+        <div id="menu">
+            <form action="#" onsubmit="return addStudent(event)">
+                <label for="studentName">Student Name:</label>
+                <select name="studentName" id="studentName">
+                    <option value="moti">moti</option>
+                    <option value="avi">avi</option>
+                    <option value="david">david</option>
+                    <option value="gabi">gabi</option>
+                    <option value="lital">lital</option>
+                </select>
+
+                <input type="text" placeholder="Subject" id="subject" size="8">
+                <input type="submit" name="submit" id="submit">
+            </form>
+        </div>
+
+        <table id="table">
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+            </tr>
+        </table>
+        <input type="button" id="btn" value="Pick One" onclick="pickOne()">
+    </div>
+
+    <br><br><br><br><br> <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <div id="background">
+    </div>
+    <div id="pick">
+    </div>
+
+    <div id="bottom">
+        <a href="#top">Back to top</a>
+    </div>
+
+    <script>
+        var arrStudent = [];
+        var Student = { name: "", sub: "" };
+        function addStudent(event) {
+            var studentName = document.getElementById("studentName").value;
+            var subject = document.getElementById("subject").value;
+            console.log(subject + studentName);
+            var table = document.getElementById("table");
+            var row = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            td1.innerText = studentName;
+            row.appendChild(td1);
+            td2.innerText = subject;
+            row.appendChild(td2);
+            var s = Student;
+            s.name = studentName;
+            s.sub = subject;
+            arrStudent.push(s);
+            table.appendChild(row);
+
+            event.preventDefault();
+        }
+
+        function pickOne() {
+            var p =document.getElementById("pick");
+            var b=document.getElementById("background");
+            p.style.display="block";
+            b.style.display="block";
+            document.getElementById("pick").innerText=arrStudent[0];
+        }
+    </script>
+</body>
+
+</html>
