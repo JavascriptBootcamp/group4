@@ -3,8 +3,21 @@
 <head>
     <title></title>
     <style>
+        * {
+
+            font-size: 16px
+        }
+
         .header {
-            width: 100%
+            height: 50px;
+
+            width: 100%;
+            background-color: lightpink;
+        }
+
+        tr {
+            height: 25px;
+            border: 10px solid black;
         }
 
         #scroll-top {
@@ -12,83 +25,127 @@
             position: fixed
         }
 
-
         table {
             width: 700px;
         }
 
-
-        [href] {
-
-            color: darkgreen
+        #contant {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -350px;
+            margin-top: -350px;
+            width: 700px;
         }
 
-        img[src="https://www.butterflyfields.com/wp-content/uploads/2016/02/4-star-rating.png"] {
-            width: 200%;
-            height: 200%;
+        #side-menu {
+            width: 300px;
+            /* float: left; */
         }
 
-        [alt*="stars"] {
-
-            background-color: #000000;
+        #middle {
+            background-color: blueviolet;
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
         }
 
-        img[src$=".png"] {
-            width: 50%;
-            height: 50%;
+        #PickOne {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+            width: 100px;
+        }
+
+        #opacity {
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
 
-<body>
+<body id="screen">
+    <div id="opacity">
+        <div id="top" class="header">
+            Our Research
 
-    <div id="top" class="header">
-        Our Research
+        </div>
 
-    </div>
-    <div class="contant">
-        <table id="table">
-            <tr>
-                <th>Student Name</th>
-                <th>Subject</th>
+        <div id="side-menu">
+            <form onsubmit="return false">
+                <label for="Student-Name">Student Name:</label>
 
-            </tr>
-        </table>
-
-    </div>
-    <div class="side-menu">
-        <form onsubmit="return false">
-            <label for="Student-Name">Student Name:</label>
-
-            <select id="Stu-select">
+                <select id="Stu-select">
                     <option value="">--Please choose an option--</option>
                     <option value=" ameer89"> ameer89</option>
                     <option value=" amitayl"> amitayl</option>
                     <option value="lital">lital</option>
                 </select>
-                <input type="text" id="Subject">Subject</inout>
-                
-            <button onclick="insertToTable()" type="submit">submit </button>
-        </form>
+                <input type="text" id="Subject" placeholder="enter subject.."></input>
+
+                <button onclick="insertToTable()" type="submit">submit </button>
+            </form>
+        </div>
+        <div id="contant">
+            <button id="PickOne" onclick="PickOne()" type="submit">Pick One </button>
+
+            <table id="table">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subject</th>
+
+                </tr>
+            </table>
+
+        </div>
+        <a href="#top" id="scroll-top">Back to top</a>
+
+
     </div>
-    <a href="#top" id="scroll-top">Back to top</a>
+    <div id="middle"> </div>
 
 </body>
 <script>
-    function insertToTable(params) {
-        var table = document.getElementById("table").value;
+    function insertToTable() {
+        var table = document.getElementById("table");
         var Stu = document.getElementById("Stu-select").value;
         var Subject = document.getElementById("Subject").value;
-        var tr=document.createElement("tr");
-   
-        var tdStu=document.createElement("td");
-        tdStu.innerText=Stu;
-        var tdSubject=document.createElement("td");
-        tdSubject.innerText=Subject;
+        var tr = document.createElement("tr");
+
+        var tdStu = document.createElement("td");
+        tdStu.innerText = Stu;
+        var tdSubject = document.createElement("td");
+        tdSubject.innerText = Subject;
         tr.appendChild(tdStu);
         tr.appendChild(tdSubject);
         table.appendChild(tr);
 
+
+    }
+    function framedisappear() {
+        document.getElementById("middle").innerHTML = "";
+    }
+    function PickOne() {
+        var rowSize = document.getElementById("table").rows.length;
+        var randomRow = Math.floor(Math.random() * rowSize) ;  // returns a random integer from 1 to 
+        document.getElementById("opacity").style.opacity = "0.25"
+        var middleDiv = document.getElementById("middle");
+
+        middleDiv.innerText = (document.getElementsByTagName("tr")[randomRow ].innerText)
+        middleDiv.style.opacity = "1"
+     
+        var Xbutton = document.createElement("button");
+        Xbutton.value = "x"
+        Xbutton.onclick = "framedisappear();"
+        Xbutton.innerText = "x"
+        middleDiv.appendChild(Xbutton);
+        document.getElementById("table").deleteRow(randomRow);
 
     }
 
