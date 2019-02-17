@@ -15,24 +15,30 @@
             <h1>Our Research</h1>
         </div>
         <div id="middle">
-            <table id="table">
-                <tr>
-                    <th>Student Name</th>
-                    <th>Subject</th>
-                </tr>
-            </table>
-            <button id="btn-pick-one" onclick="pullRandomRow(event)">Pick One</button>
-            <div id="sidemenu">
-                <form>
-                    <select id="select-student-name" class="my-inputs">
-                        <option>Gaby buchnik</option>
-                        <option>Daniel barush</option>
-                        <option>Ofek arbeli</option>
-                    </select>
-                    <input id="input-subject" class="my-inputs" type="text">
-                    <input type="submit" class="my-inputs" value="submit" onclick="addField(event)">
-                </form>
+            <div id="left">
+                <div id="sidemenu">
+                    <form>
+                        <select id="select-student-name" class="my-inputs">
+                                    <option>Gaby buchnik</option>
+                                    <option>Daniel barush</option>
+                                    <option>Ofek arbeli</option>
+                                </select>
+                        <input id="input-subject" class="my-inputs" type="text">
+                        <input type="submit" class="my-inputs" value="submit" onclick="addField(event)">
+                    </form>
+                </div>
             </div>
+            <div id="right">
+                <table id="table">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Subject</th>
+                    </tr>
+                </table>
+                <button id="btn-pick-one" onclick="pullRandomRow(event)">Pick One</button>
+            </div>
+
+
         </div>
         <div id="footer">
             <a href="#top">Back to top</a>

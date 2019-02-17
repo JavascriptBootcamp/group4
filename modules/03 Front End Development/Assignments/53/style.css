@@ -53,8 +53,8 @@ table,tr,td,th{
     display: inline-block;
 }
 #frame{
-    width:200px;
-    height: 200px;
+    width:800px;
+    height: 800px;
     margin:auto;
     text-align: center;
     background-color: lightblue;
@@ -63,3 +63,11 @@ table,tr,td,th{
     display: inline-block;
     width: 100%;
 }
+#result{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -400px;
+    margin-left: -400px;
+}
+#left{float: left;}
