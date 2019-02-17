@@ -13,6 +13,8 @@
             padding: 10px;
             background-color: black;
             color: white;
+            position: fixed;
+            top: 0px;
         }
 
         .center {
@@ -23,7 +25,7 @@
         #fotter {
             position: fixed;
             width: 100%;
-            background-color: black;
+            background-color: #1CB40E;
         }
 
         a {
@@ -31,10 +33,50 @@
         }
 
         #side-menu {
-            position: absolute;
             background-color: red;
             height: 100%;
-            width: 20%;
+            width: 12%;
+            display: inline-block;
+            position: fixed;
+        }
+
+        
+
+        .table {
+            width: 700px;
+        }
+
+        #ph {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            opacity: 0.25;
+            top: 0px;
+            visibility: hidden;
+        }
+
+        #middle {
+            height: 887px;
+            margin-top: 10%;
+        }
+
+        #choosen {
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            visibility: hidden;
+        }
+        #main{
+            display: inline-block
+        }
+        #formDiv{
+            margin-top: 200px;
+        }
+        td{
+            border: 1px solid black;
+            width: 250px;
         }
     </style>
 
@@ -42,57 +84,123 @@
 </head>
 
 <body>
-    <div id="side-menu">
-        <div class="center">
-            <form>
-                <table>
-                    <tr>
-                        <td>Student Name</td>
-                        <td>
-                            <select>
-                                <option value="" selected disabled hidden>Name</option>
-                                <option>The Real King - Matan Diner</option>
-                                <option>Yakir</option>
-                                <option>Moshiko</option>
-                                <option>Ofek</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Subject</td>
-                        <td>
-                            <input type="text" placeholder="Subject"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit">submit</button>
-                        </td>    
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-    <div id="header">
-        <h1 class="center">Our Research</h1>
-    </div>
-    <div id="middle">
-        <div class="center">
-            <table>
-                <tr>
-                    <td>Student Name</td>
-                    <td>Subject</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div id="fotter">
-        <div class="center">
-            <a href="#header">Back to top</a>
-        </div>
-    </div>
+    <div id="ph" onclick="back()"></div>
+    <div id="choosen"></div>
 
 
+
+    <div class="container">
+
+
+        <div id="side-menu">
+            <div id="formDiv">
+                <form>
+                    <table>
+                        <tr>
+                            <td>
+                                <select id="name">
+                                            <option value="" selected disabled hidden>Name</option>
+                                            <option>The Real King - Matan Diner</option>
+                                            <option>Yakir</option>
+                                            <option>Moshiko</option>
+                                            <option>Ofek</option>
+                                        </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" id="Subject" placeholder="Subject" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" onclick="addRow(event)">submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="main">
+            <div id="header">
+                <h1 class="center">Our Research</h1>
+            </div>
+            <div id="middle">
+                <div class="center">
+                    <div>
+                        <table class="table" id="table">
+                            <tr>
+                                <td>Student Name</td>
+                                <td>Subject</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <button onclick="pickOne()">Pick One</button>
+                    </div>
+                </div>
+            </div>
+            <div id="fotter">
+                <div class="center">
+                    <a href="#header">Back to top</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <script>
+            function addRow(e) {
+
+                e.preventDefault();
+                var selectedName = document.getElementById("name");
+                var name = selectedName.options[selectedName.selectedIndex].text;
+                var Subject = document.getElementById("Subject").value;
+
+                var table = document.getElementById("table");
+                var tr = document.createElement("tr");
+                var td_name = document.createElement("td");
+                var td_subject = document.createElement("td");
+                td_name.innerText = name;
+                td_subject.innerText = Subject;
+                tr.appendChild(td_name);
+                tr.appendChild(td_subject);
+                var tbody = table.childNodes[1];
+                tbody.appendChild(tr);
+
+            }
+
+
+            function pickOne() {
+
+                var table = document.getElementById("table");
+                var tbody = table.childNodes[1];
+                var childCount = tbody.childNodes.length - 2;
+                var num = Math.floor(Math.random() * childCount) + 2;
+                var trPicded = tbody.childNodes[num];
+                tbody.removeChild(trPicded);
+                var div = document.getElementById("ph");
+                div.style.visibility = "visible";
+                var choosen = document.getElementById("choosen");
+                choosen.style.visibility = "visible";
+                var table = document.createElement("table");
+                table.appendChild(trPicded);
+                choosen.appendChild(table);
+            }
+
+
+            function back(){
+                var div = document.getElementById("ph");
+                div.style.visibility = "hidden";
+                var choosen = document.getElementById("choosen");
+                choosen.innerText = "";
+                choosen.style.visibility = "hidden";
+            }
+        </script>
 
 
 </body>
