@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>33</title>
+</head>
+
+<body>
+    <input type="text" id="input" onkeyup="toUpper(event)">
+
+    <script>
+        var newInput = "";
+        var upperCaseObj = {
+            a: 'A',
+            b: 'B',
+            c: 'C',
+            d: 'D',
+            e: 'E',
+            f: 'F',
+            g: 'G',
+            h: 'H',
+            i: 'I',
+            j: 'J',
+            k: 'K',
+            l: 'L',
+            m: 'M',
+            n: 'N',
+            o: 'O',
+            p: 'P',
+            q: 'Q',
+            r: 'R',
+            s: 'S',
+            t: 'T',
+            u: 'U',
+            v: 'V',
+            w: 'W',
+            x: 'X',
+            y: 'Y',
+            z: 'Z'
+        };
+        function toUpper(event) {
+            var currentInput = event.target.value;
+            var lastLetter = currentInput.slice(-1);
+            if (upperCaseObj[lastLetter] !== undefined) {
+                var capitalLetter = upperCaseObj[lastLetter];
+                newInput += capitalLetter;
+                setTimeout(function () {
+                    document.querySelector("#input").value = newInput;
+                }, 100);
+            }
+        }
+    </script>
+</body>
+
+</html>
