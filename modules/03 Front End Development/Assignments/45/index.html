@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>var imageArr = [], wikiArr = [], count = 0, imagesPerPage = 2;</script>
+</head>
+
+<body>
+    <form>
+        Insert image url: <input type="url" id="image" required>
+        Insert wiki url: <input type="url" id="wiki" required>
+        <input type="submit" value="Submit" onclick="addImage(event)">
+    </form>
+
+    <div id="output"></div>
+
+    <div id="pages"></div>
+    <script>
+
+        function addImage(e) {
+            var pages = document.getElementById("pages");
+            var image = document.getElementById("image").value;
+            var wiki = document.getElementById("wiki").value;
+            imageArr[count] = image;
+            wikiArr[count] = wiki;
+            pages.innerHTML = "Pages: <b onclick='showPage(" + (1) + ")'>" + (1) + "</b>";
+            var pagesCounter = Math.floor((count / imagesPerPage)+1);
+            count++;
+                for (var i = 2; i <= pagesCounter; i++) {
+                    pages.innerHTML += ", <b onclick='showPage(" + (i) + ")'>" + (i) + "</b>";
+                }
+            showPage(Math.ceil(count / imagesPerPage));
+            document.getElementById("image").value = "";
+            document.getElementById("wiki").value = "";
+            e.preventDefault();
+
+        }
+
+        function showPage(pageNum) {
+            var outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "";
+            for (var i = (pageNum * imagesPerPage - imagesPerPage); i < pageNum * imagesPerPage; i++) {
+                if (wikiArr[i])
+                    outputDiv.innerHTML += "<a href='" + wikiArr[i] + "'> <img src='" + imageArr[i] + "' style='width:100px;height:100px;'></a>";
+            }
+        }
+    </script>
+</body>
+
+</html>
