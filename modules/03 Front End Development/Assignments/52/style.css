@@ -1,0 +1,54 @@
+body {
+    background: lightgray;
+}
+#DMail {
+
+    background: black;
+    color: white;
+    padding: 10px;
+}
+.first-content {
+    font-size: 20px;
+}
+.second-content {
+    font-size: 16px;
+}
+#incoming-emails tr:nth-child(2), #incoming-emails tr:nth-child(4), #incoming-emails tr:nth-child(6) {
+    font-weight: bold;
+}
+#outcoming-emails tr:nth-child(2), #outcoming-emails tr:nth-child(4), #outcoming-emails tr:nth-child(6) {
+    font-weight: bold;
+}
+#contact-persons {
+    margin:30px;
+}
+h2 {
+    color: darkred;
+}
+a {
+    color: darkblue;
+}
+.hide-content {
+    display:none;
+}
+* {
+    border-color:  darkgrey; 
+    padding: 5px;
+}
+#contact-persons tr:hover {
+    color:white;
+    background : DimGrey;
+}
+a:hover {
+    font-weight: bold;
+}
+#left-menu a:active  {
+    color: darkgreen;
+}
+h1 {
+    text-align: center;
+    margin: 0 auto;
+}
+.message-body {
+    background:white;
+}
