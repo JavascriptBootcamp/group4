@@ -31,20 +31,23 @@ function pullRandomRow(e) {
     var studentName = document.createElement("div");
     var subject = document.createElement("div");
     var btnX = document.createElement("input");
-    btnX.value = "X";
-    btnX.type = "submit";
-    btnX.id = "btn-close"
-    btnX.onclick = closeModal;
-    container.style.opacity = "0.25";
-    frame.id = "frame"
-    frame.appendChild(btnX);
-    studentName.innerText = tr.getElementsByTagName("TD")[0].innerText;
-    studentName.id = "resStudentName"
-    frame.appendChild(studentName);
-    subject.innerText = tr.getElementsByTagName("TD")[1].innerText;
-    subject.id = "resSubject";
-    frame.appendChild(subject);
-    result.appendChild(frame);
+    if(tr.innerText){
+        btnX.value = "X";
+        btnX.type = "submit";
+        btnX.id = "btn-close"
+        btnX.onclick = closeModal;
+        container.style.opacity = "0.25";
+        frame.id = "frame"
+        frame.appendChild(btnX);
+        studentName.innerText = tr.getElementsByTagName("TD")[0].innerText;
+        studentName.id = "resStudentName"
+        frame.appendChild(studentName);
+        subject.innerText = tr.getElementsByTagName("TD")[1].innerText;
+        subject.id = "resSubject";
+        frame.appendChild(subject);
+        result.appendChild(frame);
+        tr.innerText = "";
+    }
 }
 
 function closeModal(e) {
