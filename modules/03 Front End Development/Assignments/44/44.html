@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books | Favorites</title>
+</head>
+<style>
+    select {
+        margin-left: 36%;
+    }
+
+    form {
+        margin: 0 auto;
+        width: 330px;
+        padding: 1em;
+        border: 1px solid #CCC;
+        border-radius: 1em;
+    }
+
+    form div {
+        margin-top: 10px;
+    }
+
+    label {
+        display: inline-block;
+        width: 130px;
+        font-size: 17px;
+    }
+
+    textarea {
+        vertical-align: top;
+        height: 8em;
+    }
+
+    .button {
+        padding-left: 135px;
+    }
+</style>
+
+<body onload="fieldsCheck()">
+    <form>
+        <div>
+            <label for="book-title">Book name:</label>
+            <input type="text" id="book-title" name="book-title" onkeyup="fieldsCheck()" />
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" onkeyup="fieldsCheck()" />
+        </div>
+        <div>
+            <label for="published-date">Published date:</label>
+            <input type="date" id="published-date" name="published-date" onkeyup="fieldsCheck()" />
+        </div>
+        <div>
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher" onkeyup="fieldsCheck()" />
+        </div>
+        <div>
+            <label for="page-count">Pages:</label>
+            <input type="number" id="page-count" name="page-count" min="1" onkeyup="fieldsCheck()" />
+        </div>
+        <div>
+            <label for="comments-book">Comments:</label>
+            <textarea id="comments-book" name="comments-book" onkeyup="fieldsCheck()"></textarea>
+        </div>
+        <div class="button">
+            <button type="submit" onclick="addBook(event)">Add book</button>
+        </div>
+    </form>
+    <select id="Sort-by-dates" onchange="SortByDates()">
+        <option value="" selected disabled hidden>Order your books by date</option>
+        <option value="oldest">oldest to newest</option>
+        <option value="newest">newest to oldest</option>
+    </select>
+    <div id="content"></div>
+
+    <script>
+        books = [];
+        function fieldsCheck() {
+            var inputs = document.getElementsByTagName("input");
+            var textareas = document.getElementsByTagName("textarea");
+            if (inputs[0].value !== "" && inputs[1].value !== "" && inputs[2].value !== "" && inputs[3].value !== "" && inputs[4].value !== "" && textareas[0].value !== "") {
+                document.getElementsByTagName("button")[0].disabled = false;
+            } else {
+                document.getElementsByTagName("button")[0].disabled = true;
+            }
+        }
+        function addBook(event) {
+            event.preventDefault();
+            var title = document.getElementById("book-title").value;
+            var author = document.getElementById("author").value;
+            var date = document.getElementById("published-date").value;
+            var publisher = document.getElementById("publisher").value;
+            var pages = document.getElementById("page-count").value;
+            var comments = document.getElementById("comments-book").value;
+            var book = {
+                title: title,
+                author: author,
+                date: date,
+                publisher: publisher,
+                pages: pages,
+                comments: comments
+            };
+            books.push(book);
+            var div = document.createElement("div");
+            var titleBook = document.createElement("h1");
+            titleBook.innerHTML = "Title: " + title;
+            var authorBook = document.createElement("h2");
+            authorBook.innerHTML = "Author: " + author;
+            var dateBook = document.createElement("h3");
+            dateBook.innerHTML = "Published date: " + date;
+            var publisherBook = document.createElement("h4");
+            publisherBook.innerHTML = "Publisher: " + publisher;
+            var pagesBook = document.createElement("h5");
+            pagesBook.innerHTML = "Pages: " + pages;
+            var commentsBook = document.createElement("p");
+            commentsBook.innerHTML = "Comments: " + comments;
+            div.appendChild(titleBook);
+            div.appendChild(authorBook);
+            div.appendChild(dateBook);
+            div.appendChild(publisherBook);
+            div.appendChild(pagesBook);
+            div.appendChild(commentsBook);
+            document.getElementById("content").appendChild(div);
+
+        }
+        function SortByDates() {
+            document.getElementById("content").innerHTML = "";
+            if (document.getElementById("Sort-by-dates").value === "newest") {
+                books.sort((a, b) => (a.date > b.date) ? -1 : ((b.date > a.date) ? 1 : 0));
+            }
+            if (document.getElementById("Sort-by-dates").value === "oldest") {
+                books.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0));
+            }
+            for (var i = 0; i < books.length; i++) {
+                var div = document.createElement("div");
+                var titleBook = document.createElement("h1");
+                titleBook.innerHTML = "Title: " + books[i].title;
+                var authorBook = document.createElement("h2");
+                authorBook.innerHTML = "Author: " + books[i].author;
+                var dateBook = document.createElement("h3");
+                dateBook.innerHTML = "Published date: " + books[i].date;
+                var publisherBook = document.createElement("h4");
+                publisherBook.innerHTML = "Publisher: " + books[i].publisher;
+                var pagesBook = document.createElement("h5");
+                pagesBook.innerHTML = "Pages: " + books[i].pages;
+                var commentsBook = document.createElement("p");
+                commentsBook.innerHTML = "Comments: " + books[i].comments;
+                div.appendChild(titleBook);
+                div.appendChild(authorBook);
+                div.appendChild(dateBook);
+                div.appendChild(publisherBook);
+                div.appendChild(pagesBook);
+                div.appendChild(commentsBook);
+                document.getElementById("content").appendChild(div);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
