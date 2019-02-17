@@ -10,7 +10,38 @@
 <body>
     <header id="top"><h1>Our Research</h1></header>
     <section>
-        <div>
+        <div id="side-menu">
+            <form>
+                <select id="students">
+                        <option value="OfekArbeli ">OfekArbeli </option>
+                        <option value="shimonhazan ">shimonhazan </option>
+                        <option value="YakirSolomon ">YakirSolomon </option>
+                        <option value="moshiko-a">moshiko-a</option>
+                        <option value="MatanDiner ">MatanDiner </option>
+                        <option value="matanatia ">matanatia </option>
+                        <option value="mariyastash ">mariyastash </option>
+                        <option value="Malak77 ">Malak77 </option>
+                        <option value="litalrab ">litalrab </option>
+                        <option value="hakimiansh ">hakimiansh </option>
+                        <option value="GuyAgiv ">GuyAgiv </option>
+                        <option value="gabybuchnik ">gabybuchnik </option>
+                        <option value="gabsy3 ">gabsy3 </option>
+                        <option value="EvyatarD ">EvyatarD </option>
+                        <option value="elinorga ">elinorga </option>
+                        <option value="derldalfor100 ">derldalfor100 </option>
+                        <option value="DavidSabag ">DavidSabag </option>
+                        <option value="DavidLev1 ">DavidLev1 </option>
+                        <option value="danielbr08 ">danielbr08 </option>
+                        <option value="aviyotGhub ">aviyotGhub </option>
+                        <option value="AviAdnahani ">AviAdnahani </option>
+                        <option value="amitayl ">amitayl </option>
+                        <option value="ameer89 ">ameer89 </option>
+                    </select>
+                <input type="text" id="subject" placeholder="enter a subject">
+                <button type="submit" onclick="addStudent(event)">Submit</button>
+            </form>
+        </div>
+        <div id="table">
             <table id="center-table">
                 <tr>
                     <th>Student Name</th>
@@ -19,16 +50,40 @@
             </table>
             <button onclick="pickOne()">Pick One</button>
         </div>
-        <div id="side-menu">
-            <form >
-                <input list="students-list" id="students" placeholder="select student">
-                <datalist id="students-list">
-                    <option value="Ofek">Ofek</option>
-                </datalist>
-                <button type="submit" onclick="addStudent()">Submit</button>
-            </form>
-        </div>
     </section>
     <footer id="bottom"><a href="#top">Back To Top</a></footer>
+    <div id="wrapper"></div>
+    <script>
+        function addStudent(event){
+            event.preventDefault();
+            index = document.getElementById("students").selectedIndex;
+            student = document.getElementsByTagName("option")[index].value;
+            subject = document.getElementById("subject").value;
+            insertToTable(student,subject);
+        }
+        function insertToTable(student,subject){
+            var table = document.getElementById("center-table");
+            var newRaw = document.createElement("tr");
+            newRaw.innerHTML=`<td class="student">${student}</td><td class="subject">${subject}</td>`;
+            table.appendChild(newRaw);
+        }
+        function pickOne(){
+            var studentsArray=document.getElementsByClassName("student");
+            var subjectssArray=document.getElementsByClassName("subject");
+            var randomNum=Math.floor(Math.random()*studentsArray.length);
+            showChoosenOne(studentsArray[randomNum].innerText,subjectssArray[randomNum].innerText);
+        }
+        function showChoosenOne(student,subject){
+            var wrapper = document.getElementById("wrapper");
+            var frame=document.createElement("div");
+            frame.setAttribute("class","pop-up");
+            frame.innerHTML=`<button id="exit" onclick="closePopUp()">X</button><h2>The selected student is: ${student}</h2><h2>The selected subject is: ${subject}</h2>`
+            wrapper.appendChild(frame);
+        }
+        function closePopUp(){
+            var wrapper = document.getElementById("wrapper");
+            wrapper.innerText="";
+        }
+    </script>
 </body>
 </html>
