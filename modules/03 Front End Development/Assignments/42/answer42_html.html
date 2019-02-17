@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    form {
+        margin: 10px;
+        padding: 10px;
+        display: inline-block;
+        background-color: aquamarine;
+    }
+
+    input,select {
+        margin: 5px;
+        padding: 5px;
+        font-size: 20px;
+    }
+    </style>
+</head>
+
+<div id="allVideos">
+    <form action="" onsubmit="return false">
+        <input type="text" class = "title" placeholder="title">
+        <input type="number" class = "seconds" placeholder="seconds">
+        <select class = "user">
+            <option value = "user1">aviyot</option>
+            <option value = "labe2">yosi</option>
+            <option value = "user3">david</option>
+            <option value = "user4">beni</option>
+        </select>
+        <input type="button" value="Watch" onclick="showDetails(event)">
+    </form>
+
+</div>
+
+<input type="button" value="PLUS" onclick="addForm()"> </br>
+<input type="button" value="Watch All" onclick="showDetails(event)"><br />
+<div id="msg"></div>
+
+<body>
+    <script>
+        
+    
+        var allVideos = document.querySelector("#allVideos");
+        var msg = document.querySelector("#msg");
+
+        function Video(title, second, uploader) {
+
+            //privte propeirts
+            title = title;
+            uploader = uploader;
+            second = second;
+
+            //global function
+            this.watch = function () {
+
+                try {
+
+
+                    return `<span> You watched all <b>${second}</b> seconds
+                             of <b>${title}!</b> by uploder : <b>${uploader}</b> </span> <br/>`;
+
+                }
+                catch (err) {
+                    return "Oops... An error occured";
+                }
+
+                finally {
+
+                }
+            }
+        }
+
+
+
+        function showDetails(e) {
+           
+            var title = document.querySelectorAll(".title");
+            var user = document.querySelectorAll(".user");
+            var time = document.querySelectorAll(".seconds");
+
+            var currentElm = e.currentTarget;
+            var curretForm =  currentElm.parentElement;
+           //console.log(e.target.value == "Watch");
+           if( currentElm.value === "Watch") {
+           if (curretForm[1].value && curretForm[0].value &&curretForm[2].value){
+            var video = new Video(curretForm[0].value, curretForm[1].value, (curretForm[2].options[curretForm[2].selectedIndex]).text);
+            msg.innerHTML = video.watch();
+            }
+        }
+           
+            else {
+
+            var oneMsg ="";
+            for (var i = 0 ; i < title.length ; i++) {
+            
+            if (title[i].value && user[i].value && time[i].value){
+            var video = new Video(title[i].value,time[i].value ,(user[i].options[user[i].selectedIndex]).text);
+            oneMsg += video.watch();
+            }
+            }
+            msg.innerHTML = oneMsg;
+        }
+        }
+
+        function addForm() {
+            allVideos.insertAdjacentHTML('beforeend',`
+              <form action="" onsubmit="return false">
+                <input type="text" class="title" placeholder="title">
+                <input type="number" class ="seconds" placeholder="seconds">
+                <select class="user">
+                   <option value="user1">aviyot</option>
+                   <option value = "user2">yosi</option>
+                   <option value = "user3">david</option>
+                   <option value = "user4">beni</option>
+                </select>
+                <input type="button" value="Watch" onclick="showDetails(event)">
+              </form>`)
+        }
+
+    </script>
+</body>
+
+</html>
