@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guess The Random Word</title>
+</head>
+
+<body>
+    <h2>Guess The Random Word</h2>
+    <select id="diff-level">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <button id="start-game" onclick="startGame()">Start</button>
+    <div id="str-guess"></div>
+    <select id="letters"></select>
+    <div id="result"></div>
+
+    <script>
+        var count = 0;
+        var easy = ["run", "dog", "log", "man", "new", "toy", "cat", "gym", "ice"];
+        var medium = ["right", "hello", "table", "found", "glass", "dance", "photo", "sugar", "drama"];
+        var hard = ["respect", "current", "history", "officer", "victory", "weather", "program", "fashion"];
+        document.getElementById("letters").style.visibility = "hidden";
+
+        function startGame() {
+            initialization();
+            var difficulty = document.getElementById("diff-level").value;
+            randomWord = randomizeWord(difficulty);
+            displayLetters(randomWord);
+        }
+
+        function initialization() {
+            document.getElementById("letters").style.visibility = "visible";
+            document.getElementById("start-game").disabled = true;
+            document.getElementById("str-guess").innerHTML = "";
+            document.getElementById("result").innerHTML = "";
+        }
+
+        function randomizeWord(difficulty) {
+            if (difficulty === "easy") {
+                var word = easy[Math.floor(Math.random() * easy.length)];
+            }
+            else if (difficulty === "medium") {
+                var word = medium[Math.floor(Math.random() * medium.length)];
+            }
+            else if (difficulty === "hard") {
+                var word = hard[Math.floor(Math.random() * hard.length)];
+            }
+            return word;
+        }
+        function displayLetters(randomWord) {
+            var randomStr = randomWord.split('').sort();
+            var letter = document.createElement("option");
+            letter.disabled = "disabled";
+            letter.selected = "true";
+            letter.innerText = "Choose letter";
+            document.getElementById("letters").options.add(letter, 0);
+            for (var i = 0; i < randomStr.length; i++) {
+                var letter = document.createElement("option");
+                letter.innerText = randomStr[i];
+                document.getElementById("letters").options.add(letter, i + 1);
+                var txtLetter = document.createElement("input");
+                txtLetter.type = "text";
+                txtLetter.id = "txt" + i;
+                txtLetter.disabled = true;
+                txtLetter.style.margin = "10px 0px";
+                txtLetter.style.width = "30px";
+                txtLetter.style.height = "30px";
+                document.getElementById("str-guess").appendChild(txtLetter);
+            }
+
+        }
+        document.getElementById("letters").addEventListener("change", function (event) {
+            if (event.target.value === randomWord[count]) {
+                document.getElementById("txt" + count).value = event.target.value;
+                document.getElementById("result").innerHTML = "correct";
+                count++;
+            } else {
+                document.getElementById("result").innerHTML = "try again";
+            }
+            if (randomWord.length === count) {
+                var diffLevel = document.getElementById("diff-level");
+                if (diffLevel.value === "easy") {
+                    document.getElementById("result").innerHTML = "You have passed the easy level!!";
+                    setTimeout(function () {
+                        count = 0;
+                        diffLevel.value = diffLevel.options[1].value;
+                        document.getElementById("letters").innerText = "";
+                        startGame();
+                    }, 1400);
+                } else if (diffLevel.value === "medium") {
+                    document.getElementById("result").innerHTML = "You have passed the medium level!!";
+                    setTimeout(function () {
+                        count = 0;
+                        diffLevel.value = diffLevel.options[2].value;
+                        document.getElementById("letters").innerText = "";
+                        startGame();
+                    }, 1400);
+                } else if (diffLevel.value === "hard") {
+                    document.getElementById("result").innerHTML = "Game Over!! You Won!!";
+                    setTimeout(function () {
+                        count = 0;
+                        diffLevel.value = diffLevel.options[0].value;
+                        document.getElementById("letters").innerText = "";
+                        document.getElementById("start-game").disabled = false;
+                        document.getElementById("result").innerHTML = "For a new game click on Start";
+                    }, 1800);
+
+                }
+            }
+
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
