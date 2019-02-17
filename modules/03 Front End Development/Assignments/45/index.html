@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>45</title>
+</head>
+
+<body>
+    Input url image: <input type="url" id="imgUrl">
+    Input url wikipedia: <input type="url" id="wikiUrl">
+    <button onclick="addImages()">Add</button>
+    <div id="div"></div>
+
+    <script>
+        counter = 0;
+        images = [];
+        function addImages() {
+            counter++;
+            var wiki = document.createElement("a");
+            wiki.href = document.getElementById("wikiUrl").value;
+            wiki.target = "_blank";
+            var img = document.getElementById("imgUrl").value;
+            var newImg = document.createElement("img");
+            var newDiv = document.getElementById("div");
+            newImg.src = img;
+            newImg.style.width = "100px";
+            newImg.style.height = "100px";
+            newImg.style.margin = "10px";
+            images.push(newImg);
+            newDiv.appendChild(newImg);
+            newDiv.appendChild(wiki);
+            wiki.appendChild(newImg);
+
+            if (counter % 12 === 0) {
+                pageNum = (counter / 12).toFixed(1);
+                var a = document.createElement("a");
+                a.href = "javascript:void(0)";
+                a.innerText = +pageNum + " ";
+                a.onclick = function () {
+                    newDiv.innerHTML = "";
+                    for (var i = +a.innerText * 12 - 12; i < +a.innerText * 12; i++) {
+                        newDiv.appendChild(images[i]);
+                    }
+                }
+                document.body.appendChild(a);
+                pageNum--;
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
