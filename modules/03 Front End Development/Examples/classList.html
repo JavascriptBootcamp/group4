@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            width: 100px;
+            height: 75px;
+            /* position: fixed; */
+        }
+
+        .green {
+            background: green;
+        }
+
+        .red {
+            background: red;
+        }
+
+        #content {
+            width: 800px;
+            margin: 10px auto;
+            background: lightskyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="side-menu1">
+            <button class="red">No! Click Me</button>
+        </div>
+        <div id="side-menu2">
+                <button class="red">No! Click Me</button>
+            </div>
+            <div id="side-menu3">
+                    <button class="red">No! Click Me</button>
+                </div>
+    <div id="content">
+            
+            <button id="btn1" class="green" onclick="toggle()">Click Me</button>
+            <button id="btn2" class="green" onclick="toggle()">Click Me</button>
+        text text 
+    </div>
+
+    <script>
+        function toggle() {
+            document.getElementById("btn1").classList.toggle("red");
+        }
+    </script>
+</body>
+
+</html>
