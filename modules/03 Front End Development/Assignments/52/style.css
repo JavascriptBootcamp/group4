@@ -1,0 +1,82 @@
+body{
+    background-color: lightgray;
+}
+#header{
+    margin-left: 150px;
+}
+#header > h1{
+text-align: center;
+background-color: black;
+color: white;
+margin-block-end: 0.55em;
+padding: 10px;
+}
+#sidebar{
+    width: 150px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    position: fixed;
+}
+#sidebar > ul{
+list-style: none;
+margin-top: 100%;
+line-height: 50px;
+}
+a{
+    color:gray;
+    text-decoration: none;
+    font-size: 20px;
+}
+.color{
+    color: darkgreen;
+}
+#sidebar a:hover {
+    font-weight: bold;
+  }
+#content{
+    margin-left: 150px;
+}
+.iomails{
+    font-size: 16px;
+    margin-left: 30px;
+}
+.contactsmails{
+    font-size: 20px;
+    margin-left: 30px;
+}
+table{
+    width: 40%;
+}
+table,th,td{
+    border: 4px solid darkgray;
+    border-collapse: collapse;
+    padding: 10px;
+}
+th{
+    color: darkred;
+}
+.headt{
+    cursor: pointer;
+}
+tr:hover{
+    background-color: dimgrey;
+    color: white;
+}
+.topMails{
+    font-weight: bold;
+}
+.toggle{
+    display: none;
+}
+#footer{
+    background-color: black;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px 0 
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="printContacts()">
+    <div id="header">
+        <h1>DMail</h1>
+    </div>
+    <div id="container">
+        <div id="sidebar">
+            <ul>
+                <li><a href="inbox.html">Inbox</a></li>
+                <li><a href="sent.html">Sent</a></li>
+                <li><a class="color" href="contacts.html">Contacts</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <table class="contactsmails">
+                <caption>
+                    <h2>Contacts</h2>
+                </caption>
+                <thead>
+                    <tr>
+                        <th id="firstname" class="headt" onclick="sort(event)">First Name</th>
+                        <th id="lastname" class="headt" onclick="sort(event)">Last Name</th>
+                        <th id="mail" class="headt" onclick="sort(event)">Email Address</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <div id="footer">&emsp;&copy Moshe</div>
+    <script src="script2.js"></script>
+</body>
+
+</html>
