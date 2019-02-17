@@ -44,7 +44,7 @@
             background-color: gray;
             height: 100%;
             width: 100%;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             opacity: 0.6;
@@ -99,6 +99,7 @@
     <div id="background">
     </div>
     <div id="pick">
+        <input type="button" name="xx" id="xx" onclick="x()" value="x">
     </div>
 
     <div id="bottom">
@@ -134,7 +135,14 @@
             var b=document.getElementById("background");
             p.style.display="block";
             b.style.display="block";
-            document.getElementById("pick").innerText=arrStudent[0];
+            document.getElementById("pick").innerHTML+=arrStudent[0];
+        }
+
+        function x(){
+            var p =document.getElementById("pick");
+            var b=document.getElementById("background");
+            p.style.display="none";
+            b.style.display="none";
         }
     </script>
 </body>
