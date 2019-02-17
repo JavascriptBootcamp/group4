@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+#container{
+    width: 600px;
+    margin:auto;
+    text-align: center;
+}
+#board{
+    margin:auto;
+    width:100;
+    height: 100%;
+}
+.col{
+    width: 33%;
+    height: 100px;
+    border:1px solid;
+    float:left;
+}
+.row{
+    width:100%;
+    height: 33%;
+}
+#winner{
+    border:1px solid;
+    width:100%;
+    height: 30px;
+    margin:5px auto;
+}
+#winner:before{
+    content: "winner is : ";
+}
+#start-game{
+    width: 600px;
+    margin: auto;
+    text-align: center;
+}
