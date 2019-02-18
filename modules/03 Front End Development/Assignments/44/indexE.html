@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <title>
+        "Books | Favorites"
+    </title>
+    <style>
+        #booksId {
+            background-color: bisque;
+            float: left;
+            width: 80%;
+            position: relative;
+        }
+
+        #addBook {
+            background-color: gray;
+            height: 100%;
+            width: inherit;
+            margin: 0px auto;
+            position: fixed;
+            top: 10px;
+            left: 80%;
+        }
+
+        form {
+            margin: 10px 10px 10px 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="booksId">
+        <h1>My Top 5 Books:</h1>
+
+        <h1>Title: "IT"</h1>
+        <h2>Author: Stephen King</h2>
+        <h3>Publication date: September 15, 1986</h3>
+        <h4>Publisher: Viking</h4>
+        <h5>Pages: 1,138</h5>
+        <p>comments: perfect author, perfect book.</p>
+
+        <div id='newBook'></div>
+    </div>
+    <div id="addBook">
+        <form>
+            <label for="bookName">Name:</label>
+            <input type="text" name="bookName" id="bookName" " required>
+            <br />
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author"" required>
+            <br />
+            <label for="date">Publication date: </label>
+            <input type="date" name="date" id="date"  required>
+            <br />
+            <label for="publisher">Publisher: </label>
+            <input type="text" name="publisher" id="publisher" required>
+            <br />
+            <label for="pages" required>Pages</label>
+            <input type="number" name="pages" id="pages" min="1" required>
+            <br />
+            <label for="comments">Comments: </label>
+            <br />
+            <textarea name="comments" id="comments" cols="40" rows="5"></textarea>
+            <br />
+            <button type='button' id='add' onclick='addBook()' >Add Book</button>
+        </form>
+        <select name="sort" id="sort">
+            <option value="oldest">oldest to newest</option>
+            <option value="newest">newest to oldest</option>
+        </select>
+        <button type='button' onclick="sortBookS()">Sort</button>
+
+    </div>
+
+
+    <script>
+        function addBook() {
+            var newBook = document.getElementById('newBook');
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var name = document.querySelector('#bookName').value;
+            var author = document.querySelector('#author').value;
+            var date = document.querySelector('#date').value;
+            var dateArr = date.split('-');
+            var publisher = document.querySelector('#publisher').value;
+            var pages = document.querySelector('#pages').value;
+            var comments = document.querySelector('#comments').value;
+            if ()
+            var book = document.createElement('div');
+            book.setAttribute('id', date);
+            var h1 = document.createElement('h1');
+            h1.innerText = 'Title: ' + name;
+            var h2 = document.createElement('h2');
+            h2.innerText = 'Author: ' + author;
+            var h3 = document.createElement('h3');
+            h3.innerText = 'Publication date: ' + months[Number(dateArr[1]) - 1] + ' ' + dateArr[2] + ', ' + dateArr[0];
+            var h4 = document.createElement('h4');
+            h4.innerText = 'Publisher: ' + publisher;
+            var h5 = document.createElement('h5');
+            h5.innerText = 'Pages: ' + pages;
+            var p = document.createElement('p');
+            p.innerText = 'Comments: ' + comments;
+            book.appendChild(h1);
+            book.appendChild(h2);
+            book.appendChild(h3);
+            book.appendChild(h4);
+            book.appendChild(h5);
+            book.appendChild(p);
+            newBook.appendChild(book);
+        }
+
+
+        // function toSort() {
+        //     var select = document.querySelector('#order');
+        //     var index = select.selectedIndex;
+        //     var content = document.getElementById('content');
+        //     var books = content.childNodes;
+        //     books = [].slice.call(books);
+        //     books.sort((book1, book2) => {
+        //         var dateArr1 = book1.id.split('-');
+        //         var dateArr2 = book2.id.split('-');
+        //         var date1 = new Date(Number(dateArr1[0]), Number(dateArr1[1]), Number(dateArr1[2]));
+        //         var date2 = new Date(Number(dateArr2[0]), Number(dateArr2[1]), Number(dateArr2[2]));
+        //         var num = index === 0 ? (date1 - date2) : (date2 - date1);
+        //         return num;
+        //     });
+        //     var newContent = '';
+        //     books.forEach((book) => {
+        //         newContent += book.outerHTML;
+        //     });
+        //     content.innerHTML = newContent;
+        // }
+    </script>
+</body>
+
+</html>
