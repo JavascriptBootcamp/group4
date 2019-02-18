@@ -1,0 +1,29 @@
+body{
+    background-color:lightsteelblue;
+}
+#board{
+    width:420px;
+    margin:auto;
+}
+#board:before{
+    content: "Memory Game";
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+#message{
+    border: 1px dashed navy;
+    width: 410px;
+    height: 130px;
+    margin: auto;
+}
+#message:before{
+    content: "message :"; 
+}
+button[id^="image"]:hover{
+    background-color: aliceblue !important;
+    transition: 1s all;
+}
+button[id^="image"]{
+    transition: 1s all;
+}
