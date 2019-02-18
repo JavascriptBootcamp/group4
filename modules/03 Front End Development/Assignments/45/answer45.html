@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>"Images | Favorites"</title>
+</head>
+
+<body>
+    <div id="formDiv">
+        <form id="insertImg">
+            <input type="url" name="imgUrl" id="imgUrl" placeholder="Enter image url" pattern="https://.* " required>
+            <input type="url" name="wikiUrl" id="wikiUrl" placeholder="Enter wiki url" pattern="https://.*" required>
+            <input type="submit" value="Add" onclick="addImg(event);return false;">
+
+        </form>
+    </div>
+    <div id="imgDisplay"></div>
+    <div id="pages"></div>
+
+    <script>
+        var imagesPerPage = 3;
+        var images = [];
+        var pageCount = 0;
+        var selectedPage = 1;
+        var divImgDis = document.getElementById("imgDisplay");
+        var divPage = document.getElementById("pages");
+        var newP;
+
+        function CreateImg() {
+            var imgUrl = document.getElementById("imgUrl").value;
+            var wikiUrl = document.getElementById("wikiUrl").value;
+            var wikElem = document.createElement("a");
+            var imgElem = document.createElement("img");
+            imgElem.src = imgUrl;
+            imgElem.width = "300";
+            imgElem.height = "200";
+            imgElem.style="margin:25px 50px 75px 100px";
+            wikElem.href = wikiUrl;
+            wikElem.appendChild(imgElem);
+
+            return wikElem;
+
+        }
+        function showImages(event) {
+            
+             if (event.target.tagName == "INPUT") {     
+                 if (selectedPage == pageCount) {
+                    if (divImgDis.childElementCount <= imagesPerPage) {
+                        divImgDis.appendChild(images[images.length - 1]);
+                    }
+                }
+            }
+        }
+
+        function addImg(event) {
+            var newImg = CreateImg();
+            images.push(newImg);
+            
+            if (images.length % imagesPerPage == 1) {
+                pageCount++;
+                newP = createPage();
+                divPage.appendChild(newP);
+                divPage.appendChild(document.createTextNode(" "));
+            }
+            showImages(event);
+
+        }
+        function createPage() {
+            var newPage = document.createElement("a");
+            newPage.setAttribute("href", "javascript:void(0)");
+            newPage.setAttribute("onclick", "pageNum()");
+            newPage.innerText = pageCount;
+            return newPage;
+
+        }
+        function pageNum() {
+            if (selectedPage !== pageCount) {
+                while (divImgDis.firstChild) {
+                    divImgDis.removeChild(divImgDis.firstChild);
+
+                }
+                selectedPage = event.target.innerText;
+                var lastIndex = ((selectedPage * imagesPerPage) - 1 < images.length - 1) ? (selectedPage * imagesPerPage - 1) : images.length - 1;
+                for (let i = selectedPage * imagesPerPage - imagesPerPage; i <= lastIndex; i++) {
+                    divImgDis.appendChild(images[i]);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
