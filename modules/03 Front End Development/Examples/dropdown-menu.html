@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        nav {
+            margin: 100px auto;
+            width: 800px;
+        }
+        nav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            position: relative;
+            display: block;
+        }
+        nav ul li {
+            float: left;
+            list-style: none;
+            background-color: lightskyblue;
+        }
+        nav ul li a {
+            display: block;
+            padding: 20px 10px;
+        }
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 58px;
+        }
+        nav ul li:hover > ul {
+            display: list-item;
+        }
+        nav ul ul li {
+            width: 170px;
+            float: none;
+            position: relative
+        }
+        nav ul ul ul li {
+            position: relative;
+            top: -58px;
+            left: 170px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">About Us</a>
+                <ul>
+                    <li><a href="#">Management</a></li>
+                    <li>
+                        <a href="#">Branches</a>
+                        <ul>
+                            <li><a href="#">Israel</a></li>
+                            <li><a href="#">USA</a></li>
+                            <li><a href="#">France</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
