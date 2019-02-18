@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Dmail - FED assigment 52</title>
+</head>
+<body id="inbox">
+    <header id="header"><h1>DMail</h1></header>
+    <section id="main-section">
+        <div id="left-menu">
+            <div id="nav">
+                <a href="index.html">Inbox</a>
+                <a href="outbox.html">Sent</a>
+                <a class="selected" href="contacts.html">Contacts</a>
+            </div>
+        </div>
+        <div id="main-area-contacts">
+            <table id="myTable">
+                <tr id="list-header">
+                    <th onclick="sortTable(0)">First name</th>
+                    <th onclick="sortTable(1)">Last name</th>
+                    <th onclick="sortTable(2)">Email address</th>
+                </tr>
+                <tr class="contacts" id="contact0">
+                    <td>Ofek</td>
+                    <td>Arbeli</td>
+                    <td>ofekrbeli@gmail.com</td>
+                </tr>
+                <tr class="contacts" id="contact1">
+                    <td>Shimon</td>
+                    <td>Shimon</td>
+                    <td>Shimon@gmail.com</td>
+                </tr>
+                <tr class="contacts" id="contact2">
+                    <td>Moshiko</td>
+                    <td>Moshiko</td>
+                    <td>Moshiko@gmail.com</td>
+                </tr>
+                <tr class="contacts" id="contact3">
+                    <td>somename</td>
+                    <td>Some last name</td>
+                    <td>some@gmail.com</td>
+                </tr>
+                <tr class="contacts" id="contact4">
+                    <td>A-name</td>
+                    <td>A-last-name</td>
+                    <td>A-name@gmail.com</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>

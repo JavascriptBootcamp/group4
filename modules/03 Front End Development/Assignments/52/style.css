@@ -1,0 +1,125 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: lightgray;
+}
+#header{
+    color:white;
+    background-color: rgb(22, 7, 7);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+#left-menu{
+    display: inline-block;
+    position: relative;
+    border: 2px solid rgb(80, 80, 80);
+    height: 600px;
+    width: 200px;
+}
+#nav{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    position: absolute;
+    top:0;
+    border: 2px solid rgb(80, 80, 80);
+    list-style: none;
+}
+#nav a{
+    display: block;
+    width: 100%;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    text-align: center;
+    font-size: 18pt;
+    border-bottom: 2px solid rgb(80, 80, 80);
+}
+#nav a.selected{
+    background-color: darkgreen;
+    color: white;
+}
+#nav a:hover{
+    background: dimgrey;
+    color: white;
+}
+#main-area{
+    display: inline-block;
+    position: absolute;
+    border: 2px solid rgb(80, 80, 80);
+    margin-left: 20px;
+    width: 700px;
+    height: 600px;
+}
+#main-area table{
+    width: 100%;
+    font-size: 16px;
+}
+#main-area table tr:nth-child(-n+7){
+    font-weight: bold;
+}
+#main-area table th{
+    background-color: darkred;
+    color:white;
+    border-bottom: 2px solid darkgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#main-area table tr td{
+    padding-left: 60px;
+    border-bottom: 2px solid darkgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#main-area table tr:hover{
+    background: dimgrey;
+    color: white;
+}
+.hide-content{
+    display: none;
+}
+.down-sign{
+    width: 18px;
+}
+a {
+    color: blue;
+}
+a:hover{
+    font-weight: bold;
+}
+
+#main-area-contacts{
+    display: inline-block;
+    position: absolute;
+    border: 2px solid rgb(80, 80, 80);
+    margin-left: 20px;
+    width: 700px;
+    height: 600px;
+}
+#main-area-contacts table{
+    width: 100%;
+    font-size: 16px;
+}
+#main-area-contacts table tr:nth-child(-n+4){
+    font-weight: bold;
+}
+#main-area-contacts table th{
+    background-color: darkred;
+    color:white;
+    border-bottom: 2px solid darkgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#main-area-contacts table tr td{
+    padding-left: 60px;
+    border-bottom: 2px solid darkgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#main-area-contacts table tr:hover{
+    background: dimgrey;
+    color: white;
+}
