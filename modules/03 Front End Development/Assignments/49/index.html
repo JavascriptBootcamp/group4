@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         .comma{
+             color: darkgray;
+         }
+         .equal{
+             color:darkblue;
+         }
+         .variables{
+             color:darkgreen;
+         }
+         .var{
+             color:darkred;
+         }
+    </style>
+</head>
+<body>
+    <h1>Code:</h1>
+    <pre>
+        <span class="var">var</span> <span class="variables">arr</span> <span class="equal">=</span> <span>[1, 2, 5, 7]</span><span class="comma">;</span>
+
+        <span>function</span> <span>myFilter</span>(<span class="variables">arr</span>,<span class="variables">callback</span>){
+            <span class="var">var</span> <span class="variables">evenArr</span><span class="equal">=</span><span>[]</span><span class="comma">;</span>
+            <span>for</span> <span>(</span><span class="var">var</span> <span class="variables">i</span> <span class="equal">=</span> <span>0</span> <span class="comma">;</span> <span class="variables">i</span> <span><</span> <span class="variables">arr</span>.length <span class="comma">;</span> <span class="variables">i</span> <span>++</span>)<span>{</span>
+                <span>if</span> (<span class="variables">callback</span>(<span class="variables">arr</span>[<span class="variables">i</span>]){
+                <span class="variables">evenArr</span><span>.</span><span>push</span>(<span class="variables">arr</span>[<span class="variables">i</span>])<span class="comma">;</span>
+                <span>}</span>
+            <span>return</span> <span class="variables">evenArr</span><span class="comma">;</span>
+        }
+        <span class="var">var</span> <span class="variables">filtered</span> <span>=</span> <span class="variables">myFilter</span><span>(</span><span class="variables">arr</span><span>,</span> <span>function</span>(<span class="variables">item</span>)<span>{</span>
+            <span>return</span> <span class="variables">item</span> <span>%</span> <span>2</span> <span class="equal">===</span> <span>0</span><span class="comma">;</span>
+        <span>}</span><span>)</span><span class="comma">;</span>
+        <span class="variables">console</span>.log<span>(</span><span class="variables">filtered</span><span>)</span><span class="comma">;</span>
+    </pre>
+</body>
+</html>
