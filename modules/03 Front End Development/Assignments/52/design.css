@@ -1,0 +1,68 @@
+ul {
+  list-style-type:none;
+  margin-left: 0;
+
+
+}
+
+li{
+  display: inline;
+  color:darkblue;
+
+
+}
+
+body{
+  background-color: lightgrey;
+
+}
+
+header{
+
+  text-align: center ;
+  background-color: black;
+  color:white;
+  padding :10px;
+}
+
+#emailContent{
+  font-size: 16px;
+
+}
+
+
+#contactsTable{
+  font-size: 20px;
+  margin-left: 30px;
+
+
+
+}
+
+#emailsTable{
+  margin-left: 30px;
+
+
+}
+.first3Emails{
+  font-weight: bold;
+}
+
+.maintitle{
+  color:darkred;
+}
+
+tr:hover {
+  background-color: dimgrey;
+  color: #f1f1f1;
+}
+
+  
+nav a:hover {
+  font-weight: bold;
+
+}
+
+a.main {
+  color: darkgreen;
+}

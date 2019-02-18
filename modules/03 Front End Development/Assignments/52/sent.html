@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="design.css" type="text/css" rel="stylesheet">
+</head>
+
+<body onload="sent(event);">
+   <header>DMail
+       <nav>
+           <ul >
+                <li><a href="main.html"  >Main</a></li> 
+
+                <li><a href="inbox.html" id="inb">Inbox</a></li>
+                <li><a href="sent.html"  >Sent</a></li>
+                <li><a href="contacts.html"  id="contacts">Contacts</a></li>
+        </ul>
+       </nav>
+   </header>
+   <article>
+       <table id="emailsTable">
+           <tr>
+               <th>from</th>
+               <th>Subject</th>
+               <th>date</th>
+           </tr>
+       </table>
+       <table id="contactsTable">
+            <tr>
+                    <th>first name </th>
+                    <th>last name</th>
+                    <th> email </th>      
+                      </tr>
+        </table>
+
+   </article>
+   <script src="mailJS.js" ></script>
+
+ </body>
+
+</html>
