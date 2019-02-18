@@ -29,7 +29,6 @@
             height: 100%;
             width: 100px;
             position: fixed;
-
             top: 0;
             left: 0;
             background-color: gray;
@@ -52,12 +51,18 @@
         }
 
         #pick {
-            background-color: khaki;
-            height: 250px;
-            width: 250px;
-            margin:auto auto;
-            position: relative;
             display: none;
+            position:fixed;
+            top: 50%;
+            left: 50%;
+            width: 14em;
+            height: 10em;
+            margin-top: -5em;
+            /*set to a negative number 1/2 of your height*/
+            margin-left: -7em;
+            /*set to a negative number 1/2 of your width*/
+            border: 1px solid #ccc;
+            background-color: #f3f3f3;
         }
     </style>
 </head>
@@ -99,7 +104,7 @@
     <div id="background">
     </div>
     <div id="pick">
-        <input type="button" name="xx" id="xx" onclick="x()" value="x">
+        
     </div>
 
     <div id="bottom">
@@ -108,7 +113,7 @@
 
     <script>
         var arrStudent = [];
-        var Student = { name: "", sub: "" };
+        function Student(name, subject) { this.name = name; this.subject = subject; };
         function addStudent(event) {
             var studentName = document.getElementById("studentName").value;
             var subject = document.getElementById("subject").value;
@@ -121,28 +126,27 @@
             row.appendChild(td1);
             td2.innerText = subject;
             row.appendChild(td2);
-            var s = Student;
-            s.name = studentName;
-            s.sub = subject;
-            arrStudent.push(s);
+            // var s = Student;
+            // s.name = studentName;
+            // s.sub = subject;
+            // arrStudent.push(s);
+            arrStudent.push(new Student(studentName, subject));
             table.appendChild(row);
-
             event.preventDefault();
         }
-
         function pickOne() {
-            var p =document.getElementById("pick");
-            var b=document.getElementById("background");
-            p.style.display="block";
-            b.style.display="block";
-            document.getElementById("pick").innerHTML+=arrStudent[0];
+            var p = document.getElementById("pick");
+            var b = document.getElementById("background");
+            p.style.display = "block";
+            b.style.display = "block";
+            document.getElementById("pick").innerHTML = "<input type='button' name='xx' id='xx' onclick='x()' value='X'><br><br><br>Name: " + arrStudent[0].name + "<br> Subject: " + arrStudent[0].subject;
         }
-
-        function x(){
-            var p =document.getElementById("pick");
-            var b=document.getElementById("background");
-            p.style.display="none";
-            b.style.display="none";
+        
+        function x() {
+            var p = document.getElementById("pick");
+            var b = document.getElementById("background");
+            p.style.display = "none";
+            b.style.display = "none";
         }
     </script>
 </body>
