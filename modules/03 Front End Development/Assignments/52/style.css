@@ -1,0 +1,55 @@
+.sidenav {
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: lightgreen;
+    display: block;
+}
+
+.sidenav a:active {
+    color: darkgreen;
+}
+.email:hover{
+    color: dimgray;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.main {
+    margin-left: 140px;
+    margin-top: 50px;
+    padding: 0px 10px;
+}
+
+body { 
+    overflow:auto;
+    background-color: lightgray;
+}
+
+#header{
+    width: 100px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
