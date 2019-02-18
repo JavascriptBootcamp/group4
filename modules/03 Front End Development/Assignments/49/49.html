@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>My Solution For Module 01 - Question 20</title>
+    <style>
+        *{
+            font-size:26px;
+            font-weight: 600;
+        }
+        .var-color{
+            color:darkred;
+        }
+        .variables{
+            color:darkgreen;
+        }
+        .equal-signs{
+            color:darkblue;
+        }
+        .commas{
+            color:darkgrey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code:</h1>
+    <pre>
+            <span class="var-color">var</span> <span class="variables">arr</span> <span class="equal-signs">=</span> <span>[</span><span>1</span><span class="commas">,</span><span>2</span><span class="commas">,</span><span>5</span><span class="commas">,</span><span>7</span><span>]</span> <span>;</span>
+            <span  class="variables">function</span> <span  class="variables">myFilter</span><span>(</span><span  class="variables">arr</span><span class="commas">,</span><span  class="variables">callback</span><span>)</span><span>{</span>
+            <span class="var-color">var</span> <span  class="variables">evenArr</span> <span class="equal-signs">=</span> <span>[]</span><span>;</span>
+            <span>for</span><span>(</span> <span class="var-color">var</span> <span  class="variables">i</span><span class="equal-signs">=</span><span>0</span> <span>;</span> <span  class="variables">i</span> <span><</span> <span  class="variables">arr</span><span>.</span><span>length</span> <span>;</span> <span  class="variables">i++</span> <span>)</span>
+                <span>{</span> 
+                    <span>if</span> <span>(</span> <span  class="variables">callback</span> <span>(</span><span  class="variables">arr</span><span>)</span> <span>)</span>
+                    <span  class="variables">evenArr</span><span>.</span><span>push</span><span>(</span><span  class="variables">arr</span><span>[</span><span  class="variables">i</span><span>]</span><span>)</span><span>;</span>
+                <span>}</span> 
+            <span>return</span> <span  class="variables">evenArr</span><span>;</span>
+            <span>}</span>
+            <span class="var-color">var</span> <span  class="variables">filtered</span><span class="equal-signs">=</span><span  class="variables">myFilter</span><span>(</span><span  class="variables">arr</span><span class="commas">,</span><span  class="variables">function</span><span>(</span><span  class="variables">item</span><span>)</span><span>{</span>
+                <span>return</span> <span  class="variables">item</span> <span>%</span> <span>2</span> <span class="equal-signs">=</span><span class="equal-signs">=</span><span class="equal-signs">=</span> <span>0</span><span>;</span>   
+            <span>}</span><span>)</span><span>;</span>
+            <span  class="variables">console</span><span>.</span><span  class="variables">log</span><span>(</span><span  class="variables">filtered</span><span>)</span><span>;</span>    
+        </pre>
+</body>
+</html>
