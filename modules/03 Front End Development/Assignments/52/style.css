@@ -1,0 +1,54 @@
+body{
+    background: lightgray;
+}
+h2{
+    text-align: center;
+    background: black;
+    color: white;
+    padding: 10px;
+}
+.menu{
+    margin: 10px
+}
+
+table {
+    border-collapse: collapse ;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 30px;  
+}
+table, tr {
+    border: 1px solid darkgray;
+    padding: 5px;
+    text-align: center;
+}
+#back-to-main{
+    float: right;
+}
+.inbox, .send td a{
+    font-size: 16px;
+}
+.contacts td a{
+    font-size: 20px;
+}
+tr:nth-child(2) td a, tr:nth-child(3) td a, tr:nth-child(4) td a{
+    font-weight: bold;
+}
+#inbox-send-contacts tr th{
+    color: darkred;
+}
+a{
+    color: darkblue;
+}
+tr:hover{
+    background-color:dimgray; 
+}
+th{
+    background-color: lightgray;
+}
+a:hover{
+    font-weight: bold;
+}
+.menu:active{
+    color: darkgreen;
+}
