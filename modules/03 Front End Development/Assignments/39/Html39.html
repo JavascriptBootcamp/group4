@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <div align="center" id="cardcont">
+        <table id="cardtbl" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <tr id="last">
+                <td id="items">
+                    <select id="it">
+                        <option value="choose">Choose</option>
+                        <option value="banana">Banana</option>
+                        <option value="appel">Appel</option>
+                        <option value="candy">Candy</option>
+                        <option value="water">Water</option>
+                        <option value="carrot">Carrot</option>
+                        <option value="umbrella">Umbrella</option>
+                        <option value="juice">Juice</option>
+                        <option value="bred">Bred</option>
+                        <option value="chicken">Chicken</option>
+                        <option value="beef">Beef</option>
+                    </select>
+                </td>
+                <td id="p">
+                    <input type="number" id="price" min="0">
+                </td>
+                <td id="add">
+                    <button id="addBtn" onclick="addItem()">Add</button>
+                </td>
+            </tr>
+
+        </table>
+        <b>Total Price:</b> <b id="tlp">0</b> $ <br><br>
+        <form action="Order" method="post" id="myForm">
+            <p>
+                <label> Card Number: </label>
+                <input id="cn" type="text" required><br>
+            </p>
+            <p>
+                <label> Name of Card: </label>
+                <input id="noc" type="text" required><br>
+            </p>
+            <p>
+                <label> Expiry Date: </label>
+                <input id="exd" type="date" required><br>
+            </p>
+            <p>
+                <label>Security Code: </label>
+                <input id="sc" type="text" maxlength="3" required><br>
+            </p>
+            <button id="sub" type="button" onclick="submitt()">Submit</button>
+        </form><br><br>
+
+        <div id="validErr" style="color:darkred">
+            <!-- result here -->
+
+        </div>
+    </div>
+
+
+    <script>
+        function addItem() {
+            if (document.querySelector("#it").value !== "choose") {
+                var tbl = document.querySelector("#cardtbl");
+                var name = document.querySelector("#it").value;
+                var price = Number(document.querySelector("#price").value);
+                var tr = document.createElement("tr");
+                var tdName = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdBtn = document.createElement("td");
+                var removeBtn = document.createElement("button");
+                removeBtn.innerHTML = "Remove";
+                removeBtn.onclick = function () {
+                    price = Number(removeBtn.parentElement.previousElementSibling.innerHTML.replace('$', ''));
+                    tlp = Number(document.querySelector("#tlp").innerHTML);
+                    document.querySelector("#tlp").innerHTML = tlp - price;
+                    removeBtn.parentElement.parentElement.remove()
+                }
+                tdName.innerHTML = name;
+                tdPrice.innerHTML = price + "$";
+                tdBtn.appendChild(removeBtn);
+                tr.appendChild(tdName);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdBtn);
+                tbl.insertBefore(tr, tbl.children[1]);
+                tlp = Number(document.querySelector("#tlp").innerHTML);
+                price = Number(document.querySelector("#price").value);
+                document.querySelector("#tlp").innerHTML = tlp + price
+                document.querySelector("#it").value = "choose";
+                document.querySelector("#price").value = 0;
+            }
+
+        }
+        function submitt(){
+            var res = validateCreditCard(document.querySelector("#cn").value);
+            if(!res.valid){
+                document.querySelector("#validErr").innerHTML =  res.error;
+            }
+            else
+                document.querySelector("#myForm").submit();
+
+        }
+
+
+        function validateCreditCard(creditCard) {
+            var creditCardNumbers;
+            var creditCardNumbersSum = 0;
+            var creditCardWithNoDashes;
+
+            creditCardWithNoDashes = creditCard.split("-");
+            creditCardWithNoDashes = creditCardWithNoDashes.join("");
+            creditCardNumbers = creditCardWithNoDashes.split("").map(Number);
+
+            function checkLength(creditCardWithNoDashes) {
+                return (creditCardWithNoDashes.length == 16);
+            }
+
+            function checkAllItemsNumbers(creditCardNumbers) {
+                var isAllItemsNumbers = creditCardNumbers.every(function (element) {
+                    creditCardNumbersSum += element;
+                    return (element >= 0 && element <= 9);
+                });
+
+                return isAllItemsNumbers;
+            }
+
+            function checkDigitsSum() {
+                return (creditCardNumbersSum > 16);
+            }
+
+            function checkIfAllDigitsSame(creditCardNumbers) {
+                var isAllDigitsSame = creditCardNumbers.every(function (element) {
+                    return element === creditCardNumbers[0];
+                });
+                return !isAllDigitsSame;
+            }
+
+            function CheckLastDigitEven(creditCardNumbers) {
+                return (creditCardNumbers[creditCardNumbers.length - 1] % 2 == 0)
+            }
+
+            if (checkLength(creditCardNumbers)) {
+                if (checkAllItemsNumbers(creditCardNumbers)) {
+                    if (checkDigitsSum()) {
+                        if (checkIfAllDigitsSame(creditCardNumbers)) {
+                            if (CheckLastDigitEven(creditCardNumbers)) {
+                                return { valid: true, number: creditCard }
+                            }
+                            else {
+                                return { valid: false, error: "odd final number", number: creditCard }
+                            }
+                        }
+                        else {
+                            return { valid: false, error: "only one type of number", number: creditCard }
+                        }
+                    }
+                    else {
+                        return { valid: false, error: "sum less than 16", number: creditCard }
+                    }
+                }
+                else {
+                    return { valid: false, error: "invalid characters", number: creditCard }
+                }
+            }
+            else {
+                return { valid: false, error: "Credit Card Length Must Be 16 Digits", number: creditCard }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
