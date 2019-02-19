@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="body">
+    <form>
+        <label for="imgSrc">Image Url: </label>
+        <input type="url" name="imgSrc" id="imgSrc" size='100px' placeholder="https://upload.wikimedia.org/wikipedia/commons/b/be/KeizersgrachtReguliersgrachtAmsterdam.jpg">
+        <br />
+        <br />
+        <label for="wiki">Wikipedia link: </label>
+        <input type="url" name="wiki" id="wiki" size='50px' placeholder="https://en.wikipedia.org/wiki/Amsterdam">
+        <button onclick="addImg()" type='button' id='addImg1'>Add The Picture</button>
+    </form>
+    <div id="pages">
+        <div id="page1">
+   
+        </div>
+    </div>
+    <hr />
+    <div id="button"></div>
+    <div id="message"></div>
+<script>
+var numofimgs=-1;
+var numofpages=1;
+var currentPageNum = 1;
+imgArr=[];
+pagesArr=[];
+
+function addImg(){
+    numofimgs++;
+    if(numofimgs===144){
+        
+        return document.getElementById("message").innerText="sum of pages is 12"
+    }
+    if(numofimgs%12===0&&numofimgs>1&&numofimgs<144){
+        pageFull=document.getElementById("page"+currentPageNum)
+        pagesArr.push(pageFull);
+        console.log(currentPageNum)
+        createNewPage();
+    }
+        console.log("page"+currentPageNum)
+        var currentPage = document.getElementById("page"+currentPageNum)
+        var a = document.createElement("a");
+        a.id="img"+numofimgs;
+        a.setAttribute('href',document.getElementById("wiki").value);
+        var img = document.createElement("img");
+        img.setAttribute('src',document.getElementById("imgSrc").value);
+        img.setAttribute('height', 200);
+        img.setAttribute('width', 300);
+        a.appendChild(img);
+        if(numofimgs%3===0){
+            var br = document.createElement("br")
+            currentPage.appendChild(br)
+        }
+        imgArr.push(a)
+        currentPage.appendChild(a);
+    }
+
+
+function createNewPage(){
+    
+    var pages = document.getElementById("pages")
+    pages.innerHTML=""
+    var button = document.createElement("button")
+    button.innerText="Go To Page "+currentPageNum
+    button.setAttribute('onclick',`goToPage(${currentPageNum})`)
+    document.getElementById("button").appendChild(button)
+    currentPageNum++;
+    var newPage = document.createElement("div");
+    newPage.id="page"+currentPageNum
+    document.getElementById("pages").appendChild(newPage)
+}
+function goToPage(numPage){
+    console.log(numPage)
+    currentPageNum=numPage;
+        var pages = document.getElementById("pages")
+        pages.innerHTML=""
+        pages.appendChild(pagesArr[numPage-1])
+ 
+}
+</script>
+</body>
+</html>
