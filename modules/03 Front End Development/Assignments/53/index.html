@@ -19,15 +19,23 @@
             border: 1px solid black;
             margin: 0px auto;
             width: 700px;
+            font-size: 16px;
+
         }
 
+        th {
+            font-size: 25px;
+        }
+
+
         #middle {
-            margin-left: 160px
+            position: relative;
+
         }
 
         #menu {
             height: 100%;
-            width: 100px;
+            width: 120px;
             position: fixed;
             top: 0;
             left: 0;
@@ -36,7 +44,7 @@
         }
 
         #btn {
-            margin: auto;
+            margin-left: 48%;
         }
 
         #background {
@@ -52,7 +60,7 @@
 
         #pick {
             display: none;
-            position:fixed;
+            position: fixed;
             top: 50%;
             left: 50%;
             width: 14em;
@@ -63,6 +71,14 @@
             /*set to a negative number 1/2 of your width*/
             border: 1px solid #ccc;
             background-color: #f3f3f3;
+        }
+
+
+        #bottom {
+            position: absolute;
+            left: 50%;
+            top: 90%;
+
         }
     </style>
 </head>
@@ -77,14 +93,32 @@
             <form action="#" onsubmit="return addStudent(event)">
                 <label for="studentName">Student Name:</label>
                 <select name="studentName" id="studentName">
-                    <option value="moti">moti</option>
-                    <option value="avi">avi</option>
-                    <option value="david">david</option>
-                    <option value="gabi">gabi</option>
-                    <option value="lital">lital</option>
+                    <option value="EvyatarD ">EvyatarD </option>
+                    <option value="shimonhazan ">shimonhazan </option>
+                    <option value="YakirSolomon ">YakirSolomon </option>
+                    <option value="moshiko-a">moshiko-a</option>
+                    <option value="MatanDiner ">MatanDiner </option>
+                    <option value="matanatia ">matanatia </option>
+                    <option value="mariyastash ">mariyastash </option>
+                    <option value="Malak77 ">Malak77 </option>
+                    <option value="litalrab ">litalrab </option>
+                    <option value="hakimiansh ">hakimiansh </option>
+                    <option value="GuyAgiv ">GuyAgiv </option>
+                    <option value="gabybuchnik ">gabybuchnik </option>
+                    <option value="gabsy3 ">gabsy3 </option>
+                    <option value="OfekArbeli ">OfekArbeli </option>
+                    <option value="elinorga ">elinorga </option>
+                    <option value="derldalfor100 ">derldalfor100 </option>
+                    <option value="DavidSabag ">DavidSabag </option>
+                    <option value="DavidLev1 ">DavidLev1 </option>
+                    <option value="danielbr08 ">danielbr08 </option>
+                    <option value="aviyotGhub ">aviyotGhub </option>
+                    <option value="AviAdnahani ">AviAdnahani </option>
+                    <option value="amitayl ">amitayl </option>
+                    <option value="ameer89 ">ameer89 </option>
                 </select>
 
-                <input type="text" placeholder="Subject" id="subject" size="8">
+                <input type="text" placeholder="Subject" id="subject" size="8" required>
                 <input type="submit" name="submit" id="submit">
             </form>
         </div>
@@ -98,13 +132,11 @@
         <input type="button" id="btn" value="Pick One" onclick="pickOne()">
     </div>
 
-    <br><br><br><br><br> <br><br><br><br><br>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
+
     <div id="background">
     </div>
     <div id="pick">
-        
+
     </div>
 
     <div id="bottom">
@@ -112,37 +144,47 @@
     </div>
 
     <script>
-        var arrStudent = [];
-        function Student(name, subject) { this.name = name; this.subject = subject; };
+        var count = 1;
+        var Student = {};
         function addStudent(event) {
-            var studentName = document.getElementById("studentName").value;
-            var subject = document.getElementById("subject").value;
-            console.log(subject + studentName);
-            var table = document.getElementById("table");
-            var row = document.createElement("tr");
-            var td1 = document.createElement("td");
-            var td2 = document.createElement("td");
-            td1.innerText = studentName;
-            row.appendChild(td1);
-            td2.innerText = subject;
-            row.appendChild(td2);
-            // var s = Student;
-            // s.name = studentName;
-            // s.sub = subject;
-            // arrStudent.push(s);
-            arrStudent.push(new Student(studentName, subject));
-            table.appendChild(row);
             event.preventDefault();
+            var studentName = document.getElementById("studentName").value;
+            if (studentName in Student)   //if student exists in table
+                alert("student is Existing or selected");
+            else {
+                var subject = document.getElementById("subject").value;
+                console.log(subject + studentName);
+                var table = document.getElementById("table");
+                var row = document.createElement("tr");
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                td1.innerText = studentName;
+                row.appendChild(td1);
+                td2.innerText = subject;
+                row.appendChild(td2);
+                Student[studentName] = subject;
+                console.log(Student);
+                table.appendChild(row);
+            }
         }
+
         function pickOne() {
-            var p = document.getElementById("pick");
-            var b = document.getElementById("background");
-            p.style.display = "block";
-            b.style.display = "block";
-            document.getElementById("pick").innerHTML = "<input type='button' name='xx' id='xx' onclick='x()' value='X'><br><br><br>Name: " + arrStudent[0].name + "<br> Subject: " + arrStudent[0].subject;
+            var tr = document.getElementsByTagName("tr");
+            if (tr.length != 1) {      //if table empty 
+                var indexRandom = Math.floor(Math.random() * (tr.length - 1)) + 1; //random number for index row
+                var p = document.getElementById("pick");
+                var b = document.getElementById("background");
+                p.style.display = "block";
+                b.style.display = "block";
+                document.getElementById("pick").innerHTML = "<input type='button' name='xx' id='xx' onclick='x()' value='X'><br><br><br>Name: "
+                    + tr[indexRandom].childNodes[0].innerText + "<br> Subject: " + tr[indexRandom].childNodes[1].innerText;
+                document.getElementById("table").deleteRow(indexRandom); // remove tr 
+            }
+
         }
-        
-        function x() {
+
+
+        function x() {  // close pick frame
             var p = document.getElementById("pick");
             var b = document.getElementById("background");
             p.style.display = "none";
