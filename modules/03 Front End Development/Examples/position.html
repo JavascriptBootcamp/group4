@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 500px;
+            height: 500px;
+            background: lightslategrey;
+        }
+
+        #content {
+            width: 100px;
+            height: 50px;
+            background: darkturquoise;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px;
+            margin-top: -25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="wrapper" style="width: 450px; height: 450px; border: solid 2px red">
+            <div class="wrapper" style="width: 350px; height: 350px; border: solid 2px red">
+                <div class="wrapper" style="width: 250px; height: 250px; border: solid 2px red">
+                    <div class="wrapper" style="width: 200px; height: 200px; border: solid 2px red">
+                        <div id="content">Moshiko is the king</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+
+    <script>
+        document.getElementById("footer").innerText += "Moshiko is the king".repeat(200);
+    </script>
+
+</body>
+
+</html>
