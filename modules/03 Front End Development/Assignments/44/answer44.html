@@ -21,50 +21,57 @@
         <button type="submit" onclick="addBook()">Add</button>
 
         <select id="order" onchange="orderBooks()">
-            <option disabled selected hidden>--sorting the books--</option>
+            <option disabled="disabled" selected hidden>--sorting the books--</option>
             <option value="oldestToNewest">oldest to newest</option>
             <option value="newestToOldest">newest to oldest</option>
         </select>
     </form>
 
     <div id="booksList">
-        <h1>Title: "IT"</h1>
-        <h2>Author: Stephen King</h2>
-        <h3>Publication date: <span class="publication">1986-09-15</span></h3>
-        <h4>Publisher: Viking</h4>
-        <h5>Pages: 1138</h5>
-        <p>comments: perfect author, perfect book.</p>
+        <div class="book">
+            <h1>Title: "IT"</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date: <span class="publication">1986-09-15</span></h3>
+            <h4>Publisher: Viking</h4>
+            <h5>Pages: 1,138</h5>
+            <p>comments: perfect author, perfect book.</p>
+        </div>
 
-        <h1>Title: The Dark Tower: The Gunslinger</h1>
-        <h2>Author: Stephen King</h2>
-        <h3>Publication date: <span class="publication">1982-06-10</span></h3>
-        <h4>Publisher: Grant</h4>
-        <h5>Pages: 300</h5>
-        <p>comments: perfect author, perfect series.</p>
+        <div class="book">
+            <h1>Title: The Dark Tower: The Gunslinger</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date: <span class="publication">1982-06-10</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 300</h5>
+            <p>comments: perfect author, perfect series.</p>
+        </div>
 
+        <div class="book">
+            <h1>Title: The Dark Tower Book II: The Drawing of the Three</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date: <span class="publication">1987-05-01</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 463</h5>
+            <p>comments: perfect author, perfect series.</p>
+        </div>
 
-        <h1>Title: The Dark Tower Book II: The Drawing of the Three</h1>
-        <h2>Author: Stephen King</h2>
-        <h3>Publication date: <span class="publication">1987-05-01</span></h3>
-        <h4>Publisher: Grant</h4>
-        <h5>Pages: 463</h5>
-        <p>comments: perfect author, perfect series.</p>
+        <div class="book">
+            <h1>Title: The Dark Tower III: The Waste Lands</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date: <span class="publication">1991-08-01</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 512</h5>
+            <p>comments: perfect author, perfect series.</p>
+        </div>
 
-
-        <h1>Title: The Dark Tower III: The Waste Lands</h1>
-        <h2>Author: Stephen King</h2>
-        <h3>Publication date: <span class="publication">1991-08-01</span></h3>
-        <h4>Publisher: Grant</h4>
-        <h5>Pages: 512</h5>
-        <p>comments: perfect author, perfect series.</p>
-
-
-        <h1>Title: The Dark Tower IV: Wizard and Glass</h1>
-        <h2>Author: Stephen King</h2>
-        <h3>Publication date: <span class="publication">1997-11-04</span></h3>
-        <h4>Publisher: Grant</h4>
-        <h5>Pages: 787</h5>
-        <p>comments: perfect author, perfect series.</p>
+        <div class="book">
+            <h1>Title: The Dark Tower IV: Wizard and Glass</h1>
+            <h2>Author: Stephen King</h2>
+            <h3>Publication date: <span class="publication">1997-11-04</span></h3>
+            <h4>Publisher: Grant</h4>
+            <h5>Pages: 787</h5>
+            <p>comments: perfect author, perfect series.</p>
+        </div>
     </div>
 
     <script>
@@ -81,7 +88,6 @@
         }
 
         function addBook() {
-
             var title = document.getElementById("title");
             var author = document.getElementById("author");
             var date = document.getElementById("publicationDate");
@@ -91,7 +97,6 @@
             if (validForm(title.value, author.value, date.value, publisher.value, pages.value)) {
                 var book = new Book(title, author, date, publisher, pages, comments);
                 booksArray.push(book);
-                console.log(booksArray);
                 increaseBooksAmount();
                 createBookElement(book);
                 clearUserInput(title, author, date, publisher, pages, comments);
@@ -136,6 +141,47 @@
             div.appendChild(p);
 
             booksList.appendChild(div);
+        }
+
+        function orderBooks() {
+            var selectedOrder = document.getElementById("order").value;
+
+            var match = document.querySelectorAll("span");
+            var publishDateArray = [];
+
+            match.forEach(element => {
+                var date = new Date(element.innerText);
+                publishDateArray.push(date);
+            });
+
+            if (selectedOrder == "oldestToNewest") {
+                publishDateArray = publishDateArray.sort(function (a, b) {
+                    return a.getTime() - b.getTime();
+                });
+            }
+            else {
+                publishDateArray = publishDateArray.sort(function (a, b) {
+                    return b.getTime() - a.getTime();
+                });
+            }
+
+            reorganizeBooks(publishDateArray);
+        }
+
+        function reorganizeBooks(publishDateArray) {
+            var booksDiv = document.getElementById("booksList");
+            var booksPublish = document.querySelectorAll(".publication");
+            var MyDateString;
+            booksDiv.innerHTML = "";
+
+            for (var i = 0; i < publishDateArray.length; i++) {
+                MyDateString = publishDateArray[i].getFullYear() + '-' + ('0' + (publishDateArray[i].getMonth() + 1)).slice(-2) + '-' + ('0' + publishDateArray[i].getDate()).slice(-2);
+                for (var j = 0; j < booksPublish.length; j++) {
+                    if (booksPublish[j].innerHTML == MyDateString) {
+                        booksDiv.appendChild(booksPublish[j].parentNode.parentNode);
+                    }
+                }
+            }
         }
 
         function clearUserInput(title, author, date, publisher, pages, comments) {
