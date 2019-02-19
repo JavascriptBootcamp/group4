@@ -1,30 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-<form >
-    Title: <input type="text" id="inp"> <br><br>
-    <select id="sel">
-        <option value="Shai">Shai</option>
-        <option value="saab">Saab</option>
-        <option value="Avi">Avi</option>
-        <option value="David">David</option>
-      </select><br><br>
-      seconds <input type="number" id="num"><br><br>
-      <button type="button" id="watch1" onclick="watch()">Disply</button>
-        
-</form><br><br>
-<div id="res">
+    <form id="myForm">
+        Title: <input type="text" id="inp">
+        <select id="sel">
+            <option value="choose">Choose</option>
+            <option value="Shai">Shai</option>
+            <option value="saab">Saab</option>
+            <option value="Avi">Avi</option>
+            <option value="David">David</option>
+        </select>
+        Seconds <input type="number" id="num">
+        <button type="button" id="watch1" onclick="watch()">Disply</button>
+    </form>
+    <div id="adding">
 
-<!-- result here -->
 
-</div>
+    </div>
 
-<script src="script.js"></script>
+    <button type="button" style="margin: 20px 0 0 250px" id="btn" onclick="addForm()">Plus</button>
+    <button type="button" style="margin: 20px 0 0 30px" id="btn" onclick="watchAll()">Watch All</button>
+    <div id="res">
+        <!-- result here -->
+    </div>
+    <div id="res-all">
+            <!-- result here -->
+    </div>
+
+    <script>
+        var wachers = [];
+        function Video(title, uploader, seconds) {
+            this.title = title;
+            this.uploader = uploader;
+            this.seconds = seconds;
+
+        }
+
+        function watch() {
+            var title = document.querySelector("#inp").value;
+            var uploader = document.querySelector("#sel").options[document.querySelector("#sel").selectedIndex];
+            var sec = document.querySelector("#num").value;
+            if (title !== "" && uploader !== "choose" && sec !== "") {
+                var vid = new Video(title, uploader, sec);
+                document.querySelector("#res").innerHTML = "You watched all " + vid.seconds + " seconds of " + vid.title;
+                wachers.push("You watched all " + vid.seconds + " seconds of " + vid.title);
+            }
+
+        }
+        function addForm() {
+            form = document.querySelector("#myForm").cloneNode(true) ;
+            document.querySelector("#adding").appendChild(form);
+
+        }
+        function watchAll(){
+            resAll = document.querySelector("#res-all");
+            resAll.innerHTML = "";
+            for(var i=0; i< wachers.length; i++){
+                resAll.innerHTML += "<br><br>" + wachers[i];
+            }
+        }
+
+    </script>
 </body>
+
 </html>
