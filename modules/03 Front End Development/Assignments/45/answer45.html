@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        form{
+           width: 200px;
+           border: solid 3px rgb(126, 193, 216);
+           padding: 7px;
+           margin: 0 auto;
+        }
+
+        #subBtn{
+            color:rgb(3, 66, 83);
+            margin-top: 5px;
+            border-block-end-style:hidden;
+        }
+
+        img{
+            width: 300px;
+            height: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        Add image URL: <input type="url" id="image" required>
+        Add wikipedia URL: <input type="url" id="wiki-link" required>
+        <input type="submit" id="subBtn" value="Submit" onclick="addImage()">
+    </form>
+
+    <div id="images"></div>
+
+    <div id="tab">
+        Page:
+    </div>
+
+    <script>
+        var imageArr = [];
+        var linksArr = [], imagesPerPage = 3;
+        var pageCounter = 0;
+
+        function addImage() {
+            if (imageArr.length % imagesPerPage === 0 && imageArr.length !== 0) {
+                openNewPage();
+            }
+
+            var image = document.getElementById("image").value;
+            var wiki = document.getElementById("wiki-link").value;
+
+            if (image && wiki) {
+                imageArr.push(image);
+                linksArr.push(wiki);
+
+                var newImg = document.createElement("img");
+                newImg.setAttribute("src", image);
+
+                var a = document.createElement("a");
+                a.setAttribute("href", wiki);
+                a.appendChild(newImg);
+
+                var outputImages = document.getElementById("images");
+                outputImages.appendChild(a);
+
+                cleanUserInput();
+            }
+        }
+
+        function openNewPage() {
+            var outputImages = document.getElementById("images");
+            outputImages.innerHTML = "";
+            var btn = document.createElement("button");
+            btn.innerText = ++pageCounter;
+
+            btn.addEventListener("click", function () {
+                var outputImages = document.getElementById("images");
+                outputImages.style.display = "block";
+                outputImages.innerHTML = "";
+
+                for (var i = (btn.innerText * imagesPerPage) - imagesPerPage; i < btn.innerText * imagesPerPage; i++) {
+                    if (imageArr[i]) {
+                        outputImages.innerHTML += "<a href='" + linksArr[i] + "'> <img src='" + imageArr[i] + "'></a>";
+                    }
+                }
+            });
+
+            document.getElementById("tab").appendChild(btn);
+        }
+
+        function cleanUserInput() {
+            document.getElementById("image").value = "";
+            document.getElementById("wiki-link").value = "";
+        }
+
+    </script>
+</body>
+
+</html>
