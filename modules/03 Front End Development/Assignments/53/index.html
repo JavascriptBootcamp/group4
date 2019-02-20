@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Our Reserch</h1>
+    </div>
+    <div id="container">
+        <div id="sidemenu">
+            <form action="#" onsubmit="return addStudent(event);">
+                <fieldset>
+                    <label for="sname">Student Name:</label>
+                    <select id="sname">
+                        <option>‫david lev</option>
+                        <option>‫moshiko albhari</option>
+                        <option>‫aviyot</option>
+                        <option>gaby buchnik</option>
+                        <option>daniel barush</option>
+                        <option>‫mariya stashevski</option>
+                        <option>‫guy agiv</option>
+                        <option>‫lital rab</option>
+                        <option>‫ameer</option>
+                        <option>avi adnahani</option>
+                        <option>ofek arbeli</option>
+                        <option>shimon hazan</option>
+                        <option>‫matan diner</option>
+                        <option>evyatar duek</option>
+                        <option>yakir solomon</option>
+                        <option>amitay levi</option>
+                        <option>‫malak khamaissi</option>
+                        <option>elinor gargi</option>
+                        <option>shani</option>
+                        <option>matan atia</option>
+                        <option>‫david sabag</option>
+                        <option>‫david stephenson</option>
+                    </select><br><br>
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" size="15" required><br><br>
+                    <button type="submit">ADD</button>
+                </fieldset>
+            </form>
+        </div>
+        <div id="tcontent">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Subject</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><button onclick="pickUp()">Pick Up</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div id="backframe"></div>
+        <div id="popframe"></div>
+        <div id="backtop"><a href="#">Back to Top</a></div>
+    </div>
+</body>
+<script>
+    var tbody = document.getElementsByTagName("tbody")[0];
+    var students = {};
+    var backframe = document.getElementById("backframe");
+    var frame = document.getElementById("popframe");
+
+    function addStudent(e) {
+        var name = e.target.sname.value;
+        var subject = e.target.subject.value;
+
+        if (!(name in students) && Object.values(students).indexOf(subject) === -1) {
+            var tr = document.createElement("tr");
+            tr.innerHTML = "<td>" + name + "</td><td>" + subject + "</td>";
+            tbody.appendChild(tr);
+            students[name] = subject;
+        }
+        else
+            alert("Student or subject exists");
+
+        e.preventDefault();
+    }
+
+    function pickUp() {
+        var rows = tbody.childElementCount;
+        if (rows) {
+            var rand = Math.floor(Math.random() * rows);
+            var row = tbody.children[rand];
+            var nameprop = row.children[0].innerText;
+
+            backframe.classList.toggle("opacityframe");
+            frame.classList.toggle("pop");
+            frame.innerHTML = "<button id='exit' onclick='closeFrame()'>X</button><br><br><br>Name: "
+                + nameprop + "<br><br>Subject: " + students[nameprop];
+
+            row.remove();
+            delete students[nameprop];
+        }
+        else
+            alert("You need to add a student");
+    }
+    function closeFrame() {
+        frame.classList.toggle("pop");
+        frame.innerHTML = "";
+        backframe.classList.toggle("opacityframe");
+    }
+
+</script>
+
+</html>

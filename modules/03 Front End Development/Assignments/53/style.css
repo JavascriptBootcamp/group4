@@ -1,0 +1,55 @@
+body{
+    background-color: rgb(250, 250, 250);
+}
+#header{
+    width: 100%;
+    text-align: center;
+    background-color:#D4FFFF;
+}
+#sidemenu{
+ width: 200px;
+ float: left;
+}
+table{
+    table-layout: fixed;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+table tr td,th{
+    border: 3px solid gray;
+    padding: 10px;
+}
+.opacityframe{
+    background: gray;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+}
+.pop{
+    background-color: #f3f3f3;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px; 
+}
+#exit{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#backtop{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
