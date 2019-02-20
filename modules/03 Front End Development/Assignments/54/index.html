@@ -1,0 +1,56 @@
+<!-- Answer by Matan Diner -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="scripts.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <div id="colorGame">
+            Game Colors:
+            <input type="radio" id="Light" name="color" value="Light" onclick="changeColor(event)" checked>
+            <label for="Light">Light</label>
+            <input type="radio" id="dark" name="color" value="dark" onclick="changeColor(event)">
+            <label for="Light">Dark</label>
+        </div>
+        <div>
+            <label for="player1">Player 1</label>
+            <input type="text" placeholder="Name" id="player1" />
+            <label for="player2">Player 2</label>
+            <input type="text" placeholder="Name" id="player2" />
+        </div>
+
+        <div>
+            <button onclick="startGame()">Start</button>
+        </div>
+
+        <div id="turn"></div>
+    </div>
+    <div id="table_div">
+        <div class="td" id="1" onclick=td_clicked(0,0,this)></div>
+        <div class="td" id="2" onclick=td_clicked(0,1,this)></div>
+        <div class="td" id="3" onclick=td_clicked(0,2,this)></div>
+        <div id="clear"></div>
+        <div class="td" id="4" onclick=td_clicked(1,0,this)></div>
+        <div class="td" id="5" onclick=td_clicked(1,1,this)></div>
+        <div class="td" id="6" onclick=td_clicked(1,2,this)></div>
+        <div id="clear"></div>
+        <div class="td" id="7" onclick=td_clicked(2,0,this)></div>
+        <div class="td" id="8" onclick=td_clicked(2,1,this)></div>
+        <div class="td" id="9" onclick=td_clicked(2,2,this)></div>
+        <div id="clear"></div>
+
+    </div>
+    <div id="result"></div>
+    <div id="newGame"></div>
+</body>
+
+</html>
