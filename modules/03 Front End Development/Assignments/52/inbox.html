@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-    
+    <style>
+        td[colspan='3'] {
+            display: none;
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +14,7 @@
     <title>Inbox</title>
 </head>
 
-<body>
+<body onload="init()">
     <h1>Inbox</h1>
     <nav>
         <ul>
@@ -30,19 +34,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="3">Content</td>
+                    <td>Jenya</td>
+                    <td>The think with hole</td>
+                    <td>19/02/2018</td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="email" border='1'>
-            <thead>
-                <tr>
-                    <th>from</th>
-                    <th>subject</th>
-                    <th>date</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td colspan="3">Content</td>
                 </tr>
@@ -58,19 +53,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="3">Content</td>
+                    <td>Kim</td>
+                    <td>Fashion</td>
+                    <td>04/02/2018</td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="email" border='1'>
-            <thead>
-                <tr>
-                    <th>from</th>
-                    <th>subject</th>
-                    <th>date</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td colspan="3">Content</td>
                 </tr>
@@ -86,19 +72,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="3">Content</td>
+                    <td>Jenya</td>
+                    <td>Test</td>
+                    <td>04/02/2018</td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="email" border='1'>
-            <thead>
-                <tr>
-                    <th>from</th>
-                    <th>subject</th>
-                    <th>date</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td colspan="3">Content</td>
                 </tr>
@@ -114,19 +91,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="3">Content</td>
+                    <td>Sami</td>
+                    <td>Quiz</td>
+                    <td>18/08/2017</td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="email" border='1'>
-            <thead>
-                <tr>
-                    <th>from</th>
-                    <th>subject</th>
-                    <th>date</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                     <td colspan="3">Content</td>
                 </tr>
@@ -142,6 +110,11 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>Sami</td>
+                    <td>Quiz</td>
+                    <td>18/08/2017</td>
+                </tr>
+                <tr>
                     <td colspan="3">Content</td>
                 </tr>
             </tbody>
@@ -155,6 +128,87 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>Sami</td>
+                    <td>Quiz</td>
+                    <td>18/08/2017</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Content</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="email" border='1'>
+            <thead>
+                <tr>
+                    <th>from</th>
+                    <th>subject</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sami</td>
+                    <td>Quiz</td>
+                    <td>18/08/2017</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Content</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="email" border='1'>
+            <thead>
+                <tr>
+                    <th>from</th>
+                    <th>subject</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sami</td>
+                    <td>Quiz</td>
+                    <td>18/08/2017</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Content</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="email" border='1'>
+            <thead>
+                <tr>
+                    <th>from</th>
+                    <th>subject</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ariel</td>
+                    <td>Spam 2</td>
+                    <td>21/08/2017</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Content</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="email" border='1'>
+            <thead>
+                <tr>
+                    <th>from</th>
+                    <th>subject</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sami</td>
+                    <td>Quiz</td>
+                    <td>18/08/2017</td>
+                </tr>
                 <tr>
                     <td colspan="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis, massa
                         eget efficitur efficitur, mauris est porta dui, non malesuada sapien metus in elit. Nunc
@@ -171,6 +225,26 @@
             </tbody>
         </table>
     </div>
+    <script>
+        var tables;
+        function init() {
+            tables = document.getElementsByTagName('table');
+            console.log(tables);
+            for (var i = 0; i < tables.length; i++) {
+                tables[i].onclick = showContent;
+                //console.log(tables[i]);
+            }
+        }
+        function showContent(event) {
+            var elem = event.target;
+            if (elem.className !== 'email') {
+                elem = elem.parentNode.parentNode.parentNode;
+                //console.log(elem);
+            }
+            var contentEmail = elem.children[1].children[1].children[0];
+            contentEmail.style.display = 'table-cell';
+        }
+    </script>
 </body>
 
 </html>

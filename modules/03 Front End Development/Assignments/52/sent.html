@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <style>
+        td[colspan='3'] {
+            display: none;
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +14,7 @@
     <title>Sent</title>
 </head>
 
-<body>
+<body onload="init()">
     <h1>Sent</h1>
     <nav>
         <ul>
@@ -19,8 +24,123 @@
         </ul>
     </nav>
     <div id="mainBox">
- 
-    </div>
+        <div id="mainBox">
+            <table class="email" border='1'>
+                <thead>
+                    <tr>
+                        <th>from</th>
+                        <th>subject</th>
+                        <th>date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>David</td>
+                        <td>Homework</td>
+                        <td>20/02/2019</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Content</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="email" border='1'>
+                <thead>
+                    <tr>
+                        <th>from</th>
+                        <th>subject</th>
+                        <th>date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>David</td>
+                        <td>Fashion</td>
+                        <td>04/02/2019</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Content</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="email" border='1'>
+                <thead>
+                    <tr>
+                        <th>from</th>
+                        <th>subject</th>
+                        <th>date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>David</td>
+                        <td>GTA VI</td>
+                        <td>04/02/2019</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Content</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="email" border='1'>
+                <thead>
+                    <tr>
+                        <th>from</th>
+                        <th>subject</th>
+                        <th>date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>David</td>
+                        <td>Hahof shel Mosh</td>
+                        <td>05/09/2018</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Content</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="email" border='1'>
+                <thead>
+                    <tr>
+                        <th>from</th>
+                        <th>subject</th>
+                        <th>date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>David</td>
+                        <td>Vegetables</td>
+                        <td>05/11/2017</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Content</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            var tables;
+            function init() {
+                tables = document.getElementsByTagName('table');
+                console.log(tables);
+                for (var i = 0; i < tables.length; i++) {
+                    tables[i].onclick = showContent;
+                    //console.log(tables[i]);
+                }
+            }
+            function showContent(event) {
+                var elem = event.target;
+                if (elem.className !== 'email') {
+                    elem = elem.parentNode.parentNode.parentNode;
+                    //console.log(elem);
+                }
+                var contentEmail = elem.children[1].children[1].children[0];
+                contentEmail.style.display = 'table-cell';
+            }
+        </script>
 </body>
 
 </html>
