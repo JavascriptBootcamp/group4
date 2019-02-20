@@ -6,18 +6,61 @@
 
 h1 {
     text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.email {
+    font-size: 16px;
+}
+table.email:nth-of-type(1){
+    font-weight: bold;
+}
+table.email:nth-of-type(2){
+    font-weight: bold;
+}
+table.email:nth-of-type(3){
+    font-weight: bold;
+}
+.email, .contact {
+    margin-left: 30px;
+}
+#listHeader {
+    color: darkred;
+}
+.contact {
+    font-size: 20px;
+}
+a {
+    color: darkblue;
+}
+a:hover {
+    font-weight: bold;
+}
+nav  a:active {
+    color: darkgreen;
+}
+[border] {
+    border: solid 5px darkgrey;
+}
+.email:hover, .contact:hover {
+    background-color: dimgrey;
+    color: white;
 }
 nav {
+    position: relative;
+    top: 40px;
     float: left;
 }
 #main {
-    /* display: inline-block; */
     position: absolute;
     top: 36px;
     left: 50%;
     margin-left: -400px;
 }
 #mainFrame {
+    position: absolute;
+    top: 40px;
     width:800px;
     height: 700px;
     overflow: hidden;
@@ -37,4 +80,7 @@ nav > ul {
     position: relative;
     top: -11%;
     width : 500px;
+}
+td[colspan='3'] {
+    display: none;
 }
