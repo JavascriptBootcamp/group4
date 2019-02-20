@@ -229,17 +229,14 @@
         var tables;
         function init() {
             tables = document.getElementsByTagName('table');
-            console.log(tables);
             for (var i = 0; i < tables.length; i++) {
                 tables[i].onclick = showContent;
-                //console.log(tables[i]);
             }
         }
         function showContent(event) {
             var elem = event.target;
             if (elem.className !== 'email') {
                 elem = elem.parentNode.parentNode.parentNode;
-                //console.log(elem);
             }
             var contentEmail = elem.children[1].children[1].children[0];
             contentEmail.style.display = 'table-cell';

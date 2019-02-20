@@ -9,7 +9,7 @@
     <title>Contacts</title>
 </head>
 
-<body>
+<body onload="init()">
     <h1>Contacts</h1>
     <nav>
         <ul>
@@ -19,8 +19,77 @@
         </ul>
     </nav>
     <div id="mainBox">
-
+        <table class="contact" border='1'>
+            <thead>
+                <tr>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>email address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Kim</td>
+                    <td>Kardashian</td>
+                    <td>kiki@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Daniel</td>
+                    <td>Radcliffe</td>
+                    <td>potter@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Brad</td>
+                    <td>Pitt</td>
+                    <td>bpitt@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>Leonardo</td>
+                    <td>DiCaprio</td>
+                    <td>titanic97@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>David</td>
+                    <td>Stephenson</td>
+                    <td>derldalfor100@gmail.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            var ths;
+            function init() {
+                ths = document.getElementsByTagName('th');
+                for (var i = 0; i < ths.length; i++) {
+                    ths[i].onclick = showContent;
+                }
+            }
+            function showContent(event) {
+                var elem = event.target;
+                var tHead = document.getElementsByTagName('thead')[0];
+                if (elem.className !== 'sorted') {
+                    var arrSelected = [];
+                    var size = tHead.children[0].children.length;
+                    var index;
+                    var trs = document.getElementsByTagName('tr');
+                    for (var i = 0; i < size; i++) {
+                        if (tHead.children[0].children[i] === elem) {
+                            index = i;
+                            break;
+                        }
+                    }
+                    for (var i = 1; i < trs.length; i++) {
+                        arrSelected.push(trs[i].children[index].innerText);
+                    }
+                    arrSelected.sort();
+                    for (var i = 1; i < trs.length; i++) {
+                        trs[i].children[index].innerText = arrSelected[i - 1];
+                    }
+                    elem.className = 'sorted';
+                }
+            }
+        </script>
     </div>
+
 </body>
 
 </html>
