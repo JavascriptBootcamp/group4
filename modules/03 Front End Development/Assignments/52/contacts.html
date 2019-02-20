@@ -9,22 +9,22 @@
 </head>
 <body>
     <h1 align="center">DMail</h1>
-    <div id="div_menu">
+    <div id="div_menu" class="menu">
         <a href="inbox.html">Inbox</a><br>
         <a href="sent.html">Sent</a> <br>
         <a href="contacts.html">Contacts</a> <br>
     </div>
 
-    <div class="div_main_area">
-        <div id="div_contact_persons">
+    <div id="div_main_area_c">
+        <div id="div_contact_persons" class="content contacts">
             <div id="list_contact_persons">
             
             </div>
             <table id="c_table">
                 <tr>
-                    <th>first name</th>
-                    <th>last name</th>
-                    <th>email address</th>
+                    <th onclick="sortContacts('firstName')">first name  </th>
+                    <th onclick="sortContacts('lastName')">last name  </th>
+                    <th onclick="sortContacts('email')">email address</th>
                 </tr>
             </table>
         </div>

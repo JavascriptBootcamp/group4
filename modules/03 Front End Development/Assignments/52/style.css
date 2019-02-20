@@ -1,2 +1,12 @@
 body{background-color: lightgray;}
 h1{text-align: center; background-color: black; color: white; padding: 10px;}
+.contacts{font-size: 20px;}
+.content{margin-left: 30px}
+.mail{font-size: 16px;}
+.menu{border: 1px solid white}
+th{color: darkred}
+a{color:darkblue }
+a:visited{color: darkgreen}
+a:hover{font-weight: bold;}
+.data:hover{background-color: dimgray; color: white;}
+*{border:darkgrey; padding:5px}

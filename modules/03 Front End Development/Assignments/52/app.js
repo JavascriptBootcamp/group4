@@ -26,6 +26,63 @@ var contacts = [
 
 var incomingFirst3Counter = 0;
 var sentFirst3Counter = 0;
+var choosenContacts = new Array();
+
+function sortContacts(sortBy){
+	var keys = new Array();
+    var values =  {};
+	var key;
+	for(var i=0;i<choosenContacts.length;i++){
+		var contactObj = choosenContacts[i];
+		firstName = contactObj['firstName'];
+		lastName = contactObj['lastName'];
+		email = contactObj['email'];
+		if(sortBy === 'firstName'){
+			key = email + firstName + lastName;
+		}
+		else if(sortBy === 'lastName'){
+			key = lastName + firstName + email;
+		}
+		else if(sortBy === 'email'){
+			key = email + firstName + lastName;
+		}
+		keys.push(key);
+		values[key] = contactObj;
+	}
+	clearContacts();
+	fillContactsSorted(keys.sort(),values);
+}
+
+function clearContacts(){
+	var contactsTable = document.querySelector("#c_table");
+	while(contactsTable.childElementCount > 1){
+		contactsTable.removeChild(contactsTable.lastChild);
+	}
+}
+
+function fillContactsSorted(keys,values){
+	var contactsTable = document.querySelector("#c_table");
+
+	for(var i =0; i<keys.length;i++){
+		var contactKey = keys[i];
+		var contactPerson = values[contactKey];
+		var tr = document.createElement("tr");
+
+		var tdFirstName = document.createElement("td");
+		var tdLastName = document.createElement("td");
+		var tdEmailAddress = document.createElement("td");
+
+		tdFirstName.textContent = contactPerson["firstName"];
+		tdLastName.textContent = contactPerson["lastName"];
+		tdEmailAddress.textContent = contactPerson["email"];
+
+		tr.appendChild(tdFirstName);
+		tr.appendChild(tdLastName);
+		tr.appendChild(tdEmailAddress);
+
+		contactsTable.appendChild(tr);
+	}
+}
 
 	function fillIncomingMails(){
 		var divIncomeMail = document.querySelector("#list_incoming_emails");
@@ -36,9 +93,7 @@ var sentFirst3Counter = 0;
 			emailButton.onclick = addIncomingEmail.bind(emailButton,i);
 			divIncomeMail.appendChild(emailButton);
 			divIncomeMail.appendChild(document.createElement("br"));
-
 		}
-		
 	}
 	
 	function addIncomingEmail(emailIndex){
@@ -46,6 +101,7 @@ var sentFirst3Counter = 0;
 		var email = emailArr[emailIndex];
 		var incomeEmailTable = document.querySelector("#ie_tabel");
 		var tr = document.createElement("tr");
+		tr.className = "data";
 		if(isBoldNeeded){
 			tr.style.fontWeight = 'bold';
 		}
@@ -81,8 +137,10 @@ var sentFirst3Counter = 0;
 	
 	function addContactPerson(contactIndex){
 		var contactPerson = contacts[contactIndex];
+		choosenContacts.push(contactPerson);
 		var contactsTable = document.querySelector("#c_table");
 		var tr = document.createElement("tr");
+		tr.className = "data";
 
 		var tdFirstName = document.createElement("td");
 		var tdLastName = document.createElement("td");
@@ -91,10 +149,6 @@ var sentFirst3Counter = 0;
 		tdFirstName.textContent = contactPerson["firstName"];
 		tdLastName.textContent = contactPerson["lastName"];
 		tdEmailAddress.textContent = contactPerson["email"];
-
-		// tdFirstName.onclick = ;
-		// tdLastName.onclick = ;
-		// tdEmailAddress.onclick = ;
 
 		tr.appendChild(tdFirstName);
 		tr.appendChild(tdLastName);
@@ -122,6 +176,7 @@ var sentFirst3Counter = 0;
 		var email = emailArrOut[emailIndex];
 		var sentEmailTable = document.querySelector("#oe_tabel");
 		var tr = document.createElement("tr");
+		tr.className = "data";
 		if(isBoldNeeded){
 			tr.style.fontWeight = 'bold';
 		}
