@@ -14,13 +14,17 @@
         .equal{
             color: darkblue;
         }
+
+        .comma{
+            color:darkgray;
+        }
     </style>
     <body>
         <h1>Code:</h1>
         <pre>
-            <span class="varKeyword">var</span> <span class="varName">arr</span> <span class="equal">=</span> [1, 2, 5, 7];
+            <span class="varKeyword">var</span> <span class="varName">arr</span> <span class="equal">=</span> [1<span class="comma">,</span> 2<span class="comma">,</span> 5<span class="comma">,</span> 7];
 
-            function myFilter(<span class="varName">arr</span>,<span class="varName">callback</span>){
+            function myFilter(<span class="varName">arr</span><span class="comma">,</span><span class="varName">callback</span>){
                 <span class="varKeyword">var</span> <span class="varName">evenArr</span><span class="equal">=</span>[];
                 for (<span class="varKeyword">var</span> <span class="varName">i</span> <span class="equal">=</span> 0 ; <span class="varName">i</span> < <span class="varName">arr.length</span> ; <span class="varName">i</span> ++){
                     if (callback(<span class="varName">arr[i]</span>))
@@ -29,7 +33,7 @@
                 }
                 return <span class="varName">evenArr</span>;
             }
-            <span class="varKeyword">var</span> <span class="varName">filtered</span> <span class="equal">=</span> myFilter(<span class="varName">arr</span>, function(<span class="varName">item</span>){
+            <span class="varKeyword">var</span> <span class="varName">filtered</span> <span class="equal">=</span> myFilter(<span class="varName">arr</span><span class="comma">,</span> function(<span class="varName">item</span>){
                 return <span class="varName">item</span> % 2 <span class="equal">===</span> 0;
             });
             <span class="varName">console</span>.log(<span class="varName">filtered</span>);
