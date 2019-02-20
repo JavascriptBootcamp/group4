@@ -1,0 +1,100 @@
+body{
+    background: lightgray;
+}
+
+.page-header{
+    background: black;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.left-main-menu{
+    height: 500px;
+    width: 20%;
+    background-color: rgb(195, 202, 204);
+    float: left;
+}
+
+.menu{
+    padding-left: 0px;
+    margin: 5px 5px;
+}
+
+.menu .menu-item{
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+.menu-item a{
+    text-decoration:none; 
+    color:darkblue;
+    padding: 8px 10px 8px 10px;
+    font-size: 20px;
+    display: block;
+    background-color: #ddd;
+}
+.menu-item a:hover {
+    background-color: lightgray;
+    font-weight: bold;
+  }
+.menu-item a:active{
+    color: darkgreen;
+}
+.menu .active a{
+    font-weight: bold;
+    background-color: lightgray;
+    color: darkgreen;
+}
+#main-area{
+    float: left;
+    background-color: white;
+    width: 75%;
+    height: 500px;
+    margin-left: 30px;
+}
+#email-table{
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+}
+
+#email-table td{
+    padding: 5px 35px;
+}
+#email-table th{
+    padding: 12px 35px;
+    background-color: rgb(126, 126, 139);
+    color:darkred;
+}
+#email-table tr:hover td{
+    background-color: dimgray;
+    color: white;
+}
+th, td {
+    border-bottom: 1px solid #ddd;
+  }
+.top-3-emails{
+    font-weight: bold;
+}
+.content{
+    padding: 5px 0px 5px 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#contacts-table{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+}
+
+#contacts-table td{
+    padding: 5px 35px;
+}
+#contacts-table th{
+    padding: 12px 35px;
+    background-color: rgb(126, 126, 139);
+    color: darkred;
+}
+#contacts-table tr:hover td{
+    background-color: dimgray;
+    color: white;
+}
