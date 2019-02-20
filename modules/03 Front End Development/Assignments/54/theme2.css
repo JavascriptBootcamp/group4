@@ -1,0 +1,114 @@
+*{
+    box-sizing: border-box;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+    font-size: 35px;
+    color: #FFF7FB;
+    margin-top: 0px;
+}
+
+#theme h2{
+    color: #FFF7FB;
+}
+
+#header{
+    height: 100vh;
+    text-align: center;
+    padding: 350px;
+    width: 100%;
+    background-color: rgb(43, 133, 206);
+}
+#header button,input{
+    width: 150px;
+}
+#header button{
+    background-color: #FFF7FB;
+    border: 1px solid #FFF7FB;
+}
+
+#board{
+    display: none;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top:-150px;
+    margin-left: -150px;
+}
+td{
+    width: 100px;
+    height: 100px;
+}
+
+#td{
+    display: inline-block;
+}
+#td button{
+    background-color: white;
+    border: none;
+}
+#td button img{
+    border-radius: 50%;
+    border: 2px solid gray;
+}
+
+.noSpace{
+    padding: 0px;
+    margin: 0px;
+}
+#won{
+    position: fixed;
+    padding:10px;
+    font-size: 23px;
+    text-align: center;
+    width: 100%;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+#theme{
+    position: absolute;
+    top:20px;
+    left:20px;
+}

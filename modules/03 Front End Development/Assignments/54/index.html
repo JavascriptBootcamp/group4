@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="theme1.css">
+    <title>Tic-Tac-Toe by Ofek Arbeli</title>
 </head>
 <body>
     <div id="header">
+        <div id="theme">
+            <h2>Change theme</h2>
+            <label class="switch">
+                <input type="checkbox" id="theme-check-box" onchange="changeTheme()">
+                <span class="slider"></span>
+            </label>
+        </div>
         <h1>Tic-Tac-Toe</h1>
         <div id="preGameInputsContainer">
             <input type="text" id="player1" placeholder="Player 1 (X)"><br>
@@ -17,23 +24,23 @@
         </div>
     </div>
     <div id="won"></div>
-    <table id="board" class="hide">
-        <tr>
-            <td><button id="box0" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-            <td><button id="box1" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-            <td><button id="box2" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-        </tr>
-        <tr>
-            <td><button id="box3" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-            <td><button id="box4" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-            <td><button id="box5" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-        </tr>
-        <tr>
-            <td><button id="box6" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-            <td><button id="box7" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-            <td><button id="box8" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></td>
-        </tr>
-    </table>
+    <div id="board" class="hide">
+        <div id="tr">
+            <div id="td"><button id="box0" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+            <div id="td"><button id="box1" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+            <div id="td"><button id="box2" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+        </div>
+        <div id="tr">
+            <div id="td"><button id="box3" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+            <div id="td"><button id="box4" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+            <div id="td"><button id="box5" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+        </div>
+        <div id="tr">
+            <div id="td"><button id="box6" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+            <div id="td"><button id="box7" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+            <div id="td"><button id="box8" class="noSpace" onclick="insertValueToBoard(this.id)" disabled><img width="100px" height="100px"/></button></div>
+        </div>
+    </div>
 
     <script>
     var turn = true;
@@ -42,9 +49,13 @@
     var counter=0;
     var winFlag = false;
     function startNewGame(){
+        var header = document.getElementById("header");
+        header.style.height="22vh";
+        header.style.padding="45px";
         resetBoard();
         insertPlayers();
         removeNamesInputs();
+        showCurrentTurn();
     }
     function insertValueToBoard(ClickedElementId){
         //check if already pressed, check if already win, if not - enter X if counter is odd, O if even
@@ -59,6 +70,7 @@
             console.log(table);
             turn = false;
             counter++;
+            showCurrentTurn();
             hasWon(turn);
         }
         else
@@ -72,28 +84,36 @@
             turn = true;
             console.log(table);
             counter++;
+            showCurrentTurn();
             hasWon(turn);
         }
     }
     function hasWon(){
+        var won;
         //check if some player is won, if some has won, disable all board and display h2 element above with the alert "player x won"
         if(checkPlayerOneStatus())
         {
-            document.getElementById("won").innerHTML=`<h2>${player1} has won</h2>`;
+            won = document.getElementById("won");
+            won.innerHTML=`<h2>${player1} has won</h2>`;
+            won.style.color="#CE2B37";
             disableBoard();
             showPlayerNameInputs();
             winFlag = true;
         }
         if(checkPlayerTwoStatus())
         {
-            document.getElementById("won").innerHTML=`<h2>${player2} has won</h2>`;
+            won = document.getElementById("won");
+            won.innerHTML=`<h2>${player2} has won</h2>`;
+            won.style.color="green";
             disableBoard();
             showPlayerNameInputs();
             winFlag = true;
         }
         if((!winFlag)&&(counter===9))
         {
-            document.getElementById("won").innerHTML="<h2>It's a tie, try again</h2>";
+            won = document.getElementById("won");
+            won.innerHTML="<h2>It's a tie, try again</h2>";
+            won.style.color="gray";
             disableBoard();
             showPlayerNameInputs();
         }
@@ -119,7 +139,8 @@
         <button onclick="startNewGame()">Start New Game</button><br>';
     }  
     function resetBoard(){
-        var boardTable = document.querySelectorAll('body table');
+        var boardTable = document.getElementById("board");
+        boardTable.style.display="block";
         counter=0;
         winFlag = false;
         turn = true;
@@ -129,38 +150,54 @@
         if(document.getElementById("player2").value==="")
             document.getElementById("player2").value = "player2";
         document.getElementById("won").innerHTML="";
-        boardTable[0].innerHTML='<tr>\
-            <td><button id="box0" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-            <td><button id="box1" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-            <td><button id="box2" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-        </tr>\
-        <tr>\
-            <td><button id="box3" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-            <td><button id="box4" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-            <td><button id="box5" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-        </tr>\
-        <tr>\
-            <td><button id="box6" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-            <td><button id="box7" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-            <td><button id="box8" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></td>\
-        </tr>';
-        var boardButtons = document.querySelectorAll('td button');
+        boardTable.innerHTML='<div id="tr">\
+            <div id="td"><button id="box0" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+            <div id="td"><button id="box1" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+            <div id="td"><button id="box2" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+        </div>\
+        <div id="tr">\
+            <div id="td"><button id="box3" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+            <div id="td"><button id="box4" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+            <div id="td"><button id="box5" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+        </div>\
+        <div id="tr">\
+            <div id="td"><button id="box6" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+            <div id="td"><button id="box7" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+            <div id="td"><button id="box8" class="noSpace" onclick="insertValueToBoard(this.id)"><img width="100px" height="100px"/></button></div>\
+        </div>';
+        var boardButtons = document.querySelectorAll('#td button');
         for(var i=0;i<9;i++){
             boardButtons[i].style.backgroundColor = "white";
         }
     }
     function disableBoard(){
-        var boardButtons = document.querySelectorAll('td button');
+        var boardButtons = document.querySelectorAll('#td button');
+        var board = document.getElementById("board");
         for(var i=0;i<9;i++){
             boardButtons[i].disabled = true;
-            boardButtons[i].style.backgroundColor = "gray";
+            board.style.display="none";
+        }
+    }
+    function showCurrentTurn(){
+        won = document.getElementById("won");
+        won.style.color="gray";
+        if(turn)
+            won.innerHTML=`<h2>${player1} Turn</h2>`;
+        else
+            won.innerHTML=`<h2>${player2} Turn</h2>`;
+    }
+    function changeTheme(){
+        var checkBox = document.getElementById("theme-check-box");
+        var styleLink = document.querySelector("head link")
+        if (checkBox.checked)
+        {
+            styleLink.href = "theme2.css"
+        }
+        else
+        {
+            styleLink.href = "theme1.css"
         }
     }
     </script>
-    <style>
-        td button {
-            background-Color:gray;
-        }
-    </style>
 </body>
 </html>
