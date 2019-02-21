@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>
+            My Solution For Module 01 - Question 20
+        </title>
+        <link rel="stylesheet" href="answer.css">
+    </head>
+    <h1>
+            Code:
+    </h1>
+
+    <pre>
+<span class="var">var</span> <span class="variable">myFilter</span> <span class="equals">=</span> function(<span class="variable">arr</span><span class="commas">,</span> <span class="variable">checkIsEvenCB</span>)
+{
+<span class="var">var</span> <span class="variable">filtered</span> <span class="equals">=</span> new Array();
+<span class="variable">arr</span>.forEach(element => {
+        if(<span class="variable">checkIsEvenCB</span>(element))
+            <span class="variable">filtered</span>.push(element);
+        });
+        return <span class="variable">filtered</span>;
+}
+
+<span class="var">var</span> <span class="variable">arr</span> <span class="equals">=</span> [1<span class="commas">,</span> 2<span class="commas">,</span> 5<span class="commas">,</span> 7];
+<span class="var">var</span> <span class="variable">filtered</span> <span class="equals">=</span> <span class="variable">myFilter</span>(<span class="variable">arr</span>,<span>function</span>(item) { 
+    return item % 2 <span class="equals">===</span> 0;
+});
+
+<span class="variable">console</span>.log(<span class="variable">filtered</span>);
+    </pre>
+</html>
