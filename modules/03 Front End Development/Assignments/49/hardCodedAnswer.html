@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Front End answer 49</title>
+
+
+  <style>
+    .var-keywords-style{
+        color:darkred;
+    }
+    .variables-style{
+        color:darkgreen;
+    }
+    .equal-signs-style{
+        color:darkblue;
+    }
+    .commas-style{
+        color:darkgrey;
+    }
+  </style>
+
+</head>
+
+
+<body>
+  
+  <h1> Code: </h1>
+    
+  <pre id="code">
+    <span>var</span> <span>arr</span> <span>=</span> [1<span>,</span> 2<span>,</span> 5<span>,</span> 7];
+    
+    <span>let</span> <span>myFilter</span> <span>=</span> <span>function</span>(<span>someArr</span><span>,</span> <span>callbackFunc</span>) {
+        <span>if</span> (<span>typeof</span> <span>callbackFunc</span> === 'function') <span>return</span> <span>callbackFunc</span>(<span>someArr</span>);
+        <span>else</span> <span>console</span>.<span>log</span>('<span>myFilter</span> <span>function</span> <span>must</span> <span>get a function as a second param</span>');
+    }
+
+    <span>let</span> <span>getEvenArrNums</span> <span>=</span> <span>function</span>(<span>someArr</span>) {
+        <span>var</span> <span>filteredArr</span> <span>=</span> [];
+
+        <span>someArr</span>.<span>forEach</span>( <span>num</span> => {
+            <span>if</span> (<span>num</span> % 2 === 0) <span>filteredArr</span>.<span>push</span>(<span>num</span>);
+        });
+
+        <span>return</span> <span>filteredArr</span>;
+    }
+
+    <span>var</span> <span>filtered</span> = <span>myFilter</span>(<span>arr</span>, <span>getEvenArrNums</span>);
+
+    <span>console</span>.<span>log</span>(<span>filtered</span>);
+  </pre>
+
+
+  <script>
+      var codeElem = document.getElementById("code");
+      
+      for(var i = 0; i < codeElem.children.length; i++) {
+          if(codeElem.children[i].innerText === '=') codeElem.children[i].className = "equal-signs-style";
+          else if(codeElem.children[i].innerText === ',') codeElem.children[i].className = "commas-style";
+          else if(codeElem.children[i].innerText === "var" || codeElem.children[i].innerText === "let") codeElem.children[i].className = "var-keywords-style";
+          else if(codeElem.children[i].innerText === "console" || 
+                  codeElem.children[i].innerText === "arr"  ||  
+                  codeElem.children[i].innerText === "myFilter"  || 
+                  codeElem.children[i].innerText === "someArr"  ||
+                  codeElem.children[i].innerText === "callbackFunc"  ||
+                  codeElem.children[i].innerText === "filteredArr"  ||
+                  codeElem.children[i].innerText === "num"  ||
+                  codeElem.children[i].innerText === "getEvenArrNums" ||
+                  codeElem.children[i].innerText === "filtered") {
+            codeElem.children[i].className = "variables-style";
+          } 
+      }
+  </script>
+
+</body>
+
+</html>
