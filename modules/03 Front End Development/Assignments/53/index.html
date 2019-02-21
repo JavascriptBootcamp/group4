@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header id="top">Our Research</header>
+    
+    <div id="centertable">
+        <table id="mainTable">
+            <tr>
+                <td>Student Name</td>
+                <td>Subject</td>
+            </tr>
+        </table>
+    </div>
+    <button onclick="pickOne()">Pick One</button>
+    <br>
+    <div id="sidemenu">
+        <form>
+            <select id="bootcamp4students">
+              <option value="Shimon Hazan">Shimon Hazan</option>
+              <option value="Ofek Arbeli">Ofek Arbeli</option>
+            </select>
+            <input type="text" id="subject" placeholder="enter subject">
+            <button type="submit" onclick="addStudent(event)">Submit</button>
+        </form>
+
+    </div>
+    <footer id="bottom"><a href="#top">Back to top0</a></footer>
+    <script>
+        //subjectArr=[];
+        var studentName = "";
+        var subject = "";
+        function addStudent(event){
+            event.preventDefault();
+            var studentIndex = document.getElementById("bootcamp4students").selectedIndex;
+            studentName = document.getElementsByTagName("option")[studentIndex].value;
+            subject = document.getElementById("subject").value;
+            addToTable(studentName,subject);
+        }
+
+        function addToTable(studentName,subject){
+            var table = document.getElementById("mainTable");
+            var tr = document.createElement("tr");
+            var tdStudentName = document.createElement("td");
+            tdStudentName.innerText=studentName;
+            tdStudentName.setAttribute('class',"student");
+            var tdSubject = document.createElement("td");
+            tdSubject.innerText=subject;
+            tdSubject.setAttribute('class','subject')
+            tr.appendChild(tdStudentName);
+            tr.appendChild(tdSubject);
+            table.appendChild(tr);
+
+
+        }
+
+        function pickOne(){
+            var studentArr=document.getElementsByClassName('student');
+            var subjectArr=document.getElementsByClassName('subject');
+            var randomNum = Math.floor(Math.random()*subjectArr.length);
+            console.log(subjectArr[randomNum])
+            showPicker(studentArr[randomNum].innerText,subjectArr[randomNum].innerText)
+        }
+
+        function showPicker(studentPick,subjectPick){
+            var wrapperSun = document.createElement("div");
+            wrapperSun.setAttribute('class','pop-up');
+            wrapperSun.id="wrapperSun";
+            wrapperSunButton = document.createElement("button")
+            wrapperSunButton.setAttribute('onclick','closePop()');
+            wrapperSunButton.innerText="X"
+            h3 = document.createElement('h3');
+            h3.innerText=`the seltcted student is ${studentPick} and subject is a ${subjectPick}`;
+            wrapperSun.appendChild(wrapperSunButton)
+            wrapperSun.appendChild(h3);
+            document.getElementsByTagName("body")[0].appendChild(wrapperSun)
+        }
+
+        function closePop(){
+            document.getElementsByTagName("body")[0].removeChild(document.getElementById("wrapperSun"));
+             }
+    </script>
+</body>
+</html>
