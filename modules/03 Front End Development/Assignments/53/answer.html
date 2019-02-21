@@ -6,30 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #top{width:100%;margin:auto}
-        #middle{padding: 300px 300px}
-        #buttom{position:fixed; buttom:0px}
-        #students_table{width:700px; margin:auto; }
-        #side_menu{width:100px; display:inline-block;}
+        *{box-sizing: border-box;}
+        #top{width:100%; margin:auto; text-align: center;}
+        #body{font-size: 18px;}
+        body th,body td{font-size: 25px;}
+        #students_table{width:700px; margin:0 auto;border:solid;}
+        #side_menu{width: 100px; border:5px dashed; display:inline-block;}
+        #student_name_input,#subject_input{width: 100%; display:inline-block;}
+        tr{font-size: 25px}
+        #pick_one_btn{margin:10px auto;}
+        #result{ text-align: center;}
+        #div_student_name, #div_subject_name, #close_btn{display: inline-block; margin: 5px;}
+
+        #buttom{position:fixed; bottom:0px}
     </style>
 </head>
 <body>
     <div id="top">Our Research</div>
+    
     <div id="middle">
-         <div id="side_menu">
-              <form action="">
-                  <input type="text" placeholder="">
-                  <input type="text" placeholder="">
-              </form>    
-         </div>
-        <table id="students_table">
-            <tr>
-                <th>Student Name</td>
-                <th>Subject</td>
-            </tr>
-        </table>
-
+        <div id="container">
+            <div id="side_menu">
+                <form action="">
+                    <select name="" id="student_name_input">
+                        <option>Gaby buchnik</option>
+                        <option>Daniel barush</option>
+                        <option>Ofek arbeli</option>
+                        <option>avrahama dnahani</option>
+                        <option>‫avi yot</option>
+                        <option>‫eviad k</option>
+                        <option>elinor gargi</option>
+                        <option>‫ameer</option>
+                        <option>amitay l</option>
+                        <option>‫guy agiv</option>
+                        <option>‫david flores</option>
+                        <option>‫david sbg</option>
+                        <option>‫david levman</option>
+                        <option>‫yakir solomon</option>
+                        <option>‫lital rab</option>
+                        <option>‫moshiko albhari</option>
+                        <option>‫malak kh</option>
+                        <option>‫mariya stashevski</option>
+                        <option>matan atiya</option>
+                        <option>matan d</option>
+                        <option>shakimi</option>
+                        <option>Gaby buchnik</option>
+                        <option>‫Limor</option>
+                        <option>Gaby buchnik</option>
+                    </select>
+                    <input type="text" placeholder="subject" id="subject_input">
+                    <input type="submit" value="submit" onclick="addRow()">
+                </form>    
+            </div>
+            <table id="students_table">
+                <tr>
+                    <th>Student Name</td>
+                    <th>Subject</td>
+                </tr>
+            </table>
+            <button id="pick_one_btn" onclick="pickOne()">Pick One</button>
+        </div>
     </div>
+    <div id="result"></div>
     <div id="buttom"><a href="#top">Back to top</a></div>
+    <script src="answer.js"></script>
 </body>
 </html>
