@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transform - CSS</title>
+
+    <style>
+        #element0 {
+            border: 2px solid lightskyblue;
+            width: 210px;
+            height: 50px;
+        }
+
+        #element1 {
+            border: 2px solid lightskyblue;
+            width: 210px;
+            height: 50px;
+            transform: translate(30px, 20px);
+            transform: rotate(45deg);
+            transform-origin: bottom left;
+        }
+        #element2{
+            border: 2px solid lightskyblue;
+            width: 210px;
+            height: 50px;
+            margin-top: 250px;
+            transform: scale(3);
+        }
+
+        #element3{
+            border: 2px solid lightskyblue;
+            width: 210px;
+            height: 50px;
+            margin-top: 150px;
+            transform: skewX(45deg);
+            transform: skewY(20deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS transform Property</h1>
+    <p>
+        The transform property allows you to visually manipulate an element by skewing, rotating, translating, or scaling.
+    </p>
+
+    <div id="element0">transform</div>
+    <div id="element1">transform : translate and rotate</div>
+    <div id="element2">transform : scale</div>
+    <div id="element3">transform : scewX and skewY</div>
+
+</body>
+
+</html>
