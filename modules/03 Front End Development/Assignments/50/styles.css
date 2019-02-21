@@ -1,0 +1,9 @@
+*{
+    text-color:LightSlateGray;
+}
+ul ~ li{
+border: 3px top DarkSlateGrey;
+}
+body{
+    background-color: LightSlateGray;
+}
