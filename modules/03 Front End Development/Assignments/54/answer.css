@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+
+#game-container{
+    width: 600px;
+    margin:auto;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3em;
+    color: #0099cc;
+    font-family: serif;
+}
+
+.player-name-input {
+    font-size: 16px;
+    border: 3px solid #003399;
+    border-radius: 5px;
+    transition: border-color .5s ease-out;
+    padding:10px 15px;
+    font-weight: bold;
+}
+
+input {
+    text-align: center;
+}
+
+#game-board{
+    margin:auto;
+    width:100;
+    height: 100%;
+}
+
+.table-cell{
+    width: 33%;
+    height: 100px;
+    border:5px solid #003300;
+    float:left;
+}
+
+.table-row {
+    width:100%;
+    height: 35%;
+}
+
+#winner{
+    border:1px solid;
+    width:100%;
+    margin:5px auto;
+    font-size: 26px;
+    border: 4px solid #660066;
+    border-radius: 5px;
+    transition: border-color .5s ease-out;
+    padding:10px 15px;
+    font-weight: bold;
+}
+
+#start-game{
+    width: 600px;
+    margin: auto;
+    text-align: center;
+} 
+
+#start-new-game-button {
+    background-color:#00cc00;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:2px solid #0000cc;
+	display:inline-block;
+	cursor:pointer;
+	color:#0000cc;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+#start-new-game-button:hover {
+    background-color:#5cbf2a;
+    border:3px solid #0000cc;
+}
+
+#get-light-pallet-buttton {
+    background-color:#ccffff;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:2px solid #0000cc;
+	display:inline-block;
+	cursor:pointer;
+	color:#0000cc;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+#get-light-pallet-buttton:hover {
+    background-color:#ffff99;
+    border:3px solid #0000cc;
+}
+
+#get-dark-pallet-buttton {
+    background-color:#003399;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:2px solid #0000cc;
+	display:inline-block;
+	cursor:pointer;
+	color:#66ccff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+#get-dark-pallet-buttton:hover {
+    background-color:#3333ff;
+    border:3px solid #0000cc;
+}
