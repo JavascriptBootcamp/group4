@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Vertical Align</title>
+    <style>
+        article,
+        aside,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            padding-bottom: 30px;
+            padding-top: 10px;
+        }
+
+        input {
+            vertical-align: top;
+        }
+
+        div {
+            width: 1050px;
+        }
+
+        .line {
+            border-top: 2px dashed #ccc;
+            border-bottom: 2px dashed #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Vertical-Align Demo</h1>
+    <p style="padding: 50px; text-align: center; width: 50%; margin: auto;"><b>הסבר: מיקום אנכי של אלמנט ביחס לאלמנטים אחרים שאיתו בבלוק, פרמטרים אפשריים</b></p>
+    <p style="padding:0; text-align: center; width: 50%; margin: auto;"><b>baseline , length , sub , super , top , text-top , middle , bottom , text-bottom , initial , inherit</b></p>
+    <div>
+        <p class="line">
+
+            Random text:
+
+            <input id="input" placeholder="vertical-align: top"><button onclick="changeToMiddle()">Click here</button>
+
+            <img src="http://i.imgur.com/MievI.jpg" alt="A cat with a scooter" width="200" height="130">
+
+            <img src="http://i.imgur.com/MievI.jpg" alt="A cat with a scooter" width="400" height="260">
+
+            More random text...
+
+    </div>
+    <script>
+        function changeToMiddle(){
+            var input = document.getElementById("input");
+            input.style.verticalAlign = "middle";
+            input.setAttribute('placeholder','vertical-align: middle');
+        }
+    </script>
+</body>
+
+</html>
