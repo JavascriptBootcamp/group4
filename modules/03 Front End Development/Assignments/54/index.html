@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Tic Tac Toe</h1>
+    </div>
+    <div id="content">
+        <div id="lightbtns">
+            <button id="onoff" name="sun" onclick="changeColor()"><img
+                    src="https://img.icons8.com/office/16/000000/bright-moon.png"></img></button>
+        </div>
+        <div id="inputs">
+            <label for="player1">Player1: </label>
+            <input type="text" name="player1" id="player1" maxlength="10">
+            &emsp;&emsp;
+            <label for="player2">Player2: </label>
+            <input type="text" name="player2" id="player2" maxlength="10">
+            <br><br>
+            <div id=buttons>
+                <button id="startbtn" onclick="startGame(event)">Start Game</button>
+            </div>
+        </div>
+        <div id="gamezone">
+            <div class="cell" id="00"></div>
+            <div class="cell" id="01"></div>
+            <div class="cell" id="02"></div>
+            <div class="cell" id="10"></div>
+            <div class="cell" id="11"></div>
+            <div class="cell" id="12"></div>
+            <div class="cell" id="20"></div>
+            <div class="cell" id="21"></div>
+            <div class="cell" id="22"></div>
+        </div>
+        <div id="score">
+            <h2 id="messround"></h2>
+            <h3 id="p1"></h3>
+            &emsp;&emsp;&emsp;&emsp;
+            <h3 id="p2"></h3>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="footer">
+        &copy Moshe
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
