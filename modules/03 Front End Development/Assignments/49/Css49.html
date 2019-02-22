@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>My Solution For Module 01 - Question 20</title>
+    </head>
+    <style>
+    .var{
+        color: darkred;
+    }
+    .variables{
+        color: darkgreen;
+    }
+    .equal{
+        color: darkblue
+    }
+    .commets{
+        color: darkgray;
+    }
+    
+    </style>
+    <body>
+        <h1>Code:</h1>
+        <pre>
+            <span class="var"> var </span> <span class="variables "> arr </span> <span class="equal">=</span> <span class="variables">[1, 2, 5, 7];</span>
+
+            <span class="variables"> function myFilter(arr,callback) </span>{
+                <span class="var"> var </span> <span class="variables"> evenArr </span> <span class="equal">=</span> <span class="variables">[];</span>
+                <span class="variables"> for </span> (<span class="var">var</span> <span class="variables">i</span> <span class="equal">=</span> <span class="variables"> 0 ; i < arr.length ; i ++){       
+                    if (callback(arr[i]))
+                        evenArr.push(arr[i]);
+                        
+                }
+                return evenArr;
+            }
+        </span>
+
+        <span class="var" >var</span> <span class="variables"> filtered </span> <span class="equal">=</span> <span class="variables"> myFilter(arr, function(item){
+                            return item % 2 </span> <span class="equal">===</span> <span class="variables"> 0;
+            });
+            console.log(filtered); </span>
+
+            <span class="commets">
+                
+                // Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                // Ipsa at architecto earum aliquid sint consequatur nulla. 
+                // Eaque, sed, harum earum ut nemo doloremque est culpa dolores accusamus corporis hic iste!
+                
+            </span>
+
+        </pre>
+    </body>
+</html>
