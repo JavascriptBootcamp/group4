@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #6892CC;
+        }
+
+        #tictacto {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* margin-top: -100px;
+            margin-left: -100px;     */
+            transform: translate(-50%, -50%);
+            height: 200px;
+            width: 200px;
+
+
+        }
+
+        #row1 div,
+        #row2 div,
+        #row3 div {
+
+            border: solid 1px brown;
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            vertical-align: top;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+        }
+        #buttons{
+            margin-top: 100px;
+            margin-right: 30px;
+        }
+        #buttons button{
+            margin-right: 55px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="buttons" align="center">
+        <button onclick="light()">Light</button>
+        <button onclick="dark()">Dark</button>
+    </div>
+    <div id="tictacto">
+
+        <div id="row1">
+            <div id="0"></div>
+            <div id="1"></div>
+            <div id="2"></div>
+        </div>
+        <div id="row2">
+            <div id="3"></div>
+            <div id="4"></div>
+            <div id="5"></div>
+        </div>
+        <div id="row3">
+            <div id="6"></div>
+            <div id="7"></div>
+            <div id="8"></div>
+        </div>
+
+        <br><br>
+        <div id="whowon" align="center">
+
+            
+        </div>
+    </div>
+
+
+
+    <script>
+        function onClickLisiner(e) {
+            if (e.srcElement.nodeName === "DIV" && e.srcElement.innerHTML === "") {
+                e.srcElement.innerHTML = "X"
+                coumputerMove();
+                isWon();
+            }
+        }
+
+        document.addEventListener("click", onClickLisiner, false)
+
+        function coumputerMove() {
+            var rand = document.getElementById(Math.floor(Math.random() * 9));
+            var count = 0;
+            while (rand.innerHTML === "X" || rand.innerHTML === "O") {
+                console.log(rand)
+                rand = document.getElementById(Math.floor(Math.random() * 9))
+                count++;
+                if (count === 4)
+                    break;
+            }
+            if (rand.innerHTML === "")
+                rand.innerHTML = "O";
+        }
+        function isWon() {
+            var xo = [];
+            for (var i = 0; i < 9; i++) {
+                xo.push(document.getElementById(i).innerHTML)
+            }
+            if (!xo.includes("")){
+                document.getElementById("whowon").innerHTML = "A Tie!! <br><br><br> Game Over  <br><br> ";
+                resetBtn();
+            }
+
+            if (xo[0] === xo[1] && xo[1] === xo[2] && xo[1] !== "") {
+                document.getElementById("whowon").innerHTML = xo[0] + " Wins!!  <br><br><br> Game Over  <br><br> ";
+                document.removeEventListener("click", onClickLisiner);
+                resetBtn();
+            }
+            if (xo[3] === xo[4] && xo[4] === xo[5] && xo[4] !== "") {
+                document.getElementById("whowon").innerHTML = xo[4] + " Wins!! <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner)
+                resetBtn();
+            }
+            if (xo[6] === xo[7] && xo[7] === xo[8] && xo[7] !== "") {
+                document.getElementById("whowon").innerHTML = xo[7] + " Wins!!  <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner)
+                resetBtn();
+            }
+            if (xo[0] === xo[3] && xo[3] === xo[6] && xo[3] !== "") {
+                document.getElementById("whowon").innerHTML = xo[3] + " Wins!!  <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner);
+                resetBtn();
+            }
+            if (xo[1] === xo[4] && xo[4] === xo[7] && xo[4] !== "") {
+                document.getElementById("whowon").innerHTML = xo[4] + " Wins!!  <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner);
+                resetBtn();
+            }
+            if (xo[2] === xo[5] && xo[5] === xo[8] && xo[5] !== "") {
+                document.getElementById("whowon").innerHTML = xo[5] + " Wins!!  <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner)
+                resetBtn();
+            }
+            if (xo[0] === xo[4] && xo[4] === xo[8] && xo[4] !== "") {
+                document.getElementById("whowon").innerHTML = xo[4] + " Wins!! <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner)
+                resetBtn();
+            }
+            if (xo[2] === xo[4] && xo[4] === xo[6] && xo[4] !== "") {
+                document.getElementById("whowon").innerHTML = xo[4] + " Wins!! <br><br><br> Game Over  <br><br>";
+                document.removeEventListener("click", onClickLisiner)
+                resetBtn();
+            }
+
+        }
+        function resetBtn(){
+            document.querySelectorAll("#row1, #row2, #row3").forEach(row => row.style.display = "none");
+            resBtn = document.createElement("button");
+            resBtn.innerHTML = "Play Again"
+            resBtn.onclick = function(){location.reload();}
+            document.querySelector("#whowon").appendChild(resBtn);
+        }
+        function light(){
+            document.body.style.background = "linear-gradient(to right, #ec6262 , #e1d276, #99ea86, #83d6b7, #e4a8f9)"
+        }
+        function dark(){
+            document.body.style.background = "linear-gradient(to left, #000000 , #750c41, #00294f, #750c41, #040404)"
+        }
+
+    </script>
+</body>
+
+</html>
