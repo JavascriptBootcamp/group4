@@ -1,0 +1,12 @@
+.var-keywords{
+    color: darkred;
+}
+.variables{
+    color: darkgreen;
+}
+.equal-signs{
+    color: darkblue;
+}
+.commas{
+    color: darkgray;
+}
