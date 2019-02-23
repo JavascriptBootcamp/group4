@@ -1,0 +1,19 @@
+pre {
+    font-size: 16px;
+}
+
+.var {
+    color: darkred;
+}
+
+.var_green{
+    color: darkgreen;
+}
+
+.equal{
+    color: darkblue;
+}
+
+.comma {
+    color: darkgray;
+}
