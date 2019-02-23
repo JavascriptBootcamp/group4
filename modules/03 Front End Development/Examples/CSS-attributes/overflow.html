@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body {
+        margin-left:30%;
+
+    }
+    #table{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 20px;
+
+    }
+    #hidden{
+        background-color: darkturquoise;
+        height: 100px;
+        width:300px;
+        overflow: hidden;
+    }
+    #auto{
+        background-color: darkturquoise;
+        height: 100px;
+        width:300px;
+        overflow: auto;
+    }
+    #inherit{
+        background-color: darkturquoise;
+        height: 100px;
+        width:300px;
+        overflow: inherit;
+    }
+    #scroll{
+        background-color: darkturquoise;
+        height: 100px;
+        width:300px;
+        overflow: scroll;
+    }
+    #visible{
+        background-color: darkturquoise;
+        height: 100px;
+        width:300px;
+        overflow: visible;
+    }
+    
+    </style>
+</head>
+<body>
+
+<h1>Overflow Attribute</h1>
+<table id="table">
+        <tbody>
+        <tr>
+            <td class="RedText" rowspan="5">
+                overflow</td>
+            <td class="GreenText">
+                auto</td>
+            <td class="MainText">
+                במידה והתוכן חורג מגודל הקופסא ייראה פס גלילה - Scrollbar - שבעזרתו ניתן יהיה 
+                לגלול את הקופסא ולצפות בתוכן.</td>
+        </tr>
+        <tr>
+            <td class="GreenText">
+                hidden</td>
+            <td class="MainText">
+                ערך זה יגרום לכך שכל התוכן החורג מגבולות הקופסא לא יוצג.</td>
+        </tr>
+        <tr>
+            <td class="GreenText">
+                inherit<br>
+                </td>
+            <td class="MainText">
+                האלמנט יורש את ערכו מהאלמנט שבתוכו הוא מקנן.</td>
+        </tr>
+        <tr>
+            <td class="GreenText">
+                scroll</td>
+            <td class="MainText">
+                הקופסא תוצג כאשר יהיה לה scrollbar אשר יהיה פעיל במידה והתוכן בקופסא יהיה גדול 
+                מהשטח הנראה שלה.</td>
+        </tr>
+        <tr>
+            <td class="GreenText">
+                visible</td>
+            <td class="MainText">
+                במידה והתוכן חורג מיכולת הקופסא להכילו הוא מוצג על ידי הדפדפן מחוץ לגבולות 
+                הקופסא.</td>
+        </tr>
+        </tbody></table>
+
+
+        <h2>For example : </h2>
+
+
+
+        <div id="hidden">hidden<br>
+                The overflow property specifies what should happen if content overflows an element's box.<br>
+                
+                This property specifies whether to clip content or to add scrollbars when an element's content is too big to fit in a specified area.<br>
+                
+                Note: The overflow property only works for block elements with a specified height.<br>
+            </div><br><br>
+            <div id="visible">visible<br>
+                The overflow property specifies what should happen if content overflows an element's box.<br>
+                
+                This property specifies whether to clip content or to add scrollbars when an element's content is too big to fit in a specified area.<br>
+                
+                Note: The overflow property only works for block elements with a specified height.<br>
+            </div><br><br>
+            <div id="auto">auto<br>
+                The overflow property specifies what should happen if content overflows an element's box.<br>
+                
+                This property specifies whether to clip content or to add scrollbars when an element's content is too big to fit in a specified area.<br>
+                
+                Note: The overflow property only works for block elements with a specified height.<br>
+            </div>
+
+            <br><br>
+            <div id="scroll"> scroll<br>
+                The overflow property specifies what should happen if content overflows an element's box.<br>
+                
+                This property specifies whether to clip content or to add scrollbars when an element's content is too big to fit in a specified area.<br>
+                
+                Note: The overflow property only works for block elements with a specified height.<br>
+            </div>
+            <br><br>
+            
+            <div id="inherit"> inherit<br>
+                The overflow property specifies what should happen if content overflows an element's box.<br>
+                
+                This property specifies whether to clip content or to add scrollbars when an element's content is too big to fit in a specified area.<br>
+                
+                Note: The overflow property only works for block elements with a specified height.<br>
+            </div>
+    
+    
+</body>
+</html>
