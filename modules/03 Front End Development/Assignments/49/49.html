@@ -1,0 +1,45 @@
+<html>
+
+<head>
+
+    <title>My Solution For Module 01 - Question 20</title>
+    <style>
+        .var {
+            color: darkred;
+        }
+
+        .darkgreen {
+            color: darkgreen;
+        }
+
+        .equal {
+            color: darkblue;
+        }
+
+        .commas {
+            color: darkgrey;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>"Code:"</h1>
+
+    <pre>
+ 
+      <span class="var">var</span> <span class="darkgreen">arr</span><span class="equal">=</span>[];
+       for (<span class="var">var</span> <span class="darkgreen">i</span> <span class="equal">=</span> 0 ; <span class="var_green">i</span>  <span class="var_green">arr.length</span>; <span class="var_green">i</span>++)<span class="comma">{</span>
+         if (callback(<span class="darkgreen">arr[i]</span>))
+         arr.push(<span class="darkgreen">arr[i]</span>);
+          <span class="">}</span>
+           return <span class="darkgreen">arr</span>;
+            <span class="">}</span>
+           <span class="var">var</span> <span class="darkgreen">filtered</span> <span class="equal">=</span> myFilter(<span class="var_green">arr</span><span class="commas">,</span> function(item)<span class="comma">{</span>
+        return item % 2 <span class="equal">===</span> 0;
+            <span class="">}</span>);
+            <span class="darkgreen">console</span>.log(<span class="darkgreen">filtered</span>);
+       </pre>
+
+</body>
+
+</html>
