@@ -1,0 +1,15 @@
+* {
+    color: white;
+}
+
+body {
+    background: lightslategray;
+}
+
+li {
+    list-style: none;
+}
+
+li + li {
+    border-top: 3px dashed darkslategrey;
+}
