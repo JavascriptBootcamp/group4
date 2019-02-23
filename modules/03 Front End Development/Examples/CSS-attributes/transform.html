@@ -5,53 +5,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <title>Transform - CSS</title>
 
     <style>
-        #element0 {
-            border: 2px solid lightskyblue;
-            width: 210px;
-            height: 50px;
+        #main-header {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        #elements-list {
+            display: block;
+        }
+
+        .container {
+            width: 200px;
+            height: 120px;
+            border: 2px solid darkblue;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .container img {
+            width: 100%;
+            height: auto;
         }
 
         #element1 {
-            border: 2px solid lightskyblue;
-            width: 210px;
-            height: 50px;
-            transform: translate(30px, 20px);
-            transform: rotate(45deg);
-            transform-origin: bottom left;
-        }
-        #element2{
-            border: 2px solid lightskyblue;
-            width: 210px;
-            height: 50px;
-            margin-top: 250px;
-            transform: scale(3);
+            transform: translate(250px, 80px) rotate(35deg);
         }
 
-        #element3{
-            border: 2px solid lightskyblue;
-            width: 210px;
-            height: 50px;
-            margin-top: 150px;
-            transform: skewX(45deg);
+        #element2 {
+            margin-top: 400px;
+            transform: scale(2);
+            transform-origin: bottom left;
+        }
+
+        #element3 {
+            margin-top: 80px;
+            transform: skewX(20deg);
             transform: skewY(20deg);
+            transform-origin: center;
+        }
+
+        #element4{
+            transform: scaleX(-1);
+        }
+
+        .description {
+            font-size: 20px;
+            margin-top: 32px;
         }
     </style>
 </head>
 
 <body>
-    <h1>CSS transform Property</h1>
+    <h1 id="main-header">CSS transform Property</h1>
     <p>
-        The transform property allows you to visually manipulate an element by skewing, rotating, translating, or scaling.
+        The transform property allows you to visually manipulate an element by skewing, rotating, translating, or
+        scaling.
     </p>
 
-    <div id="element0">transform</div>
-    <div id="element1">transform : translate and rotate</div>
-    <div id="element2">transform : scale</div>
-    <div id="element3">transform : scewX and skewY</div>
+    <div id="elements-list">
+        <h3>transform</h3>
+        <div id="element0" class="container">Original image
+            <img src="https://auto.ndtvimg.com/bike-images/big/honda/cb-twister/honda-cb-twister.jpg?v=4"
+                alt="moto-honda">
+        </div>
+
+        <div id="element1" class="container">
+            transform : translate and rotate
+            <img src="https://auto.ndtvimg.com/bike-images/big/honda/cb-twister/honda-cb-twister.jpg?v=4"
+                alt="moto-honda">
+        </div>
+
+
+        <div id="element2" class="container">transform : scale
+            <img src="https://auto.ndtvimg.com/bike-images/big/honda/cb-twister/honda-cb-twister.jpg?v=4"
+                alt="moto-honda">
+        </div>
+        <p class="description">
+            &starf; scale(): affects the size of the element. This also applies to the font-size, padding, height, and
+            width
+            of an element, too.
+        </p>
+
+        <div id="element3" class="container">transform : scewX and skewY
+            <img src="https://auto.ndtvimg.com/bike-images/big/honda/cb-twister/honda-cb-twister.jpg?v=4"
+                alt="moto-honda">
+        </div>
+        <p class="description" style="margin-top:50px; margin-bottom: 40px;">
+            &starf; skewX() and skewY(): tilts an element to the left or right, like turning a rectangle into a
+            parallelogram.
+        </p>
+
+        transform : scaleX (flip)
+        <div id="element4" class="container">
+            <img src="https://auto.ndtvimg.com/bike-images/big/honda/cb-twister/honda-cb-twister.jpg?v=4"
+                alt="moto-honda">
+        </div>
+
+    </div>
 
 </body>
 
 </html>
+
+
