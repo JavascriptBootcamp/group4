@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .dot {
+            height: 100px;
+            width: 100px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        #board {
+            width: 310px;
+            height: 300px;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -150px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .button{
+
+        }
+    </style>
+    <script>
+        var count = 0;
+    </script>
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <label for="nameX">Name for player X</label>
+    <input type="text" id="nameX" />
+    <label for="name0">Name for player 0</label>
+    <input type="text" id="name0" />
+    <div id="board">
+        <div id="1" class="dot" onclick="func('1')"></div>
+        <div id="2" class="dot" onclick="func('2')"></div>
+        <div id="3" class="dot" onclick="func('3')"></div>
+        <div id="4" class="dot" onclick="func('4')"></div>
+        <div id="5" class="dot" onclick="func('5')"></div>
+        <div id="6" class="dot" onclick="func('6')"></div>
+        <div id="7" class="dot" onclick="func('7')"></div>
+        <div id="8" class="dot" onclick="func('8')"></div>
+        <div id="9" class="dot" onclick="func('9')"></div>
+    </div><br><br>
+    <div>
+        <input id="button1" type="button" value="Light Theme" onclick="lighttheme()">
+        <input id="button2" type="button" value="Dark Theme" onclick="darktheme()">
+    </div>
+    <script>
+
+        function lighttheme(){
+            document.body.style.color = "black";
+            document.body.style.backgroundColor = "white";
+            document.getElementById("button1").style.color = "black";
+            document.getElementById("button1").style.backgroundColor = "white";
+            document.getElementById("button2").style.color = "black";
+            document.getElementById("button2").style.backgroundColor = "white";
+        }
+        function darktheme(){
+            document.body.style.color = "white";
+            document.body.style.backgroundColor = "black";
+            document.getElementById("button1").style.color = "white";
+            document.getElementById("button1").style.backgroundColor = "black";
+            document.getElementById("button2").style.color = "white";
+            document.getElementById("button2").style.backgroundColor = "black";
+        }
+
+
+        var namex = document.getElementById("nameX");
+        var name0 = document.getElementById("name0");
+        function func(n) {
+            var place = document.getElementById(n);
+            place.style.fontSize = "80px";
+            if (place.innerText === "") {
+                if (count % 2 === 0) {
+                    place.innerText = "X";
+                    place.style.textAlign = "center";
+                    place.style.verticalAlign = "middle";
+                    place.style.lineHeight = "100px";
+                    count++;
+                }
+                else {
+                    place.innerText = "0";
+                    place.style.textAlign = "center";
+                    place.style.verticalAlign = "middle";
+                    place.style.lineHeight = "100px";
+                    count++;
+                }
+            }
+            if (count === 9) {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert("A Tie!"), 0);
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === 'X' && document.getElementById('2').innerText === 'X' && document.getElementById('3').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('6').innerText === 'X' && document.getElementById('4').innerText === 'X' && document.getElementById('5').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('7').innerText === 'X' && document.getElementById('8').innerText === 'X' && document.getElementById('9').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === 'X' && document.getElementById('4').innerText === 'X' && document.getElementById('7').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('2').innerText === 'X' && document.getElementById('5').innerText === 'X' && document.getElementById('8').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === 'X' && document.getElementById('6').innerText === 'X' && document.getElementById('9').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === 'X' && document.getElementById('5').innerText === 'X' && document.getElementById('9').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === 'X' && document.getElementById('5').innerText === 'X' && document.getElementById('7').innerText === 'X') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(namex.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === '0' && document.getElementById('2').innerText === '0' && document.getElementById('3').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('6').innerText === '0' && document.getElementById('4').innerText === '0' && document.getElementById('5').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('7').innerText === '0' && document.getElementById('8').innerText === '0' && document.getElementById('9').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === '0' && document.getElementById('4').innerText === '0' && document.getElementById('7').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('2').innerText === '0' && document.getElementById('5').innerText === '0' && document.getElementById('8').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === '0' && document.getElementById('6').innerText === '0' && document.getElementById('9').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('1').innerText === '0' && document.getElementById('5').innerText === '0' && document.getElementById('9').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+            if (document.getElementById('3').innerText === '0' && document.getElementById('5').innerText === '0' && document.getElementById('7').innerText === '0') {
+                document.body.innerHTML = "";
+                document.body.style.opacity = 0;
+                setTimeout(() => alert(name0.value + ' win! click "OK" to restart'), 0);
+                location.reload();
+            }
+        }
+    </script>
+</body>
+
+</html>
