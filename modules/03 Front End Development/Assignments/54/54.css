@@ -1,0 +1,40 @@
+body {
+    color: #01395C;
+    background: #8AC6BF;
+}
+
+body, button, input{
+    font-family: 'Oswald', sans-serif;
+}
+
+.container {
+    margin-left: 40%;
+    width: 50%;
+}
+
+.border , button, img{
+    border:3px solid #01395C;
+    border-radius: 5px;
+}
+
+.tr {
+    display: flex;
+}
+
+.td {
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+    background: #7C96A8;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+img {
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 20%;
+    margin-top: 20%;
+}

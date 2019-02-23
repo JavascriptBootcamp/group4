@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ex 54 - Tic-Tac-Toe</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
+    <link rel="stylesheet" href="54.css">
+</head>
+
+<body onload="initPage()">
+    <div class="container">
+        <div id="game_bord">
+            <div id="insert_players_form">
+                <label for="player1">Player 1</label>
+                <input type="text" placeholder="Name" id="player1" class="border"/>
+                <label for="player2">Player 2</label>
+                <input type="text" placeholder="Name" id="player2" class="border"/>
+            </div>
+            <div>
+                <button onclick="startGame()">Start</button>
+            </div>
+            <div id="turn"></div>
+            <div id="table_div"></div>
+        </div>
+        <div id="mssg_bord">
+            <div id="result"></div>
+            <div id="newGame"></div>
+        </div>
+    </div>
+    <script src="54.js"></script>
+</body>
+
+</html>
