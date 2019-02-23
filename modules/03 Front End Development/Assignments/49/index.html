@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>49</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <h1>Code:</h1>
+    <pre>
+            <span class="var-keywords">var</span> <span class="variables">myArr</span> <span class="qual-signs">=</span> [1<span class="commas">,</span> 2<span class="commas">,</span> 5<span class="commas">,</span> 7];
+            function myFilter(<span class="variables">arr</span><span class="commas">,</span> callback){
+            <span class="var-keywords">var</span> <span class="variables">result</span> <span class="qual-signs">=</span> [];
+            for(<span class="var-keywords">var</span> <span class="variables">i</span><span class="qual-signs">=</span>0 ; <span class="variables">i</span> < <span class="variables">arr</span>.length ; <span class="variables">i</span>++){
+                    if(callback(<span class="variables">arr</span>[<span class="variables">i</span>]))
+                    <span class="variables">result</span>.push(<span class="variables">arr</span>[<span class="variables">i</span>]);
+            }
+            return <span class="variables">result</span>;
+            }
+            <span class="var-keywords">var</span> <span class="variables">filtered</span> <span class="qual-signs">=</span> myFilter(<span class="variables">myArr</span><span class="commas">,</span> function(<span class="variables">item</span>){
+                return <span class="variables">item</span> % 2 <span class="qual-signs">===</span> 0;
+            });
+            <span class="variables">console</span>.log(<span class="variables">filtered</span>);
+        </pre>
+
+</body>
+
+</html>
