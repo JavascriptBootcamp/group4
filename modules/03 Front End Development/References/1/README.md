@@ -10,8 +10,8 @@ CSS Inheritence
 </a>
 </li>
 <li>
-<a href="https://medium.freecodecamp.org/z-index-explained-how-to-stack-elements-using-css-7c5aa0f179b3" target="_blank">
-Z-Index Explained: How to Stack Elements Using CSS
+<a href="http://nthmaster.com/" target="_blank">
+Mastering the :nth-child
 </a>
 </li>
 <li>
