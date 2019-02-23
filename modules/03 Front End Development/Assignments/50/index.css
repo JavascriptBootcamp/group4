@@ -1,0 +1,9 @@
+li ~ li {
+    border-top: dashed 3px darkslategray;
+}
+body{
+    background-color: lightslategray;
+}
+*{
+    color: white;
+}
