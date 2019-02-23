@@ -15,6 +15,9 @@
     <label for="player2"  class="cont_text">player 2:</label>
     <input type="text" name="player2" id="player2TI"  class="cont_text" required maxlength="1" oninput="setStartGameVisibility()"><br>
 
+    <button onclick="setLight()">light</button>
+    <button onclick="setDark()">dark</button>
+
     <script>
         var combinations = [['12','36','48'],['02','47'],['10','58','46'],['06','45'],['08','26','35'],['28','43'],['30','42','78'],['41','68'],['52','76','40']];
         var currentSymbol = '';
@@ -129,6 +132,15 @@
         function createBR(){
             return document.createElement("br");
         }
+
+        function setDark(){
+
+        }
+
+        function setLight(){
+
+        }
+
     </script>
 </body>
 </html>
