@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transition CSS Explenation</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 1px;
+        }
+        #e1 {
+            -webkit-transition: width 1s; /* Safari */
+            transition: width 1s;
+        }
+
+        #e1:hover {
+            width: 300px;
+        }
+
+        #e2 {
+            -webkit-transition: background, hight, margin, 2s; /* Safari */
+            transition: background, hight, margin, 2s;
+        }
+
+        #e2:hover {
+            background: blue;
+            height: 300px;
+            margin-top: 300px;
+        }
+
+        #e3 {
+            -webkit-transition: transform, background, border-radius,  1s; /* Safari */
+            transition: transform, background, border-radius, 1s;
+        }
+
+        #e3:hover {
+            background: rgb(75, 168, 75);
+            transform: rotate(270deg);
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Transition CSS Explenation:</h1>
+    <p>
+        CSS transitions provide a way to control animation speed when changing CSS properties. Instead of having property changes
+        take effect immediately, you can cause the changes in a property to take place over a period of time. For example,
+        if you change the color of an element from white to black, usually the change is instantaneous. With CSS transitions
+        enabled, changes occur at time intervals that follow an acceleration curve, all of which can be customized.
+    </p>
+    <p>
+        CSS transitions let you decide which properties to animate (by listing them explicitly), when the animation will start (by
+        setting a delay), how long the transition will last (by setting a duration), and how the transition will run (by
+        defining a timing function, e.g. linearly or quick at the beginning, slow at the end).
+    </p>
+    <h2>Examples:</h2>
+    <div id="e1"></div>
+    <div id="e2"></div>
+    <div id="e3"></div>
+</body>
+
+</html>
