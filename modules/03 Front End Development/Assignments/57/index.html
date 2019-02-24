@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<style>
+
+body{
+    display: flex
+}
+
+.div_box{
+    display: inline-block;
+}
+label{
+    background-color: lightblue;
+    box-sizing: border-box;
+    position: relative;
+    right: 215px;
+    top: -7px;
+}
+img{
+    height: 150px;
+    margin-bottom: 30px;
+}
+button{
+    position: relative;
+    box-sizing: border-box;
+    width: 200px;
+    height: 30px;
+    right: 226px;
+    top: -10px;
+}
+#container{
+    position: relative;
+    width: 1400px;
+    top: 50%;
+    left: 50%;
+    margin-left: -700px;
+
+}
+
+</style>
+
+
+</head>
+<body>
+    
+<div id="container"></div>
+
+<script>
+
+var data = [
+
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm'
+
+
+]
+
+function Img(src){
+    this.src = src;
+    this.counter = 0;
+}
+
+Img.prototype.like = function(){
+     this.counter++ ;
+     console.log(this.counter);
+}
+
+for(var i=0;i<data.length;i=i+3){
+var div_row = document.createElement("div");
+div_row.className = "row";
+for(var j=i;j<i+3;j++){
+var div_box = document.createElement("div");
+div_box.className = "div_box";
+var img = new Img(data[j]);
+var imgEl = document.createElement("img");
+imgEl.src = img.src;
+var like = document.createElement("button");
+like.innerText = "Like"
+// like.onclick = img.like.bind(img);
+var count = document.createElement("label");
+count.innerText = img.counter;
+like.onclick = function() {
+    img.like();
+    var count = document.createElement("label");
+    count.innerText = img.counter;
+}
+div_box.appendChild(imgEl);
+div_box.appendChild(like);
+div_box.appendChild(count);
+div_row.appendChild(div_box);
+}
+var container = document.getElementById("container");
+container.appendChild(div_row);
+
+}
+
+
+
+</script>
+
+</body>
+</html>
