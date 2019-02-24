@@ -1,0 +1,56 @@
+The visibility CSS property shows or hides an element without changing the layout of a document. 
+This property also applied for rows or columns in a <table>.
+It has 3 values:
+
+1. visibility: visible - Default value i.e. the element is visible.
+
+2. visibility: hidden - The element will be hidden without changing the document layout, i.e. The element box is invisible (not drawn),
+                        but still affects layout as normal.
+
+3. visibility: collapse - The same as "hidden" value but when it comes to <table> is will act as following:
+                          rows, columns, column groups, and row groups, the row(s) or column(s) are hidden 
+                          and the space they would have occupied is removed 
+                          (as if display: none were applied to the column/row of the table)
+                          However, the size of other rows and columns is still calculated as though the cells 
+                          in the collapsed row(s) or column(s) are present.
+                          
+                          Example:
+                          
+                          <table>
+                                   <tr>
+                                      <td>1.1</td>
+                                      <td class="collapse">1.2</td>
+                                      <td>1.3</td>
+                                  </tr>
+                                  <tr class="collapse">
+                                      <td>2.1</td>
+                                      <td>2.2</td>
+                                      <td>2.3</td>
+                                  </tr>
+                                  <tr>
+                                      <td>3.1</td>
+                                      <td>3.2</td>
+                                      <td>3.3</td>
+                                  </tr>
+                          </table>
+
+                           .collapse {
+                                      visibility: collapse;
+                                      }
+
+                            table {
+                                   border: 1px solid red;
+                                  }
+
+                                  td {
+                                      border: 1px solid gray;
+                                     }
+
+
+                              The Resault:
+                                1.1		  1.3   // 2.1 is gone and also the following row of 2.X and the space for it will not be considered
+                                3.1	3.2	3.3
+
+
+Important!! :in order to both hide an element and remove it from the document layout,
+use the "display" property and set it to "none" instead of using visibility.
