@@ -1,0 +1,77 @@
+
+body {
+
+background-color:dodgerblue;
+
+}
+
+
+.players {
+    background-color: wheat;
+}
+
+.row {
+    background-color: burlywood;
+}
+
+
+#game {
+    background-color:lightgreen;
+    
+
+
+}
+
+
+#theme {
+    background-color:darkslategray;
+}
+
+#appName {
+    background-color: red;
+    color: azure;
+}
+
+.players {
+    background-color: goldenrod;
+        }
+
+ #gameTable {
+
+}
+
+#status {
+    background-color: darkorange;
+}
+
+
+#startNewGame {
+    background-color: green;
+color: white;
+
+}
+
+
+.row input {
+
+    background-color: blue;
+    color:white;
+    
+
+}
+
+.row > div {
+   
+border-color: white;
+    
+}
+
+b {
+background-color:blue;
+color: white;
+}
+
+#status {
+    background-color:red;
+    color : black;
+}
