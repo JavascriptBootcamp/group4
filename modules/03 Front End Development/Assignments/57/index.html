@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #wraper {
+            background-color: #f1f1f1;
+            margin: 10px;
+            display: flex;
+            width: max-content;
+        }
+
+        img {
+            height: 200px;
+            width: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- <div id="wraper">
+            <div>
+                <img src="" alt="">
+                <div> <button>like </button><span id="likeNum"></span></div>
+            </div>
+            <div>
+                <img src="https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg" alt="">
+                <div> <button>like</button><span id="likeNum"></span></div>
+            </div>
+            <div>
+                <img src="https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg" alt="">
+                <div> <button>like</button><span id="likeNum"></span></div>
+            </div>
+        </div> -->
+
+    </div>
+
+
+    <script>
+        var images = new Array(9);
+
+        function Img(src) {
+            this.src = src;
+            this.like = 0;
+            Img.prototype.countLike = function () {
+                this.like++;
+            }
+        }
+
+        for (var i = 0; i < images.length; i++) {
+            
+            for (var i = 1; i<= 3; i++) {}
+            var divImg = document.createElement("div");
+            divImg.id = "divImg";
+            var img = document.createElement("img");
+            images[i] = new Img("https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg");
+            img.src = images[i].src;
+            var divLike = document.createElement("div");
+            var btn = document.createElement("button");
+            btn.innerText = "like";
+            var span = document.createElement("span");
+            span.innerText = images[i].like;
+            divLike.appendChild(btn);
+            divLike.appendChild(span);
+            divImg.appendChild(img);
+            divImg.appendChild(divLike);
+
+                var wraper = document.createElement("div");
+                wraper.id = "wraper";
+                wraper.appendChild(divImg);
+                document.getElementById("container").appendChild(wraper);
+            }
+            else
+            wraper.appendChild(divImg);
+            
+
+        }
+    </script>
+</body>
+
+</html>
