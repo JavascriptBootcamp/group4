@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+          
+            animation-name: example;
+            animation-duration: 4s;
+            animation-direction: reverse;
+        }
+    
+        /* Standard syntax */
+
+        @keyframes example {
+            0% {
+                background-color: red;
+                left: 0px;
+                top: 0px;
+            }
+            25% {
+                background-color: yellow;
+                left: 200px;
+                top: 0px;
+            }
+            50% {
+                background-color: blue;
+                left: 200px;
+                top: 200px;
+            }
+            75% {
+                background-color: green;
+                left: 0px;
+                top: 200px;
+            }
+            100% {
+                background-color: red;
+                left: 0px;
+                top: 0px;
+            }
+            
+        }
+
+    </style>
+</head>
+
+<body>
+
+        <h1>animations: </h1>
+
+    <p>
+        CSS animations allows animation of most HTML elements without using JavaScript or Flash! An animation lets an element gradually
+        change from one style to another. You can change as many CSS properties you want, as many times you want.
+    </p>
+    <p>
+        To use CSS animation, you must first specify some keyframes for the animation. Keyframes hold what styles the element will
+        have at certain times.
+
+
+    </p>
+    <p>
+        When you specify CSS styles inside the @keyframes rule, the animation will gradually change from the current style to the
+        new style at certain times. To get an animation to work, you must bind the animation to an element.
+
+    </p>
+    <p>
+    Note: The animation-duration property defines how long time an animation should take to complete. If the animation-duration property is not specified, no animation will occur, because the default value is 0s (0 seconds). 
+</p>
+
+
+    <div></div>
+
+</body>
+
+</html>
