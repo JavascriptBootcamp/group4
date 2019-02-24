@@ -1,0 +1,50 @@
+* {
+    color: lightgray;
+}
+
+body {
+    /* background: lightslategray; */
+    background: lightgray;
+}
+
+.img_container {
+    height: 200px;
+    width: 200px;
+}
+
+img {
+    height: 80%;
+    width: 100%;
+    display: block;
+}
+
+.img_bottom {
+    height: 20%;
+    width:100%;
+    display: flex;
+}
+
+.img_bottom button {
+    height: 100%;
+    width:70%;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: lightslategray; 
+}
+
+.img_bottom div {
+    height: 100%;
+    width:30%;
+    
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: black; 
+}
+
+.img_bottom div span{
+    position: relative;
+    top:25%;
+    left:40%;
+}
