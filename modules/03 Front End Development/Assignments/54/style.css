@@ -1,0 +1,97 @@
+
+body {
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    
+}
+
+
+.row {
+    display: table-row;
+
+}
+
+.row > div {
+    display: table-cell;
+     vertical-align: middle;
+     text-align: center;
+   
+
+
+}
+.row input {
+    border-radius: 50%;
+    font-size: 2rem;
+    height: 100%;
+    width: 100%;
+
+}
+
+.players input{
+text-align: center;
+font-size: 1.5rem;
+background-color: lightblue;
+border-radius: 40%; 
+
+}
+
+
+ #game { 
+    display:flex;
+    border-radius: 5%;
+    text-align: center;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-around;
+ }
+
+ #appName {
+    
+} 
+
+ #theme {
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+}
+
+
+#light {
+    background-color: lightskyblue;
+    color:yellow;
+    border-radius: 50%;
+ }
+
+ #dark {
+    background-color:black;
+    color:gray;
+    border-radius: 50%;
+ }
+
+
+
+.players {
+    
+   
+        }
+
+ #gameTable {
+   display: table;
+   width: 80%;
+   margin: 0 auto;
+   table-layout: fixed;
+}
+
+#status {
+  
+}
+
+#startNewGame {
+text-align: center;
+font-size: 2rem;
+border-radius: 30%;
+display: block;
+width: 50%;
+margin:auto;
+}
