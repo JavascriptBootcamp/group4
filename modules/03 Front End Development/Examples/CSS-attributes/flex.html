@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        div {
+            margin: 20px auto;
+        }
+
+        div:nth-of-type(1) { /* perfect center*/
+            display: flex;
+            background-color: black;
+            height: 700px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div:nth-of-type(2) { /* change the order of the childs elements*/
+            background-color: green;
+            display: flex;
+            flex-wrap: nowrap; /*is also the default value*/
+        }
+
+        div:nth-of-type(3) {/*column*/
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+        }
+
+        div:nth-of-type(4) { /*wrapping the content*/
+            background-color: grey;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        div:nth-of-type(5) {
+            background-color: yellowgreen;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        div:nth-of-type(6) {/*with grow*/
+            background-color: white;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        div:nth-of-type(7) {
+            background-color: red;
+            display: flex;
+            flex-wrap: wrap-reverse;
+        }
+
+        div:nth-of-type(8) {
+            background-color: yellow;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        div:nth-of-type(9) {
+            background-color: purple;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display: flex</title>
+</head>
+
+<body>
+    <p><span>Description:</span> The Flexible Box Layout Module, makes it easier to design flexible responsive layout structure
+        without using float or positioning.</p>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1"  style="order: 3">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2"  style="order: 1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3"  style="order: 2">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1" style="flex-grow: 4">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2" style="flex-grow: 1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3" style="flex-grow: 1">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+    <div>
+        <img src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="1">
+        <img src="https://cdn.pixabay.com/photo/2018/02/09/21/46/rose-3142529__340.jpg" alt="2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFRxi3jsAueWmyFScGvV_JREwFVSB7FMkOZV8PJUURDzbnTqF_" alt="3">
+    </div>
+</body>
+
+</html>
