@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .table {
+        display:table;
+    }
+    .table-row {
+        display: table-row;
+    }
+    .table-cell {
+        display: table-cell;
+
+    }
+    button{
+        margin: 10px;
+    }
+    </style>
+    <link rel="stylesheet" type="text/css" href="light.css" />
+</head>
+<body>
+    <button onclick="changeCSS('light.css', 0);">Light</button> <button onclick="changeCSS('dark.css', 0);">Dark</button>
+   <h1>Tic-Tac-Toe</h1>
+    <div class="table">
+        <div  class="table-row">
+            <div class="table-cell"><button class="play_btn" id="1" onclick="clickBtn(this);"><img id="img1" src="unknown.png" width="100" height="100"/></button></div>
+            <div class="table-cell"><button class="play_btn" id="2" onclick="clickBtn(this);"><img id="img2" src="unknown.png" width="100" height="100"/></button></div>
+            <div class="table-cell"><button class="play_btn" id="3" onclick="clickBtn(this);"><img id="img3" src="unknown.png" width="100" height="100"/></button></div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell"><button class="play_btn" id="4" onclick="clickBtn(this);"><img id="img4" src="unknown.png" width="100" height="100"/></button></div>
+            <div class="table-cell"><button class="play_btn" id="5" onclick="clickBtn(this);"><img id="img5" src="unknown.png" width="100" height="100"/></button></div>
+            <div class="table-cell"><button class="play_btn" id="6" onclick="clickBtn(this);"><img id="img6" src="unknown.png" width="100" height="100"/></button></div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell"><button class="play_btn" id="7" onclick="clickBtn(this);"><img id="img7" src="unknown.png" width="100" height="100"/></button></div>
+            <div class="table-cell"><button class="play_btn" id="8" onclick="clickBtn(this);"><img id="img8" src="unknown.png" width="100" height="100"/></button></div>
+            <div class="table-cell"><button class="play_btn" id="9" onclick="clickBtn(this);"><img id="img9" src="unknown.png" width="100" height="100"/></button></div>
+        </div>            
+    </div>
+        <div>
+                <div id="message" colspan="2"></div>
+                <div><button id="reset" onclick="reset()"><h4>New Game</h4></button></div>
+        </div>       
+    <script>
+    var countClicks = 0;
+    var img_x = "x.png";
+    var img_o = "o.png";
+    var allButtons = document.getElementsByClassName("play_btn");
+    function clickBtn(press){
+        if (countClicks % 2 == 0) {
+            press.childNodes[0].src = img_x;
+            countClicks++;
+        }
+        else {
+            press.childNodes[0].src = img_o;
+            countClicks++;   
+        }
+        press.disabled=true;
+        check();
+    }
+    function check(){
+        //alert(document.getElementById("img1").src.endsWith("x.png"));
+        if ((document.getElementById("img1").src.endsWith("x.png") && document.getElementById("img2").src.endsWith("x.png") && document.getElementById("img3").src.endsWith("x.png")) || (document.getElementById("img4").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img6").src.endsWith("x.png")) || (document.getElementById("img7").src.endsWith("x.png") && document.getElementById("img8").src.endsWith("x.png") && document.getElementById("img9").src.endsWith("x.png")) || (document.getElementById("img1").src.endsWith("x.png") && document.getElementById("img4").src.endsWith("x.png") && document.getElementById("img7").src.endsWith("x.png")) || (document.getElementById("img2").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img8").src.endsWith("x.png")) || (document.getElementById("img3").src.endsWith("x.png") && document.getElementById("img6").src.endsWith("x.png") && document.getElementById("img9").src.endsWith("x.png")) || (document.getElementById("img1").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img9").src.endsWith("x.png")) || (document.getElementById("img3").src.endsWith("x.png") && document.getElementById("img5").src.endsWith("x.png") && document.getElementById("img7").src.endsWith("x.png"))) {
+            document.getElementById("message").innerHTML = "<h3>X IS THE WINNER!</h3>";
+            for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].disabled = true;
+            }
+        }
+        if ((document.getElementById("img1").src.endsWith("o.png") && document.getElementById("img2").src.endsWith("o.png") && document.getElementById("img3").src.endsWith("o.png")) || (document.getElementById("img4").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img6").src.endsWith("o.png")) || (document.getElementById("img7").src.endsWith("o.png") && document.getElementById("img8").src.endsWith("o.png") && document.getElementById("img9").src.endsWith("o.png")) || (document.getElementById("img1").src.endsWith("o.png") && document.getElementById("img4").src.endsWith("o.png") && document.getElementById("img7").src.endsWith("o.png")) || (document.getElementById("img2").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img8").src.endsWith("o.png")) || (document.getElementById("img3").src.endsWith("o.png") && document.getElementById("img6").src.endsWith("o.png") && document.getElementById("img9").src.endsWith("o.png")) || (document.getElementById("img1").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img9").src.endsWith("o.png")) || (document.getElementById("img3").src.endsWith("o.png") && document.getElementById("img5").src.endsWith("o.png") && document.getElementById("img7").src.endsWith("o.png"))) {
+            document.getElementById("message").innerHTML = "<h3>O IS THE WINNER!</h3>";
+            for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].disabled = true;
+            }
+        }
+        if (countClicks == 9) {
+            document.getElementById("message").innerHTML = "<h3>Game Over!</h3>";
+        }
+    }
+    function reset() {
+        countClicks=0;
+        document.getElementById("message").innerHTML = "";
+        for (var i = 0; i < allButtons.length; i++) {
+                allButtons[i].disabled = false;
+                allButtons[i].childNodes[0].src = "unknown.png";
+        }
+    }
+    function changeCSS(cssFile, cssLinkIndex) {
+        var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+        var newlink = document.createElement("link");
+
+        newlink.setAttribute("rel", "stylesheet");
+        newlink.setAttribute("type", "text/css");
+        newlink.setAttribute("href", cssFile);
+        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+}
+    </script>
+</body>
+</html>
