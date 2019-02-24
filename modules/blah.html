@@ -16,14 +16,24 @@
     }
     #backgroundImageList {
         width: 200px;
-        height: 200px;
-        background-repeat: no-repeat;
+        height:150px;
         background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT78WfbrRbSPwC00XRv32NuynkhYhBrSzCHDYgaZ26fzFOLz2A5");
     }
 
+    #backgroundImageSticky {
+        width: auto;
+        height:200px;
+        background-attachment: fixed;
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-image: url("https://i.stack.imgur.com/ILTQq.png");
+    }
+    
     </style>
 </head>
-<body>
+<body id="backgroundImageSticky">
+    
+
     <h1>CSS Backgrounds - Definition and usage</h1>
 
     <p>CSS background is an attribute which defines the background of elements.
@@ -63,15 +73,38 @@
     }<br><br>
     graphic result will be like:<br></p>
 
-    <p></p>
-    <ul id="backgroundImageList">
+    <ul id="backgroundImageList" style="background-repeat:no-repeat;">
         <li class="blahblahItem">Blah blah number 1</li>
         <li class="blahblahItem">Blah blah number 2</li>
         <li class="blahblahItem">Blah blah number 3</li>
-    </table>
+    </ul>
+
 
     <h3>background-repeat:</h3>
-    
+    <p>The background-repeat attirbute enable an background-image attribute to repeat itself vertically/horizontally.<br>
+        For example:<br>
+        if we will use an embedded css style to color the background of a list items:<br><br>
+        .blahblahItem {<br>
+            background-repeat: repeat-y;
+            background-image: url({Your image address};<br>
+        }<br><br>
+        graphic result will be like:<br></p>
+        <ul id="backgroundImageList" style="background-repeat: repeat-y;">
+            <li class="blahblahItem">Blah blah number 1</li>
+            <li class="blahblahItem">Blah blah number 2</li>
+            <li class="blahblahItem">Blah blah number 3</li>
+        </ul>
 
+        <p>background-repeat: repeat-x will act respectively across the x axis.</p>
+
+        <h3>background-attachment:</h3>
+        <p>The background-attachment attirbute enable an background-image attribute to get sticky and wont scroll with the page(fixed).<br>
+            For example:<br>
+            if we will use an embedded css style to color the background of a list items:<br><br>
+            .body {<br>
+                background-attachment:fixed;
+                background-repeat: no-repeat;
+                background-image: url({Your image address};<br>
+            }<br><br>
 </body>
 </html>
