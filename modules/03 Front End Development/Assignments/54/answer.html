@@ -74,6 +74,7 @@
             startGameBtn.disabled = !( symbolPlayer1 !== '' && symbolPlayer2 !== '' && symbolPlayer1 !== symbolPlayer2);
         }
         function startGame(){
+            showHiddenElements();
             currentSymbol = symbolPlayer1;
             divCurrentTurn = document.createElement("div");
             divCurrentTurn.id = "turnID";
@@ -158,6 +159,13 @@
             board.hidden = true;
         }
 
+        function showHiddenElements(){
+            var pre = document.getElementById("pre");
+            var board = document.getElementById("board");
+
+            pre.hidden = false;
+            board.hidden = false;
+        }
     </script>
 </body>
 </html>
