@@ -13,7 +13,7 @@
         below each picture add a "Like" button and a likes counter
     </li>
     <li>
-        when the user clicks "Like" - increment the tumbnail's likes counter
+        when the user clicks "Like" - increment the tumbnail's likes counter (use Prototype)
     </li>
     <li>
         add a shadow to the thumbnail whenever the user moves his/her mouse over it
