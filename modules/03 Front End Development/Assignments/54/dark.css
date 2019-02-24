@@ -1,0 +1,37 @@
+
+body {
+
+background-color: black;
+color:darkgrey;
+}
+
+
+.players {
+    
+  
+}
+.row input  {
+
+    background-color: black;
+    color:gray;
+}
+
+#gameTable {
+
+    margin: 5px;
+    padding: 5px;
+    background-color: lightgray;
+}
+
+#game {
+
+background-color: darkslategrey;
+}
+
+#startNewGame {
+
+}
+
+b {
+
+}
