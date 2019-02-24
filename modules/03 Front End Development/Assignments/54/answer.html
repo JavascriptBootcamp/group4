@@ -10,13 +10,24 @@
     </style>
 </head>
 <body>
-    <label for="player1" class="cont_text">player 1:</label>
-    <input type="text" name="player1" id="player1TI"  class="cont_text" required maxlength="1" oninput="setStartGameVisibility()"><br>
-    <label for="player2"  class="cont_text">player 2:</label>
-    <input type="text" name="player2" id="player2TI"  class="cont_text" required maxlength="1" oninput="setStartGameVisibility()"><br>
+    <div id="pre">
+        <label for="player1" class="cont_text">player 1:</label>
+        <input type="text" name="player1" id="player1TI"  class="cont_text" required maxlength="1" oninput="setStartGameVisibility()"><br>
+        <label for="player2"  class="cont_text">player 2:</label>
+        <input type="text" name="player2" id="player2TI"  class="cont_text" required maxlength="1" oninput="setStartGameVisibility()"><br><br>
 
-    <button onclick="setLight()">light</button>
-    <button onclick="setDark()">dark</button>
+        <div id="style_light">
+            <button onclick="setLight()">light</button>
+            <button onclick="setDark()">dark</button>
+        </div>
+
+    </div>
+
+    <div id="board"> </div>
+
+    <div id="start">
+        <button id="strtBtn" onclick="startGame()">Start Game</button>
+    </div>
 
     <script>
         var combinations = [['12','36','48'],['02','47'],['10','58','46'],['06','45'],['08','26','35'],['28','43'],['30','42','78'],['41','68'],['52','76','40']];
@@ -26,36 +37,34 @@
         var p1SelectedIndexes = '';
         var p2SelectedIndexes = '';
         drawControlls();
+
         function drawControlls(){
+            var board = document.getElementById("board");
             document.body.appendChild(createBR());
-            var matrix = document.createElement("table");
-            matrix.disabled = true;
+            var matrixDiv = document.createElement("div");
+            matrixDiv.disabled = true;
             var buttonIndex = 0;
-            matrix.align = "center";
+            matrixDiv.align = "center";
             for(var i=0;i<3;i++){
-                var tr = document.createElement("tr");
+                var trDiv = document.createElement("div");
                 for(var j=0;j<3;j++){
-                    var td = document.createElement("td");
+                    //var tdDiv = document.createElement("div");
                     var button = document.createElement("button");
                     button.style.width = "50px";
                     button.style.height = "50px";
                     button.id = "button" + buttonIndex++;
                     button.disabled = true;
-                    td.appendChild(button);
-                    tr.appendChild(td);
+                    button.style.margin = "5px";
+                    trDiv.appendChild(button);
+                    //trDiv.appendChild(tdDiv);
                 }
-                matrix.appendChild(tr);
+                matrixDiv.appendChild(trDiv);
             }
-            document.body.appendChild(matrix);
-            document.body.appendChild(createBR());
-            var startBtn = document.createElement("button");
-            startBtn.innerText = 'Start Game';
-            startBtn.id = "strtBtn";
-            startBtn.onclick = startGame;
-            document.body.appendChild(startBtn);
+            board.appendChild(matrixDiv);
+            board.appendChild(createBR());
             setStartGameVisibility();
-            document.body.appendChild(createBR());
-            document.body.appendChild(createBR());
+            board.appendChild(createBR());
+            board.appendChild(createBR());
         }
         function setStartGameVisibility(){
             symbolPlayer1 = document.getElementById("player1TI").value;
@@ -139,6 +148,14 @@
 
         function setLight(){
 
+        }
+
+        function hideElementsExceptStart(){
+            var pre = document.getElementById("pre");
+            var board = document.getElementById("board");
+
+            pre.hidden = true;
+            board.hidden = true;
         }
 
     </script>
