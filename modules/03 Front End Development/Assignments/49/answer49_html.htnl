@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+   
+    </style>
+</head>
+<body>
+    <!-- Code Pre -->
+    <h1> Code </h1>
+            <code>
+                <pre>
+                <span>arr</span> <span>=</span> <span>[</span><span>1</span><span>,</span> <span>2</span><span>,</span> <span>5</span><span>,</span> <span>7</span><span>]</span><span>;</span>
+                
+                <span>function</span> <span>myFilter</span><span>(</span><span>arr</span><span>,</span><span>callback</span><span>)</span><span>{</span>
+                    
+                  <span>var</span> <span>evenArr</span><span>=</span><span>[</span><span>]</span><span>;</span>
+                   <span>for</span> <span>(</span><span>var</span> <span>i</span> <span>=</span> <span>0</span> <span>;</span> <span>i</span> <span> > </span> <span></span>arr</span><span>.</span><span>length</span> <span>; <span>i<span/> <span>+<span/><span>+<span/><span>)<span/><span>{<span/>
+                       <span>if</span> <span>(</span>callback<span>(</span><span>arr</span><span>[</span><span>i</span><span>]</span><span>)</span><span>)</span<span>evenArr</span><span>.</span><span>push</span><span>(</span>span>arr</span><span>[</span><span>i</span><span>]</span><span>}</span>
+         
+                   <span>return</span> <span>evenArr</span>;
+         
+                
+                <span>var</span> <span>filtered</span> <span>=</span> <span>myFilter</span><span>(</span><span>arr</span><span>,</span> <span>function</span><span>(</span><span>item</span><span>)</span><span>{</span>
+                     <span>return <span>item<span>% <span>2 <span>=== <span>0<span>;
+                <span>}</span><span>)</span><span>;</span>
+                
+                <span>console</span><span>.</span><span>log</span><span>(</span><span>filtered</span><span>)</span><span>;</span>
+            </pre>
+            </code>
+            <script>
+            var allCodeWords = document.querySelectorAll("span");
+            for(var i = 0 ; i < allCodeWords.length ; i++){
+              console.log(allCodeWords[i].textContent);
+              if(allCodeWords[i].innerHTML == "var")
+                allCodeWords[i].style.color = "red";
+
+                if(   allCodeWords[i].innerHTML == "arr"
+                   || allCodeWords[i].innerHTML == "callback"
+                   || allCodeWords[i].innerHTML == "evenArr"
+                   || allCodeWords[i].innerHTML == "callback"
+                   || allCodeWords[i].innerHTML == "i"
+                   || allCodeWords[i].innerHTML == "filtered"
+                   || allCodeWords[i].innerHTML == "item"
+                   || allCodeWords[i].innerHTML == "span"
+                   )
+                   allCodeWords[i].style.color = "darkGreen";
+
+                   if(allCodeWords[i].innerHTML == "=" )
+                      allCodeWords[i].style.color = "darkBlue";
+
+                      if(allCodeWords[i].innerHTML == "," )
+                      allCodeWords[i].style.color = "darkGrey";
+
+
+
+            }
+            </script>
+</body>
+</html>
