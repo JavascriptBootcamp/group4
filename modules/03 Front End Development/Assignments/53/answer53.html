@@ -1,0 +1,80 @@
+<!-- Answer by Gabi B -->
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+ <body>
+    <div id="container">
+        <div id="top">
+            <h1>Our Research</h1>
+        </div>
+        <div id="middle">
+            <div id="left">
+                <div id="sidemenu">
+                    <form>
+                        <select id="select-student-name" class="my-inputs">
+                                    <option>Gaby buchnik</option>
+                                    <option>Daniel barush</option>
+                                    <option>Ofek arbeli</option>
+                                    <option>avrahama dnahani</option>
+                                    <option>‫avi yot</option>
+                                    <option>‫eviad k</option>
+                                    <option>elinor gargi</option>
+                                    <option>‫ameer</option>
+                                    <option>amitay l</option>
+                                    <option>‫guy agiv</option>
+                                    <option>‫david flores</option>
+                                    <option>‫david sbg</option>
+                                    <option>‫david levman</option>
+                                    <option>‫yakir solomon</option>
+                                    <option>‫lital rab</option>
+                                    <option>‫moshiko albhari</option>
+                                    <option>‫malak kh</option>
+                                    <option>‫mariya stashevski</option>
+                                    <option>matan atiya</option>
+                                    <option>matan d</option>
+                                    <option>shakimi</option>
+                                    <option>Gaby buchnik</option>
+                                    <option>‫Limor</option>
+                                    <option>Gaby buchnik</option>
+
+                                 </select>
+                        <input id="input-subject" class="my-inputs" type="text">
+                        <input type="submit" class="my-inputs" value="submit" onclick="addField(event)">
+                    </form>
+                </div>
+            </div>
+            <div id="right">
+                <table id="table">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Subject</th>
+                    </tr>
+                </table>
+                <div>
+                <button id="btn-pick-one" onclick="pullRandomRow(event)">Pick One</button>
+                <button id="print" onclick="printPage()">Print</button>
+                </div>
+            </div>
+
+
+         </div>
+        <div id="footer">
+            <a href="#top">Back to top</a>
+        </div>
+    </div>
+    <div id="result">
+
+     </div>
+     <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+ </html> 
