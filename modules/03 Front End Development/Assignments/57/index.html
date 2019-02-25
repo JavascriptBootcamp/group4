@@ -8,15 +8,28 @@
         *{
             box-sizing: border-box;
         }
+        body{
+            background: rgb(203, 219, 229);
+            padding: 0px;
+            margin: 0px;
+        }
         #wrapper{
             display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 30px;
+            border: 2px solid blue;
+            padding-left: 10px;
+            padding-right: 10px;
         }
         .imageBox{
             position: relative;
             height: 110px;
             width: 110px;
-            margin: 0px;
+            margin: 15px 10px;
             padding: 0px;
+            flex-shrink: 0;
         }
         .indicators{
             display: inline-block;
@@ -59,26 +72,43 @@
             text-align: center;
             padding-left: 13px;
         }
+        header{
+            width: 100%;
+            background-color: #748A99;
+            height: 30px;
+        }
     </style>
     <title>Document</title>
 </head>
 <body>
+    <header></header>
     <div id="wrapper">
-        <div class="imageBox">
-            <img class="img" src="images\picture.png"/>
-            <div class="indicators">
-                <button class="like-buttons" onclick="addLike(this)">Like</button>
-                <input type="number" disabled class="like-counters" value="0">
-            </div>
-        </div>
     </div>
     <script>
-        function imgBox(){
+        function ImgBox(src,id){
             var likeCount = 0;
-            
+            this.imgBoxHTML = document.createElement("div");
+            this.imgBoxHTML.classList.add("imageBox");
+            this.imgBoxHTML.setAttribute("id", id);
+            this.src = src;
+            this.imgBoxHTML.innerHTML=`<img class="img" src="${this.src}"/>\
+                                    <div class="indicators">\
+                                    <button class="like-buttons" onclick="ImgBox.addLike(this)">Like</button>\
+                                    <input type="number" disabled class="like-counters" value="0">\
+                                    </div>`;
         }
-        imgBox.prototype.addLike=function(){
-            this.likeCount++;
+        ImgBox.prototype.images=[];
+        ImgBox.prototype.renderElement=function(){
+            var wrapper = document.getElementById("wrapper");
+            wrapper.appendChild(this.imgBoxHTML);
+            console.log("rendered");
+        }
+        ImgBox.prototype.addLike=function(element){
+            //this.likeCount++;
+            console.log(element);
+        }
+        for(var i=0; i<30; i++){
+            ImgBox.prototype.images.push(new ImgBox("images/picture.png",`imageBox${i}`));
         }
     </script>
 </body>
