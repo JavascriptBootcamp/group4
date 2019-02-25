@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Contacts</title>
+</head>
+
+<body onload="init()">
+    <h1 id="Header">Contacts</h1>
+ 
+    <div id="mainT">
+        <table class="contact">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anna </td>
+                    <td>Drabkin </td>
+                    <td>Anna.Drabkin@dmail.com </td>
+                </tr>
+                <tr>
+                    <td>Durbadal </td>
+                    <td>Chatterjee </td>
+                    <td>Durbadal.Chatterjee@dmail.com </td>
+                </tr>
+                <tr>
+                    <td>Shijie </td>
+                    <td>Liu </td>
+                    <td>Shijie.Liu@dmail.com </td>
+                </tr>
+                <tr>
+                    <td>Idan </td>
+                    <td>Klein </td>
+                    <td>Idan.Klein@dmail.com </td>
+                </tr>
+                <tr>
+                    <td>Sonali </td>
+                    <td>Gupta </td>
+                    <td>Sonali.Gupta@dmail.com </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <script>
+            function init() {
+                var ths = document.getElementsByTagName("th");
+                for (let i = 0; i < ths.length; i++) {
+                    ths[i].onclick = showContent;
+                }
+            }
+            function showContent(event) {
+                var selectedArr = [];
+                var size;
+                var selectedIndex;
+                var trs;
+                var selectedElement = event.target;
+                var thead = document.getElementsByTagName("thead")[0];
+                if (selectedElement.className !== "sorted") {
+                    size = thead.children[0].children.length;
+                    trs = document.getElementsByTagName("tr");
+                    for (let i = 0; i < size; i++) {
+                        if (thead.children[0].children[i] === selectedElement) {
+                            selectedIndex = i;
+                            break;
+                        }
+                    }
+                    for (let i = 1; i < trs.length; i++) {
+                        selectedArr.push(trs[i].children[selectedIndex].innerText);
+
+                    }
+                    selectedArr.sort();
+                    for (let i = 1; i < trs.length; i++) {
+                        trs[i].children[selectedIndex].innerText = selectedArr[i - 1];
+                    }
+                    selectedElement.className="sorted";
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>

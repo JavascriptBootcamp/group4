@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>inbox</title>
+</head>
+
+<body onload="init()">
+    <h1 id="Header">Inbox</h1>
+ 
+    <div id="mainT" style="overflow-x:auto;">
+        <table class="email" >
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anna Drabkin</td>
+                    <td> work related </td>
+                    <td>01/24/2019 </td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Sonali Gupta</td>
+                    <td>request</td>
+                    <td>01/01/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Sonali Gupta</td>
+                    <td>request</td>
+                    <td>01/01/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Sonali Gupta</td>
+                    <td>request</td>
+                    <td>01/01/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Sonali Gupta</td>
+                    <td>request</td>
+                    <td>01/01/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Sonali Gupta</td>
+                    <td>request</td>
+                    <td>01/01/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Sonali Gupta</td>
+                    <td>request</td>
+                    <td>01/01/2018</td>
+                </tr>
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Durbadal Chatterjee</td>
+                    <td>request</td>
+                    <td>03/30/2018 </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Shijie Liu</td>
+                    <td> new hire </td>
+                    <td>01/01/2019 </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        <table class="email">
+
+            <tbody>
+                <tr>
+                    <td>Anna Drabkin </td>
+                    <td>update </td>
+                    <td>25/02/2019 </td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">content</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+    <script>
+        var emailTables;
+        function init() {
+            emailTables = document.getElementsByTagName("table");
+
+            for (let i = 0; i < emailTables.length; i++) {
+                emailTables[i].onclick = showContent;
+                emailTables[i].id = i;
+                if (i === 0) {
+                    emailTables[i].children[1].children[1].style.visibility = "hidden";
+                }
+                else {
+                    emailTables[i].children[0].children[1].style.visibility = "hidden";
+                }
+            }
+
+        }
+        function showContent(event) {
+
+            var emailElement = event.target;
+            var emailContent;
+
+            if (emailElement.className !== "email") {
+                emailElement = emailElement.parentNode.parentNode.parentNode;
+
+            }
+            if (emailElement.id === "0") {
+                emailContent = emailElement.children[1].children[1].children[0];
+            }
+            else {
+                emailContent = emailElement.children[0].children[1].children[0];
+            }
+            if (emailContent.style.visibility !== "visible") {
+                emailContent.style.visibility = "visible";
+            }
+            else
+                emailContent.style.visibility = "hidden";
+
+        }
+    </script>
+</body>
+
+</html>

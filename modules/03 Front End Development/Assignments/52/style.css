@@ -1,0 +1,93 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: lightgrey;
+}
+nav {
+    position: relative;
+    top: 40px;
+    float: left;
+}
+nav  a:active {
+    color: darkgreen;
+}
+
+#divMain {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    margin-left: -400px;
+}
+
+#main {
+    position: absolute;
+    top: 40px;
+    width:800px;
+    height: 700px;
+    overflow: hidden;
+}
+#mainT {
+    position: relative;
+   
+    top: 0%;
+    left: 50%;
+    margin-left: -250px;
+}
+
+#main > table {
+    position: relative;
+    top: -11%;
+    width : 500px;
+}
+
+h1 {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.email{
+    font-size: 16px;
+}
+
+.contact {
+    font-size: 20px;
+}
+
+table.email:nth-of-type(1){
+    font-weight: bold;
+}
+table.email:nth-of-type(2){
+    font-weight: bold;
+}
+table.email:nth-of-type(3){
+    font-weight: bold;
+}
+
+.email, .contact {
+    margin-left: 30px;
+}
+
+.email:hover, .contact.hover{
+    background-color: dimgrey;
+    color: white;
+}
+
+thead{
+    color: darkred;
+}
+
+a{
+    color: darkblue;
+}
+a:hover{
+font-weight: bold;
+}
+
+[border] {
+    border: solid 5px darkgrey;
+}
+
+
+
