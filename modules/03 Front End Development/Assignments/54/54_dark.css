@@ -1,0 +1,14 @@
+body, button{
+    color:  #8AC6BF;
+    background: #01395C;
+}
+
+.border , button {
+    border:3px solid #8AC6BF;
+    border-radius: 5px;
+}
+
+img {
+    border:3px solid #01395C;
+    border-radius: 50%;
+}

@@ -2,6 +2,25 @@ var turn = null;
 var positions = null;
 var restart = false;
 
+function change_theme() {
+    head = document.querySelector("head");
+    dark_theme_link_tag = document.querySelector("#dark_theme");
+    change_theme_btn = document.querySelector("#change_theme");
+
+    if(dark_theme_link_tag) {
+        dark_theme_link_tag.remove();
+        change_theme_btn.innerText = "Dark Theme";
+    }
+    else {
+        dark_theme = document.createElement("link");
+        dark_theme.id="dark_theme";
+        dark_theme.rel="stylesheet";
+        dark_theme.href="54_dark.css";
+        head.appendChild(dark_theme);
+        change_theme_btn.innerText = "Bright Theme";
+    }
+}
+
 //Bulding Page Html
 function Cell(_isEnpty, _player) {
     this.isEmpty = _isEnpty;

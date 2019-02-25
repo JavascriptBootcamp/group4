@@ -7,6 +7,12 @@ body, button, input{
     font-family: 'Oswald', sans-serif;
 }
 
+input {
+    background: #F0E5D6;
+    color: #01395C;
+    padding-left: 5px;
+}
+
 .container {
     margin-left: 40%;
     width: 50%;
@@ -17,6 +23,11 @@ body, button, input{
     border-radius: 5px;
 }
 
+button {
+    color: #01395C;
+    background: #F0E5D6;
+}
+
 .tr {
     display: flex;
 }
@@ -25,11 +36,11 @@ body, button, input{
     width: 100px;
     height: 100px;
     margin: 2px;
-    background: #7C96A8;
+    background: #F0E5D6
 }
 
 .hide {
-    visibility: hidden;
+    display: none;
 }
 
 img {
@@ -37,4 +48,10 @@ img {
     border-radius: 50%;
     margin-left: 20%;
     margin-top: 20%;
+}
+
+#mssg_bord {
+    position: fixed;
+    top: 20%;
+    left: 45%;
 }
