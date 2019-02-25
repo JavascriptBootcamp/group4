@@ -3,49 +3,102 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
     <style>
+        body {
+            background-color: floralwhite;
+        }
+
+        #container {
+            width: 100%;
+            margin: 0 auto;
+
+
+        }
+
         #wraper {
             background-color: #f1f1f1;
             margin: 10px;
             display: flex;
-            width: max-content;
+            /* justify-content: space-around; */
+            /* flex-flow: row; */
+
+        }
+
+        #divImg {
+            width: 100%;
+            height: 100%;
+
         }
 
         img {
-            height: 200px;
-            width: 200px;
-            margin: 10px;
+            /* height: 150px;
+            width: 150px; */
+            width: 100%;
+            height: 100%;
+
         }
+
+        img:hover {
+            box-shadow: 10px 10px 10px grey;
+        }
+
+        button {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            border-radius: 40%;
+        }
+
+        span {
+            padding: 5px;
+        }
+
+        #imgClick  {
+            background-color: white;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0.5;
+            display: none;
+        }
+
+        #pick {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* margin-top: -5em; */
+            /*set to a negative number 1/2 of your height*/
+            /* margin-left: -7em; */
+            /*set to a negative number 1/2 of your width*/
+            border: 1px solid #ccc;
+            background-color: #f3f3f3;
+        }
+
+      
+
     </style>
 </head>
 
 <body>
-    <div id="container">
-        <!-- <div id="wraper">
-            <div>
-                <img src="" alt="">
-                <div> <button>like </button><span id="likeNum"></span></div>
-            </div>
-            <div>
-                <img src="https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg" alt="">
-                <div> <button>like</button><span id="likeNum"></span></div>
-            </div>
-            <div>
-                <img src="https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg" alt="">
-                <div> <button>like</button><span id="likeNum"></span></div>
-            </div>
-        </div> -->
+   
 
-    </div>
+    <div id="container"></div>
 
+    <div id="imgClick"></div>
+    <div id="pick">
+
+        </div>
 
     <script>
-        var images = new Array(9);
-
+        var images = new Array(10);
+        var index = 0;
         function Img(src) {
             this.src = src;
             this.like = 0;
@@ -54,34 +107,66 @@
             }
         }
 
-        for (var i = 0; i < images.length; i++) {
-            
-            for (var i = 1; i<= 3; i++) {}
-            var divImg = document.createElement("div");
-            divImg.id = "divImg";
-            var img = document.createElement("img");
-            images[i] = new Img("https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg");
-            img.src = images[i].src;
-            var divLike = document.createElement("div");
-            var btn = document.createElement("button");
-            btn.innerText = "like";
-            var span = document.createElement("span");
-            span.innerText = images[i].like;
-            divLike.appendChild(btn);
-            divLike.appendChild(span);
-            divImg.appendChild(img);
-            divImg.appendChild(divLike);
 
-                var wraper = document.createElement("div");
-                wraper.id = "wraper";
+        images[0] = new Img("https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg");
+        images[1] = new Img("http://www.biopet.co.il/app/uploads/2017/01/unnamed-file-101.png");
+        images[2] = new Img("https://www.snakes.co.il/media/djcatalog2/images/item/1/--nymphicus-hollandicus_l.jpg");
+        images[3] = new Img("https://shooka.net/wp-content/uploads/2018/01/15-cm-22.jpg");
+        images[4] = new Img("https://market.marmelada.co.il/photos/570x0/1451816.jpg");
+        images[5] = new Img("https://img.wcdn.co.il/f_auto,w_700/1/2/3/1/1231339-46.jpg");
+        images[6] = new Img("http://taoos.co.il/wp-content/uploads/2017/03/3143.jpg");
+        images[7] = new Img("https://www.ken-hatuki.co.il/wp-content/uploads/2013/03/05052011074653.jpg");
+        images[8] = new Img("https://sc02.alicdn.com/kf/HTB1MlttjsbI8KJjy1zdq6ze1VXaD/Mother-Doe-Laying-Deer-Outdoor-Animal-Garden.jpg");
+        images[9] = new Img("https://d3m9l0v76dty0.cloudfront.net/system/photos/2324783/extra_large/ff1b53cb16cbc839349dd42e30bc8d00.jpg");
+
+
+
+        for (var i = 1; i <= parseInt(images.length / 3) + 1; i++) {
+            var wraper = document.createElement("div");
+            wraper.id = "wraper";
+            for (var j = 1; j <= 3; j++) {
+                if (index == images.length) // range of index
+                    break;
+                var divImg = document.createElement("div");
+                divImg.id = "divImg";
+                var img = document.createElement("img");
+                img.src = images[index].src;
+                img.onclick = function (event) {
+                    document.getElementById("imgClick").style.display = "block";
+                    document.getElementById("pick").style.display = "block";
+                    document.getElementById("pick").innerHTML =
+                    "<input type='button' id='x' onclick='x()'value='X'><img src="+event.target.src+">";
+                }
+                var divLike = document.createElement("div");
+                var btn = document.createElement("button");
+                btn.innerText = "like";
+                btn.id = "I" + index;
+                var span = document.createElement("span");
+                span.innerText = images[index].like;
+                btn.onclick = function (event) {
+                    id = (event.target.id)[1];
+                    images[id].countLike();
+                    document.querySelector("#" + event.target.id + "+ span").innerText = images[id].like;
+                }
+                divLike.appendChild(btn);
+                divLike.appendChild(span);
+                divImg.appendChild(img);
+                divImg.appendChild(divLike);
                 wraper.appendChild(divImg);
-                document.getElementById("container").appendChild(wraper);
+                index++;
             }
-            else
-            wraper.appendChild(divImg);
-            
+
+            document.getElementById("container").appendChild(wraper);
 
         }
+
+        function x() {  // close pick frame
+            var p = document.getElementById("pick");
+            var b = document.getElementById("imgClick");
+            p.style.display = "none";
+            b.style.display = "none";
+        }
+
     </script>
 </body>
 
