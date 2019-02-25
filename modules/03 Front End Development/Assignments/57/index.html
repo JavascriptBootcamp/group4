@@ -16,31 +16,24 @@
         #container {
             width: 100%;
             margin: 0 auto;
-
-
         }
 
         #wraper {
-            background-color: #f1f1f1;
+            /* background-color: #f1f1f1; */
             margin: 10px;
             display: flex;
             /* justify-content: space-around; */
             /* flex-flow: row; */
-
         }
 
         #divImg {
             width: 100%;
             height: 100%;
-
         }
 
-        img {
-            /* height: 150px;
-            width: 150px; */
-            width: 100%;
-            height: 100%;
-
+        #wraper img {
+            width: 250px;
+            height: 250px;
         }
 
         img:hover {
@@ -55,9 +48,10 @@
 
         span {
             padding: 5px;
+            font-weight: bold;
         }
 
-        #imgClick  {
+        #imgClick {
             background-color: white;
             height: 100%;
             width: 100%;
@@ -71,34 +65,34 @@
         #pick {
             display: none;
             position: fixed;
-            top: 50%;
-            left: 50%;
-            /* margin-top: -5em; */
-            /*set to a negative number 1/2 of your height*/
-            /* margin-left: -7em; */
-            /*set to a negative number 1/2 of your width*/
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            border-radius: 3px;
             border: 1px solid #ccc;
             background-color: #f3f3f3;
         }
-
-      
-
     </style>
 </head>
 
 <body>
-   
+
 
     <div id="container"></div>
 
     <div id="imgClick"></div>
     <div id="pick">
 
-        </div>
+    </div>
 
     <script>
         var images = new Array(10);
         var index = 0;
+
         function Img(src) {
             this.src = src;
             this.like = 0;
@@ -107,9 +101,8 @@
             }
         }
 
-
         images[0] = new Img("https://mayer-vet.com/wordpress-he/wp-contents/uploads/puppy-small-237x300.jpg");
-        images[1] = new Img("http://www.biopet.co.il/app/uploads/2017/01/unnamed-file-101.png");
+        images[1] = new Img("http://www.hod-hasharon.muni.il/html5/Web/2078/vat4.jpg");
         images[2] = new Img("https://www.snakes.co.il/media/djcatalog2/images/item/1/--nymphicus-hollandicus_l.jpg");
         images[3] = new Img("https://shooka.net/wp-content/uploads/2018/01/15-cm-22.jpg");
         images[4] = new Img("https://market.marmelada.co.il/photos/570x0/1451816.jpg");
@@ -119,7 +112,9 @@
         images[8] = new Img("https://sc02.alicdn.com/kf/HTB1MlttjsbI8KJjy1zdq6ze1VXaD/Mother-Doe-Laying-Deer-Outdoor-Animal-Garden.jpg");
         images[9] = new Img("https://d3m9l0v76dty0.cloudfront.net/system/photos/2324783/extra_large/ff1b53cb16cbc839349dd42e30bc8d00.jpg");
 
-
+        if (typeof (Storage)!== "undefined") 
+            document.getElementById("container").innerHTML = localStorage.getItem("likes");
+       
 
         for (var i = 1; i <= parseInt(images.length / 3) + 1; i++) {
             var wraper = document.createElement("div");
@@ -135,19 +130,16 @@
                     document.getElementById("imgClick").style.display = "block";
                     document.getElementById("pick").style.display = "block";
                     document.getElementById("pick").innerHTML =
-                    "<input type='button' id='x' onclick='x()'value='X'><img src="+event.target.src+">";
+                        "<input type='button' id='x' onclick='x()'value='X'><img src='" + event.target.src + "' width='100%' height='100%'>";
                 }
+                
                 var divLike = document.createElement("div");
                 var btn = document.createElement("button");
                 btn.innerText = "like";
                 btn.id = "I" + index;
                 var span = document.createElement("span");
                 span.innerText = images[index].like;
-                btn.onclick = function (event) {
-                    id = (event.target.id)[1];
-                    images[id].countLike();
-                    document.querySelector("#" + event.target.id + "+ span").innerText = images[id].like;
-                }
+                btn.setAttribute('onclick','like(event);');
                 divLike.appendChild(btn);
                 divLike.appendChild(span);
                 divImg.appendChild(img);
@@ -155,11 +147,8 @@
                 wraper.appendChild(divImg);
                 index++;
             }
-
             document.getElementById("container").appendChild(wraper);
-
         }
-
         function x() {  // close pick frame
             var p = document.getElementById("pick");
             var b = document.getElementById("imgClick");
@@ -167,6 +156,14 @@
             b.style.display = "none";
         }
 
+        
+        function like (event) {
+                    id = (event.target.id)[1];
+                    images[id].like=document.querySelector("#" + event.target.id + "+ span").innerText;
+                    images[id].countLike();
+                    document.querySelector("#" + event.target.id + "+ span").innerText = images[id].like;
+                    localStorage.setItem("likes",document.getElementById("container").innerHTML);
+                }
     </script>
 </body>
 
