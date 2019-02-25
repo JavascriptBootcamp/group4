@@ -3,11 +3,35 @@
 }
 
 body {
-    /* background: lightslategray; */
     background: lightgray;
+    /* background: lightgray; */
+}
+
+.bluer_effect {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
+header {
+    background: lightslategray; 
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#gallery {
+    width: 50%;
+    flex-wrap: wrap;
+    display: flex;
+    position: absolute;
+    top: 10%;
+    left: 30%;  
 }
 
 .img_container {
+    margin: 10px;
     height: 200px;
     width: 200px;
 }
