@@ -50,7 +50,11 @@ img{
 #thumbnails-carousle img{
     width: 17%;
     cursor: pointer;
+    position: relative;
 }
 #thumbnails-carousle{
     text-align: center;
+    height:150px;
+    overflow: hidden;
+    position: relative;
 }

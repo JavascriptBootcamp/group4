@@ -27,6 +27,7 @@ function initialThumbnails() {
     var arrowLeftDiv = document.createElement("div");
     var arrowRightDiv = document.createElement("div");
     arrowLeftDiv.className = "arrow arrow-left";
+    arrowLeftDiv.onmouseover = scrollLeft;
     arrowRightDiv.className = "arrow arrow-right";
     thumbnailsCarousle.id = "thumbnails-carousle";
     thumbnails.appendChild(arrowLeftDiv);
@@ -34,7 +35,7 @@ function initialThumbnails() {
         if (obj.hasOwnProperty(key)) {
             var img = document.createElement("img");
             img.src = obj[key].src;
-            img.setAttribute("imgnumber" , key);
+            img.setAttribute("imgnumber", key);
             img.onclick = function (e) {
                 var ins = obj[key].name;
                 obj[ins].setimage(e);
@@ -45,27 +46,28 @@ function initialThumbnails() {
     thumbnails.appendChild(thumbnailsCarousle);
     thumbnails.appendChild(arrowRightDiv);
 }
-function setNextImg(e){
+function scrollLeft(e) {
+  
+}
+function setNextImg(e) {
     var Img = document.getElementById("big-picture-img");
     var numberImg = Img.getAttribute("imgnumber");
     var newImg = "tm" + (parseInt(numberImg.substring(2)) - 1);
-    if(parseInt(numberImg.substring(2)) === 1)
-    {
+    if (parseInt(numberImg.substring(2)) === 1) {
         newImg = "tm10";
     }
     Img.src = obj[newImg].src;
-    Img.setAttribute("imgnumber",newImg);
+    Img.setAttribute("imgnumber", newImg);
 }
-function setPrevImg(e){
+function setPrevImg(e) {
     var Img = document.getElementById("big-picture-img");
     var numberImg = Img.getAttribute("imgnumber");
     var newImg = "tm" + (parseInt(numberImg.substring(2)) + 1);
-    if(parseInt(numberImg.substring(2)) === 10)
-    {
+    if (parseInt(numberImg.substring(2)) === 10) {
         newImg = "tm1";
     }
     Img.src = obj[newImg].src;
-    Img.setAttribute("imgnumber",newImg);
+    Img.setAttribute("imgnumber", newImg);
 }
 function Thumbnails(name, src) {
     this.name = name;
@@ -75,7 +77,7 @@ Thumbnails.prototype.setimage = function (e) {
     var pic = document.getElementById("big-picture-img");
     var newImg = e.target.attributes[1].nodeValue;
     pic.src = e.target.src;
-    pic.setAttribute("imgnumber",newImg);
+    pic.setAttribute("imgnumber", newImg);
 }
 
 
