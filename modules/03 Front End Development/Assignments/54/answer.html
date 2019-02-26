@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        
+        .buttons{width:50px;height:50px;margin:5px;}
     </style>
 </head>
 <body>
@@ -29,11 +29,14 @@
         <button id="strtBtn" onclick="startGame()">Start Game</button>
     </div>
 
+    <div id="turn_id"></div>
+    <div id="winner_message"></div>
+
     <script>
         var combinations = [['12','36','48'],['02','47'],['10','58','46'],['06','45'],['08','26','35'],['28','43'],['30','42','78'],['41','68'],['52','76','40']];
-        var currentSymbol = '';
         var symbolPlayer1 = document.getElementById("player1TI").textContent;
         var symbolPlayer2 = document.getElementById("player2TI").textContent;
+        currentSymbol = symbolPlayer1;
         var p1SelectedIndexes = '';
         var p2SelectedIndexes = '';
         drawControlls();
@@ -50,11 +53,12 @@
                 for(var j=0;j<3;j++){
                     //var tdDiv = document.createElement("div");
                     var button = document.createElement("button");
-                    button.style.width = "50px";
-                    button.style.height = "50px";
+                    // button.style.width = "50px";
+                    // button.style.height = "50px";
+                    // button.style.margin = "5px";
                     button.id = "button" + buttonIndex++;
                     button.disabled = true;
-                    button.style.margin = "5px";
+                    button.className = "buttons";
                     trDiv.appendChild(button);
                     //trDiv.appendChild(tdDiv);
                 }
@@ -74,13 +78,14 @@
             startGameBtn.disabled = !( symbolPlayer1 !== '' && symbolPlayer2 !== '' && symbolPlayer1 !== symbolPlayer2);
         }
         function startGame(){
-            showHiddenElements();
+            var divCurrentTurn = document.getElementById("turn_id");
             currentSymbol = symbolPlayer1;
-            divCurrentTurn = document.createElement("div");
-            divCurrentTurn.id = "turnID";
+
             divCurrentTurn.innerText = "Turn: " + currentSymbol;
             document.body.appendChild(divCurrentTurn);
             setOnClickButtons();
+            p1SelectedIndexes = '';
+            p2SelectedIndexes = '';
         }
         function setOnClickButtons(){
             var buttonIndex = 0;
@@ -88,6 +93,7 @@
                 var buttonId = "button" + buttonIndex;
                 var button = document.getElementById(buttonId);
                 button.onclick = onButtonClick.bind(button,buttonIndex++);
+                button.innerText = '';
                 button.disabled = false;
             }
         }
@@ -109,8 +115,8 @@
                 disabledAllButtons();
                 return;
             }
-            currentSymbol = currentSymbol == symbolPlayer1 ? symbolPlayer2: symbolPlayer1;
-            var divCurrentTurn = document.getElementById("turnID");
+            currentSymbol = currentSymbol === symbolPlayer1 ? symbolPlayer2: symbolPlayer1;
+            var divCurrentTurn = document.getElementById("turn_id");
             divCurrentTurn.innerText = "Turn: " + currentSymbol;
         }
         function checkForWin(index){
@@ -127,9 +133,10 @@
         }
         function endGame(winner){
             var winnerMessage = "The Winner is: " + winner + "!!!";
-            var divWinner = document.createElement("div");
+            var divWinner = document.getElementById("winner_message");
             divWinner.innerText = winnerMessage;
-            document.body.appendChild(divWinner);
+            var divTurn = document.getElementById("turn_id");
+            divTurn.appendChild(divWinner);
         }
         function disabledAllButtons(){
             var buttonIndex = 0;
@@ -144,11 +151,15 @@
         }
 
         function setDark(){
-
+            var body = document.getElementsByTagName("body")[0];
+            body.style.color = "#FFF";
+            body.style.backgroundColor = "#37383a";
         }
 
         function setLight(){
-
+            var body = document.getElementsByTagName("body")[0];
+            body.style.color = "#000";
+            body.style.backgroundColor = "#FFF";
         }
 
         function hideElementsExceptStart(){
@@ -159,13 +170,6 @@
             board.hidden = true;
         }
 
-        function showHiddenElements(){
-            var pre = document.getElementById("pre");
-            var board = document.getElementById("board");
-
-            pre.hidden = false;
-            board.hidden = false;
-        }
     </script>
 </body>
 </html>
