@@ -46,12 +46,56 @@ button{
 body{
     background-color: #797979
 }
+
+.bg {
+  visibility: hidden;  
+  /* The image used */
+  opacity: 0.25;
+  z-index: 100;
+  background-color:white;
+  /*background-image: url("photographer.jpg");*/
+  position: absolute;
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#modal{
+    visibility: hidden;  
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    z-index: 150;
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    background-color: white;
+}
+
+.modalImg{
+    position: relative;
+    width: 300px;
+    height: 200px;
+    left: 50%;
+    margin-left: -150px;
+    top: 50%;
+    margin-top: -100px;
+}
 </style>
 
 
 </head>
 <body>
-    
+<div class="bg"></div>
+<div id="modal"></div>
 <div id="container"></div>
 
 <script>
@@ -66,11 +110,6 @@ var data = [
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm'
 ]
-/*function Img(src,id){
-    this.src = src;
-    this.counter = 0;
-    this.id = id;
-}*/
 
 Image.prototype.counter = 0;
 Image.prototype.like = function(){
@@ -84,47 +123,62 @@ for(var j=i;j<i+3;j++){
 var div_box = document.createElement("div");
 div_box.className = "div_box";
 div_box.id = "div_box" + i + j;
-//var img = new Img(data[j],"img" + i + j);
-//var imgEl = document.createElement("img");
+
 img =new Image()
 img.src = data[j];
 img.id = "img" + i + j;
 var like = document.createElement("button");
 like.innerText = "Like";
 like.id = "Like" + i + j;
-// like.onclick = img.like.bind(img);
+
 var count = document.createElement("label");
 count.id = "label" + i + j;
-count.innerText = 0;
+if(localStorage.getItem(i+j)){
+    count.innerText = localStorage.getItem(i + j);
+}
+else{
+    count.innerText = 0; 
+}
 like.onclick = function() {
-
     var id = this.id.slice(this.id.length-2,this.id.length);
     var imgClicked = document.getElementById("img" + id);
     imgClicked.like();
     var count = document.getElementById("label" + id);
     count.innerText =  imgClicked.counter;
+    localStorage.setItem(id,imgClicked.counter);
 }
-
 div_box.appendChild(img);
 div_box.appendChild(like);
 div_box.appendChild(count);
 div_row.appendChild(div_box);
-
 div_box.onmouseover = function(){
 var div_box_Overed = document.getElementById(this.id);
 div_box_Overed.style.boxShadow = "5px 5px 10px black";
 }
-
 div_box.onmouseout = function(){
 var div_box_Overed = document.getElementById(this.id);
 div_box_Overed.style.boxShadow = "";
 }
 
+var divBlur = document.querySelector(".bg");
+var modal = document.getElementById("modal");
 div_box.onclick = function(){
+    modal.innerHTML = "";
     var id = this.id.slice(this.id.length-2,this.id.length);
     var imgClicked = document.getElementById("img" + id);
-    
+    divBlur.style.visibility = "visible";
+    var img =document.createElement("img");
+    img.className = "modalImg";
+    img.src = imgClicked.src;
+    modal.appendChild(img);
+    modal.style.visibility = "visible";
 }
+
+divBlur.onclick = function(){
+    this.style.visibility = "hidden";
+    modal.style.visibility = "hidden";
+}
+
 
 }
 var container = document.getElementById("container");
