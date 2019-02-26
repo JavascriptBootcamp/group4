@@ -75,7 +75,6 @@ function Thumbnails(name, src, numberoflikes) {
 }
 Thumbnails.prototype.like = function (e) {
     e.target.nextSibling.innerText = ++this.numberoflikes;
-    saveNumberOfLikes();
 }
 
 function saveNumberOfLikes() {
@@ -89,5 +88,5 @@ function saveNumberOfLikes() {
 }
 
 window.onbeforeunload = function (event) {
-    //saveNumberOfLikes();
+    saveNumberOfLikes();
 }
