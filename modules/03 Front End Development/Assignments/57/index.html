@@ -7,23 +7,25 @@
     <title>Document</title>
 
 <style>
-
 body{
     display: flex
 }
-
 .div_box{
     display: inline-block;
+    width: 220px;
+    margin-left: 200px;
+    height: 180px;
 }
 label{
     background-color: lightblue;
     box-sizing: border-box;
     position: relative;
-    right: 215px;
-    top: -7px;
+    right: -4px;
+    top: -35px;
 }
 img{
     height: 150px;
+    width: 220px;
     margin-bottom: 30px;
 }
 button{
@@ -31,8 +33,8 @@ button{
     box-sizing: border-box;
     width: 200px;
     height: 30px;
-    right: 226px;
-    top: -10px;
+    right: 1px;
+    top: -34px;
 }
 #container{
     position: relative;
@@ -40,9 +42,10 @@ button{
     top: 50%;
     left: 50%;
     margin-left: -700px;
-
 }
-
+body{
+    background-color: #797979
+}
 </style>
 
 
@@ -52,9 +55,7 @@ button{
 <div id="container"></div>
 
 <script>
-
 var data = [
-
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
@@ -64,51 +65,71 @@ var data = [
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm'
-
-
 ]
-
-function Img(src){
+/*function Img(src,id){
     this.src = src;
     this.counter = 0;
-}
+    this.id = id;
+}*/
 
-Img.prototype.like = function(){
+Image.prototype.counter = 0;
+Image.prototype.like = function(){
      this.counter++ ;
      console.log(this.counter);
 }
-
 for(var i=0;i<data.length;i=i+3){
 var div_row = document.createElement("div");
 div_row.className = "row";
 for(var j=i;j<i+3;j++){
 var div_box = document.createElement("div");
 div_box.className = "div_box";
-var img = new Img(data[j]);
-var imgEl = document.createElement("img");
-imgEl.src = img.src;
+div_box.id = "div_box" + i + j;
+//var img = new Img(data[j],"img" + i + j);
+//var imgEl = document.createElement("img");
+img =new Image()
+img.src = data[j];
+img.id = "img" + i + j;
 var like = document.createElement("button");
-like.innerText = "Like"
+like.innerText = "Like";
+like.id = "Like" + i + j;
 // like.onclick = img.like.bind(img);
 var count = document.createElement("label");
-count.innerText = img.counter;
+count.id = "label" + i + j;
+count.innerText = 0;
 like.onclick = function() {
-    img.like();
-    var count = document.createElement("label");
-    count.innerText = img.counter;
+
+    var id = this.id.slice(this.id.length-2,this.id.length);
+    var imgClicked = document.getElementById("img" + id);
+    imgClicked.like();
+    var count = document.getElementById("label" + id);
+    count.innerText =  imgClicked.counter;
 }
-div_box.appendChild(imgEl);
+
+div_box.appendChild(img);
 div_box.appendChild(like);
 div_box.appendChild(count);
 div_row.appendChild(div_box);
+
+div_box.onmouseover = function(){
+var div_box_Overed = document.getElementById(this.id);
+div_box_Overed.style.boxShadow = "5px 5px 10px black";
+}
+
+div_box.onmouseout = function(){
+var div_box_Overed = document.getElementById(this.id);
+div_box_Overed.style.boxShadow = "";
+}
+
+div_box.onclick = function(){
+    var id = this.id.slice(this.id.length-2,this.id.length);
+    var imgClicked = document.getElementById("img" + id);
+    
+}
+
 }
 var container = document.getElementById("container");
 container.appendChild(div_row);
-
 }
-
-
-
 </script>
 
 </body>
