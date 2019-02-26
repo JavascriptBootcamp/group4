@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="names">
+        <h1 id="gamehead"> Tic-Tac-Toe Game</h1><br>
+    <div id="playersname">
+        <label for="firstPlayer">First player Name (X):</label>
+        <input type="text" id="firstPlayer" placeholder=" enter first Player name"><br><br>
+
+        <label for="secondPlayer">Second player Name  (O):</label>
+        <input type="text" id="secondPlayer" placeholder=" enter second Player name">
+
+        <input type="submit" value="startGame" name="submit" onclick="startGame()"><br>
+    </div>
+        <br>
+        </div>
+    <br><br>
+    <label for="turn">turn of</label>
+    <div id="turn"></div><br><br><br>
+
+</div>
+<br>
+<div id="board">
+    <div id="row1">
+        <button id="cell1" onclick="cellSelect(1)"></button>
+        <button id="cell2" onclick="cellSelect(2)"></button>
+        <button id="cell3" onclick="cellSelect(3)"></button>
+    </div>
+    <div id="row2">
+        <button id="cell4" onclick="cellSelect(4)"></button>
+        <button id="cell5" onclick="cellSelect(5)"></button>
+        <button id="cell6" onclick="cellSelect(6)"></button>
+    </div>
+    <div id="row3">
+        <button id="cell7" onclick="cellSelect(7)"></button>
+        <button id="cell8" onclick="cellSelect(8)"></button>
+        <button id="cell9" onclick="cellSelect(9)"></button>
+    </div>
+</div>
+<div id="footer"></div>
+
+<script>
+    
+    var needReset=false;
+    function startGame(){
+        var board = [,,,,,,,,,]
+        
+        //console.log(board.length)
+        player1N=document.getElementById("firstPlayer").value;
+        player2N=document.getElementById("secondPlayer").value;
+        console.log(player1N)
+        turn = Math.floor(Math.random() * 2)+1
+        if(turn===0){
+        gTurn = document.getElementById("turn");
+        var message = document.createElement("h2");
+        message.innerText = player1N ;
+        gTurn.appendChild(message);
+        }else{
+            gTurn = document.getElementById("turn");
+            var message = document.createElement("h2");
+            message.innerText = player2N ;
+            gTurn.appendChild(message);
+        }
+        document.getElementById("names").style.display = "none";
+        document.getElementsByName("submit").disable = true;
+    }
+    function cellSelect(sign){
+        console.log(sign)
+        if (turn === 1) 
+        {
+            board[sign] = 'x';
+            document.getElementById("cell"+sign).innerHTML = "X";
+            document.getElementById("cell"+sign).value = "x";
+            document.getElementById("cell"+sign).setAttribute('class','circbtn1');
+            document.getElementById("cell"+sign).disable = true;
+            gTurn=document.getElementById("turn");
+            gTurn.innerText = player2N;
+            turn = 2;
+            iswin = checkWin();
+        }
+        else if (turn === 2) {
+            board[sign]='o';
+            document.getElementById("cell"+sign).innerHTML = "O";
+            document.getElementById("cell"+sign).value = "o";
+            document.getElementById("cell"+sign).setAttribute('class','circbtn2');
+            document.getElementById("cell"+sign).disable = true;
+            gTurn=document.getElementById("turn");
+            gTurn.innerText =player1N ;
+            turn = 1;
+            iswin = checkWin();
+        }
+        if (iswin === 1) {
+            document.getElementById("footer").innerText = document.getElementById("firstPlayer").value + " WINS!!"
+            needReset=true;
+        }
+        else if (iswin === true)
+            {document.getElementById("footer").innerText = document.getElementById("secondPlayer").value + " WINS!!"
+          needReset=true;}
+          if(needReset)
+          {document.getElementById("board").style.display="none";}
+    }
+    function checkWin(){
+        if(document.getElementById("cell1").value==='x'&&document.getElementById("cell2").value==='x'&&document.getElementById("cell3").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell4").value==='x'&&document.getElementById("cell5").value==='x'&&document.getElementById("cell6").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell7").value==='x'&&document.getElementById("cell8").value==='x'&&document.getElementById("cell9").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell1").value==='x'&&document.getElementById("cell4").value==='x'&&document.getElementById("cell7").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell2").value==='x'&&document.getElementById("cell5").value==='x'&&document.getElementById("cell8").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell3").value==='x'&&document.getElementById("cell6").value==='x'&&document.getElementById("cell9").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell1").value==='x'&&document.getElementById("cell5").value==='x'&&document.getElementById("cell9").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell3").value==='x'&&document.getElementById("cell5").value==='x'&&document.getElementById("cell7").value==='x'){
+            return true
+        }
+        if(document.getElementById("cell1").value==='o'&&document.getElementById("cell2").value==='o'&&document.getElementById("cell3").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell4").value==='o'&&document.getElementById("cell5").value==='o'&&document.getElementById("cell6").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell7").value==='o'&&document.getElementById("cell8").value==='o'&&document.getElementById("cell9").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell1").value==='o'&&document.getElementById("cell4").value==='o'&&document.getElementById("cell7").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell2").value==='o'&&document.getElementById("cell5").value==='o'&&document.getElementById("cell8").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell3").value==='o'&&document.getElementById("cell6").value==='o'&&document.getElementById("cell9").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell1").value==='o'&&document.getElementById("cell5").value==='o'&&document.getElementById("cell9").value==='o'){
+            return true
+        }
+        if(document.getElementById("cell3").value==='o'&&document.getElementById("cell5").value==='o'&&document.getElementById("cell7").value==='o'){
+            return true
+        }
+        
+    }
+</script>
+</body>
+</html>
