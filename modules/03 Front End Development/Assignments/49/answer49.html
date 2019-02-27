@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My Solution For Module 01 - Question 20</title>
+        <link rel="stylesheet" href="49.css">
+        <style>
+        pre {
+    font-size: 16px;
+}
+
+.var {
+    color: darkred;
+}
+
+.var_green{
+    color: darkgreen;
+}
+
+.equal{
+    color: darkblue;
+}
+
+.comma {
+    color: darkgray;
+}
+</style>
+    </head>
+    <body>
+        <h1>Code:</h1>
+        <pre> 
+            <span class="var">var</span> <span class="var_green">arr</span> <span class="equal">=</span> [1, 2, 5, 7];
+
+            function myFilter(<span class="var_green">arr</span>,callback)<span class="comma">{</span>
+                <span class="var">var</span> <span class="var_green"></span>evenArr<span class="equal">=</span>[];
+                for (<span class="var">var</span> <span class="var_green">i</span> <span class="equal">=</span> 0 ; <span class="var_green">i</span> < <span class="var_green">arr.length</span>; <span class="var_green">i</span>++)<span class="comma">{</span>
+                    if (callback(<span class="var_green">arr[i]</span>))
+                        evenArr.push(<span class="var_green">arr[i]</span>);
+
+                    <span class="comma">}</span>
+                return <span class="var_green">evenArr</span>;
+            <span class="comma">}</span>
+            <span class="var">var</span> <span class="var_green">filtered</span> <span class="equal">=</span> myFilter(<span class="var_green">arr</span>, function(item)<span class="comma">{</span>
+                return item % 2 <span class="equal">===</span> 0;
+            <span class="comma">}</span>);
+            console.log(<span class="var_green">filtered</span>);
+        </pre>
+    </body>
+</html> 
