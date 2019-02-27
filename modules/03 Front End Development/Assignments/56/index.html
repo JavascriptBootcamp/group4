@@ -9,7 +9,6 @@
     <title>Document</title>
 
     <style>
-
         .mainImgDiv {
             position: relative;
             width: 700px;
@@ -109,7 +108,7 @@
             img.className = "img slideImg";
 
             img.src = data[i];
-            img.onclick = function(){
+            img.onclick = function () {
                 var mainImg = document.querySelector(".mainImg");
                 mainImg.src = this.src;
                 mainImg.id = "img" + i;
@@ -152,36 +151,28 @@
 
         function slideRight() {
 
-            slideRightIndex++;
-            slideLeftIndex++;
-            if (slideRightIndex < 10) {
+            if (slideRightIndex < 9) {
+                slideRightIndex++;
+                slideLeftIndex++;
                 var slideImages = document.querySelectorAll(".slideImg");
                 var j = 0;
                 for (var i = slideLeftIndex; i <= slideRightIndex; i++) {
                     slideImages[j].src = data[i];
                     j++;
                 }
-            }
-            else {
-                slideRightIndex--;
-                slideLeftIndex--;
             }
         }
         function slideLeft() {
 
-            slideRightIndex--;
-            slideLeftIndex--;
-            if (slideLeftIndex > -1) {
+            if (slideLeftIndex > 0) {
+                slideRightIndex--;
+                slideLeftIndex--;
                 var slideImages = document.querySelectorAll(".slideImg");
                 var j = 0;
                 for (var i = slideLeftIndex; i <= slideRightIndex; i++) {
                     slideImages[j].src = data[i];
                     j++;
                 }
-            }
-            else {
-                slideRightIndex++;
-                slideLeftIndex++;
             }
         }
 
