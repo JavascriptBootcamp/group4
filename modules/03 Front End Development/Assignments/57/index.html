@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<style>
+body{
+    display: flex
+}
+.div_box{
+    display: inline-block;
+    width: 220px;
+    margin-left: 200px;
+    height: 180px;
+}
+label{
+    background-color: lightblue;
+    box-sizing: border-box;
+    position: relative;
+    right: -4px;
+    top: -35px;
+}
+img{
+    height: 150px;
+    width: 220px;
+    margin-bottom: 30px;
+}
+button{
+    position: relative;
+    box-sizing: border-box;
+    width: 200px;
+    height: 30px;
+    right: 1px;
+    top: -34px;
+}
+#container{
+    position: relative;
+    width: 1400px;
+    top: 50%;
+    left: 50%;
+    margin-left: -700px;
+}
+body{
+    background-color: #797979
+}
+.bg {
+  visibility: hidden;  
+  /* The image used */
+  opacity: 0.25;
+  z-index: 100;
+  background-color:white;
+  /*background-image: url("photographer.jpg");*/
+  position: absolute;
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#modal{
+    visibility: hidden;  
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    z-index: 150;
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -100px;
+    background-color: white;
+}
+.modalImg{
+    position: relative;
+    width: 300px;
+    height: 200px;
+    left: 50%;
+    margin-left: -150px;
+    top: 50%;
+    margin-top: -100px;
+}
+</style>
+
+
+</head>
+<body>
+<div class="bg"></div>
+<div id="modal"></div>
+<div id="container"></div>
+
+<script>
+var data = [
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGTVf63Vm3XgOncMVSOy0-jSxdMT8KVJIc8WiWaevuWiPGe0Pm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqfYOpIsjIBpkAAR1HHsOx7gXn4tTNHca_c3N-qE-iePxJ-5pE',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtjprGwxPE5FVcY72h1MWxvVVSiW7RFHmJ6DZ9G1lf0YOr-vV',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw4d6DZJXuNq3L1UCbtay8IhciDTkHFk1szRFi9x4plRQ1JxZm',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCnujqDQMhwt0r1vpbGvRfKN2Ne13OK7eu1oIE31BIUR7k_peT',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6o9gQUhGxxKKuQBleye_ibGBuV-mo1duupUN8Zn3XC34h0Ugd7A',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4MSNr9P29sqLb80wUNPW6PoDiSqp0Dwth9e-JX3lgmeqbTLI9SQ',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf',
+'http://images.panda.org/assets/images/pages/welcome/orangutan_1600x1000_279157.jpg'
+]
+Image.prototype.counter;
+Image.prototype.like = function(){
+     this.counter++ ;
+     console.log(this.counter);
+}
+for(var i=0;i<data.length;i=i+3){
+var div_row = document.createElement("div");
+div_row.className = "row";
+for(var j=i;j<i+3;j++){
+var div_box = document.createElement("div");
+div_box.className = "div_box";
+img =new Image()
+img.src = data[j];
+img.id = "img" + i + j;
+var like = document.createElement("button");
+like.innerText = "Like";
+like.id = "Like" + i + j;
+var count = document.createElement("label");
+count.id = "label" + i + j;
+
+if(localStorage.getItem(i.toString() + j.toString())){
+    count.innerText = localStorage.getItem(i.toString() + j.toString());
+    img.counter = localStorage.getItem(i.toString() + j.toString());
+}
+else{
+    count.innerText = 0; 
+    img.counter = 0;
+}
+
+like.onclick = function() {
+    var id = this.id.slice(this.id.length-2,this.id.length);
+    var imgClicked = document.getElementById("img" + id);
+    imgClicked.like();
+    var count = document.getElementById("label" + id);
+    count.innerText =  imgClicked.counter;
+    localStorage.setItem(id,imgClicked.counter);
+}
+
+div_box.appendChild(img);
+div_box.appendChild(like);
+div_box.appendChild(count);
+div_row.appendChild(div_box);
+
+div_box.onmouseover = function(){
+this.style.boxShadow = "5px 5px 10px black";
+}
+
+div_box.onmouseout = function(){
+this.style.boxShadow = "";
+}
+var divBlur = document.querySelector(".bg");
+var modal = document.getElementById("modal");
+img.onclick = function(){
+    modal.innerHTML = "";
+    divBlur.style.visibility = "visible";
+    var img =document.createElement("img");
+    img.className = "modalImg";
+    img.src = this.src;
+    modal.appendChild(img);
+    modal.style.visibility = "visible";
+}
+divBlur.onclick = function(){
+    this.style.visibility = "hidden";
+    modal.style.visibility = "hidden";
+}
+}
+var container = document.getElementById("container");
+container.appendChild(div_row);
+}
+</script>
+
+</body>
+</html>
