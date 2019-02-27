@@ -11,7 +11,7 @@
     <style>
         
         td {
-            border: 1px solid black;
+            border: 5px solid black;
             border-radius: 50%;
             width: 100px;
             height: 100px;
@@ -22,7 +22,13 @@
         }
 
         img {
-            width: 50px
+            width: 50px;
+            height: 50px;
+            position: relative;
+            top: 10%;
+            left: 25%;
+            /* margin-top: -50px;
+            margin-left: -50px; */
         }
 
         table {
@@ -43,13 +49,13 @@
 
 <body onload="init()" id="body">
     <div>
-        <div id="player">
+        <div id="player"style="margin-bottom: 7px;">
             <label for="player1">Player 1</label>
             <input type="text" placeholder="Name" id="player1" />
             <label for="player2">Player 2</label>
             <input type="text" placeholder="Name" id="player2" />
         </div>
-        <div id="start">
+        <div id="start" style="margin-bottom: 7px;">
             <button onclick="startGame()">Start</button>
         </div>
         <div id="turn"></div>
@@ -58,8 +64,8 @@
     <div id="result"></div>
     <div id="newGame"></div>
     <div id="colors">
-        <button onclick="light()">light</button>
-        <button onclick="dark()">dark</button>
+        <button onclick="light()" style="background : #FAB496; color:#375A7D;">light</button>
+        <button onclick="dark()"style="background : #375A7D; color:#FAB496;">dark</button>
 
     </div>
     <script>
@@ -83,6 +89,20 @@
 
         function light() {
             document.getElementById("body").style.background  = "#FAB496";
+            for (t = 0; t < 9; t++) {
+               document.getElementsByTagName("td")[t].style.borderColor = "#375A7D";
+                }
+                document.getElementById("player").style.color  = "#6E5A7D";
+
+
+        }
+        function dark() {
+            document.getElementById("body").style.background  = "#375A7D";
+            for (t = 0; t < 9; t++) {
+               document.getElementsByTagName("td")[t].style.borderColor = "#FAB496";
+                }
+                document.getElementById("player").style.color  = "#F57382";
+
 
         }
         function init() {
