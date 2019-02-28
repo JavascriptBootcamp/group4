@@ -1,4 +1,4 @@
-<p>create a constructor named <code>Storage</code> which contains a parameter named <code>storageType</code>. The parameter can be assigned as "localStorage" or "sessionStorage".</p>
+<p>create a module (using <b>module pattern</b>) named <code>Storage</code> which contains a parameter named <code>storageType</code>. The parameter can be assigned as "localStorage" or "sessionStorage".</p>
 <p>add methods (via prototype assignment) to the constructor:
 <ol>
 <li>getItem</li>
