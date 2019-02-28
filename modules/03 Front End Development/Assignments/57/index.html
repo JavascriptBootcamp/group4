@@ -14,7 +14,9 @@
             margin-right: 30px;
             margin-top: 30px;
         }
-
+        img:hover {
+            box-shadow: 2px 2px 20px red;
+}
         button {
             width: 60px;
             border-radius: 15%;
@@ -71,42 +73,57 @@
 
 <body>
     <script>
+        var imagesArr = [];
+        let likeStorage =getLikesAmount();
+
         function Image(src, counter) {
-            var _src = src;
-            var _counter = counter;
-            this.getCounter = function () {
-                return _counter;
-            }
-            this.getSrc = function () {
-                return _src;
-            }
+            this._src = src;
+            this._counter = counter;
+            // this.getCounter = function () {
+            //     return _counter;
+            // }
+            // this.getSrc = function () {
+            //     return _src;
+            // }
         }
+        function Like(params) {
+            console.log(params)
+            imagesArr[params.target.id].like(params);
 
 
+        }
+        Image.prototype.like=function (params) {
+            params.target.nextElementSibling.innerText=this._counter++;
+            likeStorage[params.target.id]=this._counter;
+            saveLocal(likeStorage) 
+            console.log(getLikesAmount())
+        }
         for (var index = 0; index < 9; index++) {
             console.log(index);
-            var imagesArr = []
-            var image = new Image("images.jpg", 0);
+
+            var image = new Image("57.png", 0);
             imagesArr.push(image);
             var imageEl = document.createElement("img");
-            imageEl.src = "images.jpg";
+            imageEl.src = "57.png";
             document.getElementsByClassName("images")[index].appendChild(imageEl);
-            var buttonEl = document.createElement("button");
-            buttonEl.innerText = "LIKE";
-            buttonEl.onclick = "Like();"
+            var buttonLike = document.createElement("button");
+            buttonLike.innerText = "LIKE";
+            buttonLike.id = index;
+            buttonLike.onclick = Like;
             var label = document.createElement("label");
-            label.innerText = 0;
-            document.getElementsByClassName("images")[index].appendChild(buttonEl);
+            label.innerText = likeStorage[index] ? likeStorage[index] : 0;
+            document.getElementsByClassName("images")[index].appendChild(buttonLike);
             document.getElementsByClassName("images")[index].appendChild(label);
 
 
         }
-
-
-        function Like(params) {
-
-
+        function saveLocal(itemsArray) {
+            localStorage.setItem('likes',  JSON.stringify(itemsArray));
         }
+        function getLikesAmount() {
+            return localStorage.getItem('likes') ? JSON.parse(localStorage.getItem('likes')) : [];
+        }
+        // localStorage.clear();
     </script>
 </body>
 
