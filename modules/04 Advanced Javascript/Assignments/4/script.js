@@ -1,16 +1,16 @@
 var Storage = function (sorge_type) {
-    var storage = { "localStorage": {}, "sessionStorage": {} }
+    var storage = { "localStorage": localStorage, "sessionStorage": sessionStorage }
     function setItem (key, value){
-        storage[sorge_type][key] = value
+        return storage[sorge_type]
     }
     function getItem (key){
-        return storage[sorge_type][key]
+        return storage[sorge_type]
     }
     function removeItem (key){
-        delete storage[sorge_type][key]
+        return storage[sorge_type]
     }
     function clear (){
-        storage[sorge_type] = {}
+        return storage[sorge_type]
     }
     return {setItem: setItem,
             getItem: getItem,
