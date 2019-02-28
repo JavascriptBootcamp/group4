@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Storage(_storageType, _item) {
+
+            var storageType = null;
+
+            if (_storageType === "localStorage") {
+                storageType = window.localStorage;
+            }
+            else if (_storageType === "sessionStorage") {
+                storageType = window.sessionStorage;
+            }
+
+            function get(key) {
+
+               return storageType.getItem(key)
+            }
+            function set(key,item) {
+
+                storageType.setItem(key, item)
+            }
+            function remove(item) {
+
+                storageType.removeItem(item)
+            }
+            function clear() {
+
+                storageType.clear()
+            }
+
+            return {
+                getItem: get,
+                setItem: set,
+                removeItem: remove,
+                clear: clear
+            }
+
+        }
+
+
+        var storage_local = new Storage("localStorage");
+        storage_local.setItem("item","ron");
+        var item_local = storage_local.getItem("item");
+        console.log(item_local)
+        storage_local.clear()
+        storage_local.removeItem("item");
+        var storage_session = new Storage("sessionStorage")
+        storage_session.setItem("item","ron");
+        var item_session = storage_session.getItem("item");
+        console.log(item_session)
+        storage_session.clear()
+        storage_session.removeItem("item");
+    </script>
+
+</body>
+
+</html>
