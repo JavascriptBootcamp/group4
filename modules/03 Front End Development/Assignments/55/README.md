@@ -4,6 +4,9 @@
         put the cards in the center of the screen
     </li>
     <li>
+        use <code>div</code>s instead of table in order to display the cards
+    </li>
+    <li>
         make the cards look like real ones (for example: add a border-radius and set a <a href="https://depositphotos.com/51298937/stock-illustration-poker-card-pattern.html" target="_blank">pattern</a> as their background)
     </li>
     <li>
