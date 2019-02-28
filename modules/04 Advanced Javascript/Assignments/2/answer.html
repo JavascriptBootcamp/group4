@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+    var Local_Or_Session = function (loc_or_sess) {
+        
+        var my_loc_or_sess = loc_or_sess;
+
+        function getItem (val) {
+            my_loc_or_sess.getItem(val);
+        }
+        function setItem (key,val) {
+            my_loc_or_sess.setItem(key,val);
+        }
+        
+        function removeItem (key) {
+            my_loc_or_sess.removeItem(key);
+        }
+        function clear () {
+
+        }
+
+        return {
+            getItem : getItem,
+            setItem : setItem,
+            removeItem : removeItem,
+            clear : clear
+        }
+
+        
+
+
+
+    }
+    
+    </script>
+
+
+</body>
+</html>
