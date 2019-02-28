@@ -1,0 +1,62 @@
+html{
+    overflow: auto;
+}
+body {
+    background: lightgray;
+}
+
+#picHolder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    width: 35%;
+    height: 85%;
+}
+#likeHolder {
+    display: flex;
+    display: inline-block;
+}
+
+label {
+    background: black;
+    color: white;
+    padding: 8px 0px 10px 1px;
+    text-align: center;
+    width: 54px;
+    font-size: 40px; 
+    border-radius: 5px;
+}
+label:hover{
+    box-shadow: 0 8px 16px 0 rgba(87, 11, 228, 0.315), 0 15px 30px 0 rgba(85, 6, 6, 0.19);
+}
+
+button {
+    background: gray;
+    /* margin-left: 18px; */
+    padding-left: 75px;
+    padding-right: 80px;
+    padding-bottom: 6px;
+    padding-top: 12px;
+    font-size: 40px;
+    color: white;
+    border-radius: 9px;
+    border: none;
+}
+
+
+.count,
+.likeBtn {
+    float: left;
+}
+
+.img {
+    display: flex;
+    width: 300px;
+    height: 300px;
+}
+.pic{
+    margin: 0px 0px 100px 80px;
+}
