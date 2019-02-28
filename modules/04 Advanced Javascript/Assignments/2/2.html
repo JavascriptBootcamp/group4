@@ -12,7 +12,11 @@
 
     <script>
         function Storage(storageType) {
-            var DB =  window[storageType];
+            // var DB =  window[storageType];
+            // var DB = storageType === "localStorage" ? localStorage : sessionStorage;
+
+            var myDBs = { "localStorage" : localStorage, "sessionStorage" : sessionStorage};
+            var DB = myDBs[storageType];
 
             function getItem(key) {
                 return DB.getItem(key);
