@@ -9,7 +9,7 @@ var tm8 = new Thumbnails("tm8", "https://encrypted-tbn0.gstatic.com/images?q=tbn
 var tm9 = new Thumbnails("tm9", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQN-mcmQVIi2HLnAZhvJ-JCYZ1Yf7EtNlA1wVBf8gAYkh6T2r");
 var tm10 = new Thumbnails("tm10", "https://www.barraquer.com/wp-content/uploads/2017/07/el-ojo-del-surfista-p-08-2017.jpg");
 var obj = { tm1, tm2, tm3, tm4, tm5, tm6, tm7, tm8, tm9, tm10 }
-
+var intervalName;
 
 var data = getData();
 if (data) {
@@ -23,11 +23,21 @@ else {
 
 function initialThumbnails() {
     var thumbnails = document.getElementById("thumbnails");
+    var ol1 = document.createElement("div");
+    var ol2 = document.createElement("div");
+    var thumbnails = document.getElementById("thumbnails");
     var thumbnailsCarousle = document.createElement("div");
     var arrowLeftDiv = document.createElement("div");
     var arrowRightDiv = document.createElement("div");
+    ol1.id = "overlayer1";
+    ol2.id = "overlayer2";
+    thumbnails.appendChild(ol1);
+    thumbnails.appendChild(ol2);
     arrowLeftDiv.className = "arrow arrow-left";
-    arrowLeftDiv.onmouseover = scrollLeft;
+    arrowLeftDiv.onmouseover = scrollOver;
+    arrowLeftDiv.onmouseleave = scrollLeave;
+    arrowRightDiv.onmouseover = scrollOver;
+    arrowRightDiv.onmouseleave = scrollLeave;
     arrowRightDiv.className = "arrow arrow-right";
     thumbnailsCarousle.id = "thumbnails-carousle";
     thumbnails.appendChild(arrowLeftDiv);
@@ -46,8 +56,37 @@ function initialThumbnails() {
     thumbnails.appendChild(thumbnailsCarousle);
     thumbnails.appendChild(arrowRightDiv);
 }
-function scrollLeft(e) {
-  
+function scrollLeave(e) {
+    clearInterval(intervalName);
+}
+function scrollOver(e) {
+    var arrow = e.target.className;
+    var thumbnailsCarousle = document.getElementById("thumbnails-carousle");
+    var pos = thumbnailsCarousle.style.left;
+    var computedStyle = window.getComputedStyle(thumbnailsCarousle, null);
+    pos = computedStyle.left;
+    pos = pos.split("px");
+    pos = pos[0];
+    intervalName = setInterval(frame, 5);
+    function frame() {
+        if (arrow === "arrow arrow-left") {
+            if (pos <= -200) {
+                clearInterval(intervalName);
+            } else {
+                pos--;
+                thumbnailsCarousle.style.left = pos + 'px';
+            }
+        }
+        else {
+            if (pos >= 500) {
+                clearInterval(intervalName);
+            } else {
+                pos++;
+                thumbnailsCarousle.style.left = pos + 'px';
+            }
+        }
+
+    }
 }
 function setNextImg(e) {
     var Img = document.getElementById("big-picture-img");
