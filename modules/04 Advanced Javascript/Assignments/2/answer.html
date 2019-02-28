@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <script>
-    
-    var Local_Or_Session = function (loc_or_sess) {
-        
-        var my_loc_or_sess = loc_or_sess;
+        var Storage = function (loc_or_sess) {
 
-        function getItem (val) {
-            my_loc_or_sess.getItem(val);
+            debugger;
+            var my_loc_or_sess = loc_or_sess;
+
+
+            function getItem(key) {
+                return window[my_loc_or_sess].getItem(key);
+            }
+            function setItem(key, val) {
+                return window[my_loc_or_sess].setItem(key, val);
+            }
+
+            function removeItem(key) {
+                return window[my_loc_or_sess].removeItem(key);
+            }
+            function clear() {
+                return window[my_loc_or_sess].clear();
+            }
+
+            return {
+                getItem: getItem,
+                setItem: setItem,
+                removeItem: removeItem,
+                clear: clear
+            }
         }
-        function setItem (key,val) {
-            my_loc_or_sess.setItem(key,val);
-        }
-        
-        function removeItem (key) {
-            my_loc_or_sess.removeItem(key);
-        }
-        function clear () {
 
-        }
+        var lStorage = new Storage("localStorage");
+        lStorage.setItem("someKey1", "someValue1");
+        console.log(lStorage.getItem("someKey1")); // should print "someValue1"
 
-        return {
-            getItem : getItem,
-            setItem : setItem,
-            removeItem : removeItem,
-            clear : clear
-        }
-
-        
-
-
-
-    }
-    
+        var sStorage = new Storage("sessionStorage");
+        sStorage.setItem("someKey2", "someValue2");
+        console.log(sStorage.getItem("someKey2")); // should print "someValue2"
     </script>
 
 
 </body>
+
 </html>
