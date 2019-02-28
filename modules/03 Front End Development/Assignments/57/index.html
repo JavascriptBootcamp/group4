@@ -14,11 +14,14 @@
             margin-right: 30px;
             margin-top: 30px;
         }
+
         img:hover {
             box-shadow: 2px 2px 20px red;
-}
+        }
+
         button {
             width: 60px;
+            /* height: auto; */
             border-radius: 15%;
             display: inline-block;
             margin-bottom: 40px;
@@ -35,46 +38,47 @@
         }
     </style>
 </head>
+<div id="container">
+    <div style="display:flex;" class="wrapper">
+        <div class="images">
+        </div>
+        <div class="images">
 
-<div style="display:flex;" class="wrapper">
-    <div class="images">
-    </div>
-    <div class="images">
+        </div>
+        <div class="images">
 
-    </div>
-    <div class="images">
-
-    </div>
-
-</div>
-<div style="display:flex;" class="wrapper">
-    <div class="images">
-    </div>
-    <div class="images">
+        </div>
 
     </div>
-    <div class="images">
+    <div style="display:flex;" class="wrapper">
+        <div class="images">
+        </div>
+        <div class="images">
+
+        </div>
+        <div class="images">
+
+        </div>
 
     </div>
+    <div style="display:flex;" class="wrapper">
+        <div class="images">
+        </div>
+        <div class="images">
 
-</div>
-<div style="display:flex;" class="wrapper">
-    <div class="images">
+        </div>
+        <div class="images">
+
+        </div>
+
+
     </div>
-    <div class="images">
-
-    </div>
-    <div class="images">
-
-    </div>
-
-
 </div>
 
 <body>
     <script>
         var imagesArr = [];
-        let likeStorage =getLikesAmount();
+        let likeStorage = getLikesAmount();
 
         function Image(src, counter) {
             this._src = src;
@@ -92,10 +96,10 @@
 
 
         }
-        Image.prototype.like=function (params) {
-            params.target.nextElementSibling.innerText=this._counter++;
-            likeStorage[params.target.id]=this._counter;
-            saveLocal(likeStorage) 
+        Image.prototype.like = function (params) {
+            params.target.nextElementSibling.innerText = this._counter++;
+            likeStorage[params.target.id] = this._counter;
+            saveLocal(likeStorage)
             console.log(getLikesAmount())
         }
         for (var index = 0; index < 9; index++) {
@@ -105,6 +109,7 @@
             imagesArr.push(image);
             var imageEl = document.createElement("img");
             imageEl.src = "57.png";
+            imageEl.onclick = clickImg;
             document.getElementsByClassName("images")[index].appendChild(imageEl);
             var buttonLike = document.createElement("button");
             buttonLike.innerText = "LIKE";
@@ -117,8 +122,13 @@
 
 
         }
+        function clickImg(params) {
+            console.log("h")
+            document.getElementById("container").style.filter="blur(5px)";
+
+        }
         function saveLocal(itemsArray) {
-            localStorage.setItem('likes',  JSON.stringify(itemsArray));
+            localStorage.setItem('likes', JSON.stringify(itemsArray));
         }
         function getLikesAmount() {
             return localStorage.getItem('likes') ? JSON.parse(localStorage.getItem('likes')) : [];
