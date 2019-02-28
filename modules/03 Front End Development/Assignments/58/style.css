@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+}
+iframe{
+    max-width: 100%;
+}
+img{
+    width: 50%;
+    height: auto;
+}
+#itube{
+    width:90%;
+    height:auto;
+    margin:auto;
+    background-color: #d9534f;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#player{
+    max-width: 800px;
+}
+#player , #videos{
+    margin: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    overflow: hidden;
+}
+.title , .artist , .description{
+    color:#f9f9f9;
+    margin:0px 0px;
+    text-align: center;
+}
+#videos{
+    border:1px solid #f9f9f9;
+    max-width:800px;
+    background-color: #f9f9f9;
+}
+#videos > .title{
+    background-color:#5bc0de;
+    border-top-left-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 15px;
+}
+.video{
+    display:flex;
+    justify-content: space-around;
+    width:100%;
+    height: 150px;
+    margin:5px 5px;
+}
+.video-details{
+    width: 50%;
+    background-color:#5cb85c;
+}
+#videos .content{
+    overflow: auto;
+    overflow-x: hidden;
+}
+.video-details .title{
+    text-align: left;
+    font-size: 1.5em;
+    height: 27px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.video-details .description{
+    text-align: left;
+    font-size: 1em;
+    background-color: #428bca;
+    height: calc(150px - 1.5em - 3px);
+}
+.content{
+    max-height:834px;
+}
