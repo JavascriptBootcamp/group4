@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head><title></title></head>
+<body>
+
+
+
+    <script>
+        var Storage = function (_storageType) {
+
+            var storageType = _storageType;
+
+            if (storageType = "localStorage")
+                storageType = window.localStorage;
+            else
+                storageType = window.sessionStorage;
+
+
+            function getI(_key) {
+                    return storageType.getItem(_key);
+            }
+
+            function setI(_key, str) {
+                    storageType.setItem(_key, str);
+                
+            }
+
+            function removeI(_key) {
+                storageType.removeItem(_key);
+                
+            }
+
+            function clr() {
+                storageType.clear();
+            }
+
+            return {
+                getItem: getI,
+                setItem: setI,
+                removeItem: removeI,
+                clear: clr
+            }
+
+        };
+
+
+        var lStorage = new Storage("localStorage");
+        var sStorage = new Storage("sessionStorage");
+        lStorage.setItem("someKey1", "someValue1");
+        console.log(lStorage.getItem("someKey1"));
+        var sStorage = new Storage("sessionStorage");
+        sStorage.setItem("someKey2", "someValue2");
+        console.log(sStorage.getItem("someKey2"));
+        sStorage.clear();
+        console.log(sStorage.getItem("someKey2"));
+    </script>
+
+</body>
+
+</html>
