@@ -1,6 +1,7 @@
+var storageDict = {localStorage:localStorage,sessionStorage:sessionStorage}
 var Storage = function(_storageType){
     var storageType = _storageType;
-    var storage = eval(storageType);
+    var storage = storageDict[storageType];
     function getItem(key){
         return storage.getItem(key);
     };
