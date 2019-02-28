@@ -58,7 +58,7 @@ Thumbnail.prototype.replaceSource = function (event, ins) {
     var artist = document.querySelectorAll("#player .artist")[0];
     var description = document.querySelectorAll("#player .description")[0];
     var iframe = document.getElementsByTagName("iframe")[0];
-    iframe.src = obj[ins].video;
+    iframe.src = obj[ins].video+ "?autoplay=1";
     title.innerText = obj[ins].title;
     artist.innerText = obj[ins].artist;
     description.innerText = obj[ins].description;
