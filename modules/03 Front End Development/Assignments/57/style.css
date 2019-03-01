@@ -1,0 +1,9 @@
+body{max-width: 100%; margin: auto; background-color: white; border: 1px solid #ccc; border-radius: 5px;}
+#wrapper{width: 90%; height: 100%; display: flex; }
+.header1{ background-color: gray; margin-bottom: 20px; margin-top: 20px; padding: 10px;  border-top-left-radius: 5px;  border-top-right-radius: 5px;}
+.header2{background-color: gray;  margin-top: 40px;  padding: 5px;}
+.element{margin:10px; justify-content: space-around;}
+  /* #content{background-color: gray; flex-wrap: wrap;} */
+/* .image_element{} */
+.like_button_element{display: inline-block;}
+.counter_element{display: inline-block;}
