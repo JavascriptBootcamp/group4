@@ -12,6 +12,8 @@
             background: rgb(203, 219, 229);
             padding: 0px;
             margin: 0px;
+            filter: none;
+            filter: blur(0);
         }
         #wrapper{
             display: flex;
@@ -19,7 +21,6 @@
             flex-wrap: wrap;
             width: 100%;
             margin-top: 30px;
-            border: 2px solid blue;
             padding-left: 10px;
             padding-right: 10px;
         }
@@ -30,6 +31,11 @@
             margin: 15px 10px;
             padding: 0px;
             flex-shrink: 0;
+        }
+        .imageBox:hover{
+            box-shadow: 0px 0px 10px 0px #0D1114;
+            border: 2px solid white;
+            cursor: pointer;
         }
         .indicators{
             display: inline-block;
@@ -43,7 +49,6 @@
             padding: 0;
             width: 100%;
             height: 76%;
-            line-height: 
         }
         .like-buttons{
             position: absolute;
@@ -60,54 +65,129 @@
         }
         .like-counters{
             position: absolute;
+            border: none;
             bottom:0;
             right: 0;
             width: 35%;
             height: 24%;
-            border: none;
-            padding: 0px;
-            margin: 0px;
+            padding: 0;
             background: #0D1114;
             color: white;
             text-align: center;
-            padding-left: 13px;
         }
         header{
             width: 100%;
             background-color: #748A99;
             height: 30px;
         }
+        .disaplayImg{
+            position: absolute;
+            height: 440px;
+            width: 440px;
+            top: 50vh;
+            left: 50vw;
+            margin-top: -220px;
+            margin-left: -220px;
+            z-index: 999;
+            filter: none !important;
+            text-align: center;
+        }
+        .disaplayImg:hover{
+            cursor: default;
+            border: none;
+            box-shadow: none;
+            filter: none;
+        }
+        #black-BG{
+            background-color: black;
+            opacity: 0.5;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            width: 100%;
+            height: 100vh;
+            position:absolute;
+            z-index:2;
+            display: none;
+        }
+        .blur{
+            filter: blur(4px);
+        }
     </style>
     <title>Document</title>
 </head>
 <body>
+    <div id="black-BG" onclick="cancelDisplay()"></div>
     <header></header>
     <div id="wrapper">
     </div>
     <script>
-        function ImgBox(src){
-            var likeCount = 0;
-            this.imgBoxHTML = document.createElement("div");
-            this.imgBoxHTML.classList.add("imageBox");
+        var boxes = [];
+        function ImgBox(src,id){
+            this.likeCount = 0;
             this.src = src;
-            this.imgBoxHTML.innerHTML=`<img class="img" src="${this.src}"/>\
+            this.id = id;
+        }
+        ImgBox.prototype.createNewElement=function(){
+            var imgBoxHTML = document.createElement("div");
+            imgBoxHTML.classList.add("imageBox");
+            imgBoxHTML.setAttribute("onclick", "displayImg(this)");
+            imgBoxHTML.innerHTML=`<img class="img" src="${this.src}"/>\
                                     <div class="indicators">\
-                                    <button class="like-buttons" onclick="ImgBox.addLike(this)">Like</button>\
-                                    <input type="number" disabled class="like-counters" value="0">\
+                                    <button id="${this.id}" class="like-buttons" onclick="addLike(this.id);event.stopPropagation();">Like</button>\
+                                    <input type="number" disabled class="like-counters" value="${this.likeCount}">\
                                     </div>`;
-        }
-        ImgBox.prototype.renderElement=function(){
             var wrapper = document.getElementById("wrapper");
-            wrapper.appendChild(this.imgBoxHTML);
-            console.log("rendered");
+            wrapper.appendChild(imgBoxHTML);
         }
-        ImgBox.prototype.addLike=function(element){
-            //this.likeCount++;
-            console.log(element);
+        ImgBox.prototype.renderValue=function(){
+            var inputTag = document.getElementById(this.id).parentNode.lastElementChild;
+            inputTag.value=this.likeCount;
         }
-        for(var i=0; i<11; i++){
-            var img = new ImgBox("images/picture.png",`imageBox${i}`);
-            img.renderElement();
+        ImgBox.prototype.addLike=function(){
+            this.likeCount++;
+        }
+        function addLike(id){
+            index=id.replace('imageBox','');
+            ImgBox.prototype.addLike.call(boxes[index]);
+            ImgBox.prototype.renderValue.call(boxes[index]);
+            storeToLS();
+        }
+        function displayImg(someBox){
+            var allBoxes = document.getElementsByClassName('imageBox');
+            var blackBG = document.getElementById("black-BG");
+            for(var i=0; i<allBoxes.length; i++){
+                allBoxes[i].classList.add("blur");
+            }
+            blackBG.style.display = "block";
+            someBox.classList.add("disaplayImg");
+        }
+        function cancelDisplay(){
+            var allBoxes = document.getElementsByClassName('imageBox');
+            var blackBG = document.getElementById("black-BG");
+            for(var i=0; i<allBoxes.length; i++){
+                allBoxes[i].classList.remove("blur");
+                allBoxes[i].classList.remove("disaplayImg");
+            }
+            blackBG.style.display = "none";
+        }
+        function storeToLS(){
+            localStorage.setItem("boxes",JSON.stringify(boxes));
+        }
+        function loadFromLS(){
+            boxes[i].createNewElement();
+        }
+        if(localStorage.getItem("boxes")){
+            var retrievedData=localStorage.getItem("boxes");
+            boxes = JSON.parse(retrievedData);
+            for(var i=0; i<11; i++){
+                ImgBox.prototype.createNewElement.call(boxes[i]);
+            }
+        }
+        else{
+            for(var i=0; i<11; i++){
+            boxes.push(new ImgBox("images/picture.png",`imageBox${i}`));
+            boxes[i].createNewElement();
+            }
         }
     </script>
 </body>
