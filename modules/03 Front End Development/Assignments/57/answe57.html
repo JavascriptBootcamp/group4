@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: lightslategray;
+            background-color: pink;
+            text-align: center;
+        }
+
+        img {
+            height: auto;
+            width: 300px;
+            display: block;
+            margin-right: 30px;
+            margin-top: 30px;
+
+        }
+
+        img:hover {
+            box-shadow: 2px 2px 20px palevioletred;
+        }
+
+        .like-btn {
+            /* position:relative; */
+            width: 70%;
+            /* height: 50px; */
+            /* width: auto; */
+            border-radius: 15%;
+            display: inline-block;
+            /* margin-bottom: 40px; */
+            background-color: cadetblue;
+            color: white;
+        }
+
+        #btnX {
+            font-size: 20px;
+            border-radius: 50%;
+            /* height: 50px;
+            width: 50px */
+        }
+
+        label {
+            background-color: black;
+            text-align: center;
+            margin-top: 0px;
+            display: inline-block;
+            height: 20px;
+            width: 20%;
+            color: cadetblue;
+        }
+
+        #container {
+            display: inline-flex;
+            flex-wrap: wrap;
+        }
+
+        #frame {
+            position: absolute;
+            /* top: 0; */
+            /* top: 50%; */
+            top: 50%;
+            left: 50%;
+            margin-left: -150px;
+            margin-top: -300px;
+            /* height: 800px; */
+            /* margin: auto; */
+            text-align: center;
+            /* background-color: lightblue; */
+        }
+    </style>
+</head>
+
+
+<body onload="init()">
+    <h1>instush</h1>
+    <button onclick="resetLocalStoreg()">reset Local Storeg</button>
+    <div id="container">
+
+    </div>
+    <div id="frame">
+
+
+    </div>
+    <script>
+        var imagesArr = [];
+        let likeStorage = getLikesAmount();
+
+        function Image(src, counter) {
+            this._src = src;
+            this._counter = counter;
+
+        }
+        function Like(params) {
+            console.log(params)
+            imagesArr[params.target.id].like(params);
+
+
+        }
+        Image.prototype.like = function (params) {
+            document.getElementsByClassName("label-like")[params.target.id].innerText = ++this._counter;
+
+            // params.target.nextElementSibling.innerText = this._counter++;
+            likeStorage[params.target.id] = this._counter;
+            saveLocal(likeStorage)
+            console.log(getLikesAmount())
+        }
+        function init() {
+            for (var index = 0; index < 9; index++) {
+                console.log(index);
+                var imageEl = document.createElement("img");
+                imageEl.id = index;
+                imageEl.src = "57.png";
+                imageEl.className = "images";
+                imageEl.onclick = clickImg;
+                var imageDiv = document.createElement("div");
+                imageDiv.appendChild(imageEl);
+                // document.getElementsByClassName("images")[index].appendChild(imageEl);
+                var buttonLike = document.createElement("button");
+                buttonLike.className = "like-btn"
+                buttonLike.innerText = "LIKE";
+                buttonLike.id = index;
+                buttonLike.onclick = Like;
+                var label = document.createElement("label");
+                label.className = "label-like"
+                label.innerText = likeStorage[index] ? likeStorage[index] : 0;
+                imageDiv.appendChild(buttonLike);
+                imageDiv.appendChild(label);
+                document.getElementById("container").appendChild(imageDiv);
+                var image = new Image(imageEl.src, label.innerText);
+                imagesArr.push(image);
+
+
+            }
+        }
+
+        function clickImg(params) {
+            console.log(params)
+            document.getElementById("container").style.filter = "blur(5px)";
+            var buttonX = document.createElement("button");
+            buttonX.innerHTML = "X";
+            buttonX.id = "btnX";
+            buttonX.onclick = closePic;
+            document.getElementById("frame").appendChild(buttonX)
+
+            var imageEl = document.createElement("img");
+            imageEl.src = imagesArr[params.target.id]._src;
+            document.getElementById("frame").appendChild(imageEl);
+
+        }
+        function closePic(e) {
+            // e.preventDefault();
+            document.getElementById("container").style.filter = "none";
+            document.getElementById("frame").innerHTML = ""
+            // var container = document.getElementById("container");
+            // this.parentNode.style.display = "none";
+            // container.style.opacity = "1";
+        }
+        function saveLocal(itemsArray) {
+            localStorage.setItem('likes', JSON.stringify(itemsArray));
+        }
+        function getLikesAmount() {
+            return localStorage.getItem('likes') ? JSON.parse(localStorage.getItem('likes')) : [];
+        }
+        function resetLocalStoreg() {
+
+            localStorage.clear();
+            imagesArr.forEach(function (image) {
+                image._counter = 0;
+            })
+            likeStorage = [];
+            let object = document.getElementsByClassName("label-like");
+            for (const key in object) {
+                if (object.hasOwnProperty(key)) {
+                    object[key].innerHTML = 0;
+
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
