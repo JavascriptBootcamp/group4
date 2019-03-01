@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+
+            background-color: lightpink
+        }
+        #largePic {
+
+            position: absolute;
+            top: 60%;
+            left: 40%;
+            margin-right: 50px;
+            margin-top: -300px;
+        }
+
+        #largePic img {
+            height: auto;
+            width: 240px;
+
+
+        }
+
+        .arrow-right {
+            position: absolute;
+            left: 250px;
+            top: 50%;
+            /* top: 50%;
+            left: 50%; */
+            border-top: 30px solid transparent;
+            border-bottom: 30px solid transparent;
+
+            border-left: 30px solid lightslategray;
+        }
+
+        .arrow-left {
+            left: -50px;
+            top: 50%;
+            position: absolute;
+            /* top: 50%;
+            left: 50%; */
+            border-top: 30px solid transparent;
+            border-bottom: 30px solid transparent;
+
+            border-right: 30px solid lightslategray;
+        }
+
+        #restPic img {
+            height: 200px;
+            width: 150px;
+            margin-right: 30px;
+            padding-bottom: 150px;
+
+        }
+
+        #restPic {
+            position: absolute;
+            top: 65%;
+            left: 5%;
+            /* display: flex;
+            flex-wrap: wrap; */
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <div id="largePic"></div>
+    <div id="restPic"></div>
+    <script>
+        var imagesArr = [];
+        function Image(src) {
+            this._src = src;
+        }
+        function insertPicToArr() {
+            imagesArr.push("https://openclipart.org/image/2400px/svg_to_png/29043/MajinCline-Heart.png");
+            imagesArr.push("https://libertychurchpca.org/wp-content/uploads/2018/05/heart.jpg");
+            imagesArr.push("https://img.mako.co.il/2017/11/30/shutterstock242469733_x5.jpg");
+            imagesArr.push("http://www.jerusalemnet.co.il/dyncontent//dyncontent/t_post//2013/2/14/773676602630933469436.jpg");
+            imagesArr.push("https://storage.hidabroot.org/articles/50208_tumb_750Xauto.jpg");
+            imagesArr.push("https://www.kipa.co.il/userFiles/296656_903b8f7bef90829a8133a0ae4f9e68e7.jpg");
+
+            imagesArr.push("https://www.heartofthedesert.com/wp-content/uploads/2017/08/HOD_Logo_white_thicker-min.png");
+            imagesArr.push("https://www.nexttoeat.com/wp-content/uploads/2017/02/single-heart-icon_9_3_17.png");
+            // imagesArr.push("https://www.nexttoeat.com/wp-content/uploads/2017/02/single-heart-icon_9_3_17.png");
+            // imagesArr.push("https://www.nexttoeat.com/wp-content/uploads/2017/02/single-heart-icon_9_3_17.png");
+            // // imagesArr.push("hhttps://www.nexttoeat.com/wp-content/uploads/2017/02/single-heart-icon_9_3_17.png");
+            // imagesArr.push("https://www.nexttoeat.com/wp-content/uploads/2017/02/single-heart-icon_9_3_17.png");
+
+
+
+        }
+        function init() {
+
+            insertPicToArr();
+            var largePicDiv = document.getElementById("largePic");
+            var arrowLeftDiv = document.createElement("div");
+            arrowLeftDiv.className = "arrow-left";
+            arrowLeftDiv.onclick = prevPic;
+            largePicDiv.appendChild(arrowLeftDiv);
+
+            var imsgeDiv = document.createElement("div");
+            var imageEl = document.createElement("img");
+            imageEl.id = "largeImg";
+            imageEl.src = getLargePic();
+            imsgeDiv.appendChild(imageEl);
+            largePicDiv.appendChild(imageEl);
+
+            var arrowRightDiv = document.createElement("div");
+            arrowRightDiv.className = "arrow-right";
+            arrowRightDiv.onclick = nextPic;
+            largePicDiv.appendChild(arrowRightDiv);
+            DisplayPic();
+
+        }
+        function DisplayPic() {
+            var restPicDiv = document.getElementById("restPic");
+            for (let index = 0; index < imagesArr.length; index++) {
+                var imageEl = document.createElement("img");
+                imageEl.id=index;
+                imageEl.src = imagesArr[index];
+                imageEl.onclick = setPic;
+                restPicDiv.appendChild(imageEl);
+            }
+        }
+
+        function setLargePic(pic) {
+            localStorage.setItem("bigPic", JSON.stringify(pic))
+
+        }
+        function getLargePic() {
+            return localStorage.getItem('bigPic') ? JSON.parse(localStorage.getItem('bigPic')) : imagesArr[0];
+
+        }
+        function setPic(params) {
+
+            console.log(params);
+            var picIndex = params.target.id;
+            setLargePic(imagesArr[picIndex]);
+            console.log(picIndex);
+            document.getElementById("largeImg").src = imagesArr[picIndex]
+
+        }
+        function nextPic(params) {
+
+
+            var nextIndexPic = (imagesArr.indexOf(getLargePic()) + 1) % imagesArr.length;
+            setLargePic(imagesArr[nextIndexPic]);
+            console.log(nextIndexPic);
+            document.getElementById("largeImg").src = imagesArr[nextIndexPic]
+
+        }
+        function prevPic(params) {
+
+            var nextIndexPic = imagesArr.indexOf(getLargePic()) - 1<0 ? imagesArr.indexOf(getLargePic()) + 1:0 ;
+
+            setLargePic(imagesArr[nextIndexPic]);
+            console.log(nextIndexPic);
+            document.getElementById("largeImg").src = imagesArr[nextIndexPic]
+
+        }
+    </script>
+</body>
+
+
+</html>
