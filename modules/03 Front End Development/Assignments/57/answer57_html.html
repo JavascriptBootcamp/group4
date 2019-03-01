@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instush</title>
+    <style>
+        .like {
+         align-self: center;
+         padding-left: 60px;
+         font-weight: bold;
+           
+        
+        }
+
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .img-tumbnail {
+            width:200px;
+            height:200px ;
+            margin-top: 20px; 
+         
+        }
+         img:hover {
+            box-shadow: 10px 10px grey;
+         }
+
+
+        .like-counter {
+           background-color:black;
+           color: white;
+          padding: 3px;
+           font-size: x-large;
+           align-self: center;
+          
+          
+        }
+
+        .like-area {
+            display: flex;
+            background-color: gray;
+           
+            overflow: hidden;
+            justify-content: space-between;
+            align-content: stretch;
+
+        }
+        .selected-img {
+            display: none;
+            
+            
+
+           
+         
+        }
+        .make-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:100%;
+            height: 100%;
+            z-index: 999;
+            position: absolute;
+        }
+
+        .make-blur {
+            filter: blur(8px);
+        }
+
+    .img-center {
+            width:auto;
+            height:80%;
+            
+        }
+    </style>
+</head>
+
+<body >
+    <div class = "selected-img">
+     
+
+    </div>
+    <div class="images">
+
+    </div>
+    
+
+    <script>
+
+        var images = [];
+        var imagesEl = document.querySelector(".images");
+
+     
+        function Image(_src) {
+            this.src = _src;
+            this.likeConter = 0;
+        }
+
+
+        Image.prototype.incrementLike = function () {
+            this.likeConter++;
+        };
+
+        Image.prototype.getLike = function () {
+            return this.likeConter;
+        };
+     
+        var imgSrc = ["https://cdn.pixabay.com/photo/2016/12/25/19/41/dead-sea-1930735_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/10/03/21/13/jerusalem-1712855_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/04/23/08/41/tel-aviv-2253289_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/06/30/22/15/shekel-1490026_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2018/04/03/16/06/tourism-3287159_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2012/12/24/08/39/eilat-72226_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/04/23/08/54/beach-2253325__340.jpg",
+            "https://cdn.pixabay.com/photo/2017/02/21/01/46/dead-sea-2084451_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/10/07/16/38/tel-aviv-2827030_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/09/18/22/43/aircraft-1679200_960_720.jpg",
+         
+        ];
+
+       
+        var imagesLocal = JSON.parse(localStorage.getItem('like'));
+        
+        if( imagesLocal == null) {
+        
+        for (var i = 0; i < imgSrc.length; i++) {
+
+            images.push(new Image(imgSrc[i]));
+        }
+        localStorage.setItem("like",JSON.stringify(images));
+        }
+        else {
+            for(var i = 0 ; i < imagesLocal.length ;i++) {
+                images.push(new Image(imgSrc[i]));
+                images[i].likeConter = imagesLocal[i].likeConter;
+      
+            }
+        }
+
+
+        for (let i = 0; i < images.length; i++) {
+           
+           imagesEl.innerHTML += `<div class ="img" ">
+                                  <img src= ${images[i].src}  class = "img-tumbnail" onclick ="makeBlur(event)"/> 
+                                  <div class = "like-area">
+                                      <span class = "like" onclick = "test(${i})"> LIKE </span>
+                                      <span class = "like-counter"> ${images[i].getLike()} </span> 
+                                  </div>
+                              </div>`
+         
+       }
+
+        function test(index) {
+            images[index].incrementLike();
+            document.querySelectorAll(".like-counter")[index].innerHTML = images[index].getLike();
+            savelike();
+        }
+
+        function makeBlur(ev){
+        var selectedImg = document.querySelector(".selected-img");
+        selectedImg.innerHTML = ev.currentTarget.outerHTML;
+        selectedImg.classList.add("make-center");
+        
+       imagesEl.classList.add("make-blur");
+       document.querySelector(".selected-img img").classList.remove("img-tumbnail");
+       document.querySelector(".selected-img img").classList.add("img-center");
+       document.querySelector(".selected-img").style.display="flex";
+      
+
+        }
+
+function functionHide(){
+    document.querySelector(".selected-img").style.display="none";
+    imagesEl.classList.remove("make-blur");
+
+
+}
+
+document.querySelector(".selected-img").onclick =  functionHide;
+
+
+
+
+function savelike(){
+    
+    localStorage.setItem("like",JSON.stringify(images));
+}
+
+    </script>
+
+
+</body>
+
+</html>
