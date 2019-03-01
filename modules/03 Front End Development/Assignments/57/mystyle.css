@@ -1,0 +1,83 @@
+body {
+  background-color: rgb(190, 183, 160);
+}
+
+#container {
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.wraper {
+  display: flex;
+  flex-flow: wrap;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.divImg {
+  margin: 30px;
+  border-bottom: 1px solid rgb(190, 170, 160);
+}
+
+.wraper img {
+  width: 250px;
+  height: 250px;
+  border: rgb(190, 170, 160) solid 2px;
+  border-radius: 20px;
+}
+
+.wraper img:hover {
+  box-shadow: 5px 5px 5px 5px grey;
+}
+
+button {
+  background-color: rgb(190, 170, 160);
+  background-image: url(http://cdn.onlinewebfonts.com/svg/img_165452.png);
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 15px;
+  display: inline-block;
+  margin-bottom: 10px;
+  border-radius: 20%;
+}
+
+span {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  display: inline;
+
+}
+
+#imgClick {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  display: none;
+}
+
+#pick {
+  display: none;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+}
+
+#x{
+  height: 40px;
+  width: 40px;
+}
