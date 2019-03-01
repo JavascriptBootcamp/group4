@@ -3,6 +3,7 @@ html{
 }
 body {
     background: lightgray;
+    
 }
 
 #picHolder {
@@ -29,13 +30,12 @@ label {
     font-size: 40px; 
     border-radius: 5px;
 }
-label:hover{
+.pic:hover{
     box-shadow: 0 8px 16px 0 rgba(87, 11, 228, 0.315), 0 15px 30px 0 rgba(85, 6, 6, 0.19);
 }
 
 button {
     background: gray;
-    /* margin-left: 18px; */
     padding-left: 75px;
     padding-right: 80px;
     padding-bottom: 6px;
@@ -59,4 +59,19 @@ button {
 }
 .pic{
     margin: 0px 0px 100px 80px;
+}
+#center-image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 50%;
+    height: 50%;
+}
+#closeBtn{
+    border-radius: 50%;
+    background: black;
+    padding: 15px;
+    position: fixed;
 }
