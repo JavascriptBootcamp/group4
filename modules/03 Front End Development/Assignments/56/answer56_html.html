@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instush</title>
+    <style>
+        *  {
+            box-sizing: border-box;
+        }
+        .image_thumbnails {
+            height: 12vh;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            overflow: auto;
+
+        }
+
+        .img-tumbnail {
+            width: auto;
+            height: 10vh;
+            padding: 0.2vw;
+        }
+
+
+        .selected-img {
+            height: 80vh;
+            margin: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+
+        .img-center {
+            width: auto;
+            height: 78vh;
+            padding: 1rem;
+
+        }
+
+        .big-pic {
+            height: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            
+          
+           
+        }
+
+        .arrows {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 4vw;
+            width: 5vw;
+            height: 70vh;
+            vertical-align: middle;
+            color: green;
+            
+        }
+    </style>
+</head>
+
+<body onload="intialLoad()"  onbeforeunload = "saveMyPosition()">
+    <div>
+        <div class="big-pic">
+            <div class="left-arrow arrows" onclick="showPreImg()">
+                &lArr;
+            </div>
+            <div class="selected-img">
+
+            </div>
+            <div class="right-arrows arrows" onclick="showNextImg()">
+                &rArr;
+            </div>
+        </div>
+        <div class="image_thumbnails">
+
+        </div>
+    </div>
+
+
+    <script>
+        var selectedImgIndex = 0;
+        var images = [];
+        var imagesEl = document.querySelector(".image_thumbnails");
+
+        function Image(_src) {
+            this.src = _src;
+            this.likeConter = 0;
+        }
+
+
+
+        var imgSrc = ["https://cdn.pixabay.com/photo/2016/12/25/19/41/dead-sea-1930735_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/10/03/21/13/jerusalem-1712855_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/04/23/08/41/tel-aviv-2253289_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/06/30/22/15/shekel-1490026_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2018/04/03/16/06/tourism-3287159_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2012/12/24/08/39/eilat-72226_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/04/23/08/54/beach-2253325__340.jpg",
+            "https://cdn.pixabay.com/photo/2017/02/21/01/46/dead-sea-2084451_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2017/10/07/16/38/tel-aviv-2827030_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2016/09/18/22/43/aircraft-1679200_960_720.jpg",
+         
+        ];
+
+
+
+        for (var i = 0; i < imgSrc.length; i++) {
+
+            images.push(new Image(imgSrc[i]));
+        }
+
+
+        function showBigPic(ev) {
+            var selectImg = ev.currentTarget;
+            var selectedImg = document.querySelector(".selected-img");
+            selectedImgIndex =  imgSrc.indexOf(selectImg.src);
+            saveMyPosition();
+            loadPic();
+
+        }
+
+        for (let i = 0; i < images.length; i++) {
+            imagesEl.innerHTML += `<div class ="img" ">
+                                   <img src= ${images[i].src}  class = "img-tumbnail" onclick ="showBigPic(event)"/> 
+                               </div>`
+
+        }
+        function showNextImg() {
+
+
+            if (selectedImgIndex < imgSrc.length) {
+                selectedImgIndex++;
+                loadPic();
+            }
+            else {
+                selectedImgIndex =  0;
+                loadPic();
+            }
+
+
+        }
+        function showPreImg() {
+
+
+            if (selectedImgIndex > 0) {
+                selectedImgIndex--;
+                loadPic();
+            }
+            else {
+                selectedImgIndex =  imgSrc.length - 1;
+                loadPic();
+            }
+
+        }
+
+        function loadPic() {
+             
+        
+            var selectedImg = document.querySelector(".selected-img");
+            selectedImg.innerHTML = `<div class ="img" ">
+                                   <img src= ${images[selectedImgIndex].src}  class = "img-center" onclick ="showBigPic(event)"/> 
+                               </div>` 
+            
+        }
+
+ function intialLoad() {
+
+    selectedImgIndex = localStorage.getItem("currentIndex");
+            
+           
+            if(selectedImgIndex == null) {
+               selectedImgIndex == 0;
+               saveMyPosition();
+             
+            }
+
+            loadPic();
+
+           
+ }
+
+
+        function saveMyPosition() {
+
+            //console.log("save:" +  selectedImgIndex );
+            localStorage.setItem("currentIndex" , selectedImgIndex);
+            
+        }
+
+    </script>
+
+
+</body>
+
+</html>
