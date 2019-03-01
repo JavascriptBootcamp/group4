@@ -1,21 +1,21 @@
 
-Array.prototype.min = function(){
-var min = this[0];
-for(var i = 0;i<this.length;i++)
-if(this[i]<min){
-    min = this[i];
-}
-return min;
+Array.prototype.min = function () {
+    var min = this[0];
+    for (var i = 1; i < this.length; i++)
+        if (this[i] < min) {
+            min = this[i];
+        }
+    return min;
 }
 
-Array.prototype.max = function(){
+Array.prototype.max = function () {
     var max = this[0];
-    for(var i = 0;i<this.length;i++)
-    if(this[i]>max){
-        max = this[i];
-    }
+    for (var i = 1; i < this.length; i++)
+        if (this[i] > max) {
+            max = this[i];
+        }
     return max;
-    }
+}
 
 
 var arr = [1, 22, 50, 7];
