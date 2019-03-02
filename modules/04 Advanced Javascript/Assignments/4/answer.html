@@ -1,0 +1,39 @@
+
+Array.prototype.min = function () {
+    var min = this[0];
+
+    if(this.length === 0) {
+        console.log("ERROR: can't execute min method on empty array");
+        return;
+    }
+
+    for (var i = 1; i < this.length; i++) {
+        if (this[i] < min) {
+            min = this[i];
+        }
+    }
+    return min;
+}
+
+
+Array.prototype.max = function () {
+    var max = this[0];
+
+    if(this.length === 0) {
+        console.log("ERROR: can't execute max method on empty array");
+        return;
+    }
+
+    for (var i = 1; i < this.length; i++) {
+        if (this[i] > max) {
+            max = this[i];
+        }
+    }
+    return max;
+}
+
+
+var arr = [1, 22, 50, 7];
+var minimum = arr.min();
+var maximum = arr.max();
+console.log("Minimum:", minimum, "Maximum:", maximum); 
