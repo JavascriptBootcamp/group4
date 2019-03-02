@@ -1,0 +1,18 @@
+Array.prototype.mySliceFunction = function(startIndex, endIndex) {
+    var resultArr = [];
+
+    for(var i=startIndex; i<=endIndex; i++) {  
+        resultArr.push(this[i]);
+    }
+
+    return resultArr;
+}
+
+var arr = [1, 2, 5, 7];
+var sliced = arr.mySliceFunction(1, 2);
+console.log(sliced); 
+
+
+// The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included).
+var realSliced = arr.slice(1, 2);
+console.log(realSliced);
