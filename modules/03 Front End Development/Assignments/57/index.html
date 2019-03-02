@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instush</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #container {
+            max-width: 98%;
+            margin: 0 auto;
+            background-color: rgb(238, 238, 238);
+        }
+
+        #layout {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 15px;
+            padding: 10px;
+            justify-content: space-evenly;
+        }
+
+        #header {
+            background-color: #B0B9C8;
+            color: #384E8E;
+            text-align: center;
+            border-radius: 15px 0px 15px 0px;
+            grid-column: 1/span 3;
+        }
+
+        .imgs:hover {
+            box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.8);
+            transition: 0.7s;
+        }
+
+        .imgs {
+            width: 160px;
+            height: 160px;
+            border-radius: 5px 5px 5px 5px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 550px) {
+            .imgs {
+                width: 85px;
+                height: 85px;
+                border-radius: 5px 5px 5px 5px;
+                cursor: pointer;
+            }
+        }
+
+        .buttons {
+            background-color: rgb(217, 226, 243);
+            width: 50%;
+            border-radius: 5px;
+            border: 3px solid #B0B9C8;
+            color: #384E8E;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 30%;
+        }
+        @media screen and (max-width: 550px) {
+            .buttons {
+               font-size: 0;
+            }
+        }
+        .buttons:hover{
+            background-color: rgb(197, 206, 223);
+        }
+
+        .labels {
+            color: #384E8E;
+            font-weight: bold;
+        }
+
+        .opacityframe {
+            background: gray;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+        }
+
+        .pop {
+            background-color: white;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 600px;
+            height: 400px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -200px;
+            margin-left: -300px;
+        }
+
+        @media screen and (max-width: 750px) {
+            .pop {
+                width: 400px;
+                height: 200px;
+                margin-top: -100px;
+                margin-left: -200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="layout">
+            <h1 id="header">Instush</h1>
+        </div>
+        <div id="backframe"></div>
+        <div id="popframe"></div>
+    </div>
+    <script>
+        function Img(src) {
+            this.src = src;
+            this.likeCount = 0;
+        }
+        Img.prototype.addLike = function () {
+            this.likeCount++;
+        }
+        function createImgElement(id, imgObj) {
+            var imgBox = document.createElement("div");
+            imgBox.innerHTML = "<img class='imgs' src=" + imgObj.src + " onclick='clickImg(event)'/>\
+            <div><button id="+ id + " class='buttons' onclick='addLike(this.id)'>\
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Facebook_like_thumb.png/15px-Facebook_like_thumb.png'/> Like</button>\
+            <label id='lc"+ id + "' class='labels'>" + imgObj.likeCount + "</label></div>";
+            layout.appendChild(imgBox);
+        }
+        function addLike(id) {
+            var index = id.replace('imgbox', '');
+            images[index].addLike();
+            document.getElementById("lc" + id).innerText = images[index].likeCount;
+            localStorage.setItem("images", layout.innerHTML);
+        }
+        function clickImg(e) {
+            backframe.classList.toggle("opacityframe");
+            frame.classList.toggle("pop");
+            frame.style.backgroundImage = "url(" + e.target.src + ")";
+            frame.onclick = closeFrame;
+
+        }
+        function closeFrame() {
+            frame.classList.toggle("pop");
+            frame.innerHTML = "";
+            backframe.classList.toggle("opacityframe");
+        }
+
+        var images = [
+            new Img("https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/462044/pexels-photo-462044.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/448714/pexels-photo-448714.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/371589/pexels-photo-371589.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/360912/pexels-photo-360912.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/534164/pexels-photo-534164.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/858115/pexels-photo-858115.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/462034/pexels-photo-462034.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/458785/pexels-photo-458785.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+            new Img("https://images.pexels.com/photos/414511/pexels-photo-414511.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=400"),
+        ];
+        var layout = document.getElementById("layout");
+        var backframe = document.getElementById("backframe");
+        var frame = document.getElementById("popframe");
+
+        (function start() {
+            var localData = localStorage.getItem("images");
+            if (localData) {
+                layout.innerHTML = localData;
+            }
+            else {
+                for (var i = 0; i < images.length; i++) {
+                    createImgElement("imgbox" + i, images[i]);
+                }
+            }
+        }());
+    </script>
+</body>
+
+</html>
