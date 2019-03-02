@@ -1,36 +1,37 @@
-function Video(title, uploader, seconds) {
+function BankAccount(number, owner){
+    this.number = number;
+    this.owner = owner;
+    this.balance = 0;
 
-    try {
-        this.title = title;
-        this.uploader = uploader;
-        this.seconds = seconds;
-        
-        Video.prototype.watch = function(seconds) {
-            try {
-                this.seconds = seconds;
-                console.log(`You watched all ${this.seconds} seconds of ${this.title}`);    
-            }
-            catch(error) {
-                console.log('Oops... An error occured');
-            }
-        }
+    BankAccount.prototype.withdraw = function(amount){
+       return this.balance -= amount;
+    }
 
+    BankAccount.prototype.deposit = function(amount){
+       return this.balance += amount;
     }
-    catch(error) {
-        console.log('Oops... An error occured');
+
+    BankAccount.prototype.getBalance = function(){
+       return this.balance;
     }
-    
 }
 
-var videoObj1 = new Video('Video 1', 'Uploader 1', 111);
-videoObj1.watch(7887878);
+var bankAccount1 = new BankAccount('111' , 'owner1');
+var bankAccount2 = new BankAccount('222' , 'owner2');
+var bankAccount3 = new BankAccount('333' , 'owner3');
 
+var BANK_ACCOUNTS = 3;
 
-var videoObj2 = new Video('Video 2', 'Uploader 2', 222);
+bankAccount1.deposit(1000);
+bankAccount2.deposit(1000);
+bankAccount3.deposit(1000);
 
+bankAccount1.withdraw(200);
+bankAccount2.withdraw(500);
+bankAccount3.withdraw(1500);
 
-var data = [];
-
-for (var i = 3; i <= 7; i++) {
-    new Video('video ' + i, 'Uploader ' + i, 'i'+'i'+'i');
-}
+console.log('\n');
+console.log('Account number:', bankAccount1.number, ", Account's owner: ", bankAccount1.owner ,", Account's balance: ", bankAccount1.balance + 'NIS');
+console.log('Account number:', bankAccount2.number, ", Account's owner: ", bankAccount2.owner , ", Account's balance: ", bankAccount2.balance + 'NIS');
+console.log('Account number:', bankAccount3.number, ", Account's owner: ", bankAccount3.owner , ", Account's balance: ", bankAccount3.balance + 'NIS'); 
+console.log('\n');
