@@ -1,16 +1,17 @@
 var Storage = function (storageType) {
-    var storageType;
+    var storageType = storageType;
+	var obj = {"localStorage":localStorage , "sessionStorage":sessionStorage};
     var setItem = function (value, key) {
-        eval(storageType).setItem(value, key);
+        obj[storageType].setItem(value, key);
     }
     var getItem = function (key) {
-        return eval(storageType).getItem(key);
+        return obj[storageType].getItem(key);
     }
     var removeItem = function (key) {
-        return storageType.removeItem(key);
+        return obj[storageType].removeItem(key);
     }
     var clear = function () {
-        storageType.clear();
+        obj[storageType].clear();
     }
     return {
         setItem: setItem,
