@@ -5,15 +5,15 @@ imgSrc = ["images/pic1.jpg", "images/pic2.jpg", "images/pic3.jpg",
 imgsArr = [];
 
 //Img class
-function Img(src) {
-    this.likeCounter = 0;
+function Pic(src, counter) {
+    this.likeCounter = counter;
     this.src = src;
 
-    Img.prototype.incres_likes = () => {
+    Pic.prototype.incres_likes = function() {
         this.likeCounter++;
     }
 
-    Img.prototype.get_likes = () => {
+    Pic.prototype.get_likes = function() {
         return this.likeCounter;
     }
 }
@@ -22,9 +22,14 @@ function likeClick(like_span_id) {
     var index = like_span_id.split("_")[2];
     var imgObj = imgsArr[index];
 
+    //change the counter in the html
     var span = document.querySelector("#"+like_span_id);
-    imgObj.likeCounter++;
+    imgObj.incres_likes();
     span.innerText = imgObj.likeCounter;
+
+    //save the updated imgsArr
+    var arr = { "arr" : imgsArr };
+    localStorage.setItem("Instush_Imgs", JSON.stringify(arr));
 }
 
 function hide(selected_pic_div) {
@@ -46,8 +51,12 @@ function creat_img_element(imgObj, arryIndex) {
     img.onclick = function (event) {
         document.querySelector("header").classList.add("bluer_effect");
         document.querySelector("#gallery").classList.add("bluer_effect");
-        document.querySelector("#selected_pic").background = 'url("'+event.target.src+'")';
-        document.querySelector("#selected_pic").classList.remove("hide");   
+        var imgObj = imgsArr[arryIndex];
+        var pic = document.createElement("img");
+        pic.src = imgObj.src;
+        document.querySelector("#selected_pic").innerHTML = "";
+        document.querySelector("#selected_pic").appendChild(pic);
+        document.querySelector("#selected_pic").classList.remove("hide");  
     }
 
     imgContainer.appendChild(img);
@@ -60,7 +69,7 @@ function creat_img_element(imgObj, arryIndex) {
     var btn = document.createElement("button");
     btn.classList.add("like_btn");
     btn.innerText = "LIKE";
-    btn.onclick = function () {
+    btn.onclick = function() {
         likeClick("likes_pic_"+arryIndex);
     };
 
@@ -96,11 +105,15 @@ function onPageInit() {
     var imgs = localStorage.getItem("Instush_Imgs");
     if(imgs) {
         //get the imgs arr from the local storage
-        imgsArr = imgs;
+        var arr = JSON.parse(imgs).arr;
+        arr.forEach(pic => {
+            var img = new Pic(pic.src, pic.likeCounter);
+            imgsArr.push(img);
+        });
     }
     else {//init the first img arr
         imgSrc.forEach(src => {
-            var img = new Img(src);
+            var img = new Pic(src, 0);
             imgsArr.push(img);
         });
     }
