@@ -10,10 +10,10 @@ for (var key in legend) {
 }
 
 function expandAll(e){
-    var collapse = document.querySelectorAll(".collapse"); 
+    var collapse = document.querySelectorAll(".sec-col"); 
     for (var key in collapse) {
         if (collapse.hasOwnProperty(key)) {
-            // collapse[key].classList.add("collapse");
+            collapse[key].classList.add("collapse");
         }
     }
     expAll.innerText = "collapse all";
