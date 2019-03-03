@@ -1,0 +1,72 @@
+body{
+    border: 7px dashed #993333;
+    width: 70%;
+    padding: 3%;
+    background: #0080ff;
+    margin-top:3%;
+    margin-left: 10%;
+}
+#wrapper{
+    display: flex;    /* or inline-flex */
+    flex-direction: row;  
+    flex-wrap: wrap;
+    
+    /* align-items: center; */
+    align-content: center;
+    border: 6px dotted #cc7a00;
+    background: #ccffcc;
+    width: 90%;
+    padding: 5%; 
+}
+.divbtnlike{
+    flex-direction: row;
+    display: flex;
+    position: relative;
+}
+.imageDiv{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+    border: 2px solid #ff6666;
+    margin: 20px;
+}
+.image{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+    border: 2px solid #ff6666;
+    margin: 2px;
+}
+.btnlike{
+    position: relative;
+
+    font-size: 16px;
+    font-family: david;
+    font-weight: bolder;
+    color: #cc2626;
+    background: #fffa8a;
+    /* padding: 0.5px; */
+
+    border-radius: 10px;
+    border:2px solid #002b1f;
+}
+.btnlike:hover{
+    background: #4cf299;
+    font-size: 17px;
+    border-radius: 9px;
+}
+.btnlikeCount{
+    text-align: center;
+    font-family: david;
+    font-size: 16px;
+    /* padding: 2px; */
+
+    background: #ffbd59;
+    border:2px solid #002b1f;
+    border-radius: 4px;
+    width: 200px;
+    font-size: 17px;
+    font-family: david;
+    font-weight: bolder;
+    color: #0026ff;
+}
