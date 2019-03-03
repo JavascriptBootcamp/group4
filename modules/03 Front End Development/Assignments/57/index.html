@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instush</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="createPage()">
+    <div id="wrapper"></div>
+    <script>
+    src=['https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg',
+         'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg',
+         'https://images.pexels.com/photos/237018/pexels-photo-237018.jpeg',
+         'https://images.pexels.com/photos/433539/pexels-photo-433539.jpeg',
+         'https://images.pexels.com/photos/853199/pexels-photo-853199.jpeg',
+         'https://images.pexels.com/photos/1076429/pexels-photo-1076429.jpeg',
+         'https://images.pexels.com/photos/46974/muscari-common-grape-hyacinth-blossom-bloom-46974.jpeg',
+         'https://images.pexels.com/photos/372297/pexels-photo-372297.jpeg',
+         'https://images.pexels.com/photos/355234/pexels-photo-355234.jpeg'
+         ]
+    function img1(src){
+        this.src=src;
+        this.counter=0;  
+    }
+    img1.prototype.countLike=function(){
+            this.counter++;
+        }
+    function createPage(){
+        images= [];
+        for(var i=0;i<src.length;i++){
+            images.push(new img1(src[i]));
+        }
+       
+        for(var i=0;i<images.length;i++){
+            imageIndex=i;
+        var divImage = document.createElement("div"); 
+            divImage.id="img"+imageIndex;
+            divImage.setAttribute('class',"imageDiv");
+                var img = document.createElement("img");
+                    img.src=images[imageIndex].src;
+                    img.setAttribute('class',"image")
+                divImage.appendChild(img)
+
+            var divbtnlike = document.createElement("div");
+                divbtnlike.setAttribute('class','divbtnlike')
+
+                var button = document.createElement("button");
+                button.setAttribute('onclick',`likeIncreament(${imageIndex})`);
+                button.innerText="Like";
+                button.id="btnlike"+imageIndex;
+                button.setAttribute("class","btnlike");
+                divbtnlike.appendChild(button);
+
+                var btnlikeCount = document.createElement("div");
+                btnlikeCount.id="btnlikeCount"+imageIndex;
+                btnlikeCount.setAttribute("class","btnlikeCount");
+
+                btnlikeCount.innerText="0";
+
+                divbtnlike.appendChild(btnlikeCount);
+
+                divImage.appendChild(divbtnlike);
+
+                document.getElementById("wrapper").appendChild(divImage);
+        }
+        for(var i=0;i<images.length;i++){
+            if(localStorage.getItem(i)){
+            document.getElementById("btnlikeCount"+i).innerText=localStorage.getItem(i)
+            }
+        }
+    }
+    function likeIncreament(imageIndex){
+        var currenImage = document.getElementById("btnlikeCount"+imageIndex)
+        images[imageIndex].countLike();
+        localStorage.setItem(imageIndex,images[imageIndex].counter);
+        currenImage.innerText=images[imageIndex].counter;
+    }
+
+    </script>
+</body>
+</html>
