@@ -1,7 +1,7 @@
 <p>use: <code>group4/Modules/03 Front End Development/Examples/memory-game</code></p>
 <ul>
     <li>
-        put the cards in the center of the screen
+        locate the cards in the center of the screen
     </li>
     <li>
         use <code>div</code>s instead of table in order to display the cards
