@@ -1,0 +1,32 @@
+#formWrapper{
+    width: 1200px;
+    margin:auto;
+}
+input[type="text"]{
+    margin:10px;
+    width: 300px;
+}
+h3{
+    margin:0;
+    padding:0;
+}
+legend{
+    font-weight: bold;
+    padding: 5px;
+    margin:5px;
+}
+fieldset{
+    margin: 0;
+    cursor: pointer;
+}
+.formtitle{
+    color:#333;
+    background-color: #ccc;
+    padding:5px;
+}
+.m-left{
+    margin-left:10px;
+}
+.collapse{
+    display:none;
+}
