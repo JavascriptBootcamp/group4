@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+<script>
+
+function Storage(storageType){
+    if(storageType==="localStorage"){
+        var storage = window.localStorage;
+    }
+ else  var storage = window.sessionStorage;
+    
+    function getItem(key){
+        return storage.getItem(key);
+    };
+    function setItem(key,value){
+        storage.setItem(key,value);
+    };
+    function removeItem(key){
+        storage.removeItem(key);
+    };
+    function clear(){
+        storage.clear();
+    };
+    return {getItem:getItem,setItem:setItem,removeItem:removeItem,clear:clear};
+}
+
+var lStorage = new Storage("localStorage");
+lStorage.setItem("someKey1", "someValue1");
+console.log(lStorage.getItem("someKey1")); // should print "someValue1"
+
+var sStorage = new Storage("sessionStorage");
+sStorage.setItem("someKey2", "someValue2");
+console.log(sStorage.getItem("someKey2")); // should print "someValue2"
+
+</script>
+    </body>
+</html>
