@@ -50,10 +50,15 @@ var element10 = new Thumbnails(src10,0);
 
 var elements = [element1,element2,element3,element4,element5,element6,element7,element8,element9,element10];
 
-
 window.onbeforeunload = function(){
     for(var i= 0; i< elements.length;i++){
         localStorage.setItem("element"+ i, elements[i].getLikeCounter());
+    }
+}
+
+function getData(){
+    for(var i= 0; i< elements.length;i++){
+        elements[i].likeCounter = localStorage.getItem("element"+ i);
     }
 }
 
