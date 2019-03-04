@@ -52,8 +52,19 @@ var elements = [element1,element2,element3,element4,element5,element6,element7,e
 
 
 window.onbeforeunload = function(){
+    saveData();
+}
+
+function saveData(){
     for(var i= 0; i< elements.length;i++){
         localStorage.setItem("element"+ i, elements[i].getLikeCounter());
+        console.log("hi",localStorage.getItem("element"+ i));
+    }
+}
+
+function getData(){
+    for(var i= 0; i< elements.length;i++){
+        elements[i].likeCounter = localStorage.getItem("element"+ i);
     }
 }
 
@@ -61,13 +72,13 @@ function fillScreen(){
     var content = document.getElementById("content");
     var i = 0;
     elements.forEach(item => {
-        var element = createElement(item.getSrc(),i++);
+        var element = createElement(item.getSrc(),item.likeCounter,i++);
         // console.log(item.getSrc(),item);
         content.appendChild(element);
     });
 }
 
-function createElement(srcInput, index){
+function createElement(srcInput,likeCounter, index){
     var element = document.createElement("div");
     element.className = "element";
 
@@ -75,17 +86,15 @@ function createElement(srcInput, index){
     image.className = "image_element";
     image.alt = "No Image";
     image.src = srcInput;
+    image.onclick = selectImage;
 
     var button = document.createElement("button");
     button.className = "like_button_element";
     button.innerText = "LIKE";
 
-    var sibling = button.nextSibling;
-    button.onclick = incLikes.bind(sibling,index);
-
     var counter = document.createElement("div");
     counter.className = "counter_element";
-    counter.innerText = 0;
+    counter.innerText = likeCounter;
 
     element.appendChild(image);
     element.appendChild(button);
@@ -99,10 +108,33 @@ function createElement(srcInput, index){
 
 function incLikes(index){
      thumbnail = elements[index];
-     console.log(this,index);
      thumbnail.incLike();
      this.innerText = thumbnail.getLikeCounter();
 }
 
+function selectImage(e) {
+    
+    var wrapper = document.getElementById("wrapper");
+    var overlayer = document.getElementById("overlayer");
+    overlayer.style.display = "block";
+    overlayer.style.backgroundImage = "url(" + e.target.src + ")";
+    wrapper.style.filter = "blur(2px)";
+    overlayer.onclick = closeWindow;
+}
+function closeWindow(e) {
+    var wrapper = document.getElementById("wrapper");
+    var overlayer = document.getElementById("overlayer");
+
+    // Do not show overlayer content
+    overlayer.style.display = "none";
+    // Ignore blur
+    wrapper.style.filter = "none";
+}
+
+// function selectImage(e){
+
+// }
+
+getData();
 fillScreen();
 

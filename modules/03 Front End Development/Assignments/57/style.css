@@ -51,6 +51,11 @@ body{
   width: 300px;
   height: auto;
 }
+
+img:hover{
+  box-shadow: 5px 5px 20px rgb(37, 35, 35);
+  transition: 0.5s all;
+}
   /* #content{background-color: gray; flex-wrap: wrap;} */
 /* .image_element{} */
 
@@ -80,4 +85,35 @@ body{
 img{
   width: 100%;
   height: 100%;
+}
+
+#overlayer{
+  
+  /* ??? */
+  display: none; 
+
+  width: 500px;
+  height: 500px;
+
+  /* The element is removed from the normal document flow, and no space is created for the element in the page layout. It is positioned relative to its closest positioned ancestor, if any; otherwise, it is placed relative to the initial containing block. Its final position is determined by the values of top, right, bottom, and left.
+     This value creates a new stacking context when the value of z-index is not auto. The margins of absolutely positioned boxes do not collapse with other margins. */
+   position: absolute;
+
+   z-index:10;
+
+  /* <percentage>s of the height of the containing block */
+  top :50%;
+  /* <percentage>s of the width of the containing block */
+  left:50%;
+
+  /* background-size: width, heigh */
+  background-size: 100% 100%;
+
+
+  /* Negative value means go reverse direction(RTL) */
+  margin-left: -250px;
+  margin-top: -250px;
+
+  /* Only 1 image */
+  background-repeat: no-repeat;
 }
