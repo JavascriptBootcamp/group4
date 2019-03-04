@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    function Person(name) {
+        var _name = name;
+        this.getName = function() {
+            return _name;
+        }
+    }
+
+    Person.prototype.sayHello = function(){
+        return "Hello!";
+    }
+
+    function Girl(name, age){
+        this.age = age;
+        Person.call(this, name);
+    }
+
+    Girl.prototype = Object.create(Person.prototype);
+
+    var shani = new Girl("Shani", 20);
+    // Person.prototype.sayHello2 = null;
+    console.log(shani.getName());
+    console.log(shani.sayHello());
+
+    // var moshikoTheKing = new Person("moshiko");
+    // var gaby = new Person("gaby");
+    // console.log(moshikoTheKing.getName());
+    // moshikoTheKing.getName = null;
+    // console.log(gaby.getName());
+    // console.log(gaby.sayHello());
+    // Person.prototype.sayHello = null;
+    // console.log(moshikoTheKing.sayHello());
+
+    // var str = new String("Hello World");
+    // var str = "Hello World";
+    
+    // console.log(str.toUpperCase());
+
+    // function zigZag(str) {
+    //     var result = "";
+    //     for (i=0;i<str.length;i++){
+    //         if (i % 2 === 0){
+    //             result += str[i].toUpperCase();
+    //         }
+    //         else {
+    //             result += str[i].toLowerCase();
+    //         }
+    //     }
+    //     return result;
+    // }
+    // console.log(zigZag("moshiko is the king"));
+
+    // String.prototype.zigZag = function() {
+    //     var result = "";
+    //     for (i=0;i<this.length;i++){
+    //         if (i % 2 === 0){
+    //             result += this[i].toUpperCase();
+    //         }
+    //         else {
+    //             result += this[i].toLowerCase();
+    //         }
+    //     }
+    //     return result;
+    // }
+
+    // String.prototype.toLowerCase = function() {
+    //     var func = String.prototype.toLowerCase;
+    //     console.log("Moshiko is the king");
+    //     return func.call(this);
+    // }
+    // console.log("Hello".toLowerCase());
+
+
+    // var text = "moshiko is the king";
+    // console.log(text.zigZag());
+
+    
+    </script>
+</body>
+</html>

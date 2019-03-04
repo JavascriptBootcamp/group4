@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+}
+html,body{
+    width:100%;
+    height: 140%;
+}
+#middle * , #footer *{
+    font-size: 18px;
+}
+body,h1{
+    margin:0;
+}
+#top{
+    width: 100%;
+    height: 50px;
+    background-color:lightblue;
+    text-align: center;
+}
+#footer{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background-color:lightcoral;
+}
+#table{
+    width: 700px;
+    margin:0 auto;
+}
+table,tr,td,th{
+    border:1px solid;
+}
+#middle td , #middle th{
+    font-size: 25px;
+}
+#sidemenu{
+    width: 100px;
+    border:solid;
+    display: inline-block;
+}
+.my-inputs{
+    width:100%;
+}
+#btn-pick-one, #print{
+    display: block;
+    margin:10px auto;
+    width: 150px;
+
+ }
+#btn-close{
+    float: left;
+    display: inline-block;
+}
+#frame{
+    width:800px;
+    height: 800px;
+    margin:auto;
+    text-align: center;
+    background-color: lightblue;
+}
+#resStudentName , #resSubject{
+    display: inline-block;
+    width: 100%;
+}
+#result{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -400px;
+    margin-left: -400px;
+}
+#left{float: left;} 
