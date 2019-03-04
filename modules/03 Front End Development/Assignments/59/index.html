@@ -7,12 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Ebay</title>
   <style>
-  
     .hidden {
         display: none;
         background-color: white;
         border: 1px solid gray;
+        animation-name: example;
+        animation-duration: 1.3s;
       }
+      @keyframes example {
+      0%   {background-color:bisque;}
+      100% {background-color:white; }
+      }
+      
       .collapse_div
       {
         background-color: bisque;
@@ -33,7 +39,6 @@
         font-size: 20px;
       }
   </style>
-  
   <script>
 
     function toggle_visibility(id) {
