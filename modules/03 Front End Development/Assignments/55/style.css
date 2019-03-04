@@ -1,0 +1,74 @@
+body{
+    box-sizing: border-box
+}
+#board{
+     position: absolute;
+    /* top: 10%; */
+    left:50%;
+    margin-left: -380px;
+    /* margin-top: -210px; */ 
+    
+
+}
+#message
+{
+    color:red;
+    text-align: center;
+
+}
+#message button{
+    border-radius: 28px;
+    background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+    color:white;
+    font-size: 30px;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap:5px;
+    grid-row-gap: 5px;
+
+
+}
+.cards-div
+{
+    border: 2px solid black;
+    border-radius: 5%;
+    transition: transform 3s;
+    transform-style: preserve-3d;
+}
+/* button:nth-child(odd) 
+{
+
+    background-image: url("back_blue.jpg");
+}
+#wrapper .cards-div:nth-child(even)
+{
+
+    background-image: url("back_red.jpg");
+} */
+.cards
+{
+    
+    background-image: url("back_red.jpg");
+
+    border: 7px solid white;
+    border-radius: 5%;
+    transform: rotateY(180deg);
+
+
+}
+.cards-div.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+.cards:hover {
+    color: rgba(255,255, 255, 1);
+    box-shadow: 6px 5px 5px 5px gray;
+    /* transform: rotateY(180deg);
+    transition: 0.6s;
+	transform-style: preserve-2d; */
+
+}
