@@ -1,6 +1,7 @@
 
 var legend = document.querySelectorAll("legend");
 var expAll = document.getElementById("exp-all");
+expAll.className = "expand-btn";
 expAll.onclick = expandAll;
 
 for (var key in legend) {
@@ -9,16 +10,33 @@ for (var key in legend) {
     }
 }
 
-function expandAll(e){
-    var collapse = document.querySelectorAll(".sec-col"); 
-    for (var key in collapse) {
-        if (collapse.hasOwnProperty(key)) {
-            collapse[key].classList.add("collapse");
+function expandAll(e) {
+    var classBtn = e.target.className;
+    var secCol = document.querySelectorAll(".sec-col");
+    if (classBtn === "expand-btn")
+    {
+        e.target.classList = "collapse-btn";
+        e.target.innerText = "collapse all";
+        for (var key in secCol) {
+            if (secCol.hasOwnProperty(key)) {
+                secCol[key].classList.add("collapse");
+                secCol[key].previousElementSibling.classList.remove("minus");
+            }
+        }
+    }  
+    else {
+        e.target.classList = "expand-btn";
+        e.target.innerText = "expand all";
+        for (var key in secCol) {
+            if (secCol.hasOwnProperty(key)) {
+                secCol[key].classList.remove("collapse");
+                secCol[key].previousElementSibling.classList.add("minus");
+            }
         }
     }
-    expAll.innerText = "collapse all";
 }
+
 function toggle(e) {
-    var collapse = e.target.nextElementSibling.classList;
-    collapse.toggle("collapse");
+    e.target.classList.toggle("minus");
+    e.target.nextElementSibling.classList.toggle("collapse"); 
 }

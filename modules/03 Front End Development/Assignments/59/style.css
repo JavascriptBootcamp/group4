@@ -30,3 +30,27 @@ fieldset{
 .collapse{
     display:none;
 }
+.default-symbool:before{
+    content: "+";
+    font-weight: bold;
+    font-size: 15px;
+    background-color: burlywood;
+    padding: 5px;
+    margin-right: 15px;
+
+}
+.minus:before{
+    content:"-";
+    font-weight: bold;
+    font-size: 15px;
+}
+#exp-all{
+    background-color: brown;
+    color: #fff;
+    display: block;
+    width: 50%;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    margin:auto;
+}
