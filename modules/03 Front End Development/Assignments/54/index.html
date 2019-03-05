@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe game</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body onload="fieldsCheck()">
+    <header>
+        <h1 class="page-header">Tic-Tac-Toe game</h1>
+    </header>
+    <div class="switch-color">
+        <input type="radio" id="light" name="color" value="light" checked />
+        <label for="light">light</label>
+        <input type="radio" id="dark" name="color" value="dark" />
+        <label for="dark">dark</label>
+    </div>
+    <div class="players-game">
+        <label for="player1">player X </label>
+        <input type="text" id="player1" placeholder="First player name" onkeyup="fieldsCheck()">
+        <label for="player2">player O </label>
+        <input type="text" id="player2" placeholder="Second player name" onkeyup="fieldsCheck()">
+        <button id="btn-start-game" onclick="newGame()">Start</button>
+    </div>
+    <div class="board-game">
+        <div class="row">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="row">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="row">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+    <div id="player-turn"></div>
+    <div id="game-status"></div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
