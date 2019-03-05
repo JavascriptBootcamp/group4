@@ -1,0 +1,15 @@
+.sections{
+    display: none;
+}
+#ExpandAll {
+    border-radius: 28px;
+    background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+    color:white;
+    font-size: 15px;
+}
+legend:hover {
+    cursor: pointer;
+    color: #2079b0;
+  
+
+}
