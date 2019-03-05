@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: bisque;
+        }
+
+        #content {
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #left>div, #right>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+        }
+        #right, #centerDiv>div:nth-child(1)>img:nth-child(3) {
+            transform: rotate(180deg);
+        }
+        #left>div>img, #right>div>img  {
+            width: 100%;
+            height: auto;
+        }
+        #centerDiv {
+            margin: 0 auto;
+            display: inline-block;
+            width: 80%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #centerDiv>div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            align-items: center;
+            width: 100%;
+        }
+        #centerDiv>div:nth-child(2) {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 10%;
+            width: 100%;
+            justify-content: center;
+            align-content: center;
+        }
+        #centerDiv>div:nth-child(2)>div:nth-child(2) {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 80px;
+            width: 70%;
+            justify-content: flex-start;
+            overflow: hidden;
+            margin-top: 20px;
+            /* transition: transform 2s; */
+        }
+
+        #centerDiv>div:nth-child(2)>div:nth-child(2):hover {
+            /* transform: translateX(-20px); */
+        }
+
+        #centerDiv>div:nth-child(2)>div {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 80px;
+            width: 15%;
+            justify-content: flex-end;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        #centerDiv>div:nth-child(1)>img:nth-child(1),  #centerDiv>div:nth-child(1)>img:nth-child(3){
+            width: 15%;
+            height: auto;
+        }
+        #centerDiv>div:nth-child(1)>img:nth-child(2) {
+            width: 70%;
+            height: auto;
+        }
+        #centerDiv>div:nth-child(2)>div>img {
+            height: 100%;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" sizes="16x16" type='image/jpg' href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzOT4uekAcWnhWFJ691CSzeyaw81YVHWYXTes30KLNGqqeGag_Xw">
+    <title>Gallery</title>
+</head>
+
+<body onload="init()">
+    <div id='content'>
+        <div id="centerDiv">
+            <div class="center">
+                <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt="left">
+                <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt="right">
+            </div>
+            <div class="row">
+                <div id="left">
+                    <div class="center">
+                        <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png"
+                            alt="left">
+                    </div>
+                </div>
+                <div class="row-content">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                    <img src="https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif" alt="pic">
+                </div>
+                <div id="right">
+                    <div class="center">
+                        <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png"
+                            alt="right">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // function initCounters() {
+        //     localStorage.setItem('counters', JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]));
+        //     localStorage.setItem('imgs', JSON.stringify(['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThwis6NNDVW72x549a3a4V8L2ZfWevkt12FY6a4ssIt82RGCYTYQ', 'https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif', 'https://picjumbo.com/wp-content/uploads/young-woman-traveler-enjoying-a-view-on-high-tatras-mountains_free_stock_photos_picjumbo_HNCK7618-1080x720.jpg', 'https://static.boredpanda.com/blog/wp-content/uploads/2014/04/microsoft-windows-xp-bliss-wallpaper-charles-orear-1.jpg', 'https://cms.qz.com/wp-content/uploads/2018/07/wildfire_05.jpg?quality=75&strip=all&w=620', 'http://images.summitmedia-digital.com/candy/images/articles/guys/201506/201506-profile-photo-couples-cover.jpg', 'https://www.gannett-cdn.com/presto/2018/08/28/PDTF/23cfebac-fea2-4884-b228-9251206764f6-shipphoto.jpg?width=534&height=401&fit=bounds&auto=webp', 'http://wowslider.com/sliders/demo-31/data1/images/bench560435.jpg', 'https://dl1.cbsistatic.com/i/r/2017/08/03/5699d934-b7cf-4c4e-b5f0-e56f654f3835/resize/696xauto/7c4f655bff4aed89f239ee4a3a7dab29/total-solar-eclipse.jpg', 'https://media.treehugger.com/assets/images/2018/03/snow10.jpg.860x0_q70_crop-scale.jpg']));
+        //     return localStorage.getItem('counters');
+        // }
+        // function Image1(source) {
+        //     this.col = null;
+        //     this.source = source;
+        //     this.colDiv = null;
+        //     this.parentDiv = document.createElement('div');
+        //     this.img = document.createElement('img');
+        //     this.btn = document.createElement('button');
+        //     this.spanDiv = document.createElement('div');
+        //     this.spanCount = document.createElement('span');
+        // }
+        // Image1.prototype.addImg = function (index) {
+        //     switch (index % 3) {
+        //         case 0:
+        //             this.colDiv = document.getElementsByClassName('col1')[0];
+        //             this.col = 1;
+        //             break;
+        //         case 1:
+        //             this.colDiv = document.getElementsByClassName('col2')[0];
+        //             this.col = 2;
+        //             break;
+        //         default:
+        //             this.colDiv = document.getElementsByClassName('col3')[0];
+        //             this.col = 3;
+        //     }
+        //     this.img.setAttribute('src', this.source);
+        //     this.img.setAttribute('alt', 'insta');
+        //     this.btn.innerText = 'LIKE';
+        //     var counts = JSON.parse(localStorage.getItem('counters'));
+        //     this.spanCount.innerText = counts[index];
+        //     this.spanDiv.appendChild(this.spanCount);
+        //     this.parentDiv.appendChild(this.img);
+        //     this.parentDiv.appendChild(this.btn);
+        //     this.parentDiv.appendChild(this.spanDiv);
+        //     this.colDiv.appendChild(this.parentDiv);
+        //     var newDiv = document.createElement('div');
+        //     newDiv.className = 'bigPic';
+        //     var newImg = document.createElement('img');
+        //     newImg.setAttribute('src', this.source);
+        //     newImg.setAttribute('alt', 'insta');
+        //     newDiv.appendChild(newImg);
+        //     newDiv.style.display = 'none';
+        //     document.body.appendChild(newDiv);
+        //     this.like(index);
+        //     this.clickThumbnail(newDiv);
+        // }
+        // Image1.prototype.like = function (i) {
+        //     var span = this.spanCount;
+        //     this.btn.addEventListener('click', () => {
+        //         var counts = JSON.parse(localStorage.getItem('counters'));
+        //         counts[i]++;
+        //         console.log(counts);
+        //         localStorage.setItem('counters', JSON.stringify(counts));
+        //         span.innerText = counts[i];
+        //     });
+        // }
+        // Image1.prototype.clickThumbnail = function (newDiv) {
+        //     this.img.addEventListener('click', () => {
+        //         //console.log(newDiv);
+        //         document.getElementById('content').className = 'blur';
+        //         newDiv.style.display = 'flex';
+        //     });
+        //     newDiv.addEventListener('click', (event) => {
+        //         if (event.target.tagName !== 'IMG') {
+        //             document.getElementById('content').className = '';
+        //             newDiv.style.display = 'none';
+        //         }
+
+        //     });
+        // }
+        // function init() {
+        //     if (localStorage.getItem('counters') === null) {
+        //         initCounters();
+        //     }
+        //     var imgs = JSON.parse(localStorage.getItem('imgs'));
+        //     for (var i = 0; i < imgs.length; i++) {
+        //         var img1 = new Image1(imgs[i]);
+        //         img1.addImg(i);
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>
