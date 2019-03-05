@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="script.js"></script>
+    <title>Evya Gallery</title>
+</head>
+
+<body onload="start()">
+
+    <div id="container">
+
+        <h1>Evya Gallery</h1>
+        <div class="picDiv">
+            <div class="arrow-left" onclick="preOrNext(-1)"></div>
+            <div class="selected-img">
+                <img id="centerImg" src="">
+            </div>
+            <div class="arrow-right" onclick="preOrNext(1)"></div>
+        </div>
+
+        <div class="thumbnailsDiv">
+            <div class="arrow-l-thumbnail" onmouseover="scrlThumbnailLeft()" onmouseout="stopScroll()"></div>
+            <div class="image_thumbnails"> </div>
+            <div class="arrow-r-thumbnail" onmouseover="scrlThumbnailRight()" onmouseout="stopScroll()"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>
