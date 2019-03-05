@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #thumbnail {
+            position: absolute;
+            bottom: 0px;
+            display: block;
+            margin: auto;
+            width: auto;
+        }
+
+        #largeImage{
+            display: inline-block;
+            width: 50%;
+            margin: auto;
+            margin-top: 5%;
+        }
+        #leftArrow{
+            font-size: 200px;
+            display: inline-block;
+            margin-left: 100px;
+        }
+        #rightArrow{
+            font-size: 200px;
+            display: inline-block;
+            margin-right: 100px;
+        }
+        #wrapper{
+            display: flex;
+        }
+
+    </style>
+</head>
+
+<body onload="init()">
+    <div id="wrapper">
+        <p id="leftArrow" onclick="previousImage()"><</p>
+        <img id="largeImage" src="https://www.jssor.com/demos/img/gallery/980x380/034.jpg/=sample?190x90">
+        <p id="rightArrow" onclick="nextImage()">></p>
+    </div>
+    <div id="thumbnail">
+        <img id="0" onclick="showImage(0)" src="https://www.jssor.com/demos/img/gallery/980x380/034.jpg/=sample?190x90">
+
+        <img id="1" onclick="showImage(1)" src="https://www.jssor.com/demos/img/gallery/980x380/031.jpg/=sample?190x90">
+
+        <img id="2" onclick="showImage(2)" src="https://www.jssor.com/demos/img/gallery/980x380/033.jpg/=sample?190x90">
+
+        <img id="3" onclick="showImage(3)" src="https://www.jssor.com/demos/img/gallery/980x380/032.jpg/=sample?190x90">
+
+        <img id="4" onclick="showImage(4)" src="https://www.jssor.com/demos/img/gallery/980x380/035.jpg/=sample?190x90">
+
+        <img id="5" onclick="showImage(5)" src="https://www.jssor.com/demos/img/gallery/980x380/036.jpg/=sample?190x90">
+
+        <img id="6" onclick="showImage(6)" src="https://www.jssor.com/demos/img/gallery/980x380/037.jpg/=sample?190x90">
+
+        <img id="7" onclick="showImage(7)" src="https://www.jssor.com/demos/img/gallery/980x380/038.jpg/=sample?190x90">
+
+        <img id="8" onclick="showImage(8)" src="https://www.jssor.com/demos/img/gallery/980x380/039.jpg/=sample?190x90">
+
+        <img id="9" onclick="showImage(9)" src="https://www.jssor.com/demos/img/gallery/980x380/040.jpg/=sample?190x90">
+    </div>
+
+    <script>
+        count=0;
+        function nextImage(){
+            count++;
+            var largeImg = document.getElementById("largeImage");
+            var smallImg = document.getElementById(count%10);
+            largeImg.src = smallImg.src;
+            localStorage.setItem("largeImage", largeImg.src);
+        }
+
+        function previousImage(){
+            if(count===0)
+                count=9;
+            else
+                count--;
+            var largeImg = document.getElementById("largeImage");
+            var smallImg = document.getElementById(count%10);
+            largeImg.src = smallImg.src;
+            localStorage.setItem("largeImage", largeImg.src);
+        }
+        function showImage(num){
+            count=num;
+            var largeImg = document.getElementById("largeImage");
+            var smallImg = document.getElementById(count);
+            largeImg.src = smallImg.src;
+            localStorage.setItem("largeImage", largeImg.src);
+        }
+        function init(){
+            var largeImg = document.getElementById("largeImage");
+            largeImg.src = localStorage.getItem("largeImage");
+        }
+
+    </script>
+</body>
+
+</html>
