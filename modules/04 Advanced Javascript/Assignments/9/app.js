@@ -1,13 +1,13 @@
-var tm1 = new Thumbnails("tm1", "loader.gif");
-var tm2 = new Thumbnails("tm2", "loader.gif");
-var tm3 = new Thumbnails("tm3", "loader.gif");
-var tm4 = new Thumbnails("tm4", "loader.gif");
-var tm5 = new Thumbnails("tm5", "loader.gif");
-var tm6 = new Thumbnails("tm6", "loader.gif");
-var tm7 = new Thumbnails("tm7", "loader.gif");
-var tm8 = new Thumbnails("tm8", "loader.gif");
-var tm9 = new Thumbnails("tm9", "loader.gif");
-var tm10 = new Thumbnails("tm10", "loader.gif");
+var tm1 = new Thumbnails("tm1", "loader.gif", "");
+var tm2 = new Thumbnails("tm2", "loader.gif", "");
+var tm3 = new Thumbnails("tm3", "loader.gif", "");
+var tm4 = new Thumbnails("tm4", "loader.gif", "");
+var tm5 = new Thumbnails("tm5", "loader.gif", "");
+var tm6 = new Thumbnails("tm6", "loader.gif", "");
+var tm7 = new Thumbnails("tm7", "loader.gif", "");
+var tm8 = new Thumbnails("tm8", "loader.gif", "");
+var tm9 = new Thumbnails("tm9", "loader.gif", "");
+var tm10 = new Thumbnails("tm10", "loader.gif", "");
 var obj = { tm1, tm2, tm3, tm4, tm5, tm6, tm7, tm8, tm9, tm10 }
 var intervalName;
 
@@ -17,6 +17,12 @@ fetch("https://picsum.photos/list").then(function (response) {
     });
 });
 
+function goPost(e) {
+    var pic = document.getElementById("big-picture-img");
+    var post = obj[pic.getAttribute("imgnumber")].post;
+    window.open(post, '_blank');
+}
+
 var dataStorage = getData();
 if (dataStorage) {
     var pic = document.getElementById("big-picture-img");
@@ -24,18 +30,18 @@ if (dataStorage) {
 }
 initialThumbnails();
 
-function setImagesFromRespone(data){
+function setImagesFromRespone(data) {
     var thumb = document.querySelectorAll("#thumbnails-carousle > img");
     var index = 0;
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
-            
-            obj[key].src = "https://picsum.photos/200/300?image=" + data[index++].id;
+            obj[key].post = data[index].post_url;
+            obj[key].src = "https://picsum.photos/200/300?image=" + data[index].id;
+            index++;
         }
     }
-    for(var i=0; i<thumb.length; i++)
-    {
-        thumb[i].src = "https://picsum.photos/200/300?image=" + data[index++].id;
+    for (var i = 0; i < thumb.length; i++) {
+        thumb[i].src = "https://picsum.photos/200/300?image=" + data[i].id;
     }
 }
 
@@ -126,15 +132,17 @@ function setPrevImg(e) {
     Img.src = obj[newImg].src;
     Img.setAttribute("imgnumber", newImg);
 }
-function Thumbnails(name, src) {
+function Thumbnails(name, src, post) {
     this.name = name;
     this.src = src;
+    this.post = post;
 }
 Thumbnails.prototype.setimage = function (e) {
     var pic = document.getElementById("big-picture-img");
     var newImg = e.target.attributes[1].nodeValue;
     pic.src = e.target.src;
     pic.setAttribute("imgnumber", newImg);
+    pic.onclick = goPost;
 }
 
 
