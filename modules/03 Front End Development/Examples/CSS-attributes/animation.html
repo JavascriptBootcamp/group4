@@ -10,7 +10,7 @@
             position: relative;
           
             animation-name: example;
-            animation-duration: 4s;
+            animation-duration: 5s;
             animation-direction: reverse;
         }
     
@@ -21,26 +21,33 @@
                 background-color: red;
                 left: 0px;
                 top: 0px;
+                opacity: 0;
+                transform: rotate(20deg);
             }
             25% {
                 background-color: yellow;
                 left: 200px;
                 top: 0px;
+                opacity: 1;
+                transform: rotate(90deg);
             }
             50% {
                 background-color: blue;
                 left: 200px;
                 top: 200px;
+                opacity: 0.5;
             }
             75% {
                 background-color: green;
                 left: 0px;
                 top: 200px;
+                opacity: 1;
             }
             100% {
                 background-color: red;
                 left: 0px;
                 top: 0px;
+                opacity: 0;
             }
             
         }
