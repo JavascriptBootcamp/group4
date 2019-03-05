@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instush</title>
+    <style>
+        #wrapper {
+            height: 50%;
+            width: 40%;
+            max-width: 40%;
+            border: 5px solid;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin: auto;
+            margin-top: 20%;
+            overflow: auto;
+        }
+
+        #wrapper>img:hover {
+            box-shadow: 2px 3px darkgrey;
+            border-radius: 10px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            /* filter: blur(8px); */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+    </div>
+
+    <script>
+        var wrapper = document.getElementById('wrapper');
+        var wrapperStyle = document.querySelector("#wrapper");
+        function Image(source, idNum) {
+            var count = 0;
+            var imageDiv = document.createElement('div');
+            imageDiv.setAttribute("id", idNum);
+            var item = document.createElement('img');
+            item.src = source;
+            var likebtn = document.createElement('button');
+            var t = document.createTextNode("LIKE");
+            likebtn.onclick = function () {
+                count++;
+                localStorage.setItem(idNum, count);
+                count = localStorage.getItem(idNum, count);
+                likeCounterDisplay.setAttribute("value", count);
+            }
+            imageDiv.onclick = function () {
+                wrapper.style.filter = 'blur(8px)';
+                var showImageDiv = document.createElement('div');
+                showImageDiv.style.top = '50%';
+                showImageDiv.style.left = '50%';
+                showImageDiv.style.marginTop = '-150px';
+                showImageDiv.style.marginLeft = '-150px';
+                showImageDiv.style.position = 'fixed';
+                var insideItem = document.createElement('img');
+                insideItem.src = source;
+                showImageDiv.appendChild(insideItem);
+                document.body.appendChild(showImageDiv);
+            }
+            likebtn.appendChild(t);
+            imageDiv.appendChild(item);
+            item.display = 'block'
+            item.width = (wrapper.offsetWidth / 3 - wrapper.offsetWidth / 24);
+            console.log(item.style.width);
+            imageDiv.innerHTML += "<br>"
+            imageDiv.appendChild(likebtn);
+            likebtn.style.width = '100px';
+            item.display = 'block';
+            var likeCounterDisplay = document.createElement('input');
+            likeCounterDisplay.type = "text"
+            likeCounterDisplay.setAttribute("disabled", "");
+            likeCounterDisplay.style.width = '16px';
+            likeCounterDisplay.setAttribute("value", 0);
+            imageDiv.appendChild(likeCounterDisplay);
+            wrapper.appendChild(imageDiv);
+            console.log(wrapper.offsetWidth / 3);
+
+            this.getLike = function () {
+                return count;
+            }
+            this.addLike = function () {
+                count++;
+            }
+            this.setLike = function (counter){
+                likeCounterDisplay.setAttribute("value",counter);
+            }
+        }
+
+        Image.prototype.like = function () {
+            this.addLike();
+        }
+
+        for (var i = 0; i < 10; i++) {
+            test = new Image("http://www.clker.com/cliparts/3/m/v/Y/E/V/small-red-apple-md.png", i);
+            var counter = localStorage.getItem(i);
+            console.log(counter);
+            if(counter!==null)
+                test.setLike(counter);
+        }
+
+    </script>
+</body>
+
+</html>
