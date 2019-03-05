@@ -9,23 +9,21 @@ header {
     height: 50px;
 }
 
-div {
-    /* border: black 1px solid; */
-}
-
 .container {
     width:60%;
-    height: 800px;
+    height: 500px;
     margin: 20px auto;
+    margin: 0 auto;
 }
 
 #main {
-    height: 70%;
+    height: 65%;
     display: flex;
+    justify-content: center;
 }
 
 #slider {
-    height: 30%;
+    height: 35%;
     display: flex;
     overflow: hidden;
 }
@@ -36,29 +34,53 @@ img {
 }
 
 .arrow-left {
+    cursor: pointer;
     width: 0; 
     height: 0; 
 
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent;
-    border-right: 60px solid rgb(135, 153, 172);
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid rgb(135, 153, 172);
+
+    position: relative;
+    top:30%;
+    margin: 10px;
 }
 
 .arrow-right {
+    cursor: pointer;
     width: 0; 
     height: 0; 
 
-    border-top: 60px solid transparent;
-    border-bottom: 60px solid transparent;
-    border-left: 60px solid rgb(135, 153, 172);
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid rgb(135, 153, 172);
+
+    position: relative;
+    top:30%;
+    margin: 10px;
 }
 
 .big_pic {
-    height: 350px;
-    width: 450px;
+    height: 300px;
+    width: 400px;
+    margin: 10px;
+
+    transition: width .5s, opacity .5s;
 }
 
 .small_pic {
-    height: 200px;
-    width: 250px;
+    height: 150px;
+    width: 200px;
+
+    transition: width .5s, opacity .5s;
+}
+
+.hide {
+    width: 0;
+    opacity: 0;
+}
+
+.highlight {
+    box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
 }
