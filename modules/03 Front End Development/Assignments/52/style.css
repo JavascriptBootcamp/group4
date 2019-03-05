@@ -7,6 +7,7 @@ header{
     position: fixed;
     top: 0px;
 }
+
 hr{
     width: 70%;
     margin-left: auto;
@@ -110,12 +111,6 @@ header.page-header{
     font-size: 18px;
 }
 
-
 .active{
     background-color: darkgrey;
 }
-
-/* @media screen and (max-height: 450px) {
-    .menu {padding-top: 15px;}
-    .menu a {font-size: 18px;}
-  } */
