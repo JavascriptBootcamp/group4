@@ -22,8 +22,9 @@ function Board(_images) {
     })();
 
     this.display = function (boardEl) {
-        var tr, td, btn, flipper, front, back, currentIndex = 0;
+        var tr, td, btn, currentIndex = 0;
         var table = document.createElement("table");
+        table.setAttribute("id","table");
         for (var i = 0; i < 4; i++) {
             tr = document.createElement("tr");
             for (var j = 0; j < 4; j++) {
@@ -32,7 +33,6 @@ function Board(_images) {
                 btn.id = "image" + currentIndex++;
                 btn.style.width = "100px";
                 btn.style.height = "100px";
-                btn.style.backgroundColor = "grey";
                 btn.onclick = onCardClick;
                 td.appendChild(btn);
                 tr.appendChild(td);
@@ -59,8 +59,10 @@ function Board(_images) {
     function showImage(element, currentCardIndex) {
         element.style.backgroundImage = "url('" + cards[currentCardIndex] + "')";
         element.style.backgroundSize = "100% 100%";
+        element.style.transform = "rotateY(180deg)";
     }
     function checkMatch() {
+        var table = document.getElementById("table");
         if (cards[selectedFirstCard] === cards[selectedSecondCard]) {
             remainMatches--;
             checkWin();
@@ -68,7 +70,7 @@ function Board(_images) {
             matches.push(selectedSecondCard);
             selectedFirstCard = null;
             selectedSecondCard = null;
-            //st1.setItem("memoryGame", JSON.stringify({ matches: matches, cards: cards }));
+            st1.setItem("memoryGame", JSON.stringify({'table':table.innerHTML,'cards':cards,'matches':matches,'remainMatches':remainMatches}));
         }
         else {
             toggleState(true);
@@ -98,6 +100,23 @@ function Board(_images) {
             document.getElementById("message").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
         }
     }
+    this.displayFromStorage = function(boardEl){
+        var table = document.createElement("div");
+        var btn;
+        var storage=JSON.parse(st1.getItem('memoryGame'));
+        table.setAttribute('id','table');
+        table.innerHTML = storage.table;
+        cards=storage.cards;
+        matches=storage.matches;
+        remainMatches=storage.remainMatches;
+        boardEl.appendChild(table);
+        btn = document.querySelectorAll("button");
+        for(var i=0;i<btn.length;i++){
+            if(!btn[i].disabled){
+                btn[i].addEventListener("click", onCardClick);
+            }
+        }
+    }
 }
 
 function Card(animal) {
@@ -123,10 +142,7 @@ function checkTimer(time, timerInterval) {
 
 function initialGame() {
     var message = document.getElementById("message");
-    if (document.getElementById("new-game")) {
-        document.getElementById("new-game").remove();
-    }
-    message.innerText = "";
+    var data = st1.getItem("memoryGame");
     var catCard = new Card('cat');
     var dogCard = new Card('dog');
     var goldfishCard = new Card('goldfish');
@@ -136,7 +152,16 @@ function initialGame() {
     var puppyCard = new Card('puppy');
     var rabbitCard = new Card('rabbit');
     var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
-    board.display(document.getElementById("board"));
+    if (document.getElementById("new-game")) {
+        document.getElementById("new-game").remove();
+    }
+    if (data) {
+        board.displayFromStorage(document.getElementById("board"));
+    }
+    else {
+        message.innerText = "";
+        board.display(document.getElementById("board"));
+    }
 }
 
 initialGame();
