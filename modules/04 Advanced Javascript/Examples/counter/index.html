@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    // function add() {
+    //     var counter = 0;
+    //     function increment() {
+    //         counter += 1;
+    //     }  
+    //     increment();
+    //     return counter;
+    // }
+
+    var add = (function() { // IIFE
+        var counter = 0;
+
+        function newAdd() {
+            counter += 1;
+            return counter;
+        }
+
+        return newAdd;
+    })();
+
+    console.log(add());
+    console.log(add());
+    console.log(add());
+    </script>
+
+</body>
+</html>
