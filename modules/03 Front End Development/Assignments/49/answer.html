@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <style>
+        .red {
+            color: red;
+        }
+        .darkgreen {
+            color: darkgreen;
+        }
+        .darkblue {
+            color: darkblue;
+        }
+        .darkgrey {
+            color: darkgrey;
+        }
+    </style>
+    <title>My Solution For Module 01 - Question 20</title>
+</head>
+
+<body>
+    <h1>Code:</h1>
+    <pre>
+            var arr = [1, 2, 5, 7];
+
+            function myFilter(arr,callback){
+                var evenArr=[];
+                for (var i = 0 ; i < arr.length ; i ++){
+                    if (callback(arr[i]))
+                        evenArr.push(arr[i]);
+                        
+                }
+                return evenArr;
+            }
+            var filtered = myFilter(arr, function(item){
+                return item % 2 === 0;
+            });
+            console.log(filtered);
+        </pre>
+    <script>
+        var preText = document.getElementsByTagName('pre')[0].innerText;
+        var textArr = preText.split('\n');
+        var lines = [];
+        textArr.forEach((value, k) => {
+            lines.push('');
+            var arr = value.split(' ');
+            arr.forEach((word) => {
+                if (word[0] !== undefined) {
+                    var temp = '<span>';
+                    var currentSubString = '';
+                    if (word[0] === '(' || word[0] === '[' || word[0] === '{' || word[0] === '=' || word[0] === ',' || word[0] === '+' || word[0] === '}' || word[0] === ']' || word[0] === ')' || word[0] === '.' || word[0] === ';') {
+                        temp = temp + word[0] + '</span>';
+                    } else {
+                        temp += word[0];
+                        currentSubString += word[0];
+                    }
+                    for (var i = 1; i < word.length - 1; i++) {
+                        if (i === 1 && currentSubString === '') {
+                            temp += '<span>';
+                        }
+                        if (word[i] === '(' || word[i] === '[' || word[i] === '{' || word[i] === '=' || word[i] === ',' || word[i] === '+' || word[i] === '}' || word[i] === ']' || word[i] === ')' || word[i] === '.' || word[i] === ';') {
+                            if (currentSubString !== '') {
+                                temp = temp + '</span><span>' + word[i] + '</span><span>';
+                            } else {
+                                temp = temp + word[i] + '</span><span>';
+                            }
+                            currentSubString = '';
+                        } else {
+                            temp += word[i];
+                            currentSubString += word[i];
+                        }
+                    }
+                    if (currentSubString == '' && word.length == 1) {
+                        temp = '<span>' + word[0] + '</span>';
+                    } else if (word.length == 2) {
+                        if (word[1] === '(' || word[1] === '[' || word[1] === '{' || word[1] === '=' || word[1] === ',' || word[1] === '+' || word[1] === '}' || word[1] === ']' || word[1] === ')' || word[1] === '.' || word[1] === ';') {
+                            if (currentSubString == '') {
+                                temp = temp + '<span>' + word[1] + '</span>';
+                            } else {
+                                temp = temp + '</span><span>' + word[1] + '</span>';
+                            }
+                        } else {
+                            if (currentSubString == '') {
+                                temp = temp + '<span>' + word[1] + '</span>';
+                            } else {
+                                temp = temp + word[1] + '</span>';
+                            }
+                        }
+                    } else {
+
+                        if (word[i] === '(' || word[i] === '[' || word[i] === '{' || word[i] === '=' || word[i] === ',' || word[i] === '+' || word[i] === '}' || word[i] === ']' || word[i] === ')' || word[i] === '.' || word[i] === ';') {
+                            if (currentSubString !== '') {
+                                temp = temp + '</span><span>' + word[i] + '</span>';
+                            } else {
+                                temp = temp + word[i] + '</span>';
+                            }
+                        } else {
+                            temp = temp + word[i] + '</span>';
+                        }
+                    }
+
+                    if (temp.includes('var')) {
+                        temp = "<span class='red'>var</span>";
+                    }
+                    if (temp.includes('<span>%undefined<')) {
+                        temp = temp.replace('<span>%undefined<', "<span>%<");
+                    }
+                    if (temp.includes('<span>0undefined<')) {
+                        temp = temp.replace('<span>0undefined<', "<span>0<");
+                    }
+                    if (temp.includes('<span>2undefined<')) {
+                        temp = temp.replace('<span>2undefined<', "<span>2<");
+                    }
+                    if (temp.includes('<span>iundefined<')) {
+                        temp = temp.replace('<span>iundefined<', "<span class='darkgreen'>i<");
+                    }
+                    if (temp.includes('<span>i<')) {
+                        temp = temp.replace('<span>i<', "<span class='darkgreen'>i<");
+                    }
+                    if (temp.includes('<span>arr')) {
+                        temp = temp.replace('<span>arr<', "<span class='darkgreen'>arr<");
+                    }
+                    if (temp.includes('<span>callback')) {
+                        temp = temp.replace('<span>callback<', "<span class='darkgreen'>callback<");
+                    }
+                    if (temp.includes('<span>evenArr')) {
+                        temp = temp.replace('<span>evenArr<', "<span class='darkgreen'>evenArr<");
+                    }
+                    if (temp.includes('<span>filtered')) {
+                        temp = temp.replace('<span>filtered<', "<span class='darkgreen'>filtered<");
+                    }
+                    if (temp.includes('<span>console')) {
+                        temp = temp.replace('<span>console<', "<span class='darkgreen'>console<");
+                    }
+                    if (temp.includes('<span>item')) {
+                        temp = temp.replace('<span>item<', "<span class='darkgreen'>item<");
+                    }
+                    if (temp.includes('<span>=<')) {
+                        temp = temp.replace('<span>=<', "<span class='darkblue'>=<");
+                    }
+                    if (temp.includes('<span>,<')) {
+                        temp = temp.replace('<span>,<', "<span class='darkgrey'>,<");
+                    }
+                    word = temp;
+                }
+                lines[k] = lines[k]  + word + ' ';
+            });
+            lines[k] += '\n'
+        });
+        var h1 = document.createElement('h1');
+        h1.innerText = 'Inner HTML:';
+        document.body.appendChild(h1);
+        var newPre = document.createElement('pre');
+        document.body.appendChild(newPre);
+        newPre.innerText = lines.join('');
+        var code = document.getElementsByTagName('pre')[0];
+        code.innerHTML = lines.join('');
+    </script>
+</body>
+
+</html>
