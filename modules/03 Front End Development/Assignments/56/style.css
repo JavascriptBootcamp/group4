@@ -1,9 +1,9 @@
 *{
     box-sizing: border-box;
 }
-#galery{
+#gallery{
     background-color: blueviolet;
-    width: 90%;
+     width: 90%;
     height: 100%;
     margin: 0 auto;
     border: 1px gray solid;
@@ -16,57 +16,61 @@
     border-radius: 4px;
 }
 
-#current_picture{
-    /* margin-top: -20%; */
-    /* width: 100%; */
-    /* text-align: center; */
-    /* height: 600px; */
-    display: inline-block;
-    margin: 70px 30px 40px 38px;
+#slider{
+    display: flex;
+    justify-content: space-between;
+    margin-top:100px;
 }
 
- #arrow_left {
-    float: left;
-    border-top: 25px solid transparent;
-    border-right: 50px solid lightgrey;
-    border-bottom: 25px solid transparent;
-    margin-left: 187px;
-    margin-top: 145px;
-  }
+/* #current-picture{
+    width: 400px;
+    height: 300px;
+} */
 
-  #arrow_right {
-    float: right;
-    border-top: 25px solid transparent;
-    border-left: 50px solid lightgrey;
-    border-bottom: 25px solid transparent;
-    margin-right: 187px;
-    margin-top: 145px;
+#pictures{
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom:200px;
+    margin-top:100px;
+}
 
-  } 
-  /* .big_picture{
-      display: inline-block;
-  } */
-
-  #picture{
-    display: inline-block;
+#pictures img{
     width: 100%;
+    height: 100%;
     margin: 0 auto;
 }
 
- #current_picture img{
-    width: 240px;
-    height: 200px;
-  }
-
-  #pictures img{
-    width: 90px;
-    height: 75px;
+.wrap-img{
+    width:150px;
+    height: 100px;;
     display: inline-block;
-    margin: 5px;
+    margin: 10px;
+}
+
+#current-picture img{
+    width: 300px;
+    height: 250px;
+}
+
+#arrow_left {
+    /* width: 5%;
+    float: left; */
+    border-top: 25px solid transparent;
+    border-right: 50px solid lightgrey;
+    border-bottom: 25px solid transparent;
+    /* margin-left: 187px; */
+    /* margin-top: 24%; */
   }
 
-  #pictures{
-      width: 518px;
-      margin: 0 auto;
-      margin-bottom:30px; 
+  #arrow_right {
+    /* float: right; */
+    border-top: 25px solid transparent;
+    border-left: 50px solid lightgrey;
+    border-bottom: 25px solid transparent;
+     /* margin-top: 24%;  */
+
+  } 
+
+  .arrow{
+      display: inline-block;
   }
