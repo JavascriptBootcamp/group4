@@ -1,0 +1,121 @@
+body{
+    font-family: "Lato", sans-serif;
+    background-color: lightgray;
+}
+
+header{
+    position: fixed;
+    top: 0px;
+}
+hr{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.7;
+}
+
+span::after{
+    float: right;
+    content: "\2193";
+}
+
+tr:hover{
+    display: table-row;
+    background: linear-gradient(to bottom right, white, darkgrey);
+}
+
+header.page-header{
+    display: flex;
+    height: 100px;
+    color: #1A003F;
+    justify-content: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    
+}
+
+.menu{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 110px;;
+}
+
+.menu a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: lightblue;
+    display: block;
+
+}
+
+.menu a:hover{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.menu a:active{
+    color: darkgreen;
+}
+
+#mainContent{
+    margin-left: 190px;
+    margin-top: 120px;
+}
+
+.emails{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 7px;
+    margin-left: 30px;
+}
+
+.emails th, .emails tr{
+    border: 1px solid rgb(218, 227, 228);
+    padding: 5px;
+    font-size: 16px;
+}
+
+.emails th{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    background-color: lightblue;
+    color: darkblue;
+}
+
+#contacts-table:hover{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.content{
+    padding: 18px;
+    display: none;
+    overflow: hidden;
+    background-color: lightgrey;
+}
+
+.collapsible{
+    cursor: pointer;
+    padding: 5px;
+    outline: none;
+    font-size: 18px;
+}
+
+
+.active{
+    background-color: darkgrey;
+}
+
+/* @media screen and (max-height: 450px) {
+    .menu {padding-top: 15px;}
+    .menu a {font-size: 18px;}
+  } */
