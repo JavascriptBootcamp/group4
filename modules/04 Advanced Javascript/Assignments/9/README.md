@@ -1,4 +1,24 @@
-<p>use <code>group4/Modules/03 Front End Development/Assignments/56</code>.</p>
-<p>load the pictures by fetching a list of them using an AJAX request to: <a href="https://picsum.photos/list">https://picsum.photos/list</a> and rendering images with the following template <code>https://picsum.photos/200/300?image={id}</code> ("id" is part of the JSON).</p>
-<p>add a link to the post by using "post_url" from the JSON.</p>
-<p>while pictures are loading - display a loading indicator.</p>
+<h2>Gallery</h2>
+<div>
+    <img src="56.png" alt="" />
+</div>
+<ol>
+    <li>
+        display one large picture in the middle
+    </li>
+    <li>
+        display at least 10 small pictures as thumbnails below the large picture
+    </li>
+    <li>
+        when the user clicks on the left or right arrows - display the previous/next picture accordingly
+    </li>
+    <li>
+        when the user clicks on a thumbnail - replace the picture in the middle with the selected one
+    </li>
+    <li>
+        store the current large picture in localStorage so that when the user closes the browser and returns - he/she will see the stored picture
+    </li>
+    <li>
+        <b>bonus:</b> add arrows on both sides of the thumbnails row. when the user moves his/her mouse over an arrow - the row should slide left/right and display more thumbnails
+    </li>
+</ol>
