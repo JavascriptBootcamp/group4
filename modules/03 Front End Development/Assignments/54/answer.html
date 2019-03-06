@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        #content {
+            margin: 0 auto;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -208px; 
+            margin-left: -187px;
+        }
+    </style>
+    <title>Tic Tac Toe Game</title>
+</head>
+
+<body onload="initPlayers()">
+    <div id="content">
+        <input type="checkbox" id="pc" name="againstPC" />
+        <label for="againstPC"><span style="color:blue;font-weight:bold">Play against PC</span> as Player O</label>
+        <br />
+        <input type='radio' id='player1' name='players' value='You' checked />
+        <label for="player1">Player X</label>
+        <input type='radio' id='player2' name='players' value='Your Friend or PC' />
+        <label for="player2">Player O</label>
+        <button id='newGame'>New Game</button>
+        <div id="message"></div>
+        <div id="board"></div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
