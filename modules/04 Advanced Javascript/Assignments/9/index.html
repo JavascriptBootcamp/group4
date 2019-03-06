@@ -16,20 +16,18 @@
         
        ph = document.getElementById("ph");
        ph.innerText = 'Loading...';
-       
+
     fetch('https://picsum.photos/list ')
          .then(data=>{
           data.json()
               .then(json=>{
-                    //console.log(json);
                     ph.innerText = "";
-                    const arr = [...json];
-                    for(let i in arr){
+                    for(let i in json){
                        const img = document.createElement("img");
                        const a = document.createElement("a");
-                       a.href = arr[i]["post_url"];
+                       a.href = json[i]["post_url"];
                        a.target = '_blank';
-                       img.src = `https://picsum.photos/200/300?image=${arr[i]["id"]}`
+                       img.src = `https://picsum.photos/200/300?image=${json[i]["id"]}`
                        a.appendChild(img);
                        ph.appendChild(a);
                     }
