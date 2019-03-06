@@ -19,16 +19,13 @@ ol {
 
 li {
     cursor: pointer;
+	display: inline;
 }
 
-.mail li :hover{
+a :hover{
     background: dimgrey;
     color: white;
-}
 
-.contact :hover {
-    background: dimgrey;
-    color: white;
 }
 
 th {
@@ -57,7 +54,7 @@ a {
     color: darkblue;
 }
 
-a:hover{
+a[href]:hover{
     font-weight: bold;
 }
 
