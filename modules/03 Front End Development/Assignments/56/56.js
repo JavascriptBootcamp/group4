@@ -23,18 +23,16 @@ function move_right() {
     firstImg.classList.add("hide");
     slider.appendChild(clone_firstImg);
 
-    //check if the first img is hidden - if hidden remove from the list
+    //check if the first big img is hidden - if hidden remove from the list
     if (big_pic_container.childNodes[0].classList.value.includes("hide")) {
-        big_pic_container.removeChild(slider.childNodes[0]);
+        big_pic_container.removeChild(big_pic_container.childNodes[0]);
     }
 
     //change the big img in the ui
     var firstImg = big_pic_container.childNodes[0];
     firstImg.classList.add("hide");
-    var newImg = creatImgElement(pics[0], "big_pic")
+    var newImg = creatImgElement(pics[0], "big_pic");
     big_pic_container.appendChild(newImg);
-
-
 }
 
 function creatImgElement(src, css_class) {

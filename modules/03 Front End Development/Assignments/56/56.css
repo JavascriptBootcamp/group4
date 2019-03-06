@@ -7,6 +7,7 @@ header {
     background: rgb(135, 153, 172);
     width: 100%;
     height: 50px;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -61,24 +62,31 @@ img {
     margin: 10px;
 }
 
-.big_pic {
+#big_pic_container {
+    display: flex;
+    overflow: hidden;
     height: 300px;
     width: 400px;
-    margin: 10px;
+    border-radius: 10px;
+}
 
-    transition: width .5s, opacity .5s;
+.big_pic {
+    height: 100%;
+    width: 100%;
+
+    transition: width 1s;
 }
 
 .small_pic {
     height: 150px;
     width: 200px;
 
-    transition: width .5s, opacity .5s;
+    transition: width 1s;
 }
 
 .hide {
+    visibility: hidden;
     width: 0;
-    opacity: 0;
 }
 
 .highlight {
