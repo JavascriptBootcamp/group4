@@ -1,17 +1,18 @@
 function Board() {
     var tiles = [];
     var board = document.getElementById('board');
-    var table = document.createElement('table');
+    var table = document.createElement('div');
     var againstPC;
     var pcTurns = 0;
     (function init() { //IIFE
         var row;
         for (var i = 1; i <= 9; i++) {
             if (i % 3 == 1) {
-                row = document.createElement('tr');
+                row = document.createElement('div');
                 row.setAttribute('id', 'row' + Math.floor(i / 3 + 1));
             }
-            var td = document.createElement('td');
+            var td = document.createElement('div');
+            td.className = 'td';
             tiles.push(new Tile(i));
             var tileBtn = tiles[i - 1].getBtn();
             tileBtn.onclick = tileClicked;
@@ -379,7 +380,7 @@ function Board() {
             button.style.width = '100px';
             button.style.height = '100px';
             button.style.overflow = 'hidden';
-            button.style.margin = '10px'
+            button.style.margin = '10px';
 
             x.setAttribute('src', picX);
             x.setAttribute('width', '50px');

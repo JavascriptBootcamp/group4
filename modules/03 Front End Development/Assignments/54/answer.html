@@ -7,6 +7,21 @@
             box-sizing: border-box;
             margin: 0;
         }
+        /* button {
+            display: inline;
+        } */
+        #board {
+            display: block;
+            width: 360px;
+            height: 360px;
+            overflow: hidden;
+            position: relative;
+        }
+        #row1, #row2, #row3 {
+            display: inline-block;
+            width: 360px;
+            height: 120px;
+        }
         #content {
             margin: 0 auto;
             display: block;
@@ -15,6 +30,54 @@
             left: 50%;
             margin-top: -208px; 
             margin-left: -187px;
+        }
+        .td {
+            display: inline-block;
+        }
+        #row1>.td:nth-child(1)>button {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #row1>.td:nth-child(2)>button  {
+            position: absolute;
+            top: 0;
+            left: 120px;
+        }
+        #row1>.td:nth-child(3)>button {
+            position: absolute;
+            top: 0;
+            left: 240px;
+        }
+        #row2>.td:nth-child(1)>button {
+            position: absolute;
+            top: 120px;
+            left: 0;
+        }
+        #row2>.td:nth-child(2)>button  {
+            position: absolute;
+            top: 120px;
+            left: 120px;
+        }
+        #row2>.td:nth-child(3)>button {
+            position: absolute;
+            top: 120px;
+            left: 240px;
+        }
+        #row3>.td:nth-child(1)>button {
+            position: absolute;
+            top: 240px;
+            left: 0;
+        }
+        #row3>.td:nth-child(2)>button  {
+            position: absolute;
+            top: 240px;
+            left: 120px;
+        }
+        #row3>.td:nth-child(3)>button {
+            position: absolute;
+            top: 240px;
+            left: 240px;
         }
     </style>
     <title>Tic Tac Toe Game</title>
