@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="ph">
+
+    </div>
+
+    <script>
+        
+       ph = document.getElementById("ph");
+       ph.innerText = 'Loading...';
+       
+    fetch('https://picsum.photos/list ')
+         .then(data=>{
+          data.json()
+              .then(json=>{
+                    //console.log(json);
+                    ph.innerText = "";
+                    const arr = [...json];
+                    for(let i in arr){
+                       const img = document.createElement("img");
+                       const a = document.createElement("a");
+                       a.href = arr[i]["post_url"];
+                       a.target = '_blank';
+                       img.src = `https://picsum.photos/200/300?image=${arr[i]["id"]}`
+                       a.appendChild(img);
+                       ph.appendChild(a);
+                    }
+              })
+         })
+         .catch(error=>{
+             console.log(error);
+         })
+         
+        
+        
+    </script>
+    
+</body>
+</html>
