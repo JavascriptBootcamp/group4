@@ -4,6 +4,7 @@ function Board(_images) {
     var selectedFirstCard = null, selectedSecondCard = null;
     var cards = [];
     var matches = [];
+    var openCards = {};
     (function shuffle() { //IIFE
         var randomImage, randomIndex;
         while (images.length > 0) {
@@ -12,7 +13,10 @@ function Board(_images) {
             cards.push(randomImage[0].image);
         }
     })();
-    this.display = function (boardEl) {
+    this.display = function () {
+         
+        var boardEl = document.createElement("div");
+        boardEl.id = "board";
         var tr, td, btn, currentIndex = 0;
         var warperDiv = document.createElement("div");
         warperDiv.id = "warperDiv";
@@ -28,7 +32,12 @@ function Board(_images) {
                 btn.className = "btn";
                 btn.style.backgroundImage =  "url( './card.jpg')";
                 btn.style.backgroundSize = "cover";
-                btn.onclick = onCardClick;
+                btn.onclick = function(){
+                    this.classList.remove("glow");
+                    this.parentElement.classList.add("btnclicked");
+                    onCardClick(event);
+                }
+                
                 btn.onmouseover = function(){
                     this.className += " glow";
                 }
@@ -41,11 +50,49 @@ function Board(_images) {
             warperDiv.appendChild(tr);
         }
         boardEl.appendChild(warperDiv);
+        document.getElementById("ph").appendChild(boardEl);
+        if(newGameFlag){
+            document.getElementById("newGameBTN").classList.toggle("hide"); 
+            sessionStorage.clear("openCards");
+        }
+         setOpenCards();
+         setTimer();
+    }
+    function setOpenCards(){
+        var cards = document.querySelectorAll(".btn");
+        var openCards = JSON.parse(sessionStorage.getItem("openCards"));
+        if(!openCards){
+            return;
+        }
+       for(var i in cards){
+           if(cards.hasOwnProperty(i)){
+                 if(openCards[i]){
+                    cards[i].style.backgroundImage = openCards[i]
+                 }
+                 else{
+                    cards[i].style.backgroundImage = "url( './card.jpg')";
+                 }
+           }
+       }
+    }
+    function setTimer(){
+        var timeDiv = document.getElementById("time");
+        var time = 30;
+        timeDiv.innerText = time;
+        var h = setInterval(function timer(){
+            if(time<1){
+                clearInterval(h);
+                 var b = document.getElementById("board");
+                 b.parentNode.removeChild(b);
+                 document.getElementById("newGameBTN").classList.toggle("hide");  
+            }
+            else{
+            time--;
+            timeDiv.innerText = time;
+            }
+        },1000);
     }
     function onCardClick(event) {
-        this.classList.remove("glow");
-       // var td = this.parentElement;
-       // td.classList.add("btnclicked");
         var currentCardIndex = Number(event.target.id.replace("image", ""));
         showImage(event.target, currentCardIndex);
         event.target.disabled = true;
@@ -70,6 +117,12 @@ function Board(_images) {
             checkWin();
             matches.push(selectedFirstCard);
             matches.push(selectedSecondCard);
+            if(JSON.parse(sessionStorage.getItem("openCards"))){
+            openCards = JSON.parse(sessionStorage.getItem("openCards"));
+            }
+            openCards[selectedFirstCard] = document.getElementById("image" + selectedFirstCard).style.backgroundImage;
+            openCards[selectedSecondCard] = document.getElementById("image" + selectedSecondCard).style.backgroundImage;
+            sessionStorage.setItem("openCards",JSON.stringify(openCards));
             selectedFirstCard = null;
             selectedSecondCard = null;
         }
@@ -93,8 +146,10 @@ function Board(_images) {
     function resetImages(firstCardElement, secondCardElement) {
         firstCardElement.disabled = false;
        firstCardElement.style.backgroundImage =   "url( './card.jpg')";
+       firstCardElement.parentElement.classList.remove("btnclicked");
         secondCardElement.disabled = false;
         secondCardElement.style.backgroundImage =  "url( './card.jpg')";
+        secondCardElement.parentElement.classList.remove("btnclicked");
     }
     function checkWin() {
         if (remainMatches === 0){
@@ -107,6 +162,8 @@ function Card(animal) {
     this.image = animal + '.png';
 }
 
+function init(){
+
 var catCard = new Card('cat');
 var dogCard = new Card('dog');
 var goldfishCard = new Card('goldfish');
@@ -116,4 +173,13 @@ var mouseCard = new Card('mouse');
 var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
-board.display(document.getElementById("board"));
+board.display();
+
+
+}
+
+newGameFlag = false;
+function newGame(){
+    newGameFlag=true;
+    init();
+}

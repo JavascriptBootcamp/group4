@@ -23,9 +23,7 @@
     margin-top: -250px;
     margin-left: -250px;
 }
-.tr{
 
-}
 .btn{
     width: 100px;
     height: 100px;
@@ -35,7 +33,6 @@
 .btnclicked{
     transform: rotateY(180deg);
     transition: transform 0.8s;
- /* transform-style: preserve-3d;*/
 }
 
 .td{
@@ -52,12 +49,25 @@
 
 }
 
+.center{
+    text-align: center;
+}
+
+.hide{
+    display: none;
+}
+
 </style>
 
 
 </head>
-<body>
-    <div id="board" id="board"></div>
+<body onload="init()">
+    <div class="center">Time Left: <span id="time"></span></div>
+    <div id="newGameBTN" class="hide center">
+        <h3>Game Over</h3>
+        <button onclick="newGame()">NEW GAME</button>
+    </div>
+    <div id="ph"></div>
     <div id="message"></div>
 
     <script src="script.js"></script>
