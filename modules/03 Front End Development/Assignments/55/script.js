@@ -12,14 +12,41 @@ function Board(_images) {
             cards.push(randomImage[0].image);
         }
     })();
+
+    this.setRemainMatches = function(_remainMatches){
+        remainMatches = _remainMatches;
+    }
+
+    this.getRemainMatches = function(){
+        return remainMatches;
+    }
+    
+    this.setMatches = function(_matches){
+        matches = _matches;
+    }
+
+    this.setCards = function(_cards){
+        cards = _cards;
+    }
+
+    this.getMatches = function(){
+        return matches;
+    }
+
+    this.getCards = function(){
+        return cards;
+    }
+
     this.display = function (boardEl) {
         var tr, td, btn, currentIndex = 0;
-        var table = document.createElement("table");
+        var table = document.createElement("div");
         for (var i = 0; i < 4; i++) {
-            tr = document.createElement("tr");
+            tr = document.createElement("div");
             for (var j = 0; j < 4; j++) {
-                td = document.createElement("td");
+                td = document.createElement("div");
+                td.className = "tr"+i;
                 btn = document.createElement("button");
+                btn.className = "card-button";
                 btn.id = "image" + currentIndex++;
                 btn.style.width = "100px";
                 btn.style.height = "100px";
@@ -32,6 +59,7 @@ function Board(_images) {
         }
         boardEl.appendChild(table);
     }
+
     function onCardClick(event) {
         var currentCardIndex = Number(event.target.id.replace("image", ""));
         showImage(event.target, currentCardIndex);
@@ -88,6 +116,41 @@ function Board(_images) {
             document.getElementById("message").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
         }
     }
+
+    this.getData = function(){
+        var foundedcardsIdxStr = localStorage.getItem("foundedcardsIdxStr");
+        var foundedcardsStr = localStorage.getItem("foundedcardsStr");
+        this.setCards(foundedcardsStr.split(","));
+        this.setMatches(foundedcardsIdxStr.split(","));
+        this.setRemainMatches(this.getRemainMatches() - this.getMatches());
+
+        runOnClickFoundedCards();
+
+    }
+
+    function runOnClickFoundedCards(){
+        for(var i=0; i< matches.length; i+=2){
+            selectedFirstCard = matches[i];
+            selectedSecondCard = matches[i+1];
+        }
+    }
+
+    this.saveData = function(){
+        var foundedcardsIdxStr = '';
+        var matches = board.getMatches();
+        var foundedcardsStr = '';
+        var cards = board.getCards();
+        for(var i=0; i< matches.length;i++){
+            foundedcardsIdxStr += matches[i];
+            if(i < matches.length-1 ){
+                foundedcardsIdxStr += ',';
+            }
+        }   
+        console.log(matches, foundedcardsIdxStr);
+        localStorage.setItem("foundedcardsIdxStr",foundedcardsIdxStr.toString());
+        console.log(cards, foundedcardsStr);
+        localStorage.setItem("foundedcardsStr",foundedcardsStr.toString());
+    }
 }
 
 function Card(animal) {
@@ -103,4 +166,10 @@ var mouseCard = new Card('mouse');
 var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
+
+window.onbeforeunload = function(){
+    board.saveData();
+}
+
 board.display(document.getElementById("board"));
+board.getData();

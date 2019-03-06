@@ -7,6 +7,25 @@
     bottom: 0;
     left: 0;
 
-    width: 25%;
+    width: 30%;
     height: 30%;
+}
+.tr0, .tr1, .tr2, .tr3{
+    display:inline-block;
+    width: 25%;
+    height: 25%;
+}
+
+.card-button:hover{
+    box-shadow: 0px 0px 50px 5px rgb(224, 255, 86);
+    transition: 0.5s all;
+}
+
+.card-button{
+    transition: 3s all;
+    border-radius: 10px;
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3jKnoJOHl4GoGifwC600qi0dpHcJk_1f91aP-FYh1XvxmAQ1R");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #000;
 }
