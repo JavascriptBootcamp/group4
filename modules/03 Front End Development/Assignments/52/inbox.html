@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DMail</title>
 
-    <link rel="stylesheet" type="text/css" href="dmaiStyles.css">
+    <link rel="stylesheet" type="text/css" href="dmailStyles.css">
 </head>
 
 <body>
@@ -53,7 +53,6 @@
             this.subject = subject;
             this.date = date;
         }
-
         var mailList = [];
         var mail0 = new Mail("Shmulik Ha Kipod", "Birthday", "21/02/19");
         var mail1 = new Mail("Mariya", "Networking exam preparation", "19/2/19");
@@ -76,18 +75,15 @@
         mailList.push(mail7);
         mailList.push(mail8);
         mailList.push(mail9);
-
         var mailTable = document.querySelector("#tableOfMails");
         var counter = 0;
         function displayMailInfo(e) {
             var mailId = e.target.id;
             var mailNum = mailId.slice(-1);
-
             var newMailRow = document.createElement("tr");
             var from = document.createElement("td");
             var subject = document.createElement("td");
             var date = document.createElement("td");
-
             from.className = "mail";
             subject.className = "mail";
             date.classList = "mail";
@@ -99,7 +95,6 @@
                 subject.style = "font-weight:bold;"
                 date.style = "font-weight:bold;"
             }
-
             from.innerText = mailList[mailNum].from;
             subject.innerText = mailList[mailNum].subject;
             date.innerText = mailList[mailNum].date;
@@ -107,9 +102,7 @@
             newMailRow.appendChild(from);
             newMailRow.appendChild(subject);
             newMailRow.appendChild(date);
-
             mailTable.appendChild(newMailRow);
-
             var theLiItem = document.querySelector("#" + mailId);
             theLiItem.onclick = function()
             {
