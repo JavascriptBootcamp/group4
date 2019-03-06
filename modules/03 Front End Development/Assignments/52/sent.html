@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DMail</title>
+    <link rel="stylesheet" type="text/css" href="dmaiStyles.css">
+</head>
+
+<body>
+
+    <h1>Welcome to DMail</h1>
+    <div id="container">
+        <div id="leftMenu" class="borderStyle">
+            <a href="inbox.html">Inbox</a>
+            <a href="sent.html">Sent</a>
+            <a href="contacts.html">Contacts</a>
+        </div>
+
+        <div id="mainArea" class="borderStyle">
+            <ol id="mailsList">
+                <a><li id="mail1" onclick="displayMailInfo(event)">Mail</li></a>
+                <a><li id="mail2" onclick="displayMailInfo(event)">Mail</li></a>
+                <a><li id="mail3" onclick="displayMailInfo(event)">Mail</li></a>
+                <a><li id="mail4" onclick="displayMailInfo(event)">Mail</li></a>
+                <a><li id="mail5" onclick="displayMailInfo(event)">Mail</li></a>
+            </ol>
+
+            <table id="tableOfMails">
+                <tr>
+                    <th>From</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+    <script>
+        function Mail(from, subject, date) {
+            this.from = from;
+            this.subject = subject;
+            this.date = date;
+        }
+
+        var mailList = [];
+        var mail1 = new Mail("Guy", "Birthday", "21/02/19");
+        var mail2 = new Mail("Guy", "Networking exam preparation", "19/2/19");
+        var mail3 = new Mail("Guy", "Math tools exam preparation", "10/1/19");
+        var mail4 = new Mail("Guy", "Vote ME!", "01/01/19");
+        var mail5 = new Mail("Guy", "Do laundry!", "Allways");
+
+        mailList.push(mail1);
+        mailList.push(mail2);
+        mailList.push(mail3);
+        mailList.push(mail4);
+        mailList.push(mail5);
+
+
+        var mailTable = document.querySelector("#tableOfMails");
+        var counter = 0;
+        function displayMailInfo(e) {
+            var mailId = e.target.id;
+            var mailNum = mailId.slice(-1);
+
+            var newMailRow = document.createElement("tr");
+            var from = document.createElement("td");
+            var subject = document.createElement("td");
+            var date = document.createElement("td");
+            
+            from.className = "mail";
+            subject.className = "mail";
+            date.className = "mail";
+            if(counter < 3)
+            {
+                counter++;
+                from.style = "font-weight:bold;"
+                subject.style = "font-weight:bold;"
+                date.style = "font-weight:bold;"
+            }
+
+            from.innerText = mailList[mailNum - 1].from;
+            subject.innerText = mailList[mailNum - 1].subject;
+            date.innerText = mailList[mailNum - 1].date;
+            
+            newMailRow.appendChild(from);
+            newMailRow.appendChild(subject);
+            newMailRow.appendChild(date);
+
+            mailTable.appendChild(newMailRow);
+
+            var theLiItem = document.querySelector("#" + mailId);
+            theLiItem.onclick = function()
+            {
+                return false;
+            }
+        
+        }
+    </script>
+</body>
+
+</html>
