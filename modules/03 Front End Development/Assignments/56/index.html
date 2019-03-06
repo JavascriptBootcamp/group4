@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(76, 66, 100);
+        }
+
+        .larrow {
+            border-color: transparent rgb(239, 238, 241);
+            border-style: solid;
+            border-width: 20px 35px 20px 0px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .rarrow {
+            border-color: transparent rgb(239, 238, 241);
+            border-style: solid;
+            border-width: 20px 0px 20px 35px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .rarrow:hover {
+            border-color: transparent rgb(139, 138, 141);
+        }
+
+        .larrow:hover {
+            border-color: transparent rgb(139, 138, 141);
+        }
+
+        .wrapper {
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            width: 98%;
+        }
+
+        #bigpic {
+            border-radius: 10px;
+            width: 500px;
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
+
+        #thumbnails {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            max-width: 58%;
+        }
+
+        .imgs {
+            border-radius: 10px;
+            cursor: pointer;
+            width: 200px;
+            height: 150px;
+            margin: 22px;
+        }
+
+        @media screen and (max-width: 550px) {
+            #bigpic {
+                border-radius: 10px;
+                width: 200px;
+                height: 150px;
+                margin-top: 40px;
+                margin-bottom: 100px;
+            }
+
+            .imgs {
+                width: 85px;
+                height: 85px;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        }
+
+        .selected {
+            border: 5px double rgb(239, 238, 241);
+            box-shadow: 0px 0px 20px 9px rgba(239, 238, 241, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="upwrapper" class="wrapper">
+            <div class="larrow" onclick="moveLeft()"></div>
+            <img id="bigpic" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif">
+            <div class="rarrow" onclick="moveRight()"></div>
+        </div>
+        <div id="lowewrapper" class="wrapper">
+            <div class="larrow" onmouseover="scrollToLeft()" onmouseout="stopScroll()"></div>
+            <div id="thumbnails">
+                <img id="img0" class="imgs selected" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img1" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img2" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img3" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img4" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img5" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img6" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img7" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img8" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+                <img id="img9" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+                    onclick="showBigImg(this)">
+            </div>
+            <div class="rarrow" onmouseover="scrollToRight()" onmouseout="stopScroll()"></div>
+        </div>
+    </div>
+    <script>
+        var arrThumbnails = [];
+        var movescroll;
+        var bigPic = document.getElementById("bigpic");
+        var thumbnails = document.getElementById("thumbnails");
+        var thumbs = document.getElementsByClassName("imgs");
+        var index = 0;
+
+        function Thumbnails(id, src, post_url) {
+            this.id = id;
+            this.src = src;
+            this.post_url = post_url
+        }
+
+        (function start() {
+            fetch("https://picsum.photos/list")
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (json) {
+                    createThumbnails(json);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })();
+
+        function createThumbnails(data) {
+            setInterval(function () {
+                var localData = localStorage.getItem("selectedID");
+
+                for (var i = 0; i < 10; i++) {
+                    arrThumbnails.push(new Thumbnails(i, "https://picsum.photos/200/150?image=" + data[i]["id"], data[i]["post_url"]));
+                    thumbs[i].src = arrThumbnails[i]["src"];
+                }
+
+                if (localData)
+                    showBigImg(document.getElementById(localData));
+                else
+                    bigPic.src = thumbs[0].src;
+            }, 2000);
+        }
+
+        function showBigImg(e) {
+            document.getElementsByClassName("selected")[0].classList.toggle("selected");
+            var eId = e.id;
+            index = Number(eId.charAt(eId.length - 1));
+            bigPic.src = e.src;
+            e.className = "imgs selected";
+            e.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            localStorage.setItem("selectedID", eId);
+        }
+        function moveLeft() {
+            var id;
+            index === 0 ? id = "img9" : id = "img" + (index - 1);
+            showBigImg(document.getElementById(id));
+
+        }
+        function moveRight() {
+            var id;
+            index === 9 ? id = "img0" : id = "img" + (index + 1);
+            showBigImg(document.getElementById(id));
+        }
+        function scrollToRight() {
+            movescroll = setInterval(function () {
+                thumbnails.scrollLeft += 5;
+            }, 10);
+        }
+        function scrollToLeft() {
+            movescroll = setInterval(function () {
+                thumbnails.scrollLeft -= 5;
+            }, 10);
+        }
+        function stopScroll() {
+            clearInterval(movescroll);
+        }
+
+    </script>
+</body>
+
+</html>
