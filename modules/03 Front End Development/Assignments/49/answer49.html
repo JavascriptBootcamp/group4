@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>
+        "My Solution For Module 01 - Question 20"
+    </title>
+
+    <style>
+        pre{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .var{
+            /* color: darkred; */
+            color: rgb(255, 0, 0);
+        }
+
+        .variable{
+            /* color: darkgreen; */
+            color: rgb(49, 255, 49);
+        }
+
+        .equal-signs{
+            /* color: darkblue; */
+            color: rgb(0, 153, 255);
+        }
+
+        .commas{
+            color: darkgrey;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Code:</h1>
+
+    <pre>
+            <span class="var">var</span> <span class=variable>arr</span> <span class="equal-signs">=</span> [1<span class="commas">,</span> 2<span class="commas">,</span> 5<span class="commas">,</span> 7<span class="commas">,</span> 8];
+            
+            function myFilter(callback){
+                
+                <span class="var">var</span> <span class=variable>filteredArray</span> <span class="equal-signs">=</span> [];
+            
+                for(<span class="var">var</span> <span class=variable>i</span> <span class="equal-signs">=</span> 0; i < <span class=variable>arr</span>.length; i++){
+                    if(callback(<span class=variable>arr</span>[<span class=variable>i</span>])){
+                        <span class=variable>filteredArray</span>.push(<span class=variable>arr</span>[<span class=variable>i</span>]);
+                    }
+                }
+            
+                return <span class=variable>filteredArray</span>;
+            }
+            
+            <span class="var">var</span> <span class=variable>filtered</span> <span class="equal-signs">=</span> myFilter(function(<span class=variable>item</span>){
+                return <span class=variable>item</span> % 2 <span class="equal-signs">===</span> 0;
+            });
+            <span class=variable>console</span>.log(<span class=variable>filtered</span>);
+    </pre>
+</body>
+
+</html>
