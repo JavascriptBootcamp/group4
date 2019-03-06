@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DMail</title>
-    <link rel="stylesheet" type="text/css" href="dmaiStyles.css">
+    <link rel="stylesheet" type="text/css" href="dmailStyles.css">
 </head>
 
 <body>
@@ -55,7 +55,6 @@
             this.lastName = lastName;
             this.emailAddress = emailAddress;
         }
-
         var contactList = [];
         var contact1 = new Contact("Guy", "Agiv", "guyagiv@gmail.com");
         var contact2 = new Contact("Harry", "Potter", "theboywholived@gmail.com");
@@ -67,44 +66,34 @@
         contactList.push(contact3);
         contactList.push(contact4);
         contactList.push(contact5);
-
         var contactTable = document.querySelector("#tableOfContacts");
-
         function displayContactInfo(e) {
             var contactId = e.target.id;
             var contactNum = contactId.slice(-1);
-
             var newContactRow = document.createElement("tr");
             var firstName = document.createElement("td");
             var lastName = document.createElement("td");
             var emailName = document.createElement("td");
-
             firstName.className = "contact";
             lastName.className = "contact";
             emailName.className = "contact";
-
             firstName.innerText = contactList[contactNum - 1].firstName;
             lastName.innerText = contactList[contactNum - 1].lastName;
             emailName.innerText = contactList[contactNum - 1].emailAddress;
-
             newContactRow.appendChild(firstName);
             newContactRow.appendChild(lastName);
             newContactRow.appendChild(emailName);
-
             contactTable.appendChild(newContactRow);
-
             var theLiItem = document.querySelector("#" + contactId);
             theLiItem.onclick = function () {
                 return false;
             }
         }
-
         function Sort(sortStyle) {
             var trTags = document.querySelectorAll("tr");
             var templateCompare;
             if (trTags.length > 2) {
                 var sortedArray = [];
-
                 for(var i = 1; i < trTags.length; i++)
                 {
                     sortedArray.push({"firstName" : trTags[i].childNodes[0].innerText, "lastName" : trTags[i].childNodes[1].innerText, "emailAddress" : trTags[i].childNodes[2].innerText});
@@ -143,9 +132,7 @@
                         return 0;
                     }
                 }
-
                 sortedArray.sort(templateCompare);
-
                 for(var i = 1; i < trTags.length; i++)
                 {
                     trTags[i].childNodes[0].innerText = sortedArray[i-1].firstName;
