@@ -143,10 +143,19 @@ var rabbitCard = new Card('rabbit');
 
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 board.display(document.getElementById("board"));
-
-
-var timer2 = "0:05";
+var timer2;
+// if(sessionStorage.getItem("time")){
+//     document.querySelector("#timer").innerHTML = sessionStorage.getItem("time");
+//     console.log(document.querySelector("#timer").innerHTML)
+// }
+//else{
+    timer2 = "10:00";
+    sessionStorage.setItem("time",timer2);
+//}
 var interval = setInterval(function() {
+  if(sessionStorage.getItem("time")){
+      timer2 = sessionStorage.getItem("time");
+  }
   var timer = timer2.split(':');
   var minutes = parseInt(timer[0], 10);
   var seconds = parseInt(timer[1], 10);
@@ -159,13 +168,19 @@ var interval = setInterval(function() {
     restartBtn = document.createElement("button");
     restartBtn.innerHTML = "Start Again"
     restartBtn.id = "restart-btn"
-    restartBtn.style = "text-align:center"
+    restartBtn.onclick = function(){
+        sessionStorage.clear();
+        location.reload();
+    }
     document.querySelector("#board").appendChild(restartBtn);
   } 
-    
+  sessionStorage.setItem("time", document.querySelector("#timer").innerHTML)
+  //console.log(sessionStorage.getItem("time"));
   seconds = (seconds < 0) ? 59 : seconds;
   seconds = (seconds < 10) ? '0' + seconds : seconds;
-  document.getElementById("timer").innerHTML = minutes + ':' + seconds;
+  var timeCountDown = document.getElementById("timer");
+  timeCountDown.innerHTML = minutes + ':' + seconds;
+  timeCountDown.style = "font-size: 70px; color: white"
   timer2 = minutes + ':' + seconds;
 }, 1000);
 
