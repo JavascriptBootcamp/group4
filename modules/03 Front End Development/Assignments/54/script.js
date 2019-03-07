@@ -1,3 +1,38 @@
+function displayToggle(boolValue) {
+    document.getElementById('board').style.display = boolValue ? 'block':'none';
+}
+
+function colorAll(e) {
+    var divs =document.getElementsByTagName('div');
+    var labels =document.getElementsByTagName('label');
+    var buttons = document.getElementsByTagName('button');
+    if(e.target.id === 'light'){
+        document.body.style.backgroundColor = '#FFFD6A';
+        for(var i=0; i<divs.length; i++){
+            divs[i].style.backgroundColor = '#A3FF89';
+        }
+        for(var i=0; i<labels.length; i++){
+            labels[i].style.color = '#000000';
+        }
+        for(var i=0; i<buttons.length; i++){
+            buttons[i].style.backgroundColor = '#EAB391';
+            buttons[i].style.color = '#000000';
+        }
+    } else {
+        document.body.style.backgroundColor = '#04324F';
+        for(var i=0; i<divs.length; i++){
+            divs[i].style.backgroundColor = '#3A3021';
+        }
+        for(var i=0; i<labels.length; i++){
+            labels[i].style.color = '#ffffff';
+        }
+        for(var i=0; i<buttons.length; i++){
+            buttons[i].style.backgroundColor = '#EA009D';
+            buttons[i].style.color = '#ffffff';
+        }
+    }
+}
+
 function Board() {
     var tiles = [];
     var board = document.getElementById('board');
@@ -46,8 +81,9 @@ function Board() {
         } else {
             colNum = 3;
         }
-
+        board.style.cursor = 'no-drop';
         if (checkWin(isPlayerXTurn, rowNum, colNum)) {
+            displayToggle(false);
             var WinMsg = document.getElementById('message');
             var txt = isPlayerXTurn ? "Player X, You're the winner!" : "Player O, You're the winner!";
             var txtNode = document.createTextNode(txt);
@@ -55,6 +91,7 @@ function Board() {
             resetAll();
             document.getElementById('pc').disabled = false;
         } else if (checkDraw()) {
+            displayToggle(false);
             var WinMsg = document.getElementById('message');
             WinMsg.innerText = 'Draw! Click on "New Game" button to play again.';
             document.getElementById('pc').disabled = false;
@@ -160,6 +197,7 @@ function Board() {
     }
 
     function startNewGame() {
+        displayToggle(true);
         document.getElementById('player1').disabled = false;
         document.getElementById('player1').checked = true;
         document.getElementById('player2').disabled = true;
@@ -179,6 +217,7 @@ function Board() {
         var message = document.getElementById('message');
         message.innerText = 'PC turn...';
         board.style.pointerEvents = 'none';
+        board.style.cursor = 'no-drop';
         pcTurns++;
         if (pcTurns === 1) {
             if (!tiles[4].isFilled()) {
