@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Click Me</button>
+
+    <script>
+        // ES5
+        // function foo(){
+        //     this.bar = 56;
+        //     document.getElementById("btn").addEventListener("click", function(){
+        //         console.log(this.bar);
+        //     });
+        // }
+        // ES6
+        // function foo(){
+        //     this.bar = 42;
+        //     document.getElementById("btn").addEventListener("click", () => {
+        //         console.log(this.bar);
+        //     });
+        // }
+        // foo();
+
+        // ES5
+        // function QouteMaster(){
+        //     this.quote = "Moshiko is the king";
+        //     this.sayIt = function(){
+        //         alert(this.quote);
+        //     }
+        //     setTimeout(this.sayIt, 1000);
+        // }
+        // var q = new QouteMaster();
+        // q.sayIt();
+        // ES6
+        // function QouteMaster(){
+        //     this.quote = "Moshiko is the king";
+        //     this.sayIt = () => console.log(this.quote);
+        //     setTimeout(this.sayIt, 1000);
+        // }
+        // var q = new QouteMaster();
+        // q.sayIt();
+
+        var arr = [1, 2, 3];
+        function QouteMaster() {
+            this.quote = "Moshiko is the king";
+            this.sayIt = function () {
+                arr.forEach( () => {
+                    console.log(this.quote);
+                });
+            }
+        }
+        var q = new QouteMaster();
+        q.sayIt();
+    </script>
+</body>
+
+</html>
