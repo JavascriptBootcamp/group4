@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="log"></div>
+    <div id="log2"></div>
+    <div id="log3"></div>
+    <script>
+    const books = [
+    {title: "The Hobbit",author: "J.R.R. Tolkien",alreadyRead: true},
+    {title: "Harry Potter",author: "J.K Rolling",alreadyRead: false},
+    {title: "The Lord Of The Rings",author: "Yakir Solomon",alreadyRead: true},
+    ]
+
+    let {title,author} = books[0] ;
+
+    document.querySelector("#log3").innerHTML += `${title}<br/>`;
+    document.querySelector("#log3").innerHTML += `${author}<br>`;
+    const displayBooks = () => {
+        for (let i=0;i<books.length;i++){
+            document.querySelector("#log").innerHTML = `${books[i].title} by ${books[i].author} <br/>`;
+        }
+
+        for (let i=0;i<books.length;i++){
+            if(books[i].alreadyRead)
+                document.querySelector("#log").innerHTML += `You already read ${books[i].title} by ${books[i].author} <br/>`;
+            else
+                document.querySelector("#log").innerHTML += `You still need to read ${books[i].title} by ${books[i].author} <br/>`;
+        }   
+    }
+    displayBooks(books);
+
+    const max = (...arg) => {
+        let maxValue;
+        for(let i=0; i< arg.length; i++){
+            if (i === 0) {
+                maxValue = arg[0];
+            } else{
+                if(arg[i] > maxValue){
+                    maxValue = arg[i];
+                }
+            }
+        }
+        return maxValue;
+    }
+    document.querySelector("#log2").innerHTML = max(-12,-34,10,-56,-1);
+    </script>
+</body>
+</html>
