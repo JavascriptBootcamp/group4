@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(199, 213, 218);
+}
+
+.page-header {
+    width: 58%;
+    background: rgb(46, 93, 110);
+    text-align: center;
+    color: white;
+    margin: 0px auto;
+    border-radius: 10px 0px;
+}
+
+.bg-blur {
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    height: 100%; 
+    background-color: white;
+    z-index: 100;
+    opacity: 0.40;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+#large-picture {
+    position: absolute;
+    visibility: hidden;
+    z-index: 300;
+    left: 50%;
+    top: 50%;
+    margin-top: -150px;
+    margin-left: -220px;
+    width: 400px;
+    height: 300px;
+    border-left: solid 20px white;
+    border-right: solid 20px white;
+}
+
+#wrapper {
+    width: 58%;
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0px auto;
+}
+
+#wrapper > div {
+    text-align: center;
+    width: 180px;
+    height: 180px;
+    margin: 15px 30px;
+}
+
+#wrapper > div:hover {
+    box-shadow: 10px 10px 10px black;
+}
+
+#wrapper div img {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 180px;
+    height: 150px;
+    cursor: pointer;
+}
+
+button {
+    padding: 0;
+    width:70%;
+    height: 30px;
+    float: left;
+    font-size: 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: rgba(133,165,177,1); 
+    cursor: pointer;
+}
+
+button:hover { 
+    border: solid 2px rgb(46, 93, 110);
+}
+
+.like {
+    width:30%;
+    height: 27px;
+    float: left;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background: black; 
+    color: white;
+    text-align: center;
+    padding-top: 3px;
+}
