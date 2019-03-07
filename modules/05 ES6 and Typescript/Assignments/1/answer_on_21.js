@@ -1,4 +1,4 @@
-// destructuring example
+// deconstructing example
 const array = [12, 34, 56, 1, 18, 71, 5, 3];
 
 let getMaxArrValue = (arr) => {
