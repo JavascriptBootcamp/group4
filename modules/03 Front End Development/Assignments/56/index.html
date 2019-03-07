@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>56</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body onload="getLastImgStorage()">
+
+    <div id="wrapper">
+        <h1 class="page-header">Gallery</h1>
+        <div class="left-arrow">
+            <img id="left-arrow-img" src="https://image.flaticon.com/icons/svg/25/25184.svg" onclick="previous()">
+        </div>
+        <div>
+            <img id="selected-img">
+        </div>
+        <div class="right-arrow">
+            <img id="right-arrow-img" src="https://image.flaticon.com/icons/svg/25/25446.svg" onclick="next()">
+        </div>
+        <div class="gallery">
+            <img id="img0" src="https://www.extremetech.com/wp-content/uploads/2013/09/4Vln8-640x428.jpg"
+                onclick="store(event)">
+            <img id="img1" src="https://www.catster.com/wp-content/uploads/2018/07/Savannah-cat-long-body-shot.jpg"
+                onclick="store(event)">
+            <img id="img2" src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Puppy_on_Halong_Bay.jpg"
+                onclick="store(event)">
+            <img id="img3" src="https://cdn.pixabay.com/photo/2018/09/05/05/56/horse-3655558_1280.jpg"
+                onclick="store(event)">
+            <img id="img4" src="http://www.freedigitalphotos.net/images/img/homepage/87357.jpg" onclick="store(event)">
+            <img id="img5"
+                src="http://4.bp.blogspot.com/-GlWhUQsMUx4/TpeKtUpRvmI/AAAAAAAA3tk/DUIJjizW_aw/s1600/Sea_Turtle_Animal_Wallpapers.jpg"
+                onclick="store(event)">
+            <img id="img6" src="https://www.rd.com/wp-content/uploads/2016/05/01-smart-animals-racoon.jpg"
+                onclick="store(event)">
+            <img id="img7"
+                src="https://animals.sandiegozoo.org/sites/default/files/2016-08/category-thumbnail-amphibians_0.jpg"
+                onclick="store(event)">
+            <img id="img8" src="https://www.iata.org/whatwedo/cargo/PublishingImages/cargo_live_animals_parrot.jpg"
+                onclick="store(event)">
+            <img id="img9"
+                src="https://cdn.the-scientist.com/assets/articleNo/30781/iImg/2460/df892096-47e0-4041-ab30-94e045f43a82-puerto-rican-parrot-full.jpg"
+                onclick="store(event)">
+        </div>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
