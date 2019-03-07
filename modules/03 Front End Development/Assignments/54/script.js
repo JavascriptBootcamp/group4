@@ -10,6 +10,7 @@ function colorAll(e) {
         document.body.style.backgroundColor = '#FFFD6A';
         for(var i=0; i<divs.length; i++){
             divs[i].style.backgroundColor = '#A3FF89';
+            divs[i].style.color = '#000000';
         }
         for(var i=0; i<labels.length; i++){
             labels[i].style.color = '#000000';
@@ -22,6 +23,7 @@ function colorAll(e) {
         document.body.style.backgroundColor = '#04324F';
         for(var i=0; i<divs.length; i++){
             divs[i].style.backgroundColor = '#3A3021';
+            divs[i].style.color = '#ffffff';
         }
         for(var i=0; i<labels.length; i++){
             labels[i].style.color = '#ffffff';
