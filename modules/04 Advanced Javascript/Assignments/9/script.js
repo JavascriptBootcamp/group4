@@ -10,7 +10,7 @@ function insertPicToArr(jsonData) {
         if (jsonData.hasOwnProperty(index)) {
             const element = jsonData[index];
             post_url = element.post_url;
-            src = "https://picsum.photos/200/300?image=" + index;
+            src = `https://picsum.photos/200/300?image= ${index}`;
 
             currImg = new Image(src, post_url);
             imagesArr.push(currImg);
