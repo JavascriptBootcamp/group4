@@ -232,6 +232,7 @@
             var contents = document.getElementById('centerDiv');
             var num = (window.innerHeight - contents.children[0].offsetHeight - contents.children[1].offsetHeight - 20) / 2;
             outerDiv.style.top = num + 'px';
+            outerDiv.style.height = (window.innerHeight - num)+ 'px';
         }
     </script>
 </body>
