@@ -1,4 +1,12 @@
 function Board(_images) {
+    var time = 3;
+    var timer = document.getElementById("timer");
+    var timerInterval = setInterval(
+        function () {
+            timer.innerText = time;
+            checkTimer(time--, timerInterval);
+        }, 1000);
+
     var remainMatches = _images.length;
     var images = _images.concat(_images);
     var selectedFirstCard = null, selectedSecondCard = null;
@@ -12,6 +20,43 @@ function Board(_images) {
             cards.push(randomImage[0].image);
         }
     })();
+
+    function checkTimer(time, timerInterval) {
+        if (time === 0) {
+            clearInterval(timerInterval);
+            var container = document.getElementById("container");
+            var board = document.getElementById("board");
+            var btn = document.createElement("button");
+            var message = document.getElementById("message");
+            var table = document.getElementById("table");
+            btn.innerText = "New Game";
+            btn.id = "new-game";
+            btn.onclick = initialGame;
+            board.removeChild(table);
+            container.appendChild(btn);
+            message.innerText = "You Lose!!!"
+            sessionStorage.clear();
+            matches = [];
+        }
+    }
+    
+    function initialGame() {
+        var message = document.getElementById("message");
+        if (document.getElementById("new-game")) {
+            document.getElementById("new-game").remove();
+        }
+        message.innerText = "";
+        timer.innerText = "";
+        time = 300;
+        timerInterval = setInterval(
+            function () {
+                timer.innerText = time--;
+                checkTimer(time, timerInterval);
+            }, 1000);
+        
+        board.display(document.getElementById("board"));
+
+    }
 
     this.setRemainMatches = function(_remainMatches){
         remainMatches = _remainMatches;
@@ -40,18 +85,20 @@ function Board(_images) {
     this.display = function (boardEl) {
         var tr, td, btn, currentIndex = 0;
         var table = document.createElement("div");
+        table.id = "table";
         for (var i = 0; i < 4; i++) {
             tr = document.createElement("div");
+            tr.className = "tr" + i;
             for (var j = 0; j < 4; j++) {
                 td = document.createElement("div");
-                td.className = "tr"+i;
+                td.className = "td"+i;
                 btn = document.createElement("button");
                 btn.className = "card-button";
                 btn.id = "image" + currentIndex++;
                 btn.style.width = "100px";
                 btn.style.height = "100px";
                 btn.style.backgroundColor = "grey";
-                btn.onclick = onCardClick;
+                btn.onclick = onCardClick.bind(btn);
                 td.appendChild(btn);
                 tr.appendChild(td);
             }
@@ -60,10 +107,10 @@ function Board(_images) {
         boardEl.appendChild(table);
     }
 
-    function onCardClick(event) {
-        var currentCardIndex = Number(event.target.id.replace("image", ""));
-        showImage(event.target, currentCardIndex);
-        event.target.disabled = true;
+    function onCardClick() {
+        var currentCardIndex = Number(this.id.replace("image", ""));
+        showImage(this, currentCardIndex);
+        this.disabled = true;
         setSelectedCards(currentCardIndex);
     }
     function setSelectedCards(currentCardIndex) {
@@ -118,38 +165,43 @@ function Board(_images) {
     }
 
     this.getData = function(){
-        var foundedcardsIdxStr = localStorage.getItem("foundedcardsIdxStr");
-        var foundedcardsStr = localStorage.getItem("foundedcardsStr");
-        this.setCards(foundedcardsStr.split(","));
-        this.setMatches(foundedcardsIdxStr.split(","));
-        this.setRemainMatches(this.getRemainMatches() - this.getMatches());
+        var _matches = sessionStorage.getItem("_matches");
+        var _cards = sessionStorage.getItem("_cards");
 
-        runOnClickFoundedCards();
+        if(!_matches || !_cards){
+            return;
+        }
 
+        this.setCards(_cards.split(","));
+        return _matches.split(",");
     }
 
-    function runOnClickFoundedCards(){
-        for(var i=0; i< matches.length; i+=2){
-            selectedFirstCard = matches[i];
-            selectedSecondCard = matches[i+1];
+    this.restoreData = function(_matches){
+
+        this.setRemainMatches(this.getRemainMatches() - this.getMatches());
+        runOnClickFoundedCards(_matches);
+    }
+
+    // Simaulate buttons click for all founded cards
+    function runOnClickFoundedCards(_matches){
+        var length = _matches.length;
+        for(var i=0; i< length; i+=2){
+            var firstCard = _matches[i];
+            var button = document.getElementById("image" + firstCard);
+            onCardClick.call(button);
+            var secondCard = _matches[i+1];
+            button = document.getElementById("image" + secondCard);
+            onCardClick.call(button);
+
         }
     }
 
     this.saveData = function(){
-        var foundedcardsIdxStr = '';
-        var matches = board.getMatches();
-        var foundedcardsStr = '';
-        var cards = board.getCards();
-        for(var i=0; i< matches.length;i++){
-            foundedcardsIdxStr += matches[i];
-            if(i < matches.length-1 ){
-                foundedcardsIdxStr += ',';
-            }
-        }   
-        console.log(matches, foundedcardsIdxStr);
-        localStorage.setItem("foundedcardsIdxStr",foundedcardsIdxStr.toString());
-        console.log(cards, foundedcardsStr);
-        localStorage.setItem("foundedcardsStr",foundedcardsStr.toString());
+        var _matches = board.getMatches().toString();
+        var _cards = board.getCards().toString();
+
+        sessionStorage.setItem("_matches",_matches.toString());
+        sessionStorage.setItem("_cards",_cards.toString());
     }
 }
 
@@ -167,9 +219,17 @@ var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 
+
 window.onbeforeunload = function(){
     board.saveData();
+
 }
 
+
+ //sessionStorage.clear();
+ var storedData = board.getData();
+
 board.display(document.getElementById("board"));
-board.getData();
+if(storedData){
+    board.restoreData(storedData);
+}

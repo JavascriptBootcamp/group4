@@ -10,11 +10,17 @@
     width: 30%;
     height: 30%;
 }
-.tr0, .tr1, .tr2, .tr3{
+.td0, .td1, .td2, .td3{
     display:inline-block;
-    width: 25%;
-    height: 25%;
+    width: 20%;
+    height: 20%;
 }
+
+.tr0, .tr1, .tr2, .tr3{
+    margin: 10px;
+}
+
+
 
 .card-button:hover{
     box-shadow: 0px 0px 50px 5px rgb(224, 255, 86);
@@ -28,4 +34,28 @@
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid #000;
+}
+
+#timer{
+    text-align: center;
+    color: crimson;
+    font-size: 24px;
+    font-weight: bold;    
+}
+
+#new-game{
+    text-align: center;
+    margin: 5% auto;
+    display: block;
+    background-color: crimson;
+    border: none;
+    box-shadow: 2px 2px 5px;
+} 
+
+#message{
+    border: 1px dashed navy;
+    width: 410px;
+    height: 130px;
+    margin: auto;
+    text-align: center;
 }
