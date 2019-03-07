@@ -1,4 +1,3 @@
-
 function Board(_images) {
     var remainMatches = _images.length;
     var images = _images.concat(_images);
@@ -15,13 +14,11 @@ function Board(_images) {
     })();
     this.display = function (boardEl) {
         var tr, td, btn, currentIndex = 0;
-        var table = document.createElement("div");
+        var table = document.createElement("table");
         for (var i = 0; i < 4; i++) {
-            tr = document.createElement("div");
-            tr.style.display = "block";
+            tr = document.createElement("tr");
             for (var j = 0; j < 4; j++) {
-                td = document.createElement("div");
-                td.style.display = "inline-block";
+                td = document.createElement("td");
                 btn = document.createElement("button");
                 btn.id = "image" + currentIndex++;
                 btn.style.width = "100px";
@@ -34,18 +31,6 @@ function Board(_images) {
             table.appendChild(tr);
         }
         boardEl.appendChild(table);
-        init();
-    }
-    
-    function init(){
-        console.log(localStorage);
-        for(var i=0;i<cards.length;i++){
-            if(localStorage.getItem(i)==='true'){
-                console.log(localStorage.getItem(i));
-                showImage(document.getElementById("image"+i),i);
-                // toggleState(false);
-            }
-        }
     }
     function onCardClick(event) {
         var currentCardIndex = Number(event.target.id.replace("image", ""));
@@ -62,13 +47,9 @@ function Board(_images) {
             selectedFirstCard = currentCardIndex;
         }
     }
-
     function showImage(element, currentCardIndex) {
-        element.style.opacity = "0";
-        setTimeout(function(){},1000);
         element.style.backgroundImage = "url('" + cards[currentCardIndex] + "')";
         element.style.backgroundSize = "cover";
-        element.style.opacity = "1";
     }
     function checkMatch(){
         if (cards[selectedFirstCard] === cards[selectedSecondCard]) {
@@ -76,10 +57,6 @@ function Board(_images) {
             checkWin();
             matches.push(selectedFirstCard);
             matches.push(selectedSecondCard);
-            localStorage.setItem(selectedFirstCard,'true');
-            localStorage.setItem(selectedSecondCard,'true');
-            console.log(localStorage.getItem(selectedFirstCard));
-            console.log(localStorage.getItem(selectedSecondCard));
             selectedFirstCard = null;
             selectedSecondCard = null;
         }
@@ -102,17 +79,9 @@ function Board(_images) {
     }
     function resetImages(firstCardElement, secondCardElement) {
         firstCardElement.disabled = false;
-        firstCardElement.style.opacity = "0";
-        setTimeout(function(){},1000);
-        firstCardElement.style.backgroundImage = "url(pattern.jpg)";
-        firstCardElement.style.backgroundSize = "400%";
-        firstCardElement.style.opacity = "1";
+        firstCardElement.style.backgroundImage = "";
         secondCardElement.disabled = false;
-        secondCardElement.style.opacity = "0";
-        setTimeout(function(){},1000);
-        secondCardElement.style.backgroundImage = "url(pattern.jpg)";
-        secondCardElement.style.backgroundSize = "400%";
-        secondCardElement.style.opacity = "1";
+        secondCardElement.style.backgroundImage = "";
     }
     function checkWin() {
         if (remainMatches === 0){

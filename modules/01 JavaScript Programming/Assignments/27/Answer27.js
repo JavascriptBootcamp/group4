@@ -1,24 +1,24 @@
 function Validator(){
-
-    this.isBoolean = function(value){
+}
+    Validator.prototype.isBoolean = function(value){
         return typeof(value) === "boolean";
     }
-    this.isError = function(value){
+    Validator.prototype.isError = function(value){
         return value instanceof Error;
     }
-    this.isNaN = function(value){
+    Validator.prototype.isNaN = function(value){
         return isNaN(value);
     }
-    this.isNull = function(value){
+    Validator.prototype.isNull = function(value){
         return value === null;
     }
-    this.isNumber = function(value){
+    Validator.prototype.isNumber = function(value){
         return typeof(value) === "number";
     }
-    this.isObject = function(value){
+    Validator.prototype.isObject = function(value){
         return typeof(value) === "object";
     }
-    this.isPureJsonObj = function(value){
+    Validator.prototype.isPureJsonObj = function(value){
         try {
             var json = JSON.parse(value);
             return (typeof json === 'object');
@@ -26,16 +26,16 @@ function Validator(){
             return false;
         }
     }
-    this.isRegExp = function(value){
+    Validator.prototype.isRegExp = function(value){
         return value instanceof RegExp;
     }
-    this.isChar = function(value){
+    Validator.prototype.isChar = function(value){
         return value.length === 1 && typeof(value) === "string"; 
     }
-    this.areSameTypes = function(value1, value2){
+    Validator.prototype.areSameTypes = function(value1, value2){
         return typeof(value1) === typeof(value2);
     }
-}
+
 
 var validator = new Validator();
 

@@ -1,18 +1,19 @@
 function BankAccount(accountNumber, ownerAccount){
-
     var balance = 0;
     this.accountNumber = accountNumber;
     this.ownerAccount = ownerAccount;
-    this.withdraw = function(amount){
-        balance -= amount;
-    }
-    this.deposit = function(amount){
-        balance += amount;
-    }
-    this.getBalance = function(){
-        return balance;
-    }
 }
+    
+    BankAccount.prototype.withdraw = function(amount){
+        this.balance -= amount;
+    }
+    BankAccount.prototype.deposit = function(amount){
+        this.balance += amount;
+    }
+    BankAccount.prototype.getBalance = function(){
+        return this.balance;
+    }
+
 
 var bankAccount1 = new BankAccount(12345, "Moshe");
 var bankAccount2 = new BankAccount(34567, "Eli");
