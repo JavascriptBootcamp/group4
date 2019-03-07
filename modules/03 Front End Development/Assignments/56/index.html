@@ -19,6 +19,9 @@
             align-items: center;
             width: 100%;
             height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         
         #left>div, #right>div {
@@ -99,7 +102,7 @@
     <title>Gallery</title>
 </head>
 
-<body onload="init()">
+<body onload="init()" onresize="center()">
     <div id='content'>
         <div id="centerDiv">
             <div class="center">
@@ -220,7 +223,16 @@
         //         img1.addImg(i);
         //     }
         // }
-
+        
+        function init() {
+            center();
+        }
+        function center(){
+            var outerDiv = document.getElementById('content');
+            var contents = document.getElementById('centerDiv');
+            var num = (window.innerHeight - contents.children[0].offsetHeight - contents.children[1].offsetHeight - 20) / 2;
+            outerDiv.style.top = num + 'px';
+        }
     </script>
 </body>
 
