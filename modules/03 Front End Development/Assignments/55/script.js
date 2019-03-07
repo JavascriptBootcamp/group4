@@ -122,8 +122,11 @@ function Board(_images) {
     }
     function checkWin() {
         if (remainMatches === 0) {
-            document.getElementById("message").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
-
+            document.querySelector("#board").style.display = "none";
+            document.querySelector("#board").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
+            sessionStorage.setItem("time","00:03");
+            location.reload();
+        
         }
     }
 }
@@ -144,18 +147,14 @@ var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 board.display(document.getElementById("board"));
 var timer2;
-// if(sessionStorage.getItem("time")){
-//     document.querySelector("#timer").innerHTML = sessionStorage.getItem("time");
-//     console.log(document.querySelector("#timer").innerHTML)
-// }
-//else{
+
+if(sessionStorage.getItem("time")){
+    timer2 = sessionStorage.getItem("time");
+}
+else{
     timer2 = "10:00";
-    sessionStorage.setItem("time",timer2);
-//}
+}
 var interval = setInterval(function() {
-  if(sessionStorage.getItem("time")){
-      timer2 = sessionStorage.getItem("time");
-  }
   var timer = timer2.split(':');
   var minutes = parseInt(timer[0], 10);
   var seconds = parseInt(timer[1], 10);
@@ -175,7 +174,7 @@ var interval = setInterval(function() {
     document.querySelector("#board").appendChild(restartBtn);
   } 
   sessionStorage.setItem("time", document.querySelector("#timer").innerHTML)
-  //console.log(sessionStorage.getItem("time"));
+  console.log(sessionStorage.getItem("time"));
   seconds = (seconds < 0) ? 59 : seconds;
   seconds = (seconds < 10) ? '0' + seconds : seconds;
   var timeCountDown = document.getElementById("timer");
