@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Storage = function(type){
+            var storageType = type;
+            var items ={};
+            var getItem = function(key){
+                return localStorage.getItem(key);
+            };
+            var setItem = function(key,value){
+                localStorage.setItem(key, value);
+            };
+            var removeItem = function(key){
+                localStorage.removeItem(key);
+             };
+            var clearItem = function(){
+                localStorage.clear();
+            }; 
+            return {
+                getItem:getItem,
+                setItem:setItem,
+                removeItem:removeItem,
+                clearItem:clearItem
+            }
+        }
+
+        var lStorage = new Storage("localStorage");
+        lStorage.setItem("someKey1", "someValue1");
+        console.log(lStorage.getItem("someKey1")); // should print "someValue1"
+        
+    </script>
+</body>
+</html>
