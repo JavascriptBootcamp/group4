@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        video, img {
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="https://cdn.dribbble.com/users/1092116/screenshots/2857934/loading-indicator-dribbble2.gif" style="display: none" />
+    <div id="placeholder"></div>
+    <script>
+
+        function toggleLoading(show){
+            show ? document.getElementById("placeholder").innerHTML = "<img src='https://cdn.dribbble.com/users/1092116/screenshots/2857934/loading-indicator-dribbble2.gif' />" : document.getElementById("placeholder").innerHTML = "";
+        }
+
+        toggleLoading(true); // show "Loading..."
+        fetch("https://random.dog/woof.json").then(
+            function(stream){
+                stream.json().then(
+                    function(json) {
+                        toggleLoading(false);
+                        if (json.url.indexOf("mp4") > -1) {
+                            var dogVideo = document.createElement("video");
+                            dogVideo.src = json.url;
+                            document.body.appendChild(dogVideo);
+                        }
+                        else {
+                            var dogImage = document.createElement("img");
+                            dogImage.src = json.url;
+                            document.body.appendChild(dogImage)
+                        }
+                    }
+                )
+            }
+        ).catch(function(error){
+            console.log("Error: " + error);
+        })
+    </script>
+</body>
+</html>
