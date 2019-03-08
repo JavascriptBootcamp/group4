@@ -12,17 +12,19 @@ function remove_hidden_Imgs() {
     });
 }
 
+//animate_left_to_right
 function move_left() {
     remove_hidden_Imgs();
 
     //change the pic array to be like the slider
     var movedPic = pics.pop();
-    pics.unshift(movedPic);
+    pics.unshift(movedPic);  
 
 
     //change the slider in the ui
     var lastImg = slider.lastChild;
     var clone_lastImg = lastImg.cloneNode();
+    clone_lastImg.classList.add("animate_left_to_right");
     lastImg.classList.add("hide");
     slider.prepend(clone_lastImg);
 
@@ -31,9 +33,11 @@ function move_left() {
     var lastImg_big = big_pic_container.lastChild;
     lastImg_big.classList.add("hide");
     var newImg = creatImgElement(pics[0], "big_pic");
+    newImg.classList.add("animate_left_to_right");
     big_pic_container.prepend(newImg);
 }
 
+//animate_right_to_left
 function move_right() {
     remove_hidden_Imgs();
 
