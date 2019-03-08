@@ -1,10 +1,9 @@
-
 *{
     box-sizing: border-box;
 }
 #gallery{
     background-color: blueviolet;
-     width: 90%;
+    width: 90%;
     height: 100%;
     margin: 0 auto;
     border: 1px gray solid;
@@ -29,7 +28,7 @@
 } */
 
 #pictures{
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom:200px;
     margin-top:100px;
@@ -53,8 +52,9 @@
     height: 250px;
 }
 
-#arrow_left {
-    /* width: 5%; */
+#arrow-left {
+     /* width: 5%;  */
+    /* position: absolute; */
     float: left;
     border-top: 25px solid transparent;
     border-right: 50px solid lightgrey;
@@ -63,7 +63,8 @@
     margin-top: 24%; */
   }
 
-  #arrow_right {
+  #arrow-right {
+    /* position: absolute; */
     float: right;
     border-top: 25px solid transparent;
     border-left: 50px solid lightgrey;
@@ -73,7 +74,9 @@
   } 
 
   .arrow{
-      width: 10%
+      width: 30%;
+      height: 30%;
+      margin-top: 8%;
       /* display: inline-block; */
   }
 

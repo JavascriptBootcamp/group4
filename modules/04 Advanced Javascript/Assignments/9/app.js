@@ -13,38 +13,18 @@ var j = null;
 var currentindex;
 var lsData;
 
-showGallery(false);
-
 fetch("https://picsum.photos/list").then(
     function(stream){
         stream.json().then(
             function(json){
                 j = json;
                 fillData();
-                showGallery(true);
             }
         )
 
 }).catch(function(err){
     console.log(err);
 });
-
-function showGallery(show){
-    if(show){
-        console.log("after promise",document.getElementById("gallery").style.visibility);
-        document.getElementById("gallery").style.visibility = "visible";
-        document.getElementById("loading").innerText = "";
-        console.log("after promise",document.getElementById("gallery").style.visibility);
-
-    }
-    else{
-        console.log("before promise",document.getElementById("gallery").style.visibility);
-        document.getElementById("gallery").style.visibility = "hidden";
-        console.log("before promise",document.getElementById("gallery").style.visibility);
-        document.getElementById("loading").innerText = "LOADING...";
-    }
-}
-
 
 function Thumbnails(name, src) {
     this.name = name;
@@ -61,6 +41,7 @@ function fillData(){
     if(lsData){
         currentindex = lsData;
     }
+    console.log(currentindex)
     changeCurrentPicture(currentindex);
 
     var pictures = document.getElementById("pictures");
@@ -122,3 +103,5 @@ function getData(){
 window.onbeforeunload = function(){
     saveData();
 }
+
+//localStorage.clear();
