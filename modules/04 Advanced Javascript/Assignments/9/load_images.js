@@ -8,7 +8,7 @@ fetch("https://picsum.photos/list")
     
     
 .then( json => {
-    picsLinksContainer.innerText = "";
+    picsLinksContainer.innerHTML = "";
 
     for(let i in json) {
         const imageElem = document.createElement("img");
