@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch Images</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .image_thumbnails {
+            height: 12vh;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            overflow: auto;
+
+        }
+
+        .img-tumbnail {
+            width: auto;
+            height: 10vh;
+            padding: 0.2vw;
+        }
+
+
+        .selected-img {
+            height: 80vh;
+            margin: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+
+        .img-center {
+            width: auto;
+            height: 78vh;
+            padding: 1rem;
+
+        }
+
+        .big-pic {
+            height: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+
+
+
+        }
+
+        .arrows {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 4vw;
+            width: 5vw;
+            height: 70vh;
+            vertical-align: middle;
+            color: green;
+
+        }
+
+        .myApp {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body onbeforeunload="saveMyPosition()">
+    <div class="myApp">
+        <div class="big-pic">
+            <div class="left-arrow arrows" onclick="showPreImg()">
+                &lArr;
+            </div>
+            <div class="selected-img">
+
+            </div>
+            <div class="right-arrows arrows" onclick="showNextImg()">
+                &rArr;
+            </div>
+        </div>
+        <div class="image_thumbnails">
+
+        </div>
+    </div>
+
+
+    <script>
+        var selectedImgIndex = 0;
+        var images = [];
+        var imagesEl = document.querySelector(".image_thumbnails");
+
+        function Image(_src) {
+            this.src = _src;
+            this.likeConter = 0;
+        }
+
+        var imgSrc = [];
+        fetch("https://picsum.photos/list").then(
+            function (stream) {
+                stream.json().then(
+                    function (json) {
+
+
+                        for (var i = 0; i < 30; i++) {
+                            var img_num = Math.ceil(Math.random() * json.length);
+                            imgSrc.push(`https://picsum.photos/200/300?image=${json[img_num].id}`);
+                            console.log(imgSrc[i]);
+                        }
+
+                        showTumbilPics();
+                        intialLoad();
+
+                    })
+
+            }).catch(function (error) {
+                console.log("Error: " + error);
+            })
+            
+
+        function showBigPic(ev) {
+            var selectImg = ev.currentTarget;
+            var selectedImg = document.querySelector(".selected-img");
+            selectedImgIndex = imgSrc.indexOf(selectImg.src);
+            saveMyPosition();
+            loadPic();
+        }
+
+        function showTumbilPics() {
+            for (var i = 0; i < imgSrc.length; i++) {
+                images.push(new Image(imgSrc[i]));
+            }
+            for (let i = 0; i < images.length; i++) {
+                imagesEl.innerHTML += `<div class ="img">
+                                   <img src= ${images[i].src}  class = "img-tumbnail" onclick ="showBigPic(event)"/> 
+                               </div>`
+            }
+        }
+
+        function showNextImg() {
+            if (selectedImgIndex < imgSrc.length) {
+                selectedImgIndex++;
+                loadPic();
+            }
+            else {
+                selectedImgIndex = 0;
+                loadPic();
+            }
+
+
+        }
+
+        function showPreImg() {
+            if (selectedImgIndex > 0) {
+                selectedImgIndex--;
+                loadPic();
+            }
+            else {
+                selectedImgIndex = imgSrc.length - 1;
+                loadPic();
+            }
+
+        }
+
+        function loadPic() {
+            var selectedImg = document.querySelector(".selected-img");
+            selectedImg.innerHTML = `<div class ="img" ">
+                                   <img src= ${images[selectedImgIndex].src}  class = "img-center" onclick ="showBigPic(event)"/> 
+                               </div>`
+        }
+
+        function intialLoad() {
+            selectedImgIndex = localStorage.getItem("currentIndex");
+            if (selectedImgIndex == null) {
+                selectedImgIndex == 0;
+                saveMyPosition();
+            }
+            loadPic();
+        }
+
+        function saveMyPosition() {
+            localStorage.setItem("currentIndex", selectedImgIndex);
+        }
+
+    </script>
+
+
+</body>
+
+</html>
