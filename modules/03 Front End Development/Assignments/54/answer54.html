@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Tic-Tac-Toe</title>
+
+    <script>
+        $(document).ready(function () {
+            $("#dark").click(function () {
+                $("body").css("background-color", "#0F1630");
+                $("label").css("color", "white");
+                $("button").css("color", "white");
+                $("button").css("background-color", "black");
+                $("#overlay").css("background", "black");
+                $(".popup").css("background-color", "#0F1630");
+            });
+        });
+
+        $(document).ready(function () {
+            $("#light").click(function () {
+                $("body").css("background-color", "#BAD8DC");
+                $("label").css("color", "#74CBD4");
+                $("button").css("color", "#74CBD4");
+                $("button").css("background-color", "white");
+                $("#overlay").css("background", "white");
+                $(".popup").css("background-color", "#BAD8DC");
+
+
+            });
+        });
+    </script>
+
+    <style>
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        button:active {
+            outline: 3px;
+            border-style: outset;
+        }
+
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #game-zone {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 10% 0;
+            min-height: 200px;
+            align-items: center;
+        }
+
+        .gameplay-btn {
+            display: inline-block;
+        }
+
+        .rows {
+            width: 190px;
+            height: 64px;
+        }
+
+        .marks {
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            vertical-align: bottom;
+            width: 60px;
+            height: 60px;
+        }
+
+        #replay-div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .popup {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgb(44, 40, 94);
+            border-radius: 7px;
+            width: 40%;
+        }
+
+        .popup h2 {
+            display: flex;
+            justify-content: center;
+            margin-top: 0;
+            color: rgb(255, 255, 255);
+        }
+
+        .popup .content {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .colors {
+            float: right;
+            margin: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <label>Player 1:</label><br>
+    <input type="text" id="player1"><br>
+    <label>Player 2:</label><br>
+    <input type="text" id="player2"><br><br>
+    <div id="colors-pallete">
+        <button id="dark" class="colors">Dark</button>
+        <button id="light" class="colors">Light</button>
+    </div>
+    <button id="start" onclick="startGame()">Play!</button>
+    <div id="overlay">
+        <div id="game-over-popup" class="popup">
+            <h2>Game Over</h2>
+            <div class="content">
+                <div id="winnerZone"></div>
+                <button id="popup-start-btn" style="margin-top: 15px;" onclick="startGame()">Start New Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-zone">
+        <div id="game-table" style="width: 190px; height: 180px;">
+            <div class="rows">
+                <div class="gameplay-btn"><button id="0" class="marks"></button>
+                </div>
+                <div class="gameplay-btn"><button id="1" class="marks"></button>
+                </div>
+                <div class="gameplay-btn"><button id="2" class="marks"></button>
+                </div>
+            </div>
+
+            <div class="rows">
+                <div class="gameplay-btn"><button id="3" class="marks"></button>
+                </div>
+                <div class="gameplay-btn"><button id="4" class="marks"></button>
+                </div>
+                <div class="gameplay-btn"><button id="5" class="marks"></button>
+                </div>
+            </div>
+
+            <div class="rows">
+                <div class="gameplay-btn"><button id="6" class="marks"></button>
+                </div>
+                <div class="gameplay-btn"><button id="7" class="marks"></button>
+                </div>
+                <div class="gameplay-btn"><button id="8" class="marks"></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="replay-div">
+        <button id="replay" onclick="startGame()">Retry</button>
+    </div>
+
+    </div>
+
+    <script>
+        document.getElementById("game-zone").style.visibility = "hidden";
+
+        var originalBoard;
+        var player1 = "X";
+        var player2 = "O";
+        var turnsCounter = 0;
+        // 0 1 2
+        // 3 4 5 
+        // 6 7 8
+        var wimCombination = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        var cells = document.querySelectorAll(".marks");
+        function startGame() {
+            offOverlay();
+            document.getElementById("game-zone").style.visibility = "visible";
+            turnsCounter = 0;
+            originalBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+            for (var i = 0; i < cells.length; i++) { //for reset the game
+                cells[i].innerText = "";
+                cells[i].disabled = false;
+                cells[i].addEventListener('click', turnClick, false);
+                document.getElementById('winnerZone').innerText = "";
+            }
+        }
+        function turnClick(square) {
+            this.disabled = true;
+            turnsCounter++;
+            if (turnsCounter % 2 !== 0) {
+                turn(square.target.id, player1);
+            }
+            else {
+                turn(square.target.id, player2);
+            }
+        }
+        function turn(squareId, player) {
+            originalBoard[squareId] = player;
+            document.getElementById(squareId).innerText = player;
+            var isWinner = checkWin(originalBoard, player);
+            if (isWinner) {
+                gameOver(isWinner)
+            }
+        }
+        function checkWin(board, player) {
+            var plays = board.reduce((acc, element, i) =>
+                (element === player) ? acc.concat(i) : acc, []);
+            var isWinner = null;
+            console.log(plays);
+            for (var [index, win] of wimCombination.entries()) {
+                if (win.every(elem => plays.indexOf(elem) > -1)) {
+                    isWinner = { player: player };
+                    break;
+                }
+            }
+            return isWinner;
+        }
+        function gameOver(isWinner) {
+            onOverlay();
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].removeEventListener('click', turnClick, false);
+            }
+            if (isWinner.player === "X") {
+                document.getElementById("winnerZone").innerText = "The winner is: " + document.getElementById('player1').value;
+                document.getElementById("winnerZone").style.color = "white";
+            }
+            else {
+                document.getElementById("winnerZone").innerText = "The winner is: " + document.getElementById('player2').value;
+            }
+        }
+
+        function onOverlay() {
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function offOverlay() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
