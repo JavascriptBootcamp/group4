@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Background Research</title>
+
+     <style>
+    
+    button {
+        background-color: yellow;
+    }
+    .blahblahItem {
+        padding-bottom: 20px;
+    }
+    #backgroundImageList {
+        width: 200px;
+        height:150px;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT78WfbrRbSPwC00XRv32NuynkhYhBrSzCHDYgaZ26fzFOLz2A5");
+    }
+    #backgroundImageSticky {
+        width: auto;
+        height:200px;
+        background-attachment: fixed;
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-image: url("https://i.stack.imgur.com/ILTQq.png");
+    }
+    
+    </style>
+</head>
+<body id="backgroundImageSticky">
+
+
+     <h1>CSS Backgrounds - Definition and usage</h1>
+
+     <p>CSS background is an attribute which defines the background of elements.
+        There are various kinds of background attributes like:</p>
+
+     <ol>
+        <li>background-color</li>
+        <li>background-image</li>
+        <li>background-repeat</li>
+        <li>background-attachment</li>
+        <li>background-position</li>
+    </ol>
+
+     <p>Note: there are a few more background attributes like: background-clip,<br>
+         background-blend-mode, background-origin et cetera..
+        in this description<br> we will be focused in the 
+        common kinds of the background attribute</p>
+
+     <h3>background-color:</h3>
+    <p>The background-color attirbute specify the background color of an element.<br>
+    For example:<br>
+    if we will use an embedded css style to color the background of a button:<br><br>
+    button {<br>
+        background-color: yellow;<br>
+    }<br><br>
+    graphic result will be like:<br></p>
+
+     <button>Im just a yellow button :D</button>
+
+
+     <h3>background-color:</h3>
+    <p>The background-image attirbute enable an element to have an image background.<br>
+    For example:<br>
+    if we will use an embedded css style to color the background of a list items:<br><br>
+    .blahblahItem {<br>
+        background-image: url({Your image address};<br>
+    }<br><br>
+    graphic result will be like:<br></p>
+
+     <ul id="backgroundImageList" style="background-repeat:no-repeat;">
+        <li class="blahblahItem">Blah blah number 1</li>
+        <li class="blahblahItem">Blah blah number 2</li>
+        <li class="blahblahItem">Blah blah number 3</li>
+    </ul>
+
+
+     <h3>background-repeat:</h3>
+    <p>The background-repeat attirbute enable an background-image attribute to repeat itself vertically/horizontally.<br>
+        For example:<br>
+        if we will use an embedded css style to color the background of a list items:<br><br>
+        .blahblahItem {<br>
+            background-repeat: repeat-y;
+            background-image: url({Your image address};<br>
+        }<br><br>
+        graphic result will be like:<br></p>
+        <ul id="backgroundImageList" style="background-repeat: repeat-y;">
+            <li class="blahblahItem">Blah blah number 1</li>
+            <li class="blahblahItem">Blah blah number 2</li>
+            <li class="blahblahItem">Blah blah number 3</li>
+        </ul>
+
+         <p>background-repeat: repeat-x will act respectively across the x axis.</p>
+
+         <h3>background-attachment:</h3>
+        <p>The background-attachment attirbute enable an background-image attribute to get sticky and wont scroll with the page(fixed).<br>
+            For example:<br>
+            if we will use an embedded css style to color the background of a list items:<br><br>
+            .body {<br>
+                background-attachment:fixed;
+                background-repeat: no-repeat;
+                background-image: url({Your image address};<br>
+            }<br><br>
+</body>
+</html>

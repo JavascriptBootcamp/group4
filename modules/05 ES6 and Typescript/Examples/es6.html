@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        function displayContent(content){
+            document.getElementById("content").innerText = content;
+        }
+        // let + const
+        // ES5
+        var str1 = "Hello World";
+        // ES6
+        let str2 = "Hello World";
+        const str3 = "Hello World";
+
+        // template string
+        let who = "Moshiko";
+        let what = "king";
+        // ES5
+        let str4 = who + " is the " + what;
+        // ES6
+        let str5 = `${who} is the ${what}`;
+        who = "Yakir";
+        let str6 = `${who} is the ${what}`;
+        displayContent(str6);
+
+        // arrow function
+        // ES5
+        var sum1 = function(x, y) {
+            return x + y;
+        }
+        // ES6
+        const sum2 = (x, y) => x + y;
+        const sum3 = (x, y) => {
+            return x + y;
+        }
+        
+        // default parameters
+        // ES5
+        var sum4 = function(x, y) {
+            x = x || 0;
+            y = y || 0;
+            return x + y;
+        }
+        // ES6
+        const sum5 = (x = 0, y = 0) => x + y;
+
+        // rest
+        // ES5
+        var total1 = function(a, b, c, d, e){
+            var result = 0;
+            for (var i=0; i<arguments.length; i++){
+                result += arguments[i];
+            }
+            return result;
+        }
+        // ES6
+        const total2 = (...args) => {
+            let result = 0;
+            for (let i=0; i<args.length; i++){
+                result += args[i];
+            }
+            return result;
+        }
+        // displayContent(total2(3, 3, 3, 3, 3, 3, 3));
+
+        // spread
+        // ES5
+        var numbers = [1,2,3];
+        var sum6 = function(x, y, z) {
+            return x + y + z;
+        }
+        // displayContent(sum6(numbers[0], numbers[1], numbers[2]));
+        // ES6
+        const sum7 = (x = 0, y = 0, z = 0) => x + y + z;
+
+        // for...of
+        // ES5
+        var total3 = function(a, b, c, d, e){
+            var result = 0;
+            for (var i=0; i<arguments.length; i++){
+                result += arguments[i];
+            }
+            return result;
+        }
+        // ES6
+        const total4 = (...args) => {
+            let result = 0;
+            for (let x of args){
+                result += x;
+            }
+            return result;
+        }
+        // displayContent(total4(1,2,3));
+    </script>
+</body>
+</html>

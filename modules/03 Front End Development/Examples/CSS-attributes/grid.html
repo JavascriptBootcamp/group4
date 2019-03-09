@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid</title>
+    <style>
+        h3 {
+            background: yellow;
+        }
+         .grid-container1 {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-item1 {
+            background-color: rgb(199, 250, 252);
+            border: 1px solid black;
+            font-size: 30px;
+            text-align: center;
+        }
+         .grid-container2 {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-item2 {
+            background-color: rgb(199, 250, 252);
+            border: 1px solid black;
+            font-size: 30px;
+            text-align: center;
+        }
+         .grid-container3 {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container3>div {
+            background-color: rgb(199, 250, 252);
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            font-size: 30px;
+        }
+         .rowitem1 {
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+         .colitem1 {
+            grid-column-start: span 2;
+            grid-column-end: 3;
+        }
+         .grid-container4 {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container4>div,
+        .grid-container5>div,
+        .grid-container6>div,
+        .grid-container7>div,
+        .grid-container8>div,
+        .grid-container9>div,
+        .grid-container10>div,
+        .grid-container11>div,
+        .grid-container12>div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+         .item84 {
+            grid-area: 1 / 2 / 3 / 4;
+        }
+         .grid-container5 {
+            display: grid;
+            grid-template-areas:
+                'header header header header header header'
+                'menu main main main right right'
+                'menu footer footer footer footer footer';
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .item15 {
+            grid-area: header;
+        }
+         .item25 {
+            grid-area: menu;
+        }
+         .item35 {
+            grid-area: main;
+        }
+         .item45 {
+            grid-area: right;
+        }
+         .item55 {
+            grid-area: footer;
+        }
+         .grid-container6 {
+            display: grid;
+            grid-template-areas: 'myArea myArea . . .''myArea myArea . . . ';
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .item16 {
+            grid-area: myArea;
+        }
+         .grid-container7 {
+            display: grid;
+            justify-content: start;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container8 {
+            display: grid;
+            justify-content: end;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container9 {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container10 {
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container11 {
+            display: grid;
+            justify-content: space-around;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+         .grid-container12 {
+            display: grid;
+            justify-content: space-evenly;
+            grid-template-columns: 100px 100px 100px;
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+ <body>
+    <h2> The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design
+        web pages without having to use tables floats positioning and inline-block.</h2>
+
+     <h3>Example 1</h3>
+    <p>Set Columns in layout:<strong> grid-template-columns: auto auto;</strong> <br>
+        Set Rows in layout: <strong> grid-template-rows: auto auto;</strong>
+    </p>
+    <div class="grid-container1">
+        <div class="grid-item1">1</div>
+        <div class="grid-item1">2</div>
+        <div class="grid-item1">3</div>
+        <div class="grid-item1">4</div>
+    </div>
+    <h3>Example 2</h3>
+    <p>gap create a space between columns and rows <br>
+        <strong>
+            grid-gap: size;<br>
+            grid-gap: row(size) col(size);<br>
+            grid-row-gap: size; <br>
+            grid-column-gap: size;
+        </strong>
+    </p>
+    <div class="grid-container2">
+        <div class="grid-item2">1</div>
+        <div class="grid-item2">2</div>
+        <div class="grid-item2">3</div>
+        <div class="grid-item2">4</div>
+    </div>
+    <h3>Example 3</h3>
+    <p>Sets the start and end of each cell in a column or row <br>
+        <strong>
+            grid-row-start: 1;<br>
+            grid-row-end: 3;<br>
+            shorthand <br>
+            grid-row: (1/3) or (1/span 3) or (2) <br>
+            keyword "span" to define how many rows or cols the item will span
+        </strong>
+    </p>
+    <div class="grid-container3">
+        <div class="rowitem1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+        <div class="item7">7</div>
+        <div class="item8">8</div>
+    </div>
+    <p><strong>
+            grid-column-start: span 2;<br>
+            grid-column-end: 3;<br>
+            shorthand <br>
+            grid-column: (1/3) or (1/span 3)or (2) <br>
+            keyword "span" to define how many rows or cols the item will span
+        </strong>
+    </p>
+    <div class="grid-container3">
+        <div class="colitem1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+        <div class="item7">7</div>
+        <div class="item8">8</div>
+    </div>
+    <h3>Example 4</h3>
+    <p>The grid-area property can be used as a shorthand property for the grid-row-start, grid-column-start,
+        grid-row-end and the grid-column-end properties. <br>
+        <strong>grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end. <br>
+            grid-area: 1 / 2 / 3 / 4;
+        </strong>
+    </p>
+    <div class="grid-container4">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+        <div class="item7">7</div>
+        <div class="item84">8</div>
+        <div class="item9">9</div>
+    </div>
+    <h3>Example 5</h3>
+    <p>The grid-area property can also be used to assign names to grid items. <br>
+        <strong>
+            grid-template-areas: <br>
+            'header header header header header header'<br>
+            'menu main main main right right'<br>
+            'menu footer footer footer footer footer';<br>
+        </strong></p>
+    <div class="grid-container5">
+        <div class="item15">Header</div>
+        <div class="item25">Menu</div>
+        <div class="item35">Main</div>
+        <div class="item45">Right</div>
+        <div class="item55">Footer</div>
+    </div>
+    <p><strong>grid-template-areas: 'myArea myArea . . .' 'myArea myArea . . .';</strong><br>
+        row is defined (' ')
+    </p>
+    <div class="grid-container6">
+        <div class="item16">1</div>
+        <div class="item26">2</div>
+        <div class="item36">3</div>
+        <div class="item46">4</div>
+        <div class="item56">5</div>
+        <div class="item66">6</div>
+        <div class="item76">7</div>
+    </div>
+    <h3>Example 6</h3>
+    <h4>justify-content</h4>
+    <p>The justify-content property is used to align the whole grid inside the container. <br>
+        <strong> justify-content: start;</strong> <br>
+        The value "start" will align the grid at the beginning of the container:</p>
+    <div class="grid-container7">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <p><strong>justify-content: end;</strong><br>
+        The value "end" will align the grid at the end of the container:</p>
+    <div class="grid-container8">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <p><strong>justify-content: center;</strong><br>
+        The value "center" will align the grid in the middle of the container:</p>
+    <div class="grid-container9">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <p><strong>justify-content: space-between;</strong><br>
+        The value "space-between" will give the columns equal amount of space between them:</p>
+    <div class="grid-container10">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <p><strong>justify-content: space-around;</strong><br>
+        The value "space-around" will give the columns equal amount of space around them:</p>
+    <div class="grid-container11">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <p><strong>justify-content: space-evenly;</strong><br>
+        The value "space-evenly" will give the columns equal amount of space between, and around them:</p>
+    <div class="grid-container12">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <h3>Use the <strong>align-content </strong>property to vertically align the grid inside the container. <br>
+        same as justify-content with the same values only this property is vertical</h3>
+
+ </body>
+
+ </html> 

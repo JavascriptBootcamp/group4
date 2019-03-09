@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>max-width</title>
+    <style>
+        caption {
+            background-color:black;
+            border: 5px solid red;
+            
+        }
+        div {
+            background-color: lightgray;
+        }
+        div {
+            background-color:lightgray;
+          
+        }
+        p.ex1 {
+            max-width: 50%;
+        }
+        p.ex2 {
+            max-width: 20%;
+        }
+        p.ex2 {
+            width: 50%;
+        }
+        p.ex3 {
+            max-width: 80%;
+        }
+        p.ex3 {
+            width: 30%;
+        }
+        p.ex4 {
+            max-width: 1000px;
+            margin: auto;
+        }
+        p.ex5 {
+            width: 1000px;
+            margin: auto;
+        }
+        .pro {
+            font-size: x-large;
+            color: red;
+        }
+        p {
+            background-color: yellow;
+            font-size: x-large;
+        }
+        h1 {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        
+        }
+        .tb {
+            max-width:80% ;
+            font-size: x-large;
+            margin: 10px ;
+            background-color: black;
+            color: white;
+            border: 5px solid red;
+            border-collapse: collapse;
+            
+        }
+        td ,th{
+            padding: 10px;
+            border: 5px solid red;
+            
+        }
+        h4 {
+            font-size: xx-large;
+        }
+       
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1> <i> The max-width Property : Definition and Usage</i> </h1>
+
+        <h2 class="def">
+            The <span class="pro"> max-width </span> property defines the maximum width of an element.<br />
+
+            If the content is larger than the maximum width, it will automatically change the height of the
+            element.<br />
+
+            If the content is smaller than the maximum width, the max-width property has no effect.<br />
+
+            Note: This prevents the value of the width property from becoming larger than max-width.<br /> The value of
+            the max-width property overrides the width property.
+
+        </h2>
+    </div>
+
+  
+    <table class="tb">
+        <caption>Property Values</caption>
+        <tbody>
+                
+            <tr>
+                <th >Value</th>
+                <th>Description</th>
+                
+            </tr>
+            <tr>
+                <td>none</td>
+                <td>No maximum width. This is default</td>
+                
+            </tr>
+            <tr>
+                <td><i>length</i></td>
+                <td>Defines the maximum width in px, cm, etc.</td>
+            </tr>
+            <tr>
+                <td><i>%</i></td>
+                <td>Defines the maximum width in percent of the containing block</td>
+            </tr>
+            <tr>
+                <td>initial</td>
+                <td>Sets this property to its default value. 
+                </td>
+            </tr>
+            <tr>
+                <td>inherit</td>
+                <td>Inherits this property from its parent element.</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+
+        <h2>max-width: none (default):</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar
+            felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Maecenas imperdiet
+            felis nisi, fringilla luctus felis hendrerit sit amet. Pellentesque interdum, nisl nec interdum maximus,
+            augue diam porttitor lorem, et sollicitudin felis neque sit amet erat.</p>
+
+    </div>
+    <div>
+
+
+
+        <h4> max-width: 50%</h4>
+
+
+        <p class="ex1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at
+            pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Maecenas
+            imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Pellentesque interdum, nisl nec interdum
+            maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat.</p>
+    </div>
+    <div>
+        <h4> width: 50%: The value of the max-width property overrides the width property</h4>
+
+        <h4> max-width: 20%</h4>
+
+        <h4> width : 50%</h4>
+
+
+        <p class="ex2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at
+            pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Maecenas
+            imperdiet
+            felis nisi, fringilla luctus felis hendrerit sit amet. Pellentesque interdum, nisl nec interdum maximus,
+            augue
+            diam porttitor lorem, et sollicitudin felis neque sit amet erat.</p>
+    </div>
+    <div>
+
+
+
+        <h4> max-width: 80%</h4>
+
+        <h4> width : 30%</h4>
+
+
+        <p class="ex3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at
+            pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Maecenas
+            imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Pellentesque interdum, nisl nec interdum
+            maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat.</p>
+    </div>
+
+    <div>
+
+
+
+        <h4> max-width: 700px ; margin: auto;</h4>
+
+
+
+        <p class="ex4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at
+            pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Maecenas
+            imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Pellentesque interdum, nisl nec interdum
+            maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat.</p>
+    </div>
+
+
+    <div>
+
+
+
+        <h4> width: 700px ; margin: auto;</h4>
+
+
+
+        <p class="ex5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at
+            pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Maecenas
+            imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Pellentesque interdum, nisl nec interdum
+            maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat.</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // Revealing Module Pattern
+        // var King = (function(){
+        //     var name = "Moshiko";
+
+        //     function changeName(newName){
+        //         console.log("Previous name:", name);
+        //         name = newName;
+        //         console.log("New name:", name);
+        //     }
+
+        //     return {
+        //         setName: changeName
+        //     }
+        // })();
+
+        // King.setName("Gaby");
+        // King.setName("David");
+        // King.setName("Daniel");
+
+        // var King = function() {
+        //     var name = "empty";
+
+        //     function changeName(newName) {
+        //         console.log("Previous name:", name);
+        //         name = newName;
+        //         console.log("New name:", name);
+        //     }
+
+        //     return {
+        //         _changeName: changeName
+        //     }
+        // }
+
+        // var moshiko = new King();
+        // moshiko._changeName("(moshiko) Moshiko is the king");
+        // var gaby = new King();
+        // gaby._changeName("(gaby) Gaby is the king");
+        // moshiko._changeName("(moshiko) Matan is the king");
+        // gaby._changeName("(gaby) !!!!Gaby is the king");
+
+        // Revealing Module Pattern
+        // var Logger = (function(){
+        //     var message = "empty";
+        //     var totalMessages = 0;
+
+        //     function changeMessage(newMessage){
+        //         console.log("Previous", message, "total", totalMessages);
+        //         message = newMessage;
+        //         totalMessages++;
+        //         console.log("New", message, "total", totalMessages);
+        //     }
+
+        //     return { // return an object of functions
+        //         _changeMessage: changeMessage
+        //     }
+        // })();
+
+        // Logger._changeMessage("Amitay");
+        // Logger._changeMessage("Moshiko is the king");
+        // Logger._changeMessage("David");
+
+        // var Logger = (function(){
+        //     var message = "empty";
+        //     var totalMessages = 0;
+
+        //     function changeMessage(newMessage){
+        //         console.log("Previous", message, "total", totalMessages);
+        //         message = newMessage;
+        //         totalMessages++;
+        //         console.log("New", message, "total", totalMessages);
+        //     }
+
+        //     return changeMessage; // return a single function
+        // })();
+
+            // Factory using "this" constructor
+        var Logger = function () {
+            var message = "empty";
+            var totalMessages = 0;
+            this.changeMessage = function (newMessage) {
+                console.log("Previous", message, "total", totalMessages);
+                message = newMessage;
+                totalMessages++;
+                console.log("New", message, "total", totalMessages);
+            }
+        };
+
+        var logger = new Logger();
+        logger.changeMessage("Hello World");
+        logger.changeMessage("Moshiko is the king");
+
+        // Using "this"
+
+        // var Logger = function () {
+        //     var message = "empty";
+        //     this.totalMessages = 0;
+        //     this.changeMessage = function (newMessage) {
+        //         console.log("Previous", message, "total", this.totalMessages);
+        //         message = newMessage;
+        //         this.totalMessages++;
+        //         console.log("New", message, "total", this.totalMessages);
+        //     }
+        // };
+
+        // var logger = new Logger();
+        // logger.changeMessage("Hello World");
+        // logger.changeMessage("Moshiko is the king");
+    </script>
+</body>
+
+</html>

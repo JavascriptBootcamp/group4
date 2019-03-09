@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+                <span class="varColor">var</span> <span class="variables">arr</span> <span class="equal-sign">=</span> <span>[</span><span>1</span><span class="commas">,</span><span>2</span><span class="commas">,</span><span>5</span><span class="commas">,</span><span>7</span><span>]</span> <span>;</span>
+                <span  class="variables">function</span> <span  class="variables">myFilter</span><span>(</span><span  class="variables">arr</span><span class="commas">,</span><span  class="variables">callback</span><span>)</span><span>{</span>
+                <span class="varColor">var</span> <span  class="variables">evenArr</span> <span class="equal-sign">=</span> <span>[]</span><span>;</span>
+                <span>for</span><span>(</span> <span class="varColor">var</span> <span  class="variables">i</span><span class="equal-sign">=</span><span>0</span> <span>;</span> <span  class="variables">i</span> <span><</span> <span  class="variables">arr</span><span>.</span><span>length</span> <span>;</span> <span  class="variables">i++</span> <span>)</span>
+                    <span>{</span> 
+                        <span>if</span> <span>(</span> <span  class="variables">callback</span> <span>(</span><span  class="variables">arr</span><span>)</span> <span>)</span>
+                        <span  class="variables">evenArr</span><span>.</span><span>push</span><span>(</span><span  class="variables">arr</span><span>[</span><span  class="variables">i</span><span>]</span><span>)</span><span>;</span>
+                    <span>}</span> 
+                <span>return</span> <span  class="variables">evenArr</span><span>;</span>
+                <span>}</span>
+                <span class="varColor">var</span> <span  class="variables">filtered</span><span class="equal-sign">=</span><span  class="variables">myFilter</span><span>(</span><span  class="variables">arr</span><span class="commas">,</span><span  class="variables">function</span><span>(</span><span  class="variables">item</span><span>)</span><span>{</span>
+                    <span>return</span> <span  class="variables">item</span> <span>%</span> <span>2</span> <span class="equal-sign">=</span><span class="equal-sign">=</span><span class="equal-sign">=</span> <span>0</span><span>;</span>   
+                <span>}</span><span>)</span><span>;</span>
+                <span  class="variables">console</span><span>.</span><span  class="variables">log</span><span>(</span><span  class="variables">filtered</span><span>)</span><span>;</span>    
+            </pre>
+</body>
+</html>
