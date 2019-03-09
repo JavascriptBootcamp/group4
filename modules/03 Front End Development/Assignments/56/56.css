@@ -74,14 +74,18 @@ img {
     height: 100%;
     width: 100%;
 
-    /* transition: width 1s; */
+    transition: width 1s;
 }
 
 .small_pic {
     height: 150px;
     width: 200px;
 
-    /* transition: width 1s; */
+    transition: width 1s;
+}
+
+.small_pic:hover {
+    cursor: pointer;
 }
 
 .hide {
@@ -89,31 +93,13 @@ img {
     width: 0;
 }
 
-.highlight {
-    box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
-}
-
 .animate_left_to_right {
     animation: enter_left_to_right 1s;
-}
-
-.animate_right_to_left {
-    animation: enter_right_to_left 1s;
 }
 
 @keyframes enter_left_to_right {
     0% {
         margin-left: -200px;
-    }
-
-    100% {
-        margin-left: 0;
-    }
-}
-
-@keyframes enter_right_to_left {
-    0% {
-        margin-left: 100%;
     }
 
     100% {

@@ -12,18 +12,28 @@ function remove_hidden_Imgs() {
     });
 }
 
-//animate_left_to_right
+function remove_animation_from_Imgs() {
+    slider.querySelectorAll(".animate_left_to_right").forEach(pic => {
+        pic.classList.remove("animate_left_to_right");
+    });
+
+    big_pic_container.querySelectorAll(".animate_left_to_right").forEach(pic => {
+        pic.classList.remove("animate_left_to_right");
+    });
+}
+
 function move_left() {
     remove_hidden_Imgs();
+    remove_animation_from_Imgs();
 
     //change the pic array to be like the slider
     var movedPic = pics.pop();
     pics.unshift(movedPic);  
 
 
-    //change the slider in the ui
+    //change the slider in the ui     creatImgElement(src, css_class)
     var lastImg = slider.lastChild;
-    var clone_lastImg = lastImg.cloneNode();
+    var clone_lastImg = creatImgElement(lastImg.src,"small_pic");
     clone_lastImg.classList.add("animate_left_to_right");
     lastImg.classList.add("hide");
     slider.prepend(clone_lastImg);
@@ -37,9 +47,9 @@ function move_left() {
     big_pic_container.prepend(newImg);
 }
 
-//animate_right_to_left
 function move_right() {
     remove_hidden_Imgs();
+    remove_animation_from_Imgs();
 
     //change the pic array to be like the slider
     var movedPic = pics.shift();
@@ -47,7 +57,7 @@ function move_right() {
 
     //change the slider in the ui
     var firstImg = slider.firstChild;
-    var clone_firstImg = firstImg.cloneNode();
+    var clone_firstImg = creatImgElement(firstImg.src,"small_pic");
     firstImg.classList.add("hide");
     slider.appendChild(clone_firstImg);
 
@@ -58,19 +68,39 @@ function move_right() {
     big_pic_container.appendChild(newImg);
 }
 
+function replace_big_img_src(event) {
+    console.log(event.target);
+    let src = event.target.src;
+    //selecting the first big pictuer that not hidden
+    document.querySelector(".big_pic:not(.hide)").src = src;
+}
+
 function creatImgElement(src, css_class) {
     var picEl = document.createElement("img");
     picEl.src = src;
     picEl.classList.add(css_class);
+    if (css_class === "small_pic") {
+        picEl.onclick = replace_big_img_src;
+    }
+
+    //save pics arr in the local storage
+    localStorage.setItem("ex56_pics", pics);
+
     return picEl;
 }
 
 function onPageInit() {
+    //check if the pics array allredy in local storage
+    var pics_src = localStorage.getItem("ex56_pics");
+    if(pics_src) {
+        pics = pics_src.split(",");
+    }
+
     pics.forEach(src => {
         var picEl = creatImgElement(src, "small_pic");
         slider.appendChild(picEl);
     });
-
+    
     var bigPic = creatImgElement(pics[0], "big_pic");
     big_pic_container.appendChild(bigPic);
 }
