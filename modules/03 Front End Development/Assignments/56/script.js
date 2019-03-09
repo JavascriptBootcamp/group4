@@ -42,7 +42,8 @@ fill = () => {
         filler(start, end, isSessionStorage);
     }
     else{
-        filler(indexStartEnd[0], indexStartEnd[1], isFillCalled);
+        isSessionStorage = false;
+        filler(indexStartEnd[0], indexStartEnd[1], isSessionStorage);
     }
 }
 
