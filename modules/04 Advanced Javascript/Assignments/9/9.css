@@ -1,0 +1,108 @@
+body {
+    background: rgb(102, 42, 102);
+    margin: 0;
+}
+
+header {
+    background: rgb(135, 153, 172);
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.container {
+    width:60%;
+    height: 500px;
+    margin: 20px auto;
+    margin: 0 auto;
+}
+
+#main {
+    height: 65%;
+    display: flex;
+    justify-content: center;
+}
+
+#slider {
+    height: 35%;
+    display: flex;
+    overflow: hidden;
+}
+
+img {
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.arrow-left {
+    cursor: pointer;
+    width: 0; 
+    height: 0; 
+
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid rgb(135, 153, 172);
+
+    position: relative;
+    top:30%;
+    margin: 10px;
+}
+
+.arrow-right {
+    cursor: pointer;
+    width: 0; 
+    height: 0; 
+
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid rgb(135, 153, 172);
+
+    position: relative;
+    top:30%;
+    margin: 10px;
+}
+
+#big_pic_container {
+    display: flex;
+    overflow: hidden;
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.big_pic {
+    height: 100%;
+    width: 100%;
+
+    transition: width 1s;
+}
+
+.small_pic {
+    height: 150px;
+    width: 200px;
+
+    transition: width 1s;
+}
+
+.small_pic:hover {
+    cursor: pointer;
+}
+
+.hide {
+    visibility: hidden;
+    width: 0;
+}
+
+.animate_left_to_right {
+    animation: enter_left_to_right 1s;
+}
+
+@keyframes enter_left_to_right {
+    0% {
+        margin-left: -200px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
