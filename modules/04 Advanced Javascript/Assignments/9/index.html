@@ -4,187 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Gallery</title>
-    <style>
-        *{
-            box-sizing: border-box;
-        }
-        body{
-            background-color: rgb(91, 74, 107);
-        }
-        .img{
-            border-radius: 10px;
-            cursor: pointer;
-            min-width: 120px;
-            height: 80px;
-            margin: 10px;
-        }
-        #lower-gallery{
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            width: 80%;
-            overflow: hidden;
-            /* overflow-x: scroll; */
-            max-width: 700px;
-        }
-        #upper-gallery{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80%;
-        }
-        #current-shown{
-            border-radius: 10px;
-            max-width: 400px;
-            width: 80%;
-            max-height: 266.66px !important;
-            flex-shrink: 1;
-            margin-top: 40px;
-            margin-bottom: 30px;
-        }
-        #left-arrow-down{
-            margin-right: 10px;
-            left: 0;
-            width: 0; 
-            height: 0; 
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent; 
-            border-right: 18px solid rgb(224, 231, 235); 
-            cursor: pointer;
-        }
-        #right-arrow-down{
-            margin-left: 10px;
-            left: 0;
-            width: 0; 
-            height: 0; 
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent; 
-            border-left: 18px solid rgb(224, 231, 235); 
-            cursor: pointer;
-        }
-        #left-arrow-up{
-            margin-right: 20px;
-            left: 0;
-            width: 0; 
-            height: 0; 
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent; 
-            border-right: 36px solid rgb(224, 231, 235); 
-            cursor: pointer;
-        }
-        #right-arrow-up{
-            margin-left: 20px;
-            left: 0;
-            width: 0; 
-            height: 0; 
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent; 
-            border-left: 36px solid rgb(224, 231, 235); 
-            cursor: pointer;
-        }
-        #lower-wrapper{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-        #gallery{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
-        .selected{
-            border:2px solid rgb(224, 231, 235);
-            box-shadow: 0px 0px 10px 0px black;
-        }
-    </style>
 </head>
 <body>
     <div id="gallery">
         <div id="upper-gallery">
             <div id="left-arrow-up" onclick="moveLeft()"></div>
-            <img id="current-shown" src="images/img0.jpg">
+            <img id="current-shown" src="">
             <div id="right-arrow-up" onclick="moveRight()"></div>
         </div>
         <div id="lower-wrapper">
             <div id="left-arrow-down" onmouseover="scrollLeft1(this)" onmouseout="stop_scroll()"></div>
             <div id="lower-gallery">
-                <img id="img0" src="images/img0.jpg" class="img selected" onclick="showThisImg(this)">
-                <img id="img1" src="images/img1.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img2" src="images/img2.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img3" src="images/img3.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img4" src="images/img4.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img5" src="images/img5.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img6" src="images/img6.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img7" src="images/img7.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img8" src="images/img8.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img9" src="images/img9.jpg" class="img" onclick="showThisImg(this)">
-                <img id="img10" src="images/img10.jpg" class="img" onclick="showThisImg(this)">
+                <!-- <img id="img0" src="images/img0.jpg" class="img selected" onclick="showThisImg(this)"> -->
             </div>
             <div id="right-arrow-down" onmouseover="scrollRight1(this)" onmouseout="stop_scroll()"></div>
         </div>
     </div>
-    <script>
-        if(localStorage.hasOwnProperty('selectedID')){
-            var id = localStorage.getItem("selectedID");
-            var selected = document.getElementById(id);
-            showThisImg(selected);
-        }
-        function showThisImg(element){
-            var currentShown = document.getElementById("current-shown");
-            var selected = document.getElementsByClassName("selected");
-            currentShown.src=element.src;
-            selected[0].classList.toggle("selected");
-            element.setAttribute("class", "img selected");
-            element.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
-            localStorage.setItem("selectedID",element.id);
-        }
-        function moveLeft(){
-            var selectedID = document.getElementsByClassName("selected")[0].id;
-            var index = selectedID.replace("img","");
-            index = Number(index);
-            var images = document.getElementsByClassName("img");
-            var newSelectedElement;
-            if(index===0){
-                newSelectedElement=document.getElementById("img"+(images.length-1))
-            }
-            else{
-                newSelectedElement=document.getElementById("img"+(index-1));
-            }
-            showThisImg(newSelectedElement);
-        }
-        function moveRight(){
-            var selectedID = document.getElementsByClassName("selected")[0].id;
-            var index = selectedID.replace("img","");
-            index = Number(index);
-            var images = document.getElementsByClassName("img");
-            var newSelectedElement;
-            if(index===images.length-1){
-                newSelectedElement=document.getElementById("img0")
-            }
-            else{
-                newSelectedElement=document.getElementById("img"+(index+1));
-            }
-            showThisImg(newSelectedElement);
-        }
-        function scrollRight1(element){
-            var lowerGallery = document.getElementById("lower-gallery");
-            lowerGallery.scrollLeft += 4;
-            scrolling = window.setTimeout(function() {
-                scrollRight1();
-            }, 10);
-        }
-        function scrollLeft1(element){
-            var lowerGallery = document.getElementById("lower-gallery");
-            lowerGallery.scrollLeft -= 4;
-            scrolling = window.setTimeout(function() {
-                scrollLeft1();
-            }, 10);
-        }
-        function stop_scroll(){
-            window.clearTimeout(scrolling);
-        }
-    </script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
