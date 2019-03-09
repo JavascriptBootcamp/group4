@@ -43,21 +43,29 @@
             width: 80%;
             height: 100%;
             overflow: hidden;
+            position: relative;
         }
-        #centerDiv>div {
+        #centerDiv>div:nth-child(1) {
             display: flex;
             flex-wrap: wrap;
             justify-content:center;
             align-items: center;
             width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            max-height: 60%;
+            overflow: hidden;
         }
         #centerDiv>div:nth-child(2) {
             display: flex;
             flex-wrap: nowrap;
-            height: 10%;
+            height: 80px;
             width: 100%;
             justify-content: center;
             align-content: center;
+            position: absolute;
+            bottom: 5%;
         }
         #centerDiv>div:nth-child(2)>div:nth-child(2) {
             display: flex;
@@ -66,7 +74,6 @@
             width: 70%;
             justify-content: flex-start;
             overflow: hidden;
-            margin-top: 20px;
             /* transition: transform 2s; */
         }
 
@@ -81,14 +88,14 @@
             width: 15%;
             justify-content: flex-end;
             overflow: hidden;
-            margin-top: 20px;
         }
+
         #centerDiv>div:nth-child(1)>img:nth-child(1),  #centerDiv>div:nth-child(1)>img:nth-child(3){
             width: 15%;
             height: auto;
         }
         #centerDiv>div:nth-child(1)>img:nth-child(2) {
-            width: 70%;
+            width: 50%;
             height: auto;
         }
         #centerDiv>div:nth-child(2)>div>img {
@@ -102,7 +109,7 @@
     <title>Gallery</title>
 </head>
 
-<body onload="init()" onresize="center()">
+<body onload="init(event);">
     <div id='content'>
         <div id="centerDiv">
             <div class="center">
@@ -223,11 +230,11 @@
         //         img1.addImg(i);
         //     }
         // }
+
         function loadPics() {
             var thumbnails = document.getElementsByTagName('img');
             var j = 0;
             if (!localStorage.getItem('imgs')) {
-                console.log('fs');
                 localStorage.setItem('imgs', JSON.stringify(['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThwis6NNDVW72x549a3a4V8L2ZfWevkt12FY6a4ssIt82RGCYTYQ', 'https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif', 'https://picjumbo.com/wp-content/uploads/young-woman-traveler-enjoying-a-view-on-high-tatras-mountains_free_stock_photos_picjumbo_HNCK7618-1080x720.jpg', 'https://static.boredpanda.com/blog/wp-content/uploads/2014/04/microsoft-windows-xp-bliss-wallpaper-charles-orear-1.jpg', 'https://cms.qz.com/wp-content/uploads/2018/07/wildfire_05.jpg?quality=75&strip=all&w=620', 'http://images.summitmedia-digital.com/candy/images/articles/guys/201506/201506-profile-photo-couples-cover.jpg', 'https://www.gannett-cdn.com/presto/2018/08/28/PDTF/23cfebac-fea2-4884-b228-9251206764f6-shipphoto.jpg?width=534&height=401&fit=bounds&auto=webp', 'http://wowslider.com/sliders/demo-31/data1/images/bench560435.jpg', 'https://dl1.cbsistatic.com/i/r/2017/08/03/5699d934-b7cf-4c4e-b5f0-e56f654f3835/resize/696xauto/7c4f655bff4aed89f239ee4a3a7dab29/total-solar-eclipse.jpg', 'https://media.treehugger.com/assets/images/2018/03/snow10.jpg.860x0_q70_crop-scale.jpg']));
             }
             var images = JSON.parse(localStorage.getItem('imgs'));
@@ -241,18 +248,11 @@
             var bigPic = document.getElementsByTagName('img')[1];
             bigPic.setAttribute('src', images[0]);
         }
-        function init() {
+        function init(e) {
             loadPics();
             loadBigPic();
-            center();
         }
-        function center() {
-            var outerDiv = document.getElementById('content');
-            var contents = document.getElementById('centerDiv');
-            var num = (window.innerHeight - contents.children[0].offsetHeight - contents.children[1].offsetHeight - 20) / 2;
-            outerDiv.style.top = num + 'px';
-            outerDiv.style.height = (window.innerHeight - num) + 'px';
-        }
+
     </script>
 </body>
 
