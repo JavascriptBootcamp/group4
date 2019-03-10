@@ -1,98 +1,99 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Document</title>
-     <link rel="stylesheet" href="answer59_m3.css">
+    <link rel="stylesheet" href="answer59_m3.css">
 </head>
+
 <body>
-    <div class = "hide-expand"> 
-        <button class = "hide-expand-btn" >Collapse All</button>
-     </div>
+    <div class="hide-expand">
+        <button class="hide-expand-btn">Expand All</button>
+    </div>
     <div class="search">
-        <div id ="mainSearch">
+        <div id="mainSearch">
             <p>Enter keywords or item number</p>
             <div class="details">
-            <h3>Find Items</h3>
-            <form  action="">
-            <form action="">
-            
-            <input type="text" name="serchText" id="" 
-                   placeholder="Enter key words or item number">
-            <select name="typeSearch">
-                <option value="aw_ao">All words, any order</option>
-                <option value="aw_ao"></option>
-                <option value="ew_eo"></option>
-                <option value="ew_ao"></option>
-            </select>
-            <label for="exclude"> <br/><br/> Exclude words from your search </label><br/>
-            <input type="text" name="exclude" >
-             <h3>See general <a href="">search tips</a> or <a href="">using advanced search options</a>  </h3>
-             <label for="">In this category:</label><br/>
-             <select name="" >
-                 <option value="all_cat">All Categories</option>
-             </select> 
-             <br/><br/>
-             <input type="submit" value="search">
-             <br/><br/>
-             </form>
+                <h3>Find Items</h3>
+                <form action="">
+                    <form action="">
+
+                        <input type="text" name="serchText" id="" placeholder="Enter key words or item number">
+                        <select name="typeSearch">
+                            <option value="aw_ao">All words, any order</option>
+                            <option value="aw_ao"></option>
+                            <option value="ew_eo"></option>
+                            <option value="ew_ao"></option>
+                        </select>
+                        <label for="exclude"> <br /><br /> Exclude words from your search </label><br />
+                        <input type="text" name="exclude">
+                        <h3>See general <a href="">search tips</a> or <a href="">using advanced search options</a> </h3>
+                        <label for="">In this category:</label><br />
+                        <select name="">
+                            <option value="all_cat">All Categories</option>
+                        </select>
+                        <br /><br />
+                        <input type="submit" value="search">
+                        <br /><br />
+                    </form>
             </div>
         </div>
-        
+
         <div>
             <p class="inputTitle"> Search including </p>
             <div class="details">
 
-             <input type="checkbox" name="ch1" >
-             <label for="ch1">Title and description</label> <br/>
-             <input type="checkbox" name="ch2" >
-             <label for="ch2">Completed listings</label> <br/>
-             <input type="checkbox" name="ch3" >
-             <label for="ch3">Sold listings</label> <br/>
-           </div>
+                <input type="checkbox" name="ch1">
+                <label for="ch1">Title and description</label> <br />
+                <input type="checkbox" name="ch2">
+                <label for="ch2">Completed listings</label> <br />
+                <input type="checkbox" name="ch3">
+                <label for="ch3">Sold listings</label> <br />
+            </div>
         </div>
         <div style="white-space: nowrap;">
-                <p class="inputTitle"> Price </p>
-                <div class="details">
+            <p class="inputTitle"> Price </p>
+            <div class="details">
 
-                <input type="checkbox" name="ch4" >
+                <input type="checkbox" name="ch4">
                 <label for="ch4">Show items priced from </label> ILS
-                <input type="text" name="from" id=""> 
+                <input type="text" name="from" id="">
                 <label for=""> to ILS</label>
-                 <input type="text" name="tofrom" id=""> 
-                 </div>
+                <input type="text" name="tofrom" id="">
+            </div>
         </div>
 
         <div>
-                <p class="inputTitle"> Buying formats</p>
-                <div class="details">
+            <p class="inputTitle"> Buying formats</p>
+            <div class="details">
 
-                <input type="checkbox" name="ch5" >
-                <label for="ch5">Auction</label><br/>
-                <input type="checkbox" name="ch6" >
+                <input type="checkbox" name="ch5">
+                <label for="ch5">Auction</label><br />
+                <input type="checkbox" name="ch6">
                 <label for="ch6">Buy It Now </label>
-                </div>
+            </div>
 
         </div>
         <div>
-                <p class="inputTitle">Condition</p>
-                <div class="details">
+            <p class="inputTitle">Condition</p>
+            <div class="details">
 
-                <input type="checkbox" name="ch7" >
-                <label for="ch7"> New </label><br/>
-                <input type="checkbox" name="ch8" >
-                <label for="ch8">Used </label> <br/>
-                <input type="checkbox" name="ch9" >
+                <input type="checkbox" name="ch7">
+                <label for="ch7"> New </label><br />
+                <input type="checkbox" name="ch8">
+                <label for="ch8">Used </label> <br />
+                <input type="checkbox" name="ch9">
                 <label for="ch9">Not Specified </label>
-                </div>
+            </div>
         </div>
-        <div  style="white-space: nowrap;">
-                <p class="inputTitle"> Show results </p>
-                <div class="details">
+        <div style="white-space: nowrap;">
+            <p class="inputTitle"> Show results </p>
+            <div class="details">
 
-                <input type="checkbox" name="ch8" >
+                <input type="checkbox" name="ch8">
                 <label for="ch8"> Listings </label>
                 <select name="end_op" id="">
                     <option value="">Ending within</option>
@@ -101,48 +102,53 @@
                     <option value=""></option>
                 </select>
                 <select name="time_end" id="">
-                        <option value="">1 hour</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                <br/>
-                <input type="checkbox" name="ch9" >
+                    <option value="">1 hour</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+                <br />
+                <input type="checkbox" name="ch9">
                 <label for="ch9"> Number of bids from: </label>
                 <input type="text" name="mun_from" id=""> to:
-                <input type="text" name="mum_toFrom" id=""> <br/>
-                
-                <input type="checkbox" name="ch10" >
-                <label for="ch10">  Multiple item listings from: </label>
-                 <input type="text" name="muli_from" id=""> to:
-                 <input type="text" name="muli_toFrom" id="">
-                  <br/>
-                <input type="checkbox" name="ch11" >
-                <label for="ch11"> Items listed as lots  <a href="">Learn more.</a>  </label><br/>
-                <input type="checkbox" name="ch12" >
-                <label for="ch12"> Sale items </label><br/>
-                <input type="checkbox" name="ch13" >
-                <label for="ch13">  Best offer  <a href="">Learn more.</a> </label><br/>
-                <input type="checkbox" name="ch14" >
-                <label for="ch14">  eBay for Charity  <a href="">Learn more.</a></label><br/>
-                
-                <p class="inputTitle"> Shipping options</p>
-                <input type="checkbox" name="ch15" >
-                <label for="ch15"> Free international shipping </label><br/>
-                </div>
+                <input type="text" name="mum_toFrom" id=""> <br />
+
+                <input type="checkbox" name="ch10">
+                <label for="ch10"> Multiple item listings from: </label>
+                <input type="text" name="muli_from" id=""> to:
+                <input type="text" name="muli_toFrom" id="">
+                <br />
+                <input type="checkbox" name="ch11">
+                <label for="ch11"> Items listed as lots <a href="">Learn more.</a> </label><br />
+                <input type="checkbox" name="ch12">
+                <label for="ch12"> Sale items </label><br />
+                <input type="checkbox" name="ch13">
+                <label for="ch13"> Best offer <a href="">Learn more.</a> </label><br />
+                <input type="checkbox" name="ch14">
+                <label for="ch14"> eBay for Charity <a href="">Learn more.</a></label><br />
+            </div>
         </div>
         <div>
-                <p class="inputTitle"> Location </p>
-                <div class="details">
+            <p class="inputTitle"> Shipping options</p>
+            <div class="details">
+                <input type="checkbox" name="ch15">
+                <label for="ch15"> Free international shipping </label><br />
+            </div>
+        </div>
+
+
+        <div>
+            <p class="inputTitle"> Location </p>
+            <div class="details">
 
                 <table>
                     <tr>
@@ -151,93 +157,92 @@
                             <label for="loc"> Located</label></td>
                         <td>
                             <select name="" id="">
-                            <option value="dis1">5</option>
-                        </select>  
-                            miles of <input type="text" name="zipCode" id=""  title="Enter ZIP Code">
+                                <option value="dis1">5</option>
+                            </select>
+                            miles of <input type="text" name="zipCode" id="" title="Enter ZIP Code">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                                <input type="radio" name="loc" id="">
-                                <label for="loc"> From preferred locations 	</label></td>
+                            <input type="radio" name="loc" id="">
+                            <label for="loc"> From preferred locations </label></td>
                         </td>
                         <td>
-                                <select name="pre_loc" id="">
-                                        <option value="loc1">Worldwide</option>
-                                    </select>
+                            <select name="pre_loc" id="">
+                                <option value="loc1">Worldwide</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                                <input type="radio" name="loc" id="">
-                                <label for="loc"> Located in </label></td>
+                            <input type="radio" name="loc" id="">
+                            <label for="loc"> Located in </label></td>
                         </td>
                         <td>
-                                <select name="loc_in" id="">
-                                        <option value="loc1">United States</option>
-                                    </select>
+                            <select name="loc_in" id="">
+                                <option value="loc1">United States</option>
+                            </select>
                         </td>
                     </tr>
                 </table>
-                </div>
+            </div>
         </div>
         <div>
-               
-                <p class="inputTitle">Sellers </p>
-                   
-                <div class="details">
+            <p class="inputTitle">Sellers </p>
+            <div class="details">
 
-                    <input type="checkbox" name="seller" id="">
-                    <label for="seller">Only show items from:</label>
-                    <ul> 
+                <input type="checkbox" name="seller" id="">
+                <label for="seller">Only show items from:</label>
+                <ul>
                     <li>
                         <input type="radio" name="sellerType" id="">
-                        <label for="sellerType">Specific sellers (enter seller's user IDs)</label> <br/>
+                        <label for="sellerType">Specific sellers (enter seller's user IDs)</label> <br />
                     </li>
                     <li>
-                          <select name="sellerId" id="">
-                              <option value="include">Include</option>
-                              <option value="exclude">Exclude</option>
-                          </select>
-                          <input type="text" name="userId" id="" title = "Enter seller id">
+                        <select name="sellerId" id="">
+                            <option value="include">Include</option>
+                            <option value="exclude">Exclude</option>
+                        </select>
+                        <input type="text" name="userId" id="" title="Enter seller id">
                     </li>
                     <li>
-                            <input type="radio" name="sellerType" id="">
-                            <label for="sellerType">My saved sellers list
-                                </label> <br/>
+                        <input type="radio" name="sellerType" id="">
+                        <label for="sellerType">My saved sellers list
+                        </label> <br />
                     </li>
                     <li>
-                            <input type="radio" name="sellerType" id="">
-                            <label for="sellerType">Sellers with eBay stores</label> <br/>
+                        <input type="radio" name="sellerType" id="">
+                        <label for="sellerType">Sellers with eBay stores</label> <br />
                     </li>
-               
+
                 </ul>
-                </div>
+            </div>
         </div>
         <div>
 
-            <label for="sort">Sort By</label><br/>
+            <label for="sort">Sort By</label><br />
             <select name="sort" id="">
                 <option value="bestMatch">Best Match</option>
-            </select> <br/>
-            
-            <label for="sort">View results</label><br/>
-            <select name="sort" id=""> 
+            </select> <br />
+
+            <label for="sort">View results</label><br />
+            <select name="sort" id="">
                 <option value="bestMatch">All items</option>
-            </select>  <br/>
-            <label for="sort">Results per page</label><br/>
+            </select> <br />
+            <label for="sort">Results per page</label><br />
             <select name="sort" id="">
                 <option value="50">50</option>
             </select>
         </div>
         <div>
-           <input type="submit" value="Search">
-           <input type="reset" value="Clear options">
+            <input type="submit" value="Search">
+            <input type="reset" value="Clear options">
         </div>
-       
+
         </form>
     </div>
-   
+
     <script src="answer59_m3.js"></script>
 </body>
+
 </html>

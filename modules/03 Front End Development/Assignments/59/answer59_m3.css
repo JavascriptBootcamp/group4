@@ -29,6 +29,9 @@ input[type=submit]{
     display: none;
 }
 
+.not-hide {
+    display: initial;
+}
 
 
 .search p {
