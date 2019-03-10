@@ -1,0 +1,41 @@
+body{
+    width:70%;
+    margin: 0 auto;
+}
+#kw_lengend{
+    content :"+";
+}
+
+.positive{
+    display:none;
+}
+
+.negative{
+    display:contents;
+}
+
+#header{
+    background-color: lightgray;
+    text-align: center;
+    font: 40px bold;
+    padding: 6px;
+}
+
+#btn_expand_all{
+    font: 20px bold;
+    padding: 3px;
+    width: 100%;
+    background-color: red;
+}
+
+#div_expand_all{
+    width: 40%;
+    margin: 0 auto;
+}
+
+legend{
+    font: 20px bold;
+
+}
+
+
