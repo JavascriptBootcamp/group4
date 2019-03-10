@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Collapse Assignment</title>
+	
+	<style>
+		.collapsible{
+		background-color: #eee;
+		color: #444;
+		cursor: pointer;
+		padding: 18px;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 15px;
+	}
+	
+	.active, .collapsible:hover {
+	  background-color: #ccc;
+	}
+	
+	.fieldContent {
+		  padding: 0 18px;
+		  display: none;
+		  overflow: hidden;
+		  background-color: #f1f1f1;
+	}
+	
+	.collapsible:before {
+		  content: '\02795'; /* Unicode character for "plus" sign (+) */
+		  font-size: 13px;
+		  color: black;
+		  padding-right: 5px;
+		  margin-left: 5px;
+}
+
+.active:before {
+		content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+	</style>
+</head>
+
+				
+
+<body>
+    <h2>Find Items</h2>
+    <div>
+        <div class="cont">
+				<button id="affectAllButton" onclick="affectFields()">Expand All</button>
+				
+				<button class="collapsible">Enter keywords or item number</button>
+				<div class="fieldContent">
+					<fieldset>
+						<legend>Enter keywords or item number</legend>
+
+						<div class="space-top">
+							<input type="text" size="50" maxlength="300" value='' placeholder="Enter keywords or item number">
+							<select aria-label="Keyword options" name="_in_kw" id="_in_kw" size="1">
+								<option value="1" selected="selected">All words, any order</option>
+								<option value="2">Any words, any order</option>
+								<option value="3">Exact words, exact order</option>
+								<option value="4">Exact words, any order</option>
+							</select>
+						</div>
+
+						<label for="_ex_kw" class="inline-block space-top">
+							Exclude words from your search<input class="block" type="text" name="_ex_kw" id="_ex_kw" size="50"
+								maxlength="300" value="">
+						</label>
+
+						<div class="space-top">
+							See general <a class="learnmore" href="https://pages.ebay.com/il/en-us/help/buy/contextual/search_tips.html">search
+								tips</a> or <a class="learnmore" href="https://pages.ebay.com/il/en-us/help/find/searchby-options.html">using
+								advanced search options</a></div>
+
+						<label for="e1-1" class="inline-block space-top">
+							In this category:<select class="block" name="_sacat" id="e1-1">
+								<option value="0">All Categories</option>
+								<option value="20081">Antiques</option>
+								<option value="58058">Computers/Tablets & Networking</option>
+								<option value="293">Consumer Electronics</option>
+							</select>
+						</label><br /><br />
+
+						<div class="adv-s mb space-top">
+							<button type="submit" class="btn btn-prim" onclick="return false;">Search</button>
+							<span id="searchBtnUpperNoScript" style="display: none;"><input type="submit" class="aBtn-sB"
+									value="Search" /></span>
+						</div>
+
+					</fieldset>
+				</div>
+
+
+
+				<button class="collapsible">Search including</button>
+				<div class="fieldContent">	
+                <fieldset class="checkbox-set">
+                    <legend>Search including</legend>
+                    <label for="LH_TitleDesc">
+                        <input type="checkbox" class="basic_aspect_chbx" id="LH_TitleDesc" name="LH_TitleDesc" value="1">
+                        Title and description</label><br />
+                    <label for="LH_Complete">
+                        <input type="checkbox" class="basic_aspect_chbx" id="LH_Complete" name="LH_Complete" value="1">
+                        Completed listings</label><br />
+                    <label for="LH_Sold">
+                        <input type="checkbox" class="basic_aspect_chbx" id="LH_Sold" name="LH_Sold" value="1">
+                        Sold listings</label>
+                </fieldset>	
+				</div>
+			
+				<button class="collapsible">Price</button>
+				<div class="fieldContent">	
+                <fieldset>
+                    <legend>Price</legend>
+                    <input aria-label="Include a price range value for search results" title="Include a price range value for search results"
+                        type="checkbox" id="_mPrRngCbx" name="_mPrRngCbx" value="1">
+                    <label for='_mPrRngCbx'>Show items priced from</label> ILS <input class='price' type='text' name='_udlo'
+                        placehoder='All Categories' value='' title='Enter minimum price range value' aria-label='Enter minimum price range value' />
+                    to ILS <input class='price' type='text' name='_udhi' maxlength='13' value='' title='Enter maximum price range value'
+                        aria-label='Enter maximum price range value' />
+                </fieldset>
+				</div>
+			
+				<button class="collapsible">Buying formats</button>
+				<div class="fieldContent">	
+                <fieldset class="checkbox-set">
+                    <legend>Buying formats</legend>
+                    <label for="LH_Auction">
+                        <input type="checkbox" id="LH_Auction" name="LH_Auction" value="1">
+                        Auction</label><br />
+                    <label for="LH_BIN">
+                        <input type="checkbox" id="LH_BIN" name="LH_BIN" value="1">
+                        Buy It Now</label><br />
+                </fieldset>
+				</div>
+			
+				<button class="collapsible">Condition</button>
+				<div class="fieldContent">	
+                <fieldset class="checkbox-set">
+                    <legend>Condition</legend>
+                    <label for="LH_ItemConditionNew">
+                        <input type="checkbox" id="LH_ItemConditionNew" name="LH_ItemCondition" value="3">
+                        New</label><br />
+                    <label for="LH_ItemConditionUsed">
+                        <input type="checkbox" id="LH_ItemConditionUsed" name="LH_ItemCondition" value="4">
+                        Used</label><br />
+                    <label for="LH_ItemConditionNS">
+                        <input type="checkbox" id="LH_ItemConditionNS" name="LH_ItemCondition" value="10">
+                        Not Specified</label>
+                </fieldset>
+				</div>
+			
+				<button class="collapsible">Show results</button>
+				<div class="fieldContent">
+                <fieldset class="checkbox-set">
+                    <legend>Show results</legend>
+
+                    <div class="fields">
+                        <input aria-label="Include listings time frame for search results" title="Include listings time frame for search results"
+                            type="checkbox" id="LH_Time" name="LH_Time" value="1">
+                        <label for='LH_Time'>Listings</label> <select name='_ftrt'>
+                            <option value='901'>Ending within</option>
+                            <option value='902'>Ending in more than</option>
+                            <option value='903'>Started within</option>
+                        </select> <select name='_ftrv'>
+                            <option value='1'>1 hour</option>
+                            <option value='2'>2 hours</option>
+                            <option value='3'>3 hours</option>
+                        </select></div>
+
+                    <div class="fields">
+                        <input aria-label="Include number of bids for search results" title="Include number of bids for search results"
+                            type="checkbox" id="LH_NOB" name="LH_NOB" value="1">
+                        <label for='LH_NOB'>Number of bids from</label>: <input type='text' size='3' id='_sabdlo' name='_sabdlo'
+                            title='Enter minimum number of bids' /> to: <input type='text' size='3' id='_sabdhi' name='_sabdhi'
+                            title='Enter maximum number of bids' /></div>
+
+                    <div class="fields">
+                        <input aria-label="Include multiple item listings for search results" title="Include multiple item listings for search results"
+                            type="checkbox" id="LH_MIL" name="LH_MIL" value="1">
+                        <label for='LH_MIL'>Multiple item listings from</label>: <input type='text' size='3' id='_samilow'
+                            name='_samilow' title='Enter minimum multiple item listings value' />
+                        to: <input type='text' size='3' id='_samihi' name='_samihi' title='Enter maximum multiple item listings value' /></div>
+
+                    <label for="LH_Lots">
+                        <input type="checkbox" id="LH_Lots" name="LH_Lots" value="1">
+                        Items listed as lots&nbsp;
+                        <a class="learnmore" title="Learn more about lots" href="https://pages.ebay.com/il/en-us/help/sell/contextual/lots.html">Learn
+                            more.</a>
+                    </label><br />
+
+                    <label for="LH_SaleItems">
+                        <input type="checkbox" id="LH_SaleItems" name="LH_SaleItems" value="1">
+                        Sale items</label><br />
+
+                    <label for="LH_BO">
+                        <input type="checkbox" id="LH_BO" name="LH_BO" value="1">
+                        Best offer&nbsp;
+                        <a class="learnmore" title="Learn more about Best offer" href="https://pages.ebay.com/il/en-us/help/buy/best-offer.html">Learn
+                            more.</a>
+                    </label><br />
+                    <label class="basic_aspect_chbx_lable_charity" for="LH_Charity">
+                        <input type="checkbox" id="LH_Charity" name="LH_Charity" value="1">
+                        eBay for Charity&nbsp;
+                        <a class="learnmore" title="Learn more about eBay for Charity" href="https://pages.ebay.com/il/en-us/help/buy/buying-nonprofit.html">Learn
+                            more.</a>
+                    </label><br />
+                    <fieldset class="checkbox-set nested">
+                        <legend>Shipping options</legend>
+
+                        <label for="LH_FS">
+                            <input type="checkbox" id="LH_FS" name="LH_FS" value="1">
+                            Free international shipping</label><br />
+
+                    </fieldset>
+
+                </fieldset>
+				</div>
+			
+				<button class="collapsible">Location</button>
+				<div class="fieldContent">
+                <fieldset class="checkbox-set location-set">
+                    <legend>Location</legend>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td class="loc_option_title">
+                                <input type="radio" id="LH_Located" name="_fsradio2" value="&LH_PrefLoc=99" />
+                                <label for="LH_Located">Located</label>
+                            </td>
+                            <td class="loc_option_select">
+                                <select name='_sadis' id='_sadis'>
+                                    <option value='2'>2</option>
+                                    <option value='5'>5</option>
+                                    <option value='10'>10</option>
+                                    <option value='15' selected='selected'>15</option>
+                                    <option value='25'>25</option>
+                                </select> miles of <input size='8' maxlength='10' name='_stpos' id='_stpos' class='distance_aspect_input'
+                                    title='Enter your ZIP code' aria-label='Enter your ZIP code' value='' type='text' /><input
+                                    name="_fspt" id="e1-2" value="1" type="checkbox" style="visibility:hidden;float:none" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="loc_option_title">
+                                <input type="radio" id="LH_PrefLocRadio" name="_fsradio2" value="&LH_PrefLoc=1" />
+                                <label for="LH_PrefLocRadio">From preferred locations</label>&nbsp;
+                            </td>
+                            <td>
+                                <select aria-label="Location options" id="_sargnSelect" name="_sargn">
+                                    <option value="-1&amp;saslc=1">US Only</option>
+                                    <option value="-1&amp;saslc=2">Worldwide</option>
+                                    <option value="-1&amp;saslc=3">North America</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="loc_option_title">
+                                <input type="radio" id="LH_LocatedInRadio" name="_fsradio2" value="&LH_LocatedIn=1" />
+                                <label for="LH_LocatedInRadio">Located in</label>
+                            </td>
+                            <td class="loc_option_select">
+                                <select aria-label="Location options" id="_salicSelect" name="_salic">
+                                    <option selected="selected" value="1">United States</option>
+                                    <option value="15">Australia</option>
+                                    <option value="210">United Arab Emirates</option>
+                                    <option value="3">United Kingdom</option>
+                                    <option selected="selected" value="1">United States</option>
+                                    <option value="211">Uruguay</option>
+                                    <option value="212">Uzbekistan</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- ugly hack since app side cannot decode LH_SubLocation parameter -->
+                    <input type="checkbox" id="LH_SubLocationNm" name="LH_SubLocation" value="1" style="visibility:hidden" /><br />
+                </fieldset>
+				
+				</div>
+			
+				<button class="collapsible">Sellers</button>
+				<div class="fieldContent">
+                <fieldset class="checkbox-set">
+                    <legend id="byseller">Sellers</legend>
+
+                    <label for="_fss">
+                        <input type="checkbox" class="basic_aspect_chbx" id="_fss" name="_fss" value="1" />
+                        Only show items from:</label>
+
+                    <div class="c-cont">
+
+                        <label for="LH_SpecificSeller_id">
+                            <input type="radio" disabled="disabled" class="from_sellers_aspect_chbx" checked="checked"
+                                id="LH_SpecificSeller_id" name="_fsradio" value="&amp;LH_SpecificSeller=1">
+                            Specific sellers (enter seller's user IDs)</label><br />
+
+                        <select aria-label="Include or exclude menu" class="from_sellers_aspect_select" disabled="disabled"
+                            id="_saslop" name="_saslop">
+                            <option value="1">Include</option>
+                            <option value="2">Exclude</option>
+                        </select>
+
+                        <input class="space-top" aria-label="Enter seller's user IDs to include or exclude from search results."
+                            title="Enter seller's user IDs to include or exclude from search results." type="text"
+                            class="from_sellers_aspect_textarea" disabled="disabled" id="_sasl" name="_sasl" value=""><br />
+
+                        <label for="LH_FavSellers_id">
+                            <input type="radio" id="LH_FavSellers_id" disabled="disabled" name="_fsradio" value="LH_FavSellers=1" />
+                            My saved sellers list</label><br />
+
+                        <label for="LH_SellerWithStore_id">
+                            <input type="radio" id="LH_SellerWithStore_id" disabled="disabled" name="_fsradio" value="LH_SellerWithStore=1" />
+                            Sellers with eBay stores</label><br />
+
+                        <div id="outlet_sellers_radio">
+                            <input type="radio" id="LH_OUTLETMALLSELLERS_id" disabled="disabled" name="_fsradio" value="LH_OUTLETMALLSELLERS=1">
+                            <label for="LH_OUTLETMALLSELLERS_id">eBay Outlet sellers</label>
+                        </div>
+                    </div>
+			
+                </fieldset>
+				</div>
+			
+                <div class="result-menus-section">
+                    <label for="LH_SORT_BY">Sort by</label>
+                    <select name="_sop" id="LH_SORT_BY">
+                        <option value="12" selected="selected">Best Match</option>
+                        <option value="1">Time: ending soonest</option>
+                        <option value="10">Time: newly listed</option>
+                    </select>
+
+                    <label for="LH_VIEW_RESULTS_AS">View results</label>
+                    <select name="_dmd" id="LH_VIEW_RESULTS_AS">
+                        <option selected="selected" value="1">All items</option>
+                        <option value="2">Picture Gallery</option>
+                        <option value="7">Show item numbers</option>
+                    </select>
+
+                    <label for="LH_IPP">Results per page</label>
+                    <select name="_ipg" id="LH_IPP">
+                        <option value="25">25</option>
+                        <option selected="selected" value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                    </select>
+                </div>
+
+                <hr size="1" noshade="noshade" class="seperator">
+                <div class="bottom-action-bar">
+                    <span class="adv-s mb"><button type="submit" class="btn btn-prim" id="searchBtnLowerLnk" onclick="return false;">Search</button></span>
+                    <a href="">Clear options&nbsp;</a>
+                </div>
+        </div>
+	</div>
+	
+	
+		<script>
+				var coll = document.getElementsByClassName("collapsible");
+				var i;
+
+				for (i = 0; i < coll.length; i++) {
+				  coll[i].addEventListener("click", function() {
+					this.classList.toggle("active");
+					var content = this.nextElementSibling;
+					if (content.style.display === "block") {
+					  content.style.display = "none";
+					} else {
+					  content.style.display = "block";
+					}
+				  });
+				}
+				
+				function affectFields()
+				{
+					var toggleButton = document.querySelector("#affectAllButton");
+					
+					if(toggleButton.innerText === "Expand All")
+					{
+						toggleButton.innerText = "Collapse All";
+						
+						for(i = 0; i < coll.length; i++)
+						{
+							coll[i].classList.toggle("active");
+							var content = coll[i].nextElementSibling;
+							content.style.display = "block";
+							
+						}
+					}
+					// current text is "Collapse All"
+					else
+					{
+						toggleButton.innerText = "Expand All";
+						for(i = 0; i < coll.length; i++)
+						{
+							coll[i].classList.toggle("active");
+							var content = coll[i].nextElementSibling;
+							content.style.display = "none";
+						}
+					}
+				}
+		</script>
+</body>
+
+</html>
