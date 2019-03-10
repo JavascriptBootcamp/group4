@@ -1,4 +1,4 @@
-class Word
+class Word<T>
 {
       length:number;
       constructor(chars:string)
@@ -14,11 +14,11 @@ class FindLongestString
 {
      findLongestString(sentence:string):string{
         let arr:string[] = sentence.split(' ');
-        let wordsArr :Word[]  = [];
+        let wordsArr :Word<number>[]  = [];
         let max = {maxLength: 0, theString: ''};
         arr.forEach((value, index) => {
             
-            wordsArr.push(new Word(value));
+            wordsArr.push(new Word<number>(value));
             // wordsArr[index].setLength();
             if (wordsArr[index].length > max.maxLength){
                 max.maxLength = wordsArr[index].length;
