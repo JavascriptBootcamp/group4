@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<title>My Album Web Application</title>
+		<style>
+			body {
+				background-color: purple;
+			}
+			
+			.subPic {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				margin-top:70px;
+			}
+			
+			.subPic:hover{
+				cursor:pointer;
+			}
+			
+			#container {
+				text-align: center;
+			}
+			#mainPicture 
+			{
+				margin-top: 40px;
+				height: 350px;
+				width: 350px;
+			}
+			
+			#mainPictureContainer {
+				display:block;
+			}
+			
+			.arrow{
+				margin-bottom: 50px;
+				width: 200px;
+				height: 200px;
+				display:inline-block;
+			}
+			
+			.arrow:hover{
+				cursor: pointer;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<div id="container">
+		
+			<div id="mainPictureContainer">
+				<div id="leftArrowContainer" class="arrow">
+					<img class="arrow" src="http://pixsector.com/cache/8ed3eed7/avb6b6c2625bcda563bf1.png" onclick="moveLeft()">
+				</div>
+			
+				<img data-index="0" id="mainPicture" src=#>
+				
+				<div id="rightArrowContainer" class="arrow">
+					<img class="arrow" src="http://pixsector.com/cache/d317f9c9/avefdb1ad8fbf8d8b72a2.png" onclick="moveRight()">
+				</div>
+			</div>
+			
+			<div id="subPicturesContainer">
+				<img data-index="0" class="subPic" src="">
+				<img data-index="1" class="subPic" src="">
+				<img data-index="2" class="subPic" src="">
+				<img data-index="3" class="subPic" src="">
+				<img data-index="4" class="subPic" src="">
+				<img data-index="5" class="subPic" src="">
+				<img data-index="6" class="subPic" src="">
+				<img data-index="7" class="subPic" src="">
+				<img data-index="8" class="subPic" src="">
+				<img data-index="9" class="subPic" src="">
+			</div>
+		</div>	
+		<script>
+		
+			var picturesArr = [];
+			const maxIndex = 9;
+			const minIndex = 0;
+			
+			var subPicsContainer = document.querySelector("#subPicturesContainer");
+			var currentPicture = document.querySelector("#mainPicture");
+			
+			function onStart()
+			{
+				var pic1 = new Picture("https://demo.olympusthemes.com/scaffold/wp-content/uploads/2013/03/image-alignment-300x200.jpg");
+				var pic2 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_DNABqnO_ARVaz2mW0y4rD7SAENckgZufQ-jJ_wi79CdDfQY6");
+				var pic3 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTV1prkm-6ifqcp_cK66_Za7gnPbzYoN9hu8VZCYiQYgmGpnMh");
+				var pic4 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX4iR8VOXRQgwIKEC68_pBevSp-vWVv8zUmYaENWDar92BG_yT");
+				var pic5 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXMI_t4OkAxdEhPsGUESmDrD_Sy3X1bCL4MRuiROdy_KFE07Vv");
+				var pic6 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5EHBLl5MqZY1JNjDF4AvWqK6WHlCGAwe3NwFQ-vBLEfp2HnMjbA");
+				var pic7 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDYl9OX-9USemAplruWjiR504p1w2ZJl6ODS46hj8str623TB");
+				var pic8 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkT3vEiJxKVWphNlF_xEQh62ri1WCg4cX967SOV_aEDXls2ylMYA");
+				var pic9 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw5Yg_EYviMbsQasn3twaatgRgV0McZ0gLLuMrjxU7qgL1VcRQ");
+				var pic10 = new Picture("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR3j9UOge-HYrRWz740pQXcNR4_yUbFeK1ffUNPjKFPyw3cLhb");
+				
+				picturesArr.push(pic1);
+				picturesArr.push(pic2);			
+				picturesArr.push(pic3);
+				picturesArr.push(pic4);
+				picturesArr.push(pic5);			
+				picturesArr.push(pic6);
+				picturesArr.push(pic7);
+				picturesArr.push(pic8);			
+				picturesArr.push(pic9);		
+				picturesArr.push(pic10);
+				
+				for(var i = 0; i < subPicsContainer.children.length; i++)
+				{
+					subPicsContainer.children[i].src = picturesArr[i].src;
+					subPicsContainer.children[i].onclick = function(){
+						mainPicture.src = this.src;
+						mainPicture.setAttribute("data-index", this.getAttribute("data-index"));
+						saveMainPic();
+					}
+				}
+				
+				var mainPicFromMemory = localStorage.getItem("mainPic");
+				
+				if(mainPicFromMemory)
+				{
+					mainPicture.src = mainPicFromMemory;
+					mainPicture.setAttribute("data-index", localStorage.getItem("picIndex"));
+				}
+				else
+				{
+					currentPicture.src = picturesArr[0].src;
+				}
+			}
+			
+			function moveLeft()
+			{
+				var currentPictureIndex = Number(currentPicture.getAttribute("data-index"));
+				
+				if(currentPictureIndex > minIndex)
+				{
+					console.log("IM HERE");
+					currentPicture.setAttribute("data-index", currentPictureIndex - 1);
+					currentPicture.src = picturesArr[currentPictureIndex - 1].src;
+					saveMainPic();
+				}
+			}
+			
+			function moveRight()
+			{
+				
+				var currentPictureIndex = Number(currentPicture.getAttribute("data-index"));
+				
+				if(currentPictureIndex < maxIndex)
+				{
+					currentPicture.setAttribute("data-index", currentPictureIndex + 1);
+					currentPicture.src = picturesArr[currentPictureIndex + 1].src;
+					saveMainPic();
+				}
+			}
+			function Picture(src)
+			{
+				this.src = src;
+			}
+			
+			function saveMainPic()
+			{
+				localStorage.setItem("mainPic", mainPicture.src);
+				localStorage.setItem("picIndex", mainPicture.getAttribute("data-index"));
+			}
+			
+			onStart();
+		</script>
+	</body>
+</html>
