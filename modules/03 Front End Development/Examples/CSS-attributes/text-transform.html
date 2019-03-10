@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- טקססט טרנספורמ זו אפשרות לבחור הצגה של טקסט בפורמט של אותיות גדולות או קטנות או שיפתח כל מילה באות גדולה  -->
+  <style>
+  .Capitalize{
+    text-transform: capitalize;
+  }
+  .Uppercase{
+    text-transform: uppercase;
+  }
+  .Lowercase{
+    text-transform: lowercase;
+  }
+  .none{
+    text-transform: none;
+  }
+  #header1{
+    text-align: center
+  }
+  </style>
+</head>
+<body>
+  <div id="header1">Text Transformer</div>
+  <div id="menu">
+<label for="inputtext">Type Text To Transform</label>
+<input id="inputtext" type="text">
+<br>
+
+ <button onclick="textTransform('Capitalize')">Transform To Capitalize</button>
+<button onclick="textTransform('Uppercase')">Transform To Uppercase</button>
+<button onclick="textTransform('Lowercase')">Transform To Lowercase</button>
+<button onclick="textTransform('none')">Transform To none</button>
+<script>
+  function textTransform(tranformTo){
+      switch(tranformTo){
+        case "Capitalize":
+        document.getElementById("inputtext").className=tranformTo;
+        break;
+        case "Uppercase":
+        document.getElementById("inputtext").className=tranformTo;
+        break;
+        case "Capitalize":
+        document.getElementById("inputtext").className=tranformTo;
+        break;
+        case "Lowercase":
+        document.getElementById("inputtext").className=tranformTo;
+        break;
+        case "none":
+        document.getElementById("inputtext").className=tranformTo;
+        break;
+      }
+  }
+</script>
+  </div>
+</body>
+</html>
