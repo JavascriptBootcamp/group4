@@ -1,3 +1,5 @@
+// Answer 27
+
 function Validator()
 {
     Validator.prototype.isBool = function(input)
@@ -76,3 +78,77 @@ console.log("Is Char type? A: ", theValidator.isChar("null"));
 
 console.log("Is the same type? A: ", theValidator.isSame(53,53));
 console.log("Is the same type? A: ", theValidator.isSame(5, undefined));
+
+// Answer 28
+
+function BankAccount(number, owner)
+{
+    this.number = number;
+    this.owner = owner;
+    var currentBalanace = 0;
+}
+
+BankAccount.prototype.withdraw = function(amount) {
+    this.currentBalanace -= amount;
+}
+BankAccount.prototype.deposite = function(amount) {
+    this.currentBalanace += amount;
+}
+BankAccount.prototype.getBalance = function() {
+    return this.currentBalanace;
+}
+
+// Test
+
+var accounts = [];
+accounts.push(new BankAccount(1, "Guy"), new BankAccount(2, "Shmulik"), new BankAccount(3, "David"));
+
+console.log(accounts);
+
+accounts.forEach(account => 
+{
+    account.deposit(1000);
+})
+
+accounts[0].withdraw(200);
+accounts[1].withdraw(500);
+accounts[2].withdraw(1500);
+
+accounts.forEach(account =>
+{
+console.log("Account #:", account.number, "Account's owner:", account.owner, "Account's balance:", account.getBalance());
+})
+
+
+
+// Answer 29
+
+function Video(title, uploader, seconds) {
+    this.title = title;
+    this.uploader = uploader;
+    this.seconds = seconds;
+}
+
+Video.prototype.watch = function () {
+      console.log(this.uploader, "Watched all", this.seconds, "seconds of", this.title + "!");
+    }
+
+try {
+    var videoObject1 = new Video("Harry Plotter", "Guy", 190);
+    videoObject1.watch();
+
+    var videoObject2 = new Video("Green Mile", "Mariya", 235);
+    videoObject2.watch();
+
+    var videoObjectArr = [];
+
+    for (var i = 0; i < 5; i++) {
+        var videoObject = new Video(videoObject1.title, videoObject1.uploader, videoObject1.seconds);
+        videoObjectArr.push(videoObject);
+        videoObjectArr[i].watch();
+    }
+}
+catch
+{
+    throw new Error("Oops ... An error occured");
+}
