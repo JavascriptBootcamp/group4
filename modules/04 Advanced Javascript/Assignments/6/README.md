@@ -1,20 +1,12 @@
-<p>
-use:
-<ol>
-<li>
-<code>group4/Modules/01 JavaScript Programming/Assignments/22</code>
-</li>
-<li>
-<code>group4/Modules/01 JavaScript Programming/Assignments/23</code>
-</li>
-<li>
-<code>group4/Modules/01 JavaScript Programming/Assignments/24</code>
-</li>
-</ol>
+<p>use <code>group4/Modules/04 Advanced Javascript/Assignments/2</code></p>
+<p>add a new option for <code>storageType</code>: "cookie"</p>
+<p>implement all methods (get, set, remove, clear) using <code>document.cookies</code><p>
+<p>for example:
+<code>
+<pre>
+var cStorage = new Storage("cookie");
+cStorage.set("someKey3", "someValue3");
+console.log(cStorage.getItem("someKey3")); // should print "someValue3"
+</pre>
+</code>
 </p>
-<ul>
-<li>convert all functions to <code>arrow functions</code></li>
-<li>add default variables</li>
-<li>convert all variables declarations to <code>let</code></li>
-<li>convert all constants declarations to <code>const</code></li>
-</ul>
