@@ -10,6 +10,11 @@
     <style>
         body {
             background-color: lightgray;
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         #imagesPage {
@@ -19,13 +24,12 @@
 
         .pictureObj {
             margin: 25px;
-
         }
 
         .image {
             width: 200px;
             height: 200px;
-           
+            cursor: pointer;
         }
 
         .likeBtn {
@@ -33,14 +37,11 @@
             margin-right: 130px;
         }
 
-        .picUtils
-        {
-
-        }
+        .picUtils {}
 
         .likeCounter {
             display: inline-block;
-            
+
         }
     </style>
 
@@ -48,88 +49,99 @@
 
 <body>
     <div id="imagesPage">
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="0">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="1">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="2">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="3">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="4">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="5">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="6">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="7">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="8">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="9">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
             </div>
         </div>
 
-        <div class="pictureObj">
-            <img class="image" src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+        <div class="pictureObj" data-index="10">
+            <img class="image"
+                src="https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
             <div class="picUtils">
                 <button class="likeBtn">LIKE</button>
                 <div class="likeCounter">0</div>
@@ -138,10 +150,38 @@
     </div>
 
     <script>
-    
-    
-    
-    
+        function Picture()
+        {
+            this.src = "https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+            
+            this.amountOfLikes = 0;
+
+            Picture.prototype.incrementLikes = function()
+            {
+                this.amountOfLikes += 1;
+            }
+
+        }
+
+        var picsArr = [];
+
+        var picBtns = document.querySelectorAll(".likeBtn");
+        for(var i = 0; i < picBtns.length; ++i)
+        {
+            var newPic = new Picture();
+            picsArr.push(newPic);
+
+            picBtns[i].onclick = function()
+            {
+                var correspondIndex = this.parentElement.parentElement.getAttribute("data-index");
+                console.log(this.parentElement.getAttribute("data-index"));
+                picsArr[correspondIndex].incrementLikes();
+                picBtns[correspondIndex].parentElement.lastElementChild.innerText = picsArr[correspondIndex].amountOfLikes;
+            }
+
+        }
+
+        
     </script>
 </body>
 
