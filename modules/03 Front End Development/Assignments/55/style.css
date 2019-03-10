@@ -1,0 +1,27 @@
+body {
+    background: pink;
+}
+#container {
+    position:absolute; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+
+    width: 500px;
+    background-color: yellowgreen;
+    border-radius: 20px;
+    border: 10px double yellow;
+    height:500px;
+}
+button {
+    border: 1px solid black;
+    background: white;
+    background-image: url("http://lessonpix.com/drawings/10634/100x100/Questions.png");
+    margin:10px;
+    border-radius:15px;
+    
+
+}
+button:hover {
+    transform: rotate(15deg);
+}
