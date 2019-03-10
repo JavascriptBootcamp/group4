@@ -138,7 +138,7 @@
 					console.log("IM HERE");
 					currentPicture.setAttribute("data-index", currentPictureIndex - 1);
 					currentPicture.src = picturesArr[currentPictureIndex - 1].src;
-					saveMainPic()
+					saveMainPic();
 				}
 			}
 			
@@ -151,12 +151,12 @@
 				{
 					currentPicture.setAttribute("data-index", currentPictureIndex + 1);
 					currentPicture.src = picturesArr[currentPictureIndex + 1].src;
-					saveMainPic()
+					saveMainPic();
 				}
 			}
 			function Picture(src)
 			{
-				this.src = src
+				this.src = src;
 			}
 			
 			function saveMainPic()
