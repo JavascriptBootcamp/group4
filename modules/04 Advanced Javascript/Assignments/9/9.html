@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Html&CSS%JS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+      .Wrapper {
+            background-color: #5B2C6F;
+            margin-top: 2%;
+            height: 550px;
+            width: 900px;
+            margin-right: 250px;
+            ;
+            margin-left: 250px;
+        }
+        .Arrow {
+            position: relative;
+            margin-top: 12%;
+        }
+        .ar {
+            float: right;
+            margin-right: 13%;
+        }
+        .al {
+            float: left;
+            margin-left: 13%;
+        }
+        .Arrow img {
+            height: 100px;
+            width: 160px;
+            cursor: pointer;
+        }
+        .PresentPicture {
+            position: absolute;
+            display: inline;
+            margin: 5% 5% 95%;
+        }
+        .PresentPicture img {
+            width: 250px;
+            height: 200px;
+            border-radius: 5px;
+        }
+        .Flip {
+            position: relative;
+        }
+        .Gallery {
+            display: inline-block;
+            height: 200px;
+            width: 900px;
+            position: relative;
+            margin: 8% 0% 0%;
+        }
+        .Gallery img {
+            width: 110px;
+            height: 80px;
+            display: inline-block;
+            margin: 4px;
+            margin-left: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin-left: 50%;
+  margin-top: 5%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+  
+    </style>
+</head>
+
+<body onload="onload()">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="loader" class="loader"></div>
+
+    <div class="Wrapper">
+        <div class="Flip">
+            <div class="Arrow al">
+                <img id="leftChange" onclick="nextPreviousImg(event)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/MediaWiki_Vector_skin_left_arrow.svg/768px-MediaWiki_Vector_skin_left_arrow.svg.png" />
+
+
+            </div>
+            <div class="PresentPicture">
+                <img id="PresentPicture" src="" />
+
+            </div>
+            <div  class="Arrow ar">
+                <img id="rightChange" onclick="nextPreviousImg(event)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/MediaWiki_Vector_skin_right_arrow.svg/200px-MediaWiki_Vector_skin_right_arrow.svg.png" />
+
+
+            </div>
+            <hr>
+            <div class="Gallery" id="Gallery">
+             
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        
+ 
+        function onload() {
+
+
+            imagesObjects = [];
+            if(imagesObjects.length===0){
+  fetch("https://picsum.photos/list")
+.then(
+    function(response){
+        response.json().then(
+            function(json){
+                for(var i=0;i<json.length;i++){
+                    var img = `https://picsum.photos/200/300?image=${json[i].id}`;
+                    var imgSrc = new Object();
+                    imgSrc.src =img;
+                    imagesObjects.push(imgSrc);
+                    
+                }
+                document.getElementById("loader").style.display="none";
+                return Gallery(imagesObjects);
+            }
+        )
+    }
+
+    )}}
+        function Gallery(){
+               
+           var galleryDiv = document.getElementById("Gallery");
+
+            for(var i=0; i<10;i++){
+                var random ; 
+                var img = document.createElement("img");
+                img.id="img"+i;
+
+                img.setAttribute("onclick","savePicSession(event)");
+
+                img.src=imagesObjects[Math.floor(Math.random() * imagesObjects.length)].src;
+                
+                galleryDiv.appendChild(img);
+            }
+        
+        if(sessionStorage.getItem("lasPi")!==null){
+            document.getElementById("PresentPicture").src = sessionStorage.getItem("lasPi");
+                }
+                else{
+
+ 
+   document.getElementById("PresentPicture").src =img.src;
+                        sessionStorage.setItem("lasPi",img.src);
+                }
+        
+    }
+        function savePicSession(event) {
+            lasPic = event.target.src;
+            document.getElementById("PresentPicture").src = lasPic;
+            sessionStorage.setItem("lasPi", lasPic);
+        }
+        function nextPreviousImg(event){
+  if(event.target.id==="leftChange"){
+            imagesArr = document.querySelectorAll(".Gallery > img") ;
+            for(var i=0; i<imagesArr.length;i++){
+                    if(imagesArr[i].src===sessionStorage.getItem("lasPi")){
+                        lasPic = imagesArr[i-1].src;
+                        document.getElementById("PresentPicture").src = lasPic;
+                        sessionStorage.setItem("lasPi", lasPic);
+                        break;
+    } }}
+       if(event.target.id==="rightChange"){
+            imagesArr = document.querySelectorAll(".Gallery > img") ;
+            for(var i=0; i<imagesArr.length-1;i++){
+                    if(imagesArr[i].src===sessionStorage.getItem("lasPi")){
+                        lasPic = imagesArr[i+1].src;
+                        document.getElementById("PresentPicture").src = lasPic;
+                        sessionStorage.setItem("lasPi", lasPic);
+                        break;
+                     }
+            }
+           
+        }
+
+
+
+        }
+    </script>>
+</body>
+
+</html>
