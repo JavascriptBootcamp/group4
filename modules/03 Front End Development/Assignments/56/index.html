@@ -113,15 +113,17 @@
     <div id='content'>
         <div id="centerDiv">
             <div class="center">
-                <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt="left">
+                <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt="left"
+                    onclick="leftPic()">
                 <img src="" alt="pic">
-                <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt="right">
+                <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png" alt="right"
+                    onclick="rightPic()">
             </div>
             <div class="row">
                 <div id="left">
                     <div class="center">
                         <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png"
-                            alt="left">
+                            alt="left" onmouseover="rollLeft()">
                     </div>
                 </div>
                 <div class="row-content">
@@ -139,98 +141,17 @@
                 <div id="right">
                     <div class="center">
                         <img src="https://cdn4.iconfinder.com/data/icons/icon-flat-icon-set/50/triangle-left-512.png"
-                            alt="right">
+                            alt="right" onmouseover="rollRight()">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        // function initCounters() {
-        //     localStorage.setItem('counters', JSON.stringify([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]));
-        //     localStorage.setItem('imgs', JSON.stringify(['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThwis6NNDVW72x549a3a4V8L2ZfWevkt12FY6a4ssIt82RGCYTYQ', 'https://cdn4.avanquest.com/jimages/Italia/products/Photo_Maximizer4/pic5.gif', 'https://picjumbo.com/wp-content/uploads/young-woman-traveler-enjoying-a-view-on-high-tatras-mountains_free_stock_photos_picjumbo_HNCK7618-1080x720.jpg', 'https://static.boredpanda.com/blog/wp-content/uploads/2014/04/microsoft-windows-xp-bliss-wallpaper-charles-orear-1.jpg', 'https://cms.qz.com/wp-content/uploads/2018/07/wildfire_05.jpg?quality=75&strip=all&w=620', 'http://images.summitmedia-digital.com/candy/images/articles/guys/201506/201506-profile-photo-couples-cover.jpg', 'https://www.gannett-cdn.com/presto/2018/08/28/PDTF/23cfebac-fea2-4884-b228-9251206764f6-shipphoto.jpg?width=534&height=401&fit=bounds&auto=webp', 'http://wowslider.com/sliders/demo-31/data1/images/bench560435.jpg', 'https://dl1.cbsistatic.com/i/r/2017/08/03/5699d934-b7cf-4c4e-b5f0-e56f654f3835/resize/696xauto/7c4f655bff4aed89f239ee4a3a7dab29/total-solar-eclipse.jpg', 'https://media.treehugger.com/assets/images/2018/03/snow10.jpg.860x0_q70_crop-scale.jpg']));
-        //     return localStorage.getItem('counters');
-        // }
-        // function Image1(source) {
-        //     this.col = null;
-        //     this.source = source;
-        //     this.colDiv = null;
-        //     this.parentDiv = document.createElement('div');
-        //     this.img = document.createElement('img');
-        //     this.btn = document.createElement('button');
-        //     this.spanDiv = document.createElement('div');
-        //     this.spanCount = document.createElement('span');
-        // }
-        // Image1.prototype.addImg = function (index) {
-        //     switch (index % 3) {
-        //         case 0:
-        //             this.colDiv = document.getElementsByClassName('col1')[0];
-        //             this.col = 1;
-        //             break;
-        //         case 1:
-        //             this.colDiv = document.getElementsByClassName('col2')[0];
-        //             this.col = 2;
-        //             break;
-        //         default:
-        //             this.colDiv = document.getElementsByClassName('col3')[0];
-        //             this.col = 3;
-        //     }
-        //     this.img.setAttribute('src', this.source);
-        //     this.img.setAttribute('alt', 'insta');
-        //     this.btn.innerText = 'LIKE';
-        //     var counts = JSON.parse(localStorage.getItem('counters'));
-        //     this.spanCount.innerText = counts[index];
-        //     this.spanDiv.appendChild(this.spanCount);
-        //     this.parentDiv.appendChild(this.img);
-        //     this.parentDiv.appendChild(this.btn);
-        //     this.parentDiv.appendChild(this.spanDiv);
-        //     this.colDiv.appendChild(this.parentDiv);
-        //     var newDiv = document.createElement('div');
-        //     newDiv.className = 'bigPic';
-        //     var newImg = document.createElement('img');
-        //     newImg.setAttribute('src', this.source);
-        //     newImg.setAttribute('alt', 'insta');
-        //     newDiv.appendChild(newImg);
-        //     newDiv.style.display = 'none';
-        //     document.body.appendChild(newDiv);
-        //     this.like(index);
-        //     this.clickThumbnail(newDiv);
-        // }
-        // Image1.prototype.like = function (i) {
-        //     var span = this.spanCount;
-        //     this.btn.addEventListener('click', () => {
-        //         var counts = JSON.parse(localStorage.getItem('counters'));
-        //         counts[i]++;
-        //         console.log(counts);
-        //         localStorage.setItem('counters', JSON.stringify(counts));
-        //         span.innerText = counts[i];
-        //     });
-        // }
-        // Image1.prototype.clickThumbnail = function (newDiv) {
-        //     this.img.addEventListener('click', () => {
-        //         //console.log(newDiv);
-        //         document.getElementById('content').className = 'blur';
-        //         newDiv.style.display = 'flex';
-        //     });
-        //     newDiv.addEventListener('click', (event) => {
-        //         if (event.target.tagName !== 'IMG') {
-        //             document.getElementById('content').className = '';
-        //             newDiv.style.display = 'none';
-        //         }
-
-        //     });
-        // }
-        // function init() {
-        //     if (localStorage.getItem('counters') === null) {
-        //         initCounters();
-        //     }
-        //     var imgs = JSON.parse(localStorage.getItem('imgs'));
-        //     for (var i = 0; i < imgs.length; i++) {
-        //         var img1 = new Image1(imgs[i]);
-        //         img1.addImg(i);
-        //     }
-        // }
-
+        var initPosition = true;
+        var currentPicIndex;
+        var cssStyle = document.head.getElementsByTagName('style')[0];
+        var innerCSS = cssStyle.innerHTML;
         function loadPics() {
             var thumbnails = document.getElementsByTagName('img');
             var j = 0;
@@ -247,12 +168,83 @@
             var images = JSON.parse(localStorage.getItem('imgs'));
             var bigPic = document.getElementsByTagName('img')[1];
             bigPic.setAttribute('src', images[0]);
+            currentPicIndex = 0;
         }
         function init(e) {
             loadPics();
             loadBigPic();
         }
 
+        function leftPic() {
+            var images = JSON.parse(localStorage.getItem('imgs'));
+            var bigPic = document.getElementsByTagName('img')[1];
+            currentPicIndex--;
+            if (currentPicIndex >= 0) {
+                bigPic.setAttribute('src', images[currentPicIndex]);
+            } else {
+                currentPicIndex = 0;
+            }
+        }
+
+        function rightPic() {
+            var newCSS = cssStyle;
+            var images = JSON.parse(localStorage.getItem('imgs'));
+            var bigPic = document.getElementsByTagName('img')[1];
+            currentPicIndex++;
+            if (currentPicIndex < images.length) {
+                bigPic.setAttribute('src', images[currentPicIndex]);
+            } else {
+                currentPicIndex = images.length - 1;
+            }
+        }
+
+        function rollLeft() {
+            var divParent = document.getElementsByClassName('row-content')[0];
+            var pictures = document.getElementsByTagName('img');
+            var totalWidth = 0;
+            var movePixels = 0;
+            var str = '';
+            if (!initPosition) {
+                for (var i = 4; i < pictures.length - 1; i++) {
+                    totalWidth += pictures[i].offsetWidth;
+                }
+                movePixels = totalWidth - divParent.offsetWidth;
+                str += `\n.row-content>img {
+                    animation-name: floatLeft;
+                    animation-duration: 2s;
+                    animation-fill-mode: forwards
+                }
+                @keyframes floatLeft {
+                        0%   {transform: translateX(${-movePixels}px)}
+                        100% {transform: translateX(${0}px)}
+                    }`;
+                cssStyle.innerHTML = innerCSS + str;
+                initPosition = true;
+            }
+        }
+
+        function rollRight() {
+            var divParent = document.getElementsByClassName('row-content')[0];
+            var pictures = document.getElementsByTagName('img');
+            var totalWidth = 0;
+            var movePixels = 0;
+            var str = '';
+            for (var i = 4; i < pictures.length - 1; i++) {
+                totalWidth += pictures[i].width;
+            }
+            movePixels = totalWidth - divParent.offsetWidth;
+            str += `\n.row-content>img {
+                    animation-name: floatRight;
+                    animation-duration: 2s;
+                    animation-fill-mode: forwards
+                }
+                    @keyframes floatRight {
+                        0%   {transform: translateX(${0}px)}
+                        100% {transform: translateX(${-movePixels}px)}
+                    }`;
+            cssStyle.innerHTML = innerCSS + str;
+            initPosition = false;
+        }
     </script>
 </body>
 
