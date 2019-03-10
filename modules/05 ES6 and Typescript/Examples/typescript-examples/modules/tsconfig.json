@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "ES2015",
+    },
+    "include": [
+        "*"
+    ],
+    "compileOnSave": true
+}
