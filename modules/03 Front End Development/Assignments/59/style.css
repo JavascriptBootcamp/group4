@@ -11,7 +11,7 @@ body{
 }
 
 .negative{
-    display:contents;
+    display:block;
 }
 
 #header{

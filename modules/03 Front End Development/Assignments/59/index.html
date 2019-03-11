@@ -18,7 +18,7 @@
         </div>
 
         <fieldset>
-            <legend id="kw_lengend">Enter keywords or item number</legend>
+            <legend id="kw_lengend" onclick="hideOrShow(event)">Enter keywords or item number</legend>
 
             <div id="kw_content" class="positive">
                 <div class="space-top">
@@ -92,7 +92,7 @@
 
 
         <fieldset>
-            <legend>Search including</legend>
+            <legend onclick="hideOrShow(event)">Search including</legend>
             <div id="search_content"  class="positive">
                 <input type="checkbox">
                 Title and description<br>
@@ -104,7 +104,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Price</legend>
+            <legend onclick="hideOrShow(event)">Price</legend>
             <div id="price_content" class="positive">
                 Show items priced from ILS
                 <input type="text" placehoder="All Categories" title="Enter minimum price range value">
@@ -113,7 +113,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Buying formats</legend>
+            <legend onclick="hideOrShow(event)">Buying formats</legend>
             <div id="buying_formats_content" class="positive">
                 <input type="checkbox">
                 Auction<br>
@@ -123,7 +123,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Condition</legend>
+            <legend onclick="hideOrShow(event)">Condition</legend>
             <div id="condition_content" class="positive">
                 <input type="checkbox">
                 New<br>
@@ -135,7 +135,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Show results</legend>
+            <legend onclick="hideOrShow(event)">Show results</legend>
             <div id="show_results_content" class="positive">
                 <div class="fields">
                     <input title="Include listings time frame for search results" type="checkbox">
@@ -196,7 +196,7 @@
                     more.</a>
                 <br>
                 <fieldset class="checkbox-set nested">
-                    <legend>Shipping options</legend>
+                    <legend onclick="hideOrShow(event)">Shipping options</legend>
                     <div id="shipping_options_content">
                         <input type="checkbox">
                         Free international shipping<br>
@@ -206,7 +206,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Location</legend>
+            <legend onclick="hideOrShow(event)">Location</legend>
             <div id="location_content" class="positive">
                 <table cellspacing="0" cellpadding="0" border="0">
                     <tbody>
@@ -485,7 +485,7 @@
             </div>
         </fieldset>
         <fieldset class="checkbox-set">
-            <legend id="byseller">Sellers</legend>
+            <legend id="byseller" onclick="hideOrShow(event)">Sellers</legend>
             <div id="sellers_content" class="positive">
                 <input type="checkbox">Only show items from:
 
@@ -512,7 +512,7 @@
         </fieldset>
         <div>
             <fieldset class="checkbox-set">
-                <legend>Sort by</legend>
+                <legend onclick="hideOrShow(event)">Sort by</legend>
                 <div id="sortby_content" class="positive">
                     <select>
                         <option selected="selected">Best Match</option>
@@ -541,15 +541,17 @@
         </div>
     </fieldset>
 
+
         <hr size="1">
+    <div>
         <fieldset class="bottom-action-bar">
-            <legend>Search</legend>
+            <legend onclick="hideOrShow(event)">Search</legend>
             <div id="search_submit_content" class="positive">
-            <button type="submit">Search</button>
-            <a href="https://www.ebay.com/sch/ebayadvsearch?_sofindtype=0">Clear options&nbsp;</a>
-        </div>
+                <button type="submit">Search</button>
+                <a href="https://www.ebay.com/sch/ebayadvsearch?_sofindtype=0">Clear options&nbsp;</a>
+            </div>
+        </fieldset>
     </div>
-    </fieldset>
     </form>
     <script src="app.js"></script>
 </body>
