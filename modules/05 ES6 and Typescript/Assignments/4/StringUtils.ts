@@ -1,7 +1,6 @@
-
-interface IStringUtils<T> {
+interface IStringUtils {
     getVowels(str: string): number;
-    removeChar(str: string, pos: T): string;
+    removeChar(str: string, pos:number): string;
     incrementLetters(str: string): string;
 }
 
@@ -27,7 +26,7 @@ class StringUtils implements IStringUtils {
 
     public incrementLetters(str: string): string {
         let newStr:string = "";
-        for (let i:number = 0; i < str.length; i++) {
+        for (let i= 0; i < str.length; i++) {
             if (str[i] === " ")
                 newStr += " ";
             else
@@ -37,3 +36,10 @@ class StringUtils implements IStringUtils {
     }
 }
 
+
+
+const myStringUtils :StringUtils  = new StringUtils();
+let str: string = "Harry Potter ";
+console.log(myStringUtils.getVowels(str));
+console.log(myStringUtils.removeChar(str,3));
+console.log(myStringUtils.incrementLetters(str)); 
