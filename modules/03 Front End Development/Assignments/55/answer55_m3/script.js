@@ -1,35 +1,40 @@
 
-    var myImages = ["cat.png",
-                    "dog.png",
-                    "goldfish.png",
-                    "guinea_pig.png",
-                    "kitten.png",
-                    "mouse.png",
-                    "puppy.png",
-                    "rabbit.png",
-                    "cat.png",
-                    "dog.png",
-                    "goldfish.png",
-                    "guinea_pig.png",
-                    "kitten.png",
-                    "mouse.png",
-                    "puppy.png",
-                    "rabbit.png"];
-  
+var myImages = ["cat.png",
+    "dog.png",
+    "goldfish.png",
+    "guinea_pig.png",
+    "kitten.png",
+    "mouse.png",
+    "puppy.png",
+    "rabbit.png",
+    "cat.png",
+    "dog.png",
+    "goldfish.png",
+    "guinea_pig.png",
+    "kitten.png",
+    "mouse.png",
+    "puppy.png",
+    "rabbit.png"];
+var clikedCards = [];
+var numOfscsess = 0;
+var bordSize = myImages.length;
+var gameTime = 60000;
+var timeRestGame;
+var timeInterval;
 
-  
-var bordSize =  myImages.length;
-   function display () {
-        var theGameBoard = document.querySelector("#board");
-        var imgToInsert;
-        
-        if(sessionStorage.getItem("myBoard") == "") {
+function display() {
+    setCountTime(gameTime);
+    setTimeout(restGame, gameTime);
+    var theGameBoard = document.querySelector("#board");
+    var imgToInsert;
+
+    if (sessionStorage.getItem("myBoard") == null) {
 
         for (var i = 0; i < bordSize; i++) {
 
-        imgToInsert = Math.floor(Math.random() * myImages.length);
+            imgToInsert = Math.floor(Math.random() * myImages.length);
 
-        theGameBoard.innerHTML +=`<div class = "card">
+            theGameBoard.innerHTML += `<div class = "card">
                                     <div class = "front">
                                       <img src= ${myImages[imgToInsert]} />
                                     </div>
@@ -37,127 +42,130 @@ var bordSize =  myImages.length;
                                         <img src= "cover.jpg" />
                                     </div>
                                   </div>`;
-        
-         myImages.splice(imgToInsert, 1);  
-             
-        }
 
-          
-        for (var i = 0; i <  bordSize; i++) {
-            document.querySelectorAll('.back')[i].onclick = onCardClick;
+            myImages.splice(imgToInsert, 1);
 
         }
+
+
+
     }
     else {
-
         theGameBoard.innerHTML = loadFromLocal();
-        for (var i = 0; i <  bordSize; i++) {
-            document.querySelectorAll('.back')[i].onclick = onCardClick;
-
-       }
-    
-
-      
-  
-    }
-  }
-
-    
-    var clikedCards= [];''
-    var numOfscsess = 0;
-  
-
-
-  
-    function startNewGame () {
-
-        document.querySelector(".new-game").classList.add("show");
-        var all =  document.querySelectorAll(".back");
-        document.getElementById("message").innerHTML = "";
-        for(var i = 0 ;i < all.length ; i ++) {
-          
-           all[i].classList.remove("pointer-events");
-        }
-
-        sessionStorage.removeItem("myBoard");
-
-        setTimeout(restGame,10000);
-     
-    }
-
-
-    
-    function restGame(){
-        
-       var all =  document.querySelectorAll(".back");
-        document.getElementById("message").innerHTML = "GAME OVER";
-        for(var i = 0 ;i < all.length ; i ++) {
-           all[i].classList.remove("flip");
-           all[i].classList.add("pointer-events");
-        }
-        clikedCards.length = 0;
-        document.querySelector(".new-game").classList.remove("show");
-        sessionStorage.removeItem("myBoard");
+        numOfscsess += Number(document.querySelectorAll(".back.flip").length) / 2;
 
     }
 
-    document.querySelector(".new-game").onclick =  startNewGame;
+    for (var i = 0; i < bordSize; i++) {
+        document.querySelectorAll('.back')[i].onclick = onCardClick;
 
-    setTimeout(restGame,100000);
+    }
+}
 
-    function onCardClick(event) {
+function setCountTime (timeGame) {
+timeInterval = setInterval(function () {
+    timeGame -= 1000;
+    document.getElementById("message").innerHTML = `
+       you have ${timeGame / 1000} second
+       `;
+}, 1000);
 
-        if(clikedCards.length < 2) {
-            var board = event.target.parentElement.parentElement;
-             board.querySelector(".back").classList.add("flip");
+}
 
-            clikedCards.push(board);
-        
-           
-            if (clikedCards.length == 2) {
-                if(clikedCards[0].querySelector(".front img").src !==
-                   clikedCards[1].querySelector(".front img").src){
-                    
-                    
-                  // clikedCards[0].querySelector(".back").classList.add("flip-back");
-                  // clikedCards[1].querySelector(".back").classList.add("flip-back");
-                
-                     clikedCards[0].querySelector(".back").classList.remove("flip");
-                     clikedCards[1].querySelector(".back").classList.remove("flip");
-                   
-                   
-             
+function startNewGame() {
 
-                   }
-                   else {
+    
+      setCountTime(gameTime);
+      setTimeout(restGame, gameTime);
 
-                       numOfscsess++;
-                       saveInLocal();
-                       if(numOfscsess == bordSize/2) {
-                        
-                         document.getElementById("message").innerHTML = "Win - You Are the King";
-                         restGame();
-                       }
-                   }
-                   clikedCards.length = 0;
-                }
-           
+    document.querySelector(".new-game").classList.add("show");
+    var all = document.querySelectorAll(".back");
+    document.getElementById("message").innerHTML = "";
+    for (var i = 0; i < all.length; i++) {
+
+        all[i].classList.remove("pointer-events");
+    }
+
+    sessionStorage.removeItem("myBoard");
+
+    timeRestGame = setTimeout(restGame, gameTime);
+
+}
+
+function restGame() {
+
+    clearInterval(timeInterval);
+    clearTimeout(timeRestGame);
+    var all = document.querySelectorAll(".back");
+    document.getElementById("message").innerHTML = "GAME OVER";
+    for (var i = 0; i < all.length; i++) {
+        all[i].classList.remove("flip");
+        all[i].classList.add("pointer-events");
+    }
+    clikedCards.length = 0;
+    document.querySelector(".new-game").classList.remove("show");
+    sessionStorage.removeItem("myBoard");
+
+}
+
+
+
+
+document.querySelector(".new-game").onclick = startNewGame;
+
+
+
+function onCardClick(event) {
+
+    if (clikedCards.length < 2) {
+        var board = event.target.parentElement.parentElement;
+        board.querySelector(".back").classList.add("flip");
+
+        clikedCards.push(board);
+
+
+        if (clikedCards.length == 2) {
+            if (clikedCards[0].querySelector(".front img").src !==
+                clikedCards[1].querySelector(".front img").src) {
+
+
+                var card1 = clikedCards[0].querySelector(".back");
+                var card2 = clikedCards[1].querySelector(".back");
+
+                setTimeout(function () {
+
+                    /*  clikedCards[0].querySelector(".back").classList.add("flip-back");
+                     clikedCards[1].querySelector(".back").classList.add("flip-back");
+   */
+                    card1.classList.remove("flip");
+                    card2.classList.remove("flip");
+
+                }, 1000);
 
             }
-     
-    
+            else {
+
+                numOfscsess++;
+                saveInLocal();
+                if (numOfscsess == bordSize / 2) {
+
+                    document.getElementById("message").innerHTML = "Win - You Are the King";
+                    restGame();
+                }
+            }
+            clikedCards.length = 0;
+        }
+
+
     }
-         
-    function showImage(element, currentCardIndex) {
-
-        element.classList.add(".show-img");
-    }
 
 
-display();
+}
 
+function showImage(element, currentCardIndex) {
 
-//function load() {console.log("i am load")}
+    element.classList.add(".show-img");
+}
 
 function saveInLocal() {
 
@@ -169,7 +177,8 @@ function loadFromLocal() {
     return sessionStorage.getItem("myBoard");
 }
 
-//document.addEventListener("load",load);
+display();
 
+//document.addEventListener("load",display);
 //document.addEventListener("load",loadFromLocal);
 //document.addEventListener("beforeunload",saveInLocal);
