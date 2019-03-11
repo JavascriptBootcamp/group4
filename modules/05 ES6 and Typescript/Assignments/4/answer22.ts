@@ -1,6 +1,6 @@
 import { iStringUtils } from "./iStringUtils";
-class StringUtils implements iStringUtils {
-    getVowels(str: string) {
+class StringUtils implements iStringUtils <number> {
+    public getVowels(str: string)  {
         let numberOfVowels: number = 0;
         let i: number = 0;
         str = str.toLowerCase();
@@ -11,11 +11,11 @@ class StringUtils implements iStringUtils {
         }
         return numberOfVowels;
     }
-    removeChar(str: string, pos: number) {
+    public removeChar(str: string, pos: number)  {
         str = str.replace(str[pos], "");
         return str;
     }
-    incrementLetters(str: string) {
+    public incrementLetters(str: string)  {
         let newStr : string = "";
         for(let i=0; i<str.length; i++){
             if(str[i] === " ")
