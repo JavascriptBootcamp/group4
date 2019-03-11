@@ -18,13 +18,15 @@ function Board(_images) {
             let card = document.createElement("div");
             card.classList.add("card_container");
             card.id = "image"+i;
-            card.onclick = onCardClick;
+            card.onclick = function() {
+                onCardClick(this);
+            }
 
             let card_back = document.createElement("div");
             card_back.classList.add("card");
             card_back.classList.add("card_back");
-            //card_back.style.backgroundImage = "url('" + cards[i] + "')";
-            //card_back.style.backgroundSize = "cover";
+            card_back.style.backgroundImage = "url('" + cards[i] + "')";
+            card_back.style.backgroundSize = "cover";
 
             let card_front = document.createElement("div");
             card_front.classList.add("card");
@@ -40,17 +42,15 @@ function Board(_images) {
         //sign card container as a fliped/not fliped card
         card_container.classList.toggle("flip");
         //fliped the card inner part - back and front
-        let card_sides = card_container.querySelectorAll(".card_back, .card_front");
+        let card_sides = card_container.querySelectorAll(".card_front, .card_back");
         for (const side of card_sides) {
             side.classList.toggle("flip");
         }
     }
     
-    function onCardClick(event) {
-        flip_card(event.target);
-        var currentCardIndex = Number(event.target.id.replace("image", ""));
-        //showImage(event.target, currentCardIndex);
-        //event.target.disabled = true;
+    function onCardClick(card_el) {
+        flip_card(card_el);
+        var currentCardIndex = Number(card_el.id.replace("image", ""));
         setSelectedCards(currentCardIndex);
     }
     function setSelectedCards(currentCardIndex) {
@@ -62,10 +62,7 @@ function Board(_images) {
             selectedFirstCard = currentCardIndex;
         }
     }
-    function showImage(element, currentCardIndex) {
-        element.style.backgroundImage = "url('" + cards[currentCardIndex] + "')";
-        element.style.backgroundSize = "cover";
-    }
+    
     function checkMatch(){
         if (cards[selectedFirstCard] === cards[selectedSecondCard]) {
             remainMatches--;
