@@ -35,13 +35,13 @@
 }
 
 .card_front {
-    background: url("poker-card-pattern.jpg");
+    background: url("imgs/poker-card-pattern.jpg");
     backface-visibility: hidden;
     background-size: 350%;
 }
 
 .card_back {
-    background: blue;
+    background: white;
 }
 
 .flip {

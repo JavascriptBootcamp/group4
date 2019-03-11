@@ -62,7 +62,7 @@ function Board(_images) {
             selectedFirstCard = currentCardIndex;
         }
     }
-    
+
     function checkMatch(){
         if (cards[selectedFirstCard] === cards[selectedSecondCard]) {
             remainMatches--;
@@ -103,7 +103,7 @@ function Board(_images) {
 }
 
 function Card(animal) {
-    this.image = animal + '.png';
+    this.image = 'imgs/' + animal + '.png';
 }
 
 var catCard = new Card('cat');
@@ -116,14 +116,3 @@ var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 board.display(document.getElementById("board"));
-
-
-function flip(card_container) {
-    //sign card container as a fliped/not fliped card
-    card_container.classList.toggle("flip");
-    //fliped the card inner part - back and front
-    let card_sides = card_container.querySelectorAll(".card_back, .card_front");
-    for (const side of card_sides) {
-        side.classList.toggle("flip");
-    }
-}
