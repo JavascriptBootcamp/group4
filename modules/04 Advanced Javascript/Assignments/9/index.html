@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="loadPage()">
+    <div id="navigator">
+        <div id="centerImage">
+            <img id="leftBtn" class="arrows" src="https://images.all-free-download.com/images/graphiclarge/button_previous_100860.jpg"></img>
+            <img id="imageCenter" class="image-center-view"></img>
+            <img id="rightBtn"  class="arrows" onclick="moveright()" src="http://www.clker.com/cliparts/n/O/8/9/V/V/next-button-md.png"></img>
+        </div>
+        <div id="thumbnails">
+            <img class="arrows" onclick="moveLeft()" src="https://images.all-free-download.com/images/graphiclarge/button_previous_100860.jpg"></img>
+            <img id="first-image" class="img-thumb"></img>
+            <img id="second-image" class="img-thumb"></img>
+            <img id="third-image" class="img-thumb"></img>
+            
+            <img class="arrows" onclick="moveRight()" src="http://www.clker.com/cliparts/n/O/8/9/V/V/next-button-md.png"></img>
+        </div>
+    </div>
+    <script>
+        currentimage=0;
+        src=[]
+        //     src=['https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg',
+        //  'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg',
+        //  'https://images.pexels.com/photos/237018/pexels-photo-237018.jpeg',
+        //  'https://images.pexels.com/photos/433539/pexels-photo-433539.jpeg',
+        //  'https://images.pexels.com/photos/853199/pexels-photo-853199.jpeg',
+        //  'https://images.pexels.com/photos/1076429/pexels-photo-1076429.jpeg',
+        //  'https://images.pexels.com/photos/46974/muscari-common-grape-hyacinth-blossom-bloom-46974.jpeg',
+        //  'https://images.pexels.com/photos/372297/pexels-photo-372297.jpeg',
+        //  'https://images.pexels.com/photos/355234/pexels-photo-355234.jpeg'
+        //  ]
+         
+
+
+
+         var thumbnailArr=[];
+function loadPage(){
+    
+            imagesObjects = [];
+            if(imagesObjects.length===0){
+  fetch("https://picsum.photos/list")
+.then(
+    function(response){
+        response.json().then(
+            function(json){
+                for(var i=0;i<json.length;i++){
+                    var img = `https://picsum.photos/200/300?image=${json[i].id}`;
+                    src.push(img);
+                    
+                }
+            }
+        )
+    }
+    )
+    }
+    
+    for(var i=0;i<src.length;i++){
+        if(localStorage.getItem(i)){
+            document.getElementById("imageCenter").src=localStorage.getItem(i)
+        }
+    }
+    setThreeImages()
+    
+    for(var i=0;i<src.length;i++){
+        var imageBtn = creareImageButton(i);
+        thumbnailArr.push(imageBtn)
+        //document.getElementById("thumbnails").appendChild(imageBtn)
+        setThreeImages();
+    }
+    
+}
+function moveLeft(){
+    if(currentimage>2){
+        
+        document.getElementById("first-image").src=src[currentimage-3];
+        document.getElementById("first-image").setAttribute('onclick',`setCenterImage(${currentimage-3})`)
+        document.getElementById("second-image").src=src[currentimage-2];
+        document.getElementById("second-image").setAttribute('onclick',`setCenterImage(${currentimage-2})`)
+        document.getElementById("third-image").src=src[currentimage-1];
+        document.getElementById("third-image").setAttribute('onclick',`setCenterImage(${currentimage-1})`)
+        currentimage--
+    }
+}
+function moveRight(){
+    if(currentimage<src.length-3){
+        
+        document.getElementById("first-image").src=src[currentimage+1];
+        document.getElementById("first-image").setAttribute('onclick',`setCenterImage(${currentimage+1})`)
+        document.getElementById("second-image").src=src[currentimage+2];
+        document.getElementById("second-image").setAttribute('onclick',`setCenterImage(${currentimage+2})`)
+        document.getElementById("third-image").src=src[currentimage+3];
+        document.getElementById("third-image").setAttribute('onclick',`setCenterImage(${currentimage+3})`)
+        currentimage++
+    }
+}
+function setThreeImages(){
+    document.getElementById("first-image").src=src[0];
+    document.getElementById("first-image").setAttribute('onclick','setCenterImage(0)')
+    document.getElementById("second-image").src=src[1];
+    document.getElementById("second-image").setAttribute('onclick','setCenterImage(1)')
+    document.getElementById("third-image").src=src[2];
+    document.getElementById("third-image").setAttribute('onclick','setCenterImage(2)')
+}
+function setCenterImage(imageIndex){
+    localStorage.clear();
+    document.getElementById("imageCenter").src=src[imageIndex]
+    localStorage.setItem(imageIndex,src[imageIndex])
+}
+function creareImageButton(imageIndex){
+    var img = document.createElement('img');
+        img.id="img"+imageIndex;
+        img.src=src[imageIndex];
+        img.setAttribute('class','imgBtn')
+        img.setAttribute('onclick',`setCenterImage(${imageIndex})`);
+return img;
+}
+    </script>
+</body>
+</html>
