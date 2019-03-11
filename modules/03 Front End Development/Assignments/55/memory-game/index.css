@@ -10,17 +10,42 @@
     width: 40%;
 }
 
-.card {
+
+.card_container{
+    margin: 10px;
+    position: relative;
     width: 100px;
     height: 150px;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border: 4px solid slategray;
-    margin: 3px;
     border-radius: 5px;
-    background: url("poker-card-pattern.jpg");
-    background-size: 350%;
+
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .card:hover {
     cursor: pointer;
     box-shadow: inset 0px 0px 20px 10px rgba(255,255,255,0.7);
 }
+
+.card_front {
+    background: url("poker-card-pattern.jpg");
+    backface-visibility: hidden;
+    background-size: 350%;
+}
+
+.card_back {
+    background: blue;
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+

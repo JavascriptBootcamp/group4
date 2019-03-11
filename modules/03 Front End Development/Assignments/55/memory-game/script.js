@@ -12,20 +12,45 @@ function Board(_images) {
             cards.push(randomImage[0].image);
         }
     })();
+
     this.display = function (boardEl) {
         for (let i = 0; i < cards.length; i++) {
             let card = document.createElement("div");
-            card.classList.add("card");
+            card.classList.add("card_container");
             card.id = "image"+i;
             card.onclick = onCardClick;
+
+            let card_back = document.createElement("div");
+            card_back.classList.add("card");
+            card_back.classList.add("card_back");
+            //card_back.style.backgroundImage = "url('" + cards[i] + "')";
+            //card_back.style.backgroundSize = "cover";
+
+            let card_front = document.createElement("div");
+            card_front.classList.add("card");
+            card_front.classList.add("card_front");
+
+            card.appendChild(card_back);
+            card.appendChild(card_front);
             boardEl.appendChild(card);
+        }
+    }
+
+    function flip_card(card_container) {
+        //sign card container as a fliped/not fliped card
+        card_container.classList.toggle("flip");
+        //fliped the card inner part - back and front
+        let card_sides = card_container.querySelectorAll(".card_back, .card_front");
+        for (const side of card_sides) {
+            side.classList.toggle("flip");
         }
     }
     
     function onCardClick(event) {
+        flip_card(event.target);
         var currentCardIndex = Number(event.target.id.replace("image", ""));
-        showImage(event.target, currentCardIndex);
-        event.target.disabled = true;
+        //showImage(event.target, currentCardIndex);
+        //event.target.disabled = true;
         setSelectedCards(currentCardIndex);
     }
     function setSelectedCards(currentCardIndex) {
@@ -94,3 +119,14 @@ var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 board.display(document.getElementById("board"));
+
+
+function flip(card_container) {
+    //sign card container as a fliped/not fliped card
+    card_container.classList.toggle("flip");
+    //fliped the card inner part - back and front
+    let card_sides = card_container.querySelectorAll(".card_back, .card_front");
+    for (const side of card_sides) {
+        side.classList.toggle("flip");
+    }
+}
