@@ -1,5 +1,4 @@
-"use strict";
-exports.__esModule = true;
+// import { iTheatre } from "./theatre";
 var Theatre = /** @class */ (function () {
     function Theatre(name, openingHour, closingHour, totalSeats) {
         if (openingHour === void 0) { openingHour = 8; }
@@ -28,7 +27,6 @@ var Theatre = /** @class */ (function () {
     };
     return Theatre;
 }());
-exports.Theatre = Theatre;
 var t1 = new Theatre("cinema city", 10, 21);
 var t2 = new Theatre("yes planet", undefined, undefined, 250);
 t1.openingHourSetter(13);

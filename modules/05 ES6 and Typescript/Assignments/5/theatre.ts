@@ -1,11 +1,11 @@
-export interface iTheatre {
+interface iTheatre {
     openingHourSetter(openingHour: number): void;
     closingHourSetter(closingHour: number): void;
     calculatOpeningHours(): number;
     printAllProperties(): void;
 }
-import { iTheatre } from "./theatre";
-export class Theatre implements iTheatre{
+// import { iTheatre } from "./theatre";
+class Theatre implements iTheatre {
     public _name: string;
     public _totalSeats: number;
     private _openingHour: number;
