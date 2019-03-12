@@ -5,15 +5,27 @@ function Board(_images) {
     var cards = [];
     var matches = [];
     (function shuffle() { //IIFE
-        var randomImage, randomIndex;
-        while (images.length > 0) {
-            randomIndex = Math.floor(Math.random() * images.length);
-            randomImage = images.splice(randomIndex, 1);
-            cards.push(randomImage[0].image);
+        var randomImage, randomIndex, opened;
+        if (!sessionStorage.getItem('openedCards')) {
+            while (images.length > 0) {
+                randomIndex = Math.floor(Math.random() * images.length);
+                randomImage = images.splice(randomIndex, 1);
+                cards.push(randomImage[0].image);
+                sessionStorage.setItem('openedCards', '[]');
+            }
+            sessionStorage.setItem('cards', JSON.stringify(cards));
+        } else {
+            opened = JSON.parse(sessionStorage.getItem('openedCards'));
+            cards = JSON.parse(sessionStorage.getItem('cards'));
+            if (opened.length % 2 != 0) {
+                selectedFirstCard = Number(opened[opened.length - 1].replace("image", ""));
+            }
+            remainMatches -= Math.floor(opened.length / 2);
         }
     })();
     this.display = function (boardEl) {
         var tr, td, flipper, front, back, btn, currentIndex = 0;
+        var opened = JSON.parse(sessionStorage.getItem('openedCards'));
         var table = document.createElement("div");
         table.id = 'table';
         for (var i = 0; i < 4; i++) {
@@ -31,8 +43,11 @@ function Board(_images) {
                 back.className = 'back';
                 btn = document.createElement("button");
                 btn.id = "image" + currentIndex++;
-
-                // btn.onclick = onCardClick;
+                if (opened.some(value => value === btn.id)) {
+                    showImage(btn, Number(btn.id.replace("image", "")));
+                    btn.disabled = true;
+                    flip(td);
+                }
                 back.appendChild(btn);
                 flipper.appendChild(front);
                 flipper.appendChild(back);
@@ -43,14 +58,6 @@ function Board(_images) {
         }
         boardEl.appendChild(table);
     }
-    // function onCardClick(event) {
-    //     // var currentCardIndex = Number(event.target.id.replace("image", ""));
-    //     // showImage(event.target, currentCardIndex);
-    //     // event.target.disabled = true;
-    //     // setSelectedCards(currentCardIndex);
-    //     // console.log(event.target);
-    //     //lip(event);
-    // }
     function onBackgroundClick(event) {
         var selectedBtn = event.target.nextSibling.children[0];
         if (selectedBtn.disabled === false) {
@@ -73,6 +80,11 @@ function Board(_images) {
     function showImage(element, currentCardIndex) {
         element.style.backgroundImage = "url('" + cards[currentCardIndex] + "')";
         element.style.backgroundSize = "cover";
+        var opened = JSON.parse(sessionStorage.getItem('openedCards'));
+        if (!opened.some(value => value === 'image' + currentCardIndex)) {
+            opened.push('image' + currentCardIndex);
+            sessionStorage.setItem('openedCards', JSON.stringify(opened));
+        }
     }
     function checkMatch() {
         if (cards[selectedFirstCard] === cards[selectedSecondCard]) {
@@ -84,6 +96,9 @@ function Board(_images) {
             selectedSecondCard = null;
         }
         else {
+            var opened = JSON.parse(sessionStorage.getItem('openedCards'));
+            opened.splice(opened.length - 2, 2);
+            sessionStorage.setItem('openedCards', JSON.stringify(opened));
             toggleState(true);
             setTimeout(function () {
                 resetImages(document.getElementById("image" + selectedFirstCard), document.getElementById("image" + selectedSecondCard));
@@ -103,7 +118,7 @@ function Board(_images) {
     function resetImages(firstCardElement, secondCardElement) {
         var first = firstCardElement.parentNode.parentNode.parentNode;
         var second = secondCardElement.parentNode.parentNode.parentNode;
-        firstCardElement.disabled = false;     
+        firstCardElement.disabled = false;
         firstCardElement.style.backgroundImage = "";
         secondCardElement.disabled = false;
         secondCardElement.style.backgroundImage = "";
@@ -122,8 +137,8 @@ function Card(animal) {
 }
 
 function flip(e) {
-    var btn = e.target || e;
-    var elem = e.target ? btn.parentNode.parentNode:e;
+    var cardDiv = e.target || e;
+    var elem = e.target ? cardDiv.parentNode.parentNode : e;
     elem.classList.toggle('hover');
 }
 
