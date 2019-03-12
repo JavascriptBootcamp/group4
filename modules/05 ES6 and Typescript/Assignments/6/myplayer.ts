@@ -13,13 +13,25 @@ export class Musician implements Iplay {
         this._instrument = instruments;
     }
     public play(song: string) {
-        console.log(`${song} is playing now`);
+        console.log(`musician : ${this._name} is now playing ${song}`);
     }
     public next() {
-
+        if (songs[index + 1]) {
+            index++;
+        }
+        else {
+            index = 0;
+        }
+        console.log(`musician : ${this._name} is now playing ${songs[index]}`);
     }
     public prev() {
-
+        if (songs[index - 1]) {
+            index--;
+        }
+        else {
+            index = songs.length-1;
+        }
+        console.log(`musician : ${this._name} is now playing ${songs[index]}`);
     }
 }
 export class Band implements Iplay {
@@ -30,13 +42,25 @@ export class Band implements Iplay {
         this._musicians = musician;
     }
     public play(song: string) {
-        console.log(`${song} is playing now`);
+        console.log(`band : ${this._name} is now playing ${song}`);
     }
     public next() {
-
+        if (songs[index + 1]) {
+            index++;
+        }
+        else {
+            index = 0;
+        }
+        console.log(`band : ${this._name} is now playing ${songs[index]}`);
     }
     public prev() {
-
+        if (songs[index - 1]) {
+            index--;
+        }
+        else {
+            index = songs.length-1;
+        }
+        console.log(`band : ${this._name} is now playing ${songs[index]}`);
     }
 }
 export class Radio implements Iplay {
@@ -49,12 +73,25 @@ export class Radio implements Iplay {
         this._price = price;
     }
     public play(song: string) {
-        console.log(`${song} is playing now`);
+        console.log(`radio : ${this._brand} is now playing ${song}`);
     }
     public next() {
+        if (songs[index + 1]) {
+            index++;
+        }
+        else {
+            index = 0;
+        }
+        console.log(`radio : ${this._brand} is now playing ${songs[index]}`);
     }
     public prev() {
-        console.log(`${module.songs[module.index - 1]} is playing now`);
+        if (songs[index - 1]) {
+            index--;
+        }
+        else {
+            index = songs.length-1;
+        }
+        console.log(`radio : ${this._brand} is now playing ${songs[index]}`);
     }
 }
 export enum instrument {
@@ -68,24 +105,24 @@ export enum color {
     blue = "blue",
     yellow = "yellow",
 }
-export let songs: Array<string> = ["song1", "song2", "song3", "song4",], index = 0;
+let songs: Array<string> = ["song1", "song2", "song3", "song4",], index = 0;
 
 import * as module from "./myplayer";
 let radio1: module.Radio = new module.Radio("poineer", color.blue, 350);
-radio1.play(module.songs[module.index]);
-// radio1.prev();
-// radio1.next();
+radio1.play(songs[index]);
+radio1.next();
+radio1.next();
+radio1.prev();
 let musician1: module.Musician = new module.Musician("gaby", 30, instrument.Guitar);
 let musician2: module.Musician = new module.Musician("yosi", 40, instrument.Drums);
 let musician3: module.Musician = new module.Musician("maly", 37, instrument.None);
 let musician4: module.Musician = new module.Musician("nissan", 46, instrument.Bass);
-musician1.play(module.songs[1]);
-//musician1.prev();
-// musician1.next();
-musician2.play(module.songs[2]);
+musician1.play(songs[index]);
+musician2.prev();
+musician3.next();
+musician4.play(songs[index]);
 let band1: module.Band = new module.Band("bandRock", [musician1, musician2, musician3, musician4]);
-//console.log(band1._musicians);
-band1.play(module.songs[3]);
-//band1.prev();
-// band1.next();
+band1.play(songs[index]);
+band1.prev();
+band1.next();
 

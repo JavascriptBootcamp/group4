@@ -7,11 +7,25 @@ var Musician = /** @class */ (function () {
         this._instrument = instruments;
     }
     Musician.prototype.play = function (song) {
-        console.log(song + " is playing now");
+        console.log("musician : " + this._name + " is now playing " + song);
     };
     Musician.prototype.next = function () {
+        if (songs[index + 1]) {
+            index++;
+        }
+        else {
+            index = 0;
+        }
+        console.log("musician : " + this._name + " is now playing " + songs[index]);
     };
     Musician.prototype.prev = function () {
+        if (songs[index - 1]) {
+            index--;
+        }
+        else {
+            index = songs.length - 1;
+        }
+        console.log("musician : " + this._name + " is now playing " + songs[index]);
     };
     return Musician;
 }());
@@ -22,11 +36,25 @@ var Band = /** @class */ (function () {
         this._musicians = musician;
     }
     Band.prototype.play = function (song) {
-        console.log(song + " is playing now");
+        console.log("band : " + this._name + " is now playing " + song);
     };
     Band.prototype.next = function () {
+        if (songs[index + 1]) {
+            index++;
+        }
+        else {
+            index = 0;
+        }
+        console.log("band : " + this._name + " is now playing " + songs[index]);
     };
     Band.prototype.prev = function () {
+        if (songs[index - 1]) {
+            index--;
+        }
+        else {
+            index = songs.length - 1;
+        }
+        console.log("band : " + this._name + " is now playing " + songs[index]);
     };
     return Band;
 }());
@@ -38,12 +66,25 @@ var Radio = /** @class */ (function () {
         this._price = price;
     }
     Radio.prototype.play = function (song) {
-        console.log(song + " is playing now");
+        console.log("radio : " + this._brand + " is now playing " + song);
     };
     Radio.prototype.next = function () {
+        if (songs[index + 1]) {
+            index++;
+        }
+        else {
+            index = 0;
+        }
+        console.log("radio : " + this._brand + " is now playing " + songs[index]);
     };
     Radio.prototype.prev = function () {
-        console.log(module.songs[module.index - 1] + " is playing now");
+        if (songs[index - 1]) {
+            index--;
+        }
+        else {
+            index = songs.length - 1;
+        }
+        console.log("radio : " + this._brand + " is now playing " + songs[index]);
     };
     return Radio;
 }());
@@ -61,22 +102,22 @@ var color;
     color["blue"] = "blue";
     color["yellow"] = "yellow";
 })(color = exports.color || (exports.color = {}));
-exports.songs = ["song1", "song2", "song3", "song4",], exports.index = 0;
+var songs = ["song1", "song2", "song3", "song4",], index = 0;
 var module = require("./myplayer");
 var radio1 = new module.Radio("poineer", color.blue, 350);
-radio1.play(module.songs[module.index]);
-// radio1.prev();
-// radio1.next();
+radio1.play(songs[index]);
+radio1.next();
+radio1.next();
+radio1.prev();
 var musician1 = new module.Musician("gaby", 30, instrument.Guitar);
 var musician2 = new module.Musician("yosi", 40, instrument.Drums);
 var musician3 = new module.Musician("maly", 37, instrument.None);
 var musician4 = new module.Musician("nissan", 46, instrument.Bass);
-musician1.play(module.songs[1]);
-//musician1.prev();
-// musician1.next();
-musician2.play(module.songs[2]);
+musician1.play(songs[index]);
+musician2.prev();
+musician3.next();
+musician4.play(songs[index]);
 var band1 = new module.Band("bandRock", [musician1, musician2, musician3, musician4]);
-//console.log(band1._musicians);
-band1.play(module.songs[3]);
-//band1.prev();
-// band1.next();
+band1.play(songs[index]);
+band1.prev();
+band1.next();
