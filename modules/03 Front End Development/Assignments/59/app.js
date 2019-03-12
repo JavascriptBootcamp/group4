@@ -9,32 +9,19 @@ function openOrCloseCat(e){
         e.target.innerText = "Expand All";
         sign = "+";
     }
-    let posLegends = document.getElementsByClassName("positive");
-    let negLegends = document.getElementsByClassName("negative");
-    for(var legend in posLegends){
-        if(posLegends.hasOwnProperty(legend)){
-            if(sign === '+'){
-                console.log(posLegends[legend].id,posLegends[legend].className);
-                //posLegends[legend].className = "positive";
+    let legends = document.getElementsByTagName("legend");
+
+    for(var legend in legends){
+        if(legends.hasOwnProperty(legend)){
+            let contentDiv = legends[legend].nextElementSibling;
+            if(sign === "-"){
+                contentDiv.className = "negative";
             }
             else{
-                console.log(posLegends[legend].id,posLegends[legend].className);
-                posLegends[legend].className = "negative";
+                contentDiv.className = "positive";
             }
         }
     }
-
-    // for(var legend in negLegends){
-    //     if(negLegends.hasOwnProperty(legend)){
-    //         if(sign === '+'){
-    //             //negLegends[legend].className = "positive";
-    //         }
-    //         else{
-    //             //negLegends[legend].className = "negative";
-
-    //         }
-    //     }
-    // }
 }
 
 function hideOrShow(event){
