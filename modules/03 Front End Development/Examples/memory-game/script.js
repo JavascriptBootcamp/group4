@@ -46,7 +46,23 @@ function Board(_images) {
                 // toggleState(false);
             }
         }
+
+        var timerDiv = document.createElement("div");
+        timerDiv.style.fontSize = "30px";
+        document.body.appendChild(timerDiv);
+        var timer = 180;
+        timerDiv.innerHTML = timer;
+        let timerId = setTimeout(function tick() {
+            if (!timer){
+                document.body.innerHTML = "";
+                alert("Game over, refresh page to play again.")
+            }
+            timer--;
+            timerDiv.innerHTML = timer;
+            timerId = setTimeout(tick, 1000); 
+          }, 1000);
     }
+
     function onCardClick(event) {
         var currentCardIndex = Number(event.target.id.replace("image", ""));
         showImage(event.target, currentCardIndex);
