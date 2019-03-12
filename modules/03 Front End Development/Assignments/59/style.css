@@ -1,0 +1,39 @@
+    .hidden {
+        display: none;
+        background-color: rgb(121, 226, 138);
+        border: 1px solid gray;
+        animation-name: example;
+        animation-duration: 1.3s;
+      }
+      @keyframes example {
+      0%   {background-color:bisque;}
+      100% {background-color:white; }
+      }
+      
+      .collapse_div
+      {
+        background-color:  rgb(121, 184, 226);
+        padding: 10px;
+        place-content: inherit;
+        cursor: pointer;
+        
+        border: 1px solid gray;
+      }
+      #container{
+        margin: 0 auto;
+        width: 700px;
+      }
+      form{
+        margin: 0 auto;
+        width: 700px;
+      }
+      span{
+        font-size: 20px;
+      }
+    #sortDiv{
+        margin: 10px 0px 10px 0px
+    }
+      #changeAll{
+          border-radius: 60px;
+        margin: 0px 0px 10px 0px
+      }
