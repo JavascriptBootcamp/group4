@@ -5,7 +5,7 @@
 html {
     height: 100%;
     width: 100%;
-    font-size: 20px; 
+    font-size: 17px; 
 }
 body {
     background-color: springgreen;
@@ -20,7 +20,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.td>button {
+.td button {
     border-radius: 10px;
 }
 
@@ -38,7 +38,7 @@ body {
 .td:hover{
     position: relative;
     box-shadow: 0px 0px 10px 10px #0ff;
-
+    z-index: 3;
 }
 h1 {
     font-size: 36px; 
@@ -47,9 +47,41 @@ h1 {
 h4 {
     font-size: 20px; 
 }
-.td>button {
+.td button {
     width: 100px;
     height: 100px;
+}
+
+.flip-container {
+    perspective: 1000;
+}
+  
+.flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+  
+.flip-container, .front, .back {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+}
+  
+.flipper {
+    transition: 0.5s;
+    transform-style: preserve-3d; 
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+  
+.front, .back {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+}
+  
+.front {
     background: radial-gradient(4rem,
     rgba(255,255,255,0) 80%, 
     #778691 80%, #778691 99%, 
@@ -72,6 +104,14 @@ h4 {
     #F5FCD0 75%, #B1C2B3 99%, 
     rgba(255,255,255, 0) 
     ) 0 0;
-  background-size: 100px 100px;
-  background-color: #F5FCD0;
+    background-size: 100px 100px;
+    background-color: #F5FCD0;
+    z-index: 2;
 }
+  
+.back {
+      transform: rotateY(180deg);
+      background: #f22;
+}
+
+  

@@ -13,7 +13,7 @@ function Board(_images) {
         }
     })();
     this.display = function (boardEl) {
-        var tr, td, btn, currentIndex = 0;
+        var tr, td, flipper, front, back, btn, currentIndex = 0;
         var table = document.createElement("div");
         table.id = 'table';
         for (var i = 0; i < 4; i++) {
@@ -21,23 +21,45 @@ function Board(_images) {
             tr.className = 'tr';
             for (var j = 0; j < 4; j++) {
                 td = document.createElement("div");
-                td.className = 'td';
+                td.className = 'td flip-container';
+                flipper = document.createElement('div');
+                flipper.className = 'flipper';
+                front = document.createElement('div');
+                front.className = 'front';
+                front.onclick = onBackgroundClick;
+                back = document.createElement('div');
+                back.className = 'back';
                 btn = document.createElement("button");
                 btn.id = "image" + currentIndex++;
 
-                btn.onclick = onCardClick;
-                td.appendChild(btn);
+                // btn.onclick = onCardClick;
+                back.appendChild(btn);
+                flipper.appendChild(front);
+                flipper.appendChild(back);
+                td.appendChild(flipper);
                 tr.appendChild(td);
             }
             table.appendChild(tr);
         }
         boardEl.appendChild(table);
     }
-    function onCardClick(event) {
-        var currentCardIndex = Number(event.target.id.replace("image", ""));
-        showImage(event.target, currentCardIndex);
-        event.target.disabled = true;
-        setSelectedCards(currentCardIndex);
+    // function onCardClick(event) {
+    //     // var currentCardIndex = Number(event.target.id.replace("image", ""));
+    //     // showImage(event.target, currentCardIndex);
+    //     // event.target.disabled = true;
+    //     // setSelectedCards(currentCardIndex);
+    //     // console.log(event.target);
+    //     //lip(event);
+    // }
+    function onBackgroundClick(event) {
+        var selectedBtn = event.target.nextSibling.children[0];
+        if (selectedBtn.disabled === false) {
+            var currentCardIndex = Number(selectedBtn.id.replace("image", ""));
+            showImage(selectedBtn, currentCardIndex);
+            selectedBtn.disabled = true;
+            setSelectedCards(currentCardIndex);
+            flip(event);
+        }
     }
     function setSelectedCards(currentCardIndex) {
         if (selectedFirstCard !== null) {// changed because index 0
@@ -52,7 +74,7 @@ function Board(_images) {
         element.style.backgroundImage = "url('" + cards[currentCardIndex] + "')";
         element.style.backgroundSize = "cover";
     }
-    function checkMatch(){
+    function checkMatch() {
         if (cards[selectedFirstCard] === cards[selectedSecondCard]) {
             remainMatches--;
             checkWin();
@@ -63,7 +85,7 @@ function Board(_images) {
         }
         else {
             toggleState(true);
-            setTimeout(function(){
+            setTimeout(function () {
                 resetImages(document.getElementById("image" + selectedFirstCard), document.getElementById("image" + selectedSecondCard));
                 selectedFirstCard = null;
                 selectedSecondCard = null;
@@ -72,20 +94,24 @@ function Board(_images) {
         }
     }
     function toggleState(enable) {
-        for (var i=0;i<cards.length;i++){
-            if (!matches.includes(i)){// the change
+        for (var i = 0; i < cards.length; i++) {
+            if (!matches.includes(i)) {// the change
                 document.getElementById("image" + i).disabled = enable;
             }
         }
     }
     function resetImages(firstCardElement, secondCardElement) {
-        firstCardElement.disabled = false;
+        var first = firstCardElement.parentNode.parentNode.parentNode;
+        var second = secondCardElement.parentNode.parentNode.parentNode;
+        firstCardElement.disabled = false;     
         firstCardElement.style.backgroundImage = "";
         secondCardElement.disabled = false;
         secondCardElement.style.backgroundImage = "";
+        flip(first);
+        flip(second);
     }
     function checkWin() {
-        if (remainMatches === 0){
+        if (remainMatches === 0) {
             document.getElementById("message").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
         }
     }
@@ -93,6 +119,12 @@ function Board(_images) {
 
 function Card(animal) {
     this.image = animal + '.png';
+}
+
+function flip(e) {
+    var btn = e.target || e;
+    var elem = e.target ? btn.parentNode.parentNode:e;
+    elem.classList.toggle('hover');
 }
 
 var catCard = new Card('cat');
