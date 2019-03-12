@@ -14,16 +14,17 @@ function Board(_images) {
     })();
     this.display = function (boardEl) {
         var tr, td, btn, currentIndex = 0;
-        var table = document.createElement("table");
+        var table = document.createElement("div");
+        table.id = 'table';
         for (var i = 0; i < 4; i++) {
-            tr = document.createElement("tr");
+            tr = document.createElement("div");
+            tr.className = 'tr';
             for (var j = 0; j < 4; j++) {
-                td = document.createElement("td");
+                td = document.createElement("div");
+                td.className = 'td';
                 btn = document.createElement("button");
                 btn.id = "image" + currentIndex++;
-                btn.style.width = "100px";
-                btn.style.height = "100px";
-                btn.style.backgroundColor = "grey";
+
                 btn.onclick = onCardClick;
                 td.appendChild(btn);
                 tr.appendChild(td);

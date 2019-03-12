@@ -1,9 +1,11 @@
 * {
     box-sizing: border-box;
+    margin: 0%;
 }
 html {
-    height: 98%;
-    width: 98%;
+    height: 100%;
+    width: 100%;
+    font-size: 20px; 
 }
 body {
     background-color: springgreen;
@@ -18,6 +20,53 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#content>div {
-    
+.td>button {
+    border-radius: 10px;
+}
+
+#table {
+    width: 400px;
+}
+
+.tr {
+    display: inline-block;
+}
+
+.td {
+    display: inline-block;
+}
+h1 {
+    font-size: 36px; 
+}
+
+h4 {
+    font-size: 20px; 
+}
+.td>button {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0,
+    radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%,  
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #B1C2B3 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #F5FCD0 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0;
+  background-size: 100px 100px;
+  background-color: #F5FCD0;
 }
