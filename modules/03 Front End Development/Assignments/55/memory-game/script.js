@@ -69,35 +69,34 @@ function Board(_images) {
             checkWin();
             matches.push(selectedFirstCard);
             matches.push(selectedSecondCard);
+            document.querySelector("#image"+selectedFirstCard).onclick = null;
+            document.querySelector("#image"+selectedSecondCard).onclick = null;
             selectedFirstCard = null;
             selectedSecondCard = null;
         }
         else {
-            toggleState(true);
             setTimeout(function(){
-                resetImages(document.getElementById("image" + selectedFirstCard), document.getElementById("image" + selectedSecondCard));
                 selectedFirstCard = null;
                 selectedSecondCard = null;
-                toggleState(false);
-            }, 1000);
+                toggleState();
+            }, 900);
         }
     }
-    function toggleState(enable) {
-        for (var i=0;i<cards.length;i++){
-            if (!matches.includes(selectedFirstCard) && !matches.includes(selectedSecondCard)){
-                document.getElementById("image" + i).disabled = enable;
+    function toggleState() {
+        let cards = document.querySelectorAll(".card_container");
+        for (let card of cards) {
+            if(card.onclick !== null && card.classList.value.includes("flip")){
+                flip_card(card);
             }
         }
+        
     }
-    function resetImages(firstCardElement, secondCardElement) {
-        firstCardElement.disabled = false;
-        firstCardElement.style.backgroundImage = "";
-        secondCardElement.disabled = false;
-        secondCardElement.style.backgroundImage = "";
-    }
+
     function checkWin() {
         if (remainMatches === 0){
-            document.getElementById("message").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
+            document.querySelector("#board").style.display = "none";
+            document.querySelector("#message").classList.remove("hide");
+            document.querySelector("#message>h1").innerHTML = "You Won!!";
         }
     }
 }
