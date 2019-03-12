@@ -12,47 +12,38 @@
             background-color: lightgray;
             height: 100%;
         }
-
         * {
             box-sizing: border-box;
         }
-
         #imagesPage {
             display: flex;
             flex-wrap: wrap;
             z-index: 0;
             pointer-events: auto;
         }
-
         .pictureObj {
             margin: 25px;
             z-index: 0;
         }
-
         .image {
             width: 200px;
             height: 200px;
             cursor: pointer;
             z-index: 0;
         }
-
         .image:hover {
             box-shadow: 10px 10px 8px 10px #888888;
         }
-
         .likeBtn {
             display: inline-block;
             margin-right: 130px;
             z-index: 0;
         }
-
         .picUtils {}
-
         .likeCounter {
             display: inline-block;
             z-index: 0;
         }
-
         #specialPicture {
             height: 400px;
             width: 400px;
@@ -65,7 +56,6 @@
             margin-top: -200px;
             cursor: pointer;
         }
-
         .blurMode {
             filter: blur(8px);
             -webkit-filter: blur(8px);
@@ -181,24 +171,18 @@
     </div>
 
     <script>
-
         var pics = document.querySelectorAll(".image");
         var picBtns = document.querySelectorAll(".likeBtn");
-
         function Picture() {
             this.src = "https://images.pexels.com/photos/556667/pexels-photo-556667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-
             this.amountOfLikes = 0;
             Picture.prototype.incrementLikes = function () {
                 this.amountOfLikes += 1;
             }
         }
-
-
         for (var i = 0; i < pics.length; ++i) {
             pics[i].addEventListener("click", displayBlurringBackground, false);
         }
-
         function displayBlurringBackground(evt) {
             var thePage = document.querySelector("#imagesPage");
             if (!thePage.classList.contains("blurMode")) {
@@ -210,65 +194,64 @@
                 alert("page already blurred OK?!");
             }
         }
-
         function displayMainPicture(imageToShow) {
             var mainPic = document.querySelector("#specialPicture");
             mainPic.src = imageToShow.src;
             mainPic.style.display = "block";
         }
-
         function disableMainPic(imgEvent) {
             var thePage = document.querySelector("#imagesPage");
             imgEvent.target.style.display = "none";
             thePage.style.pointerEvents = "auto";
             thePage.classList.toggle("blurMode")
         }
-
         function onStart()
         {
             var picsObj = {};
-
+			
             if (localStorage.getItem("picObject")) {
-                var temp = localStorage.getItem("picObject");
-                console.log(temp);
-                picsObj = JSON.parse(temp);
-                for (var i = 0; i < picBtns.length; i++) {
+				
+				Object.assign(picsObj,JSON.parse(localStorage.getItem("picObject")));
+				
+				for(var i in picsObj)
+				{
+					picsObj[i].amountOfLikes = JSON.parse(localStorage.getItem("picObject"))[i].amountOfLikes;
+				}
+				
+				for (var i = 0; i < picBtns.length; i++) {
                     picBtns[i].parentElement.lastElementChild.innerText = picsObj[i].amountOfLikes;
                 }
             }
+			
 
             else (Object.keys(picsObj).length === 0)
             {
-
                 for (var i = 0; i < picBtns.length; ++i) {
                     var newPic = new Picture();
                     picsObj[i] = newPic;
                     
                     picBtns[i].onclick = function () {
                         var correspondIndex = this.parentElement.parentElement.getAttribute("data-index");
-
                         picsObj[correspondIndex].incrementLikes();
                         picBtns[correspondIndex].parentElement.lastElementChild.innerText = picsObj[correspondIndex].amountOfLikes;
                         localStorage.setItem("picObject", JSON.stringify(picsObj));
-
                     }
+					
                 }
             }
-
-
+			
             for (var i = 0; i < picBtns.length; ++i) {
-
+				picsObj[i].amountOfLikes = Number(picBtns[i].parentElement.lastElementChild.innerText);
+			
                 picBtns[i].onclick = function () {
+					picBtns = document.querySelectorAll(".likeBtn");
                     var correspondIndex = this.parentElement.parentElement.getAttribute("data-index");
                     picsObj[correspondIndex].incrementLikes();
-
                     picBtns[correspondIndex].parentElement.lastElementChild.innerText = picsObj[correspondIndex].amountOfLikes;
                     localStorage.setItem("picObject", JSON.stringify(picsObj));
- 
                 }
             }
         }
-
         onStart();
     </script>
 </body>
