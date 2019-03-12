@@ -1,11 +1,4 @@
-interface iTheatre {
-    openingHourSetter(openingHour: number): void;
-    closingHourSetter(closingHour: number): void;
-    calculatOpeningHours(): number;
-    printAllProperties(): void;
-}
-// import { iTheatre } from "./theatre";
-class Theatre implements iTheatre {
+class Theatre {
     public _name: string;
     public _totalSeats: number;
     private _openingHour: number;
