@@ -35,6 +35,11 @@ body {
 .td {
     display: inline-block;
 }
+.td:hover{
+    position: relative;
+    box-shadow: 0px 0px 10px 10px #0ff;
+
+}
 h1 {
     font-size: 36px; 
 }
