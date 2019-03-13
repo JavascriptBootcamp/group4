@@ -1,16 +1,14 @@
 interface IWord{
-    setLength:()=>void;
-    findLongestString:(string)=>string;
+    chars: string;
+    length: number;
+    findLongestString(string):string;
 }
 
 class Word implements IWord{
-    constructor(Chars:string){
-        public chars=Chars;
+    constructor(public chars:string,public length:number){
+        this.chars=chars;
+        this.length = this.chars.length;
     };
-
-    public setLength(){
-        let length = chars.length;
-    }
 }
 
 
