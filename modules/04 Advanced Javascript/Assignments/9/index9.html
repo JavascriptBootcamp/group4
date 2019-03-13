@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>56</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body onload="getLastImgStorage()">
+
+    <div id="placeholder"></div>
+    <div id="wrapper">
+        <h1 class="page-header">Gallery</h1>
+        <div class="left-arrow">
+            <img id="left-arrow-img" src="https://image.flaticon.com/icons/svg/25/25184.svg" onclick="previous()">
+        </div>
+        <div>
+            <img id="selected-img">
+        </div>
+        <div class="right-arrow">
+            <img id="right-arrow-img" src="https://image.flaticon.com/icons/svg/25/25446.svg" onclick="next()">
+        </div>
+        <div class="gallery">
+        </div>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
