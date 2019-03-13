@@ -1,7 +1,7 @@
 interface IStringUtils{
-    getVowels:(str:string)=>number;
-    removeChar:(str:string,pos:number)=>string;
-    incrementLetters:(str:string)=>string;
+    getVowels(str:string):number;
+    removeChar(str:string,pos:number):string;
+    incrementLetters(str:string):string;
 }
 
 class StringUtils implements IStringUtils{
