@@ -11,6 +11,8 @@
         #board
         {
             position: fixed;
+            height: 400px;
+            width: 400px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -20,9 +22,17 @@
         outline: 1px solid red;
         float: left;
         height: 100px;
-        width: 100px;    
-    }
-    
+        width: 100px;
+           
+     }
+     button {
+        background-image: url(card.jpg) ;
+        background-size: 100px;
+     }
+
+     button:hover{
+        transform: rotateY(180deg);
+     }
     </style>
 
     <title>JSBootcamp Memory Game</title>
