@@ -20,6 +20,22 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#message {
+    position: relative;
+}
+
+#message>h1, #message>h4, #message>button {
+    text-align: center;
+    color: #f22;
+}
+
+#message>button {
+    position: absolute;
+    top: 100%;
+    left:  50%;
+    transform: translate(-50%, 0);
+}
+
 .td button {
     border-radius: 10px;
 }

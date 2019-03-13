@@ -1,9 +1,12 @@
 function Board(_images) {
+    var self = this;
+    var remainTime = null;
     var remainMatches = _images.length;
     var images = _images.concat(_images);
     var selectedFirstCard = null, selectedSecondCard = null;
     var cards = [];
     var matches = [];
+    var timeInterval = null;
     (function shuffle() { //IIFE
         var randomImage, randomIndex, opened;
         if (!sessionStorage.getItem('openedCards')) {
@@ -14,17 +17,21 @@ function Board(_images) {
                 sessionStorage.setItem('openedCards', '[]');
             }
             sessionStorage.setItem('cards', JSON.stringify(cards));
+            remainTime = 55;
+            sessionStorage.setItem('time', JSON.stringify(remainTime));
         } else {
             opened = JSON.parse(sessionStorage.getItem('openedCards'));
             cards = JSON.parse(sessionStorage.getItem('cards'));
+            remainTime = JSON.parse(sessionStorage.getItem('time'));
             if (opened.length % 2 != 0) {
                 selectedFirstCard = Number(opened[opened.length - 1].replace("image", ""));
             }
             remainMatches -= Math.floor(opened.length / 2);
+            checkWin();
         }
     })();
     this.display = function (boardEl) {
-        var tr, td, flipper, front, back, btn, currentIndex = 0;
+        var tr, td, flipper, front, back, btn, msg, currentIndex = 0;
         var opened = JSON.parse(sessionStorage.getItem('openedCards'));
         var table = document.createElement("div");
         table.id = 'table';
@@ -57,6 +64,21 @@ function Board(_images) {
             table.appendChild(tr);
         }
         boardEl.appendChild(table);
+        msg = document.getElementById("message");
+        if (remainTime > 0) {
+            sessionStorage.setItem('time', JSON.stringify(remainTime));
+            msg.innerHTML = `<h1>${remainTime} sec</h1>`;
+        } else if (remainTime === 0) {
+            msg.innerHTML = `<h1>Game Over!</h1>`;
+            var btn = document.createElement('button');
+            btn.innerText = 'Start Game';
+            btn.addEventListener('click', self.flipAll);
+            msg.appendChild(btn);
+            boardEl.style.display = 'none';
+        }
+        if (remainTime > 0 && !checkWin()) {
+            timeInterval = setInterval(clock, 1000);
+        }
     }
     function onBackgroundClick(event) {
         var selectedBtn = event.target.nextSibling.children[0];
@@ -66,6 +88,25 @@ function Board(_images) {
             selectedBtn.disabled = true;
             setSelectedCards(currentCardIndex);
             flip(event);
+        }
+    }
+    function clock() {
+        var msg = document.getElementById("message");
+        var board = document.getElementById('board');
+        if (remainTime > 1) {
+            remainTime--;
+            sessionStorage.setItem('time', JSON.stringify(remainTime));
+            msg.innerHTML = `<h1>${remainTime} sec</h1>`;
+        } else {
+            remainTime--;
+            sessionStorage.setItem('time', JSON.stringify(remainTime));
+            msg.innerHTML = `<h1>Game Over!</h1>`;
+            var btn = document.createElement('button');
+            btn.innerText = 'Start Game';
+            btn.addEventListener('click', self.flipAll);
+            msg.appendChild(btn);
+            board.style.display = 'none';
+            clearInterval(timeInterval);
         }
     }
     function setSelectedCards(currentCardIndex) {
@@ -125,10 +166,48 @@ function Board(_images) {
         flip(first);
         flip(second);
     }
+
     function checkWin() {
         if (remainMatches === 0) {
+            var btn = document.createElement('button');
+            btn.innerText = 'Start Game';
+            clearInterval(timeInterval);
             document.getElementById("message").innerHTML = "<h1>Moshiko is the King!</h1><h4>You Won!</h4>";
+            btn.addEventListener('click', self.flipAll);
+            document.getElementById("message").appendChild(btn);
+            return true;
         }
+        return false;
+    }
+
+    this.flipAll = function () {
+        var board = document.getElementById('board');
+        var msg = document.getElementsByClassName('message');
+        board.innerHTML = '';
+        msg.innerHTML = '';
+        board.style.display = 'block';
+        self.shuffleAgain();
+        self.display(document.getElementById("board"));
+    }
+    this.shuffleAgain = function () {
+        var randomImage, randomIndex;
+        remainTime = null;
+        remainMatches = _images.length;
+        images = _images.concat(_images);
+        selectedFirstCard = null;
+        selectedSecondCard = null;
+        cards = [];
+        matches = [];
+        timeInterval = null;
+        while (images.length > 0) {
+            randomIndex = Math.floor(Math.random() * images.length);
+            randomImage = images.splice(randomIndex, 1);
+            cards.push(randomImage[0].image);
+            sessionStorage.setItem('openedCards', '[]');
+        }
+        sessionStorage.setItem('cards', JSON.stringify(cards));
+        remainTime = 55;
+        sessionStorage.setItem('time', JSON.stringify(remainTime));
     }
 }
 
