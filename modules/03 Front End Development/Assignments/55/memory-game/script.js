@@ -173,7 +173,7 @@ function reset_game() {
     document.querySelector("#message").classList.add("hide");
     document.querySelector("#message>button").classList.add("hide");
     document.querySelector("#message>h1").innerHTML = "";
-    var newboard = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
+    var newboard = new Board([Card_1, Card_2, Card_3, Card_4, Card_5, Card_6, Card_7, Card_8]);
     newboard.display(document.getElementById("board"));
     game_timer(board, 5);
 }
