@@ -142,8 +142,8 @@ function Board(_images) {
     }
 }
 
-function Card(animal) {
-    this.image = 'imgs/' + animal + '.png';
+function Card(card_img) {
+    this.image = 'imgs/' + card_img;
 }
 
 function game_timer(game_obj, time_in_minutes) {
@@ -178,14 +178,14 @@ function reset_game() {
     game_timer(board, 5);
 }
 
-var catCard = new Card('cat');
-var dogCard = new Card('dog');
-var goldfishCard = new Card('goldfish');
-var guineaPigCard = new Card('guinea_pig');
-var kittenCard = new Card('kitten');
-var mouseCard = new Card('mouse');
-var puppyCard = new Card('puppy');
-var rabbitCard = new Card('rabbit');
-var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
+var Card_1 = new Card('7.png');
+var Card_2 = new Card('9.png');
+var Card_3 = new Card('10.png');
+var Card_4 = new Card('ace.png');
+var Card_5 = new Card('joker.png');
+var Card_6 = new Card('king.png');
+var Card_7 = new Card('prince.png');
+var Card_8 = new Card('queen.png');
+var board = new Board([Card_1, Card_2, Card_3, Card_4, Card_5, Card_6, Card_7, Card_8]);
 board.display(document.getElementById("board"));
 game_timer(board, 5);
