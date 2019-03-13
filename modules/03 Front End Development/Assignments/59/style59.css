@@ -17,6 +17,7 @@ body {
 }
 .title {
     position: relative;
+    cursor: pointer;
 }
 .title>legend {
     display: inline-block;
@@ -32,4 +33,21 @@ body {
 .title>img, .content>img {
     width: 1rem;
     height: 1rem;
+}
+
+.toggle-btn {
+    border-radius: 7px;
+}
+.toggle-btn:hover {
+    color: cornflowerblue;
+}
+.toggle-btn:active {
+    color: gold;
+    background-color: crimson;
+}
+.toggle-btn::after {
+    content: 'Expand All';
+}
+.hideAll::after {
+    content: 'Collapse All';
 }
