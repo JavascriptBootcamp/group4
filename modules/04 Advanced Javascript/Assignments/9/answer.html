@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleAns.css">
+</head>
+
+<body>
+    <div id="gallery">
+        <div id="big-picture">
+            <div class="arrow arrow-left" onclick="setNextImg(event)"></div>
+            <div id="big-picture-wrapper">
+                    <div id="placeholder"></div>
+                    <a href="" target="_blank">
+                            <img id="big-picture-img" src="" imgnumber="tm1">
+                    </a>
+            </div>
+            <div class="arrow arrow-right" onclick="setPrevImg(event)"></div>
+        </div>
+        <div id="thumbnails">
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
