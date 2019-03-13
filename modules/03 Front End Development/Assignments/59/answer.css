@@ -1,0 +1,57 @@
+body {
+  background-color: #c2e0b8;
+}
+
+#changeAll {
+  border-radius:10px;
+	border:4px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#0f2699;
+	font-family:Arial;
+	font-size:19px;
+	padding:3px 4px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+
+#changeAll:hover {
+  font-size:22px;
+  color:#059633;
+  font-family:david;
+  padding:4px 6px;
+  border:6px solid #f09405;
+}
+
+
+.hidden {
+  display: none;
+  background-color: white;
+  border: 1px solid gray;
+  animation-name: example;
+  animation-duration: 1.3s;
+}
+
+@keyframes example {
+0%   {background-color:bisque;}
+100% {background-color:white; }
+}
+
+.collapse_div
+{
+  background-color: #f7ff99;
+  padding: 3px;
+  cursor: pointer;
+  border: 2px solid gray;
+}
+#container{
+  margin: 0 auto;
+  width: 700px;
+}
+form{
+  margin: 0 auto;
+  width: 700px;
+}
+span{
+  font-size: 20px;
+}
