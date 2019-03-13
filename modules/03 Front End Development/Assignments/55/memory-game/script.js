@@ -13,7 +13,20 @@ function Board(_images) {
         }
     })();
 
+    this.getCards = function () {
+        return cards;
+    }
+
+    this.getMatches = function () {
+        return matches;
+    }
+
     this.display = function (boardEl) {
+        //get the cards from session storage if exict
+        if(sessionStorage.getItem("cards")){
+            cards = sessionStorage.getItem("cards").split(",");
+        }
+
         for (let i = 0; i < cards.length; i++) {
             let card = document.createElement("div");
             card.classList.add("card_container");
@@ -35,7 +48,20 @@ function Board(_images) {
             card.appendChild(card_back);
             card.appendChild(card_front);
             boardEl.appendChild(card);
+
+            //get the matches from session storage if exict
+            if(sessionStorage.getItem("matches")){ 
+                matches = sessionStorage.getItem("matches").split(",");
+                //if id in the matches from session storag 
+                if(matches.includes(`${i}`)){
+                    //remove onclick  and flip the card
+                    card.onclick = null;
+                    flip_card(card);
+                }
+            }
         }
+        //update the remain matches if exist a data fron the session
+        remainMatches-=(matches.length/2);
     }
 
     function flip_card(card_container) {
@@ -53,6 +79,7 @@ function Board(_images) {
         var currentCardIndex = Number(card_el.id.replace("image", ""));
         setSelectedCards(currentCardIndex);
     }
+
     function setSelectedCards(currentCardIndex) {
         if (selectedFirstCard) {
             selectedSecondCard = currentCardIndex;
@@ -73,6 +100,10 @@ function Board(_images) {
             document.querySelector("#image"+selectedSecondCard).onclick = null;
             selectedFirstCard = null;
             selectedSecondCard = null;
+            //set the cards in session storage
+            sessionStorage.setItem("cards", cards);
+            //set the matches in session storage 
+            sessionStorage.setItem("matches", matches);
         }
         else {
             setTimeout(function(){
@@ -82,6 +113,7 @@ function Board(_images) {
             }, 900);
         }
     }
+
     function toggleState() {
         let cards = document.querySelectorAll(".card_container");
         for (let card of cards) {
@@ -94,15 +126,56 @@ function Board(_images) {
 
     function checkWin() {
         if (remainMatches === 0){
-            document.querySelector("#board").style.display = "none";
-            document.querySelector("#message").classList.remove("hide");
-            document.querySelector("#message>h1").innerHTML = "You Won!!";
+            gameOver("You Won!!");
         }
+    }
+
+    function gameOver(msg) {
+        document.querySelector("#board").style.display = "none";
+        document.querySelector("#message").classList.remove("hide");
+        document.querySelector("#message>button").classList.remove("hide");
+        document.querySelector("#message>h1").innerHTML = msg;
+    }
+
+    this.timesUp = function (str) {
+        gameOver(str);
     }
 }
 
 function Card(animal) {
     this.image = 'imgs/' + animal + '.png';
+}
+
+function game_timer(game_obj, time_in_minutes) {
+    var timer = time_in_minutes*60;
+    var minutes;
+    var seconds;
+    var id = setInterval(() => {
+        timer--;
+        if((game_obj.getCards().length -2) === game_obj.getMatches().length) {
+            clearInterval(id);
+        }
+        else if(timer === 0) {
+            game_obj.timesUp("Time's up!! Game Over");
+            clearInterval(id);
+        }
+        minutes = Math.floor(timer/60);
+        seconds = timer%60;
+        document.querySelector("#clock>h1").innerHTML = `${minutes}:${seconds}`;
+    },1000);
+}
+
+function reset_game() {
+    document.querySelector("#board").style.display = "";
+    document.querySelector("#board").innerHTML = "";
+    sessionStorage.removeItem("matches");
+    sessionStorage.removeItem("cards");
+    document.querySelector("#message").classList.add("hide");
+    document.querySelector("#message>button").classList.add("hide");
+    document.querySelector("#message>h1").innerHTML = "";
+    var newboard = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
+    newboard.display(document.getElementById("board"));
+    game_timer(board, 5);
 }
 
 var catCard = new Card('cat');
@@ -115,3 +188,4 @@ var puppyCard = new Card('puppy');
 var rabbitCard = new Card('rabbit');
 var board = new Board([catCard, dogCard, goldfishCard, guineaPigCard, kittenCard, mouseCard, puppyCard, rabbitCard]);
 board.display(document.getElementById("board"));
+game_timer(board, 5);
