@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Gallery</title>
+
+    <style>
+        body {
+            background-color: rgba(117, 99, 124, 0.575);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        #main-pic-container {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arrow {
+            width: 50px;
+            height: 50px;
+        }
+
+        .arrow:hover{
+            border-radius: 20%;
+            background: rgba(71, 2, 128, 0.1);
+        }
+
+        .arrow:active{
+            background: rgba(68, 0, 131, 0.568);
+        }
+
+        #thumbnails-container {
+            display: flex;
+            border: 2px solid rgba(68, 0, 131, 0.568);
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(71, 2, 128, 0.1);
+        }
+
+        .thumbnail {
+            margin: 3px;
+        }
+
+        #thumbnails-container .thumbnail img {
+            border: 2px solid lightgray;
+            opacity: 0.7;
+        }
+
+        #thumbnails-container .thumbnail img:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="main-container">
+            <img id="left-arrow" class="arrow"
+                src="https://www.shareicon.net/data/128x128/2017/04/10/883645_arrows_512x512.png">
+            <div id="main-pic-container">
+                <div id="0"><img id="change-img"></div>
+            </div>
+            <img id="rigth-arrow" class="arrow"
+                src="https://www.shareicon.net/data/128x128/2017/04/10/883565_arrows_512x512.png">
+        </div>
+
+        <div id="thumbnails-container">
+            <div class="thumbnail" id="0"><img
+                    src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="1"><img
+                    src="https://images.unsplash.com/photo-1515777315835-281b94c9589f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="2"><img
+                    src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="3"><img
+                    src="https://images.unsplash.com/photo-1502744688674-c619d1586c9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="4"><img
+                    src="https://images.unsplash.com/photo-1485908518669-ad17eac8cb57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="5"><img
+                    src="https://images.unsplash.com/photo-1512798428556-626e79a5d83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="6"><img
+                    src="https://images.unsplash.com/photo-1505052533681-2be9d65eade5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="7"><img
+                    src="https://images.unsplash.com/photo-1508257939109-1019bff76c29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+            <div class="thumbnail" id="8"><img
+                    src="https://images.unsplash.com/photo-1476527201336-5ec3e1265173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const elements = document.getElementsByClassName("thumbnail");
+        var output = document.getElementById("output");
+        var picturesArray = [];
+        var mainPic = document.getElementById("change-img");
+
+        function Picture(src) {
+            this.src = src;
+        }
+
+        for (var i = 0; i < elements.length; i++) {
+            var picSrc = elements[i].firstChild.src;
+            picturesArray.push(new Picture(picSrc));
+        }
+
+        $(document).ready(function () {
+            $(".thumbnail").click(function () {
+                var id = this.id;
+                $("#change-img").attr('src', picturesArray[id].src);
+                var kids = $(this).children();
+                saveState(id);
+            });
+        });
+
+        document.getElementById("rigth-arrow").addEventListener('click', function () {
+            for (var i = 0; i < picturesArray.length - 1; i++) {
+                if (picturesArray[i].src === mainPic.src) {
+                    var nextPicIndex = i + 1;
+                    console.log(mainPic.src);
+                    mainPic.setAttribute('src', picturesArray[nextPicIndex].src);
+                    saveState(nextPicIndex);
+                    break;
+                }
+            }
+        });
+
+        document.getElementById("left-arrow").addEventListener('click', function () {
+            for (var i = 1; i < picturesArray.length; i++){
+                if(picturesArray[i].src === mainPic.src){
+                    var prevPicture = i - 1;
+                    mainPic.setAttribute('src', picturesArray[prevPicture].src);
+                    saveState(prevPicture);
+                }
+            }
+        });
+
+        function saveState(index){
+            localStorage.setItem('picToLoad', picturesArray[index].src);
+        }
+
+        window.onload = function () {
+            var picToLoad = localStorage.getItem('picToLoad');
+            if (picToLoad != "undefined" || picToLoad != "null") {
+                mainPic.setAttribute('src', picToLoad);
+            }
+            else {
+                mainPic.setAttribute('src', picturesArray[0].src);
+            }
+        }
+    </script>
+</body>
+
+</html>
