@@ -1,12 +1,14 @@
 class Account {
     constructor(accountNumber, ownerAccount) {
-        this.balance = 0;
+        let _balance = 0;
         this.accountNumber = accountNumber;
         this.ownerAccount = ownerAccount;
-    }
-
-    getBalance() {
-        return this.balance;
+        this.getBalance = () => {
+            return _balance;
+        }
+        this.setBalance = (newBalance) => {
+            _balance = newBalance;
+        }
     }
 }
 
@@ -15,10 +17,14 @@ class BankAccount extends Account {
         super(accountNumber, ownerAccount);
     }
     withdraw(amount) {
-        this.balance -= amount;
+        let _balance = this.getBalance();
+        _balance -= amount;
+        this.setBalance(_balance);
     }
     deposit(amount) {
-        this.balance += amount;
+        let _balance = this.getBalance();
+        _balance += amount;
+        this.setBalance(_balance);
     }
 }
 
@@ -27,10 +33,14 @@ class CreditCardAccount extends Account {
         super(accountNumber, ownerAccount);
     }
     withdraw(amount) {
-        this.balance -= amount;
+        let _balance = this.getBalance();
+        _balance -= amount;
+        this.setBalance(_balance);
     }
     deposit(amount) {
-        this.balance += amount;
+        let _balance = this.getBalance();
+        _balance += amount;
+        this.setBalance(_balance);
     }
     validateCreditCard() {
         const creditCard = JSON.stringify(this.accountNumber);
