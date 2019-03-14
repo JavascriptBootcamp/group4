@@ -39,11 +39,11 @@ class CreditCardAccount extends BankAccount {
         creditCardWithNoDashes = creditCardWithNoDashes.join(""); 
         creditCardNumbers =  creditCardWithNoDashes.split("").map(Number);
     
-        function checkLength(creditCardWithNoDashes) {
+        const checkLength = (creditCardWithNoDashes) => {
             return (creditCardWithNoDashes.length == 16);
         }
     
-        function checkAllItemsNumbers(creditCardNumbers) {
+        const checkAllItemsNumbers = (creditCardNumbers) => {
             var isAllItemsNumbers = creditCardNumbers.every(function(element){
                 creditCardNumbersSum += element;
                 return (element >=0 && element <=9);
@@ -52,18 +52,18 @@ class CreditCardAccount extends BankAccount {
             return isAllItemsNumbers;
         }
     
-        function checkDigitsSum() {
+        const checkDigitsSum = () => {
             return (creditCardNumbersSum > 16);
         }
     
-        function checkIfAllDigitsSame(creditCardNumbers) {
+        const checkIfAllDigitsSame = (creditCardNumbers) => {
             var isAllDigitsSame = creditCardNumbers.every(function(element){
                 return element === creditCardNumbers[0];
             });
             return !isAllDigitsSame;
         }
     
-        function CheckLastDigitEven(creditCardNumbers) {
+        const CheckLastDigitEven = (creditCardNumbers) => {
             return (creditCardNumbers[creditCardNumbers.length - 1] % 2 == 0)
         }
     
