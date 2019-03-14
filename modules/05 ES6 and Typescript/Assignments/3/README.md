@@ -1,6 +1,6 @@
 <p>use <code>group4/Modules/01 JavaScript Programming/Assignments/28</code>.</p>
 <p>convert <code>BankAccount</code> (and all its properties and methods) to an ES6 Class.</p>
-<p>create a parent ES6 class named <code>Account</code> and move the properties: <code>number</code>, <code>balance</code> and <code>owner</code> and the methods: <code>getBalance()</code> from <code>BankAccount</code> to it.</p>
+<p>create a parent ES6 class named <code>Account</code> and move the properties: <code>number</code> and <code>owner</code> and the methods: <code>getBalance()</code> from <code>BankAccount</code> to it.</p>
 <p>make <code>BankAccount</code> derive from <code>Account</code>.</p>
 <p>create an additional ES6 class named <code>CreditCardAccount</code> which also derives from <code>Account</code></p>
 <p>use <code>group4/Modules/01 JavaScript Programming/Assignments/19</code> in order to add credit card validation to <code>CreditCardAccount</code></p>
