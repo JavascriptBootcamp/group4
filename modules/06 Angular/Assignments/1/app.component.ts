@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.x = 5;
     this.x = ++this.x;
     this.x = ++this.x;
     this.x = ++this.x;
