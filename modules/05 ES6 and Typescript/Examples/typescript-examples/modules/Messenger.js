@@ -1,5 +1,3 @@
-"use strict";
-exports.__esModule = true;
 var Messenger = /** @class */ (function () {
     function Messenger(port) {
         this.port = 3000;
@@ -10,4 +8,6 @@ var Messenger = /** @class */ (function () {
     };
     return Messenger;
 }());
-exports.Messenger = Messenger;
+export { Messenger };
+export var str = "Hello world";
+console.log(str);
