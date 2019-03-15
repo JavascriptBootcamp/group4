@@ -1,6 +1,6 @@
 export interface Iplay{
-    play(song: string): string | void;
-    next(): string | void;
-    prev(): string | void;
+    play(song: string): void;
+    next(): void;
+    prev(): void;
 
 }
