@@ -1,0 +1,55 @@
+body{
+    background-color: pink;
+}
+#board{
+    position: absolute;
+
+    top:50%;
+left:50%;
+transform:translate(-50%,-50%); 
+ 
+}
+
+
+#newGame{
+    position: fixed;
+
+    top:42%;
+left:20%;
+transform:translate(-50%,-50%); 
+
+}
+
+#playAgain{
+    border-radius: 40%;
+    background-color: black;
+    color: aliceblue
+}
+
+       #timer{
+       font-variant-numeric: slashed-zero;
+}
+
+#board button{
+    border-radius: 20%;
+}
+
+#board button:hover{
+    box-shadow:
+    9px 9px 9px rgb(71, 23, 23); /* inner white */
+       
+        transform-style: preserve-3d;
+        z-index: 100px;;
+        transform: rotate(15deg);
+        transition-duration: 0.001s;
+       
+    }
+    #board button:active{
+    transform-style: preserve-3d;
+    transform: rotateY( -120deg);
+    }
+
+#playAgain{
+visibility: hidden;
+}
+    
