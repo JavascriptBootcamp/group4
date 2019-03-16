@@ -9,9 +9,12 @@
     <title>Instush</title>
 
     <style>
-        .container {
-            width: 200px;
-            height: 120px;
+        * {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        #container {
+            display: grid;
             border: 2px solid #7B008B;
             border-radius: 10px;
             padding: 10px;
@@ -26,7 +29,6 @@
 
         .like-btn,
         .counter {
-            font-family: 'Raleway', sans-serif;
             border-radius: 5px;
             font-size: 20px;
             padding: 3px;
@@ -49,19 +51,23 @@
 </head>
 
 <body>
-    <div class="container">
-        <img class="images" src="https://motorbikewriter.com/content/uploads/2017/02/CB300F-red.jpg">
-        <div class="inner-container">
-            <button class="like-btn">Like</button>
-            <div class="counter">3</div>
+    <div id="container">
+        <div class="item">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        function Image() {
+        function Image(src) {
             var likesCounter = 0;
-
+            this.src = src;
         }
+
     </script>
 </body>
 
