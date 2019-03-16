@@ -1,24 +1,21 @@
-function RandomWord (charsArray) {
-    if (typeof charsArray === 'object'){
-        //this.result = randomize(charsArray); 
+interface IRandomWord{
+    charsArray: number[];
+    randomize(length:string):string;
+}
+
+class RandomWord implements IRandomWord{
+    charsArray: number[];
+    constructor(charsArray){
+        this.charsArray = charsArray;
     }
-    else {
-        console.log ('"chars" should be an array.');
-    }
-    this.randomize = function(length){
-        if (typeof length === 'number')
-        {
-            var text = "";
-            var possible = charsArray.join("");
-            for (var i = 0; i < length; i++)
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-            return text;
-        } 
-        else {
-            console.log('"length" should be a number.');
-        }
+    randomize(length){
+        let text = "";
+        let possible = this.charsArray.join("");
+        for (var i = 0; i < length; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
     }
 }
 
-var word1 = new RandomWord(['a','b','c']);
+let word1 = new RandomWord(['a','b','c']);
 console.log(word1.randomize(10));
