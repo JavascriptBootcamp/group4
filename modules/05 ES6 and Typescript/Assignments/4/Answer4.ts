@@ -1,4 +1,4 @@
-//group4/Modules/01 JavaScript Programming/Assignments/22
+//***************************************** */group4/Modules/01 JavaScript Programming/Assignments/22*************************************
 
 function StringUtils1():void{
 
@@ -7,9 +7,9 @@ function StringUtils1():void{
         let vowels: string = "aeiou";
         let res: string = str.toLowerCase();
         for(let i:number = 0; i<res.length; i++){
-            // if(vowels.includes(res[i])){
-            //     count++;
-            // }
+            if(vowels.includes(res[i])){
+                count++;
+            }
         }
         return count;
     }
@@ -37,6 +37,7 @@ console.log("");
 console.log("");
 
 
+//***************************************** */group4/Modules/01 JavaScript Programming/Assignments/23***********************************
 class Word{
     private chars: string;
     public length: number;
@@ -65,10 +66,42 @@ function findLongestString(sentence):number{
 }
 
 let strMaxLength: number = findLongestString('Web Development Tutorial');
-
 console.log(strMaxLength);
 
-//group4/Modules/01 JavaScript Programming/Assignments/24
+
+
+
+//***************************/group4/Modules/01 JavaScript Programming/Assignments/24*******************************************
+interface IRandomWord{
+    randomize : (length:number) => string;
+}
+
+class RandomWord implements IRandomWord{
+    public charsArray:Array<string>;
+    constructor(charsArray:Array<string>){
+        this.charsArray = charsArray;
+    }
+
+    randomize = (length:number):string => {
+        if (typeof length === 'number')
+        {
+            let text:string  = "";
+            let possible:string = this.charsArray.join("");
+            for (let i:number = 0; i < length; i++){
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        } 
+        else {
+            console.log('"length" should be a number.');
+        }
+    }
+}
+
+
+let word1 : IRandomWord = new RandomWord(['a','b','c']);
+console.log(word1.randomize(10));
+
 
 
 
