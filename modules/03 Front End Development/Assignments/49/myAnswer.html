@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>My Solution For Module 01 - Question 20</title>
+        
+    </head>
+    <body>
+        <h1>Code:</h1>
+        <pre>
+            <span class="varColor">var</span> <span class ="variables">arr</span> <span class ="equal-S">=</span> <span>[</span><span>1</span><span class ="commas">,</span> <span>2</span><span class ="commas">,</span>  <span>5</span><span class ="commas">,</span>  <span>7</span><span>]</span><span>;</span>
+
+            <span class ="variables">function</span> <span class ="variables">myFilter</span><span>(</span><span class ="variables">arr</span><span class ="commas">,</span> <span class ="variables">callback</span><span>)</span>{
+                <span class="varColor">var</span> <span class ="variables">evenArr</span><span class ="equal-S">=</span>[];
+                <span>for</span> <span>(</span><span class="varColor">var</span> <span class ="variables">i</span> <span class ="equal-S">=</span> 0 ; <span class ="variables">i</span> < <span class ="variables">arr</span>.length ; <span class ="variables">i</span> ++<span>)</span>{
+                    <span>if</span> <span>(</span><span class ="variables">callback</span>(<span class ="variables">arr</span>[<span class ="variables">i</span>]<span>)</span><span>)</span>
+                    <span class ="variables">evenArr</span>.<span>push</span><span>(</span><span class ="variables">arr</span>[<span class ="variables">i</span>]<span>)</span>;
+                        
+                }
+                return <span class ="variables">evenArr</span>;
+            }
+            <span class="varColor">var</span> <span class ="variables">filtered</span> <span class ="equal-S">=</span> <span class ="variables">myFilter</span><span>(</span><span class ="variables">arr</span><span class ="commas">,</span>  <span class ="variables">function</span><span>(</span><span class ="variables">item</span><span>)</span>{
+                return <span class ="variables">item</span> % 2 <span class ="equal-S">=</span><span class ="equal-S">=</span><span class ="equal-S">=</span> 0;
+            }<span>)</span>;
+            <span class ="variables">console</span>.<span>log</span><span>(</span><span class ="variables">filtered</span><span>)</span>;
+        </pre>  
+    </body>
+</html>
