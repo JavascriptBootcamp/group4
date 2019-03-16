@@ -11,61 +11,247 @@
     <style>
         * {
             font-family: 'Raleway', sans-serif;
+            color: aliceblue;
+            font-weight: bold;
+        }
+
+        body {
+            background-color: rgb(183, 214, 228);
         }
 
         #container {
-            display: grid;
-            border: 2px solid #7B008B;
-            border-radius: 10px;
-            padding: 10px;
-            padding-bottom: 80px;
-            background: #EEBCEE;
+            display: flex;
+            flex-wrap: wrap;
         }
 
-        .container img {
+        img {
             width: 100%;
             height: auto;
+            border-radius: 2px;
         }
 
-        .like-btn,
-        .counter {
-            border-radius: 5px;
-            font-size: 20px;
-            padding: 3px;
+        .item {
+            margin: 10px;
+            width: 150px;
+            height: auto;
+            align-self: flex-end;
         }
 
-        .inner-container {
-            display: flex;
+        .item-params {
+            display: grid;
+            grid-template-columns: 110px auto;
+            margin-top: -4px;
         }
 
         .like-btn {
-            width: 100%;
+            border-radius: 2px;
+            background-color: rgb(127, 169, 194);
         }
 
         .counter {
-            background: #C03ED1;
-            padding-left: 7px;
-            padding-right: 7px;
+            display: flex;
+            background: rgb(0, 0, 0);
+            justify-content: center;
+            border-radius: 3px;
+        }
+
+        img:hover {
+            box-shadow: 0 34px 38px 0 rgba(0, 0, 0, 0.541), 0 6px 20px 0 rgba(0, 0, 0, 0.568);
+            cursor: pointer;
+        }
+
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.2);
+            transition: visibility 0.5s linear 0.2s, opacity 0.2s 0s, transform 0.2s;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+        }
+
+        .show-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1.0);
+            transition: visibility 0.5s linear 0.2s, opacity 0.7s 0s, transform 0.2s;
         }
     </style>
 </head>
 
 <body>
     <div id="container">
-        <div class="item">
+        <div class="modal">
+            <div class="modal-content">
+                <img>
+            </div>
+        </div>
+
+        <div class="item" id="0">
             <img class="images"
                 src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
             <div class="item-params">
                 <button class="like-btn">Like</button>
-                <div class="counter"></div>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="1">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1515777315835-281b94c9589f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="2">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="3">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1502744688674-c619d1586c9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="4">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1485908518669-ad17eac8cb57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="5">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1512798428556-626e79a5d83a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="6">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1505052533681-2be9d65eade5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="7">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1508257939109-1019bff76c29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="8">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1476527201336-5ec3e1265173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
+            </div>
+        </div>
+
+        <div class="item" id="9">
+            <img class="images"
+                src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60">
+            <div class="item-params">
+                <button class="like-btn">Like</button>
+                <div class="counter">0</div>
             </div>
         </div>
     </div>
 
     <script>
-        function Image(src) {
-            var likesCounter = 0;
+        const items = document.getElementsByClassName("item");
+        var likeBtns = document.getElementsByClassName("like-btn");
+        var itemsArray = [];
+
+        var modal = document.querySelector(".modal");
+        var trigger = document.querySelectorAll("img");
+
+        function Image(src, likesCounter) {
+            this.likesCounter = likesCounter;
             this.src = src;
+
+            Image.prototype.increseLikes = function () {
+                this.likesCounter += 1;
+            }
+        }
+
+        for (var i = 0; i < items.length; i++) {
+            var itemSrc = items[i].firstElementChild.src;
+            var likesCounter = items[i].lastElementChild.lastElementChild.innerHTML;
+            itemsArray.push(new Image(itemSrc, likesCounter));
+        }
+
+        function toggleModal() {
+            modal.classList.toggle("show-modal");
+            console.log(modal.firstElementChild.lastElementChild);
+            modal.firstElementChild.lastElementChild.src = this.src;
+        }
+
+        function windowOnClick(event) {
+            if (event.target === modal) {
+                toggleModal();
+            }
+        }
+
+        for (var i = 0; i < trigger.length; i++) {
+            trigger[i].addEventListener('click', toggleModal);
+        }
+        window.addEventListener('click', windowOnClick);
+
+        for (var i = 0; i < likeBtns.length; i++) {
+            likeBtns[i].addEventListener('click', function () {
+                for (var j = 0; j < itemsArray.length; j++) {
+                    if (this.parentNode.parentNode.id == j) {
+                        var img = new Image(itemsArray[j].src, itemsArray[j].likesCounter);
+                        img.increseLikes();
+                        itemsArray[j] = img;
+                        this.nextElementSibling.innerText = itemsArray[j].likesCounter;
+                        localStorage.setItem("savedData", JSON.stringify(itemsArray));
+                    }
+                }
+            });
+        }
+
+        window.onload = function () {
+            var storedData = JSON.parse(localStorage.getItem("savedData"));
+
+            if (storedData) {
+                itemsArray = storedData;
+                for (var i = 0; i < itemsArray.length; i++) {
+                    items[i].lastElementChild.lastElementChild.innerHTML = itemsArray[i].likesCounter;
+                }
+            }
         }
 
     </script>
