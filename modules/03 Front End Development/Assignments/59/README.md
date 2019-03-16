@@ -6,4 +6,4 @@
 <p>clicking the "Expand All" button should change its text to "Collapse All" and then clicking on it should do the opposite - collapses all sections.</p>
 <p>after collapsing the button should return to its initial state ("Expand All").</p>
 <p>Illustration: (all sections are collapsed except from "Sellers" wchich is expanded)</p>
-<img src="60.png" alt="" />
+<img src="59.png" alt="" />

@@ -1,0 +1,113 @@
+body{
+    background-color: lightgray;
+}
+*{
+    font-family: 'Trebuchet MS';
+}
+.page-header{
+    position: absolute;
+    left: 50%;
+    margin-left: -120px;
+}
+#btn-start-game{
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid darkgrey;
+}
+#btn-new-game{
+    width: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 4px solid darkgrey;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -55px;
+    margin-top: 160px;
+}
+.players-game{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -220px;
+    margin-left: -240px;
+}
+.players-game input{
+    border: 5px solid white;
+    background-color: #f0ffff;
+    border-radius: 4px;
+}
+.row {
+    float: left;
+}
+.board-game{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -120px;
+}
+.btn-circle{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+#player-turn{
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: 130px;
+    font-size: 25px;
+}
+#game-status{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -30px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+.switch-color{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -180px;
+    margin-left: -85px;
+}
+.switch-color input{
+      position: absolute;
+      height: 1px;
+      width: 1px;
+      clip: rect(0, 0, 0, 0);
+}
+.switch-color label{
+    float: left;
+    width: 50px;
+    background-color: #e4e4e4;
+    color: rgba(36, 20, 20, 0.6);
+    font-size: 16px;
+    text-align: center;
+    padding: 6px 14px;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+}
+.switch-color #light:checked + label{
+    background-color: #F4ACB7;
+    color: black;
+}
+.switch-color #dark:checked + label{
+    background-color: #D90429;
+    color: white;
+}
+.switch-color label:first-of-type{
+    border-radius: 4px 0 0 4px;
+    margin-right: 7px;
+}
+.switch-color label:last-of-type{
+    border-radius: 0 4px 4px 0;
+}

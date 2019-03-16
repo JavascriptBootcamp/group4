@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var RevealingKing = function(name){
+            var _name = name;
+
+            function printName(){
+                console.log(_name);
+            }
+
+            this.sayHello = function(){
+                console.log("hello");
+            }
+
+            return {
+                displayName: printName
+            }
+        }
+
+        function ThisKing(name){
+            var _name = name;
+
+            this.displayName = function(){
+                console.log(_name);
+            }
+
+            return {
+                x: null
+            }
+        }
+
+        var revealingMoshiko = new RevealingKing("Moshiko");
+        var thisGaby = new ThisKing("Gaby");
+
+        revealingMoshiko.sayHello();
+
+        revealingMoshiko.displayName();
+        thisGaby.displayName();
+    </script>
+</body>
+</html>

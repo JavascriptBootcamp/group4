@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Advanced Javascript - Ex 2</title>
+</head>
+
+<body>
+
+    <script>
+        function Storage(storageType) {
+            // var DB =  window[storageType];
+            // var DB = storageType === "localStorage" ? localStorage : sessionStorage;
+
+            var myDBs = { "localStorage" : localStorage, "sessionStorage" : sessionStorage};
+            var DB = myDBs[storageType];
+
+            function getItem(key) {
+                return DB.getItem(key);
+            }
+
+            function setItem(key, value) {
+                DB.setItem(key, value);
+            }
+
+            function removeItem(key) {
+                DB.removeItem(key);
+            }
+
+            function clear() {
+                DB.clear();
+            }
+
+            return {
+                "getItem": getItem,
+                "setItem": setItem,
+                "removeItem": removeItem,
+                "clear": clear
+            }
+        }
+
+        var lStorage = new Storage("localStorage");
+        lStorage.setItem("someKey1", "someValue1");
+        console.log(lStorage.getItem("someKey1")); // should print "someValue1"
+
+        var sStorage = new Storage("sessionStorage");
+        sStorage.setItem("someKey2", "someValue2");
+        console.log(sStorage.getItem("someKey2")); // should print "someValue2"
+    </script>
+</body>
+
+</html>

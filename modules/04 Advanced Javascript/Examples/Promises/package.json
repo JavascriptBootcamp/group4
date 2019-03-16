@@ -1,0 +1,18 @@
+{
+  "name": "foofoo",
+  "version": "1.0.0",
+  "description": "my cool example",
+  "main": "example01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "foo",
+    "bar"
+  ],
+  "author": "Myself",
+  "license": "ISC",
+  "dependencies": {
+    "promise-fs": "^2.0.1"
+  }
+}
