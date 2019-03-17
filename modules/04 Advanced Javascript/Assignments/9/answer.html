@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<title>My Album Web Application</title>
+		<style>
+			body {
+				background-color: purple;
+			}
+			
+			.subPic {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				margin-top:70px;
+			}
+			
+			.subPic:hover{
+				cursor:pointer;
+			}
+			
+			#container {
+				text-align: center;
+			}
+			#mainPicture 
+			{
+				margin-top: 40px;
+				height: 350px;
+				width: 350px;
+			}
+			
+			#mainPictureContainer {
+				display:block;
+			}
+			
+			.arrow{
+				margin-bottom: 50px;
+				width: 200px;
+				height: 200px;
+				display:inline-block;
+			}
+			
+			.arrow:hover{
+				cursor: pointer;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<div id="container">
+		
+			<div id="mainPictureContainer">
+				<div id="leftArrowContainer" class="arrow">
+					<img class="arrow" src="http://pixsector.com/cache/8ed3eed7/avb6b6c2625bcda563bf1.png" onclick="moveLeft()">
+				</div>
+			
+				<img data-index="0" id="mainPicture" src=#>
+				
+				<div id="rightArrowContainer" class="arrow">
+					<img class="arrow" src="http://pixsector.com/cache/d317f9c9/avefdb1ad8fbf8d8b72a2.png" onclick="moveRight()">
+				</div>
+			</div>
+			
+			<div id="subPicturesContainer">
+				<img data-index="0" class="subPic" src="">
+				<img data-index="1" class="subPic" src="">
+				<img data-index="2" class="subPic" src="">
+				<img data-index="3" class="subPic" src="">
+				<img data-index="4" class="subPic" src="">
+				<img data-index="5" class="subPic" src="">
+				<img data-index="6" class="subPic" src="">
+				<img data-index="7" class="subPic" src="">
+				<img data-index="8" class="subPic" src="">
+				<img data-index="9" class="subPic" src="">
+			</div>
+		</div>	
+		<script>
+		
+			var picturesArr = [];
+			const maxIndex = 9;
+			const minIndex = 0;
+			
+			var subPicsContainer = document.querySelector("#subPicturesContainer");
+			var currentPicture = document.querySelector("#mainPicture");
+			
+			function onStart()
+			{
+				var pic1 = new Picture();
+				var pic2 = new Picture();
+				var pic3 = new Picture();
+				var pic4 = new Picture();
+				var pic5 = new Picture();
+				var pic6 = new Picture();
+				var pic7 = new Picture();
+				var pic8 = new Picture();
+				var pic9 = new Picture();
+				var pic10 = new Picture();
+				
+				picturesArr.push(pic1);
+				picturesArr.push(pic2);			
+				picturesArr.push(pic3);
+				picturesArr.push(pic4);
+				picturesArr.push(pic5);			
+				picturesArr.push(pic6);
+				picturesArr.push(pic7);
+				picturesArr.push(pic8);			
+				picturesArr.push(pic9);		
+				picturesArr.push(pic10);
+				
+				for(var i = 0; i < subPicsContainer.children.length; i++)
+				{
+					console.log(picturesArr[i]);
+					subPicsContainer.children[i].src = picturesArr[i].src;
+					subPicsContainer.children[i].onclick = function(){
+						mainPicture.src = this.src;
+						mainPicture.setAttribute("data-index", this.getAttribute("data-index"));
+						saveMainPic();
+					}
+				}
+				
+				var mainPicFromMemory = localStorage.getItem("mainPic");
+				
+				if(mainPicFromMemory)
+				{
+					mainPicture.src = mainPicFromMemory;
+					mainPicture.setAttribute("data-index", localStorage.getItem("picIndex"));
+				}
+				else
+				{
+					currentPicture.src = picturesArr[0].src;
+				}
+			}
+			
+			function moveLeft()
+			{
+				var currentPictureIndex = Number(currentPicture.getAttribute("data-index"));
+				
+				if(currentPictureIndex > minIndex)
+				{
+					currentPicture.setAttribute("data-index", currentPictureIndex - 1);
+					currentPicture.src = picturesArr[currentPictureIndex - 1].src;
+					saveMainPic();
+				}
+			}
+			
+			function moveRight()
+			{
+				
+				var currentPictureIndex = Number(currentPicture.getAttribute("data-index"));
+				
+				if(currentPictureIndex < maxIndex)
+				{
+					currentPicture.setAttribute("data-index", currentPictureIndex + 1);
+					currentPicture.src = picturesArr[currentPictureIndex + 1].src;
+					saveMainPic();
+				}
+			}
+			function Picture()
+			{
+				generateRandomPicture(this);
+			}
+			
+			function saveMainPic()
+			{
+				localStorage.setItem("mainPic", mainPicture.src);
+				localStorage.setItem("picIndex", mainPicture.getAttribute("data-index"));
+			}
+			
+			function generateRandomPicture(obj)
+			{
+				fetch("https://picsum.photos/list").then( (stream) =>
+				{
+					stream.json().then(function(json){
+						myPics = json;
+						var picInstance = Math.floor(Math.random() * 994);
+						obj.src = "https://picsum.photos/200/300?image=" + myPics[picInstance].id;
+						obj.postUrl = myPics[picInstance].post_url;
+					})
+				}).catch();
+			}
+			
+			
+			onStart();
+		</script>
+	</body>
+</html>
