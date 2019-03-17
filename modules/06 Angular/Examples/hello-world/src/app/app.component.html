@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let person of persons">
+    <ul>
+      <li *ngFor="let hobby of person.hobbies">
+        {{ hobby }}
+      </li>
+    </ul>
+  </li>
+</ul>
