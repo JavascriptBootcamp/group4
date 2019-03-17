@@ -1,7 +1,8 @@
+//22
 interface IStringUtils<T> {
-    getVolwels: (str: T) => number;
-    removeChar: (str: T, pos: T) => string;
-    incrementLetters: (str: T) => string;
+    getVolwels: (str: string) => number;
+    removeChar: (str: string, pos: T) => string;
+    incrementLetters: (str: string) => string;
 }
 
 class StringUtils implements IStringUtils<string> {
@@ -57,3 +58,72 @@ try {
 catch (exeption) {
     console.log("Error:", exeption);
 }
+
+// 23
+
+interface IWord {
+    word: string;
+    length: number;
+}
+
+class Word implements IWord {
+
+    word: string;
+    length: number;
+
+    constructor(word: string) {
+        this.word = word;
+    }
+
+    public setLength(): void {
+        this.length = this.word.length;
+    }
+}
+
+function findLongestString(str: string): string {
+
+    const words: string[] = str.split(" ");
+    const wordObjectsArray: Word[] = [];
+    let longestWord: number;
+    let longestWordIndex: number = 0;
+
+    longestWord = words[0].length;
+
+    for (let i: number = 0; i < words.length; i++) {
+        wordObjectsArray.push(new Word(words[i]));
+        wordObjectsArray[i].setLength();
+        if (wordObjectsArray[i].length > longestWord) {
+            longestWordIndex = i;
+            longestWord = wordObjectsArray[i].length;
+        }
+    }
+
+    return words[longestWordIndex];
+}
+
+console.log(findLongestString('Web Development Tutorial'));
+
+// 24
+class RandomWord {
+    arr: string[];
+
+    constructor(arr: string[]) {
+        this.arr = arr;
+    }
+
+    randomize(length: number): string {
+        let chars = this.arr.join("");
+        let randomString = "";
+
+        for (let i: number = 0; i < length; i++) {
+            randomString += chars.charAt(Math.floor(Math.random() * this.arr.length));
+        }
+        return randomString;
+    }
+}
+
+let word: RandomWord = new RandomWord(['a', 'd', 's', 'z', 'a', 'k']);
+let result: string = word.randomize(10);
+console.log(result);
+result = word.randomize(2);
+console.log(result);
