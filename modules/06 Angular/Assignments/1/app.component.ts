@@ -12,15 +12,15 @@ export class AppComponent {
   // 2. set its value as 5
   // 3. pre - increment its value and assign the result to "x" 5 times
   // 4. log the value of "x"
-  _x: number;
+  x: number;
 
   constructor() {
-    this._x = 5;
+    this.x = 5;
   }
 
   ngOnInit() {
     for (let i = 0; i < 5; i++) {
-      ++this._x;
+      ++this.x;
     }
   }
 }
