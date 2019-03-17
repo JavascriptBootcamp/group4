@@ -12,7 +12,7 @@ export class AppComponent {
   // 2. set its value as 5
   // 3. pre - increment its value and assign the result to "x" 5 times
   // 4. log the value of "x"
-  _x: number = 5;
+  _x: number;
 
   constructor() {
     this._x = 5;
