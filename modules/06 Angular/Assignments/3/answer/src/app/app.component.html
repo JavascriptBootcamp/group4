@@ -1,0 +1,20 @@
+<h2>Food List:</h2>
+<ul *ngFor="let food of foods; let i = index;">
+  <li>
+    <h3>{{ 'My ' + (i+1) + switchSuffix(i + 1) + ' choice is ' + food }}</h3>
+  </li>
+</ul>
+
+<h2>Beverages List:</h2>
+<ul *ngFor="let beverage of beverages; let i = index;">
+  <li>
+    <h3>{{ 'My ' + (i+1) + switchSuffix(i + 1) + ' choice is ' + beverage}}</h3>
+  </li>
+</ul>
+
+<h2>Colors List:</h2>
+<ul *ngFor="let color of colors; let i = index;">
+  <li>
+    <h3>{{ 'My ' + (i+1) + switchSuffix(i + 1) + ' choice is ' + color}}</h3>
+  </li>
+</ul>
