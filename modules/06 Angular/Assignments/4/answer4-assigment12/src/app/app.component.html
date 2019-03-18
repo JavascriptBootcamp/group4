@@ -1,1 +1,9 @@
-<h1>The even words are: {{answer}}</h1>
+<ul>
+    <li><h3>recipe to {{recipeTo}}</h3></li>
+    <li>Serving: {{servings}}</li>
+    <li>ingredients:
+        <ul>
+            <li *ngFor="let ingredient of ingredients">{{ingredient}}</li>
+        </ul>
+    </li>
+</ul>

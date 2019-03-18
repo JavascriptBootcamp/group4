@@ -6,24 +6,14 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  sentence:string;
-  wordArray:string[];
-  result:string[];
-  answer:string;
+  recipeTo:string;
+  servings:number;
+  ingredients:string[];
   constructor(){
-    this.sentence="aaa bbbb asda 1331 ewe";
-    this.result=[];
-  }
-  evenWords() {
-    this.wordArray=this.sentence.split(' ');
-    for(let i=0;i<=this.wordArray.length-1;++i)
-    {  
-        if(this.wordArray[i].length%2===0)
-          this.result.push(this.wordArray[i]);
-    }
-    return this.result.join(' ');
   }
   ngOnInit(){
-    this.answer=this.evenWords();
+    this.recipeTo = "Salad",
+    this.servings = 2,
+    this.ingredients = ["Chamember","Tomato","Onion"]
   }
 }
