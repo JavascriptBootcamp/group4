@@ -1,0 +1,5 @@
+<ng-container *ngFor="let str of strArr" >
+    <span *ngIf="strArr.indexOf(str) %2 === 0">
+        <h3>{{str+" "}}</h3>
+    </span> 
+</ng-container>
