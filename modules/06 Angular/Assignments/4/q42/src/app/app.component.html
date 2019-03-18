@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <div *ngFor="let r of recipe | keyvalue">
+    <div *ngIf = "r.key === 'ingredients'">
+      Ingredients:
+      <div *ngFor="let i of r.value | keyvalue">
+        {{ i.value }}
+      </div>
+    </div>
+    <div *ngIf = "r.key === 'servings'">
+      servings:
+      <div>{{ r.value }}</div>
+    </div>
+  </div>
+
