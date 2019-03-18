@@ -1,0 +1,10 @@
+<div>
+  <h1  style="text-align:center">
+    {{recipe.title}}
+  </h1>
+<h3> servings: {{recipe.servings}}</h3>
+  <ul *ngFor="let item of recipe.ingredients">
+    <li>{{item}}</li>
+  </ul>
+  
+</div>
