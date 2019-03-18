@@ -1,4 +1,4 @@
-import { Component,OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,23 +6,24 @@ import { Component,OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  strArr:string[];
-  strAns:string;
+  sentence:string;
+  wordArray:string[];
+  result:string[];
   answer:string;
-  constructor(str:string){
-
+  constructor(){
+    this.sentence="aaa bbbb asda 1331 ewe";
+    this.result=[];
   }
-  evenWords(str:string) {
-    this.strArr=str.split(' ');
-    this.strAns="";
-    for(let i=1;i<=this.strArr.length;++i)
+  evenWords() {
+    this.wordArray=this.sentence.split(' ');
+    for(let i=0;i<=this.wordArray.length-1;++i)
     {  
-        if(i%2==0)
-            this.strAns+=this.strArr[i-1]+" ";
+        if(this.wordArray[i].length%2===0)
+          this.result.push(this.wordArray[i]);
     }
-    return this.strAns;
+    return this.result.join(' ');
   }
   ngOnInit(){
-    this.answer="something";//this.evenWords("aaa bbbb asda 1331 ewe");
+    this.answer=this.evenWords();
   }
 }
