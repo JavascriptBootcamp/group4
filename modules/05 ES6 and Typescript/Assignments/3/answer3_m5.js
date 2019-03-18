@@ -1,76 +1,27 @@
-/* var BankAccount = function(number , owner){
-    this.number = number;
-    this.owner = owner;
-    var balance = 0 ;
-    
-    this.withdraw = function(amount){
-    
-        balance -= amount; 
-    }
-    
-    this.deposit = function(amount){
-        
-        balance += amount; 
-    }
-    
-    
-    this.getBalance = function(){
-        console.log(`number : ${number} name: ${number} balance : ${balance}`);
-    }
-    
-    }
-    
-    var bankAccount1 = new BankAccount("111","avi");
-    var bankAccount2 = new BankAccount("222","moshe");
-    var bankAccount3 = new BankAccount("333","avi");
-    
-    bankAccount1.deposit(1000);
-    bankAccount2.deposit(1000);
-    bankAccount3.deposit(1000);
-    
-    bankAccount1.withdraw(200);
-    bankAccount2.withdraw(500);
-    bankAccount3.withdraw(1500);
-    
-    bankAccount1.getBalance();
-    bankAccount2.getBalance();
-    bankAccount3.getBalance();
-    
-    
- */
 
- 
- /* class BankAccount {
-     
+const validateCreditCard = require('./validateCreditCard.js');
+
+ class Account {
     constructor(number,owner) {
-     this.number = number;
-     this.owner = owner;
-     this.amount = 0;
+      this.balance = 0;
+      this.number = number;
+      this.owner = owner;
     }
 
     getBalance(){
-       return this.amount;
+    return this.balance;
     }
 
     withdraw(amount){
-      this.amount -= amount;
-    }
-
-    deposit(amount) {
-        this.amount =+ amount;
-    }
- } */
-
- class Account {
-     
-    constructor(number,owner) {
-     this.number = number;
-     this.owner = owner;
-    }
-
-    getBalance(){
-       return this.amount;
-    }
+    
+        this.balance -= amount; 
+       }
+       
+       deposit(amount){
+           
+           this.balance += amount; 
+       }
+       
 
  }
 
@@ -79,5 +30,30 @@ class BankAccount extends Account {
     constructor(number,owner) {
      super(number,owner);
     }
+
+       
+    
 }
- 
+
+class CreditCardAccount extends Account {
+
+    constructor(number,owner) {
+        super(number,owner);
+       }
+    
+       validateNumber(){
+        return validateCreditCard(this.number);
+       }
+}
+
+
+const bankOfAmericaAccount = new BankAccount(123456789, "John Doe");
+bankOfAmericaAccount.deposit(5000);
+bankOfAmericaAccount.withdraw(2000);
+const visaAccount = new CreditCardAccount(4580123412341234, "John Doe");
+visaAccount.deposit(10000);
+visaAccount.withdraw(3000);
+
+
+console.log(bankOfAmericaAccount.getBalance()); // 3000
+console.log(visaAccount.getBalance()); // 7000
