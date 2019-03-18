@@ -1,0 +1,7 @@
+<div style="text-align:center">
+  <div *ngFor="let item of obj | keyvalue">
+    <a href={{item.value.href}}>
+      <img src={{item.value.imgSrc}}>
+    </a>
+  </div>
+</div>
