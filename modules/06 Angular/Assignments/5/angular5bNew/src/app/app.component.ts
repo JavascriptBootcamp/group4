@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   books: object[];
-  constructor() {
+  constructor(private titleService : Title) {
+    this.titleService.setTitle("Books | Favorites");
     this.books = [
       {
         Title: "IT", Author: "Stephen King", Publicationdate: "September 15, 1986", Publisher: "Viking",
