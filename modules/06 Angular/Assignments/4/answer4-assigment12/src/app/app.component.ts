@@ -6,14 +6,14 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  recipeTo:string;
-  servings:number;
-  ingredients:string[];
+  title:string;
+  duration:number;
+  stars:string[];
   constructor(){
   }
   ngOnInit(){
-    this.recipeTo = "Salad",
-    this.servings = 2,
-    this.ingredients = ["Chamember","Tomato","Onion"]
+    this.title="Spiderman";
+    this.duration=120;
+    this.stars=["Peter","Merry","Moses"];
   }
 }
