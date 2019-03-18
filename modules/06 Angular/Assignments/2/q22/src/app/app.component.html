@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <div> typeof bool: boolean with {{(bool)}} value </div>
+  <div> typeof num: number with {{(num)}} value </div>
+  <div> typeof str: string with {{(str)}} value </div> 
+  <div> typeof names: object with [
+    <div *ngFor="let n of names | keyvalue;">
+        {{n.key }}: {{n.value}}
+    </div> value ]</div> 
+
