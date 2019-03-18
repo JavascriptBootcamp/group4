@@ -1,0 +1,11 @@
+<div style="text-align:center">
+  <h1>My Top 5 Books:</h1>
+  <div class="book" *ngFor="let book of books | keyvalue">
+    <h1>Title: {{book.value.Title}}</h1>
+    <h2>Author:{{book.value.Author}}</h2>
+    <h3>Publication date:{{book.value.Publicationdate}}</h3>
+    <h4>Publisher:{{book.value.Publisher}}</h4>
+    <h5>Pages:{{book.value.Pages}}</h5>
+    <p>comments:{{book.value.comments}}</p>
+  </div>
+</div>
