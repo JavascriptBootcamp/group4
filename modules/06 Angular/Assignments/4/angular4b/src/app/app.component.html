@@ -1,10 +1,10 @@
 <div style="text-align:center">
-  <div>
-    <h3> favorite recipe</h3>{{title }}
-    <h3> servings</h3>{{servings }}
-    <h3>ingredients</h3>
-    <div *ngFor="let i of ingredients">
-      {{i}}
+  <div *ngFor="let item of recipe | keyvalue">
+    <h3 *ngIf="item.key === 'title'">title : {{item.value}}</h3>
+    <h3 *ngIf="item.key === 'servings'">servings : {{item.value}}</h3>
+    <h3 *ngIf="item.key === 'ingredients'">ingredients</h3>
+    <div *ngFor="let i of item.value | keyvalue">
+      {{i.value}}
     </div>
   </div>
 </div>
