@@ -1,0 +1,6 @@
+<div style="text-align:center">
+  <div>
+    {{title}} lasts for {{duration}} minutes. Stars:
+    <span *ngFor="let star of stars; index as i"> {{star}} <span *ngIf="i<stars.length-1">,</span> </span>
+  </div>
+</div>
