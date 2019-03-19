@@ -1,0 +1,13 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+<div *ngFor="let b of books">
+  {{b["title"]}}  by "{{b["author"]}}"
+</div>
+ <div *ngFor="let b of books"> 
+    <div *ngIf="b['alreadyRead']">You already read {{b['title']}} by "{{b["author"]}}"</div>
+    <div *ngIf="!b['alreadyRead']">You still need to read {{b['title']}} by "{{b["author"]}}"</div>
+</div>
+
