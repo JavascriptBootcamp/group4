@@ -1,5 +1,18 @@
 <div style="text-align:center">
-  <div id="my-app">
-
-  </div>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Email Address</th>
+    </tr>
+    <tr *ngFor="let o of obj | keyvalue">
+        <td>{{o.value.firsName}}</td>
+        <td>{{o.value.lastName}}</td>
+        <td>{{o.value.address}}</td>
+        <td>{{o.value.phone}}</td>
+        <td><a href="mailto:{{o.value.mail}}"> {{o.value.mail}}</a></td> 
+     </tr>
+  </table>
 </div>
