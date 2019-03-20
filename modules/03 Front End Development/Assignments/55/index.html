@@ -8,39 +8,65 @@
             margin: 0px;
             padding: 0px;
         }
+		
+		#timer {
+			text-align:center;
+		}
         #board
         {
             position: fixed;
-            height: 400px;
-            width: 400px;
+            height: 500px;
+            width: 500px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
         .cell {
-        outline: 1px solid red;
-        float: left;
-        height: 100px;
-        width: 100px;
-           
+			padding: 10px;
+			float: left;
+			height: 130px;
+			width: 100px;
      }
-     button {
-        background-image: url(card.jpg) ;
-        background-size: 100px;
-     }
-
-     button:hover{
-        transform: rotateY(180deg);
-     }
+	 
+		 #reBtn
+		 {
+			text-align:center;
+			margin-left: 780px;
+			display: none;
+		 }
+		 
+		 button {
+			border-radius: 20px 20px 20px 20px;
+			background-image: url(card.jpg) ;
+			background-size: 100px;
+			perspective: 1000px;
+		 }
+		 
+		 button:hover{
+			box-shadow: 0px 0px 60px 0px rgba(232, 0, 0, 0.67);
+		 }
+		 .flipOn{
+			transition: transform 0.8s;
+			transform: rotateY(360deg);
+			transform-style: preserve-3d;
+			
+		 }
+		 
+		 .flipOff{
+			transition: transform 2s;
+			transform: rotateY(-180deg);
+			transform-style: preserve-3d;
+		 }
     </style>
 
     <title>JSBootcamp Memory Game</title>
 </head>
-<body>
-    <div id="board"></div>
-    <div id="message"></div>
+	<body>
+		<h1 id="timer"></h1>
+		<input type="button" id="reBtn" value="Restart game?">
+		<div id="board"></div>
+		<div id="message"></div>
 
-    <script src="script.js"></script>
-</body>
+		<script src="script.js"></script>
+	</body>
 </html>
