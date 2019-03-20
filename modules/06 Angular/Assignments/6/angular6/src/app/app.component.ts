@@ -1,14 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// interface Array {
-//   sort(): any[];
-// }
-// Array.prototype.sort = function () {
-//   let newarr: any[];
-//   for (let key in this) {
-//     this[key].firsName > this[key+1].firsName ? newarr.push(this[key + 1]) : newarr.push(this[key]);
-//   }
-//   return newarr;
-// }
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,7 +15,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.obj.sort((a, b) => (a.firsName > b.firsName) ? 1 : ((a.firsName < b.firsName) ? -1 : 0));
-    // this.obj.sort();
     let table = this.createTable();
     this.insertValue(table);
   }
