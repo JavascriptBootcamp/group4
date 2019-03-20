@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+
+
+  <table>
+    <tr bgcolor="#FFCCFF">
+      <th *ngFor="let h of header; index as i">
+        {{header[i]}}
+      </th>
+    </tr>
+      <tr bgcolor="#FFCCFF" *ngFor="let c of contacts">
+        <td>{{c["firstName"]}}</td>
+        <td>{{c["lastName"]}}</td>
+        <td>{{c["address"]}}</td>
+        <td>{{c["phoneNumber"]}}</td>
+        <td><a href='mailto:{{c["mail"]}}'> {{c["mail"]}}</a></td>
+      </tr>
+<!-- 
+    <tr bgcolor="#FFCCFF">
+      <td>Nadav</td>
+      <td>Choen</td>
+      <td>Jerusalem</td>
+      <td>052-7855698</td>
+      <td><a href="mailto:nadav@c.com"> nadav@c.com</a></td>
+    </tr>
+
+    <tr bgcolor="#FFCCFF">
+      <td>Uriel</td>
+      <td>Last Name</td>
+      <td>Haifa</td>
+      <td>054-8565465</td>
+      <td><a href="mailto:uriel@u.com"> uriel@u.com</a></td>
+    </tr> -->
+  </table>
