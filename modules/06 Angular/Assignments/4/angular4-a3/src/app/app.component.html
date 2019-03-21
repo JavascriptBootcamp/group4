@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+<h3>title: {{favMovie.title}}</h3>
+<h3>duration: {{favMovie.duration}}</h3>
+<h3>stars:</h3>
+<ul>
+  <li *ngFor="let i of favMovie.stars">
+    {{ i }}
+  </li>
+</ul>
