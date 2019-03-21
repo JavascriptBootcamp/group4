@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+<h3>title: {{recpie.title}}</h3>
+<h3>servings: {{recpie.servings}}</h3>
+<h3>ingredients:</h3>
+<ul>
+	<li *ngFor="let i of recpie.ingredients">
+		{{ i }}
+	</li>
+</ul>
