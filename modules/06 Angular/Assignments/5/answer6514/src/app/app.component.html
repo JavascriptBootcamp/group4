@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<h2>food </h2>
+
+<ul *ngFor="let food of foods; let i = index"> 
+  <li>
+          {{i}} - {{food}}
+  </li>
+
+</ul>
+
+<h2>beverage </h2>
+
+<ul *ngFor="let beverage of beverages; let i = index"> 
+  <li>
+          {{i}} - {{beverage}}
+  </li>
+
+</ul>
+<h2>colors </h2>
+
+<ul *ngFor="let color of colors; let i = index"> 
+  <li>
+          {{i}} - {{color}}
+  </li>
+
+</ul>

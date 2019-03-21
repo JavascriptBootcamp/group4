@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div *ngFor="let book of books">
+
+  {{ book.title}} by {{book.author}}
+
+
+</div>
+<br>
+<div *ngFor="let book of books">
+
+  <div *ngIf="book.alreadyRead; else elseBlock">
+    <h4> already read {{ book.title}} by {{book.author}} </h4>
+
+  </div>
+  <ng-template #elseBlock>
+    <h4> You still need to read {{ book.title}} by {{book.author}}</h4>
+
+  </ng-template>
+
+</div>
