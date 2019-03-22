@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <b>
+    <div *ngFor="let food of foods; index as i">
+      My {{i+1}}{{switchSuffix(i+1)}} choice is {{food}}
+    </div>
+    <br>
+    <div *ngFor="let beverage of beverages; index as i">
+      My {{i+1}}{{switchSuffix(i+1)}} choice is {{beverage}}
+    </div>
+    <br>
+    <div *ngFor="let color of colors; index as i">
+      My {{i+1}}{{switchSuffix(i+1)}} choice is {{color}}
+    </div>
+  </b>
+  </div>
