@@ -1,0 +1,14 @@
+<h1>Recipe</h1>
+<div>
+  <ul *ngFor="let item of recipe | keyvalue">
+    <li *ngIf="item.key === 'title'">{{item.value}}</li>
+    <li *ngIf="item.key === 'servings'">serves:{{item.value}}</li>
+    <li *ngIf="item.key === 'ingredients'">Ingredients:
+      <ul>
+        <li *ngFor="let ingredient of item.value">
+          {{ingredient}}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

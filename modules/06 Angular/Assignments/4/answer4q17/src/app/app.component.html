@@ -1,0 +1,5 @@
+<div>{{favoriteMovie.title}} lasts for {{favoriteMovie.duration}} minutes.
+    Stars:<span *ngFor="let item of favoriteMovie.stars;let i = index">
+      {{item}} <span *ngIf="i<favoriteMovie.stars.length-1">,</span>
+    </span>.
+  </div>
