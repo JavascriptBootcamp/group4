@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <b>
+    <div *ngFor="let book of books;">
+       {{book.title}} by  {{book.author}}
+    </div>
+    <br>
+    <div *ngFor="let book of books; index as i">
+      <span *ngIf="book.alreadyRead">You already read {{book.title}} by "{{book.author}}"</span>
+      <span *ngIf="!book.alreadyRead">You still need to read {{book.title}} by "{{book.author}}"</span>
+   </div>
+    
+  </b>
+  </div>
