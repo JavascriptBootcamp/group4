@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  title = 'answer5toModule01Answer14';
+
+  favoriteColors: string[];
+
+  constructor() {
+    this.favoriteColors = ['green', 'blue', 'black', '#66ccff', '#ccffcc'];
+  }
+}
