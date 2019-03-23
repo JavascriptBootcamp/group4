@@ -5,9 +5,13 @@
   </h1>
 
 
-  <div style="text-align:center" *ngFor="let color of favoriteColors; index as i;">
-    My #{{i+1}} choice is {{color}} color
+  <div *ngFor="let bookObj of booksObjects">
+      <h1>Title: {{bookObj.title}}</h1>
+      <h2>Author: {{bookObj.author}}</h2>
+      <h3>Already read: {{bookObj.alreadyRead}}</h3>
+      <br>
   </div>
+
 
 
 
