@@ -20,10 +20,10 @@ export class AppComponent {
 
 }
 class Image {
-  private href: string;
-  private src: string;
-  private height: number;
-  private width: number;
+   href: string;
+   src: string;
+   height: number;
+   width: number;
   constructor(href: string, src: string, height: number, width: number) {
     this.href = href;
     this.src = src;
