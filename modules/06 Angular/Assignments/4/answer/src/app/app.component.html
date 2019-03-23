@@ -3,10 +3,20 @@
 <h3>Example output: {{ evenWords('aaa bbbb asda 1331 ewe') }}</h3>
 
 <hr>
-<h1>Ex 15:</h1> 
-<h3 *ngFore="let key of Object.keys(recipe)">{{ key }}</h3>
+<h1>Ex 15:</h1>
+<div *ngFor="let key of recipe_keys"> 
+    <h3 *ngIf="key==='title'">Title: {{ recipe[key] }}</h3>
+    <h3 *ngIf="key==='servings'">Serves: {{ recipe[key] }}</h3>
+    <div *ngIf="key==='ingredients'">
+        <h3>{{ key }} -</h3>
+        <ul *ngFor="let ingredient of recipe[key]">
+            <li>
+                <h4>{{ ingredient }}</h4>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <hr>
 <h1>Ex 17:</h1>
-<h3>Example input: 'aaa bbbb asda 1331 ewe'</h3> 
-<h3>Example output: {{ evenWords('aaa bbbb asda 1331 ewe') }}</h3>
+<h3>{{ printMovieParams(favoriteMovie) }}</h3> 
