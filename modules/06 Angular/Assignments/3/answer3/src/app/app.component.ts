@@ -1,48 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  groups: string [][];
+export class AppComponent {  // don't need to implement OnInit
+  title = 'answer 3';
+  favoriteColorsArr: string[];
+
   constructor() {
-    this.groups = [];
+    this.favoriteColorsArr = ['green', 'blue', 'black', '#66ccff', '#ccffcc'];
   }
-  ngOnInit() {
-    let j: number = 0;
-    let food: string [] = ['hamburger', 'BBQ', 'salad'];
-    let beverage: string []= ['beer', 'vodka', 'coke'];
-    let colors: string [] = ['blue', 'green', 'black'];
-    this.groups.push([]);
-    for (let i = 0; i < food.length; i++) {
-      let str = 'My ' + (i + 1) + switchSuffix(i + 1) + ' choice is ' + food[i];
-      this.groups[j].push(str);
-    }
-    j++;
-    this.groups.push([]);
-    for (let i = 0; i < beverage.length; i++) {
-      let str = 'My ' + (i + 1) + switchSuffix(i + 1) + ' choice is ' + beverage[i];
-      this.groups[j].push(str);
-    }
-    j++;
-    this.groups.push([]);
-    for (let i = 0; i < colors.length; i++) {
-      let str = 'My ' + (i + 1) + switchSuffix(i + 1) + ' choice is ' + colors[i];
-      this.groups[j].push(str);
-    }
-    function switchSuffix(num) {
-      switch (num) {
-        case 1:
-          return 'st'
-        case 2:
-          return 'nd'
-        case 3:
-          return 'rd';
-        case 4:
-          return 'th';
-      }
+
+
+  switchToVerbalCounting(num: number): string {
+    switch (num) {
+      case 1:
+        return 'first'
+      case 2:
+        return 'second'
+      case 3:
+        return 'third';
+      case 4:
+        return 'fourth';
+      case 5:
+        return 'fifth';
     }
   }
+
 }
