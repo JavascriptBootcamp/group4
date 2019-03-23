@@ -1,0 +1,33 @@
+<li *ngFor="let s of str ">
+  {{ s }}
+</li>
+<br><br>
+
+<li *ngFor="let book of books ">
+  {{book.title}} by {{book.author}}
+</li>
+<br><br>
+
+<li *ngFor="let book of books ">
+  <ng-template #elseTemplate>
+    You still need to read {{book.title}} by {{book.author}}
+  </ng-template>
+  <ng-container *ngIf="book.alreadyRead; else elseTemplate">
+    You already read {{book.title}} by {{book.author}}
+  </ng-container>
+</li><br><br>
+
+<div *ngFor="let book of _books">
+  Title: {{book.Title}} <br>
+  Author: {{book.Author}} <br>
+  Publication date: {{book.PublicationDate}} <br>
+  Publisher: {{book.Publisher}} <br>
+  Pages: {{book.Pages}} <br>
+  comments: {{book.comments}} <br> <br><br><br>
+</div><br><br>
+
+<div *ngFor="let img of images" style="display:inline-block">
+  <a href={{img.aHref}}>
+    <img src={{img.imgSrc}} height="200" width="300">
+  </a>
+  <div>
