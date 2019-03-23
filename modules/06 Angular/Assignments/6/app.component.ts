@@ -16,17 +16,8 @@ export class AppComponent   {
 ]
 
 ngOnInit(){
-  
-  this.contacts.sort(function compare(a:any, b:any) {
-    if (a.fname<b.fname) {
-      return -1;
-    }
-    if (a.fname>b.fname) {
-      return 1;
-    }
-    // a must be equal to b
-    return 0;
-  });
+ this.contacts.sort((a:any, b:any)=>
+     (a.fname<b.fname) ? -1: (a.fname>b.fname)? 1: 0);
 }
 
 }
