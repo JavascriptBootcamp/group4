@@ -38,7 +38,12 @@ export class AppComponent implements OnInit {
     this.contacts.forEach((value, index) => {
       let row: HTMLTableRowElement = this.tbody.insertRow(index);
       for (let key in value) {
-        row.insertCell(-1).innerHTML = value[key];
+        if (key === "emailAddress") {
+          row.insertCell(-1).innerHTML = `<a href="mailto:${value[key]}">${value[key]}</a>`;
+        }
+        else {
+          row.insertCell(-1).innerHTML = value[key];
+        }
       }
     });
   }
