@@ -17,12 +17,12 @@ export class AppComponent {
 
 }
 class Book {
-  private title: string;
-  private author: string;
-  private publicationDate: string;
-  private publisher: string;
-  private page: number;
-  private comments: string;
+   title: string;
+   author: string;
+   publicationDate: string;
+   publisher: string;
+   page: number;
+   comments: string;
   constructor(title: string, author: string, publicationDate: string, publisher: string, page: number, comments: string) {
     this.title = title;
     this.author = author;
