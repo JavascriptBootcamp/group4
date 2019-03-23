@@ -1,4 +1,14 @@
-
-<div *ngFor="let i of recipe">
-{{switching()}}
+<div>
+  title: {{recipe.title}}
+</div>
+<div>
+  Serves: {{recipe.servings}}
+</div>
+<div>
+  Serves: 
+  <ul>
+      <li *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient}}
+      </li>
+  </ul>
 </div>
