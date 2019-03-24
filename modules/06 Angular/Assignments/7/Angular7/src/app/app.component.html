@@ -1,0 +1,23 @@
+<h1>Using *ngIf</h1>
+
+
+<div *ngFor="let p of _pepole">
+    <span *ngIf="p.isNormal; else condition ">
+          {{p.name}} <br>
+          {{p.bloodPressure}} <br>
+          {{p.isNormal}}
+    </span><br><br>
+    <ng-template #condition>
+      <span>
+        {{p.name}} <br>
+        {{p.bloodPressure}} <br>
+        {{p.isNormal}}
+      
+      </span>
+    </ng-template>
+    
+</div> <br><br>
+
+
+
+
