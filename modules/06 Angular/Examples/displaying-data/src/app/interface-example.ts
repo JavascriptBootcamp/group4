@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+interface Name {
+  first: string,
+  last: string
+}
+
+interface Person {
+  name: Name,
+  bloodPressure: number
+}
 
 @Component({
   selector: 'app-root',
@@ -8,21 +18,30 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styles: ['h1{ color: blue }']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
+  people: Person[];
   bookTitle: string;
   colors: string[] = ["red", "blue", "green"];
   months: string[] = ["January", "February", "March", "April"];
   isavailable: boolean = true;
   sampleObject = {foo: 'bar', baz: 'qux', nested: {xyz: 3, numbers: [1, 2, 3, 4, 5]}};
 
-  ngOnInit() {
-    fetch("https://www.googleapis.com/books/v1/volumes?q=javascript")
-    .then( response => response.json() )
-    .then( data => {
-      console.log('DATA', data);
-      this.displayTitle(data.items[3].volumeInfo.title)
-    } )
+
+  constructor(){
+    let lital:Person = {
+      name: {
+        first: 'Lital',
+        last: 'Rabiner'
+      },
+      bloodPressure: 120
+    }
+    let daniel: Person = {
+      name: "Daniel",
+      bloodPressure: 120
+    }
+    people = [lital, daniel];
   }
+
 
   displayTitle(value){
     this.bookTitle = value;
