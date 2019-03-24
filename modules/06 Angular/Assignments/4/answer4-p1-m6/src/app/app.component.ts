@@ -30,7 +30,7 @@ export class AppComponent implements OnInit{
 
   evenWords(st:string):string {
 
-    let evenWordArr:string[];
+    let evenWordArr:string[] = [];
     let splintWords = st.split(" ");
     
 
