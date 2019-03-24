@@ -1,0 +1,15 @@
+<h1>Using *ngIf</h1>
+<div *ngFor="let people of peoples">
+    <label *ngIf="isNormal(people.bloodPressure);else noNormal">
+      {{people.name}} has Normal blood Pressure
+    </label>
+    <ng-template #noNormal>
+      <label>{{people.name}} has not Normal blood Pressure</label>
+    </ng-template>
+  </div>
+
+  <br/>
+
+  <h1>Using pipe</h1>
+
+  
