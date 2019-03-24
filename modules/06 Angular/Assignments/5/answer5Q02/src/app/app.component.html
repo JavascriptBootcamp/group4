@@ -1,0 +1,7 @@
+<h2>Images | Favorites</h2>
+
+<span *ngFor='let image of images'>
+  <a [href]="image.wiki">
+      <img [src]="image.imageSrc">
+  </a>
+</span>

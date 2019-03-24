@@ -1,0 +1,8 @@
+<span *ngFor='let book of books'>
+  <div *ngIf="book.alreadyRead ; else notRed">
+    {{book.title}} by {{book.author}} you have already red!
+  </div>
+  <ng-template #notRed>
+    {{book.title}} by {{book.author}} you must read
+  </ng-template>
+</span>

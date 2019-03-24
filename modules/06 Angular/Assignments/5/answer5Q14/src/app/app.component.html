@@ -1,0 +1,32 @@
+<span *ngFor="let food of foods ; index as i">
+  <span [ngSwitch]="i">
+    <li *ngSwitchCase="0">My 1st choise is {{food}}</li>
+    <li *ngSwitchCase="1">My 2nd choise is {{food}}</li>
+    <li *ngSwitchCase="2">My 3rd choise is {{food}}</li>
+    <li *ngSwitchCase="3">My 4th choise is {{food}}</li>
+  </span>
+</span>
+
+<br>
+
+<span *ngFor="let beverage of beverages ; index as i">
+    <span [ngSwitch]="i">
+      <li *ngSwitchCase="0">My 1st choise is {{food}}</li>
+      <li *ngSwitchCase="1">My 2nd choise is {{food}}</li>
+      <li *ngSwitchCase="2">My 3rd choise is {{food}}</li>
+      <li *ngSwitchCase="3">My 4th choise is {{food}}</li>
+    </span>
+  </span>
+
+  <br>
+
+  <span *ngFor="let color of colors ; index as i">
+      <span [ngSwitch]="i">
+        <li *ngSwitchCase="0">My 1st choise is {{food}}</li>
+        <li *ngSwitchCase="1">My 2nd choise is {{food}}</li>
+        <li *ngSwitchCase="2">My 3rd choise is {{food}}</li>
+        <li *ngSwitchCase="3">My 4th choise is {{food}}</li>
+      </span>
+    </span>
+    
+  
