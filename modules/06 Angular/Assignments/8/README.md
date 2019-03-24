@@ -5,18 +5,47 @@ create an Angular pipe which returns whether two strings are anagrams* of each o
 <ul>
 <li>
 <code>
-isAnagram('rail safety', 'fairy tales')
+'rail safety' and 'fairy tales' is anagram
 </code>
 </li>
 <li>
 <code>
-isAnagram('RAIL! SAFETY!', 'fairy tales') 
+'RAIL! SAFETY!' and 'fairy tales' is anagram
 </code>
 </li>
 </ul>
 <p>
-create an array of two strings and display a boolean indicating <code>isAnagram</code> next to them
+separate two strings with a question mark and display a boolean indicating if the strings from left and right to the question mark is anagram
 </p>
+<h4>examples of Angular code:</h4>
+<ul>
+<li>
+  Input: 
+<code>
+{{ 'rail safety ? fairy tales' | isanagram }}
+</code>
+</li>
+<li>
+  Output: 
+<code>
+"rail safety" and "fairy tales" true
+</code>
+</li>
+  </ul>
+  <ul>
+  <li>
+  Input: 
+<code>
+{{ '123rail safety ? fairy tales' | isanagram }}
+</code>
+</li>
+<li>
+  Output: 
+<code>
+"123rail safety" and "fairy tales" false
+</code>
+</li>
+</ul>
 <p>
 * if a string uses the same characters as anohter then this string is an anagram
 </p>
