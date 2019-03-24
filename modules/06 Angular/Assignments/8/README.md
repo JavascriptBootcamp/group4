@@ -5,24 +5,24 @@ create an Angular pipe which returns whether two strings are anagrams* of each o
 <ul>
 <li>
 <code>
-'rail safety' and 'fairy tales' is anagram
+'rail safety' and 'fairy tales' are anagrams
 </code>
 </li>
 <li>
 <code>
-'RAIL! SAFETY!' and 'fairy tales' is anagram
+'RAIL! SAFETY!' and 'fairy tales' are anagrams
 </code>
 </li>
 </ul>
 <p>
-separate two strings with a question mark and display a boolean indicating if the strings from left and right to the question mark is anagram
+separate two strings with a question mark and display a boolean indicating if the strings from left and right to the question mark are anagrams
 </p>
 <h4>examples of Angular code:</h4>
 <ul>
 <li>
   Input: 
 <code>
-{{ 'rail safety?fairy tales' | isanagram }}
+{{ 'rail safety?fairy tales' | areanagrams }}
 </code>
 </li>
 <li>
@@ -36,7 +36,7 @@ separate two strings with a question mark and display a boolean indicating if th
   <li>
   Input: 
 <code>
-{{ '123rail safety?fairy tales' | isanagram }}
+{{ '123rail safety?fairy tales' | areanagrams }}
 </code>
 </li>
 <li>
