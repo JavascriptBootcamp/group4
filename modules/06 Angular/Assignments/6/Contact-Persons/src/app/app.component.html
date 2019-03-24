@@ -12,7 +12,7 @@
           <th>Phone Number</th>
           <th>Email Address</th>
       </tr>
-      <tr bgcolor="#FFCCFF" *ngFor="let person of persons">
+      <tr bgcolor="#FFCCFF" *ngFor="let person of persons.sort()">
          <td>{{person.name}}</td>
          <td>{{person.last_name}}</td>
          <td>{{person.Address}}</td>

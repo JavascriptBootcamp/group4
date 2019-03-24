@@ -21,7 +21,7 @@ Array.prototype.sort = function(){
         x = {...arr[j]};
        y = {...arr[j+1]};
        if(j<arr.length-1){
-       if(compareNames(x,y) === -1){
+       if(x.name.toLowerCase()>y.name.toLowerCase()){
        arr[j] = y;
        arr[j+1] = x;
         compareCells(arr);
@@ -32,19 +32,7 @@ Array.prototype.sort = function(){
    return arr;
  }
  
- function compareNames(a:Iperson,b:Iperson):number{
- let num:number = 0;
- const a_name:string = a.name.toLowerCase();
- const b_name:string  = b.name.toLowerCase();
- if(a_name>b_name){
- num = -1;
- }
- else if(b_name>a_name){
- num = 1;
- }
- return num;
- }
-  } 
+} 
  
 
 @Component({
@@ -63,7 +51,7 @@ export class AppComponent {
       {name:"Uriel",last_name:"Brosh",Address:"Haifa",Phone:"054-5796354",Email:{link:"mailto:uriel@u.com",mail:"uriel@u.com"}},
       {name:"Aadav",last_name:"Choen",Address:"Jerusalem",Phone:"054-5796354",Email:{link:"mailto:nadav@c.com",mail:"nadav@c.com"}},
       {name:"Briel",last_name:"Brosh",Address:"Haifa",Phone:"054-5796354",Email:{link:"mailto:uriel@u.com",mail:"uriel@u.com"}}
-    ].sort();
+    ]
   }
 
 
