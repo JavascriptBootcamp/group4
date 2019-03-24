@@ -17,32 +17,32 @@ export class AppComponent implements OnInit {
     let colors: string [] = ['blue', 'green', 'black'];
     this.groups.push([]);
     for (let i = 0; i < food.length; i++) {
-      let str = 'My ' + (i + 1) + switchSuffix(i + 1) + ' choice is ' + food[i];
+      let str = 'My ' + (i + 1) + this.switchSuffix(i + 1) + ' choice is ' + food[i];
       this.groups[j].push(str);
     }
     j++;
     this.groups.push([]);
     for (let i = 0; i < beverage.length; i++) {
-      let str = 'My ' + (i + 1) + switchSuffix(i + 1) + ' choice is ' + beverage[i];
+      let str = 'My ' + (i + 1) + this.switchSuffix(i + 1) + ' choice is ' + beverage[i];
       this.groups[j].push(str);
     }
     j++;
     this.groups.push([]);
     for (let i = 0; i < colors.length; i++) {
-      let str = 'My ' + (i + 1) + switchSuffix(i + 1) + ' choice is ' + colors[i];
+      let str = 'My ' + (i + 1) + this.switchSuffix(i + 1) + ' choice is ' + colors[i];
       this.groups[j].push(str);
     }
-    function switchSuffix(num) {
-      switch (num) {
-        case 1:
-          return 'st'
-        case 2:
-          return 'nd'
-        case 3:
-          return 'rd';
-        case 4:
-          return 'th';
-      }
+  }
+  switchSuffix(num) {
+    switch (num) {
+      case 1:
+        return 'st'
+      case 2:
+        return 'nd'
+      case 3:
+        return 'rd';
+      case 4:
+        return 'th';
     }
   }
 }
