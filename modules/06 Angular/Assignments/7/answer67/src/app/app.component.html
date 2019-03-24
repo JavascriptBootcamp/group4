@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Using *ngIf
+  </h1>
+</div>
+<div *ngFor="let people of peoples">
+   person name- {{people.name}}
+</div>
+
+
+
+<span *ngFor="let people of peoples">
+  <span *ngIf="people.bloodPressure >=80 && people.bloodPressure <=120 ; else notvalid" >
+    <h3>
+
+      {{people.name}} bloodPressure is valid
+      
+    </h3>
+    
+    
+    </span>
+    <ng-template #notvalid>
+      <h3>
+        {{people.name}} bloodPressure is not valid
+      </h3>
+    </ng-template>
+</span>
+<h1>
+  Using pipe
+</h1>
+
+<span *ngFor="let people of peoples">
+  {{people.bloodPressure| Blood }}
+</span>  
