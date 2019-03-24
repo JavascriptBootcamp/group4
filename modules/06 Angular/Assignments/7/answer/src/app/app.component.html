@@ -1,0 +1,18 @@
+
+<h1>Joe - blood pressure : {{ bloodPressure }}</h1>
+
+<hr>
+<h1>Using *ngIf :</h1>
+
+<ng-container *ngIf="bloodPressure >= 80 && bloodPressure <= 120; else not_normal">
+  <h2>Joe blood pressure in normal</h2>
+</ng-container>
+<ng-template #not_normal>
+  <h2>Joe blood pressure in not normal</h2>
+</ng-template>
+
+
+
+<hr>
+<h1>Using Pipes :</h1>
+
