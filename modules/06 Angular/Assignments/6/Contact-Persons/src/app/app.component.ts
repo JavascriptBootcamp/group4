@@ -11,6 +11,42 @@ interface Iperson{
   }
 }
 
+
+Array.prototype.sort = function(){
+  return compareCells(this);
+ 
+  function compareCells(arr:Iperson[]){
+     let x:Iperson,y:Iperson;
+     for(let j:number=0;j<arr.length;j++){
+        x = {...arr[j]};
+       y = {...arr[j+1]};
+       if(j<arr.length-1){
+       if(compareNames(x,y) === -1){
+       arr[j] = y;
+       arr[j+1] = x;
+        compareCells(arr);
+        break;
+       }
+   }
+  }
+   return arr;
+ }
+ 
+ function compareNames(a:Iperson,b:Iperson):number{
+ let num:number = 0;
+ const a_name:string = a.name.toLowerCase();
+ const b_name:string  = b.name.toLowerCase();
+ if(a_name>b_name){
+ num = -1;
+ }
+ else if(b_name>a_name){
+ num = 1;
+ }
+ return num;
+ }
+  } 
+ 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,8 +60,14 @@ export class AppComponent {
     this.persons = [
       {name:"Daniel",last_name:"Brosh",Address:"Ashkelon",Phone:"054-5796354",Email:{link:"mailto:daniel@d.com",mail:"daniel@d.com"}},
       {name:"Nadav",last_name:"Choen",Address:"Jerusalem",Phone:"054-5796354",Email:{link:"mailto:nadav@c.com",mail:"nadav@c.com"}},
-      {name:"Uriel",last_name:"Brosh",Address:"Haifa",Phone:"054-5796354",Email:{link:"mailto:uriel@u.com",mail:"uriel@u.com"}}
-    ]
+      {name:"Uriel",last_name:"Brosh",Address:"Haifa",Phone:"054-5796354",Email:{link:"mailto:uriel@u.com",mail:"uriel@u.com"}},
+      {name:"Aadav",last_name:"Choen",Address:"Jerusalem",Phone:"054-5796354",Email:{link:"mailto:nadav@c.com",mail:"nadav@c.com"}},
+      {name:"Briel",last_name:"Brosh",Address:"Haifa",Phone:"054-5796354",Email:{link:"mailto:uriel@u.com",mail:"uriel@u.com"}}
+    ].sort();
   }
 
+
 }
+
+   
+
