@@ -22,7 +22,7 @@ separate two strings with a question mark and display a boolean indicating if th
 <li>
   Input: 
 <code>
-{{ 'rail safety ? fairy tales' | isanagram }}
+{{ 'rail safety?fairy tales' | isanagram }}
 </code>
 </li>
 <li>
@@ -36,7 +36,7 @@ separate two strings with a question mark and display a boolean indicating if th
   <li>
   Input: 
 <code>
-{{ '123rail safety ? fairy tales' | isanagram }}
+{{ '123rail safety?fairy tales' | isanagram }}
 </code>
 </li>
 <li>
