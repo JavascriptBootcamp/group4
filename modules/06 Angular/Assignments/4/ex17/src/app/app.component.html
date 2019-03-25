@@ -1,0 +1,1 @@
+<h1>{{favoriteMovie.title}} lasts for {{favoriteMovie.duration}} minutes. Stars: <span *ngFor='let star of favoriteMovie.stars; last as isLast'>{{star}}<span *ngIf='!isLast'>, </span></span>.</h1>
