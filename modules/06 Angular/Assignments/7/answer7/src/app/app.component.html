@@ -1,0 +1,19 @@
+<header>Using *ngIf</header>
+<span *ngFor="let IsNormal of isNormal; index as i"> 
+  <div *ngIf="norIsNormal; else notNormal">
+      {{people[i].name}} has a normal blood preasure bacause he has a {{people[i].bloodPre}}
+  </div>
+
+  <ng-template #notNormal> 
+    {{people[i].name}} has a a NON normal for blood preasure bacause he has a {{people[i].bloodPre}}
+  </ng-template>
+</span>
+
+<header>Using Pipes</header>
+<span *ngFor="let person of people; index as i"> 
+  <div>
+      {{person.name}} has a {{person.bloodPre | normalbloodpressure}} blood preasure.
+  </div>
+
+
+
