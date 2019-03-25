@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'capitalizePipe';
+  
+  strings:string[];
+  constructor(){
+    this.strings = ['a short sentence','a lazy fox','look, it is working!'];
+  }
 }
