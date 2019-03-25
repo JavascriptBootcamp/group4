@@ -1,0 +1,17 @@
+<h1>My Clients:</h1>
+<table>
+  <thead bgcolor="#FFCCFF">
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Email Address</th>
+  </thead>
+  <tbody *ngFor="let client of clients">
+      <td>{{ client.first_name }}</td>
+      <td>{{ client.last_name }}</td>
+      <td>{{ client.city }}</td>
+      <td>{{ client.phone }}</td>
+      <td><a [attr.href]="mailto(client.mail)"> {{ client.mail }}</a></td> 
+  </tbody>
+</table>
