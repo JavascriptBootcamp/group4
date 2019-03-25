@@ -127,7 +127,7 @@ bankOfAmericaAccount.deposit(5000);
 bankOfAmericaAccount.withdraw(2000);
 
 const visaAccount = new CreditCardAccount(4580123412341234, "John Doe");
-console.log(visaAccount.validateCreditCard('9999777788880000'));
+
 visaAccount.deposit(10000);
 visaAccount.withdraw(3000);
 console.log(bankOfAmericaAccount.getBalance()); // 3000
