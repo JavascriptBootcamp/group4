@@ -1,7 +1,7 @@
 <p>create an interface named <code>IPlay</code></p>
 <p>add a function named <code>play</code> which accepts as a parmeter <code>song</code> and returns <code>void</code> (console.log for example)</p>
-<p>add a function named <code>next</code> without parmeters which returns <code>string</code> and returns some <code>void</code> (console.log for example)</p>
-<p>add a function named <code>prev</code> without parmeters which returns <code>string</code> and returns some <code>void</code> (console.log for example)</p>
+<p>add a function named <code>next</code> without parmeters which returns some <code>void</code> (console.log for example)</p>
+<p>add a function named <code>prev</code> without parmeters which returns some <code>void</code> (console.log for example)</p>
 <hr>
 <p>
 create the following classes which implement <code>IPlay</code>:
