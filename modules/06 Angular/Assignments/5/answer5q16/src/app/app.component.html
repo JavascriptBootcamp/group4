@@ -1,0 +1,9 @@
+<div *ngFor="let item of books">
+  {{item.title}} by {{item.author}}
+</div>
+<div *ngFor="let item of books">
+  <div *ngIf="item.alreadyRead; else other_content">
+    You already read {{item.title}} by {{item.author}}
+  </div>
+  <ng-template #other_content>You still need to read {{item.title}} by {{item.author}}</ng-template>
+</div>
