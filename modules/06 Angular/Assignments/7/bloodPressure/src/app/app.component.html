@@ -4,12 +4,16 @@
       {{people.name}} has Normal blood Pressure
     </label>
     <ng-template #noNormal>
-      <label>{{people.name}} has not Normal blood Pressure</label>
+      <label>{{people.name}} has Not Normal blood Pressure</label>
     </ng-template>
   </div>
 
   <br/>
 
   <h1>Using pipe</h1>
-
+  <div *ngFor="let people of peoples">
+    <label>
+      {{people.name}} {{people.bloodPressure | normalbloodpressure}} 
+    </label>
+  </div>
   
