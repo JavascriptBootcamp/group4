@@ -1,10 +1,18 @@
 <div style="text-align:center">
   <div *ngFor="let person of people">
-    <h3 *ngIf="person.bloodPressure >=80 && person.bloodPressure<=120; else notOk">
-      {{person.name}} is ok
-    </h3>
-    <ng-template #notOk>
-      <h3>{{person.name}} is not ok</h3>
+    <div *ngIf="person.isNormal; then isNormal else isNotNormal">
+    </div>
+    <ng-template #isNormal>
+      <h3>{{person.name}} bloodPressure is normal {{person.bloodPressure}}</h3>
+    </ng-template>
+    <ng-template #isNotNormal>
+      <h3>{{person.name}} bloodPressure is not normal {{person.bloodPressure}}</h3>
     </ng-template>
   </div>
+
+  <div *ngFor="let person of people">
+    <h3>{{person.name}} bloodPressure {{person.bloodPressure | normalbloodpressure}} {{person.bloodPressure}}</h3>
+  </div>
+
+
 </div>
