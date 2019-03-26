@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
+import {normalbloodpressurePipe} from './normalbloodpressure.pipe'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    normalbloodpressurePipe
   ],
   imports: [
     BrowserModule
