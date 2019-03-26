@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Gallery</title>
+
+    <style>
+        body {
+            background-color: rgba(117, 99, 124, 0.575);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        #main-pic-container {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arrow {
+            width: 50px;
+            height: 50px;
+        }
+
+        .arrow:hover {
+            border-radius: 20%;
+            background: rgba(71, 2, 128, 0.1);
+        }
+
+        .arrow:active {
+            background: rgba(68, 0, 131, 0.568);
+        }
+
+        #thumbnails-container {
+            display: flex;
+            border: 2px solid rgba(68, 0, 131, 0.568);
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(71, 2, 128, 0.1);
+        }
+
+        .thumbnail {
+            margin: 3px;
+        }
+
+        #thumbnails-container .thumbnail img {
+            border: 2px solid lightgray;
+            opacity: 0.7;
+        }
+
+        #thumbnails-container .thumbnail img:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="main-container">
+            <img id="left-arrow" class="arrow"
+                src="https://www.shareicon.net/data/128x128/2017/04/10/883645_arrows_512x512.png">
+            <div id="main-pic-container">
+                <div id="0"><img id="change-img"></div>
+            </div>
+            <img id="rigth-arrow" class="arrow"
+                src="https://www.shareicon.net/data/128x128/2017/04/10/883565_arrows_512x512.png">
+        </div>
+
+        <div id="thumbnails-container">
+            <div class="thumbnail" id="0"></div>
+            <div class="thumbnail" id="1"></div>
+            <div class="thumbnail" id="2"></div>
+            <div class="thumbnail" id="3"></div>
+            <div class="thumbnail" id="4"></div>
+            <div class="thumbnail" id="5"></div>
+            <div class="thumbnail" id="6"></div>
+            <div class="thumbnail" id="7"></div>
+            <div class="thumbnail" id="8"></div>
+            <div class="thumbnail" id="9"></div>
+            <div class="thumbnail" id="10"></div>
+        </div>
+    </div>
+
+    <script>
+        const elements = document.getElementsByClassName("thumbnail");
+        var output = document.getElementById("output");
+        var picturesArray = [];
+        var mainPic = document.getElementById("change-img");
+        function Picture(src) {
+            this.src = src;
+        }
+
+        function getPicture() {
+            fetch('https://picsum.photos/list')
+                .then(res => res.json())//response type
+                .then(data => {
+                    for (var i = 0; i < elements.length; i++) {
+                        picturesArray.push(new Picture("https://picsum.photos/200/300?image=" + data[Math.ceil(Math.random() * 1000)].id));
+                        elements[i].innerHTML = `<img src=${picturesArray[i].src}>`;
+                        // document.body.style.cursor = "default";
+                    }
+                })
+        }
+        getPicture();
+
+        $(document).ready(function () {
+            $(".thumbnail").click(function () {
+                var id = this.id;
+                $("#change-img").attr('src', picturesArray[id].src);
+                var kids = $(this).children();
+                saveState(id);
+            });
+        });
+
+        document.getElementById("rigth-arrow").addEventListener('click', function () {
+            for (var i = 0; i < picturesArray.length - 1; i++) {
+                console.log("NO MATCHES");
+                if (picturesArray[i].src === mainPic.src) {
+                    var nextPicIndex = i + 1;
+                    console.log(mainPic.src);
+                    mainPic.setAttribute('src', picturesArray[nextPicIndex].src);
+                    saveState(nextPicIndex);
+                    break;
+                }
+            }
+            if(i === picturesArray.length - 1){
+                noMatches();
+            }
+        });
+
+        document.getElementById("left-arrow").addEventListener('click', function () {
+            for (var i = 1; i < picturesArray.length; i++) {
+                if (picturesArray[i].src === mainPic.src) {
+                    var prevPicture = i - 1;
+                    mainPic.setAttribute('src', picturesArray[prevPicture].src);
+                    saveState(prevPicture);
+                }
+            }
+            if(i === picturesArray.length){
+                noMatches();
+            }
+        });
+
+        function noMatches(){
+            mainPic.setAttribute('src', picturesArray[0].src);
+        }
+
+        function saveState(index) {
+            localStorage.setItem('picToLoad', picturesArray[index].src);
+        }
+
+        window.onload = function () {
+            var picToLoad = localStorage.getItem('picToLoad');
+            if (picToLoad) {
+                console.log(picToLoad)
+                mainPic.setAttribute('src', picToLoad);
+            }
+            else {
+                fetch('https://picsum.photos/list')
+                    .then(res => res.json())//response type
+                    .then(data => {
+                        picturesArray.push(new Picture("https://picsum.photos/200/300?image=" + data[Math.ceil(Math.random() * 1000)].id));
+                        mainPic.setAttribute('src', picturesArray[0].src);
+                    })
+            }
+        }
+
+    </script>
+</body>
+
+</html>
