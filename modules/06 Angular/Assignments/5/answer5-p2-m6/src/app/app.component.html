@@ -1,0 +1,26 @@
+
+<ol> 
+  <li *ngFor = "let book of books"> 
+    <h1>
+    {{book.title}} by
+    {{book.author}}
+    </h1>
+  </li>
+</ol>
+
+<ol> 
+    <li *ngFor = "let book of books"> 
+      <h1 *ngIf = "book.alreadyRead ;else other_content">
+          You already read 
+          {{book.title}}
+          by {{book.author}}
+    </h1>
+    <ng-template #other_content>
+      <h1>
+        You still need to read
+        {{book.title}} 
+        by {{book.author}}
+      </h1>
+    </ng-template>
+    </li>
+</ol>
