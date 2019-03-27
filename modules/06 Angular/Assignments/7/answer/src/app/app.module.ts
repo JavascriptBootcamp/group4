@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BloodPressure  } from './bloodPressure.pipe';
+import { BloodPressure  } from './shared/pipes/bloodPressure.pipe';
 
 import { AppComponent } from './app.component';
 
