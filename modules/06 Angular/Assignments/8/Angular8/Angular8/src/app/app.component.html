@@ -1,0 +1,9 @@
+<h1>Is Anagram?</h1>
+<div *ngFor="let s of [str1,str2]">
+    <div *ngIf="( s | isAnagram); else notAnagram">
+        "{{s.split('?')[0]}}" and "{{s.split('?')[1]}}" {{ s| isAnagram}}
+      </div>
+      <ng-template #notAnagram>
+          "{{s.split('?')[0]}}" and "{{s.split('?')[1]}}" {{ s| isAnagram}}
+      </ng-template>
+</div>
