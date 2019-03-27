@@ -6,16 +6,16 @@ import { Component ,OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'answer04-assinment12';
+  //title = 'answer04-assinment12';
   str:string;
   strArr:string[];
   strAns:string;
   ans:string;
-  constructor(str:string){
+  constructor(){
     this.str="";
   }
   ngOnInit(){
-    this.ans="sdas"
+    //this.ans="sdas"
     this.ans =this.evenWords('aaa bbbb  ')
   }
   evenWords(str:string):string {
