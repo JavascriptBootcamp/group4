@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.middle {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-column-gap: 10px;
+    background: #ccc;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    width: 50%;
+    height: 80%;
+}
+
+#header {
+    display: flex;
+}
+
+#menu {
+    text-align: center;
+    background: blue;
+    overflow: auto;
+}
+#player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    flex-direction: column;
+}
+
+#player * {
+    width: 90%;
+}
+
+.video {
+    clear: both;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+.video img {
+    float: left;
+    width: 75px;
+    height: 75px;
+}
