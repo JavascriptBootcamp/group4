@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movies Search</title>
+
+    <style>
+        #search-ditails {
+            position: fixed;
+            margin-top: 0;
+            padding: 20px;
+            z-index: 1;
+            background-color: rgba(116, 66, 126, 0.288);
+        }
+
+        #searchResult {
+            position: absolute;
+            margin-top: 100px;
+        }
+
+        #load-more-btn {
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="search-ditails">
+        <label>Movie Title:</label>
+        <input type="text" id="movie-title" minlength="3">
+        <button type="button" id="search-btn" onclick="searchMovie()">Search</button>
+    </div>
+
+    <div id="searchResult">
+    </div>
+
+    <button type="button" id="load-more-btn" onclick="loadMore()">Load More!</button>
+
+    <script>
+        let pageNumberForUrl = 1;
+        function searchMovie() {
+            var userInput = document.getElementById("movie-title").value;
+            var searchUrl = `http://omdbapi.com/?apikey=74fed2a7&s=${userInput}&type=movie&page=${pageNumberForUrl}`;
+            fetch(searchUrl)
+                .then(response => response.json())
+                .then(data => {
+                    pageNumberForUrl++;
+                    console.log(pageNumberForUrl)
+                    loadMovie(data.Search);
+                })
+        }
+
+        function loadMovie(moviesArr) {
+            document.getElementById("load-more-btn").style.visibility = "visible";
+            var result = document.getElementById("searchResult");
+            if (!moviesArr) {
+                document.getElementById("load-more-btn").disabled = true;
+            }
+            else {
+                document.getElementById("load-more-btn").disabled = false;
+            }
+            for (var i = 0; i < moviesArr.length; i++) {
+                var imdbLink = moviesArr[i].imdbID;
+                var a = document.createElement("a");
+                var img = document.createElement("img");
+                a.setAttribute("id", `link-${i}`);
+                a.setAttribute("href", `https://www.imdb.com/title/${imdbLink}/`);
+                img.setAttribute("id", `poster-img-${i}`);
+                img.setAttribute("src", moviesArr[i].Poster);
+                a.appendChild(img);
+                result.appendChild(a);
+            }
+
+            document.getElementById("search-btn").addEventListener('click', function () {
+                result.innerHTML = "";
+                document.getElementById("load-more-btn").style.visibility = "hidden";
+            });
+        }
+
+        function loadMore() {
+            searchMovie();
+        }
+    </script>
+</body>
+
+</html>
