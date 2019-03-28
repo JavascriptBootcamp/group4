@@ -8,8 +8,8 @@
 
     function loadVideo() {
         fetch("https://random.dog/woof.json").then(response => response.json()).then(data => {
-            if (data.url.indexOf(".mp4") > -1){
-                addVideo(data.url)
+            if (data.url.indexOf(".JPG") > -1 ||data.url.indexOf(".jpg") > -1 ){
+                addPic(data.url)
             }
             else {
                 loadVideo();
@@ -17,7 +17,7 @@
         })
     }
 
-    function addVideo(url){
-        var video = new Video("title" + Math.random(10), "name" + Math.random(10), "description1", url, "https://www.nordic.media/wp-content/uploads/2017/02/Nordic-Media-Icon.png");
+    function addPic(url){
+        var pic = new Pic( "name" + Math.random(10),  url);
     }
 })();

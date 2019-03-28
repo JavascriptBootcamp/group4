@@ -1,9 +1,8 @@
 var Player = (function(){
-    var play = function(title, artistName, description, videoSrc) {
-        document.getElementById("player-video").src = videoSrc;
-        document.getElementById("player-title").innerText = title;
-        document.getElementById("player-artist").innerText = artistName;
-        document.getElementById("player-description").innerText = description;
+    var play = function(name,  picSrc) {
+        document.getElementById("player-pic").src = picSrc;
+        document.getElementById("player-name").innerText = name;
+     
     }
 
     return {

@@ -13,8 +13,8 @@ html, body {
 
 #wrapper {
     display: grid;
-    grid-template-columns: 80% 20%;
-    grid-column-gap: 10px;
+    grid-template-rows: 75% 25%;
+    /* grid-row-gap: 10px; */
     background: #ccc;
 }
 
@@ -30,22 +30,27 @@ html, body {
 }
 
 #menu {
+    display: flex;
+
     text-align: center;
-    background: blue;
+    background: rgb(122, 76, 122);
     overflow: auto;
 }
 #player {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: red;
+    background: rgb(122, 76, 122);
     flex-direction: column;
 }
 
 #player * {
-    width: 90%;
+    /* height:60%; */
+    width: 60%;
 }
-
+#player #player-pic {
+    max-height: 60%;
+} 
 .video {
     clear: both;
     margin-bottom: 50px;
@@ -53,7 +58,28 @@ html, body {
 }
 
 .video img {
-    float: left;
-    width: 75px;
-    height: 75px;
+    /* float: left; */
+    width: 85px;
+    height: 85px;
+}
+#arrow-right {
+    position: relative;
+    right: -420px;
+    top: -36%;    
+    /* top: 50%;
+    left: 50%; */
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid lightslategray;
+}
+#arrow-left {
+    left: -410px;
+    top: 40%;
+
+    position: relative;
+    /* top: 50%;
+    left: 50%; */
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid lightslategray;
 }

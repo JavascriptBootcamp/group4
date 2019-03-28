@@ -12,14 +12,16 @@
 <body>
     <div id="content" class="middle">
         <div id="container">
-            <div id="header">ITube</div>
+            <div id="header">Gallery</div>
             <div id="wrapper">
                 <div id="player">
-                    <video id="player-video" controls src=""></video>
+                    <div id= "arrow-left" onclick="prevPic()"></div> 
+                    <img id="player-pic"  src=""></img>
+                    <div id= "arrow-right" onclick="nextPic()"></div> 
                     <div id="player-details">
-                        <h2 id="player-title">Video Title</h2>
-                        <h3 id="player-artist">Artist Name</h3>
-                        <h4 id="player-description">Description</h4>
+                        <h2 id="player-name">Video Title</h2>
+                        <!-- <h3 id="player-artist">Artist Name</h3>
+                        <h4 id="player-description">Description</h4> -->
                     </div>
                 </div>
                 <div id="menu"></div>
@@ -27,7 +29,7 @@
         </div>
     </div>
     <script src="Player.js"></script>
-    <script src="Video.js"></script>
+    <script src="Pic.js"></script>
     <script src="main.js"></script>
 </body>
 
