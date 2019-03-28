@@ -1,3 +1,3 @@
-<a href="https://www.w3schools.com/js/js_cookies.asp" target="_blank">
-    JavaScript Cookies
+<a href="https://angular.io/tutorial/toh-pt2" target="_blank">
+    Tour of Heroes - Display a Heroes List
 </a>
