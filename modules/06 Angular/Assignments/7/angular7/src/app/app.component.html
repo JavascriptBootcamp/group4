@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+<ul *ngFor="let person of persons">
+  <li *ngIf="(person.bloodPressure>= 80 && person.bloodPressure <=120)">
+    {{person.name}}
+  </li>
+</ul>
+
+<ul *ngFor="let person of persons">
+  <li>
+    The blood pressure of {{person.name}} is {{person.bloodPressure | bloodPressure}}
+  </li>
+</ul>
