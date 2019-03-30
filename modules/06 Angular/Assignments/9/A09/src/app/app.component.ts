@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'A09';
-  str="a short sentence";
+  array: string[];
+
+  constructor() {
+    this.array = ['a short sentence', 'a lazy fox', 'look, it is working!'];
+  }
 }
