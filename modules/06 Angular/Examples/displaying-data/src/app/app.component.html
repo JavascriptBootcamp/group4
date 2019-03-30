@@ -7,7 +7,7 @@
 <h2>Months</h2>
 <!-- <span *ngIf="isavailable; then months else nomonths"> -->
 <span *ngIf="isavailable; else nomonths">
-  <select>
+  <select (change)="changeMonths('moshiko is the king', $event)">
     <option *ngFor="let month of months">
       {{ month | lowercase | uppercase }}
     </option>
@@ -34,3 +34,6 @@
   {{ 16 | sqrt }}
   {{ 25 | sqrt }}
 </div>
+
+<h2>Event Handlers</h2>
+<button (click)="sayHello()">Click Me</button>
