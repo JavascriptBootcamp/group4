@@ -27,4 +27,13 @@ export class AppComponent implements OnInit {
   displayTitle(value){
     this.bookTitle = value;
   }
+
+  sayHello() {
+    console.log("Hello");
+  }
+
+  changeMonths(e, message) {
+    console.log(e);
+    console.log(message);
+  }
 }
