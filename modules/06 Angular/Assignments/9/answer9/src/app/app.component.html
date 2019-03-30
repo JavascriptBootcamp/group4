@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+
+  <h1>Capitalize Pipe</h1><br>
+
+  <h2 *ngFor="let sentence of sentencesArr">
+        Input: {{sentence}}
+        <br>
+        Output:  {{sentence | capitalize}}
+        <br><br>
+  </h2> 
+
+</div>

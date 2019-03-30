@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'answer9';
+
+  sentencesArr: string[];
+
+  constructor() {
+    this.sentencesArr = ['david','you are good','good evening!!! good morning! good afternoon! '];
+  }
+}
