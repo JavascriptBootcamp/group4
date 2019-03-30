@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1> Welcome to {{ title }}! </h1> <br><br>
+  
+ 
+  <h1><u>Using *ngIf</u></h1>
+  <div *ngFor="let person of people">
+    {{person.name.first}} {{person.name.last}} blood pressure is {{person.bloodPressure}} - 
+    <div *ngIf="person.bloodPressure >= 80 && person.bloodPressure <= 120; then normal else notNormal"> </div>
+    <ng-template #normal> Normal blood pressure</ng-template>
+    <ng-template #notNormal>NOT Normal blood pressure</ng-template> 
+    <br><br>
+  </div>
+
+  <br>
+
+  <h1><u>Using Pipe</u></h1>
+  <div *ngFor="let person of people">
+    <div> {{person.name.first}} {{person.name.last}} blood pressure is {{ person.bloodPressure | normalbloodpressure}}</div>
+  </div>
