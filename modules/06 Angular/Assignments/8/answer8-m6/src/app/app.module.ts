@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AreanagramsPipe } from './areanagrams.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AreanagramsPipe
   ],
   imports: [
     BrowserModule

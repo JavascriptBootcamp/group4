@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'answer8-m6';
+  areanagrams = "rail safety?fairy tales";
 }
