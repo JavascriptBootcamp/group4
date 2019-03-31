@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'answer9-m6';
+  strings = ['a short sentence','a lazy fox','look, it is working!' ]
 }
