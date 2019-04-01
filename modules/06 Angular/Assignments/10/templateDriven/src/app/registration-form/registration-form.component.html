@@ -20,17 +20,29 @@
           Name is required
         </div>
         <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" name="lastName" required [(ngModel)]="model.lastName">
+        <input type="text" class="form-control" id="lastName" name="lastName" required [(ngModel)]="model.lastName" #lastName="ngModel">
+        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+          lastName is required
+        </div>
         <label for="age">Age</label>
-        <input type="number" class="form-control" id="age" name="age" required [(ngModel)]="model.age">
+        <input type="number" class="form-control" id="age" name="age" required [(ngModel)]="model.age" #age="ngModel">
+        <div [hidden]="age.valid || age.pristine" class="alert alert-danger">
+            age is required
+        </div>
       </div>
 
       <div class="form-group">
         <h3>Credentials</h3>
         <label for="userName">User name</label>
-        <input type="text" class="form-control" id="userName" name="userName" required [(ngModel)]="model.userName">
+        <input type="text" class="form-control" id="userName" name="userName" required [(ngModel)]="model.userName" #userName="ngModel">
+        <div [hidden]="userName.valid || userName.pristine" class="alert alert-danger">
+          userName is required
+        </div>
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="model.password">
+        <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="model.password" #password="ngModel">
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+          password is required
+        </div>
       </div>
 
       <div class="form-group">
@@ -38,7 +50,10 @@
         <label for="phone">Phone Number</label>
         <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="model.phone">
         <label for="email">Email Address</label>
-        <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="model.email">
+        <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="model.email" #email="ngModel">
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          email is required
+        </div>
       </div>
 
       <div class="form-group">
