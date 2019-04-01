@@ -1,0 +1,59 @@
+<div class="container">
+  <div [hidden]="!submitted">
+    <h1>form submitted!</h1>
+    <div class="row">
+      <div class="col-4">
+        Firstname
+      </div>
+      <div class="col-8">{{model.firstName}}</div>
+    </div>
+  </div>
+  <div [hidden]="submitted">
+    <h1>Registration From</h1>
+    <form #RegistrationFrom="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <h3>Personal Information:</h3>
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" required [(ngModel)]="model.firstName"
+          #firstName="ngModel">
+        <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" required [(ngModel)]="model.lastName">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" name="age" required [(ngModel)]="model.age">
+      </div>
+
+      <div class="form-group">
+        <h3>Credentials</h3>
+        <label for="userName">User name</label>
+        <input type="text" class="form-control" id="userName" name="userName" required [(ngModel)]="model.userName">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="model.password">
+      </div>
+
+      <div class="form-group">
+        <h3>Contact</h3>
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="model.phone">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="model.email">
+      </div>
+
+      <div class="form-group">
+        <h3>Misc</h3>
+        <label for="comments">Comments</label>
+        <textarea rows="4" cols="10" class="form-control" id="comments" name="comments"
+          [(ngModel)]="model.comments"></textarea>
+        <label for="hobbies">Hobbies</label>
+        <select class="form-control" id="hobbies" name="hobbies" [(ngModel)]="model.hobbies">
+          <option *ngFor="let hobby of hobbies" [value]="hobby">{{hobby}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!RegistrationFrom.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newUser(); RegistrationFrom.reset()">Add User</button>
+    </form>
+  </div>
+</div>
