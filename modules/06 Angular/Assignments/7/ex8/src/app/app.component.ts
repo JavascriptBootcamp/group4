@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 interface Person {
   name: string;
   bloodPressure: number;
-  isNormal(): boolean;
+  // isNormal(): boolean;
 }
 @Component({
   selector: 'app-root',
@@ -14,22 +14,13 @@ export class AppComponent {
   constructor() {
     this.people = [{
       name: 'John',
-      bloodPressure: 70,
-      isNormal: () => {
-        return this.people[0].bloodPressure >= 80 && this.people[0].bloodPressure <= 120;
-      }
+      bloodPressure: 70
     }, {
       name: 'Diana',
-      bloodPressure: 110,
-      isNormal: () => {
-        return this.people[1].bloodPressure >= 80 && this.people[1].bloodPressure <= 120;
-      }
+      bloodPressure: 110
     }, {
       name: 'Georgia',
-      bloodPressure: 170,
-      isNormal: () => {
-        return this.people[2].bloodPressure >= 80 && this.people[2].bloodPressure <= 120;
-      }
+      bloodPressure: 170
     }];
   }
 } 

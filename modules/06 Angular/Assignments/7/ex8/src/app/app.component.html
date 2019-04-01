@@ -1,2 +1,12 @@
-<h1 *ngFor='let person of people'>{{person.name}}; {{person.bloodPressure}}; {{person.isNormal()}}</h1>
 
+<header id="Using *ngIf">
+        <h1 *ngFor='let person of people'>
+            {{person.name}}: <span *ngIf='person.bloodPressure < 80 || person.bloodPressure > 120'>ab</span>normal; {{person.bloodPressure}}.
+        </h1>
+</header>
+
+<header id="Using pipes">
+        <h1 *ngFor='let person of people'>
+            {{person.name}}: {{person.bloodPressure | normalbloodpressure }}; {{person.bloodPressure}}.
+        </h1>
+</header>
