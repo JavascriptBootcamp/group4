@@ -1,0 +1,66 @@
+<div class="container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>
+        First Name:
+        <input type="text" class="form-control" formControlName="firstName" required>
+      </label>
+    </div>
+    <div>
+      <label>
+        Last Name:
+        <input type="text" class="form-control" formControlName="lastName" required>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        User Name:
+        <input type="text" class="form-control" formControlName="userName" required>
+      </label>
+    </div>
+    <div>
+      <label>
+        password:
+        <input type="password" class="form-control" formControlName="password" required>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        Age:
+        <input type="number" class="form-control" formControlName="age">
+      </label>
+    </div>
+    <div>
+      <label>
+        phone:
+        <input type="text" class="form-control" formControlName="phone" required>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        email:
+        <input type="email" class="form-control" formControlName="email" required>
+      </label>
+    </div>
+    <div>
+      <label>
+        comments:
+        <textarea rows="5" cols="15" type="text" class="form-control" formControlName="comments">
+
+        </textarea>
+      </label>
+    </div>
+    <div>
+      <label>
+        hobbies:
+        <select formControlName="hobbies">
+          <option *ngFor="let hobby of hobbies" [value]="hobby" class="form-control">
+            {{hobby}}
+          </option>
+        </select>
+      </label>
+    </div>
+    <button (click)="onSubmit()" [disabled]="!profileForm.valid">submit</button>
+    <button (click)="updateProfile()">updateProfile</button>
+  </form>
+</div>
