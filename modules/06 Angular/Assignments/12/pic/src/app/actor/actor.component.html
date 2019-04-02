@@ -1,0 +1,5 @@
+<li  *ngFor="let item of actors">
+  <a href="{{item.url}}" target="_blank"><h2>{{item.name}}</h2></a>
+  <h3>{{item.age}}</h3>
+  <img [src]="item.img" width="200" height="300" />
+</li>
