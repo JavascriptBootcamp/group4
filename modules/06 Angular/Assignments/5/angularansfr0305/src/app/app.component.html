@@ -1,0 +1,20 @@
+
+  <!-- answer01 -->
+  <div *ngFor="let bookObj of booksObjects">
+    <br>
+    <h1>Title: {{bookObj.title}}</h1>
+    <h2>Author: {{bookObj.author}}</h2>
+    <h3>Publication Date: {{bookObj.publicationDate}}</h3>
+    <h3>Publisher: {{bookObj.publisher}}</h3>
+    <h3>Pages: {{bookObj.pagesNum}}</h3>
+    <h3>Comments: {{bookObj.comments}}</h3>
+    <br>
+  </div>
+<!-- answer02 -->
+
+<div *ngFor="let houseObj of xmlHousesObjects; let i = index">
+  <br>
+  <h1>House {{i+1}} name: {{houseObj.houseName}}</h1>
+  <h1>House {{i+1}} city: {{houseObj.city}}</h1>
+  <br>
+</div>
