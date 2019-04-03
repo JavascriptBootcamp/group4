@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div [hidden]="!submitted">
+        <h1>Form submitted</h1>
+      </div>
+      <form [formGroup]="signUp" (ngSubmit)="submit()" [hidden]="submitted">
+        <h1>Sign Up</h1>
+        <div class="form-group">
+          <label for="fullname">fullname</label>
+          <input class="form-control" type="text" placeholder="Full Name" name="fullname" formControlName="fullname"
+            id="fullname" required>
+          <input class="form-control" type="email" placeholder="Email" name="email" formControlName="email" id="email"
+            required>
+          <input class="form-control" type="number" min="18" max="32" placeholder="Age" formControlName="Age" name="Age"
+            id="Age">
+          <input class="form-control" type="text" name="username" id="username" placeholder="User Name"
+            formControlName="username" maxlength="10" required>
+          <input class="form-control" type="password" placeholder="Password" name="password" formControlName="password"
+            id="password" required>
+
+          <button type="submit" class="btn btn-success d-block my-3" [disabled]="!signUp.valid">Submit</button>
+          <button type="reset" class="btn btn-warning d-block my-3">Reset</button>
+          <button routerLink="../index-form" class="btn btn-dark d-block my-3">Back to sign in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
