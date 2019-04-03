@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="">
+        <input id="movie-name-input" type="text" minlength="3"><br>
+        <span id="error" style="visibility: hidden" >Wrong input</span><br>
+        <input type="submit" onclick="searchMovie(event)" onsubmit="return false;">
+    </form>
+
+    <div id="movies">
+    </div>
+
+    <div>
+        <button id="load-more-button" onclick="searchMovie(event)">Load More</button>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
