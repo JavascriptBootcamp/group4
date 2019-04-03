@@ -1,0 +1,47 @@
+<div class="container">
+
+  <form #Form="ngForm" (ngSubmit)='onSubmit()'>
+
+    <div class="form-group">
+      <h3>Personal Information:</h3>
+      <label for="fname">First Name</label>
+      <input type="text" class="form-control" id="fname" [(ngModel)]="model.fname" name="fname" required
+        #name="ngModel">
+      <label for="lname">Last Name</label>
+      <input type="text" class="form-control" id="lname" [(ngModel)]="model.lname" name="lname" required>
+      <label for="age">Age</label>
+      <input type="number" class="form-control" id="age" [(ngModel)]="model.age" name="age" required>
+    </div>
+
+    <div class="form-group">
+      <h3>Credentials:</h3>
+      <label for="user">User Name</label>
+      <input type="text" class="form-control" id="user" [(ngModel)]="model.user" name="user" required>
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <h3>Contact:</h3>
+      <label for="phone">Phone Number</label>
+      <input type="tel" class="form-control" id="phone" [(ngModel)]="model.phone" name="phone" required>
+      <label for="email">Email Address</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <h3>Misc:</h3>
+      <label for="comments">Comments</label>
+      <textarea class="form-control" id="comments" [(ngModel)]="model.comments" name="comments"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="hobbies">Hobbies</label>
+      <select class="form-control" id="hobbies" >
+        <option *ngFor="let hobby of hobbies" [value]="hobby">{{hobby}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!Form.form.valid">Submit</button>
+  </form>
+</div>
