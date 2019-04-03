@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }} recipe!
+  </h1>
+  <img width="300" alt="Sushi Logo" src="https://truffle-assets.imgix.net/04ac5e7d-2009_sushipizza_land.jpg">
+</div>
+
+<ul>
+  <li>
+    Title: {{title}}
+  </li>
+  <li>
+    Serves: {{serving}}
+  </li>
+  <li>
+    Ingredients:
+    <ul *ngFor="let inredient of ingredients" >
+      <li>{{inredient}}</li>
+    </ul>
+  </li>
+</ul>
+

@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }} movie!
+  </h1>
+  <img width="300" alt="Angular Logo"
+    src="https://cdn.images.express.co.uk/img/dynamic/36/590x/IT-movie-sequel-news-940882.jpg">
+</div>
+<h2>The movie: </h2>
+<div>
+  Title: {{title}} lasts for {{duration}} minutes.
+</div>
+Stars:
+<div *ngFor="let star of stars">
+  &bull; {{star}}
+</div>
