@@ -1,0 +1,9 @@
+<div class="img" *ngFor="let img of images">
+  <div class="imgSrc">
+    <img [src]="img.src" />
+  </div>
+  <div class="likeSec">
+    <span>like</span><span>{{img.like}}</span>
+  </div>
+
+</div>

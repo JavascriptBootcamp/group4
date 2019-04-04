@@ -1,0 +1,17 @@
+.likeSec{
+    background-color: "red";
+    font-size: xx-large;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.img {
+
+   text-align: center;
+}
+
+.imgSrc {
+    background-color: yellow;
+
+ }
