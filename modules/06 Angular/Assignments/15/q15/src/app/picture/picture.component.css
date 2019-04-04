@@ -1,0 +1,14 @@
+.picture{
+    display: flex;
+    flex-direction: column; 
+}
+
+.likes .like{
+    /* display: flex; */
+    align-items: flex-start;
+}
+
+.likes .likes-counter{
+    /* display: flex; */
+    text-align: right;
+}

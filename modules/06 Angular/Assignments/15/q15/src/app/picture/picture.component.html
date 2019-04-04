@@ -1,0 +1,8 @@
+<div class="picture">
+    <img [src]="image" alt="No image found" width="200px" height="200px">
+    <!-- [width]="getWidth()" [height]="getHeight()" -->
+    <div class="likes">
+      <button class="like" (click)="incCounter()">Like</button>
+      <span class="likes-counter">{{counter}}</span>
+    </div>
+</div>
