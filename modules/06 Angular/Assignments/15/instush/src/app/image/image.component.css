@@ -1,0 +1,16 @@
+.smallImg{
+    width:200px;
+    height: 200px;
+}
+.imageDiv{
+    display: inline-block;
+}
+.bigImg{
+    width:250px;
+    height:250px;
+    box-shadow: 0px 0px 10px black;
+}
+.img{
+    width:150px;
+    height: 150px;
+}
