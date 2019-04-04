@@ -1,0 +1,10 @@
+#wraper{
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    grid-gap:  10px;
+ margin: 0 auto;
+    
+}
+html ,body {
+    width: 100%;
+}
