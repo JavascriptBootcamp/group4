@@ -1,25 +1,40 @@
+<p>use <code>group4/Modules/03 Front End Development/Assignments/57</code>.</p>
+<p>
+build it using Angular.
+</p>
+<p>
+Additions:
 <ol>
-<li>
-<p>create a pipe which accepts the month in number and converts it to a word</p>
-<h4>for example</h4>
-<p>1 ---> January</p>
-</li>
-<li>
-<p>create a custom directive which paints the element according to the current month</p>
-<h4>months and colors</h4>
-<ul>
-<li>January - red</li>
-<li>February - blue</li>
-<li>March - green</li>
-<li>April - black</li>
-<li>May - purple</li>
-<li>June - yellow</li>
-<li>July - pink</li>
-<li>August - gray</li>
-<li>September  - brown</li>
-<li>October - cyan</li>
-<li>November - beige</li>
-<li>December - orange</li>
-</ul>
-</li>
-<p>create an Angular app which contains an example of the pipe and the directive</p>
+    <li>after an images has been clicked - add a border around it</li>
+    <li>if an image has more then 10 likes - increase its size a little bit</li>
+    <li>if an image has more then 0 likes - decrease its size a little bit</li>
+</ol>
+</p>
+<p>
+Recommendation for a solution process:
+<ol>
+    <li>
+    create an angular app
+    </li>
+    <li>
+    create an array of images in app component
+    </li>
+    <li>
+    display the images, buttons and counters in the app component using *ngFor
+    </li>
+    <li>
+    design the component
+    </li>
+    <li>
+    handle clicking on the images
+    </li>
+    <li>
+    handle storing the data in localStorage
+    </li>
+</ol>
+</p>
+<p>
+    Reference: <a href="https://itnext.io/css-styling-in-angular-2-7530aa2718e7" target="_blank">
+        CSS Styling
+    </a>
+</p>
