@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+#container {
+    max-width: 98%;
+    margin: 0 auto;
+    background-color: rgb(238, 238, 238);
+}
+#layout {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-gap: 15px;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+#header {
+    background-color: #B0B9C8;
+    color: #384E8E;
+    text-align: center;
+    border-radius: 15px 0px 15px 0px;
+    grid-column: 1/span 3;
+}
+.imgs:hover {
+    box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.8);
+    transition: 0.7s;
+}
+.imgs {
+    width: 160px;
+    height: 160px;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+@media screen and (max-width: 550px) {
+    .imgs {
+        width: 85px;
+        height: 85px;
+        border-radius: 5px 5px 5px 5px;
+        cursor: pointer;
+    }
+}
+.buttons {
+    background-color: rgb(217, 226, 243);
+    width: 50%;
+    border-radius: 5px;
+    border: 3px solid #B0B9C8;
+    color: #384E8E;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 30%;
+}
+@media screen and (max-width: 550px) {
+    .buttons {
+        font-size: 0;
+    }
+}
+.buttons:hover {
+    background-color: rgb(197, 206, 223);
+}
+.labels {
+    color: #384E8E;
+    font-weight: bold;
+}

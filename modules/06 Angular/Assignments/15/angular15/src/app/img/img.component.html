@@ -1,0 +1,10 @@
+<div *ngFor="let imgObj of imgs;let i=index">
+    <img class="imgs" [src]="imgObj.src">
+    <div>
+        <button id="imgbox{{i}}" class='buttons' (click)="addLike(i)" #elem>
+            <img
+                src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Facebook_like_thumb.png/15px-Facebook_like_thumb.png' />
+            Like</button>
+        <label id="lcimgbox{{i}}" class='labels'>{{imgObj.likecount}}</label>
+    </div>
+</div>
