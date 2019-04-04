@@ -4,20 +4,46 @@ create an Angular pipe which accepts a string. The pipe should capitalize the fi
 <h4>examples:</h4>
 <ul>
 <li>
+  Input: 
 <code>
-capitalize('a short sentence') -> 'A Short Sentence'
+{{ 'a short sentence' | capitalize }}
 </code>
 </li>
 <li>
+  Output: 
 <code>
-capitalize('a lazy fox') --> 'A Lazy Fox'
+A Short Sentence  
 </code>
 </li>
+  </ul>
+    <ul>
 <li>
+    Input: 
 <code>
-capitalize('look, it is working!') --> 'Look, It Is Working!'
+{{ 'a lazy fox' | capitalize }}
 </code>
 </li>
+  <li>
+  Output: 
+<code>
+A Lazy Fox
+</code>
+</li>
+  </ul>
+  <ul>
+<li>
+    Input: 
+<code>
+{{ 'look, it is working!' | capitalize }}
+</code>
+</li>
+  <li>
+  Output: 
+<code>
+Look, It Is Working!
+</code>
+</li>
+
 </ul>
 <p>
 create an array of strings, loop through them using <code>*ngFor</code> and execute the pipe on them
