@@ -2,7 +2,7 @@
 <li>
 <p>use <code>group4\modules\03 Front End Development\Assignments\09</code></p>
 <p>create an array of tasks in <code>app.module.ts</code>.</p>
-<p>create a task component in <code>task.component.ts</code>.<code>.</p>
+<p>create a task component in <code>task.component.ts</code>.</p>
 <p>in <code>app.module.ts</code> add task components and assign the relevant properties in them (priority, title, author etc.).</p>
 </li>
 <li>
