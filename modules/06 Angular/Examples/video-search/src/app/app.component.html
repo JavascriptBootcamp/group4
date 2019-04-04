@@ -4,8 +4,8 @@
 </form>
 
 <div id="movies">
-  <div *ngFor="let movie of movies">
-    <app-movie [movie]="movie"></app-movie>
+  <div id="movie-details" *ngFor="let currentMovie of movies">
+    <app-movie [movie]="currentMovie"></app-movie>
   </div>
 
   <button *ngIf="movies.length > 0" (click)="loadMovies()" [disabled]="!hasMore">
