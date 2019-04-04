@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div id="container">
+  <div id="gallery">
+    <div class="img" *ngFor="let src of imgSrcs">
+      <app-image [src]="src"></app-image>
+    </div>
+  </div>
+</div>
+<!-- <router-outlet></router-outlet> -->
