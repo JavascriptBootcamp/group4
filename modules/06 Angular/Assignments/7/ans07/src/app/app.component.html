@@ -1,0 +1,12 @@
+<h1 *ngIf="header">ngIF</h1>
+<ul>
+  <li *ngFor="let person of people">{{person.name}} <span *ngIf="person.isNormal; else notNormal">blood pressure is normal</span></li>
+</ul>
+<ng-template #notNormal>
+  blood pressure is not normal.
+</ng-template>
+
+<h1>Pipes</h1>
+<ul>
+  <li *ngFor="let person of people">{{person.name}} blood pressure is {{person.bloodPressure | normalbloodpressure}}</li>
+</ul>
