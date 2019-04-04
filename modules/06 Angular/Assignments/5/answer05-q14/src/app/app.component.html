@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+Top food:
+<ul *ngFor="let food of foodArr; let i=index">
+  <li>
+    My {{i+1}}{{switchSuffix(i+1)}} choice is {{food}}
+  </li>
+</ul>
+Top beverage:
+<ul *ngFor="let beverage of beverageArr; let i=index">
+  <li>
+    My {{i+1}}{{switchSuffix(i+1)}} choice is {{beverage}}
+  </li>
+</ul>
+Top colors:
+<ul *ngFor="let color of colorsArr; let i=index">
+  <li>
+      My {{i+1}}{{switchSuffix(i+1)}} choice is {{color}}
+  </li>
+</ul>
