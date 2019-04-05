@@ -1,0 +1,7 @@
+<form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+  <label>User Name: </label><input [(ngModel)] = "userName" type="text" name="username"><br><br>
+  <label>Password: </label><input  [(ngModel)] = "password" type="password" name="password"><br><br>
+  <button type="submit" >submit</button>
+</form>
+<h4><a routerLink = "/signUp">Sign Up</a></h4>
+<h4><a routerLink="/">Forgot Your Password?</a></h4>

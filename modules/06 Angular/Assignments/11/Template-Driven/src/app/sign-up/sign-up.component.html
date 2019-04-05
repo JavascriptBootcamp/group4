@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+  <input type="text"  [(ngModel)]="name" placeholder="Full Name" name="fullname" required><br><br>
+  <input type="email"  [(ngModel)]="email" placeholder="Email" name="email" required><br><br>
+  <input type="number"  [(ngModel)]="age" min="18" max="32" placeholder="Age" name="age" required><br><br>
+  <input type="text"  [(ngModel)]="userName" name="username" placeholder="User Name" maxlength="10" required><br><br>
+  <input type="password"  [(ngModel)]="password" placeholder="Password" name="password" required><br><br>
+
+  <button type="submit">Submit</button> <button type="reset">Reset</button>
+</form>
+<h4><a routerLink="/signIn">Back to sign in</a></h4>
