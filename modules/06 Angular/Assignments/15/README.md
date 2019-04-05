@@ -7,7 +7,8 @@ Additions:
 <ol>
     <li>after an images has been clicked - add a border around it</li>
     <li>if an image has more then 10 likes - increase its size a little bit</li>
-    <li>if an image has more then 0 likes - decrease its size a little bit</li>
+    <li>if an image has 0 likes - decrease its size a little bit</li>
+    <li>if an image has between 0 and 10 likes - its size should be normal</li>
 </ol>
 </p>
 <p>
