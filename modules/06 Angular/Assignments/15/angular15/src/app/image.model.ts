@@ -1,9 +1,9 @@
 export class Image {
     src: string;
     likecount: number;
-    constructor(src) {
+    constructor(src,count) {
         this.src = src;
-        this.likecount = 0;
+        this.likecount = count;
     }
     addLike() {
         this.likecount++;
