@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   }
 
   insertImagesToArray(amount:number){
-    for(let i=0; i<amount;i++){
+    for(let i=10; i<amount+10;i++){
       this.pictures.push(`https://picsum.photos/300/200?image=${i}`);
     }
   }

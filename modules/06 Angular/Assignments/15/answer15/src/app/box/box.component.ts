@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Movie } from '../movie.model';
-
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'app-box',
   templateUrl: './box.component.html',
   styleUrls: ['./box.component.css']
 })
-export class BoxComponent implements OnInit {
-  @Input() box:string;
+export class BoxComponent{
+  @Input() src:string;
+  likeAmount:number;
+  clicked:boolean;
   constructor() {
-    this.src=src;
+    this.likeAmount=0;
+    this.clicked=false;
   }
-
-  ngOnInit() {
+  addlike(){
+    this.likeAmount++;
   }
-
+  imgClicked(){
+    this.clicked=true;
+  }
 }
