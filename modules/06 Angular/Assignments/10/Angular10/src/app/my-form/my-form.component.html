@@ -1,0 +1,107 @@
+<div class="container">
+  <h1>My Form</h1>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm" #myForm="ngSubmit">
+    <h3>Personal Information:</h3>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="first-name" [(ngModel)]="myForm.firstName" name="firstName" #name="ngModel"
+          required>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          First Name is required
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="last-name" [(ngModel)]="myForm.lastName" name="lastName" #name="ngModel"
+          required>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Last Name is required
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" [(ngModel)]="myForm.age" name="age" #name="ngModel" required>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          age is required
+        </div>
+      </div>
+
+      <h3>Credentials:</h3>
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" class="form-control" id="user-name" [(ngModel)]="myForm.username" name="username" #name="ngModel"
+            required>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            User Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="myForm.password" name="password" #name="ngModel"
+            required>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Password is required
+          </div>
+        </div>
+
+        <h3>Contact:</h3>
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" class="form-control" id="phoneNumber" [(ngModel)]="myForm.phoneNumber" name="password"
+              #name="ngModel" required>
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              Phone Number is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="myForm.email" name="email" #name="ngModel"
+              required>
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              Email is required
+            </div>
+          </div>
+
+          <h3>Misc:</h3>
+
+            <div class="form-group">
+              <label for="commets">Comments</label>
+              <input type="text" name="commets" class="form-control" rows="4" cols="50" [(ngModel)]="myForm.commets" #name="ngModel">
+            </div>
+
+            <div class="form-group">
+              <label for="hobbies">Hobbies</label>
+              <select class="form-control" id="hobbie" [(ngModel)]="myForm.hobbie" name="hobbie" #hobbie="ngModel">
+                <option *ngFor="let hob of hobbies" [value]="hob">{{hob}}</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-success" [disabled]="!myForm.form.valid">Submit</button>
+
+  </form>
+
+</div>
+
+ <!-- checks -->
+<!-- <div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">First Name</div>
+    <div class="col-xs-9">{{ myForm.firstName }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Last Name</div>
+    <div class="col-xs-9">{{ myForm.lastName }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Hobbie</div>
+    <div class="col-xs-9">{{ myForm.hobbie}}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div> -->
