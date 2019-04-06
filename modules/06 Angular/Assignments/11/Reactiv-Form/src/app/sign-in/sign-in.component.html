@@ -1,0 +1,7 @@
+<form formGroupName = "signInForm" (ngSubmit)="onSubmit()">
+  <label>User Name: </label><input formControlName="userName"  type="text" name="username"><br><br>
+  <label>Password: </label><input  formControlName="password" type="password" name="password"><br><br>
+  <button type="submit" >submit</button>
+</form>
+<h4><a routerLink="/signUp">Sign Up</a></h4>
+<h4><a routerLink="/">Forgot Your Password?</a></h4>
