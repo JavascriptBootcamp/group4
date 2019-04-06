@@ -1,0 +1,48 @@
+<form id="form" action="" method="post">
+  <div class="form-group">
+    <h3>Personal Information:</h3>
+
+    <label for="firstName">First Name:</label>
+    <input id="firstName" type="text" class="form-control">
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" type="text" class="form-control">
+
+    <label for="age">Age:</label>
+    <input id="age" type="number" min="1" max="90" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <h3>Credentials:</h3>
+
+    <label for="userame">Userame:</label>
+    <input id="userame" type="text" class="form-control">
+
+    <label for="password">Password:</label>
+    <input id="password" type="password" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <h3>Contact:</h3>
+
+    <label for="phone">Phone Number:</label>
+    <input id="phone" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control">
+
+    <label for="email">Email Address:</label>
+    <input id="email" type="email" pattern=".+@.+.(com|co.il)" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <h3>Misc:</h3>
+
+    <label for="comment">Comments:</label>
+    <textarea id="comment" rows="5" cols="33" class="form-control"></textarea>
+
+    <label for="hobbies">Hobbies:</label>
+    <select id="hobbies" class="form-control">
+      <option *ngFor="let hobbie of hobbies" [value]="hobbie">{{ hobbie }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
