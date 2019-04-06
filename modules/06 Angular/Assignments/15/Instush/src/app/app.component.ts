@@ -13,19 +13,13 @@ export class Img {
 export class AppComponent {
   title = 'Instush';
   condition: boolean = false;
-  localS: Img[];
   images: Img[]=[];
+  
   constructor() {
-
-    this.localS = JSON.parse(localStorage.getItem("images"));
-    if (this.localS!=null) {
-      this.localS.forEach(img => {
-        this.images.push({ like: img.like, image: img.image });
-      });
+    
+this.images = JSON.parse(localStorage.getItem("images"));
+    if (this.images==null) {
      
-    }
-    else {
-
       this.images = [{ like: 0, image: "https://www.edreams.com/images/landingpages/vacation/640x480/london_640x480.jpg" },
       { like: 0, image: "http://london.eazycity.com/media/gallery/image/l/o/london_city1.jpg" }
         , { like: 0, image: "https://magazine.northeast.aaa.com/wp-content/uploads/2019/01/2019_TRA_GettyImages_853177728_London.jpg" }
