@@ -1,4 +1,4 @@
 <h1>Instush</h1>
 <div id="wraper">
-    <app-image *ngFor="let img of images" [img]="img"></app-image>
+    <app-image *ngFor="let img of images" [img]="img" (addToLocal)="addToLocal()"></app-image>
 </div>

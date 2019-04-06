@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Img } from '../app.component';
 @Component({
   selector: 'app-image',
@@ -8,13 +8,14 @@ import { Img } from '../app.component';
 export class ImageComponent implements OnInit {
 
   @Input() img: Img;
+  @Output() addToLocal = new EventEmitter();
 
   clickLike(img: Img) {
     img.like++;
-    localStorage.setItem("likes",document.getElementById("wraper").innerHTML );
+    this.addToLocal.emit();
   }
 
-  public test() {
+  public sizeToImg() {
     if ((this.img.like > 0) && (this.img.like < 10))
       return "medium";
     else if (this.img.like >= 10)
@@ -24,8 +25,6 @@ export class ImageComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
- 
 }
