@@ -1,0 +1,14 @@
+<h2>Using *ngIf</h2>
+<ul *ngFor="let person of people">
+    <li *ngIf="(person.bloodPresure >= 80 && person.bloodPresure <=120)" >
+      {{person.name}} has an normal blood pressure
+    </li>
+  </ul>
+
+  <h2>Using Pipe</h2>
+      
+<ul *ngFor="let person of people">
+    <li>
+     {{person.name}} has  {{person.bloodPresure | normalbloodpressure}}
+    </li>
+  </ul> 
