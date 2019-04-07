@@ -1,0 +1,10 @@
+<div id="image" *ngFor="let img of images">
+  <app-pic [image]="img"> </app-pic>
+</div>
+<br><br>
+
+<div id="acto" *ngFor="let act of actors">
+  <ul>
+    <app-actor [myActor]="act"></app-actor>
+  </ul>
+</div>
