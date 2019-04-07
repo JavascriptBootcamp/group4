@@ -1,4 +1,5 @@
 export interface Image{
     src:string,
-    likeCount:number
+    likeCount:number,
+    id:number
 }

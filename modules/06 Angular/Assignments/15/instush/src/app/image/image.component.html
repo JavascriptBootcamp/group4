@@ -1,11 +1,11 @@
 <div [className]="'imageDiv'">
   <div>
-    <img [src]="image.src" [className]="getImageClass()" />
+    <img [src]="image.src" (click)="OnImageClicked()" [className]="getImageClass()" />
   </div>
   <div>
     <button (click)="LikeClicked()">LIKE</button>
   </div>
-  <div>
+  <div [className]="'likeCountDiv'">
     <label>{{image.likeCount}}</label>
   </div>
 </div>

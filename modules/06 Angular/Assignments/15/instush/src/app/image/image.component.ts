@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Image } from '../image.model'
 @Component({
   selector: 'app-image',
@@ -9,15 +9,21 @@ export class ImageComponent implements OnInit {
 
 
   @Input() image: Image
-
-  constructor() { }
+  @Output() showImage = new EventEmitter<Image>();
+  constructor() {
+   
+  }
 
 
   LikeClicked() {
     this.image.likeCount++;
+    ; localStorage.setItem('img' + this.image.id, '' + this.image.likeCount)
   }
 
   ngOnInit() {
+    if (localStorage.getItem('img' + this.image.id)) {
+      this.image.likeCount = +(localStorage.getItem('img' + this.image.id));
+    }
   }
 
 
@@ -33,6 +39,10 @@ export class ImageComponent implements OnInit {
       }
     }
     return className;
+  }
+
+  OnImageClicked() {
+    this.showImage.emit(this.image);
   }
 
 

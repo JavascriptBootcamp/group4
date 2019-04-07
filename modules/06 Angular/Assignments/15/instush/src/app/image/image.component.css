@@ -14,3 +14,14 @@
     width:150px;
     height: 150px;
 }
+
+
+
+.likeCountDiv{
+    position: relative;
+    width: 103px;
+    top: -18px;
+    background-color: cyan;
+    left: 46px;
+    text-align: center;
+}
