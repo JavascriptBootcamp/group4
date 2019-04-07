@@ -1,0 +1,7 @@
+.myImg{
+display: flex;
+flex-flow: wrap;
+}
+.imgComp{
+    width: 30%;
+}

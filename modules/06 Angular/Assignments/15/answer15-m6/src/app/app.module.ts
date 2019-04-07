@@ -7,7 +7,7 @@ import { ImageCompComponent } from './image-comp/image-comp.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ImageCompComponent
+    ImageCompComponent,
   ],
   imports: [
     BrowserModule

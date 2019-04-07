@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 
-interface Img {
-  src:string,
-  like:number
-}
 @Component({
   selector: 'app-image-comp',
   templateUrl: './image-comp.component.html',
@@ -11,18 +7,11 @@ interface Img {
 })
 export class ImageCompComponent implements OnInit {
 
+  @Input() myImg;
+
+  clicked = false;
  
-  images:Img[]  = [{src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0},
-                   {src:"https://content.linkedin.com/content/dam/me/learning/blog/2016/september/CSS.jpg",like:0}
-                   ]
+ 
     
   constructor() { }
 
@@ -31,7 +20,11 @@ export class ImageCompComponent implements OnInit {
   }
 
   onClickLike(e, likeClick){
-    likeClick.like++;
+    this.myImg.like++;
+  }
+
+  addBorder(){
+    this.clicked = !this.clicked;
   }
 
 }

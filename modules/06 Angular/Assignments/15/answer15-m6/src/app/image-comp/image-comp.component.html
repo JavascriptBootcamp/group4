@@ -1,18 +1,18 @@
-<div class="pic-comp">
-  <div class="img" *ngFor="let img of images">
 
-    <div  >
-      <img [src]="img.src" 
+  <div class="img" >
+
+    <div >
+      <img [src]="myImg.src" class="myImg" (click) ="addBorder()"
            [ngClass] = "{
-            'img0':img.like == 0,
-            'img1':img.like > 0 && img.like < 10,
-            'img2':img.like > 9
-           }">
+            'img0':myImg.like == 0,
+            'img1':myImg.like > 0 && myImg.like < 10,
+            'img2':myImg.like > 9,
+            'addBorder':clicked 
+           }" >
     </div>
   
-    <div class="likeSec">
-      <button (click)="onClickLike($event, img)">like</button><span>{{img.like}}</span>
+    <div class="likeSec" >
+      <button (click)="onClickLike($event, img)">like</button><span>{{myImg.like}}</span>
     </div>
 
   </div>
-</div>
