@@ -1,4 +1,5 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,Output} from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-box',
@@ -7,6 +8,7 @@ import { Component,Input } from '@angular/core';
 })
 export class BoxComponent{
   @Input() src:string;
+  @Output() showOnBigPicture = new EventEmitter<string>();
   likeAmount:number;
   clicked:boolean;
   constructor() {
@@ -17,6 +19,6 @@ export class BoxComponent{
     this.likeAmount++;
   }
   imgClicked(){
-    this.clicked=true;
+    this.showOnBigPicture.emit(this.src);
   }
 }

@@ -1,5 +1,8 @@
 <div id="movies-wrapper">
-    <app-box *ngFor="let picture of pictures" [src]="picture"></app-box>
+    <app-box *ngFor="let picture of pictures" [src]="picture" (showOnBigPicture)="onClickShow($event)"></app-box>
+</div>
+<div id="bigScreen">
+    <app-big-picture [passedImage]="selectedImage"></app-big-picture>
 </div>
 
 
