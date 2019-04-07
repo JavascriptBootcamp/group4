@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-picture',
@@ -7,6 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class PictureComponent{
 @Input() image: string;
+@Output() showPictureEvent = new EventEmitter<string>();
+
 counter: number;
 
 incCounter(): void{
@@ -15,6 +18,10 @@ incCounter(): void{
   constructor() { 
     this.counter = 0;
   }
+
+showPicture(){
+  this.showPictureEvent.emit(this.image);
+}
 
 
 }
