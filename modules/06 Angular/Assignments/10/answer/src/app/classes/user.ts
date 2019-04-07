@@ -1,15 +1,14 @@
 export class User {
-    //Personal Information
-    public firstName: string;
-    public lastName: string;
-    public age: number;
-    //Credentials
-    public userName: string;
-    public password: string;
-    //Contact
-    public phoneNumber: number;
-    public email: string;
-    //Misc
-    public comments: string;
-    public hobbies: string[];
+
+    constructor(
+    public firstName: string,
+    public lastName: string,
+    public age: number,
+    public userName: string,
+    public password: string,
+    public phoneNumber: number,
+    public email: string,
+    public comments: string,
+    public hobbies: string[],
+    ) {}
 }

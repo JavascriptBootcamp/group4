@@ -15,10 +15,11 @@ export class UserTemplateDrivenFormComponent implements OnInit {
   constructor() {
     this.hobbies = ['', 'Runing', 'Photograpy', 'Soccer', 'PokemonMaster'];
     this.submitted = false;
-    this.user = new User();
+    this.user = new User("","",1,"","",1,"","",[""]);
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    console.log(this.submitted)
   }
 
 
