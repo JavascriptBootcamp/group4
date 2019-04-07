@@ -1,4 +1,4 @@
-<div [className]= "condition ? 'imgBoxClicked' : 'imgBox'" >
-<img [src]="img.image" [className]="sizeToImg()" (click)="condition=true" >
+<div class="imgBox">
+<img [src]="img.image" [className]="sizeToImg()" (click)="clickedImg()" >
 <button id="likeBtn" (click)="clickLike(img)">LIKE</button><span id="like" >{{img.like}}</span>
 </div>

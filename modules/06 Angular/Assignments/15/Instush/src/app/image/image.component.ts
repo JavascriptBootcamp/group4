@@ -9,7 +9,8 @@ export class ImageComponent implements OnInit {
 
   @Input() img: Img;
   @Output() addToLocal = new EventEmitter();
-
+  @Output() openImg = new EventEmitter<string>();
+  condition:boolean=false;
   clickLike(img: Img) {
     img.like++;
     this.addToLocal.emit();
@@ -23,6 +24,11 @@ export class ImageComponent implements OnInit {
     else return "small";
 
   }
+
+clickedImg(){
+  this.condition=true;
+  this.openImg.emit(this.img.image);
+}
 
   ngOnInit() {
   }

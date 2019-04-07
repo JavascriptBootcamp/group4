@@ -1,4 +1,8 @@
-<h1>Instush</h1>
+<h1 id="header">Instush</h1>
 <div id="wraper">
-    <app-image *ngFor="let img of images" [img]="img" (addToLocal)="addToLocal()"></app-image>
+    <app-image *ngFor="let img of images" [img]="img" (openImg)="showImg($event)" (addToLocal)="addToLocal()"></app-image>
 </div>
+
+<div  [className]="conditionSohwImg ? 'showImg' : 'closeImg'"  >
+</div>
+<img  id="imgwindow"[src]="imgSrcShow" (click)="closeImg()" [hidden]="!conditionSohwImg" >

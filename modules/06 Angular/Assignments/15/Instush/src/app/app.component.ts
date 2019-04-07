@@ -12,11 +12,15 @@ export class Img {
 })
 export class AppComponent {
   title = 'Instush';
-  condition: boolean = false;
+  condition: boolean;
   images: Img[]=[];
-  
+  imgSrcShow:string;
+  conditionSohwImg:boolean;
   constructor() {
-    
+    this.condition= false;
+    this.conditionSohwImg = false;
+    this.imgSrcShow="";
+
 this.images = JSON.parse(localStorage.getItem("images"));
     if (this.images==null) {
      
@@ -34,6 +38,14 @@ this.images = JSON.parse(localStorage.getItem("images"));
     localStorage.setItem("images", JSON.stringify(this.images));
   }
 
+  showImg(imgSrc:string){
+    this.conditionSohwImg=true;
+    this.imgSrcShow=imgSrc;
+    
+  }
 
+  closeImg(){
+    this.conditionSohwImg=false;
+  }
 
 }
