@@ -30,8 +30,8 @@ export class ImageCompComponent implements OnInit {
 
   }
 
-  onClickLike(likeClick){
-    
+  onClickLike(e, likeClick){
+    likeClick.like++;
   }
 
 }

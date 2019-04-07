@@ -1,3 +1,7 @@
+.pic-comp {
+    display: flex;
+    flex-flow: wrap;
+}
 .likeSec{
     background-color: "red";
     font-size: xx-large;
@@ -7,11 +11,24 @@
 }
 
 .img {
-
+   width: 30%;
    text-align: center;
+   margin: 10px;
 }
 
-.imgSrc {
-    background-color: yellow;
 
+
+ .img0 {
+   width: 100px;
+   height: auto;
  }
+
+ .img1 {
+    width: 150px;
+    height: auto;
+  }
+
+  .img2 {
+    width: 200px;
+    height: auto;
+  }
