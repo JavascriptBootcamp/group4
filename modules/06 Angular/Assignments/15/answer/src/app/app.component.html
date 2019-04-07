@@ -2,8 +2,11 @@
 <div id="container">
   <div id="gallery">
     <div class="img" *ngFor="let src of imgSrcs">
-      <app-image [src]="src"></app-image>
+      <app-image [src]="src" (showImgEvent)="showBigPic($event)"></app-image>
     </div>
   </div>
+</div>
+<div *ngIf="bigPicSrc!==''">
+  <app-big-pic [src]="bigPicSrc" (closePicEvent)="closeBigPic()"></app-big-pic>
 </div>
 <!-- <router-outlet></router-outlet> -->

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   imgSrcs:string[];
+  bigPicSrc:string;
   
   constructor() {
     this.imgSrcs = [
@@ -20,9 +21,18 @@ export class AppComponent implements OnInit {
       "https://images.unsplash.com/photo-1508662790687-257eefcdccfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "https://images.unsplash.com/photo-1547974497-bb2a93b333ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
     ]
+
+    this.bigPicSrc = "";
   }
 
   ngOnInit(): void {
+  }
 
+  showBigPic(src:string) {
+    this.bigPicSrc = src;
+  }
+
+  closeBigPic() {
+    this.bigPicSrc = "";
   }
 }

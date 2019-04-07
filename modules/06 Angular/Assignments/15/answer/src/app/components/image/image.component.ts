@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-image',
@@ -6,12 +6,24 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./image.component.css']
 })
 export class ImageComponent implements OnInit {
-  
-  @Input() src:string;
 
-  constructor() { }
+  @Input() src: string;
+  @Output() showImgEvent = new EventEmitter<string>();
+  likeCount: number;
+
+  constructor() {
+    this.likeCount = 0;
+  }
 
   ngOnInit() {
+  }
+
+  addLike() {
+    this.likeCount++;
+  }
+
+  showImg() {
+    this.showImgEvent.emit(this.src);
   }
 
 }
