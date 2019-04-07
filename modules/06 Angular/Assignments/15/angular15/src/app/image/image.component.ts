@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input , Output ,EventEmitter} from '@angular/core';
 
 
 @Component({
@@ -8,6 +8,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 })
 export class ImageComponent implements OnInit {
   @Input() image : string;
+  @Output() addToOpenModal = new EventEmitter<string>();
   isClicked : boolean;
   numberOfLikes: number;
   constructor() { 
@@ -21,6 +22,9 @@ export class ImageComponent implements OnInit {
     this.isClicked = true;
   }
   ngOnInit() {
+  }
+  openModal(){
+    this.addToOpenModal.emit(this.image);
   }
 
 }

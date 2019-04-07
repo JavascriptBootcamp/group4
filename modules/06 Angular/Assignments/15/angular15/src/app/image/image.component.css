@@ -1,6 +1,6 @@
 img{
-    width:150px;
-    height:150px;
+    width:200px;
+    height:200px;
     display: block;
 }
 .like-wrapper{
@@ -33,10 +33,10 @@ img{
     border:1px solid red;
 }
 .inc{
-    width:200px;
-    height:200px;
+    width:250px;
+    height:250px;
 }
 .dec{
-    width:100px;
-    height:100px;
+    width:150px;
+    height:150px;
 }

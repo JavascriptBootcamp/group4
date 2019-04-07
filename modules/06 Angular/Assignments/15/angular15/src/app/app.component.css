@@ -16,7 +16,30 @@ div#wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .instush-comp{
     margin:5px;
+}
+.header{
+    color:white;
+}
+.modalWindow{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:600px;
+    height:600px;
+    margin-top:-300px;
+    margin-left:-300px;
+    z-index:999;
+    background-color: royalblue;
+    visibility:hidden;
+}
+.modalWindow.visible{
+    visibility:visible;
+}
+img{
+    width:100%;
+    height:100%;
 }

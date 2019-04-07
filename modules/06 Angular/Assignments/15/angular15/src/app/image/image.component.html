@@ -1,4 +1,8 @@
-<img [src]="image" (click)="isActive()" [class.active]="isClicked" 
-[className]="numberOfLikes > 10 ? 'inc' : numberOfLikes === 0 ? 'dec' : 'default'">
+<img [src]="image" (click)="isActive(); openModal()" 
+[ngClass]="{
+    'active': isClicked, 
+    'inc': numberOfLikes > 10,
+    'dec' : numberOfLikes === 0
+ }">
 <button class="btn-like" (click)="incrementLike()">Like</button>
 <div class="number-of-likes">{{numberOfLikes}}</div>
