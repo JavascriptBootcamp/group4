@@ -1,5 +1,12 @@
 
 
+.container{
+  position: relative;
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+}
+
 .grid-container {
     display: inline-grid;
     grid-template-columns: auto auto auto;
