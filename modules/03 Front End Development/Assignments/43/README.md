@@ -6,7 +6,7 @@
 The player chooses a difficulty level: "Easy", "Medium" or "Hard".
 </li>
 <li>
-A random word is generated using the <code>randomize</code> function from Assignment 24.<br />Word length is defined by the chosen level:
+Create an 3 arrays of words in 3 difference complexity levels. Word length is defined by the chosen level:
     <ul>
         <li>"Easy" - 3 letters</li>
         <li>"Medium" - 5 letters</li>
@@ -14,7 +14,10 @@ A random word is generated using the <code>randomize</code> function from Assign
     </ul>
 </li>
 <li>
-Allow the player to guess what is the random word by choosing the letters one by one from a list which contains the random word's letters in ascending order.
+Mix up the letters using the <code>randomize</code> function from Assignment 24.
+</li>
+<li>
+Allow the player to guess what is the word by choosing the letters one by one from a list which contains the word's letters in ascending order.
 </li>
 </ol>
 <p>
