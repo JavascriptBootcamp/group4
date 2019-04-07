@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../movie.model';
 import { rootUrl } from '../endpoint';
 
@@ -14,6 +14,7 @@ import { rootUrl } from '../endpoint';
 })
 export class MovieComponent {
   @Input() movie: Movie;
+  @Output('addToFavoritesAlias') addToFavoritesEvent = new EventEmitter<Movie>();
   endpoint: string;
   movieDetails: string[];
   condition: boolean;
@@ -43,6 +44,10 @@ export class MovieComponent {
 
    addRatings(ratings) {
     ratings.map( rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`) );
+   }
+
+   addToFavorites() {
+    this.addToFavoritesEvent.emit(this.movie);
    }
 
    width = this.getWidth();
