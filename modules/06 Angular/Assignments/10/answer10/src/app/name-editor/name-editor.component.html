@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Reactive Form</h1>
+  <form [formGroup]="myForm">
+    <h2>Personal Information</h2>
+    <label for="firstName">First Name</label>
+    <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+  
+    <label for="lastBame">Last Name</label>
+    <input type="text" class="form-control" id="lastBame" formControlName="lastBame" required>
+  
+    <label for="age">Age</label>
+    <input type="number" class="form-control" id="age" formControlName="age" required>
+  
+    <h2>Credentials</h2>
+
+    <label for="userName">User Name</label>
+    <input type="text" class="form-control" id="userName" formControlName="userName" required>
+  
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password" required>
+  
+    <h2>Contact</h2>
+
+    <label for="phoneNumber">Phone Number</label>
+    <input type="number" class="form-control hideSpinners" id="phoneNumber" formControlName="phoneNumber" required>
+  
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" formControlName="email" required>
+    
+    <h2>Misc</h2>
+
+    <label for="comments">Comments</label>
+    <textarea class="form-control" id="comments" formControlName="comments"></textarea>
+  
+    <label for="hobbie">Hobbie</label>
+    <select class="form-control" id="hobbie" required formControlName="hobbie">
+      <option *ngFor="let hobbie of hobbies" [value]="hobbie">{{hobbie}}</option>
+    </select>
+  
+    <button type="submit" class="btn btn-success" [disabled]="!myForm.valid">Submit</button>
+  </form>
+</div>

@@ -7,19 +7,16 @@ import { Registration } from '../registration';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent {
-  powers = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
+  hobbies = ['Play Music', 'Watch TV',
+  'Meet With My Friends', 'Play FIFA'];
 
-  model = new Registration(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
+  model = new Registration(18, '', '', 20, '', '', 50,'','',this.hobbies[0]);
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
 
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }   
-
   newRegistration() {
-    this.model = new Registration(42, '', '');
+    this.model = new Registration(18, '', '', 20, '', '', 50,'','',this.hobbies[0]);
   }
 }
