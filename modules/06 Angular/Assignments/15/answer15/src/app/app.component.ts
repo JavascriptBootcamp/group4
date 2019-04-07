@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
     }
   }
   onClickShow(src:string){
+    this.show = true;
     this.selectedImage = src;
-    this.show=true;
   }
 }
