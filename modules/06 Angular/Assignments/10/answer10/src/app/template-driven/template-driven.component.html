@@ -1,0 +1,56 @@
+<p>
+  template-driven works!
+</p>
+
+ <form (ngSubmit)="onSubmit()" #templateDrivenForm="ngForm">
+<div class="container">
+  <h1>Template Driven Form</h1>
+ 
+    <div class="form-group">
+      <label for="fname">First Name</label>
+      <input type="text" class="form-control" id="fname"   [(ngModel)]="model.fName" name="fName"   required>
+    </div>
+
+    <div class="form-group">
+      <label for="lName">Last Name</label>
+      <input type="text" class="form-control"  [(ngModel)]="model.lName" name="name" id="lName">
+    </div>
+
+ 
+</div>
+Age: <br/>
+<input type="number"   [(ngModel)]="model.age" name="age">
+
+<h3>Credentials:</h3>
+Userame: <br/>
+<input type="text"    [(ngModel)]="model.userName"  name="userName"><br/>
+Password: <br/>
+<input type="Password" [(ngModel)]="model.password" name="password">
+
+<h3>Contact:</h3>
+Phone Number: <br/>
+<input type="tel" [(ngModel)]="model.phoneNumber" name="phoneNumber"><br/>
+Email Address: <br/>
+<input type="Email" [(ngModel)]="model.email" name="email">
+
+<h3>Misc:</h3>
+Comments: <br/>
+<textarea name="Comments"  [(ngModel)]="model.comments" name="comments" rows="4" cols="50"></textarea><br/><br/>
+
+
+
+
+
+
+
+<div class="form-group">
+  <label for="hobbies">Hobbies</label>
+  <select class="form-control" id="hobby" required>
+    <option *ngFor="let hobby of hobbies" [value]="hobby">{{hobby}}</option>
+  </select>
+</div>
+
+
+<button type="submit" [disabled]="!templateDrivenForm.form.valid" class="btn btn-success">Submit</button>
+<button type="button" class="btn btn-default" (click)="newTemplateDrivenForm();templateDrivenForm.reset()">New Form</button>
+</form>

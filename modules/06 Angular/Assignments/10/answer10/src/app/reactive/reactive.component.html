@@ -1,0 +1,67 @@
+<p>
+  reactive works!
+</p>
+
+
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  <h3>Personal Information:</h3>
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label><br>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label><br>
+
+  <label>
+    Age:
+    <input type="number" formControlName="age">
+  </label><br><br>
+
+
+  <h3>Credentials:</h3>
+  <label>
+    Userame:
+    <input type="text" formControlName="userName">
+  </label><br>
+
+  <label>
+      Password:
+    <input type="password" formControlName="password">
+  </label><br><br>
+
+  <h3>Contact:</h3>
+  <label>
+      Phone Number:
+    <input type="tel" formControlName="phoneNumber">
+  </label><br>
+  <label>
+      Email:
+    <input type="email" formControlName="email">
+  </label><br><br>
+
+  <h3>Misc:</h3>
+  <label>
+      comments:
+    <input type="text" formControlName="comments">
+  </label><br>
+
+  <label>
+      Hobbies:
+    <select formControlName="hobbies">
+      <option  formControlName="Guitar">Guitar</option>
+      <option  formControlName="Basketball">Basketball</option>
+      <option  formControlName="Basketball">Tennis</option>
+
+    </select>
+
+  </label><br><br>
+
+
+
+  <button type="submit" [disabled]="!reactiveForm.valid">Submit</button>
+
+
+</form> 
