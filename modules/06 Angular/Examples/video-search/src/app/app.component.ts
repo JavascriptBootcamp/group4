@@ -14,12 +14,14 @@ export class AppComponent {
   hasMore: boolean;
   page: number;
   search: string;
+  isMenuOpen: boolean;
 
   // 2. default values
   constructor() {
     this.endpoint = searchUrl;
     this.search = "";
     this.initDefaultValues();
+    this.isMenuOpen = false;
   }
 
   // 3. logic
@@ -51,5 +53,13 @@ export class AppComponent {
 
   disableLoadMore() {
     this.hasMore = false;
+  }
+
+  onAddToFavorites(movie: Movie) {
+    console.log("Added to Favorites: " + JSON.stringify(movie));
+  }
+
+  toggleFavorites() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
