@@ -8,8 +8,18 @@ import { Component, OnInit ,Input} from '@angular/core';
 })
 export class ImageComponent implements OnInit {
   @Input() image : string;
-  constructor() { }
-
+  isClicked : boolean;
+  numberOfLikes: number;
+  constructor() { 
+    this.numberOfLikes = 0;
+    this.isClicked = false;
+  }
+  incrementLike() {
+    this.numberOfLikes++;
+  }
+  isActive(){
+    this.isClicked = true;
+  }
   ngOnInit() {
   }
 

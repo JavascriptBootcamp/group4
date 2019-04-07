@@ -1,4 +1,42 @@
 img{
     width:150px;
     height:150px;
+    display: block;
+}
+.like-wrapper{
+    display:block;
+}
+.number-of-likes{
+    display: inline-block;
+    background-color: #70db96;
+    width: 30%;
+    height: 23px;
+    text-align: center;
+    line-height: 1.5;
+}
+.btn-like{
+    display: inline-block;
+    background-color: #3838de;
+    box-shadow: none;
+    border: none;
+    width: 70%;
+    color: white;
+    height: 23px;
+    cursor: pointer;
+    padding: 0;
+    padding: 5px 0px;
+}
+.btn-like:hover{
+    font-weight: bold;
+}
+.active{
+    border:1px solid red;
+}
+.inc{
+    width:200px;
+    height:200px;
+}
+.dec{
+    width:100px;
+    height:100px;
 }

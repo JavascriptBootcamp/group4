@@ -1,3 +1,4 @@
-<img [src]="image">
-<app-like-button></app-like-button>
-<app-number-of-like></app-number-of-like>
+<img [src]="image" (click)="isActive()" [class.active]="isClicked" 
+[className]="numberOfLikes > 10 ? 'inc' : numberOfLikes === 0 ? 'dec' : 'default'">
+<button class="btn-like" (click)="incrementLike()">Like</button>
+<div class="number-of-likes">{{numberOfLikes}}</div>
