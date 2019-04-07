@@ -5,15 +5,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { RegistrationReactiveFormComponent } from './registration-reactive-form/registration-reactive-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    RegistrationReactiveFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

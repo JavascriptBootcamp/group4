@@ -1,0 +1,72 @@
+<h1>Reactive Form:</h1>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <h4>Personal Information</h4>
+  <div>
+    First Name:
+    <input type="text" formControlName="firstName" required>
+  </div>
+
+  <div>
+    Last Name:
+    <input type="text" formControlName="lastName" required>
+  </div>
+
+  <div>
+    Age:
+    <input type="text" formControlName="age" required>
+  </div>
+
+  <div formGroupName="contact">
+    <h4>Contact</h4>
+
+    <div>
+      Phone Number:
+      <input type="text" formControlName="phoneNumber" required>
+    </div>
+
+    <div>
+      Email Address:
+      <input type="text" formControlName="emailAddress" required>
+    </div>
+
+  </div>
+
+  <div formGroupName="credentials">
+    <h4>Credentials</h4>
+
+    <div>
+      User Name:
+      <input type="text" formControlName="userName" required>
+    </div>
+
+    <div>
+      Password:
+      <input type="password" formControlName="password" required>
+    </div>
+
+  </div>
+
+  <div formGroupName="misc">
+    <h4>Misc</h4>
+
+    <div>
+      Comments:
+      <textarea name="Comments" rows="4" cols="50"></textarea>
+    </div>
+
+    <div>
+      Hobbies:
+      <select formControlName="hobbies" required>
+        <option value="Soccer">Soccer</option>
+        <option value="Tennis">Tennis</option>
+        <option value="Basketball">Basketball</option>
+        <option value="Hoki">Hoki</option>
+      </select>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+</form>
