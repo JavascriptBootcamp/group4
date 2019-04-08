@@ -9,6 +9,6 @@
     'modalWindow': true, 
     'visible': clicked
  }">
-    <img [src]="image">
+    <img [src]="image" (click)="hideModal()" [className]="hidden ? 'hideModal' : ''">
   </div>
 </div>

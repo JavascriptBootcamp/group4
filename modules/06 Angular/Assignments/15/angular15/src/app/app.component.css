@@ -33,11 +33,13 @@ div#wrapper {
     margin-top:-300px;
     margin-left:-300px;
     z-index:999;
-    background-color: royalblue;
     visibility:hidden;
 }
 .modalWindow.visible{
     visibility:visible;
+}
+.hideModal{
+    visibility:hidden;
 }
 img{
     width:100%;
