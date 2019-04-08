@@ -1,4 +1,5 @@
 import { Component, OnInit ,Input , Output ,EventEmitter} from '@angular/core';
+import {Img} from '../app.component';
 
 
 @Component({
@@ -7,16 +8,16 @@ import { Component, OnInit ,Input , Output ,EventEmitter} from '@angular/core';
   styleUrls: ['./image.component.css']
 })
 export class ImageComponent implements OnInit {
-  @Input() image : string;
-  @Output() addToOpenModal = new EventEmitter<string>();
+  @Input() img : Img;
+  @Output() addToOpenModal = new EventEmitter();
+  @Output() addToLocal = new EventEmitter<string>();
   isClicked : boolean;
-  numberOfLikes: number;
   constructor() { 
-    this.numberOfLikes = 0;
     this.isClicked = false;
   }
-  incrementLike() {
-    this.numberOfLikes++;
+  incrementLike(img : Img) {
+    img.like++;
+    this.addToLocal.emit();
   }
   isActive(){
     this.isClicked = true;
@@ -24,7 +25,7 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
   }
   openModal(){
-    this.addToOpenModal.emit(this.image);
+    this.addToOpenModal.emit(this.img.src);
   }
 
 }

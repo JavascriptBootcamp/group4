@@ -1,8 +1,8 @@
 <div id="container">
   <h2 class="header">Instush</h2>
   <div id="wrapper">
-    <div class="instush-comp" *ngFor="let img of imgSrcArray">
-      <app-image [image]="img" (addToOpenModal)="onAddToOpenModal($event)"></app-image>
+    <div class="instush-comp" *ngFor="let img of images">
+      <app-image [img]="img" (addToOpenModal)="onAddToOpenModal($event)" (addToLocal)="addToLocal()"></app-image>
     </div>
   </div>
   <div [ngClass]="{
