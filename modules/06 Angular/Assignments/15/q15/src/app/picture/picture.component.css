@@ -1,14 +1,49 @@
 .picture{
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    height: 100%;
+    margin: 5px;
+    padding:7px;
+    /* margin: 20px; */
+    /* justify-content: space-around;  */
 }
 
 .likes .like{
     /* display: flex; */
-    align-items: flex-start;
+    /* align-items: flex-start; */
 }
 
 .likes .likes-counter{
-    /* display: flex; */
-    text-align: right;
+    display: flex;
+    align-items: flex-end;
+}
+
+.likes{
+    display: flex;
+
+}
+
+.picture img{
+    /* border: green solid; */
+    width: 150px;
+    height: 150px;
+}
+
+.picture button{
+    /* border: blue solid; */
+    width: 75%;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(180, 164, 164);
+    color: white;
+
+}
+
+.likes-counter{
+    /* border: yellow solid; */
+    width: 25%;
+    background-color: rgb(41, 33, 33);
+    color: rgb(190, 181, 181);
+    justify-content: center;
+    padding: 5px;
 }

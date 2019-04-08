@@ -1,5 +1,24 @@
+#pictures-wrapper{
+    width: 48%;
+    margin: 0 auto;
+    border: brown solid;
+
+    margin-top: 6%;
+}
+
 #pictures{
     display: flex;
-    justify-content: center;
-    align-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    margin: 3%;
 }
+
+#big-picture{
+    width: 600px;
+    height: 600px;
+
+    position: absolute;
+    z-index: 99;
+}
+

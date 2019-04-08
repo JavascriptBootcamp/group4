@@ -1,9 +1,11 @@
-<div id="pictures" *ngFor="let image of imgSrc">
-    <!-- <img src={{image}} alt="No image found" width="200px" height="200px"> -->
-    <app-picture [image]="image" (showPictureEvent)="onImgClilcked($event)"></app-picture>
+<div id="pictures-wrapper">
+    <div id="pictures">
+        <div *ngFor="let image of imgSrc">
+            <!-- <img src={{image}} alt="No image found" width="200px" height="200px"> -->
+            <app-picture [image]="image" (showPictureEvent)="onImgClilcked($event)"></app-picture>
+        </div>
+        <div *ngIf="bigImgSrc !== ''" id="big-picture">
+            <app-image [imgSrc]="bigImgSrc"></app-image>
+        </div>
+    </div>
 </div>
-
-<div *ngIf="bigImgSrc !== ''">
-    <app-image [imgSrc]="bigImgSrc"></app-image>
-</div>
-
