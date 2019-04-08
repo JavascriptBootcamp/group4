@@ -1,0 +1,3 @@
+<div id="prev-img" (click)="prevPicture()" [hidden]="!selected"></div>
+<img (click)="clickedPicture()" [src]="picture" [className]="selected ? 'big-image' : 'img'">
+<div id="next-img" (click)="nextPicture()" [hidden]="!selected"></div>

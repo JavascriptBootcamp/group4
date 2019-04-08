@@ -1,0 +1,32 @@
+img{
+    border-radius: 10px;
+}
+.img{
+    width: 200px;
+    cursor: pointer;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.big-image{
+    min-width: 200px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+#prev-img{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 46px 50px 0;
+    border-color: transparent #007bff transparent transparent;
+    cursor: pointer;
+}
+#next-img{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 0 50px 46px;
+    border-color: transparent transparent transparent #007bff;
+    cursor: pointer;
+}

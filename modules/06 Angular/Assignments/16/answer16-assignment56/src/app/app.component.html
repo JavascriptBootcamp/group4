@@ -1,0 +1,12 @@
+<div id="main-wrapper">
+  <div id="big-picture">
+    <app-picture id="up-app-picture" [picture]="selectedPicture" [selected]="true" (prevPictureEmit)="prevPicture()" (nextPictureEmit)="nextPicture()"></app-picture>
+  </div>
+  <div id="buttom-wrapper">
+      <!-- <div id="scroll-left" (mouseover)="scrollLeftFun(scroller)"></div> -->
+      <div id="picture-raw" #scroller>
+        <app-picture *ngFor="let picture of pictures" [picture]="picture" (showThisImage)="showThisImage($event)"></app-picture>
+      </div>
+      <!-- <div id="scroll-right" (mouseover)="scrollRightFun(scroller)"></div> -->
+  </div>
+</div>
