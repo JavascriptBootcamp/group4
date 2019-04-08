@@ -1,21 +1,49 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
-<router-outlet></router-outlet>
+<fieldset style="width:50%">
+        <legend>
+            <h2> Registration Form </h2>
+        </legend>
+
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
+
+            <fieldset [formGroupName]="personInformtion">
+                <legend>
+                    <h3>Person Informtion</h3>
+                </legend>
+                    First Name : <input type="text" name="fn" formControlName="fristName">
+                    Last Name : <input type="text" name="ln" formControlName="lastName">
+                    Age : <input type="number" name="age" formControlName="age">
+            </fieldset>`
+            <fieldset [formGroupName]="credentials">
+                <legend>
+                    <h3> Credentials </h3>
+                </legend>
+                User Name : <input type="text" name="un" formControlName="userName">
+                Password : <input type="password" name="ps" formControlName="password">
+            </fieldset>
+            <fieldset [formGroupName]="contact">
+                <legend>
+                    <h3> Contact </h3>
+                </legend>
+
+                Tel : <input type="tel" name="tel" formControlName="tel">
+                Email : <input type="email" name="email" formControlName="email">
+            </fieldset>
+            <fieldset [formGroupName]="misc">
+                <legend>
+                    <h3> Misc </h3>
+                </legend>
+
+                Comments :<textarea type="text" cols="50" rows="5" name="comm" formControlName="comments"> </textarea>
+                <br> Hobbies : <input list="Hobbies" name="hob" formControlName="hobbies">
+            </fieldset>
+            <datalist id="Hobbies">
+                <option value="hobby1">
+                <option value="hobby2">
+                <option value="hobby3">
+                <option value="hobby4">
+                <option value="hobby5">
+            </datalist>
+            <input type="submit" value="Regist">
+        </form>
+    </fieldset>
