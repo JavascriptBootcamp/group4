@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
     ];
     if (localStorage.getItem("gallery")) {
       this.bigPicture = {
-        id : JSON.parse(localStorage.getItem("gallery"))[0],
-        src : JSON.parse(localStorage.getItem("gallery"))[1]
+        id: JSON.parse(localStorage.getItem("gallery"))[0],
+        src: JSON.parse(localStorage.getItem("gallery"))[1]
       }
     }
     else {

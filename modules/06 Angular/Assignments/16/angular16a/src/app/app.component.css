@@ -24,7 +24,7 @@ img{
 }
 #gallery{
     width:90%;
-    height: 100%;
+    height: auto;
     margin:auto;
     border:1px solid;
     border-radius: 10px;
@@ -38,41 +38,18 @@ img{
     margin:15px 0;
     position: relative;
 }
-#big-picture .arrow , #thumbnails .arrow{
+#big-picture .arrow{
    width:10%;  
 }
-#big-picture img , #thumbnails-carousle{
+#big-picture img{
     width:70%;
 }
 #thumbnails-carousle{
-    text-align: center;
-    height:150px;
-    width: 1400px;
-    overflow: hidden;
-    top: 10px;
-    left: calc(100% - 1400px);
-    display: inline-block;
-    position: absolute;
-}
-#overlayer1{
-    width: 30%;
-    height: 150px;
-    z-index: 99;
-    background-color: rgb(77, 67, 101);
-    position: absolute;
-    left: 0px;
-    top: 10px;
-}
-#overlayer2{
-    width: 30%;
-    height: 150px;
-    z-index: 99;
-    background-color: rgb(77, 67, 101);
-    position: absolute;
-    right: 0;
-    top: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
 }
 div#thumbnails {
-    height: 170px;
-    overflow: hidden;
+    height: auto;
 }
