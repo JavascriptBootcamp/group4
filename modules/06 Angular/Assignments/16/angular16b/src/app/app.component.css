@@ -1,0 +1,26 @@
+#container{
+    width:100%;
+    min-height: 100%;
+    height:auto;
+    
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    margin:0;
+}
+#movie-wrapper{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+#player{
+    background-color:rgb(202, 125, 125);
+}
+#thumbnails{
+    
+}
