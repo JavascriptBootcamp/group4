@@ -1,20 +1,20 @@
 <h1>Template Driven Form:</h1>
-<form>
+<form #RegistrationTDForm="ngForm">
   <h3>Personal Information:</h3>
 
   <div>
     First Name: 
-    <input type="text" Name="FirstName">
+    <input type="text" name="firstName" required [(ngModel)]="model.firstName" id="firstName" #firstName="ngModel">
   </div>
 
   <div>
     Last Name: 
-    <input type="text" Name="LastName">
+    <input type="text" name="lastName" required [(ngModel)]="model.lastName" id="lastName" #lastName="ngModel">
   </div>
 
   <div>
     Age: 
-    <input type="number" Name="Age">
+    <input type="number" name="age" required [(ngModel)]="model.age" id="age" #age="ngModel">
   </div>
 
 
@@ -22,35 +22,35 @@
 
   <div>
     Userame: 
-    <input type="text" Name="Userame">
+    <input type="text" name="userame" required [(ngModel)]="model.userame" id="userame" #userame="ngModel">
   </div>
 
   <div>
     Password: 
-    <input type="Password" Name="Password">
+    <input type="Password" name="password" required [(ngModel)]="model.password" id="password" #password="ngModel">
   </div>
 
 
   <h3>Contact:</h3>
   <div>
     Phone Number: 
-    <input type="tel" Name="PhoneNumber">
+    <input type="tel" name="PhoneNumber" required [(ngModel)]="model.phone" id="phone" #phone="ngModel">
   </div>
 
   <div>
     Email Address: 
-    <input type="Email" Name="EmailAddress">
+    <input type="Email" name="email" required [(ngModel)]="model.email" id="email" #email="ngModel">
   </div>
 
   <h3>Misc:</h3>
   <div> 
      Comments: 
-    <textarea name="Comments" rows="4" cols="50"></textarea>
+    <textarea name="comments" rows="4" cols="50" required [(ngModel)]="model.comments" id="comments" #comments="ngModel"></textarea>
   </div>
 
   <div>
       Hobbies: 
-      <select>
+      <select name="hobbies" required [(ngModel)]="model.hobbies" id="hobbies" #hobbies="ngModel">
           <option value="Soccer">Soccer</option>
           <option value="Tennis">Tennis</option>
           <option value="Basketball">Basketball</option>
