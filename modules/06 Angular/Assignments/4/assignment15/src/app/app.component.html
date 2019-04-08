@@ -1,0 +1,6 @@
+<ol>
+    <li>{{ recipe.title }}</li>
+    <li>Serves: {{ recipe.servings }}</li>
+    <li>Ingredients:</li>
+    <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
+</ol>
