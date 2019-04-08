@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       "https://images.unsplash.com/photo-1551300263-00574a9d9b89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
     ];
 
-    this.bigPicSrc = "";
+    this.bigPicSrc = null;
   }
 
   ngOnInit(): void {
@@ -40,6 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   closeBigPic() {
-    this.bigPicSrc = "";
+    this.bigPicSrc = null;
   }
 }
