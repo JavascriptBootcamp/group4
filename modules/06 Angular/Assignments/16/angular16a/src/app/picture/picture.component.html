@@ -1,7 +1,7 @@
 <div id="big-picture">
-  <div class="arrow arrow-left"></div>
+  <div class="arrow arrow-left" (click)="backwardImg()"></div>
   <div id="big-picture-wrapper">
-    <img id="big-picture-img" imgnumber="tm1">
+    <img id="big-picture-img" [attr.imgnumber]="bigPicture.id" *ngIf="bigPicture" [src]="bigPicture.src">
   </div>
-  <div class="arrow arrow-right"></div>
+  <div class="arrow arrow-right" (click)="forwardImg()"></div>
 </div>

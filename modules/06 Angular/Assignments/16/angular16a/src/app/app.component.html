@@ -1,6 +1,16 @@
-<div class="container">
-    <app-picture></app-picture>
-    <div *ngFor="let thumbnail of thumbnails">
-        <app-thumbnail [image]="thumbnail"></app-thumbnail>
+<div id="gallery">
+    <app-picture [bigPicture]="bigPicture" (addBackEvent)="onClickBackEvent($event)"
+        (addforwardEvent)="onClickforwardEvent($event)"></app-picture>
+    <div id="thumbnails">
+        <div id="overlayer1"></div>
+        <div id="overlayer2"></div>
+        <div class="arrow arrow-left"></div>
+        <div id="thumbnails-carousle">
+            <app-thumbnail [image]="thumbnail" *ngFor="let thumbnail of thumbnails"
+                (addPicEvent)="onaddPicEvent($event)">
+
+            </app-thumbnail>
+        </div>
+        <div class="arrow arrow-right"></div>
     </div>
 </div>
