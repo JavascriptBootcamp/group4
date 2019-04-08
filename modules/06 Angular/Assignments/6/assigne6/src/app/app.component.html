@@ -1,0 +1,22 @@
+<table>
+ 
+<tr bgcolor="#FFCCFF">
+ <td>first name</td>
+ <td>last name</td>
+ <td>Address</td>
+ <td>phone number</td>
+ <td>email</td> 
+</tr>
+
+
+
+<tr bgcolor="#FFCCFF" *ngFor="let contact of conntactsArr">
+  <td>{{contact.fname}}</td>
+  <td>{{contact.lname}}</td>
+  <td>{{contact.address}}</td>
+  <td>{{contact.phoneNumber}}</td>
+  <td>{{contact.email}}</td>
+
+</tr>
+
+</table>
