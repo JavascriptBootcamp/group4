@@ -15,3 +15,7 @@
 .img {
     margin: 10px;
 }
+
+.blur {
+  filter: blur(8px);
+}

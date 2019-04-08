@@ -1,5 +1,5 @@
-<app-header></app-header>
-<div id="container">
+<app-header></app-header >
+<div id="container" [className]=" (bigPicSrc!=='')? 'blur' : '' ">
   <div id="gallery">
     <div class="img" *ngFor="let src of imgSrcs">
       <app-image [src]="src" (showImgEvent)="showBigPic($event)"></app-image>
@@ -9,4 +9,5 @@
 <div *ngIf="bigPicSrc!==''">
   <app-big-pic [src]="bigPicSrc" (closePicEvent)="closeBigPic()"></app-big-pic>
 </div>
+<app-top-pics (showImgEvent)="showBigPic($event)" [topPicSrcs]="topPicSrcs"></app-top-pics>
 <!-- <router-outlet></router-outlet> -->
