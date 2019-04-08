@@ -1,0 +1,6 @@
+<div class="container">
+    <app-picture></app-picture>
+    <div *ngFor="let thumbnail of thumbnails">
+        <app-thumbnail [image]="thumbnail"></app-thumbnail>
+    </div>
+</div>
