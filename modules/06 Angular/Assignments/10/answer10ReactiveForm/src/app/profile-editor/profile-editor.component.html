@@ -1,0 +1,94 @@
+<h1>app-profile-editor</h1>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> 
+  <label>
+    First Name
+    <br>
+    <input type="text" formControlName="firstName" required>
+  </label>
+
+  <br><br>
+
+  <label>
+    Last Name
+    <br>
+    <input type="text" formControlName="lastName" required>
+  </label>
+
+  <br><br>
+
+
+  <label>
+    Age
+    <br>
+    <input type="number" min=1 formControlName="lastName" required>
+  </label>
+
+  <br><br><br>
+
+  <div formGroupName="credentials">
+    <h3>Credentials</h3>
+  
+    <label>
+      Username
+      <br>
+      <input type="text" formControlName="username" required>
+    </label>
+    <br><br>
+
+    <label>
+      Password
+      <br>
+      <input type="password" formControlName="password" required>
+    </label>
+  </div>
+
+  <br><br><br>
+
+  <div formGroupName="contact">
+    <h3>Contact</h3>
+  
+    <label>
+      PhoneNumber
+      <br>
+      <input type="text" formControlName="PhoneNumber" required>
+    </label>
+    <br><br>
+
+    <label>
+      Email
+      <br>
+      <input type="password" formControlName="email" required>
+    </label> 
+  </div>
+
+  <br><br><br>
+
+  <div formGroupName="misc">
+    <h3>Misc</h3>
+  
+    <label>
+      Comments
+      <br>
+      <textarea rows="4" cols="30"  formControlName="comments"></textarea>
+    </label>
+
+    <br><br>
+
+    <label>
+      Hobbies
+      <br>
+      <input type="password" formControlName="hobbies">
+    </label>
+    <br><br>  
+  </div>
+
+
+
+  <br>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+</form>
+
+<br>
+<p> Form Status: {{ profileForm.status }} </p>
