@@ -20,11 +20,21 @@ img {
 }
 
 .imgBox{
- border: 1px solid lightsalmon;
- background-color: rgba(255, 160, 122, 0.8);
- 
+    width: auto;
+    border: 1px solid rgba(121, 24, 201, 0.836);
+    background-color: rgba(0, 0, 0, 0.815);
+    padding: 5px;
 }
 
+#likeBtn{
+    background-color: rgb(204, 198, 198);
+    border-radius: 10px;
+}
+
+#like{
+    color: white;
+    margin: 0 5px;
+}
 
 
    
