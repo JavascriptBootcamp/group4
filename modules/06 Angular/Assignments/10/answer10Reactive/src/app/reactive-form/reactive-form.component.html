@@ -1,0 +1,64 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+  <div formGroupName="personalInformation">
+    <h3>Personal Information</h3>
+    <label>
+      First Name:<br/>
+      <input type="text" formControlName="firstName"><br/>
+    </label>
+
+    <label>
+      Last Name:<br/>
+      <input type="text" formControlName="lastName"><br/>
+    </label>
+
+    <label>
+      Age:<br/>
+      <input type="number" formControlName="age"><br/>
+    </label>
+  </div>
+
+  <div formGroupName="credentials">
+    <h3>Credentials</h3>
+    <label>
+      User Name:<br/>
+      <input type="text" formControlName="username"><br/>
+    </label>
+
+    <label>
+      Password:<br/>
+      <input type="password" formControlName="password"><br/>
+    </label>
+  </div>
+
+
+  <div formGroupName="contact">
+    <h3>Contact</h3>
+    <label>
+      Phone:<br/>
+      <input type="tel" formControlName="phone"><br/>
+    </label>
+
+    <label>
+      Email:<br/>
+      <input type="email" formControlName="email"><br/>
+    </label>
+  </div>
+
+  <div formGroupName="misc">
+    <h3>Misc</h3>
+
+    Comments: <br />
+    <textarea formControlName="comments" name="Comments" rows="4" cols="50"></textarea><br /><br />
+    Hobbies: <br />
+    <select formControlName="hobbies">
+      <option value="Soccer">Soccer</option>
+      <option value="Tennis">Tennis</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Hoki">Hoki</option>
+    </select><br /><br />
+  </div>
+
+
+  <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
+</form>
