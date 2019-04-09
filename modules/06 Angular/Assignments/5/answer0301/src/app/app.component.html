@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  </div>
+<div>
+    <h1>My Top 5 Books:</h1>
+  <ul>
+    <li *ngFor="let b of Books">
+<h1>{{'Title: '+ b.Title}}</h1>
+<h2>{{'Author: '+ b.Author}}</h2>
+<h3>{{'Publication Date: '+ b.PublicationDate}}</h3>
+<h4>{{'Publisher: '+ b.Publisher}}</h4>
+<h5>{{'Pages: '+ b.Pages}}</h5>
+<p>{{'comments: '+ b.comments}}</p>
+    </li>
+  </ul>
+</div>
+
