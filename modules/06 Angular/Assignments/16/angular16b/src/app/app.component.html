@@ -1,11 +1,14 @@
 <div id="container">
     <h1>ITube</h1>
-    <div id="player">
-        <app-player></app-player>
-    </div>
-    <div id="thumbnails">
-        <div *ngFor="let thumbnail of thumbnails">
-            <app-thumbnail></app-thumbnail>
+    <div id="movie-wrapper">
+        <div id="player">
+            <app-player [player]="player"></app-player>
+        </div>
+        <div id="thumbnails">
+            <h2 class="title">More Videos</h2>
+            <div *ngFor="let thumbnail of thumbnails" class="thumbnail-wrapper">
+                <app-thumbnail [video]="thumbnail" class="thumbnail" (clickVideoEvent)="onAddClickVideoEvent($event)"></app-thumbnail>
+            </div>
         </div>
     </div>
 </div>

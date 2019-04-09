@@ -2,11 +2,11 @@
     width:100%;
     min-height: 100%;
     height:auto;
-    
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #314856;
 }
 h1{
     margin:0;
@@ -16,11 +16,29 @@ h1{
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    
+    width:100%;
+    height:100%;
 }
 #player{
-    background-color:rgb(202, 125, 125);
+    border:1px solid;
+    width:350px;
+    height: 400px;
+    background-color: #798881;
 }
 #thumbnails{
-    
+    border:1px solid;
+    width:350px;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: #798881;
+}
+.title{
+    text-align: center;
+    background-color: #9d5141;
+    margin:0;
+}
+.thumbnail {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
 }
