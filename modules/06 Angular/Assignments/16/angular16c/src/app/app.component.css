@@ -7,15 +7,16 @@
     background-color: #ccc;
     padding:5px;
 }
-#exp-all{
+#exp-all {
     background-color: brown;
     color: #fff;
     display: block;
-    width: 50%;
+    width: 10%;
     height: 30px;
     border: none;
     cursor: pointer;
-    margin:auto;
+    margin: 5px 0px;
+    border-radius: 5px;
 }
 h3{
     margin:0;

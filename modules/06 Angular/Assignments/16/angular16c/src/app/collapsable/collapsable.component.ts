@@ -1,5 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-collapsable',
   templateUrl: './collapsable.component.html',
@@ -8,14 +7,16 @@ import { Component, OnInit ,Input} from '@angular/core';
 
 export class CollapsableComponent implements OnInit {
   @Input() display: string;
-  collapse : boolean;
-  constructor(){
+  @Input() exp: boolean;
+  collapse: boolean;
+  constructor() {
     this.collapse = true;
   }
   ngOnInit() {
 
   }
-  toggle(){
+  toggle() {
     this.collapse = !this.collapse;
+    this.exp = !this.exp;
   }
 }

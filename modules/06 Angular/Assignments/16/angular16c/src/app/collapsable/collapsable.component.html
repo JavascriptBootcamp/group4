@@ -1,14 +1,15 @@
 <fieldset id="sec1" *ngIf="display === 'sec1'">
     <legend [ngClass]="{
         'default-symbool': true,
-        'minus': !collapse
+        'minus': !collapse || exp,
+        '': collapse || !exp
       }" (click)="toggle()">Enter keywords or item number</legend>
     <div [ngClass]="{
         'sec-col': true,
-        'collapse': collapse
+        'collapse': collapse && !exp,
+        '' : !collapse && exp
       }">
         <div id="keywords1">
-
             <input type="text" placeholder="enter keywords or item number" name="keywords" value="">
             <select id="Selectkeywords">
                 <option value="1" selected>All words, any order</option>
