@@ -1,0 +1,21 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<h2>Library:</h2>
+
+<div *ngFor="let key of books">
+  <h3> {{key.title +' by '+ key.author}}</h3>
+</div>
+<h2>Reading List:</h2>
+<div *ngFor="let key of books">
+  <h4 *ngIf="key.alreadyRead; else needReading">
+    {{' you aleady read '+ key.title +' by '+ key.author}}</h4>
+
+  <ng-template #needReading>
+    <h4>{{ "You still need to read " + "''" + key.title + "'' by " + key.author }}</h4>
+  </ng-template>
+
+</div>
