@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  </div>
+ 
+ 
+      <h2>My favorite food:</h2>
+      <ul>
+  <li *ngFor="let f of this.food; let i=index">
+  {{'My ' + (i+1) + switchSuffix(i + 1) + ' choice is '+ f}}  
+  </li>
+</ul>
+
+  <h2>My favorite beverage:</h2>
+  <ul>
+  <li *ngFor="let b of this.beverage; let i=index">
+  {{'My ' + (i+1) + switchSuffix(i + 1) + ' choice is '+ b}}  
+  </li>
+</ul>
+  <h2>My favorite colors:</h2>
+  <ul>
+  <li *ngFor="let c of this.colors; let i=index">
+  {{'My ' + (i+1) + switchSuffix(i + 1) + ' choice is '+ c}}  
+  </li>
+</ul>
+
