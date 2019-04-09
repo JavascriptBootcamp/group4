@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div [hidden]="!submitted">
+        <h1>form submitted</h1>
+      </div>
+      <form [formGroup]="profileForm" (ngSubmit)="submit()" [hidden]="submitted">
+        <h1>Sign In</h1>
+        <div class="form-group">
+          <label for="userName">User Name: </label>
+          <input type="text" id="userName" name="userName" class="form-control" formControlName="userName" required>
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" class="form-control" formControlName="password" required>
+        </div>
+        <button type="submit" class="btn btn-success d-block my-3" [disabled]="!profileForm.valid">submit</button>
+        <button routerLink="../forgot-pass" class="btn bg-secondary text-light border-3 d-block my-3">forgot
+          pass</button>
+        <button routerLink="../sign-up" class="btn bg-secondary text-light border-3 d-block my-3">sign-up</button>
+      </form>
+    </div>
+  </div>
+</div> 
