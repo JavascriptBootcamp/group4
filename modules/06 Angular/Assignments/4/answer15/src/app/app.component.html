@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  
+</div>
+<h2>the recipe for {{recipe.title}}</h2>
+<h2>servings: {{recipe.servings}}</h2>
+<h2>ingredients: </h2>
+<ul>
+  <li *ngFor="let key of recipe.ingredients">
+    {{key}}
+  </li>
+</ul>
+
