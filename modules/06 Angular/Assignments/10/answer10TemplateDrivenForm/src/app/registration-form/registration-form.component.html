@@ -1,0 +1,88 @@
+<div class="container">
+  <h1>Registration Form</h1>
+
+  <!-- The variable registrationForm is now a reference to the NgForm directive that governs the form as a whole. -->
+  <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input type="text" class="form-control" id="first-name" required [(ngModel)]="register.firstName" name="first-name" #firstName="ngModel">
+      <div [hidden]="firstName.valid"  class="alert alert-danger">
+        First Name is required
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input type="text" class="form-control" id="last-name" required [(ngModel)]="register.lastName" name="last-name" #lastName="ngModel">
+      <div [hidden]="lastName.valid || lastName.pristine"  class="alert alert-danger">
+        Last Name is required
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" class="form-control" id="age" required [(ngModel)]="register.age" name="age" #age="ngModel" min=18>
+      <div [hidden]="age.valid || age.pristine"  class="alert alert-danger">
+        Age is required
+      </div>  
+    </div>
+
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" name="username" required [(ngModel)]="register.userName"  #userName="ngModel">
+      <div [hidden]="userName.valid || userName.pristine"  class="alert alert-danger">
+        Username is required
+      </div>  
+    </div>
+
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="register.password" #password="ngModel">
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="form-group">
+      <h4>Contact</h4>
+      <label for="phone">Phone Number</label>
+      <input type="text" class="form-control" id="phone" name="phone" required [(ngModel)]="register.phone" #phone="ngModel">
+      <div [hidden]="phone.valid || phone.pristine" class="alert alert-danger">
+        Phone is required
+      </div>
+      <br>
+      <label for="email">Email Address</label>
+      <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="register.email" #email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        Email is required
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="form-group">
+      <h4>Misc</h4>
+      <label for="comments">Comments</label>
+      <textarea rows="4" cols="10" class="form-control" id="comments" 
+        name="comments" [(ngModel)]="register.comments">
+      </textarea>
+      <br>
+      <label for="hobbies">Hobbies</label>
+      <select class="form-control" id="hobbies" name="hobbies" [(ngModel)]="register.hobbies">
+        <option *ngFor="let hobby of hobbies" [value]="hobby">{{hobby}}</option>
+      </select>
+    </div>
+
+    
+    <button type="submit" class="btn btn-success" [disabled]="!registrationForm.form.valid">Submit</button>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-default" (click)="newRegister(); registrationForm.reset()">Add Register</button>
+
+  </form>
+
+</div>
