@@ -1,5 +1,8 @@
 <fieldset id="sec1" *ngIf="display === 'sec1'">
-    <legend class="default-symbool" (click)="toggle()">Enter keywords or item number</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Enter keywords or item number</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -49,7 +52,10 @@
 
 
 <fieldset id="sec2" *ngIf="display === 'sec2'">
-    <legend class="default-symbool" (click)="toggle()">Search including</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Search including</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -72,7 +78,10 @@
 </fieldset>
 
 <fieldset id="sec3" *ngIf="display === 'sec3'">
-    <legend class="default-symbool" (click)="toggle()">Price</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Price</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -91,7 +100,10 @@
 
 
 <fieldset id="sec4" *ngIf="display === 'sec4'">
-    <legend class="default-symbool" (click)="toggle()">Buying formats</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Buying formats</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -114,7 +126,10 @@
 
 
 <fieldset id="sec5" *ngIf="display === 'sec5'">
-    <legend class="default-symbool" (click)="toggle()">Condition</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Condition</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -140,7 +155,10 @@
 
 
 <fieldset id="sec6" *ngIf="display === 'sec6'">
-    <legend class="default-symbool" (click)="toggle()">Show results</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Show results</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -211,7 +229,10 @@
 
 
 <fieldset id="sec7" *ngIf="display === 'sec7'">
-    <legend class="default-symbool" (click)="toggle()">Location</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Location</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -254,7 +275,10 @@
 
 
 <fieldset id="sec8" *ngIf="display === 'sec8'">
-    <legend class="default-symbool minus" (click)="toggle()">Sellers</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': collapse
+      }" (click)="toggle()">Sellers</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': !collapse
@@ -294,7 +318,10 @@
 
 
 <fieldset id="sec9" *ngIf="display === 'sec9'">
-    <legend class="default-symbool" (click)="toggle()">Sort by</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">Sort by</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
@@ -330,7 +357,10 @@
 
 
 <fieldset id="sec10" *ngIf="display === 'sec10'">
-    <legend class="default-symbool" (click)="toggle()">clear and search</legend>
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': !collapse
+      }" (click)="toggle()">clear and search</legend>
     <div [ngClass]="{
         'sec-col': true,
         'collapse': collapse
