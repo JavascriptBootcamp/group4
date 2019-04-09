@@ -1,0 +1,23 @@
+#formWrapper{
+    width: 1200px;
+    margin:auto;
+}
+.formtitle{
+    color:#333;
+    background-color: #ccc;
+    padding:5px;
+}
+#exp-all{
+    background-color: brown;
+    color: #fff;
+    display: block;
+    width: 50%;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    margin:auto;
+}
+h3{
+    margin:0;
+    padding:0;
+}
