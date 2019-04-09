@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+ 
+</div>
+<div *ngFor="let i of images">
+<a [attr.href]='i.href'>
+  <img [attr.src]='i.src' height="200" width="300"/>
+</a>
+</div>
