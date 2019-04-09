@@ -1,0 +1,5 @@
+<div id="container">
+  <h1>My Gallery</h1>
+<app-main-img [img]="currentImg"  (replaceImg)="replaceImage($event)"></app-main-img>
+<app-thumbnail *ngFor="let img of images" [img]="img"></app-thumbnail>
+</div>
