@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-thumbnail',
@@ -6,11 +6,27 @@ import { Component, OnInit ,Input } from '@angular/core';
   styleUrls: ['./thumbnail.component.css']
 })
 export class ThumbnailComponent implements OnInit {
-
-  @Input() img:string;
+ intervalScroll;
+  @Input() img: string;
   constructor() { }
 
   ngOnInit() {
   }
 
+
+   scrlThumbnailRight(e: HTMLInputElement) {
+  this.intervalScroll =setInterval(function () {
+    e.scrollLeft += 1;
+  }), 1000;
+}
+
+ scrlThumbnailLeft(e: HTMLInputElement) {
+this.intervalScroll = setInterval(function () {
+    e.scrollLeft -= 1;
+  }), 1000;
+}
+
+ stopScroll() {
+  clearInterval(this.intervalScroll);
+}
 }

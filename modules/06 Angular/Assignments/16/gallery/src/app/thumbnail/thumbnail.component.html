@@ -1,7 +1,7 @@
 <div id="container">
-  <img id="arrow-left" src="..\assets\img\Larrow.png" onmouseover="scrlThumbnailLeft()" onmouseout="stopScroll()">
-  <div class="image_thumbnails">
-    <img class="img-tumbnail" [src]="img">
+  <img id="arrow-left" src="..\assets\img\Larrow.png" (mouseenter)="scrlThumbnailLeft(scrl)" (mouseleave)="stopScroll(scrl)">
+  <div class="image_thumbnails"   #scrl>
+    <img class="img-tumbnail" [src]="img" >
   </div>
-  <img id="arrow-right" src="..\assets\img\Rarrow.png" onmouseover="scrlThumbnailRight()" onmouseout="stopScroll()">
+  <img id="arrow-right" src="..\assets\img\Rarrow.png" (mouseenter)="scrlThumbnailRight(scrl)"  (mouseleave)="stopScroll(scrl)">
   </div>
