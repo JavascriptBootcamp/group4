@@ -1,0 +1,13 @@
+<div id="videos">
+  <div *ngFor="let v of videos">
+    <app-video [videoI]="v" (changeVideoEvent)="onChangeVideoEvent($event)"></app-video>
+  </div>
+</div>
+
+<div>
+  <app-video-player [videoUrl]="player.url"></app-video-player>
+</div>
+
+<div>
+  <app-video-details [videoDetailsI]="player"></app-video-details>
+</div>
