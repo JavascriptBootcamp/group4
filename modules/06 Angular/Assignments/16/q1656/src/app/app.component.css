@@ -1,0 +1,22 @@
+.pictures{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+#big-picture {
+    width: 35%;
+    /* height: 15%; */
+    margin: 0 auto;
+
+    margin-top: 4%;
+    margin-bottom: 3%;
+
+}
+
+.pictures .picture{
+    width: 20%;
+    height: 100%;
+}
+

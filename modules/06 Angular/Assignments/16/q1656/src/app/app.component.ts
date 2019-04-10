@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   images: string[];
+  bigImgSrc: string;
 
   constructor(){
     this.images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsw9q1gKQhk3M3krgRtn9vCgYaKDvQD_GgJdL-y-jNiJRLbgC",
@@ -18,6 +19,13 @@ export class AppComponent {
                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI7arfj-4VZnRls18ELncSRFACyqBCMcJLjZcxyCmr9DVC2qNrbA",
                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfgKOVXDVIY2Yaq0a0rDLWoV0ks0zcQVDa6aCQVJVGcD6llupPPw",
                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsQN-mcmQVIi2HLnAZhvJ-JCYZ1Yf7EtNlA1wVBf8gAYkh6T2r",
-                   "https://www.barraquer.com/wp-content/uploads/2017/07/el-ojo-del-surfista-p-08-2017.jpg"]
+                   "https://www.barraquer.com/wp-content/uploads/2017/07/el-ojo-del-surfista-p-08-2017.jpg"];
+  this.bigImgSrc = localStorage.getItem("bigImgSrc") || this.images[0];
   }
+
+  onShowBigPicture(bigImgSrc: string){
+    this.bigImgSrc = bigImgSrc;
+    localStorage.setItem("bigImgSrc",this.bigImgSrc);
+  }
+
 }

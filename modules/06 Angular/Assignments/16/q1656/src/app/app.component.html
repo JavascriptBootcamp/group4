@@ -1,3 +1,9 @@
-<div *ngFor="let i of images">
-  <app-image [imgSrc]="i"></app-image>
+<div id="big-picture" (click)=true>
+  <app-image [imgSrc]="bigImgSrc"></app-image>
+</div>
+
+<div class="pictures">
+  <div *ngFor="let i of images" class="picture">
+    <app-image [imgSrc]="i" (showBigPictureEvent)="onShowBigPicture($event)"></app-image>
+  </div>
 </div>
