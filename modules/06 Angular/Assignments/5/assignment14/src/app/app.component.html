@@ -1,0 +1,6 @@
+
+<ul>
+    <li *ngFor = "let f of food; let i = index">My {{i + 1}} {{switchSuffix(i+1)}} choice is {{f}}</li>
+    <li *ngFor = "let b of beverage; let i = index">My {{i + 1}} {{switchSuffix(i+1)}} choice is {{b}}</li>
+    <li *ngFor = "let color of colors; let i = index">My {{(i+1)}} {{switchSuffix(i+1)}} choice is {{color}}</li>
+</ul>
