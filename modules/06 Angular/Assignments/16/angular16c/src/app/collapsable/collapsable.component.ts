@@ -17,6 +17,5 @@ export class CollapsableComponent implements OnInit {
   }
   toggle() {
     this.collapse = !this.collapse;
-    this.exp = !this.exp;
   }
 }

@@ -2,17 +2,17 @@
   <form id="FindItems" (submit)="false">
     <h3 class="formtitle">Find Items</h3>
     <div>
-      <button id="exp-all" (click)="expandAll()">{{this.btnText}}</button>
+      <button id="exp-all" (click)="expandAll(); toggleAll([el1,el2,el3,el4,el5,el6,el7,el8,el9,el10])" #btn>{{this.btnText}}</button>
     </div>
-    <app-collapsable [exp]="expAll" [display]="'sec1'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec2'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec3'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec4'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec5'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec6'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec7'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec8'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec9'"></app-collapsable>
-    <app-collapsable [exp]="expAll" [display]="'sec10'"></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec1'" #el1></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec2'" #el2></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec3'" #el3></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec4'" #el4></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec5'" #el5></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec6'" #el6></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec7'" #el7></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec8'" #el8></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec9'" #el9></app-collapsable>
+    <app-collapsable [exp]="expAll" [display]="'sec10'" #el10></app-collapsable>
   </form>
 </div>
