@@ -3,6 +3,7 @@
   <a class="link" href="http://www.imdb.com/title/{{ movie.imdbID }}" target="_blank" [style.width.px]="width" [className]="condition ? 'active' : 'inactive'">
     {{ movie.Title }}
   </a>
+  <button type="button" (click)="addToFavorites()">Favorites</button>
 
   <div *ngIf="movieDetails.length > 0">
     <ul>
