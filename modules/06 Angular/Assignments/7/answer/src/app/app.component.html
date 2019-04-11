@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>using *ngif</h2>
+<ul *ngFor="let p of people">
+  <li *ngIf="(p.bloodPressure>=80 && p.bloodPressure<= 120); else notNormal ">
+  {{p.name+' has normal blood pressure'}}</li>
+  <ng-template #notNormal>
+    <li>{{p.name}} doesn't have normal blood pressure</li>
+  </ng-template>
+  
+</ul>
+
+<h2>using Pipes</h2>
+<ul *ngFor="let p of people">
+  <li>{{p.name}} {{p.bloodPressure| normalbloodpressure}}</li>
+</ul>
+
