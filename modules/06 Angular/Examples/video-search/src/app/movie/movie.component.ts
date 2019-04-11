@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../movie.model';
 import { rootUrl } from '../endpoint';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -14,15 +15,19 @@ import { rootUrl } from '../endpoint';
 })
 export class MovieComponent {
   @Input() movie: Movie;
-  @Output('addToFavoritesAlias') addToFavoritesEvent = new EventEmitter<Movie>();
+  @Output('favoritesEventAlias') favoritesEvent = new EventEmitter<Movie>();
   endpoint: string;
   movieDetails: string[];
   condition: boolean;
+  isClicked: boolean;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
       this.endpoint = rootUrl;
       this.movieDetails = [];
       this.condition = true;
+      this.isClicked = false;
+      this.activatedRoute = activatedRoute;
+      console.log("movieId: " + this.activatedRoute.snapshot.params.movieId)
    }
 
    showDetails(id: string) {
@@ -46,8 +51,9 @@ export class MovieComponent {
     ratings.map( rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`) );
    }
 
-   addToFavorites() {
-    this.addToFavoritesEvent.emit(this.movie);
+   onFavoritesClick() {
+    this.favoritesEvent.emit(this.movie);
+    this.isClicked = !this.isClicked;
    }
 
    width = this.getWidth();
