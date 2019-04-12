@@ -1,0 +1,17 @@
+img {
+    width :30vw;
+    height: auto;
+    
+}
+
+ul{
+ margin-bottom: 5vh;
+ width: 90%;
+ margin:0 auto;
+
+}
+
+li{
+    list-style-type: none;
+    background-color: gold;
+}
