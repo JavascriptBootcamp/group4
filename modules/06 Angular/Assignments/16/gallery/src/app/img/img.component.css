@@ -1,0 +1,11 @@
+.img-tumbnail {
+    width: auto;
+    height: 100px;
+    margin: 8px 8px;
+    cursor: pointer;
+    filter: blur(2px);
+}
+
+.img-tumbnail:hover {
+    filter: blur(0px);
+}

@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import { MainImgComponent } from './main-img/main-img.component';
+import { ImgComponent } from './img/img.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThumbnailComponent,
-    MainImgComponent
+    MainImgComponent,
+    ImgComponent
   ],
   imports: [
     BrowserModule

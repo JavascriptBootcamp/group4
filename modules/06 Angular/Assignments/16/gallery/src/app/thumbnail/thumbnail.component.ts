@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output ,EventEmitter} from '@angular/core';
+import { images } from '../imgArray';
+import { Img } from '../imgArray';
 
 @Component({
   selector: 'app-thumbnail',
@@ -6,27 +8,35 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./thumbnail.component.css']
 })
 export class ThumbnailComponent implements OnInit {
- intervalScroll;
-  @Input() img: string;
-  constructor() { }
+  intervalScroll: any;
+  images: Img[];
+  @Output() showImg = new EventEmitter<number>();
 
-  ngOnInit() {
+  constructor() {
+    this.images = images;
   }
 
+  ngOnInit() {
+  
+  }
 
-   scrlThumbnailRight(e: HTMLInputElement) {
-  this.intervalScroll =setInterval(function () {
-    e.scrollLeft += 1;
-  }), 1000;
-}
+  upImgToMain(idImg:number){
+    this.showImg.emit(idImg);
+  }
 
- scrlThumbnailLeft(e: HTMLInputElement) {
-this.intervalScroll = setInterval(function () {
-    e.scrollLeft -= 1;
-  }), 1000;
-}
+  scrlThumbnailRight(e: HTMLInputElement) {
+    this.intervalScroll = setInterval(function () {
+      e.scrollLeft += 1;
+    }), 1000;
+  }
 
- stopScroll() {
-  clearInterval(this.intervalScroll);
-}
+  scrlThumbnailLeft(e: HTMLInputElement) {
+    this.intervalScroll = setInterval(function () {
+      e.scrollLeft -= 1;
+    }), 1000;
+  }
+
+  stopScroll() {
+    clearInterval(this.intervalScroll);
+  }
 }

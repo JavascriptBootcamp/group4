@@ -7,5 +7,10 @@
 }
 h1{
     text-align: center;
+    
+}
+header{
+    box-shadow: 0 8px 6px -6px black;
+    z-index: 4;
 }
 
