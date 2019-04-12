@@ -1,0 +1,42 @@
+
+<div class="header">
+  <h1>{{title}}</h1>
+</div>
+<div class="mainImgDiv">
+  <div class="col">
+    <app-big-picture [imgClassName]="'big-img'" (click)="leftArrowClicked()"
+      imgsSrc="http://iconshow.me/media/images/ui/ios7-icons/png/512/arrow-left-b.png">
+    </app-big-picture>
+  </div>
+  <div class="col">
+    <app-big-picture [imgClassName]="'big-img'" [imgsSrc]="data[currentIndex]"></app-big-picture>
+  </div>
+  <div class="col">
+    <app-big-picture [imgClassName]="'big-img'" (click)="rightArrowClicked()"
+      imgsSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQZjjWZSbaOZqw8pGokPU1eMIsFPTy20IZuvoht2oTDV6BmhRt">
+    </app-big-picture>
+  </div>
+</div>
+
+
+
+<div class="imagesContainer">
+  <div class="imagesContainer-row">
+    <div>
+      <img class="imagesContainer-row-col-arrowImg" (mouseout)="stopLeftSlide()" (mouseover)="slideLeft(imagesDiv)"
+        src="http://iconshow.me/media/images/ui/ios7-icons/png/512/arrow-left-b.png" />
+    </div>
+    <div class="imagesContainer-row-col-images">
+      <div class="imagesContainer-row-col-images-imgDiv" #imagesDiv>
+        <div *ngFor="let srcData of data,let i = index">
+          <app-big-picture (click)="smallImgClicked(i)" [imgClassName]="'small-img'" [imgsSrc]="srcData">
+          </app-big-picture>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img class="imagesContainer-row-col-arrowImg" (mouseout)="stopRightSlide()" (mouseover)="slideRight(imagesDiv)"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQZjjWZSbaOZqw8pGokPU1eMIsFPTy20IZuvoht2oTDV6BmhRt" />
+    </div>
+  </div>
+</div>
