@@ -12,6 +12,7 @@ ul{
 }
 
 li{
+    
     list-style-type: none;
     background-color: gold;
 }
