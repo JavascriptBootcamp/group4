@@ -1,0 +1,20 @@
+.likesAndCounters button{
+    width:70px;
+    margin-left: 19px;
+    
+}
+
+.likesAndCounters input{
+   width:40px;
+}
+
+ img {
+    
+    width: 120px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+    margin-left: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}

@@ -1,0 +1,7 @@
+<div>
+  <img [src]="imageSrc" (click)="clickImg()"  [style.height.px]="picSizeProp" [style.width.px]="picSizeProp" [style.border]="borderImg">
+  <div class="likesAndCounters">
+    <button  (click)="onclickaddLike()">addLike</button>
+    <input [value]="counter" disabled>
+  </div>
+</div>
