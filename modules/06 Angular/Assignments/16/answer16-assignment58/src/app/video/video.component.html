@@ -1,0 +1,10 @@
+<div class="video" (click)="videoHasClicked()">
+  <!-- <img class="video-img" [src]="videoSrc"> -->
+  <video class="video-img">
+    <source id="video-img-src" [src]="videoSrc" type="video/mp4" />
+  </video>
+  <div class="video-info-container">
+    <h3 class="video-h3-title">{{title}}</h3>
+    <h4 class="video-h4-creator">{{creator}}</h4>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.video{
+    width: 240px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 4px solid salmon;
+    box-shadow: 2px 13px 36px -18px rgba(0,0,0,0.75);
+    margin-bottom: 10px;
+}
+.video-img{
+    height: 100%;
+    width: 100px;
+}
+.video-info-container{
+    height: 100%;
+    padding: 10px;
+}
