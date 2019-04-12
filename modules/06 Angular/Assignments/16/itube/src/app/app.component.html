@@ -1,0 +1,20 @@
+<div class="middle">
+  <div id="container">
+    <div id="header">ITube</div>
+    <div id="wrapper">
+      <div>
+        <app-video [video]="selectedVideo"></app-video>
+      </div>
+
+      <div id="menu">
+        <div class="menu-thumbnailDiv" *ngFor="let video of videosArr">
+          <app-thumbnail (click)="OnSelectedVideo(video)" [video]="video"></app-thumbnail>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

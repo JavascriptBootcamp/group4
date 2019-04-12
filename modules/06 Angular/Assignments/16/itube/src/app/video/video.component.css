@@ -1,0 +1,16 @@
+#player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    flex-direction: column;
+}
+
+#player * {
+    width: 90%;
+}
+
+.player-video{
+    width: 400px;
+    height: 400px;
+}
