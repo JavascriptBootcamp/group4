@@ -42,7 +42,7 @@ html, body {
 }
 
 .menu-thumbnailDiv{
-
+    cursor: pointer;
     border:1px solid white;
 }
 
