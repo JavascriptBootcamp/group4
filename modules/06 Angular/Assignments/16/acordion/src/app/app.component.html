@@ -1,0 +1,8 @@
+
+<div>
+    <button id="all_BTN" (click)="ExpandAll($event)">Expand All</button>
+</div>
+<form>
+<app-subject *ngFor="let subject of subjectsArr" [expandAll] = "expand" [subject]="subject"></app-subject>
+
+</form>
