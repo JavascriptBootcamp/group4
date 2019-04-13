@@ -13,11 +13,11 @@ export class RecipesComponent implements OnInit {
   
       this.recipes = [
   
-       {name:"Creamy Pasta Toss with Smoked Sausage",ings:["1 (8 ounce) package uncooked pappardelle pasta","1 tablespoon olive oil"],id:"1"},
-       {name:"Easy Meatloaf",ings:["1 1/2 pounds ground beef","1 tablespoon olive oil"],id:"2"},
-       {name:"humburger",ings:["cheese","bacon"],id:"3"}
-  
-      ];
+        {name:"Creamy Pasta Toss with Smoked Sausage",ings:["1 (8 ounce) package uncooked pappardelle pasta","1 tablespoon olive oil"],id:"0"},
+        {name:"Easy Meatloaf",ings:["1 1/2 pounds ground beef","1 tablespoon olive oil"],id:"1"},
+        {name:"humburger",ings:["cheese","bacon"],id:"2"}
+   
+       ];
   
   
      }
