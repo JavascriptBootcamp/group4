@@ -1,0 +1,10 @@
+#gallry{ 
+    display: inline-grid;   
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: rgb(77, 67, 101);
+    
+}
