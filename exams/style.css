@@ -1,0 +1,60 @@
+div#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+form{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: brown;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#search-input , #btnLoad{
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+#btnLoad{
+    height: 23.5px;
+}
+#movies , #loadMore{
+    margin-top:50px;
+}
+.movie{
+    width: 300px;
+    margin-top:10px;
+    cursor: pointer;
+    transition: 0.5s all;
+    padding: 5px;
+}
+.movie:hover{
+    background-color:rgb(148, 0, 0);
+    color:#FFF;
+}
+.movie > a{
+    text-align: center;
+    display: block;
+    background-color: #bdbdbd;
+    color: blue;
+}
+img{
+    width:100%;
+    height:auto;
+    display: block;
+}
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+.info{
+    width:100%;
+    height:auto;
+    word-break: break-all;
+}
