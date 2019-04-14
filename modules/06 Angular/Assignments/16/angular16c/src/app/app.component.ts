@@ -8,32 +8,22 @@ import { element } from '@angular/core/src/render3';
 })
 export class AppComponent {
   display: string;
-  expAll: boolean;
-  btnText : string;
+  isOpen: boolean;
+  btnText: string;
   constructor() {
     this.display = "";
-    this.expAll = false;
+    this.isOpen = false;
     this.btnText = "Expand All";
   }
-  expandAll(arr : HTMLInputElement[]){
-    this.expAll = !this.expAll;
-    if(!this.expAll){
-      this.btnText = "Expand All";
-    }else{
+  toggleAll(e) {
+    e.preventDefault();
+    if (this.btnText === "Expand All") {
+      this.isOpen = true;
       this.btnText = "Collapse All";
     }
-  }
-  toggleAll(el : HTMLInputElement[]){
-    if(this.btnText === "Expand All")
-    {
-      el.forEach((element) =>{
-        element.collapse = true;
-      })
-    }
-    else{
-      el.forEach((element) =>{
-        element.collapse = false;
-      })
+    else if (this.btnText === "Collapse All") {
+      this.isOpen = false;
+      this.btnText = "Expand All";
     }
   }
 }
