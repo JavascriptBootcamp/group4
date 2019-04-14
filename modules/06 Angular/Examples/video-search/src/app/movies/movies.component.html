@@ -1,0 +1,16 @@
+<form id="searchForm" (submit)="searchMovie($event, query)">
+  <input type="text" placeholder="Enter movie name..." minlength="3" #query />
+  <button type="submit">Search</button>
+</form>
+
+<div id="movies">
+  <div id="movie-details" *ngFor="let currentMovie of movies">
+    <app-movie [movie]="currentMovie" (favoritesEventAlias)="onFavoritesChange($event)"></app-movie>
+  </div>
+
+  <button *ngIf="movies.length > 0" (click)="loadMovies()" [disabled]="!hasMore">
+    Load More...
+  </button>
+</div>
+
+<app-favorites [favorites]="favorites"></app-favorites>

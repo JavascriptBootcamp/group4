@@ -1,0 +1,26 @@
+.movie {
+    text-align: center;
+    margin: 10px;
+}
+.movie:hover {
+    border: 2px solid #FF847C;
+    background-color: #FECEA8;
+    border-radius: 3px;
+    padding: 20px;
+}
+.movie a {
+    display: block;
+}
+.movie img {
+    cursor: pointer;
+}
+.movie .link {
+    visibility: hidden;
+}
+.movie:hover .link {
+    visibility: visible;
+}
+
+.movie .active {
+    border: solid 5px darkgreen;
+}

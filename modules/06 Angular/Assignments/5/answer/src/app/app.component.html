@@ -1,0 +1,65 @@
+<section id="ex_14">
+  <h2>group4/Modules/01 JavaScript Programming/Assignments/14 answer -</h2>
+
+  <br>
+  <h3>My Favorite Food - </h3>
+  <ul *ngFor="let food of foods; let i = index">
+    <li>
+      <h3>{{ 'My ' + (i+1) + switchSuffix(i + 1) + ' choice is ' + food }}</h3>
+    </li>
+  </ul>
+
+  <br>
+  <h3>My Favorite Beverages - </h3>
+  <ul *ngFor="let beverage of beverages; let i = index">
+    <li>
+      <h3>{{ 'My ' + (i+1) + switchSuffix(i + 1) + ' choice is ' + beverage }}</h3>
+    </li>
+  </ul>
+
+  <br>
+  <h3>My Favorite Colors - </h3>
+  <ul *ngFor="let color of colors; let i = index">
+    <li>
+      <h3>{{ 'My ' + (i+1) + switchSuffix(i + 1) + ' choice is ' + color }}</h3>
+    </li>
+  </ul>
+</section>
+
+<section id="ex_16">
+  <hr>
+  <h2>group4/Modules/01 JavaScript Programming/Assignments/16 answer -</h2>
+  <div *ngFor="let book of books">
+    <h3>{{ book.title + " by " + book.author }}</h3>
+    <h4 *ngIf="book.alreadyRead; else need_to_read">
+      {{ "You already read " + "''" + book.title + "'' by " + book.author }}</h4>
+    <ng-template #need_to_read>
+      <h4>{{ "You still need to read " + "''" + book.title + "'' by " + book.author }}</h4>
+    </ng-template>
+  </div>
+</section>
+
+<section id="ex_1">
+  <hr>
+  <h2>group4/Modules/03 Front End Development/Assignments/01 -</h2>
+  <br>
+  <h2>My Top 5 Books:</h2>
+  <div *ngFor="let book of books2">
+    <h2>Title: {{ book.title }}</h2>
+    <h2>Author: {{ book.author }}</h2>
+    <h3>Publication date: {{ book.date }}</h3>
+    <h4>Publisher: {{ book.publisher }}</h4>
+    <h5>Pages: {{ book.pages }}</h5>
+    <p>comments: {{ book.comments }}</p>
+  </div>
+</section>
+
+<section id="ex_2">
+  <hr>
+  <h2>group4/Modules/03 Front End Development/Assignments/02 -</h2>
+  <div *ngFor="let img of imgs">
+    <a [attr.href]="img.href">
+      <img [attr.src]="img.src" height="200" width="300" />
+    </a>
+  </div>
+</section>

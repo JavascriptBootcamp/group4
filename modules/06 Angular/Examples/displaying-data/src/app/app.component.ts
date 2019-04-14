@@ -11,6 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   bookTitle: string;
   colors: string[] = ["red", "blue", "green"];
+  months: string[] = ["January", "February", "March", "April"];
+  isavailable: boolean = true;
+  sampleObject = {foo: 'bar', baz: 'qux', nested: {xyz: 3, numbers: [1, 2, 3, 4, 5]}};
 
   ngOnInit() {
     fetch("https://www.googleapis.com/books/v1/volumes?q=javascript")
@@ -23,5 +26,14 @@ export class AppComponent implements OnInit {
 
   displayTitle(value){
     this.bookTitle = value;
+  }
+
+  sayHello() {
+    console.log("Hello");
+  }
+
+  changeMonths(e, message) {
+    console.log(e);
+    console.log(message);
   }
 }
