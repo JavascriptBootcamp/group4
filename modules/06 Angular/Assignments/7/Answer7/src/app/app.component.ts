@@ -8,6 +8,7 @@ import { IPerson } from "../IPerson";
 })
 export class AppComponent {
   people : IPerson[];
+  normalbloodpressure : string;
 
   constructor()
   {
@@ -28,6 +29,9 @@ export class AppComponent {
         name : "Qui-gon-jinn",
         bloodPressure : 190,
       },
-    ]
+    ];
+
+    
+
   }
 }
