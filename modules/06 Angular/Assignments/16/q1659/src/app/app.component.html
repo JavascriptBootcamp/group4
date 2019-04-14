@@ -1,0 +1,18 @@
+<div id="formWrapper">
+    <form id="FindItems" (submit)="false">
+      <h3 class="formtitle">Find Items</h3>
+      <div>
+        <button id="exp-all" (click)="toggleAll();" #btn>{{this.btnText}}</button>
+      </div>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec1'" #el1></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec2'" #el2></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec3'" #el3></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec4'" #el4></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec5'" #el5></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec6'" #el6></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec7'" #el7></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec8'" #el8></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec9'" #el9></app-collapsable>
+      <app-collapsable [isAllOpen]="isAllOpen" [display]="'sec10'" #el10></app-collapsable>
+    </form>
+  </div>

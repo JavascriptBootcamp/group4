@@ -1,0 +1,13 @@
+.collapse{
+    display:none;
+}
+
+.minus:before{
+    content:"-";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.displayAll {
+    display:block;
+}
