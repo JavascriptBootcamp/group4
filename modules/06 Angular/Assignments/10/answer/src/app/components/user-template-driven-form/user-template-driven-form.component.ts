@@ -8,21 +8,21 @@ import { User } from "../../classes/user";
   styleUrls: ['./user-template-driven-form.component.css']
 })
 export class UserTemplateDrivenFormComponent implements OnInit {
-  hobbies:string[];
-  submitted:boolean;
-  user:User;
+  hobbies: string[];
+  submitted: boolean;
+  user: User;
 
   constructor() {
     this.hobbies = ['', 'Runing', 'Photograpy', 'Soccer', 'PokemonMaster'];
     this.submitted = false;
-    this.user = new User("","",1,"","",1,"","",[""]);
+    this.user = new User("", "", 1, "", "", 1, "", "", [""]);
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     console.log(this.submitted)
   }
 
 
-onSubmit() { this.submitted = true; }
+  onSubmit() { this.submitted = true; }
 
 }
