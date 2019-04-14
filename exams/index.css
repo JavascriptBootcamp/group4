@@ -36,10 +36,18 @@ button, input {
 header button, header input {
     border: #CDD6D5 solid 3px;
     color:#CDD6D5;
+    display: inline;
 }
 
 button:hover {
     cursor: pointer;
+}
+
+
+.msg {
+    color: rgb(240, 60, 60);
+    display: block;
+    margin-top: 3px;
 }
 
 .container {
