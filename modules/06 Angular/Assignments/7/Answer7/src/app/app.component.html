@@ -1,0 +1,10 @@
+
+<h1>Using *ngIf</h1>
+<div *ngFor="let person of people">
+  {{person.name}} <span id="bloodResult" *ngIf="person.bloodPressure >= 80 && person.bloodPressure <= 120">Normal</span>
+</div>
+
+<h1>Using Pipes</h1>
+<div *ngFor="let person of people">
+    {{person.name}} <span id="bloodResult" *ngIf="person.bloodPressure >= 80 && person.bloodPressure <= 120">Normal</span>
+  </div>
