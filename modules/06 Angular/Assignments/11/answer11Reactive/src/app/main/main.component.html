@@ -1,0 +1,20 @@
+<form [formGroup]="profileForm">
+    Username:
+    <input type="text" placeholder ="User name" formControlName="userName"><br><br>
+    Password:
+    <input type="password" placeholder ="Password" formControlName="password"><br><br>
+    <button type="submit">Submit</button>
+    <ul>
+      <li>
+        <a routerLink="sign-in">
+          Sign Up
+        </a>
+      </li>
+      <li>
+        <a routerLink="forgot-password">
+          Forgot Password
+        </a>
+      </li>
+    </ul>
+    <br>
+  </form>
