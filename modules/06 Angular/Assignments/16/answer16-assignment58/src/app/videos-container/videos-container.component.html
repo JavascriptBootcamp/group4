@@ -1,3 +1,6 @@
 <div id="videos-container">
-    <app-video *ngFor="let video of videos" [video]="video"></app-video>
+    <div id="more-videos">
+        <h3>More Videos</h3>
+    </div>
+    <app-video (videoHasClickedEvent)="playThisVideo($event)" *ngFor="let video of videos" [video]="video"></app-video>
 </div>

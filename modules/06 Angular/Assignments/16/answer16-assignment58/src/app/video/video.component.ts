@@ -11,10 +11,10 @@ export class VideoComponent{
   @Output() videoHasClickedEvent=new EventEmitter<Video>();
 
   videoHasClicked(){
-    console.log(this.video.isClicked);
+    //console.log(this.video.isClicked);
     this.video.isClicked=true;
     this.videoHasClickedEvent.emit(this.video);
-    console.log(this.video.isClicked);
+    // console.log(this.video.isClicked);
   }
 
 }

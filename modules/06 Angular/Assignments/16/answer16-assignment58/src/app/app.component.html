@@ -1,1 +1,5 @@
-<app-videos-container></app-videos-container>
+<div id="video-section">
+    <app-player *ngIf="currentVideo" [currentVideo]="currentVideo"></app-player>
+    <app-videos-container (playThisVideoEvent)="moveVideoToPlayer($event)"></app-videos-container>
+</div>
+

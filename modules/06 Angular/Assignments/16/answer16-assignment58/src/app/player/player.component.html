@@ -1,0 +1,9 @@
+<div id="current-video-wrapper">
+  <video id="current-video" preload=auto controls [src]="currentVideo.videoSrc" type="video/mp4">
+  </video>
+  <div id="video-info-container">
+    <h3 id="video-h3-title">{{currentVideo.title}}</h3>
+    <h4 id="video-h4-creator">{{currentVideo.creator}}</h4>
+    <h5 id="video-h4-creator">Description:</h5><p>{{currentVideo.description}}</p>
+  </div>
+</div>

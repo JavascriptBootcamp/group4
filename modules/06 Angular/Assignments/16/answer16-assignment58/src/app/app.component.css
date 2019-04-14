@@ -1,0 +1,7 @@
+#video-section{
+    display: flex;
+    position: relative;
+    bottom: 80px;
+    justify-content: space-between;
+    width: 890px;
+}

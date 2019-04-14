@@ -1,9 +1,27 @@
 #videos-container{
-    height: 600px;
+    height: 500px;
     width: 260px;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: aliceblue;
+    position: relative;
+    background-color: rgb(212, 227, 241);
+    border-radius: 4px;
+}
+#more-videos{
+    background-color: rgb(103, 141, 156);
+    color: white;
+    padding: 6px;
+    font-size: 12px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+
+#more-videos h3{
+    margin: 0;
+    padding: 0;
 }

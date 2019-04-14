@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Video } from './video.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'answer16-assignment58';
+  currentVideo:Video;
+  moveVideoToPlayer(video){
+    this.currentVideo=video;
+  }
 }
