@@ -6,28 +6,15 @@ import { Video } from '../video.model';
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements Video{
-  @Input() videoSrc:string;
+export class VideoComponent{
+  @Input() video:Video;
   @Output() videoHasClickedEvent=new EventEmitter<Video>();
 
-  img:string;
-  title:string;
-  creator:string;
-  description?: string;
-  isClicked: boolean;
-
-  constructor(){
-    this.img=''
-    this.title='blabla' + Math.floor((Math.random() * 20) + 1);;
-    this.creator="ofek";
-    this.description="very nice video";
-    this.isClicked=false;
-  }
   videoHasClicked(){
-    console.log(this.isClicked);
-    this.isClicked=true;
-    this.videoHasClickedEvent.emit(this);
-    console.log(this.isClicked);
+    console.log(this.video.isClicked);
+    this.video.isClicked=true;
+    this.videoHasClickedEvent.emit(this.video);
+    console.log(this.video.isClicked);
   }
 
 }
