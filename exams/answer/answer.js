@@ -51,12 +51,17 @@ var makeAjaxCall = function () {
 }
 
 function showDetails(id){
+
+    const  detailList = document.querySelector(`#detail${id}`);
+
+    if(detailList.innerHTML === "" ) {
+
   const detailsFetch = fetch(`http://www.omdbapi.com/?apikey=d777cf78&i=${id}`);
   console.log(detailsFetch);
   detailsFetch.then(function(stream){
             stream.json().then(function(detailes){
     console.log(detailes);
-    const  detailList = document.querySelector(`#detail${id}`);
+    
 
     for(let detail in detailes){
       if(typeof detailes[detail]) {
@@ -68,7 +73,12 @@ function showDetails(id){
     }
     })
   })
-console.log(this.value);
+
+}
+ else{
+    detailList.innerHTML ="";
+ }
+
 }
 
 
