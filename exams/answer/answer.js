@@ -16,21 +16,16 @@ var makeAjaxCall = function () {
     myFetch.then(
       function (stream) {
         stream.json().then(function (json) {
-
-     
           try {
             json.Search.length;
           }
-          catch(err) {
+          catch (err) {
             document.querySelector("#loadMore").disabled = true;
           }
 
-         
-             
-          
           for (let item of json.Search) {
             //if(!(item.Poster ==="N/A"))
-              movieList.innerHTML += `
+            movieList.innerHTML += `
               <div class="result-item">
               <h3 onclick = "showDetails('${item.imdbID}')"> ${item.Title}</h3>
               <ul id="detail${item.imdbID}"></ul>
@@ -38,10 +33,7 @@ var makeAjaxCall = function () {
               <img src= ${item.Poster}></img> </a>
               <div>
               `;
-            //console.log(item);
           }
-
-
         });
       }
 
@@ -50,45 +42,42 @@ var makeAjaxCall = function () {
 
 }
 
-function showDetails(id){
+function showDetails(id) {
 
-    const  detailList = document.querySelector(`#detail${id}`);
+  const detailList = document.querySelector(`#detail${id}`);
 
-    if(detailList.innerHTML === "" ) {
+  if (detailList.innerHTML === "") {
 
-  const detailsFetch = fetch(`http://www.omdbapi.com/?apikey=d777cf78&i=${id}`);
-  console.log(detailsFetch);
-  detailsFetch.then(function(stream){
-            stream.json().then(function(detailes){
-    console.log(detailes);
-    
+    const detailsFetch = fetch(`http://www.omdbapi.com/?apikey=d777cf78&i=${id}`);
+    console.log(detailsFetch);
+    detailsFetch.then(function (stream) {
+      stream.json().then(function (detailes) {
+        console.log(detailes);
 
-    for(let detail in detailes){
-      if(typeof detailes[detail]) {
-      detailList.innerHTML += `
+
+        for (let detail in detailes) {
+          detailList.innerHTML += `
       <li>${detail} : ${detailes[detail]}</li>
       `
-      }
-    
-    }
+        }
+      })
     })
-  })
+
+  }
+  else {
+    detailList.innerHTML = "";
+  }
 
 }
- else{
-    detailList.innerHTML ="";
- }
-
-}
 
 
-function fristFetch(){
+function fristFetch() {
   movieList.innerHTML = "";
   pageNumber = 1;
   makeAjaxCall();
-} 
+}
 
 function loadMoreRes() {
   pageNumber++;
   makeAjaxCall();
-}g
+} g
