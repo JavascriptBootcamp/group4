@@ -1,0 +1,20 @@
+html, body {
+  /* width: 95%; */
+  height: 99%;
+  margin: 0;
+  padding: 0;   
+}
+
+body {
+  animation-name: changing-body-background-color;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes changing-body-background-color {
+  0% {background-color: #113638;}
+  25% {background-color: #3F241D;}
+  50% {background-color: #A57233;}
+  75% {background-color: #A58A68;}
+  100% {background-color: #2E4059;}
+}
