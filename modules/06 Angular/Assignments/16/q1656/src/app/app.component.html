@@ -1,9 +1,20 @@
-<div id="big-picture" (click)=true>
-  <app-image [imgSrc]="bigImgSrc"></app-image>
-</div>
-
-<div class="pictures">
-  <div *ngFor="let i of images" class="picture">
-    <app-image [imgSrc]="i" (showBigPictureEvent)="onShowBigPicture($event)"></app-image>
+<div id="wrapper">
+  <div id="big-picture">
+    <div class="big-picture-arrow-left" (click)=showPrevImage()><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9XNzScYIlhsVuWFqh7pD3pqt73_krZASZeJJI5azAeRmxaUnUZg">
+    </div>
+    <div id="big-picture-img" (click)=true>
+      <app-image [imgSrc]="images[imgSrcIndex]"></app-image>
+    </div>
+    <div class="big-picture-arrow-right" (click)=showNextImage()><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9XNzScYIlhsVuWFqh7pD3pqt73_krZASZeJJI5azAeRmxaUnUZg">
+    </div>
   </div>
+
+  <div class="pictures">
+    <div *ngFor="let i of images" class="picture">
+      <app-image [imgSrc]="i" (showBigPictureEvent)="onShowBigPicture($event)"></app-image>
+    </div>
+  </div>
+
 </div>
