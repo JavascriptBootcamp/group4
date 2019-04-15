@@ -1,0 +1,33 @@
+#load-more-movies-button-container{
+  display: flex;    
+  flex-direction: column;  
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 75%;
+  left: 10%;
+  padding: 3%;
+  background: #9D74E8;
+  margin-top: 15px;
+  margin-left: 9.5%; 
+} 
+
+#load-more-movies-button {
+  background-color: #C8FFD4; 
+  border: none;
+  color: #004d99;
+  width: 100px;
+  padding: 7px 15px;
+  border: 4px solid #65FF8D;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  width: 150px;
+}
+#load-more-movies-button:hover {
+  background-color: #FFC39E;
+  color: #993D00;
+  cursor: pointer;
+}
