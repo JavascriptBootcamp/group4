@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'answer16-assignment59';
+  textOnButton:string;
+  open:boolean;
+  constructor(){
+    this.textOnButton="Expand All";
+  }
+  expendAll(event){
+    event.preventDefault();
+    this.open=!this.open;
+    if(this.textOnButton==="Expand All"){
+      this.textOnButton="Collapse All";
+    }
+    else
+      this.textOnButton="Expand All";
+  }
 }

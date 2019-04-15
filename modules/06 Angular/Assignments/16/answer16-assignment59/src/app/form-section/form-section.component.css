@@ -1,0 +1,29 @@
+h3{
+    margin: 12px;
+}
+.content{
+    border-bottom: 1px solid rgb(155, 155, 155);
+    border-left: 1px solid rgb(155, 155, 155);
+    border-right: 1px solid rgb(155, 155, 155);
+    padding: 10px;
+}
+.h3-plus::before{
+    content: "+ ";
+    font-weight: bold;
+    color: gray;
+}
+.h3-minus::before{
+    content: "- ";
+    font-weight: bold;
+    color: gray;
+}
+.hide{
+    display: none;
+}
+.headlines{
+    background: rgb(187, 213, 236);
+    border: 1px solid rgb(155, 155, 155);
+}
+h4{
+    margin: 5px;
+}

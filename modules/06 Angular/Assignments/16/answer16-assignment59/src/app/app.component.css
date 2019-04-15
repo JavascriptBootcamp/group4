@@ -1,0 +1,13 @@
+#form{
+    width: 600px;
+}
+#expand-all{
+    background-color: rgb(75, 75, 75);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
