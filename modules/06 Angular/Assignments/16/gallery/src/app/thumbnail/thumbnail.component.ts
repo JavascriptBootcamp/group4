@@ -10,18 +10,21 @@ import { Img } from '../imgArray';
 export class ThumbnailComponent implements OnInit {
   intervalScroll: any;
   images: Img[];
+  @Input() selected:number;
   @Output() showImg = new EventEmitter<number>();
+  
 
   constructor() {
     this.images = images;
   }
 
   ngOnInit() {
-  
   }
 
   upImgToMain(idImg:number){
     this.showImg.emit(idImg);
+    this.selected = idImg;
+    console.log(idImg);
   }
 
   scrlThumbnailRight(e: HTMLInputElement) {

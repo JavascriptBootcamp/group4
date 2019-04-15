@@ -2,6 +2,6 @@
   <header><h1>My Gallery</h1></header>
   <app-main-img [img]="currentImg" (replaceImg)="replaceImage($event)"></app-main-img>
   <div *ngIf="images.length">
-    <app-thumbnail  (showImg)="showImgFromThumb($event)" ></app-thumbnail>
+    <app-thumbnail  [selected]="index"  (showImg)="showImgFromThumb($event)" ></app-thumbnail>
   </div>
 </div>

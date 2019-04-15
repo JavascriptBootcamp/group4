@@ -1,1 +1,1 @@
-<img class="img-tumbnail" [src]="img.img"  (click)="clickedImg()">
+<img  [src]="img.img" [className]="selected==img.id ? 'imgSelected' : 'img-tumbnail'" (click)="clickedImg()">

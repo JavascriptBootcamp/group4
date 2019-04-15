@@ -1,4 +1,4 @@
-import { Component,  Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Img } from '../imgArray';
 
 @Component({
@@ -6,13 +6,13 @@ import { Img } from '../imgArray';
   templateUrl: './img.component.html',
   styleUrls: ['./img.component.css']
 })
-export class ImgComponent   {
-
+export class ImgComponent {
+  @Input() selected: number;
   @Input() img: Img;
   @Output() imgClicked = new EventEmitter<number>();
   constructor() { }
 
- 
+
   clickedImg() {
     this.imgClicked.emit(this.img.id);
   }

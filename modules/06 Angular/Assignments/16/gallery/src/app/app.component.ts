@@ -16,11 +16,16 @@ export class AppComponent implements OnInit {
 
   constructor() {
     this.images = images;
-    this.index = 0;
-    this.currentImg = "..\\assets\\img\\loading.png";
+
+    this.currentImg = "..\\assets\\img\\loading-1.png";
   }
+
   ngOnInit() {
     this.onInit();
+    if (localStorage.getItem("lastImg") !== null)
+      this.index = Number(localStorage.getItem("lastImg"));
+    else
+      this.index = 0;
   }
 
 
@@ -30,21 +35,13 @@ export class AppComponent implements OnInit {
         stream.json().then(
           (json) => {
             for (let key in json) {
-              this.images.push(new Img("https://picsum.photos/200/300?image=" + json[key].id,key));
+              this.images.push(new Img("https://picsum.photos/200/300?image=" + json[key].id, key));
               if (this.images.length === 40) {
                 this.currentImg = this.images[this.index].img;
                 break;
               }
-
             }
-            // if (localStorage.getItem("lastImg") !== null) {
-            //     document.getElementById("centerImg").src = localStorage.getItem("lastImg");
-            // }
-            // else
-            //     document.getElementById("centerImg").src = images[this.index];
-          }
-
-        )
+          })
       }
     ).catch(function (error) {
       console.log("error" + error);
@@ -73,10 +70,17 @@ export class AppComponent implements OnInit {
         }
     }
     this.currentImg = this.images[this.index].img;
+    this.updateLocalS();
   }
 
-  showImgFromThumb(idImg:number){
+  showImgFromThumb(idImg: number) {
     this.currentImg = this.images[idImg].img;
+    this.index = idImg;
+    this.updateLocalS();
+  }
+
+  updateLocalS(){
+    localStorage.setItem("lastImg",this.index.toString());
   }
 }
 
