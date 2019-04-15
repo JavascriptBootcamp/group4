@@ -1,12 +1,3 @@
-<ul>
-<li>
-<a href="https://flukeout.github.io/" target="_blank">
-    CSS Diner
+<a href="https://angular.io/tutorial/toh-pt3" target="_blank">
+    Master/Detail Components
 </a>
-</li>
-<li>
-<a href="https://cssgridgarden.com/" target="_blank">
-    Grid Garden
-</a>
-</li>
-</ul>
