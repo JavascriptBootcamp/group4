@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="answer.css">
+    <title>Exam - 03 Front End Development + 04 Advanced Javascript</title>
+</head>
+
+<body>
+    <div class="movie-search">
+        <form id="serch-form" action="" method="post" onsubmit=" return false">
+            <label for="movie-title"> Search in the movie title :</label>
+            <input type="text" name="movie-title" id="movie-title" minlength="3" required>
+            <input type="submit" value="Search" onclick="fristFetch()">
+           
+        </form>
+    </div>
+    <div class="movieList"> </div>
+    <button id="loadMore" onclick="loadMoreRes()"> Load More </button>
+
+
+    <script src="answer.js"></script>
+</body>
+
+</html>

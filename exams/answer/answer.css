@@ -1,0 +1,32 @@
+
+
+.movieList {
+    margin-top: 100px;
+    position: relative;
+     display: flex;
+     flex-flow: column;
+     align-items: center;
+     
+}
+.movie-search{
+    background-color: lightblue;
+    position: sticky;
+    top:10px;
+    height: 50px;
+    z-index: 1;
+}
+
+.result-item {
+    border: 3px solid gray;
+    display: inline-block;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#loadMore {
+    padding: 10px;
+    margin: 10px;
+    font-size: xx-large;
+    
+}
