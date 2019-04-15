@@ -16,9 +16,19 @@ export class VideosContainerComponent implements OnInit{
   }
 
   ngOnInit(){
-    for(let i=0;i<20;i++){
-      this.loadFakeVideos(i);
+    if(localStorage.hasOwnProperty('videos')){
+      this.videos=JSON.parse(localStorage.getItem('videos'));
+      this.playThisVideo(this.videos[0]);
     }
+    else{
+      for(let i=0;i<20;i++){
+        this.loadFakeVideos(i);
+      }
+    }
+  }
+
+  saveOnLS(){
+    localStorage.setItem('videos',JSON.stringify(this.videos));
   }
 
   loadFakeVideos(num:number) {
@@ -27,6 +37,9 @@ export class VideosContainerComponent implements OnInit{
           this.videos.push(this.createFakeVideo(data.url,num));
           if(this.videos.length===1){
               this.playThisVideo(this.videos[0]);
+          }
+          else if (this.videos.length===19){
+            this.saveOnLS();
           }
         }
         else {

@@ -3,5 +3,6 @@
     position: relative;
     bottom: 80px;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 890px;
 }
