@@ -1,0 +1,62 @@
+#wrapper-of-movies-info{
+  display: flex;    
+  flex-direction: column;  
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width: 75%;
+  left: 10%;
+  padding: 3%;
+  background: #90E8D0;
+  margin-top: 35px;
+  margin-left: 9.5%; 
+}
+
+
+.flex-item{
+  display: flex;    
+  flex-direction: column; 
+  justify-content: center;
+  align-content: center;
+
+  height: 250px;
+  
+  margin: 15px;
+  flex-basis: 20px;
+  padding-top: 164px;
+  padding-bottom: 416px;
+
+   align-content: center;
+   text-align: center;
+   border: 4px solid #5887F0;
+   margin: 15px;
+   background-color:#0096EB; 
+   flex-basis: 20px;
+}
+
+
+.image-in-movie-content {
+  height: 400px;
+  margin-bottom: 5px;
+  border: 2px solid #ff6666;
+  margin: 2px;
+  align-self: center;
+}
+
+.image-in-movie-content:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 20px 20px #749CE8;
+}
+
+
+.link-to-imdbID {
+  color: #F0A900;
+  font-size: 30px;
+  font-family: david;
+}
+.link-to-imdbID:hover {
+  color: #005CF0;
+  font-weight: 800;
+  background: #EBCB44;
+  cursor: grab;
+}
