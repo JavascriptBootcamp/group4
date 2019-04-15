@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Movie</title>
+    <style>
+    #container{
+        display: flex;
+        flex-direction: column
+    }
+    form{
+        display: flex;
+        position:fixed;
+        top: 0;
+    }
+    .wrapper{
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+      margin: top 100px;;
+        
+    }
+    .img-video{
+        width: 100px
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <form id="form1">
+            Search Movie:<br>
+            <input id="search-input" type="text" minlength="3"><br>
+            <input type="submit" onclick="onSubmit(event)">
+        </form>
+        <br>
+        <div id="wrapper"></div>
+
+        <button id="loadmore" onclick="loadMore()">Load More</button>
+
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
