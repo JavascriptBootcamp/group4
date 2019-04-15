@@ -1,0 +1,168 @@
+<div id="form">
+    <button id="expand-all" onclick="expendAll(this)">Expand All</button>
+    <div class="headlines" onclick="showContent(this)"><h3>Enter keywords or item number</h3></div>
+    <div class="hide content">
+        <input type="text" placeholder="Enter keywords or item number">
+        <select>
+            <option value="All words, any order">All words, any order</option>
+            <option value="Any words, any order">Any words, any order</option>
+            <option value="Exact words, exact order">Exact words, exact order</option>
+            <option value="Exact words, any order">Exact words, any order</option>
+        </select><br>
+        <p>Exclude words from your search</p>
+        <input type="text" placeholder="Enter keywords or item number">
+        <p>See general <a href="">search tips</a> or <a href="">using advance search options</a></p>
+        <select>
+            <option>All Categories</option>
+            <option>Antiques</option>
+            <option>Art</option>
+            <option>Baby</option>
+            <option>Books</option>
+            <option>Business &amp; Industrial</option>
+            <option>Cameras &amp; Photo</option>
+            <option>Cell Phones &amp; Accessories</option>
+            <option>Clothing, Shoes &amp; Accessories</option>
+            <option>Coins &amp; Paper Money</option>
+            <option>Collectibles</option>
+            <option>Computers/Tablets &amp; Networking</option>
+            <option>Consumer Electronics</option>
+            <option>Crafts</option>
+            <option>Dolls &amp; Bears</option>
+            <option>DVDs &amp; Movies</option>
+            <option>Entertainment Memorabilia</option>
+            <option>Gift Cards &amp; Coupons</option>
+            <option>Health &amp; Beauty</option>
+            <option>Home &amp; Garden</option>
+            <option>Jewelry &amp; Watches</option>
+            <option>Music</option>
+            <option>Musical Instruments &amp; Gear</option>
+            <option>Pet Supplies</option>
+            <option>Pottery &amp; Glass</option>
+            <option>Real Estate</option>
+            <option>Specialty Services</option>
+            <option>Sporting Goods</option>
+            <option>Sports Mem, Cards &amp; Fan Shop</option>
+            <option>Stamps</option>
+            <option>Toys &amp; Hobbies</option>
+            <option>Travel</option>
+            <option>Video Games &amp; Consoles</option>
+            <option>Everything Else</option>
+        </select><br>
+        <button type="submit">Search</button>
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Search including</h3></div>
+    <div class="hide content">
+        <input type="radio" name="1" value="1">Title and description <br>
+        <input type="radio" name="1" value="1">Completed listing <br>
+        <input type="radio" name="1" value="1">Sold Listing <br>
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Price</h3></div>
+    <div class="hide content">
+        <input type="checkbox">Show item priced from ILS <input type="text">to ILS <input type="text"><br>
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Buying formats</h3></div>
+    <div class="hide content">
+        <input type="checkbox">Auction<br>
+        <input type="checkbox">But It Now<br>
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Condition</h3></div>
+    <div class="hide content">
+        <input type="checkbox">New<br>
+        <input type="checkbox">Used<br>
+        <input type="checkbox">Not Specified<br>
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Show results</h3></div>
+    <div class="hide content">
+        <input type="checkbox">Listings 
+        <select>
+            <option>Ending withing</option>
+            <option>Ending in more than</option>
+            <option>Start within</option>
+        </select>
+        <select>
+            <option>1 hour</option>
+            <option>2 hour</option>
+            <option>3 hour</option>
+            <option>4 hour</option>
+            <option>5 hour</option>
+            <option>12 hour</option>
+            <option>24 hour</option>
+            <option>2 days</option>
+            <option>3 days</option>
+            <option>4 days</option>
+            <option>5 days</option>
+            <option>6 days</option>
+            <option>7 days</option>
+        </select><br>
+        <input type="checkbox">Number of bids from: <input type="text"> to: <input type="text"><br>
+        <input type="checkbox">Multiple item listing from: <input type="text"> to: <input type="text"><br>
+        <input type="checkbox">Items Listed as lots <a href="">Learn more.</a><br>
+        <input type="checkbox">Sale items<br>
+        <input type="checkbox">Best offer <a href="">Learn more.</a><br>
+        <input type="checkbox">eBay for Charity <a href="">Learn more.</a><br>
+        <h4>Shipping options</h4>
+        <input type="checkbox">Free international shipping<br>
+        
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Location</h3></div>
+    <div class="hide content">
+        <input name="2" type="radio">Located
+        <select>
+            <option>15</option>
+            <option>25</option>
+            <option>50</option>
+        </select> miles of <input type="text"><br>
+        <input name="2" type="radio">From preferred locations
+        <select>
+            <option>US Only</option>
+            <option>Worldwide</option>
+            <option>Europe</option>
+        </select><br>
+        <input name="2" type="radio">Located in
+        <select>
+            <option>United States</option>
+            <option>Israel</option>
+            <option>Sweden</option>
+        </select><br>
+        
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Sellers</h3></div>
+    <div class="hide content">
+        <input id="this" type="checkbox"> Only show items from: <br>
+        <label for="this">
+            <input type="radio" name="3">Specific sellers (enter seller's user IDs) <br>
+            <select>
+                <option>Include</option>
+                <option>Exclude</option>
+            </select>
+            <input type="text"> <br>
+            <input type="radio" name="3">My saved sellers list <br>
+            <input type="radio" name="3">Sellers with eBay stores <br>
+        </label>
+        
+    </div>
+    <div class="headlines" onclick="showContent(this)"><h3>Sort by</h3></div>
+    <div class="hide content">
+        <select>
+            <option>Best Match</option>
+            <option>Time: ending soonest</option>
+            <option>Time: newly listed</option>
+        </select>
+        <h4>View results</h4>
+        <select>
+            <option>All items</option>
+            <option>Picture Gallery</option>
+            <option>Show item numbers</option>
+        </select>
+        <h4>Results per page</h4>
+        <select>
+            <option>50</option>
+            <option>100</option>
+            <option>200</option>
+        </select>
+    </div>
+</div>
+<div>
+    <button type="submit">Search</button>
+    <a href="">Clear options</a>
+</div>
