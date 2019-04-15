@@ -11,3 +11,12 @@
 .displayAll {
     display:block;
 }
+
+legend{
+    padding: 5px;
+    font-weight: bold;
+}
+
+fieldset:hover{
+    background-color: rgb(241, 228, 228);
+}

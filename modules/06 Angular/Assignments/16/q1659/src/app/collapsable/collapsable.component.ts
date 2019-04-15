@@ -6,19 +6,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./collapsable.component.css']
 })
 export class CollapsableComponent{
-@Input() isAllOpen: boolean;
+@Input() isOpen: boolean;
 @Input() display: string;
-collapse: boolean;
   constructor() { 
-    this.collapse = false;
   }
 
   toggle(){
-    if(this.isAllOpen !== this.collapse)
-    {
-      this.collapse = this.isAllOpen;
-    }
-    this.collapse = !this.collapse;
+    this.isOpen = !this.isOpen;
   }
 
 }
