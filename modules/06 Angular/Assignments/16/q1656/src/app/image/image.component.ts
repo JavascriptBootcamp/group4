@@ -7,14 +7,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ImageComponent implements OnInit {
 @Input() imgSrc: string;
-@Output() showBigPictureEvent = new EventEmitter<string>();
+@Input() imgSrcIndex: number;
+@Output() showBigPictureEvent = new EventEmitter<number>();
   constructor() { }
 
   ngOnInit() {
+    console.log(this.imgSrcIndex);
   }
 
   showBigPicture(){
-    this.showBigPictureEvent.emit(this.imgSrc);
+    this.showBigPictureEvent.emit(this.imgSrcIndex);
   }
 
 }

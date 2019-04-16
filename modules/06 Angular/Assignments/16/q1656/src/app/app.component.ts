@@ -23,27 +23,36 @@ export class AppComponent {
 
   // this.imgSrcIndex = 0;
 
-  this.imgSrcIndex = Number(localStorage.getItem("imgSrcIndex")) || 0;
-  localStorage.clear();
+  this.imgSrcIndex = Number(localStorage.getItem("imgSrcIndex"));
+  this.imgSrcIndex = this.imgSrcIndex ? this.imgSrcIndex : 0;  
+  console.log(this.imgSrcIndex,(!this.imgSrcIndex));
   }
 
   onShowBigPicture(imgSrcIndex: number){
     this.imgSrcIndex = imgSrcIndex;
-    localStorage.setItem("imgSrcIndex",this.imgSrcIndex.toString());
+    this.saveData();
   }
 
   showNextImage(){
-    if(this.imgSrcIndex === this.images.length)
-      this.imgSrcIndex = 0;
+    if(this.imgSrcIndex === this.images.length-1)
+      // this.imgSrcIndex = 0;
+      return;
     else
       this.imgSrcIndex++;
+      this.saveData();
+  }
+
+  saveData(){
+    localStorage.setItem("imgSrcIndex",this.imgSrcIndex.toString());
   }
 
   showPrevImage(){
     if(this.imgSrcIndex === 0)
-      this.imgSrcIndex = this.images.length -1;
+      // this.imgSrcIndex = this.images.length -1;
+      return;
     else  
       this.imgSrcIndex--;
+    this.saveData();
   }
 
 }

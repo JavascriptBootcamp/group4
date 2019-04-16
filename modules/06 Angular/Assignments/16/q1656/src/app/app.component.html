@@ -12,8 +12,8 @@
   </div>
 
   <div class="pictures">
-    <div *ngFor="let i of images" class="picture">
-      <app-image [imgSrc]="i" (showBigPictureEvent)="onShowBigPicture($event)"></app-image>
+    <div *ngFor="let image of images; let i = index;" class="picture">
+      <app-image [imgSrc]="image" [imgSrcIndex] = "i" (showBigPictureEvent)="onShowBigPicture($event)"></app-image>
     </div>
   </div>
 
