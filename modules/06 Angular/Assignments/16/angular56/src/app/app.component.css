@@ -1,0 +1,75 @@
+
+/*.Arrow {
+    position: relative;
+    margin-top: 12%;
+}
+.ar {
+    float: right;
+    margin-right: 13%;
+}
+.al {
+    float: left;
+    margin-left: 13%;
+}
+.Arrow img {
+    height: 100px;
+    width: 160px;
+    cursor: pointer;
+}
+.PresentPicture {
+    position: absolute;
+    display: inline;
+    margin: 5% 5% 95%;
+}
+.PresentPicture img {
+    width: 250px;
+    height: 200px;
+    border-radius: 5px;
+}*/
+.wrapper {
+    position: relative;
+
+    background-color: #5B2C6F;
+    margin-top: 2%;
+    height: 550px;
+    width: 900px;
+    margin-right: 250px;
+    margin-left: 250px;
+   
+    padding-top:4%; 
+}
+.Flip{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+}
+.Arrow img{
+        height: 300px;
+        width:200px;
+}
+.PresentPicture img{
+    height: 300px;
+    width:300px;
+}
+
+.Gallery {
+    height: 200px;
+    width: 800px;
+    display: inline-block;
+    top:2%;
+    margin-left:5%;
+}
+.Gallery img {
+    width: 80px;
+    height: 80px;
+    margin: 4px;
+    margin-left: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.Galleria{
+    position: relative;
+    display: inline-block;
+    top:10%;
+
+}

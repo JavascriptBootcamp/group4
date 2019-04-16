@@ -1,0 +1,22 @@
+  <div class="wrapper">
+    <div class="Flip">
+      <div class="Arrow al">
+          <img id="leftChange" (click)="previos()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/MediaWiki_Vector_skin_left_arrow.svg/768px-MediaWiki_Vector_skin_left_arrow.svg.png" />
+      </div>
+      <div class="PresentPicture">
+          <img id="PresentPicture" [src]="bigImg" />
+      </div>
+      <div  class="Arrow ar">
+          <img id="rightChange" (click)="next()" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/MediaWiki_Vector_skin_right_arrow.svg/200px-MediaWiki_Vector_skin_right_arrow.svg.png" />
+      </div>
+    </div>
+    <div class="Gallery" >
+      <div class="Galleria" id="Gallery" *ngFor="let img of arrayPics">
+        
+        <img [src]="img" (click)="changeBigImg($event)">
+      </div>
+    </div>
+  </div>
+
+
+

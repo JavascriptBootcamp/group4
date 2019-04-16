@@ -1,0 +1,25 @@
+.barSide{
+    height: 450px;
+    width:300px;
+    margin-top:5%;
+    margin-right: 5%;
+    background-color: grey;
+    overflow: auto;
+    display: inline-block;
+    margin-left: 65%;
+    position: relative;
+
+
+}
+.wrapper{
+    background-color: rgb(175, 170, 170);
+}
+
+.bigImg{
+    position: absolute;
+    display: inline-block;
+    margin-left: 19%;
+    margin-top: 8%;
+    
+
+}

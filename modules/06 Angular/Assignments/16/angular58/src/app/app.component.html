@@ -1,0 +1,11 @@
+
+
+<div class="wrapper" >IVideos
+    <div class="bigImg">
+        <app-big-img [videoIns]="videoIns"></app-big-img>
+</div>
+<div class="barSide" >
+    <app-bar-side-videos (clickedVideo)="clickedVideo($event)" [videoIns]="video" *ngFor="let video of arrayVideos" ></app-bar-side-videos>
+
+</div>
+</div>
