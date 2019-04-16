@@ -29,7 +29,8 @@ export class AppComponent {
   }
   ngOnInit() {
     this.videos = [
-      { title: "title1 funny movie ", desc: "short film ..... click and take a look", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", artist: "simply dummy text of the printing and typesetting industry. Lorem simply dummy text of the printing and typesetting industry. Lorem", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
+      // { title: "title1 funny movie ", desc: "short film ..... click and take a look", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", artist: "simply dummy text of the printing and typesetting industry. Lorem simply dummy text of the printing and typesetting industry. Lorem", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
+      { title: "title1", desc: "desc1", url: "http://techslides.com/demos/sample-videos/small.mp4", artist: "artist1", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
       { title: "title2", desc: "desc2", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", artist: "artist2", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
       { title: "title3", desc: "desc3", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", artist: "artist3", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
       { title: "title4", desc: "desc4", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", artist: "artist4", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },

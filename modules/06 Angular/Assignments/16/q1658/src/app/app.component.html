@@ -1,13 +1,18 @@
-<div id="videos">
-  <div *ngFor="let v of videos">
-    <app-video [videoI]="v" (changeVideoEvent)="onChangeVideoEvent($event)"></app-video>
+<div id="wrapper">
+
+  <div id="wrapper-video">
+    <div id="wrapper-video-player">
+      <app-video-player [videoUrl]="player.url"></app-video-player>
+    </div>
+
+    <div id="wrapper-video-details">
+      <app-video-details [videoDetailsI]="player"></app-video-details>
+    </div>
   </div>
-</div>
 
-<div>
-  <app-video-player [videoUrl]="player.url"></app-video-player>
-</div>
-
-<div>
-  <app-video-details [videoDetailsI]="player"></app-video-details>
+  <div id="wrapper-videos">
+      <div *ngFor="let v of videos">
+        <app-video [videoI]="v" (changeVideoEvent)="onChangeVideoEvent($event)"></app-video>
+      </div>
+  </div>
 </div>

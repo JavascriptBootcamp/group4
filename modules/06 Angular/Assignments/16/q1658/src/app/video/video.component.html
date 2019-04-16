@@ -1,9 +1,9 @@
-<div class="video">
-  <div class="video-image">
-    <img [src]="videoI.imageSrc" (click)="changeVideo()">
-  </div>
+<div class="video" (click)="changeVideo()">
   <div class="video-info">
     <div>{{videoI.title}}</div>
     <div>{{videoI.artist}}</div>
   </div>
+  <div class="video-image">
+      <img [src]="videoI.imageSrc">
+    </div>
 </div>
