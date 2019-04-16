@@ -1,0 +1,7 @@
+#thumbnails {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    max-width: 58%;
+}

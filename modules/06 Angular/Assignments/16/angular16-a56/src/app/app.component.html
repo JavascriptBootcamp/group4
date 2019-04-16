@@ -1,0 +1,6 @@
+<div id="content">
+  <!-- <app-main-picture [images]="images" [mainImgId]="mainImg" (changeId)="setMainImg($event)"></app-main-picture>
+  <app-thumbnails [images]="images" [selected]="mainImg" (mainImgId)="setMainImg($event)"></app-thumbnails> -->
+  <app-main-picture [mainImgId]="mainImg" (changeId)="setMainImg($event)"></app-main-picture>
+  <app-thumbnails [selected]="mainImg" (mainImgId)="setMainImg($event)"></app-thumbnails>
+</div>

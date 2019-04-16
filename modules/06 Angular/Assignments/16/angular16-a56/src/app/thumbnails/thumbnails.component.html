@@ -1,0 +1,29 @@
+<div id="lowewrapper" class="wrapper">
+  <div class="larrow" (mouseenter)="scrollToLeft(thumb)" (mouseleave)="stopScroll()"></div>
+  <div id="thumbnails" #thumb>
+    <!-- <img id="img0" class="imgs selected" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img1" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img2" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img3" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img4" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img5" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img6" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img7" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img8" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)">
+    <img id="img9" class="imgs" src="https://thumbs.gfycat.com/UnitedSmartBinturong-max-1mb.gif"
+      (click)="showBigImg($event)"> -->
+
+    <app-picture *ngFor="let img of images" [img]="img" [selected]="selected" (imgClicked)="forShowMainImg($event)">
+    </app-picture>
+  </div>
+  <div class="rarrow" (mouseenter)="scrollToRight(thumb)" (mouseleave)="stopScroll()"></div>
+</div>

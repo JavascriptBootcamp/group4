@@ -1,0 +1,19 @@
+.imgs {
+    border-radius: 10px;
+    cursor: pointer;
+    width: 130px;
+    height: 100px;
+    margin: 22px;
+}
+@media screen and (max-width: 550px) {
+    .imgs {
+        width: 85px;
+        height: 85px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
+.selected {
+    border: 5px double rgb(239, 238, 241);
+    box-shadow: 0px 0px 10px 10px rgba(239, 238, 241, 0.5);
+}

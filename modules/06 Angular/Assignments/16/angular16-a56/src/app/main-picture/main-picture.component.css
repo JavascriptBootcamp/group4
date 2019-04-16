@@ -1,0 +1,17 @@
+#bigpic {
+    border-radius: 10px;
+    width: 500px;
+    height: 300px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 550px) {
+    #bigpic {
+        border-radius: 10px;
+        width: 200px;
+        height: 150px;
+        margin-top: 40px;
+        margin-bottom: 100px;
+    }
+}
