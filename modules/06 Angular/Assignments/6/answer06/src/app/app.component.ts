@@ -1,43 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
+import { Contact } from './Contact';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'answer06';
+export class AppComponent implements OnInit {
+    title = 'answer06';
+    contacts: Contact[];
+
+    constructor() {
+        this.contacts = [
+            { firstName: 'Mariya', lastName: 'Stash', address: 'NY', phoneNumber: 9087865914, email: 'user@mail.com' },
+            { firstName: 'Sam', lastName: 'Smith', address: 'TA', phoneNumber: 12345678, email: 'sam@gookle.com' },
+            { firstName: 'John', lastName: 'Snow', address: '7King', phoneNumber: 707070707, email: 'john@winter.com' }];
+    }
+
+    ngOnInit(): void {
+        this.contacts = this.contacts.sort((c1, c2) => {
+            return c1.firstName.localeCompare(c2.firstName);
+        });
+    }
+
+    mailTo(email: string) {
+        return `mailto: ${email}`;
+    }
 }
 
 
 
 /*use group4/Modules/03 Front End Development/Assignments/11
-
 generate the table using Typescript
-
 sort by first name using Array.prototype.sort().
-
 display the results in an Angular application.*/
 
-
-
-/*<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact Person</title>
-</head>
+/*
 <body>
     <table border="1">
-        <tr bgcolor="#FFCCFF">
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-            <th>Phone Number</th>
-            <th>Email Address</th>
-        </tr>
 
         <tr>
             <td>Mariya</td>
