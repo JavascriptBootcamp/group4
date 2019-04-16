@@ -1,1 +1,1 @@
-<img [id]="img.id" [ngClass]="{'imgs':true,'selected':selected===img.id}" [src]="img.src" (click)="clickedImg($event)">
+<img #imgEle (load)="load(imgEle)" [id]="img.id" [ngClass]="{'imgs':true,'selected':selected===img.id}" [src]="img.src" (click)="clickedImg()">

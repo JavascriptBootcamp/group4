@@ -1,24 +1,30 @@
-import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Image } from 'src/app/image.model';
+import { images } from "src/app/images";
+import { Iselected } from "src/app/selected.model";
 
 @Component({
   selector: 'app-picture',
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.css']
 })
-export class PictureComponent implements OnInit {
+export class PictureComponent implements Iselected {
   @Input() img: Image;
   @Input() selected: number;
   @Output() imgClicked = new EventEmitter<number>();
+  imgElement: HTMLImageElement;
 
   constructor() { }
 
-  ngOnInit(): void {
-    
+  load(imgEle): void {
+    images.push(imgEle);
+    this.imgElement = imgEle;
   }
-
-  clickedImg(element) {
-    element.target.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-    this.imgClicked.emit(element.target);
+  clickedImg(): void {
+    this.setImgCenter();
+    this.imgClicked.emit(Number(this.imgElement.id));
+  }
+  setImgCenter(): void {
+    this.imgElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
   }
 }

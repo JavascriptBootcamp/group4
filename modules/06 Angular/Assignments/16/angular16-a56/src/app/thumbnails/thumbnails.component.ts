@@ -1,44 +1,46 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import { Image } from '../image.model';
-import { images } from "../images";
+import { images } from '../images';
+import { Iselected } from "../selected.model";
 
 @Component({
   selector: 'app-thumbnails',
   templateUrl: './thumbnails.component.html',
   styleUrls: ['./thumbnails.component.css']
 })
-export class ThumbnailsComponent implements OnInit {
-  // @Input() images: Image[];
+export class ThumbnailsComponent implements AfterViewChecked, Iselected {
+  @Input() images: Image[];
   @Input() selected: number;
+  @Input() localMainImg: number;
   @Output() mainImgId = new EventEmitter<number>();
   scroll: number;
-  images: Image[];
 
-  constructor() {
-    this.images = images;
-    console.log(images[0]);//undefined
+  constructor() { }
 
-  }
-  ngOnInit(): void {
-
-  }
-
-  forShowMainImg(imgElement) {
-    //imgElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-    this.selected = Number(imgElement.id);
+  forShowMainImg(imgIdClicked): void {
+    this.selected = imgIdClicked;
+    localStorage.setItem("selectedImg", JSON.stringify(this.selected));
     this.mainImgId.emit(this.selected);
   }
-  scrollToRight(thumbnails: HTMLDivElement) {
+  scrollToRight(thumbnails: HTMLDivElement): void {
     this.scroll = window.setInterval(() => {
       thumbnails.scrollLeft += 4;
     }, 10);
   }
-  scrollToLeft(thumbnails: HTMLDivElement) {
+  scrollToLeft(thumbnails: HTMLDivElement): void {
     this.scroll = window.setInterval(() => {
       thumbnails.scrollLeft -= 4;
     }, 10);
   }
-  stopScroll() {
+  stopScroll(): void {
     clearInterval(this.scroll);
+  }
+  ngAfterViewChecked(): void {
+    if (images.length - 1 === this.localMainImg) {
+      this.setImgCenter();
+    }
+  }
+  setImgCenter(): void {
+    images[this.localMainImg].scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
   }
 }
