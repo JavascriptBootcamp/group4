@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h1>Using *ngIf</h1>
+  <div class="patient" *ngFor="let patient of patients">
+    {{patient.name}}
+    <!--  -->
+    <div *ngIf="patient.isNormal(); else elseBlock">
+      Blood Preasure: is Normal
+    </div>
+
+    <ng-template #elseBlock>
+      <div>
+        Blood Preasure: is !Normal
+      </div>
+    </ng-template>
+  </div>
+  <h1>"Using Pipes"</h1>
+  <div class="patient" *ngFor="let patient of patients">
+    {{patient.name}}
+    <div> Blood Preasure is {{patient.bloodPreasure | isNormalPreasure}}</div>
+  </div>
+
+</div>
