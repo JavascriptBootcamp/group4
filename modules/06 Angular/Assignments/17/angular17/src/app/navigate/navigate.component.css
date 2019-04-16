@@ -1,0 +1,22 @@
+nav{
+    margin:0;
+    padding:0px;
+}
+ul{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    background-color: cadetblue;
+    padding: 0;
+    margin:0;
+}
+.link{
+    padding: 5px 10px;
+}
+.link > a{
+    color:white;
+}
+.link > a:hover{
+    color:black;
+}

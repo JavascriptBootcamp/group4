@@ -6,8 +6,8 @@ import {AllRecipesComponent} from './all-recipes/all-recipes.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent ,  pathMatch : 'full'},
-  { path: 'all-recipes', component: AllRecipesComponent },
-  { path: 'about-us', component: AboutUsComponent }
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'all-recipes', component: AllRecipesComponent }
 ];
 
 @NgModule({
