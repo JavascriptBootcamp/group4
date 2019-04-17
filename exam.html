@@ -42,10 +42,10 @@
 </head>
 
 <body>
-    <form id="search-ditails" target="#">
+    <form id="search-ditails" onsubmit="return false">
         <label>Movie Title:</label>
         <input type="text" id="movie-title" minlength="3">
-        <button type="button" id="search-btn" onclick="searchMovie()">Search</button>
+        <button type="submit" id="search-btn" onclick="searchMovie()">Search</button>
     </form>
 
     <div id="searchResult">
@@ -62,7 +62,7 @@
                 .then(response => response.json())
                 .then(data => {
                     pageNumberForUrl++;
-                    console.log(pageNumberForUrl)
+                    console.log(pageNumberForUrl);
                     loadMovie(data.Search);
                 })
         }
