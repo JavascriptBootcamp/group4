@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Registration</h2>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" ngModel>
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input type="text" class="form-control" name="age" ngModel>
+    </div>
+<h3>Credentials</h3>
+    <div class="form-group">
+      <label>User Name</label>
+      <input type="text" class="form-control" name="User-name" ngModel name="name" ngModel>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="text" class="form-control" name="Password" ngModel>
+    </div>
+<h3>Contact</h3>
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="text" class="form-control" name="Phone-number" ngModel>
+    </div>
+
+    <div class="form-group">
+      <label>Email Adress</label>
+      <input type="text" class="form-control" name="email" ngModel>
+    </div>
+    <h3>Misc:</h3>
+      Comments: <br/>
+      <textarea name="Comments" rows="4" cols="50" name="comments" ngModel></textarea><br/><br/>
+      Hobbies: <br/>
+      <select name="Hobbies" ngModel>
+          <option value="Soccer">Soccer</option>
+          <option value="Tennis">Tennis</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Hoki">Hoki</option>
+      </select><br/><br/>
+
+      <button type="Submit">Submit</button>
+  </form>
+
+
+</div>

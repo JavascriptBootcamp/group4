@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>Registration</h2>
+    <form [formGroup]="registrationForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="fullName" ngModel>
+      </div>
+  
+      <div class="form-group">
+        <label>Age</label>
+        <input type="text" class="form-control" formControlName="age" ngModel>
+      </div>
+  <h3>Credentials</h3>
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="form-control" formControlName="username" ngModel ngModel>
+      </div>
+  
+      <div class="form-group">
+        <label>Password</label>
+        <input type="text" class="form-control" formControlName="password" ngModel>
+      </div>
+  <h3>Contact</h3>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" class="form-control" formControlName="phone" ngModel>
+      </div>
+  
+      <div class="form-group">
+        <label>Email Adress</label>
+        <input type="text" class="form-control" formControlName="email" ngModel>
+      </div>
+      <h3>Misc:</h3>
+        Comments: <br/>
+        <textarea name="Comments" rows="4" cols="50" formControlName="comments" ngModel></textarea><br/><br/>
+        Hobbies: <br/>
+        <select formControlName="hobbies" ngModel>
+            <option value="Soccer">Soccer</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Hoki">Hoki</option>
+        </select><br/><br/>
+  
+        <button type="Submit">Submit</button>
+    </form>
+  
+  
+  </div>
