@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search aout Movie</title>
+    <link type="text/css" rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header id="header" >
+        <form method="post" onsubmit="submitMovie(event)" ><label for="search">Movie Search: </label><input id="search" name="search" minlength=3 required/>
+         <button type="submit">submit</button></form> 
+    </header>
+    <div id="wrapper">
+    <section id="section"><article id="article"></article>
+        <div  id="movieDetails"></div>
+    </section>
+    </div>
+    
+
+<script src="index.js"></script>
+</body>
+</html>
