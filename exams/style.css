@@ -4,7 +4,7 @@ body{
 }
 
 *{
-  	outline: none;
+    outline: none;
     box-sizing: border-box;
     font-family: 'Trebuchet MS';
 }
@@ -42,8 +42,8 @@ input[type="submit"]{
     height: 30px;
     font-size: 15px;
     font-weight: bold;
-  	border-radius: 0px 5px 5px 0px;
-  	background-color: #AEC5D6;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #AEC5D6;
     cursor: pointer;
     margin-top: 15px;
 }
@@ -108,9 +108,9 @@ a:hover {
     margin-left: 45%;
     font-size: 15px;
     font-weight: bold;
-	  background-color: #AEC5D6;
-	  cursor: pointer;
-	  display:none;
+    background-color: #AEC5D6;
+    cursor: pointer;
+    display:none;
 }
 
 #error-input{
