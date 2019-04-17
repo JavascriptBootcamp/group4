@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            background-color: #2A363B;
+            text-align: center;
+            position: sticky;
+            top: 10px;
+            width: 98%;
+            margin: 0 auto;
+        }
+
+        #wrapper h2 {
+            color: white;
+            font-weight: bold;
+        }
+
+        #searchForm {
+            height: 50px;
+        }
+
+        #res {
+            width: 98%;
+            margin: 0 auto;
+            margin-top: 10px;
+            background-color: lightcyan;
+        }
+
+        .movies {
+            width: 40%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border: 4px solid gray;
+            text-align: center;
+        }
+
+        .movies ul {
+            text-align: left;
+            list-style: none;
+            overflow-wrap: break-word;
+        }
+
+        #loadmore {
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>Movie Search</h2>
+        <form id="searchForm" action="#" onsubmit="return search(event)">
+            <input type="text" id="movieTitle" minlength="3" required>
+            <button type="submit">search</button>
+        </form>
+    </div>
+    <div id="res"></div>
+    <div id="loadmore"></div>
+    <script>
+        var name;
+        var i;
+        var btn;
+        var listDiv = document.getElementById("res");
+        function search(e) {
+            e.preventDefault();
+            name = e.target[0].value;
+            if (listDiv.innerHTML) {
+                listDiv.innerHTML = "";
+                disabledBtns(false);
+            }
+            i = 1;
+            loadMovie();
+        }
+        function loadMovie() {
+            fetch("http://www.omdbapi.com/?apikey=74fed2a7&s=" + name + "&type=movie&page=" + i)
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    if ((json["Response"] === "False") && btn) {
+                        disabledBtns(true);
+                    }
+                    else
+                        show(json["Search"]);
+                })
+                .catch(error => {
+                    console.log(error + " ggfdgdf");
+                })
+        }
+        function show(movies) {
+
+            for (var movie of movies) {
+                var movieDiv = document.createElement("div")
+                movieDiv.innerHTML = "<a href='https://www.imdb.com/title/" + movie["imdbID"] + "' target='_blank'><h3>" + movie["Title"] + "</h3></a><img src='" + movie["Poster"] + "' onclick=showDetails('" + movie["imdbID"] + "')>"
+                movieDiv.id = movie["imdbID"];
+                movieDiv.className = "movies";
+                listDiv.appendChild(movieDiv);
+            }
+
+            i++;
+            createLoadMoreBtn();
+        }
+        function createLoadMoreBtn() {
+            var divLoadMoreBtn = document.getElementById("loadmore");
+            if (!divLoadMoreBtn.innerHTML) {
+                btn = document.createElement("button");
+                btn.id = "btnLoadMore";
+                btn.innerHTML = "Load More";
+                btn.onclick = loadMovie;
+                divLoadMoreBtn.appendChild(btn);
+            }
+        }
+        function disabledBtns(flag) {
+            btn.disabled = flag;
+        }
+        function showDetails(id) {
+            fetch("http://www.omdbapi.com/?apikey=74fed2a7&i=" + id)
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    printDetails(json, id);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+        function printDetails(details, id) {
+            var divMovie = document.getElementById(id);
+            if (divMovie.lastChild.nodeName === "IMG") {
+                var ul = document.createElement("ul");
+                ul.id = "ul" + id;
+                for (var detail in details) {
+                    var li = document.createElement("li");
+                    if (detail === "Ratings") {
+                        li.innerHTML = detail + ": " + printRaings(details[detail]);
+                    } else {
+                        li.innerHTML = detail + ": " + details[detail];
+                    }
+                    ul.appendChild(li);
+                }
+                divMovie.appendChild(ul);
+            }
+            else {
+                document.getElementById("ul" + id).remove();
+            }
+        }
+        function printRaings(ratings) {
+            var ul = document.createElement("ul");
+            for (var rating of ratings) {
+                var li = document.createElement("li");
+                li.innerHTML = rating["Source"] + ": " + rating["Value"];
+                ul.appendChild(li);
+            }
+            return ul.outerHTML;
+        }
+    </script>
+</body>
+
+</html>
