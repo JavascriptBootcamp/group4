@@ -114,10 +114,13 @@ a:hover {
 }
 
 #error-input{
+    position: absolute;
+    width: 300px;
     display: none;
     color: #D40424;
     margin-top: 30px;
-    margin-left: 39%;
+    left: 50%;
+    margin-left: -150px;
 }
 
 #movie-details{
