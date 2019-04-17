@@ -13,7 +13,8 @@ export class ImgComponent {
   constructor() { }
 
 
-  clickedImg() {
+  clickedImg(element) {
+    element.target.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
     this.imgClicked.emit(this.img.id);
   }
 }
