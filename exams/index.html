@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Search Exam</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="bg-blur"></div>
+    <div id="movie-details" onclick="closeMovieDetails(this)"></div>
+    <div class="searchbar">
+        <div class="header">Movies Search</div>
+        <div class="searchbar-bg">
+            <form id="search-movie" onsubmit="searchMovie(event)">
+                <input type="text" name="search" id="search" placeholder="Enter movie name.." minlength="3">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+    <h3 id="error-input">Please enter a valid movie name</h3>
+    <div id="list-movies"></div>
+    <button type="button" id="load-more-btn" onclick="loadMovies()">Load More</button>
+    <script src="Movie.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
