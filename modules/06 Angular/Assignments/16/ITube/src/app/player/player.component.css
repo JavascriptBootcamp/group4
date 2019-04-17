@@ -1,0 +1,25 @@
+
+
+/* #player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: royalblue;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+} */
+
+#player{
+    display: grid;
+    grid-template-rows: 80% 20%;
+    width: 100%;
+    height: 100%;
+   margin: 5px 5px;
+}
+
+
+video{
+    width:100%;
+    height: 100%;
+} 

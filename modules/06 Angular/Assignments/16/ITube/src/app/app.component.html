@@ -1,0 +1,12 @@
+<div id="content" class="middle">
+  <div id="container">
+    <div id="header"><h1>ITube</h1></div>
+    <div id="wrapper">
+      <div id="player">
+        <app-player *ngIf="playVideo" [video]="playVideo"></app-player>
+      </div>
+      <div id="menu" *ngIf="videos.length">
+        <app-menu *ngFor="let video of videos" [video]="video" (videoClicked)="videoToPlayer($event)"></app-menu>
+      </div>
+    </div>
+  </div>

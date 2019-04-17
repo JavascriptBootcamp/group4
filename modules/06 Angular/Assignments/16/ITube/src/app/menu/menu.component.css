@@ -1,0 +1,13 @@
+
+.video {
+    clear: both;
+    margin-bottom: 50px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.video img {
+    float: left;
+    width: 75px;
+    height: 75px;
+}

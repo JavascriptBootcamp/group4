@@ -1,0 +1,30 @@
+
+.middle {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-column-gap: 10px;
+    background: #ccc;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    width: 70%;
+    height:95%;
+}
+
+#header {
+    display: flex;
+}
+#menu{
+    /* text-align: center; */
+    background: royalblue;
+    overflow: auto;
+}
