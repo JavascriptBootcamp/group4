@@ -1,0 +1,64 @@
+*  {
+    box-sizing: border-box;
+}
+.image_thumbnails {
+    height: 12vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    overflow: auto;
+
+}
+
+.img-tumbnail {
+    width: auto;
+    height: 10vh;
+    padding: 0.2vw;
+}
+
+
+.selected-img {
+    height: 80vh;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+
+.img-center {
+    width: auto;
+    height: 78vh;
+    padding: 1rem;
+
+}
+
+.big-pic {
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    
+  
+   
+}
+
+.arrows {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 4vw;
+    width: 5vw;
+    height: 70vh;
+    vertical-align: middle;
+    color: green;
+    
+}
+
+.img {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
