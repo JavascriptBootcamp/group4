@@ -1,41 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import { User } from "../../classes/user";
+import { Component } from '@angular/core';
+import { FormBuilder ,FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-reactive-form',
+  selector: 'user-r-form',
   templateUrl: './user-reactive-form.component.html',
   styleUrls: ['./user-reactive-form.component.css']
 })
-export class UserReactiveFormComponent implements OnInit {
+export class UserRFormComponent {
   hobbies: string[];
   submitted: boolean;
-  user: User;
+  successMsg: string;
 
-  userForm = new FormGroup({
-    firstName: new FormControl(['', Validators.required]),
-    lastName: new FormControl(['', Validators.required]),
-    age: new FormControl(['', Validators.required]),
-    userName: new FormControl(['', Validators.required]),
-    password: new FormControl(['', Validators.required]),
-    phone: new FormControl(['', Validators.required]),
-    email: new FormControl(['', Validators.required])
-  });
+  userForm: FormGroup;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.hobbies = ['', 'Runing', 'Photograpy', 'Soccer', 'PokemonMaster'];
     this.submitted = false;
-    this.user = new User("", "", 1, "", "", 1, "", "", [""]);
+    this.successMsg = "";
+
+    this.userForm = this.fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      age: ['', [Validators.required, Validators.min(1), Validators.max(60)]],
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern("05[0-9]{8}")]],
+      email: ['', [Validators.required, Validators.pattern(".+@.+.(com|co.il)")]],
+      comment: '',
+      hobbie: ''
+    });
   }
 
-  ngOnInit() {
-  }
-
-  onSubmit(event) { 
-    this.submitted = true; 
-    event.preventDefault();
-    return false;
+  onSubmit() {
+    console.log(this.userForm);
+    let name: string = `${this.userForm.controls.firstName.value} ${this.userForm.controls.lastName.value}`;
+    this.successMsg = `Thank you ${ name }!! We receive your info and keep in touch`;
+    this.submitted = true;
   }
 
 }

@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserTemplateDrivenFormComponent } from './components/user-template-driven-form/user-template-driven-form.component';
-import { UserReactiveFormComponent } from './components/user-reactive-form/user-reactive-form.component';
+import { UserTDFormComponent } from './components/user-template-driven-form/user-template-driven-form.component';
+import { UserRFormComponent } from './components/user-reactive-form/user-reactive-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserTemplateDrivenFormComponent,
-    UserReactiveFormComponent
+    UserTDFormComponent,
+    UserRFormComponent
   ],
   imports: [
     BrowserModule,

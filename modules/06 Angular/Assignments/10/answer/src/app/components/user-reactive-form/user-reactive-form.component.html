@@ -1,39 +1,47 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit($event)" [hidden]="submitted">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
 
-  <div class="form-group">
+  <div class="form-group"> 
     <h3>Personal Information:</h3>
 
     <label for="firstName">First Name:</label>
     <input type="text" class="form-control" name="firstName" formControlName="firstName">
-    <div [hidden]="firstName.valid" class="alert alert-danger">
+    <div *ngIf="userForm.controls.firstName.touched && userForm.controls.firstName.invalid" class="alert alert-danger">
       First Name is required
     </div>
 
     <label for="lastName">Last Name:</label>
-    <input id="lastName" type="text" class="form-control" name="lastName" formControlName="lastName">
-    <div [hidden]="lastName.valid" class="alert alert-danger">
+    <input type="text" class="form-control" name="lastName" formControlName="lastName">
+    <div *ngIf="userForm.controls.lastName.touched && userForm.controls.lastName.invalid" class="alert alert-danger">
       Last Name is required
     </div>
 
     <label for="age">Age:</label>
-    <input id="age" type="number" min="1" max="90" class="form-control" name="age" formControlName="age">
-    <div [hidden]="age.valid " class="alert alert-danger">
-      Age need to be between 1-90
+    <input type="number" class="form-control" name="age" formControlName="age">
+    <div *ngIf="userForm.controls.age.touched && userForm.controls.age.invalid" class="alert alert-danger">
+      <div *ngIf="userForm.controls.age.errors?.min">
+          Age to small - need to be between 1-60
+      </div>
+      <div *ngIf="userForm.controls.age.errors?.max">
+          Age to high - need to be between 1-60
+      </div>
+      <div *ngIf="userForm.controls.age.errors?.required">
+          Age is required
+      </div>
     </div>
-  </div>
+  </div> 
 
   <div class="form-group">
     <h3>Credentials:</h3>
 
     <label for="userName">User Name:</label>
-    <input id="userName" type="text" class="form-control" required name="userName" formControlName="userName">
-    <div [hidden]="userName.valid" class="alert alert-danger">
+    <input type="text" class="form-control" name="userName" formControlName="userName">
+    <div *ngIf="userForm.controls.userName.touched && userForm.controls.userName.invalid" class="alert alert-danger">
       User Name is required
     </div>
 
     <label for="password">Password:</label>
-    <input id="password" type="password" class="form-control" required name="password" formControlName="password">
-    <div [hidden]="password.valid" class="alert alert-danger">
+    <input type="password" class="form-control" name="password" formControlName="password">
+    <div *ngIf="userForm.controls.password.touched && userForm.controls.password.invalid" class="alert alert-danger">
       Password is required
     </div>
   </div>
@@ -42,26 +50,45 @@
     <h3>Contact:</h3>
 
     <label for="phone">Phone Number:</label>
-    <input id="phone" type="tel" pattern="[05][0-9]{8}" class="form-control" name="phone" formControlName="phone">
-    <div [hidden]="password.valid" class="alert alert-danger">
-      Phone number is required - with the pattern 055-555-5555
+    <input type="tel" class="form-control" name="phone" formControlName="phone">
+    <div *ngIf="userForm.controls.phone.touched && userForm.controls.phone.invalid" class="alert alert-danger">
+      <div *ngIf="userForm.controls.phone.errors?.required">
+          Phone number is required
+      </div>
+      <div *ngIf="userForm.controls.phone.errors?.pattern">
+          Phone number need to be as the pattern 055-555-5555
+      </div>
     </div>
 
-    <label for="email">Email Address:</label>
-    <input id="email" type="email" pattern=".+@.+.(com|co.il)" class="form-control" name="email" formControlName="email">
+    <label for="email">Email Address:</label> 
+    <input type="email" class="form-control" name="email" formControlName="email">
+    <div *ngIf="userForm.controls.email.touched && userForm.controls.email.invalid" class="alert alert-danger">
+        <div *ngIf="userForm.controls.email.errors?.required">
+            Email is required
+        </div>
+        <div *ngIf="userForm.controls.email.errors?.pattern">
+            Your email address is incorrect
+        </div>
+      </div>  
   </div>
 
   <div class="form-group">
     <h3>Misc:</h3>
 
     <label for="comment">Comments:</label>
-    <textarea id="comment" rows="5" cols="33" class="form-control" name="comment"></textarea>
+    <textarea rows="5" cols="33" class="form-control" name="comment" formControlName="comment"></textarea>
 
     <label for="hobbies">Hobbies:</label>
-    <select id="hobbies" class="form-control" name="hobbies">
+    <select class="form-control" name="hobbies" formControlName="hobbie">
       <option *ngFor="let hobbie of hobbies" [value]="hobbie">{{ hobbie }}</option>
     </select>
   </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Submit</button>
+  <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Submit</button>
 </form>
+
+<div class="container">
+    <div *ngIf="submitted" class="alert alert-success">
+      <h1> {{ successMsg }}</h1>
+    </div>
+</div>

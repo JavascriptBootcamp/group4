@@ -1,28 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-
-import { User } from "../../classes/user";
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-user-template-driven-form',
+  selector: 'user-td-form',
   templateUrl: './user-template-driven-form.component.html',
   styleUrls: ['./user-template-driven-form.component.css']
 })
-export class UserTemplateDrivenFormComponent implements OnInit {
+export class UserTDFormComponent {
   hobbies: string[];
   submitted: boolean;
-  user: User;
+  successMsg: string;
 
   constructor() {
     this.hobbies = ['', 'Runing', 'Photograpy', 'Soccer', 'PokemonMaster'];
     this.submitted = false;
-    this.user = new User("", "", 1, "", "", 1, "", "", [""]);
+    this.successMsg = "";
   }
 
-  ngOnInit() {
-    console.log(this.submitted)
+  onSubmit(form: NgForm) {
+    let name: string = `${form.controls.firstName.value} ${form.controls.lastName.value}`;
+    this.successMsg = `Thank you ${ name }!! We receive your info and keep in touch`;
+    this.submitted = true;
   }
-
-
-  onSubmit() { this.submitted = true; }
-
 }
+

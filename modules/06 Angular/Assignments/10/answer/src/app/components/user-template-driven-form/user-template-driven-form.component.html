@@ -1,25 +1,23 @@
-<form #userForm="ngForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" *ngIf="!submitted">
   <div class="form-group">
     <h3>Personal Information:</h3>
 
     <label for="firstName">First Name:</label>
-    <input type="text" class="form-control" [(ngModel)]="user.firstName" #firstName="ngModel" name="firstName">
-    <div [hidden]="firstName.valid" class="alert alert-danger">
+    <input type="text" class="form-control" ngModel name="firstName" #firstName="ngModel" required>
+    <div *ngIf="firstName.touched && firstName.invalid" class="alert alert-danger">
       First Name is required
     </div>
 
     <label for="lastName">Last Name:</label>
-    <input id="lastName" type="text" class="form-control" [(ngModel)]="user.lastName" #lastName="ngModel"
-      name="lastName">
-    <div [hidden]="lastName.valid" class="alert alert-danger">
+    <input type="text" class="form-control" name="lastName" ngModel #lastName="ngModel" required>
+    <div *ngIf="lastName.touched && lastName.invalid" class="alert alert-danger">
       Last Name is required
     </div>
 
     <label for="age">Age:</label>
-    <input id="age" type="number" min="1" max="90" class="form-control" [(ngModel)]="user.age" #age="ngModel"
-      name="age">
-    <div [hidden]="age.valid " class="alert alert-danger">
-      Age need to be between 1-90
+    <input type="number" min="1" max="60" class="form-control" ngModel name="age" #age="ngModel">
+    <div *ngIf="age.touched && age.invalid" class="alert alert-danger">
+      <div *ngIf="age.errors.required">Age is required and need to be between 1-60</div>
     </div>
   </div>
 
@@ -27,15 +25,14 @@
     <h3>Credentials:</h3>
 
     <label for="userName">User Name:</label>
-    <input id="userName" type="text" class="form-control" [(ngModel)]="user.userName" #userName="ngModel" required
-      name="userName">
-    <div [hidden]="userName.valid" class="alert alert-danger">
+    <input id="userName" type="text" class="form-control" ngModel name="userName" #userName="ngModel" required>
+    <div *ngIf="userName.touched && userName.invalid" class="alert alert-danger">
       User Name is required
     </div>
 
     <label for="password">Password:</label>
-    <input id="password" type="password" class="form-control" [(ngModel)]="user.password" #password="ngModel" required name="password">
-    <div [hidden]="password.valid" class="alert alert-danger">
+    <input id="password" type="password" class="form-control" ngModel name="password" #password="ngModel" required>
+    <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
       Password is required
     </div>
   </div>
@@ -44,28 +41,37 @@
     <h3>Contact:</h3>
 
     <label for="phone">Phone Number:</label>
-    <input id="phone" type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control" [(ngModel)]="user.phone"
-      name="phone" #phone="ngModel">
-    <div [hidden]="password.valid" class="alert alert-danger">
+    <input id="phone" type="tel" pattern="05[0-9]{8}" class="form-control" ngModel name="phone"
+      #phone="ngModel" required>
+    <div *ngIf="phone.touched && phone.invalid" class="alert alert-danger">
       Phone number is required - with the pattern 055-555-5555
     </div>
 
     <label for="email">Email Address:</label>
-    <input id="email" type="email" pattern=".+@.+.(com|co.il)" class="form-control" [(ngModel)]="user.email"
-      name="email">
+    <input id="email" type="email" pattern=".+@.+.(com|co.il)" class="form-control" ngModel name="email"
+      #email="ngModel" required>
+    <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+      Your email address is incorrect
+    </div>
   </div>
 
   <div class="form-group">
     <h3>Misc:</h3>
 
     <label for="comment">Comments:</label>
-    <textarea id="comment" rows="5" cols="33" class="form-control" [(ngModel)]="user.comment" name="comment"></textarea>
+    <textarea id="comment" rows="5" cols="33" class="form-control" ngModel name="comment"></textarea>
 
     <label for="hobbies">Hobbies:</label>
-    <select id="hobbies" class="form-control" [(ngModel)]="user.hobbies" name="hobbies">
+    <select id="hobbies" class="form-control" ngModel name="hobbies">
       <option *ngFor="let hobbie of hobbies" [value]="hobbie">{{ hobbie }}</option>
     </select>
   </div>
 
   <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Submit</button>
 </form>
+
+<div class="container">
+  <div *ngIf="submitted" class="alert alert-success">
+    <h1> {{ successMsg }}</h1>
+  </div>
+</div>
