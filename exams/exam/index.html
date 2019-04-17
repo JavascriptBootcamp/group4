@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="scripts.js"></script>
+</head>
+
+<body>
+        <div id="container">
+            <div id="search">
+                <form id="myForm" action="#">
+                    <input type="text" placeholder="Find Movies and more..." name="searchValue" id="searchValue">
+                    <input type="button" onclick="Mysubmit()" value="search">
+                    <br>
+                    <span id="error"></span>
+                </form>
+            </div><br><br><br><br>
+            <div id="results">
+            </div>
+            <br>
+        </div>
+        <input type="button" hidden id="more" value="Load More" onclick="LoadMore()">
+</body>
+
+</html>
