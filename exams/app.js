@@ -28,12 +28,12 @@ function searchMovie() {
     setDisabledLoadMore(false);
     let movieName = document.getElementById("wrapper-search-input-movie").value;
     let movieUrl = getMovieUrl(movieName,pageNumber);
-    console.log(movieUrl);
+    // console.log(movieUrl);
     fetch(movieUrl).then(
         stream => {
             stream.json().then(
                 data => {
-                    console.log(data);
+                    // console.log(data);
                     if(data.Response === 'True'){
                         setVisibilityLoadMore('visible');
                         let currentMovies = data.Search;
@@ -51,7 +51,7 @@ function searchMovie() {
                             setDisabledLoadMore(true);
                         }
                     }
-                    console.log(data,pageNumber);
+                    // console.log(data,pageNumber);
                 })
         })
         .catch(error => {
@@ -105,14 +105,14 @@ function showMoreInfo(movieId){
                 data => {
                     document.getElementById("info-" + movieId).textContent = '';
                     for(var k in data){
-                        console.log(k + ':',data[k]);
+                        // console.log(k + ':',data[k]);
                         let detailDiv = document.createElement("div");
                         if(k !== 'Response'){
                             detailDiv.textContent = k + ':' + data[k];
                             document.getElementById("info-" + movieId).appendChild(detailDiv);
                         }
                     }
-                    console.log(data);
+                    // console.log(data);
                 }
             )
         }
