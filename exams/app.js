@@ -23,7 +23,12 @@ function Movie(title, id, imgSrc, imdbLink) {
 
 setVisibilityLoadMore('hidden');
 
-function searchMovie() {
+function searchMovie(isNewSearch) {
+    if(isNewSearch){
+        pageNumber = 1;
+        document.getElementById("wrapper-results").textContent = "";
+        setVisibilityLoadMore('hidden');
+    }
 
     setDisabledLoadMore(false);
     let movieName = document.getElementById("wrapper-search-input-movie").value;
@@ -49,6 +54,9 @@ function searchMovie() {
                     else{
                         if(pageNumber > 1){
                             setDisabledLoadMore(true);
+                        }
+                        else{
+                            console.log("Movie not found!");
                         }
                     }
                     // console.log(data,pageNumber);
@@ -82,7 +90,7 @@ function addMovie(movie){
     resultDivMoreInfo.id = "info-" + movie.id;
     resultDivMoreInfo.className = "wrapper-result-movie-info"
 
-    imgSrc.src = movie.imgSrc !== "N/A" ? movie.imgSrc : "";
+    imgSrc.src = movie.imgSrc; //!== "N/A" ? movie.imgSrc : "";
     imgSrc.onclick = showMoreInfo.bind(null,movie.id);
     aImdbLink.text = movie.title;
     aImdbLink.href = movie.imdbLink;
@@ -123,7 +131,7 @@ function showMoreInfo(movieId){
 }
 
 function loadMore() {
-    searchMovie();
+    searchMovie(false);
 }
 
 function setDisabledLoadMore(disabled){

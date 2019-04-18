@@ -42,7 +42,7 @@ body{
     flex-direction: row;
     margin-top: 1%;
     justify-content: center;
-    border: solid red 10px;
+    /* border: solid red 10px; */
     height: 80%;
 }   
 
