@@ -1,0 +1,15 @@
+.navbar.navbar-dark.bg-dark {
+ color: #fff;
+ text-align: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.container {
+    margin-top: 20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

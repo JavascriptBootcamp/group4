@@ -1,0 +1,42 @@
+<form #passForm="ngForm" (ngSubmit)="onSubmit(passForm)" *ngIf="!submitted">
+  <h1>Regain Password</h1>
+
+  <div class="form-group">
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" placeholder="Enter your email..."  class="form-control" ngModel name="email" #email="ngModel" pattern=".+@.+.(com|co.il)" required (ngModelChange)="saveEmail(email.value)">
+  </div>
+  <!-- email - error msg -->
+  <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+    <div *ngIf="email.errors?.required">
+      Email is required
+    </div>
+    <div *ngIf="email.errors?.pattern">
+      The email syntax is in correct
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="reEmail">Confirm Email Address:</label>
+    <input type="email" id="reEmail" placeholder="Repeat your email Address..."  class="form-control" ngModel name="reEmail" #reEmail="ngModel" pattern=".+@.+.(com|co.il)" required (ngModelChange)="checkEmail(reEmail.value)">
+  </div>
+  <!-- Repeat email - error msg -->
+  <div class="alert alert-danger" *ngIf="reEmail.touched && (reEmail.invalid || !equalEmails)">
+    <div *ngIf="reEmail.errors?.required">
+      Email is required
+    </div>
+    <div *ngIf="reEmail.errors?.pattern">
+      The email syntax is in correct
+    </div>
+    <div *ngIf="!equalEmails && !reEmail.errors?.pattern">
+        The emails don't match
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!equalEmails || passForm.form.invalid">Submit</button>
+
+  <a routerLink="" class="btn btn-outline-secondary btn-block">Return to login page</a>
+</form>
+
+<div class="alert alert-success" *ngIf="submitted">
+    <h1>{{ successMsg }}</h1>
+</div>

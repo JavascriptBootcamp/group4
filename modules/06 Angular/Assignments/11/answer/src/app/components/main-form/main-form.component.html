@@ -1,0 +1,35 @@
+<form [formGroup]="mainForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+  <h1>Login</h1>
+  <div class="form-group">
+    <label for="userName">User Name:</label>
+    <input type="text" id="userName" class="form-control" formControlName="userName">
+  </div>
+  <!-- userName - error msg -->
+  <div class="alert alert-danger" *ngIf="mainForm.controls.userName.touched && mainForm.controls.userName.invalid">
+    User Name is required
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" id="password" class="form-control" formControlName="password">
+  </div>
+  <!-- password - error msg -->
+  <div class="alert alert-danger" *ngIf="mainForm.controls.password.touched && mainForm.controls.password.invalid">
+    <div *ngIf="mainForm.controls.password.errors?.required">
+      Password is required
+    </div>
+    <div *ngIf="mainForm.controls.password.errors?.minlength">
+      You need at least 3 char long
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="mainForm.invalid">Submit</button>
+
+  <a routerLink="/sign-up" class="btn btn-outline-secondary">Sign Up</a>
+  <a routerLink="/forgot-password" class="btn btn-outline-secondary">Forgot Your Password?</a>
+
+</form>
+
+<div class="alert alert-success" *ngIf="submitted">
+  <h1>{{ successMsg }}</h1>
+</div>

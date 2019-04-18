@@ -1,0 +1,82 @@
+<form [formGroup]="signForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+  <h1>Sign up</h1>
+
+  <div class="form-group">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" placeholder="Enter your full name..." class="form-control" formControlName="fullName">
+  </div>
+  <!-- fullName - error msg -->
+  <div class="alert alert-danger" *ngIf="signForm.controls.fullName.touched && signForm.controls.fullName.invalid">
+    Full Name is required
+  </div>
+
+
+  <div class="form-group">
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" placeholder="Enter your email..." class="form-control" formControlName="email">
+  </div>
+  <!-- email - error msg -->
+  <div class="alert alert-danger" *ngIf="signForm.controls.email.touched && signForm.controls.email.invalid">
+    <div *ngIf="signForm.controls.email.errors?.required">
+      Email syntax is incorrect
+    </div>
+    <div *ngIf="signForm.controls.email.errors?.email">
+      Email
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="age">Age:</label>
+    <input type="number" id="age" placeholder="Enter your age" class="form-control" formControlName="age">
+  </div>
+  <!-- age - error msg -->
+  <div class="alert alert-danger" *ngIf="signForm.controls.age.touched && signForm.controls.age.invalid">
+    <div *ngIf="signForm.controls.age.errors?.required">
+      Age is required
+    </div>
+    <div *ngIf="signForm.controls.age.errors?.min">
+      Too young, kid
+    </div>
+    <div *ngIf="signForm.controls.age.errors?.max">
+      Too old, grandpa
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="username">User Name:</label>
+    <input type="text" id="username" placeholder="Enter your user name..." class="form-control"
+      formControlName="userName">
+  </div>
+  <!-- userName - error msg -->
+  <div class="alert alert-danger" *ngIf="signForm.controls.userName.touched && signForm.controls.userName.invalid">
+    User Name is required
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter your password..." class="form-control"
+      formControlName="password">
+  </div>
+  <!-- password - error msg -->
+  <div class="alert alert-danger" *ngIf="signForm.controls.password.touched && signForm.controls.password.invalid">
+    <div *ngIf="signForm.controls.password.errors?.required">
+      Password is required
+    </div>
+    <div *ngIf="signForm.controls.password.errors?.minlength">
+      You need at least 3 char long
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="signForm.invalid">Submit</button>
+
+  <button type="reset" class="btn btn-outline-secondary">Reset</button>
+  <a routerLink="" class="btn btn-outline-secondary">Return to login page</a>
+
+</form>
+
+<div class="alert alert-success" *ngIf="submitted">
+  <h1>{{ successMsg }}</h1>
+</div>
