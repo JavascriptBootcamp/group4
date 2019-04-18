@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Movie } from '../movie.model';
 import { rootUrl } from '../endpoint';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -12,47 +13,64 @@ import { rootUrl } from '../endpoint';
   `]
   // styleUrls: ['./movie.component.css']
 })
-export class MovieComponent {
+export class MovieComponent implements OnInit {
   @Input() movie: Movie;
-  @Output('addToFavoritesAlias') addToFavoritesEvent = new EventEmitter<Movie>();
+  @Output('favoritesEventAlias') favoritesEvent = new EventEmitter<Movie>();
   endpoint: string;
   movieDetails: string[];
   condition: boolean;
+  isClicked: boolean;
+  activatedRoute: ActivatedRoute;
 
-  constructor() {
-      this.endpoint = rootUrl;
-      this.movieDetails = [];
-      this.condition = true;
-   }
+  constructor(activatedRoute: ActivatedRoute) {
+    this.endpoint = rootUrl;
+    this.movieDetails = [];
+    this.condition = true;
+    this.isClicked = false;
+    this.activatedRoute = activatedRoute;
+  }
 
-   showDetails(id: string) {
-      fetch(`${this.endpoint}&i=${id}`)
-      .then( response => response.json() )
-      .then( data => this.setData(data) )
-   }
-
-   setData(data: object) {
-     for (let detail in data) {
-       if (detail === "Ratings"){
-          this.addRatings(data[detail]);
-       }
-       else {
-        this.movieDetails.push(`${detail}: ${data[detail]}`)
-       }
-     }
-   }
-
-   addRatings(ratings) {
-    ratings.map( rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`) );
-   }
-
-   addToFavorites() {
-    this.addToFavoritesEvent.emit(this.movie);
-   }
-
-   width = this.getWidth();
-
-    public getWidth() {
-        return '333';
+  ngOnInit() {
+    if (!this.movie) {
+      this.setMovie(this.activatedRoute.snapshot.params.movieId);
     }
+  }
+
+  setMovie(id: string) {
+    fetch(`${this.endpoint}&i=${id}`)
+      .then(response => response.json())
+      .then(data => this.movie = data)
+  }
+
+  showDetails(id: string) {
+    fetch(`${this.endpoint}&i=${id}`)
+      .then(response => response.json())
+      .then(data => this.setData(data))
+  }
+
+  setData(data: object) {
+    for (let detail in data) {
+      if (detail === "Ratings") {
+        this.addRatings(data[detail]);
+      }
+      else {
+        this.movieDetails.push(`${detail}: ${data[detail]}`)
+      }
+    }
+  }
+
+  addRatings(ratings) {
+    ratings.map(rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`));
+  }
+
+  onFavoritesClick() {
+    this.favoritesEvent.emit(this.movie);
+    this.isClicked = !this.isClicked;
+  }
+
+  width = this.getWidth();
+
+  public getWidth() {
+    return '333';
+  }
 }
