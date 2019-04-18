@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { Img } from "../../modules/img";
+
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
@@ -7,23 +9,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ImageComponent implements OnInit {
 
-  @Input() src: string;
+  @Input() img: Img;
   @Output() showImgEvent = new EventEmitter<string>();
-  likeCount: number;
+  @Output() incressLikeEvent = new EventEmitter();
 
   constructor() {
-    this.likeCount = 0;
   }
 
   ngOnInit() {
   }
 
   addLike() {
-    this.likeCount++;
+    this.img.likes++;
+    this.incressLikeEvent.emit();
   }
 
   showImg() {
-    this.showImgEvent.emit(this.src);
+    this.showImgEvent.emit(this.img.src);
   }
 
 }

@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ImageComponent } from './components/image/image.component';
 import { BigPicComponent } from './components/big-pic/big-pic.component';
 import { TopPicsComponent } from './components/top-pics/top-pics.component';
+import { MainGalleryComponent } from './components/main-gallery/main-gallery.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TopPicsComponent } from './components/top-pics/top-pics.component';
     HeaderComponent,
     ImageComponent,
     BigPicComponent,
-    TopPicsComponent
+    TopPicsComponent,
+    MainGalleryComponent
   ],
   imports: [
     BrowserModule,
