@@ -1,11 +1,1 @@
-<div id="container">
-  <div class="layout" [ngStyle]="{'filter': blur}">
-    <h1 id="header">Instush</h1>
-    <app-img *ngFor="let imgObj of images;let index=index" [objImg]="imgObj" [imgIndex]="index"
-      (imgSrc)="openImg($event)"></app-img>
-  </div>
-  <div *ngIf="open">
-    <div class="opacityframe"></div>
-    <div class="pop" [ngStyle]="{'background-image': showImg}" (click)="closeFrame()"></div>
-  </div>
-</div>
+<router-outlet></router-outlet>
