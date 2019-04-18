@@ -10,11 +10,8 @@ export class BigPictureComponent{
   @Input() passedImage:string;
   @Input() show:boolean;
   @Output() showChanged = new EventEmitter();
-  constructor() {
-  }
   hideBigScreen(){
     this.show = false;
     this.showChanged.emit(this.show);
-    console.log("test");
   }
 }

@@ -9,13 +9,18 @@ export class AppComponent implements OnInit{
   pictures:string[];
   selectedImage:string;
   show:boolean;
+  authors:string[];
+  amount:number;
   constructor(){
     this.pictures=[];
     this.selectedImage="";
     this.show=false;
+    this.amount=20;
+    this.authors=[];
   }
   ngOnInit(){
-    this.insertImagesToArray(20);
+    this.fakeAuthors(this.amount);
+    this.insertImagesToArray(this.amount);
   }
 
   insertImagesToArray(amount:number){
@@ -26,5 +31,10 @@ export class AppComponent implements OnInit{
   onClickShow(src:string){
     this.show = true;
     this.selectedImage = src;
+  }
+  fakeAuthors(amount:number){
+    for(let i=0; i<amount;i++){
+      this.authors.push(`david`+i);
+    }
   }
 }
