@@ -1,0 +1,7 @@
+
+<ul id="recipe.name"><b><a routerLink="../{{recipe.name}}"> {{recipe.name}}</a></b>
+  <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
+  <h5>Time of cooking :{{recipe.time}}</h5>
+ <h3>Rating:</h3>
+ <img [src]="img" alt="">
+</ul>
