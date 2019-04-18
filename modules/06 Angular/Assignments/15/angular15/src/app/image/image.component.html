@@ -6,3 +6,4 @@
  }">
 <button class="btn-like" (click)="incrementLike(img)">Like</button>
 <div class="number-of-likes">{{img.like}}</div>
+<div class="author"><a routerLink="image/{{img.author}}">{{img.author}}</a></div>

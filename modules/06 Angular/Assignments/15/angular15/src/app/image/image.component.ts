@@ -1,6 +1,6 @@
 import { Component, OnInit ,Input , Output ,EventEmitter} from '@angular/core';
-import {Img} from '../app.component';
-
+import {Img} from '../images/images.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-image',
@@ -12,7 +12,8 @@ export class ImageComponent implements OnInit {
   @Output() addToOpenModal = new EventEmitter();
   @Output() addToLocal = new EventEmitter<string>();
   isClicked : boolean;
-  constructor() { 
+  constructor(private route : ActivatedRoute) { 
+    this.route = route;
     this.isClicked = false;
   }
   incrementLike(img : Img) {
@@ -23,9 +24,14 @@ export class ImageComponent implements OnInit {
     this.isClicked = true;
   }
   ngOnInit() {
+    if(!this.img){
+      this.setImage(this.route.snapshot.params.author);
+    }
   }
   openModal(){
     this.addToOpenModal.emit(this.img.src);
   }
-
+  setImage(img : Img){
+    console.log(img);
+  }
 }
