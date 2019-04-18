@@ -14,5 +14,8 @@
     <div class="likeSec" >
       <button (click)="onClickLike($event, img)">like</button><span>{{myImg.like}}</span>
     </div>
+    <a [routerLink] = "authors/avi" > <div class="auther" >{{myImg.auther}} </div> </a>
 
   </div>
+
+  <router-outlet></router-outlet>
