@@ -3,6 +3,9 @@
     <img [src]="image.src" (click)="OnImageClicked()" [className]="getImageClass()" />
   </div>
   <div>
+    <a [routerLink] = "['/authors',image.authorId]" >{{image.authorNmae}}</a>
+  </div>
+  <div>
     <button (click)="LikeClicked()">LIKE</button>
   </div>
   <div [className]="'likeCountDiv'">

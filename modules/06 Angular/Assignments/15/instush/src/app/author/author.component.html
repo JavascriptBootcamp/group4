@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <img [src] = "images[authorId].src" />
+  </div>
+  <div>
+    <h1>{{images[authorId].authorNmae}}</h1>
+    <div>
+      <div>
+          <h4>Images list of the author</h4>
+      </div>
+      <img [src]=img *ngFor="let img of images[authorId].imagesList"/>
+    </div>
+   
+  </div>
+</div>
+

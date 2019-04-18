@@ -1,0 +1,20 @@
+<div class="container">
+  
+      <div class="grid-container">
+          
+              <app-image (showImage)="OnShowImage($event)" *ngFor="let image of images" [image]="image">
+          
+              </app-image>
+          
+          </div>
+  
+  </div>
+  
+  
+  <div [className]="imageShowFlag?'bodyBackground':''" (click)="OndontShowImage()">
+      
+  </div>
+  
+  <div [className]="imageShowFlag?'show':'dontShow'">
+      <img [src]="imageShowSrc" />
+  </div>
