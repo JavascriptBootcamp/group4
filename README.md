@@ -30,3 +30,17 @@
   <li>Priorities</li>  
   <li>Box Model</li>
 </ol>
+<h3>Angular</h3>
+<ol>
+  <li>Component</li>
+  <li>Pipes</li>
+  <li>Interpolation</li>
+  <li>Property Binding</li>
+  <li>Two-way Binding</li>
+  <li>Router</li>
+  <li>Model</li>
+  <li>Service</li>
+  <li>Dependency Injection (DI)</li>
+  <li>angular-cli</li>
+  <li>npm</li>
+</ol>
