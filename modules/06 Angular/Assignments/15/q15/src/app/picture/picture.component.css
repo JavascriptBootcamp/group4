@@ -12,3 +12,19 @@
     /* display: flex; */
     text-align: right;
 }
+
+.clicked{
+    border:solid red;
+}
+
+.small{
+    font-size: 10px;
+}
+
+.normal{
+    font-size: 13px;
+}
+
+.big{
+    font-size: 16px;
+}

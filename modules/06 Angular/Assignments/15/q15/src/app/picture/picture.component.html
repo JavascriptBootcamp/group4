@@ -1,8 +1,8 @@
 <div class="picture">
-    <img [src]="image" alt="No image found" (click)="showPicture()" width="200px" height="200px">
+    <img [src]="image" [author]="author" alt="No image found" (click)="showPicture()" [class]="isImageClicked? 'clicked' : ''" width="200px" height="200px">
     <!-- [width]="getWidth()" [height]="getHeight()" -->
     <div class="likes">
       <button class="like" (click)="incCounter()">Like</button>
-      <span class="likes-counter">{{counter}}</span>
+      <span class="likes-counter" [class]="fontSize">{{counter}} </span>
     </div>
 </div>
