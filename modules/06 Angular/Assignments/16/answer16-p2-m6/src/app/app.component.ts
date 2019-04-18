@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
   loadVideo() {
 
 
-    const yotube = fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=amaharic%20songs&key=AIzaSyAi2mXT1D2LuYWqaJePJ6ZYROEl4fEqMR8")
+    const yotube = fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=angular&key=AIzaSyAi2mXT1D2LuYWqaJePJ6ZYROEl4fEqMR8")
    
     yotube.then(res => res.json()).
     then(data => {
