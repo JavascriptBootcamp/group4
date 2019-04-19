@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sticky {
+            position: sticky;
+            top: 0;
+            background-color: rgb(4, 0, 255);
+            padding: 50px;
+            font-size: 20px;
+        }
+
+        #images {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .movie {
+            width: 300px;
+            height: 500px;
+            overflow: hidden;
+            margin: 2px;
+        }
+
+        img {
+            display: block;
+            height: 95%;
+        }
+
+        .butt {
+            height: 5%;
+            width: 100%;
+        }
+
+        #search_div {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        #details { 
+            background: green;
+            width: 100%;
+            margin: 5px;          
+        }
+
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <div id="sticky">
+            <div id="search_div">
+                <input type="text" id="movie_search" minlength="3">
+                <input type="submit" value="Search" onclick="search()">
+            </div>
+        </div>
+
+        <div id="images"></div>
+    </form>
+    <div id="details"></div>
+    <button id="loadMore" onclick="loadMore()">Load More</button>
+
+    <script>
+
+        let inputText = "";
+        let counter = 1;
+        let mainDiv = document.getElementById("images");
+        let detailDiv = document.getElementById("details");
+        document.getElementById("loadMore").disabled = true;
+
+
+        function search() {
+            inputText = document.getElementById("movie_search").value;
+            counter = 1;
+            mainDiv.innerHTML = '';
+            fetchImages();
+        }
+
+        function fetchImages() {
+
+            let url = "http://www.omdbapi.com/?apikey=74fed2a7&s=" + inputText + "&type=movie&page=" + counter;
+            const linkUrl = "https://www.imdb.com/title/";
+            const detailsUrl = "http://www.omdbapi.com/?apikey=74fed2a7&i=";
+
+            console.log(url);
+
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    console.log(myJson);
+
+                    if (endOfResaults(myJson)) {
+                        document.getElementById("loadMore").disabled = true;
+                    } else {
+                        document.getElementById("loadMore").disabled = false;
+                        console.log(myJson.Search.length);
+                        for (let index = 0; index < myJson.Search.length; index++) {
+
+                            let newElem = document.createElement("div");
+                            let img = document.createElement("img");
+                            let butt = document.createElement("button");
+
+
+                            img.onclick = function () { details(detailsUrl + myJson.Search[index].imdbID , myJson.Search[index].Title) };
+                            newElem.className = "movie";
+                            newElem.id = myJson.Search[index].imdbID;
+                            butt.className = "butt";
+                            img.src = myJson.Search[index].Poster;
+                            butt.onclick = function () { link(linkUrl + myJson.Search[index].imdbID) };
+                            butt.innerText = "Link to Movie";
+
+                            newElem.appendChild(img);
+                            newElem.appendChild(butt);
+                            mainDiv.appendChild(newElem);
+
+                        }
+                    }
+                })
+                .catch(function (err) {
+                    document.getElementById("loadMore").disabled = true;
+                });
+        }
+
+        function details(url, title) {
+
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    let details = "<h3> Details of " + title +"</h3><br>";
+                    Object.keys(myJson).forEach(function (key) {
+                        if (key === "Ratings") {
+                            details += "Rating:<br>";
+                            for (let index = 0; index < myJson[key].length; index++) {
+                                Object.keys(myJson[key][index]).forEach(function (ratingKey) {
+                                    details += ratingKey + ' : ' + myJson[key][index][ratingKey] + " ";
+                                })
+                                details += "<br>"
+                            }
+                        } else {
+                            details += key + ': ' + myJson[key] + "<br>";
+                        }
+                    });
+                    if (detailDiv.innerHTML) {
+                        detailDiv.innerHTML = details;
+                    } else {
+                        detailDiv.innerHTML = details;
+                        mainDiv.appendChild(detailDiv);
+                    }
+                })
+        }
+
+        function link(linkUrl) {
+            var win = window.open(linkUrl, '_blank');
+            win.focus();
+        }
+
+        function loadMore() {
+            counter++;
+            detailDiv.innerHTML = "";
+            fetchImages();
+        }
+
+        function endOfResaults(myJson) {
+
+            if (myJson.Response === 'False') {
+                document.getElementById("loadMore").disabled = true;
+                return true;
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>
