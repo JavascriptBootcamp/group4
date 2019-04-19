@@ -1,4 +1,6 @@
 import { Component , OnInit} from '@angular/core';
+import {GetDataService} from './get-data.service';
+import { Author } from './author';
 
 @Component({
   selector: 'app-root',
@@ -6,35 +8,26 @@ import { Component , OnInit} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  pictures:string[];
+  //pictures:string[];
   selectedImage:string;
   show:boolean;
-  authors:string[];
+  authors:Author[];
   amount:number;
-  constructor(){
-    this.pictures=[];
+  constructor(private dataService: GetDataService){
+    //this.pictures=[];
     this.selectedImage="";
     this.show=false;
     this.amount=20;
     this.authors=[];
   }
   ngOnInit(){
-    this.fakeAuthors(this.amount);
-    this.insertImagesToArray(this.amount);
+    this.getData();
   }
-
-  insertImagesToArray(amount:number){
-    for(let i=10; i<amount+10;i++){
-      this.pictures.push(`https://picsum.photos/300/200?image=${i}`);
-    }
+  getData():void{
+    this.authors = this.dataService.getAuthors();
   }
   onClickShow(src:string){
     this.show = true;
     this.selectedImage = src;
-  }
-  fakeAuthors(amount:number){
-    for(let i=0; i<amount;i++){
-      this.authors.push(`david`+i);
-    }
   }
 }

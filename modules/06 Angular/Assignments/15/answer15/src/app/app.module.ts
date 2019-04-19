@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { BoxComponent } from './box/box.component';
 import { BigPictureComponent } from './big-picture/big-picture.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthorProfileComponent } from './author-profile/author-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoxComponent,
-    BigPictureComponent
+    BigPictureComponent,
+    AuthorProfileComponent
   ],
   imports: [
     BrowserModule,

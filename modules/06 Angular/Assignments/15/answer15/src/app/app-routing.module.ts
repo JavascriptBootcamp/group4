@@ -10,6 +10,7 @@ export const router: Routes =[
 @NgModule({
   declarations: [],
   imports: [
+    RouterModule.forRoot(router),
     CommonModule
   ],
   exports: [RouterModule]
