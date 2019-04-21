@@ -1,0 +1,36 @@
+<div class="container">
+  <form (submit)="onSubmit($event,height.value,weight.value,selectedOpt)">
+    <table>
+      <tr>
+        <td>
+          <input type="TEXT" placeholder="גובה" #height />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="TEXT" placeholder="משקל" #weight />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select #selectedOpt>
+                <option value="0" selected disabled hidden>בחר פעולה</option>
+                <option value="1">חיבור</option>
+                <option value="2">חיסור</option>
+                <option value="3">חילוק </option>
+                <option value="4">חזקה</option>
+                <option value="5">BMI</option>
+              </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button>חישוב</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="result">
+          {{result}}
+        </td>
+      </tr>
+    </table>
