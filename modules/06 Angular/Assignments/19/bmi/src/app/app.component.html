@@ -1,0 +1,11 @@
+<div id="container">
+  <h1> מחשבון BMI</h1>
+  <div id="content" >
+    <form (submit)="funcToService($event,kg.value,height.value )">
+      <input type="number" placeholder="משקל" #kg required><br>
+      <input type="number" step=".01" placeholder="גובה" #height required><br><br>
+      <button>חשב</button><br>
+      <div>התוצאה היא:{{bmi}}</div>
+    </form>
+  </div>
+</div>
