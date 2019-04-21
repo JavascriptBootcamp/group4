@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  <div class="wrapper">
+    <form (submit)="calcSum($event,height.value,kg.value)">
+      <input class="textinput" type="text" placeholder="גובה" required #height>
+      <input class="textinput" type="text" placeholder="משקל" required #kg>
+      <input class="subinput" type="submit" value="חישוב">
+    </form>
+  </div>
+  <div>
+    <h1>{{result}}</h1>
+  </div>
+</div>
