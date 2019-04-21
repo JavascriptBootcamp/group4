@@ -23,6 +23,7 @@ select{
     margin-left: -250px;
     background-color: greenyellow;
     padding: 25px;
+    border-radius: 15px;
 }
 
 form{
@@ -30,4 +31,8 @@ form{
     RIGHT: 50%;
     width: 400px;
     MARGIN-RIGHT: -90PX;
+}
+
+input{
+    background-color: orange;
 }
