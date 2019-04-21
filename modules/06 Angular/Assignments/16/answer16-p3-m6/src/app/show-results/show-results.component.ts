@@ -13,22 +13,29 @@ export class ShowResultsComponent implements OnInit {
 
   ngOnInit() {
 
+
+
+  }
+
+  ngOnChanges() {
+
     if (this.hideToggle){
       this.sign = '+';
      } else {
        this.sign = '-';
      }
-
-  }
+    }
 
   toggleHide() {
-    if (this.hideToggle){
-     this.sign = '-';
-    } else {
-      this.sign = '+';
-    }
-    this.hideToggle = !this.hideToggle;
-  }
 
+    this.hideToggle = !this.hideToggle;
+
+    if (this.hideToggle){
+     this.sign = '+';
+    } else {
+      this.sign = '-';
+    }
+
+  }
 
 }

@@ -1,36 +1,41 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-buying-formats',
   templateUrl: './buying-formats.component.html',
   styleUrls: ['./buying-formats.component.css']
 })
-export class BuyingFormatsComponent implements OnInit {
+export class BuyingFormatsComponent implements OnInit ,OnChanges{
 
   sign = '-';
   @Input() hideToggle: boolean;
+
+  ngOnChanges() {
+
+    if (this.hideToggle){
+      this.sign = '+';
+     } else {
+       this.sign = '-';
+     }
+
+
+
+  }
+
 
   constructor() { }
 
   ngOnInit() {
 
-    if (this.hideToggle){
-      this.sign = '-';
-     } else {
-       this.sign = '+';
-     }
-
   }
+
 
   toggleHide() {
 
     this.hideToggle = !this.hideToggle;
 
-    if (this.hideToggle){
-     this.sign = '+';
-    } else {
-      this.sign = '-';
-    }
+
+
 
   }
 

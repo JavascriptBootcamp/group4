@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit , OnChanges {
 
   sign = '-';
   @Input() hideToggle: boolean;
@@ -14,13 +14,17 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
 
+
+  }
+
+  ngOnChanges() {
+
     if (this.hideToggle){
       this.sign = '+';
      } else {
        this.sign = '-';
      }
-
-  }
+    }
 
   toggleHide() {
 
