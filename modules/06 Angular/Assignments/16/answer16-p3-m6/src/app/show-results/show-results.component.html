@@ -1,6 +1,6 @@
 <div style="white-space: nowrap;">
-    <p class="inputTitle"> Show results </p>
-    <div class="details">
+    <p class="inputTitle" (click) = "toggleHide()"> <span> {{sign}} </span> Show results </p>
+    <div class="details" [ngClass]="{hide: hideToggle}">
 
       <input type="checkbox" name="ch8">
       <label for="ch8"> Listings </label>
@@ -44,14 +44,16 @@
       <label for="ch13"> Best offer <a href="">Learn more.</a> </label><br />
       <input type="checkbox" name="ch14">
       <label for="ch14"> eBay for Charity <a href="">Learn more.</a></label><br />
+
+          <label> Shopping options</label> <br>
+
+            <input type="checkbox" name="ch15">
+            <label for="ch15"> Free international shipping </label><br />
+
+
+
     </div>
 
-    <div>
-        <p class="inputTitle"> Shopping options</p>
-        <div class="details">
-          <input type="checkbox" name="ch15">
-          <label for="ch15"> Free international shipping </label><br />
-        </div>
-      </div>
-      
+
+
   </div>

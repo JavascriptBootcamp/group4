@@ -1,7 +1,6 @@
 <div>
-    <p class="inputTitle"> Search including </p>
-    <div class="details">
-
+    <p class="inputTitle" (click) = "toggleHide()" > <span> {{sign}} </span> Search including </p>
+    <div class="details"  [ngClass]="{hide: hideToggle}">
       <input type="checkbox" name="ch1">
       <label for="ch1">Title and description</label> <br />
       <input type="checkbox" name="ch2">

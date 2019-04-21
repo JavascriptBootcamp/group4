@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'answer16-p3-m6';
+  title = 'Collapse All';
+  hideToggle = false;
+
+  toggleTitle() {
+
+
+    this.hideToggle = !this.hideToggle;
+
+    if (this.hideToggle ) {
+      this.title = 'Expand All';
+    } else {
+      this.title = 'Collapse All';
+    }
+
+  }
 }

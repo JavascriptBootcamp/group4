@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+div {
+  border-bottom: 1px gray solid ;
+
+  padding: 5px;
+}
+
+.search {
+border: 1px gray solid ;
+}
+
+input , select {
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+
+}
+
+input[type=submit]{
+
+background-color: blue;
+color:white;
+padding: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.not-hide {
+  display: initial;
+}
+
+
+.search p {
+  font-size: 1.5rem;
+
+}

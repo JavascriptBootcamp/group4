@@ -1,6 +1,6 @@
 <div>
-    <p class="inputTitle">Sellers </p>
-    <div class="details">
+    <p class="inputTitle" (click) = "toggleHide()" > <span> {{sign}} </span> Sellers </p>
+    <div class="details"  [ngClass]="{hide: hideToggle}">
 
       <input type="checkbox" name="seller" id="">
       <label for="seller">Only show items from:</label>

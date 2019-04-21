@@ -1,6 +1,6 @@
 <div style="white-space: nowrap;">
-    <p class="inputTitle"> Price </p>
-    <div class="details">
+   <p class="inputTitle" (click) = "toggleHide()"> <span> {{sign}} </span> Price </p>
+    <div class="details" [ngClass]="{hide: hideToggle}">
 
       <input type="checkbox" name="ch4">
       <label for="ch4">Show items priced from </label> ILS

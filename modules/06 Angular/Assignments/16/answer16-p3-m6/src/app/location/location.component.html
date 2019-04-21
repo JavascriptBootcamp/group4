@@ -1,6 +1,6 @@
 <div>
-    <p class="inputTitle"> Location </p>
-    <div class="details">
+  <p class="inputTitle" (click) = "toggleHide()" > <span> {{sign}} </span> Location </p>
+    <div class="details" [ngClass]="{hide: hideToggle}">
 
       <table>
         <tr>

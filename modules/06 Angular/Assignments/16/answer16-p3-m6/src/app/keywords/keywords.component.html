@@ -1,7 +1,7 @@
 
   <div id="mainSearch">
-      <p>Enter keywords or item number</p>
-      <div class="details">
+      <p (click) = "toggleHide()"> <span> {{sign}} </span> Enter keywords or item number</p>
+      <div class="details" [ngClass]="{hide: hideToggle}">
         <h3>Find Items</h3>
 
         <form action="">

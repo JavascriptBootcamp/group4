@@ -1,5 +1,7 @@
 <div>
+  <p class="inputTitle" (click) = "toggleHide()"> <span> {{sign}} </span> Results</p>
 
+    <div class="details"   [ngClass]="{hide: hideToggle}">
     <label for="sort">Sort By</label><br />
     <select name="sort" id="">
       <option value="bestMatch">Best Match</option>
@@ -13,4 +15,5 @@
     <select name="sort" id="">
       <option value="50">50</option>
     </select>
+    <div></div>
   </div>

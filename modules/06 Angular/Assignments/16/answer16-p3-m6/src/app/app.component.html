@@ -1,16 +1,16 @@
 <div class="hide-expand">
-  <button class="hide-expand-btn">Expand All</button>
+  <button class="hide-expand-btn"  (click) = "toggleTitle()"> {{title}}</button>
 </div>
-<div class="search">
-  <app-keywords></app-keywords>
-  <app-search-including></app-search-including>
-  <app-price></app-price>
-  <app-buying-formats></app-buying-formats>
-  <app-condition></app-condition>
-  <app-show-results></app-show-results>
-  <app-location></app-location>
-  <app-sellers></app-sellers>
-  <app-results></app-results>
+<div class="search" >
+  <app-keywords [hideToggle] = "hideToggle"></app-keywords>
+  <app-search-including [hideToggle] = "hideToggle"></app-search-including>
+  <app-price [hideToggle] = "hideToggle"></app-price>
+  <app-buying-formats [hideToggle] = "hideToggle"></app-buying-formats>
+  <app-condition [hideToggle] = "hideToggle"></app-condition>
+  <app-show-results [hideToggle] = "hideToggle"></app-show-results>
+  <app-location [hideToggle] = "hideToggle"></app-location>
+  <app-sellers [hideToggle] = "hideToggle"></app-sellers>
+  <app-results [hideToggle] = "hideToggle"></app-results>
 
   <div>
     <input type="submit" value="Search">
