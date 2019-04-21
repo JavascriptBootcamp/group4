@@ -1,0 +1,13 @@
+
+<div class="container">
+ <h1>מחשבון BMI</h1>
+  <form id="formCalc" (submit)="bmiSum($event,height.value, weight.value)">
+
+<input type="text" name="height" id="height" placeholder="גובה" #height required><br>
+<input type="text" name="weight" id="weight" placeholder="משקל" #weight required>
+<button >חשב</button>
+
+  </form>
+  <div *ngIf="result>0"><h1>התוצאה היא {{result}}</h1></div>
+</div>
+

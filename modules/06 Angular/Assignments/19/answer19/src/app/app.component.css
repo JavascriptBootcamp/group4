@@ -1,0 +1,39 @@
+.container{
+  width: 100%;
+  height: 100%;
+
+
+}
+#formCalc{
+  width: 480px;
+  height: 30%;
+  background: rgb(227, 242, 220);
+
+  border:4px solid rgb(56, 115, 29);
+  border-radius: 70px;
+
+}
+
+button{
+
+  background: rgb(56, 115, 29);
+  color:white;
+  margin: 20px 40px;
+  padding: 10px 72px;
+}
+
+
+
+input{
+  color: black;
+  border-color: black;
+  background: rgb(242, 148, 65);
+  padding: 10px 2px;
+}
+*{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
