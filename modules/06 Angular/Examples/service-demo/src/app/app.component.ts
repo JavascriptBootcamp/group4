@@ -18,13 +18,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.calc.sum(1,2));
-    console.log(this.calc.sum(3,2));
-    console.log(this.calc.sum(10,2));
+    // console.log(this.calc.sum(1,2));
+    // console.log(this.calc.sum(3,2));
+    // console.log(this.calc.sum(10,2));
   }
 
   calcSum(e: Event, num1: number, num2: number) {
     e.preventDefault();
-    this.result = this.calc.sum(num1, num2)
+    this.result = this.calc.sum({num1, num2});
   }
 }
