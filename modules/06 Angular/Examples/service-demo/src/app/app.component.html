@@ -1,0 +1,7 @@
+<h1>מחשבון</h1>
+<form (submit)="calcSum($event, {num1: num1.value, num2: num2.value})">
+    <input type="number" placeholder="הכנס מספר" required #num1 />
+    <input type="number" placeholder="הכנס מספר" required #num2 />
+    <button>חשב</button>
+    <div>{{ result }}</div>
+</form>
