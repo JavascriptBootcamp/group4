@@ -1,5 +1,5 @@
 <div id="movies-wrapper">
-    <app-box *ngFor="let author of authors; let pictures = author.imagesBySrc; let picture of pictures;" [src]="picture" [author]="author" (showOnBigPicture)="onClickShow($event)"></app-box>
+    <app-box *ngFor="let picture of pictures;" [src]="picture.src" [author]="picture.authorName" (showOnBigPicture)="onClickShow($event)"></app-box>
 </div>
 <div id="bigScreen" [hidden]="!show">
     <app-big-picture  [passedImage]="selectedImage" [show]="show" (showChanged)="this.show= $event"></app-big-picture>
