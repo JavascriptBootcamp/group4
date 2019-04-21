@@ -1,0 +1,45 @@
+* {
+    text-align: center;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#calculatorForm{
+    border: 1px solid red;
+    border-radius: 10px 10px 10px 10px;
+    padding: 20px;
+    display: inline-block;
+}
+
+#heightInput, #weightInput {
+    text-align: center;
+    background-color: antiquewhite;
+    
+    padding: 10px;
+    margin: 10px;
+    display: block;
+}
+
+#errorMessage
+{
+    padding: 10px;
+    border: 4px dashed darksalmon;
+}
+
+#resultMessage
+{
+    padding: 100px;
+    margin: 100px;
+    border: 4px dotted brown;
+}
+ 
+#resultSection
+{
+    font-weight: bold;
+    font-size: 30px;
+    color: brown;
+}
+

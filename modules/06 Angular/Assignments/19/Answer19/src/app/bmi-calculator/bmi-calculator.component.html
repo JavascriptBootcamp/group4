@@ -1,0 +1,9 @@
+<div id="container">
+  <form id="calculatorForm" (submit)="checkInputs($event , heightInput.value , weightInput.value)">
+    <input id="heightInput" type="number" placeholder="גובה" step="any" required #heightInput>
+    <input id="weightInput" type="number" placeholder="משקל"  required #weightInput>
+    <button id="calculateBtn">חשב</button>
+</form>
+</div>
+<div id="errorMessage" *ngIf="isErrorOccured">{{ errorMessage }}</div>
+<div id="resultSection" *ngIf="resultMessage > 0">{{ resultMessage }}</div>
