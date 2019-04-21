@@ -12,6 +12,7 @@ export class ImageComponent implements OnInit {
   @Output() addToOpenModal = new EventEmitter();
   @Output() addToLocal = new EventEmitter<string>();
   isClicked : boolean;
+  images : Img[];
   constructor(private route : ActivatedRoute) { 
     this.route = route;
     this.isClicked = false;
