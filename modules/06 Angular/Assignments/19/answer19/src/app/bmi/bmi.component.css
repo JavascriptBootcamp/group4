@@ -1,3 +1,4 @@
+
 #bmi-comp{
     display: flex;
     flex-direction: column;
@@ -8,27 +9,35 @@
 }
 h2{
     color:black;
-    font-weight: bold;
-    margin: 20px;
-    font-size: 28pt;
+    margin-bottom: 30px;
+    font-size: 30pt;
+    font-family: 'Assistant', sans-serif;    
+}
+.heb{
+    font-weight: 400;
+}
+.eng{
+    font-weight: 800;
 }
 #form{
-    background-color: #C3ECC3;
-    border: 3px solid #67B667;
-    border-radius: 20px;
-    width: 400px;
+    padding-top: 20px;
+    padding-bottom: 8px;
+    background-color: #CFECCF;
+    border: 4px solid #93CC8C;
+    border-radius: 30px;
+    width: 470px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .inputs{
-    background-color: #F59B35;
+    background-color: #F5A835;
     border: 1px solid black;
     /* color: gray; */
-    margin: 10px;
+    margin: 12px;
     width: 114px;
-    height: 28px;
+    height: 26px;
     padding-right: 6px;
 }
 #button{
@@ -36,7 +45,7 @@ h2{
     background-color: #377537;
     border: none;
     color: white;
-    margin: 10px;
+    margin: 12px;
     width: 120px;
     height: 28px;
 }
