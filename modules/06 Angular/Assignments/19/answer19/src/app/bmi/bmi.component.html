@@ -1,0 +1,9 @@
+<div id="bmi-comp">
+  <h2>מחשבון BMI</h2>
+  <form (submit)="calculate($event,height.value,weight.value)" id="form" >
+    <input class="inputs" type="number" placeholder="גובה" #height step="0.01" max="3.2">
+    <input class="inputs" type="number" placeholder="משקל" #weight max="200">
+    <button id="button">חישוב</button>
+  </form>
+  <h2 *ngIf="result>0" id="result">התוצאה היא {{ result | number : '1.2-2'}}</h2>
+</div>
