@@ -19,7 +19,7 @@ export class KeywordsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
 
-    if (this.hideToggle){
+    if (this.hideToggle) {
       this.sign = '+';
      } else {
        this.sign = '-';
@@ -29,7 +29,11 @@ export class KeywordsComponent implements OnInit, OnChanges {
   toggleHide() {
 
     this.hideToggle = !this.hideToggle;
-
+    if (this.hideToggle) {
+      this.sign = '+';
+     } else {
+       this.sign = '-';
+     }
 
   }
 

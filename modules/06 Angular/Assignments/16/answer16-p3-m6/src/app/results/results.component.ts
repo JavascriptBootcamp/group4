@@ -19,7 +19,7 @@ export class ResultsComponent implements OnInit , OnChanges {
 
   ngOnChanges() {
 
-    if (this.hideToggle){
+    if (this.hideToggle) {
       this.sign = '+';
      } else {
        this.sign = '-';
@@ -30,7 +30,7 @@ export class ResultsComponent implements OnInit , OnChanges {
 
     this.hideToggle = !this.hideToggle;
 
-    if (this.hideToggle){
+    if (this.hideToggle) {
      this.sign = '+';
     } else {
       this.sign = '-';
