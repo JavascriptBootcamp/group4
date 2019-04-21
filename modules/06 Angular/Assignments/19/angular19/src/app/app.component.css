@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.bmi-control{
+    background-color: #cdecbf;
+    border-radius: 15px;
+    padding: 50px 150px;
+    border: 8px solid #007b24;
+}
+.bmi-container {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-around;
+}
+.inputs {
+    background-color: #ffae00;
+    padding: 0px 5px;
+}
+#submit{
+    background-color:#009C15;
+    color:white;
+    cursor: pointer;
+}
+#submit:hover{
+    background-color:#007510;
+}

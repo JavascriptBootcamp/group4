@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="bmi-container">
+    <h1>מחשבון BMI</h1>
+    <div class="bmi-control">
+      <form (submit)="calcBmi($event,weight.value,height.value)">
+        <input class="inputs" id="height" type="number" step="any" placeholder="גובה" required #height>
+        <input class="inputs" id="weight" type="number" step="any" placeholder="משקל" required #weight>
+        <button id="submit">חישוב</button>
+      </form>
+      <div>{{result}}</div>
+    </div>
+  </div>
+</div>
