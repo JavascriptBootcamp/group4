@@ -11,7 +11,9 @@ function Mysubmit() {
         document.getElementById("error").innerText = "please enter least 3 characters ";
     }
     else {
+        document.getElementById("more").disabled = false;
         document.getElementById("error").innerText = "";
+        page = 1;
         api = `${web1}${searchValue}${web2}${page}`;
         fetchFunc(api);
     }
@@ -41,8 +43,9 @@ function fetchFunc(api) {
             addResult(movie);
         document.getElementById("more").removeAttribute("hidden");
     })
-    page++;
-    api = `${web1}${searchValue}${web2}${page}`;
+
+    //test for disable button
+    api = `${web1}${searchValue}${web2}${page+1}`;
     fetch(api).then(response => response.json()).then(data => {
         if (data.hasOwnProperty('Error'))
             document.getElementById("more").disabled = true;
