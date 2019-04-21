@@ -1,5 +1,6 @@
 import { Component, Input,Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Picture} from '../models/Picture';
 
 @Component({
   selector: 'app-picture',
@@ -7,17 +8,16 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./picture.component.css']
 })
 export class PictureComponent{
-@Input() image: string;
-@Input() author: string;
-@Output() showPictureEvent = new EventEmitter<string>();
+@Input() picture: Picture;
+@Output() showPictureEvent = new EventEmitter<Picture>();
 isImageClicked: boolean;
 fontSize: string;
 
 counter: number;
 
 incCounter(): void{
-  this.counter++;
-  if(this.counter > 10){
+  this.picture.likeCounter++;
+  if(this.picture.likeCounter > 10){
     this.fontSize = 'big';
   }
   else{
@@ -25,14 +25,13 @@ incCounter(): void{
   }
 }
   constructor() { 
-    this.counter = 0;
     this.isImageClicked = false;
     this.fontSize = 'small';
   }
 
 showPicture(){
   this.isImageClicked = true;
-  this.showPictureEvent.emit(this.image);
+  this.showPictureEvent.emit(this.picture);
 }
 
 

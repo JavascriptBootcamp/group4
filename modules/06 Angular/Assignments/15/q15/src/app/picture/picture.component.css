@@ -3,14 +3,19 @@
     flex-direction: column; 
 }
 
-.likes .like{
+.picture-likes .picture-likes-like{
     /* display: flex; */
     align-items: flex-start;
 }
 
-.likes .likes-counter{
+.picture-likes .picture-likes-counter{
     /* display: flex; */
     text-align: right;
+}
+
+.picture-image img{
+    width:200px;
+    height: 200px;
 }
 
 .clicked{

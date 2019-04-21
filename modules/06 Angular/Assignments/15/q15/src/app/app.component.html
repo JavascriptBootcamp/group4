@@ -1,9 +1,9 @@
-<div id="pictures" *ngFor="let image of imgSrc">
+<div id="pictures" *ngFor="let picture of pictures">
     <!-- <img src={{image}} alt="No image found" width="200px" height="200px"> -->
-    <app-picture [image]="image" (showPictureEvent)="onImgClilcked($event)"></app-picture>
+    <app-picture [picture]="picture" (showPictureEvent)="onImgClilcked($event)"></app-picture>
 </div>
 
-<div *ngIf="bigImgSrc !== ''">
-    <app-image [imgSrc]="bigImgSrc"></app-image>
+<div *ngIf="currentPicture">
+    <app-image [imgSrc]="currentPicture.imgSrc"></app-image>
 </div>
 
