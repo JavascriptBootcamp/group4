@@ -1,0 +1,13 @@
+<div class="collapse_div"(click)="toggle_clicked()">
+  <span><b><span >{{plusMin}}</span>
+      Condition
+    </b></span></div>
+<div [ngClass]="toggle? 'NoHidden' : 'hidden'">
+
+  <input type="checkbox">
+  New<br>
+  <input type="checkbox">
+  Used<br>
+  <input type="checkbox">
+  Not Specified
+</div>

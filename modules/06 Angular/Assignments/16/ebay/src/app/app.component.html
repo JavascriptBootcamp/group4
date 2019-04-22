@@ -1,0 +1,45 @@
+<div id="container">
+  <input type="button" id="changeAll" (click)="changeAll()" [value]="valueBtn">
+  <br>  <br>
+  <form id="adv_search_from" name="adv_search_from">
+    <app-keywords [toggle] = "toggle"></app-keywords>
+    <app-searchinc [toggle] = "toggle"></app-searchinc>
+    <app-price [toggle] = "toggle"></app-price>
+    <app-buy-format [toggle] = "toggle"></app-buy-format>
+    <app-condition [toggle] = "toggle"></app-condition>
+    <app-results [toggle] = "toggle"></app-results>
+    <app-location [toggle] = "toggle"></app-location>
+    <app-sellers [toggle] = "toggle"></app-sellers>
+    <div>
+        Sort by
+        <select>
+          <option selected="selected">Best Match</option>
+          <option>Time: ending soonest</option>
+          <option>Time: newly listed</option>
+          <option>Price + Shipping: lowest first</option>
+          <option>Price + Shipping: highest first</option>
+          <option>Price: highest first</option>
+        </select>
+
+        View results
+        <select>
+          <option selected="selected">All items</option>
+          <option>Picture Gallery</option>
+          <option>Show item numbers</option>
+        </select>
+
+        Results per page
+        <select>
+          <option value="25">25</option>
+          <option selected="selected" value="50">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+        </select>
+      </div>
+      <hr size="1">
+      <div class="bottom-action-bar">
+          <button type="submit">Search</button>
+          <a href="https://www.ebay.com/sch/ebayadvsearch?_sofindtype=0">Clear options&nbsp;</a>
+        </div>
+</form>
+</div>

@@ -1,0 +1,11 @@
+<div class="collapse_div" (click)="toggle_clicked()"><span><b><span id="plusMin">{{plusMin}}</span> Price </b></span>
+</div>
+<div  [ngClass]="toggle? 'NoHidden' : 'hidden'">
+  <br>
+
+  Show items priced from ILS
+  <input type="text" placehoder="All Categories" title="Enter minimum price range value">
+  to ILS <input type="text" title="Enter maximum price range value">
+
+
+</div>

@@ -1,0 +1,76 @@
+<div class="collapse_div" (click)="toggle_clicked()" >
+  <span>
+    <b>
+      <span>{{plusMin}}</span>
+      Enter keywords or item number
+    </b>
+  </span>
+</div>
+
+<div [ngClass]="toggle? 'NoHidden' : 'hidden'">
+    <br>
+    <legend id="kw_lengend"></legend>
+    <div class="space-top">
+      <input type="text" size="50" maxlength="300" placeholder="Enter keywords or item number">
+      <select aria-label="Keyword options" name="_in_kw" id="_in_kw" size="1">
+        <option value="1" selected="selected">All words, any order</option>
+        <option value="2">Any words, any order</option>
+        <option value="3">Exact words, exact order</option>
+        <option value="4">Exact words, any order</option>
+      </select>
+    </div>
+
+    <label for="_ex_kw" class="inline-block space-top">
+      Exclude words from your search<input class="block" type="text" name="_ex_kw" id="_ex_kw" size="50" maxlength="300" value="">
+    </label>
+
+    <div class="space-top">
+      See general <a class="learnmore" href="https://pages.ebay.com/il/en-us/help/buy/contextual/search_tips.html">search
+        tips</a> or <a class="learnmore" href="https://pages.ebay.com/il/en-us/help/find/searchby-options.html">using
+        advanced search options</a></div>
+
+
+    In this category:
+    <select>
+      <option>All Categories</option>
+      <option>Antiques</option>
+      <option>Art</option>
+      <option>Baby</option>
+      <option>Books</option>
+      <option>Business &amp; Industrial</option>
+      <option>Cameras &amp; Photo</option>
+      <option>Cell Phones &amp; Accessories</option>
+      <option>Clothing, Shoes &amp; Accessories</option>
+      <option>Coins &amp; Paper Money</option>
+      <option>Collectibles</option>
+      <option>Computers/Tablets &amp; Networking</option>
+      <option>Consumer Electronics</option>
+      <option>Crafts</option>
+      <option>Dolls &amp; Bears</option>
+      <option>DVDs &amp; Movies</option>
+      <option>Entertainment Memorabilia</option>
+      <option>Gift Cards &amp; Coupons</option>
+      <option>Health &amp; Beauty</option>
+      <option>Home &amp; Garden</option>
+      <option>Jewelry &amp; Watches</option>
+      <option>Music</option>
+      <option>Musical Instruments &amp; Gear</option>
+      <option>Pet Supplies</option>
+      <option>Pottery &amp; Glass</option>
+      <option>Real Estate</option>
+      <option>Specialty Services</option>
+      <option>Sporting Goods</option>
+      <option>Sports Mem, Cards &amp; Fan Shop</option>
+      <option>Stamps</option>
+      <option>Toys &amp; Hobbies</option>
+      <option>Travel</option>
+      <option>Video Games &amp; Consoles</option>
+      <option>Everything Else</option>
+    </select>
+    <br><br>
+
+    <div>
+      <button type="submit">Search</button>
+    </div>
+
+  </div>

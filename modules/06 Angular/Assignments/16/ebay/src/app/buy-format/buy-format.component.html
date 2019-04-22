@@ -1,0 +1,11 @@
+<div class="collapse_div" (click)="toggle_clicked()">
+  <span><b>
+      <span >{{plusMin}}</span>
+      Buying formats</b></span>
+</div>
+<div [ngClass]="toggle? 'NoHidden' : 'hidden'" >
+  <input type="checkbox">
+  Auction<br>
+  <input type="checkbox">
+  Buy It Now<br>
+</div>

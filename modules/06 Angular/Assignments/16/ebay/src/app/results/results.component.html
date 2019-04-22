@@ -1,0 +1,65 @@
+<div class="collapse_div"  (click)="toggle_clicked()"><span><b><span id="plusMin">{{plusMin}}</span> Show
+      results </b></span></div>
+<div [ngClass]="toggle? 'NoHidden' : 'hidden'">
+  <div class="fields">
+    <input title="Include listings time frame for search results" type="checkbox">
+    Listings <select>
+      <option>Ending within</option>
+      <option>Ending in more than</option>
+      <option>Started within</option>
+    </select>
+    <select>
+      <option>1 hour</option>
+      <option>2 hours</option>
+      <option>3 hours</option>
+      <option>4 hours</option>
+      <option>5 hours</option>
+      <option>12 hours</option>
+      <option>24 hours</option>
+      <option>2 days</option>
+      <option>3 days</option>
+      <option>4 days</option>
+      <option>5 days</option>
+      <option>6 days</option>
+      <option>7 days</option>
+    </select>
+  </div>
+
+  <div>
+    <input title="Include number of bids for search results" type="checkbox">
+    Number of bids from: <input type="text" size="3" title="Enter minimum number of bids"> to: <input type="text"
+      size="3" title="Enter maximum number of bids">
+  </div>
+
+  <div>
+    <input title="Include multiple item listings for search results" type="checkbox">
+    Multiple item listings from: <input type="text" size="3" title="Enter minimum multiple item listings value">
+    to: <input type="text" size="3" title="Enter maximum multiple item listings value">
+  </div>
+
+
+  <input type="checkbox">
+  Items listed as lots
+  <a title="Learn more about lots" href="https://pages.ebay.com/il/en-us/help/sell/contextual/lots.html">Learn
+    more.</a>
+  <br>
+
+  <input type="checkbox"> Sale items<br>
+  <input type="checkbox">Best offer
+  <a title="Learn more about Best offer" href="https://pages.ebay.com/il/en-us/help/buy/best-offer.html">Learn
+    more.</a>
+  <br>
+
+  <input type="checkbox">
+  eBay for Charity
+  <a title="Learn more about eBay for Charity"
+    href="https://pages.ebay.com/il/en-us/help/buy/buying-nonprofit.html">Learn
+    more.</a>
+  <br>
+  <fieldset class="checkbox-set nested">
+    <legend>Shipping options</legend>
+    <input type="checkbox">
+    Free international shipping<br>
+
+  </fieldset>
+</div>

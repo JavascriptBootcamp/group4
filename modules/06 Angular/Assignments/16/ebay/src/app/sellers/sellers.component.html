@@ -1,0 +1,25 @@
+<div class="collapse_div" (click)="toggle_clicked()"><span><b><span id="plusMin">{{plusMin}}</span> Sellers
+    </b></span></div>
+<div  [ngClass]="toggle? 'NoHidden' : 'hidden'">
+
+  <input type="checkbox">Only show items from:
+
+  <div>
+    <input type="radio" disabled="disabled" checked="checked">
+    Specific sellers (enter seller's user IDs)<br>
+
+    <select disabled="disabled">
+      <option value="1">Include</option>
+      <option value="2">Exclude</option>
+    </select>
+
+    <input title="Enter seller's user IDs to include or exclude from search results." type="text"
+      disabled="disabled"><br>
+    <input type="radio" disabled="disabled">
+    My saved sellers list<br>
+
+    <input type="radio" id="LH_SellerWithStore_id" disabled="disabled" name="_fsradio" value="LH_SellerWithStore=1">
+    Sellers with eBay stores<br>
+  </div>
+
+</div>

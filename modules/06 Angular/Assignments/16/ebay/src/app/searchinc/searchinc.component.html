@@ -1,0 +1,12 @@
+<div class="collapse_div" (click)="toggle_clicked()"><span><b><span id="plusMin">{{plusMin}}</span> Search
+      including </b></span>
+</div>
+<div [ngClass]="toggle? 'NoHidden' : 'hidden'">
+  <br>
+  <input type="checkbox">
+  Title and description<br>
+  <input type="checkbox">
+  Completed listings<br>
+  <input type="checkbox">
+  Sold listings
+</div>

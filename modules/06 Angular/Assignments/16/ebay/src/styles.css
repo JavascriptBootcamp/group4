@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.collapse_div
+{
+    background-color: #f7ff99;
+    padding: 3px;
+    cursor: pointer;
+    border: 2px solid gray;
+
+}
+
+.hidden{
+    display: none;
+    background-color: white;
+    border: 1px solid gray;
+    animation-name: example;
+    animation-duration: 1.3s;
+}
+
+.NoHidden{
+    display: block;
+    background-color: white;
+    border: 1px solid gray;
+    animation-name: example;
+    animation-duration: 1.3s;
+}
