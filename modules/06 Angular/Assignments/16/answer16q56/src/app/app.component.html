@@ -1,0 +1,17 @@
+<div id="wrapper">
+  <h1 class="page-header">Gallery</h1>
+  <div class="left-arrow">
+      <img id="left-arrow-img" src="https://image.flaticon.com/icons/svg/25/25184.svg" (click)="previous()">
+  </div>
+  <div>
+      <img id="selected-img" [src]= "mainPicSrc">
+  </div>
+  <div class="right-arrow">
+      <img id="right-arrow-img" src="https://image.flaticon.com/icons/svg/25/25446.svg" (click)="next()">
+  </div>
+  <div class="gallery-wrapper"> 
+    <div class="img-wrapper" *ngFor="let img of arrayImgs; index as i">
+    <app-image [src]= "img" (changeMainPicEvent)="changeMainPicEvent($event)"></app-image>
+  </div></div>
+</div>
+

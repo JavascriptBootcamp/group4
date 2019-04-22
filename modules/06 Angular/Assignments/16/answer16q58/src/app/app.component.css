@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.middle {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-column-gap: 10px;
+    background: #ccc;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    width: 50%;
+    height: 500px;
+}
+
+#header {
+    display: flex;
+}
+
+#menu {
+    text-align: center;
+    background: blue;
+    overflow: auto;
+}
+#player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: red;
+    flex-direction: column;
+}
+
+#player * {
+    width: 90%;
+}
+
+.video {
+    clear: both;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #wrapper {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: 70% 30%;
+        background: #ccc;
+    }
+
+    #player {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: red;
+        flex-direction: row;
+    }
+    
+}

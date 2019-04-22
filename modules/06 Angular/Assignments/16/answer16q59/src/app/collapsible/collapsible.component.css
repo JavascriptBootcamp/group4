@@ -1,0 +1,52 @@
+.field-shipping {
+    border: 0;
+    padding-left: 0px;
+    margin-top: 10px;
+}
+
+#seller {
+    padding-left: 20px;
+}
+
+h4 {
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.submit button {
+    border-radius: 5px;
+}
+
+.collapsible {
+    background-color: rgb(161, 182, 228);
+    border: solid 1px gray;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+}
+
+.collapsible:hover {
+    background-color: #555;
+}
+
+.section-content {
+    border-top: 0;
+    margin: 0;
+    padding: 18px;
+    display: none;
+    overflow: hidden;
+}
+
+.header-sort {
+    float: left;
+    margin-top: 0;
+}
+
+.select-sort {
+    float: left;
+    margin-right: 15px;
+    margin-left: 4px;
+}

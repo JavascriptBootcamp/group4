@@ -1,0 +1,19 @@
+<form>
+  <div id="header">
+    <h2>Find Items</h2>
+    <button class="expand" (click)="expandAll($event)">{{this.buttonTxt}}</button>
+  </div>
+  <app-collapsible [toggle]="secArray[0]" [setColl]="'section1'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[1]" [setColl]="'section2'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[2]" [setColl]="'section3'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[3]" [setColl]="'section4'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[4]" [setColl]="'section5'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[5]" [setColl]="'section6'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[6]" [setColl]="'section7'"></app-collapsible>
+  <app-collapsible [toggle]="secArray[7]" [setColl]="'section8'"></app-collapsible>
+  <app-collapsible [setColl]="'section9'"></app-collapsible>
+  <div class="bottom">
+    <button type="submit" id="search_button">Search</button>
+    <input type="reset" value="Clear options">
+  </div>
+</form>
