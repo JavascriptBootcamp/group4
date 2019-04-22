@@ -44,3 +44,32 @@ img{
     text-align: center;
     background-color: #f4bb41;
 }
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#goBack{
+    position: relative;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 150px;
+    border: none;
+    height: 30px;
+    font-weight: bold;
+    cursor:pointer;
+    transition: 0.5s all;
+}
+#goBack:hover{
+    box-shadow: 4px 4px 5px #000000;
+}
+.title{
+    position: relative;
+    left: 50%;
+    margin-left: -75px;
+    width: 150px;
+    color:white;
+    text-align: center;
+}

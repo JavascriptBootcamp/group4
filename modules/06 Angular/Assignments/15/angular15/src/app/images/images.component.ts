@@ -42,8 +42,8 @@ export class ImagesComponent implements OnInit {
         { src: "assets/images/pic6.jpg", like: 0 , author : 'dalya'},
         { src: "assets/images/pic7.jpg", like: 0 , author : 'nissan'},
         { src: "assets/images/pic8.jpg", like: 0 , author : 'revital'},
-        { src: "assets/images/pic9.jpg", like: 0 , author : 'tal'},
-        { src: "assets/images/pic10.jpg", like: 0 , author : 'assaf'}
+        { src: "assets/images/pic9.jpg", like: 0 , author : 'gaby'},
+        { src: "assets/images/pic10.jpg", like: 0 , author : 'gaby'}
       ];
     }
   }

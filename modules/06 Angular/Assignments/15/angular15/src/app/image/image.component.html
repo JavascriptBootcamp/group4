@@ -1,9 +1,21 @@
-<img [src]="img.src" (click)="isActive(); openModal()" 
-[ngClass]="{
-    'active': isClicked, 
-    'inc': img.like > 10,
-    'dec' : img.like === 0
- }">
-<button class="btn-like" (click)="incrementLike(img)">Like</button>
-<div class="number-of-likes">{{img.like}}</div>
-<div class="author"><a routerLink="image/{{img.author}}">{{img.author}}</a></div>
+<span *ngIf="firstPage; then allimages else autorimages"></span>
+<ng-template #allimages>
+    <img [src]="img.src" (click)="isActive(); openModal()" [ngClass]="{
+            'active': isClicked, 
+            'inc': img.like > 10,
+            'dec' : img.like === 0
+         }">
+    <button class="btn-like" (click)="incrementLike(img)">Like</button>
+    <div class="number-of-likes">{{img.like}}</div>
+    <div class="author"><a routerLink="image/{{img.author}}">{{img.author}}</a></div>
+</ng-template>
+
+<ng-template #autorimages>
+    <h2 class="title">{{author}}</h2>
+    <div class="wrapper">
+        <div *ngFor="let image of authorImages">
+            <img [src]="image">
+        </div>
+    </div>
+    <button id="goBack" (click)="goBack()">Go Back</button>
+</ng-template>
