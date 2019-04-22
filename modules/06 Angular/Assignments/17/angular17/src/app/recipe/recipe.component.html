@@ -1,6 +1,14 @@
-<ul>
-  <h2>{{recipeAttr.title}}</h2>
-  <li *ngFor="let ingredient of recipeAttr.ingredients">{{ingredient}}</li>
-  <li>{{recipeAttr.time}}</li>
-  <img src="{{recipeAttr.rating}}">
-</ul>
+<div [ngClass]="{recipe : true , withStyle : hidden}">
+  <h1 [hidden]="hidden">My Recipe</h1>
+  <a routerLink="../{{recipeAttr.title}}">
+    <ul>
+      <li>
+        <h2>{{recipeAttr.title}}</h2>
+      </li>
+      <li *ngFor="let ingredient of recipeAttr.ingredients">{{ingredient}}</li>
+      <li>{{recipeAttr.time}}</li>
+      <li><img src="{{recipeAttr.rating}}"></li>
+    </ul>
+  </a>
+</div>
+<button class="go-back" [hidden]="hidden" (click)="goBack()">Go Back</button>
