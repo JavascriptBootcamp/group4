@@ -1,6 +1,6 @@
 export class ImgData {
     constructor(
-        srcImg:string,
-        hrefImg:string
-    ){}
+        srcImg: string,
+        hrefImg: string
+    ) {}
 }
