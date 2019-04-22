@@ -1,18 +1,25 @@
+
 img {
     width :30vw;
     height: auto;
-    
+    padding: 10px;
+    background: gold;
+    margin-bottom: 50px;
+
 }
 
 ul{
+
+  text-align: center;
  margin-bottom: 5vh;
  width: 90%;
  margin:0 auto;
+ background-color: azure;
 
 }
 
 li{
-    
+     font-size: 2rem;
     list-style-type: none;
-    background-color: gold;
+
 }
