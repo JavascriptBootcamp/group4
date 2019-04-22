@@ -1,0 +1,15 @@
+<div id="menu">
+
+  <div class="video" *ngFor="let videoObj of videosObjsArr; let idx=index" >
+
+    <a (click)="onclickMenuVideo(videoObj)">
+      <img 
+        src="https://www.nordic.media/wp-content/uploads/2017/02/Nordic-Media-Icon.png"
+        class="video img"
+      > 
+    </a>
+
+    <div>{{videoObj.title}}</div>
+    <div>{{videoObj.artistName}}</div>
+  </div>
+</div>

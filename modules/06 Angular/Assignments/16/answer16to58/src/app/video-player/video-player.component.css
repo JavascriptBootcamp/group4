@@ -1,0 +1,17 @@
+#player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff9966;
+    flex-direction: column;
+}
+
+#player * {
+    width: 90%;
+}
+
+.video {
+    clear: both;
+    margin-bottom: 50px;
+    padding: 10px;
+}

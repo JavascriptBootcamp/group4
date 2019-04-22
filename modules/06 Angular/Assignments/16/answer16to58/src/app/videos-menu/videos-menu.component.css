@@ -1,0 +1,18 @@
+#menu {
+    text-align: center;
+    background: #99ccff;
+    height: 500px;
+    overflow: auto;   /*Making that element scrollable*/
+}
+
+.video {
+    clear: both;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+.video img {
+    float: left;
+    width: 75px;
+    height: 75px;
+}

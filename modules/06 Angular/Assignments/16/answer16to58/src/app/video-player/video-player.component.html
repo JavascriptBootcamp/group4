@@ -1,0 +1,9 @@
+<div id="player">
+  <video id="player-video" controls (clickedVideo)="playVideo($event)" src="{{videoSrc}}"></video>
+  
+  <div id="player-details">
+      <h2 id="player-title"> | {{videoTitle}} |</h2>
+      <h3 id="player-artist">| {{videoArtistName}} |</h3>
+      <h4 id="player-description">| {{videoDescription}} |</h4>
+  </div>
+</div>

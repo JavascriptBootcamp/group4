@@ -1,0 +1,23 @@
+
+<div id="content" class="middle">
+
+  <div id="container">
+
+      <div id="header">ITube</div>
+
+      <div id="wrapper">
+
+        <app-video-player 
+          [videoSrc]="clickedMenuVideoSrc"
+          [videoTitle]="clickedMenuVideoTitle"
+          [videoArtistName]="clickedMenuVideoArtistName"
+          [videoDescription]="clickedMenuVideoDescription" >
+        </app-video-player>
+
+        <app-videos-menu (clickedVideo)="playVideo($event)"></app-videos-menu>
+
+      </div>
+
+  </div>
+
+</div>

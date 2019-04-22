@@ -1,0 +1,39 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* .middle {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+#content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#container {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    width: 50%;
+    height: 80%;
+}
+
+#header {
+    display: flex;
+}
+
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-column-gap: 10px;
+    background: #ccc;
+}
