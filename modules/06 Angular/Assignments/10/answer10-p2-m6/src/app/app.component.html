@@ -6,7 +6,7 @@
 
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
 
-            <fieldset [formGroupName]="personInformtion">
+            <fieldset formGroupName="personInformtion">
                 <legend>
                     <h3>Person Informtion</h3>
                 </legend>
@@ -14,14 +14,14 @@
                     Last Name : <input type="text" name="ln" formControlName="lastName">
                     Age : <input type="number" name="age" formControlName="age">
             </fieldset>`
-            <fieldset [formGroupName]="credentials">
+            <fieldset formGroupName="credentials">
                 <legend>
                     <h3> Credentials </h3>
                 </legend>
                 User Name : <input type="text" name="un" formControlName="userName">
                 Password : <input type="password" name="ps" formControlName="password">
             </fieldset>
-            <fieldset [formGroupName]="contact">
+            <fieldset formGroupName="contact">
                 <legend>
                     <h3> Contact </h3>
                 </legend>
@@ -29,7 +29,7 @@
                 Tel : <input type="tel" name="tel" formControlName="tel">
                 Email : <input type="email" name="email" formControlName="email">
             </fieldset>
-            <fieldset [formGroupName]="misc">
+            <fieldset formGroupName="misc">
                 <legend>
                     <h3> Misc </h3>
                 </legend>
