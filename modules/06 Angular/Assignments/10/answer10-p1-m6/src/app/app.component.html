@@ -1,46 +1,49 @@
 <fieldset>
   <legend>
-    <h2> Registration Form </h2>
+    <h2>Registration Form</h2>
   </legend>
 
   <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
-
     <fieldset ngModelGroup="personInformtion" #personInformtion="ngModelGroup">
       <legend>
         <h3>Person Informtion</h3>
       </legend>
-      First Name : <input type="text" name="fn" ngModel>
-      Last Name : <input type="text" name="ln" ngModel>
-      Age : <input type="number" name="age" ngModel>
-    </fieldset>`
+      First Name : <input type="text" name="fn" ngModel /> Last Name :
+      <input type="text" name="ln" ngModel /> Age :
+      <input type="number" name="age" ngModel />
+    </fieldset>
+    `
 
     <fieldset ngModelGroup="credentials" #credentials="ngModelGroup">
       <legend>
-        <h3> Credentials </h3>
+        <h3>Credentials</h3>
       </legend>
-      User Name : <input type="text" name="un" ngModel>
-      Password : <input type="password" name="ps" ngModel>
+      User Name : <input type="text" name="un" ngModel /> Password :
+      <input type="password" name="ps" ngModel />
     </fieldset>
     <fieldset ngModelGroup="contact" #contact="ngModelGroup">
       <legend>
-        <h3> Contact </h3>
+        <h3>Contact</h3>
       </legend>
 
-      Tel : <input type="tel" name="tel" ngModel>
-      Email : <input type="email" name="email" ngModel>
+      Tel : <input type="tel" name="tel" ngModel /> Email :
+      <input type="email" name="email" ngModel />
     </fieldset>
 
     <fieldset ngModelGroup="misc" #misc="ngModelGroup">
       <legend>
-        <h3> Misc </h3>
+        <h3>Misc</h3>
       </legend>
 
-      Comments :<textarea type="text" cols="50" rows="5" name="comm" ngModel> </textarea>
-      <br> Hobbies : <input list="Hobbies" name="hob">
+      Comments :<textarea type="text" cols="50" rows="5" name="comm" ngModel>
+      </textarea>
+      <br />
+      Hobbies : <input list="Hobbies" name="hob" />
       <datalist id="Hobbies">
         <option *ngFor="let hob of hobbies" [value]="hob"></option>
       </datalist>
-
     </fieldset>
 
-    <input type="submit" ngModel name="sub" value="submit it" />
+    <input type="submit"  name="sub" value="submit"  ngModel />
+  </form>
+</fieldset>
