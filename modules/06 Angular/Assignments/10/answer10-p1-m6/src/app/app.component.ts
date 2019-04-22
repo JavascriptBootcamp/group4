@@ -8,12 +8,12 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = 'answer10-p1-m6';
-  frName="avi";
-  lsName ="get";  
-  hobbies = ["swim","read","learn","run"];
- 
- 
-  onSubmit(data:NgForm){
+  frName = 'avi';
+  lsName = 'get';
+  hobbies = ['swim', 'read', 'learn', 'run'];
+
+
+  onSubmit(data: NgForm) {
     console.log(data);
   }
 }
