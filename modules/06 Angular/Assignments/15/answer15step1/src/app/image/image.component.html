@@ -1,0 +1,3 @@
+<img (click)="openImage()" [src]="src" [className]="!isClicked? '': 'imgBorder'" [style.height.px]="imageHeight" [style.width.px]="imageWidth">
+<button (click)="addLike()">LIKE</button>
+<div class="like">{{counter}}</div>
