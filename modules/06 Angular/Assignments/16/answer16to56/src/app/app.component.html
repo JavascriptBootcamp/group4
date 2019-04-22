@@ -1,0 +1,39 @@
+<div id="primary-image-container">
+  <img class="arrow-near-main-image flex-item" 
+       (click)="onclickMainLeftArrow()" 
+       src="https://images.all-free-download.com/images/graphiclarge/button_previous_100860.jpg" 
+  />   
+
+  <img id="main-image" class="flex-item" src={{imagesURLsArr[imgSrcIndex]}}/> 
+
+  <img class="arrow-near-main-image flex-item" 
+       (click)="onclickMainRightArrow()" 
+       src="http://www.clker.com/cliparts/n/O/8/9/V/V/next-button-md.png" 
+  />              
+</div>
+
+
+<div id="slide-images-container"> 
+
+  <img class="arrow-near-slide-images flex-item" 
+       (click)="onclickSliderLeftArrow()" 
+       src="https://requestreduce.org/images/left-facing-arrow-10.jpg" 
+  /> 
+  <img class="image-in-slide flex-item" 
+       src={{imagesURLsArr[firstVisibleSlideImageIndex]}} 
+       (click)="displayClickedSlideImageAsMainImage($event)"
+  />
+  <img class="image-in-slide flex-item" 
+       src={{imagesURLsArr[secondVisibleSlideImageIndex]}}
+       (click)="displayClickedSlideImageAsMainImage($event)"
+  />
+  <img class="image-in-slide flex-item" 
+       src={{imagesURLsArr[lastVisibleSlideImageIndex]}}
+       (click)="displayClickedSlideImageAsMainImage($event)"
+  />
+
+  <img class="arrow-near-slide-images flex-item" 
+       (click)="onclickSliderRightArrow()" 
+       src="https://vector.me/files/images/1/6/169930/green_right_arrow_clip_art.jpg" 
+  /> 
+</div>  
