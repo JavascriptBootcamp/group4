@@ -1,11 +1,31 @@
-<form action="">
-  <label for ="userName"> User Name : </label>
-  <input type="text" name ="userName" placeholder="Enter User Naame"><br/>
+<form (ngSubmit)="onSubmit()">
+  <fieldset>
+    <legend>Log In</legend>
 
-  <label for="password">Password : </label>
-  <input type="password" name="password" placeholder="Enter password"><br/>
+    <label for="userName"> User Name : </label>
+    <input
+      type="text"
+      [formControl]="userName"
+      placeholder="Enter User Name"
+      required
+    /><br />
 
-  <input type="submit" value="SUBMIT"> <br/>
-  <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active" >Sign up</a> <br>
-  <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active" >Forgot Your Password?</a>
+    <label for="password">Password : </label>
+    <input
+      type="password"
+      [formControl]="password"
+      required
+      placeholder="Enter password"
+    /><br />
+
+    <input type="submit" value="SUBMIT"  [disabled] = "userName.invalid && password.invalid"/> <br />
+    <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active"
+      >Sign up</a
+    >
+
+    <br />
+    <a [routerLink]="['/forgot-password']" routerLinkActive="router-link-active"
+      >Forgot Your Password?</a
+    >
+  </fieldset>
 </form>
