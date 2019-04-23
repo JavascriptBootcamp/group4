@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControlName } from '@angular/forms';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
@@ -9,11 +8,12 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./name-editor.component.css']
 })
 
-export class NameEditorComponent implements OnInit {
-  
+export class NameEditorComponent {
+  hobbies: string[] = ["Tennis", "Basketball", "Hoki"];
+
   profileForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    fName: ['', Validators.required],
+    lName: ['', Validators.required],
     userName: ['', Validators.required],
     password: ['', Validators.required],
     phone: ['', Validators.required],
@@ -22,11 +22,9 @@ export class NameEditorComponent implements OnInit {
     comments: [''],
     hobbies: ['']
   });
-  constructor(private fb: FormBuilder) { }
-  hobbies: string[] = ["Tennis", "Basketball", "Hoki"];
-  
-  
-  ngOnInit() {
-  }
 
+  constructor(private fb: FormBuilder) {
+   }
+
+  
 }
