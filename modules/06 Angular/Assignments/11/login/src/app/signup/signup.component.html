@@ -1,0 +1,21 @@
+<div class="container">
+          <h1>Sign Up</h1>
+          <form #signForm="ngForm">
+              <div class="form-group">
+                
+                  <input class="form-control" type="text" placeholder="Full Name" name="fullname" id="fullname" required
+                      [(ngModel)]="model.fullname">
+                  <input class="form-control" type="email" placeholder="Email" name="email" id="email" required [(ngModel)]="model.email">
+                  <input class="form-control" type="number" min="18" max="32" placeholder="Age" name="Age" id="Age" required
+                      [(ngModel)]="model.Age">
+                  <input class="form-control" type="text" name="username" id="username" placeholder="User Name" maxlength="10" required
+                      [(ngModel)]="model.username">
+                  <input class="form-control" type="password" placeholder="Password" name="password" id="password" required
+                      [(ngModel)]="model.password">
+
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="reset" class="btn">Reset</button>
+              </div>
+          </form>
+          <button routerLink="" class="btn">Back to sign-in</button>
+</div> 
