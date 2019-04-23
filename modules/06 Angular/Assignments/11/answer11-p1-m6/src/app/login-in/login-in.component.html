@@ -1,12 +1,12 @@
-<form>
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm = "ngForm">
   <fieldset>
   <label for="userName"> User Name : </label>
-  <input type="text" name="userName" id="userName" placeholder="Enter User Naame"><br/>
+  <input type="text" name="userName" id="userName" placeholder="Enter User Naame" ngModel required><br/>
 
   <label for="password">Password : </label>
-  <input type="password" name="password" id="password" placeholder="Enter password"><br/>
+  <input type="password" name="password" id="password" placeholder="Enter password" ngModel required><br/>
 
-  <input type="submit" value="SUBMIT"> <br/>
+  <input type="submit" value="SUBMIT"  [disabled]="loginForm.invalid"> <br/>
   <a routerLink ='/sign-up'>Sign up</a> <br>
   <a routerLink ='/forgot-password'>Forgot Your Password?</a>
 </fieldset>

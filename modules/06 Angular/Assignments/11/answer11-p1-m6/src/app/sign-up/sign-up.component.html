@@ -1,22 +1,22 @@
-<form>
+<form (ngSubmit)="onSubmit(signUpForm)" #signUpForm = "ngForm">
   <fieldset>
 
     <label for="fullName"> Full Name : </label>
-    <input type="text" name="fullName" id="fullName" required placeholder="Enter Full name"><br/>
+    <input type="text" name="fullName" id="fullName" required placeholder="Enter Full name" ngModel ><br/>
 
     <label for="email"> Email Address : </label>
-    <input type="email" name="email" id="email" required placeholder="Enter yor Address"><br/>
+    <input type="email" name="email" id="email" required placeholder="Enter yor Address" ngModel ><br/>
 
     <label for="age"> Age: :</label>
-    <input type="number" name="age" id="age" minlength="18" maxlength="32" required placeholder="Enter Age"><br/>
+    <input type="number" name="age" id="age" minlength="18" maxlength="32" required placeholder="Enter Age" ngModel ><br/>
 
     <label for="username">Username :</label>
-    <input type="text" name="username" id="username" maxlength="10" required placeholder="Enter User Name"> <br/>
+    <input type="text" name="username" id="username" maxlength="10" required placeholder="Enter User Name" ngModel > <br/>
 
     <label for="password">Password :</label>
-    <input type="password" name="password" id="password" required placeholder="Enter your Password"><br/>
+    <input type="password" name="password" id="password" required placeholder="Enter your Password" ngModel ><br/>
     <input type="reset" value="RESET"> <br/>
-    <input type="submit" value="SUBMIT"> <br/>
+    <input type="submit" value="SUBMIT" [disabled] = "signUpForm.invalid"> <br/>
     <a routerLink ='/login-in'> GO INDEX </a>
   </fieldset>
 </form>
