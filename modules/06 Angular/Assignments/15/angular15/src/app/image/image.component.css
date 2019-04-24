@@ -65,11 +65,12 @@ img{
 #goBack:hover{
     box-shadow: 4px 4px 5px #000000;
 }
-.title{
+.authorProp{
     position: relative;
     left: 50%;
     margin-left: -75px;
     width: 150px;
     color:white;
     text-align: center;
+    display: block;
 }

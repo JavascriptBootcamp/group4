@@ -7,11 +7,14 @@
          }">
     <button class="btn-like" (click)="incrementLike(img)">Like</button>
     <div class="number-of-likes">{{img.like}}</div>
-    <div class="author"><a routerLink="image/{{img.author}}">{{img.author}}</a></div>
+    <div class="author"><a routerLink="image/{{img.author.id}}">{{img.author.name}}</a></div>
 </ng-template>
 
 <ng-template #autorimages>
-    <h2 class="title">{{author}}</h2>
+    <h2 class="authorProp">{{author.name}}</h2>
+    <img src="{{author.profilePic}}" class="authorProp">
+    <a target="_blank" href="{{author.facebook}}" class="authorProp">{{author.name}} facebook link</a>
+    <p class="authorProp">{{author.desc}}</p>
     <div class="wrapper">
         <div *ngFor="let image of authorImages">
             <img [src]="image">
