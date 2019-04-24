@@ -1,3 +1,4 @@
+<h1>Q15</h1>
 <div id="wrapper">
     <div class="wrapper-pictures" *ngFor="let picture of pictures">
         <!-- <img src={{image}} alt="No image found" width="200px" height="200px"> -->
@@ -8,3 +9,6 @@
 <div *ngIf="currentPicture">
     <app-image [imgSrc]="currentPicture.imgSrc" id="big-image"></app-image>
 </div>
+
+<router-outlet></router-outlet>
+
