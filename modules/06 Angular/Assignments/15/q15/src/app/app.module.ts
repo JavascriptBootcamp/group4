@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PictureComponent } from './picture/picture.component';
 import { ImageComponent } from './image/image.component';
+import { PicturesComponent } from './pictures/pictures.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PictureComponent,
-    ImageComponent
+    ImageComponent,
+    PicturesComponent
   ],
   imports: [
     BrowserModule,

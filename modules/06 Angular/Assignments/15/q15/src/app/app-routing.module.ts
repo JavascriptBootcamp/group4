@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { PicturesComponent } from './pictures/pictures.component';
 
 export const routes: Routes = [
-  { path: '', component: AppComponent, pathMatch: 'full' },
-  { path: 'author/:authorName', component: AppComponent, pathMatch: 'full' }
+  { path: '', component: PicturesComponent, pathMatch: 'full' },
+  { path: 'author/:authorName', component: PicturesComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
