@@ -21,22 +21,21 @@
 
 
  .img0 {
-   width: auto;
-   height: 200px;
+   width: 20vw;
+   height: 20vh;
  }
 
  .img1 {
-    width: 60%;
-    height: auto;
+    width: 25vw;
+    height: 25vh;
   }
 
   .img2 {
-    width: 100%;
-    height: auto;
+    width:   32vw;
+    height: 32vh;
   }
 
   .addBorder{
     border-style: solid;
     border-color:blue;
 }
-  
