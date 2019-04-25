@@ -1,0 +1,12 @@
+.video {
+    margin-bottom: 50px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.video img {
+    width: 75px;
+    height: 75px;
+}
+
+
