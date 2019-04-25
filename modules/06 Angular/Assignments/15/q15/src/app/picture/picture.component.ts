@@ -34,5 +34,4 @@ showPicture(){
   this.showPictureEvent.emit(this.picture);
 }
 
-
 }
