@@ -1,0 +1,28 @@
+<label>First Name:</label>
+<input type="text" [formControl]="firstName">
+<br>
+<label>Last Name:</label>
+<input type="text" [formControl]="lastName">
+<br>
+<label>Age:</label>
+<input type="number" [formControl]="age">
+<br>
+<label>Password:</label>
+<input type="password" [formControl]="password">
+<br>
+<label>Phone Number:</label>
+<input type="tel" [formControl]="phoneNumber">
+<br>
+<label>email Address:</label>
+<input type="email" [formControl]="email">
+<br>
+<label>email Address:</label>
+<input type="email" [formControl]="email">
+<br>
+<label>comments:</label>
+<textarea [formControl]="comments"  rows="4" cols="50" ></textarea><br>
+
+<label>Hobby:</label>
+<select [formControl]="hobby">
+  <option *ngFor="let h of hobbies" [value]="h">{{h}}</option>
+</select>
