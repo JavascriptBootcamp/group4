@@ -1,0 +1,20 @@
+<div class="recipe-wrapper">
+  <h3>{{recipe.title}}</h3>
+  <ul>
+    <li>ingredients:
+      <ul *ngFor="let item of recipe.ingredients">
+        <li>{{item}}</li>
+      </ul>
+    </li>
+    <li>time of cooking: {{recipe.timeCooking}}</li>
+    <li>rating:
+      <img [src]="recipe.srcRating">
+    </li>
+  </ul>
+  <div [style.display]="displayLink">
+    <a class="recipe-link" routerLink="../{{recipe.title}}">go to {{recipe.title}} page</a>
+  </div>
+  <div [style.display]="displayLinkBack">
+  <a class="recipe-link" routerLink="../all">back to all recipes</a>
+</div>
+</div>

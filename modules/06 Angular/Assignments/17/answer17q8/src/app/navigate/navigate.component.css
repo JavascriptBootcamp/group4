@@ -1,0 +1,30 @@
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+    box-shadow: 10px 10px 10px black;
+}
+
+ul {
+    width: 100%;
+    display:grid;
+    justify-content: center;
+    grid-template-columns: 20% 20% 20%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+li a {
+    font-size: 20px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+ 
+nav a.active-page{
+    color: #cde9bf;
+} 

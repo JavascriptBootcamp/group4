@@ -1,0 +1,6 @@
+.recipes-wrapper{
+    background-image: url('https://media.gettyimages.com/photos/healthy-eating-background-food-photography-different-fruits-and-picture-id515673754?b=1&k=6&m=515673754&s=612x612&w=0&h=GcUcnFijZpPL1vq1Viuimz_88ahOD25JD6AFW_WBVTs=');
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+}
