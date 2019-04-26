@@ -1,0 +1,14 @@
+
+.navigate{
+    background: gray;
+}
+ul li{
+    display: inline;
+
+    display: inline-block;
+    padding: 10px;
+  
+    margin-left:22%;
+    border:1px solid rgb(196, 184, 184);
+
+}

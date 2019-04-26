@@ -1,0 +1,7 @@
+<ul id="recipe.title"> {{recipe.title}}
+  <li *ngFor="let ingre of recipe.ingredients">{{ingre}}</li>
+  <h5>Time of cooking :{{recipe.time}}</h5>
+ <h3>Rating:</h3>
+ <img [src]='recipe.rating'><br>
+ <button (click)="goBack()">go back</button>
+</ul>
