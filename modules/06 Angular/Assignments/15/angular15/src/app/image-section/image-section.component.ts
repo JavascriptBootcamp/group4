@@ -9,6 +9,8 @@ import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 export class ImageSectionComponent implements OnInit {
 @Input() imageSrc:string;
 @Input() imgId:number;
+@Input() authorName:String; 
+@Input() ID:string;
 @Output() makeBigImg = new EventEmitter<string>();
       private counter:number;
       borderImg:string

@@ -4,7 +4,7 @@
       <![endif]-->
     <div class="Wrapper">
      <div class="Gallery" id="Gallery" *ngFor="let imageSec of images; index as i" >
-      <app-image-section [imageSrc]="imageSec" [imgId]="i" (makeBigImg)="makeBigImg($event)"  ></app-image-section>
+      <app-image-section [ID]="imageSec.author.ID" [authorName]="imageSec.author.name" [imageSrc]="imageSec.imgUrl" [imgId]="i" (makeBigImg)="makeBigImg($event)"  ></app-image-section>
           
     </div>
   </div>
@@ -12,3 +12,4 @@
 <div class="bigPic"[style.display]="isDisplayed? 'block':'none'" ><span (click)="closeBigPic()">X  </span>
     <img [src]="bigImgSrc"   align="top" > 
    </div>
+   <router-outlet></router-outlet>

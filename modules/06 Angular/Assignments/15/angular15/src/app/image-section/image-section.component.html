@@ -1,6 +1,8 @@
 <div>
   <img [src]="imageSrc" (click)="clickImg()"  [style.height.px]="picSizeProp" [style.width.px]="picSizeProp" [style.border]="borderImg">
   <div class="likesAndCounters">
+      
+   <a href="#author" routerLink="/author/{{ID}}" routerLinkActive="active">{{authorName}}</a><br><br>
     <button  (click)="onclickaddLike()">addLike</button>
     <input [value]="counter" disabled>
   </div>
