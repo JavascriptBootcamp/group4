@@ -1,3 +1,12 @@
-<p>
-  gallery works!
-</p>
+<div class="container">
+
+  <div class="big-picture-container">
+    <i class="fas fa-chevron-left" (click)="arrow_click('l')"></i>
+    <img [src]="big_pic.src" class="big-img ">
+    <i class="fas fa-chevron-right" (click)="arrow_click('r')"></i>
+  </div>
+
+  <div class="pictures-container">
+    <img *ngFor="let pic of pics" [src]="pic.src">
+  </div>
+</div>

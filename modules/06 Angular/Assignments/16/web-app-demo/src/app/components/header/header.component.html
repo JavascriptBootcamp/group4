@@ -1,14 +1,14 @@
 <header>
-  <h1>My Staf App</h1>
+  <h1>My Web App</h1>
   <ul>
-    <li>
-      <a [routerLink]="'gallery'">Gallery</a>
+    <li [ngClass]="{'clicked': active_link==='g' }" (click)="link_click('g')">
+      <a [routerLink]="'gallery'"><h3>Gallery</h3></a>
     </li>
-    <li>
-      <a [routerLink]="'itube'">ITube</a>
+    <li [ngClass]="{'clicked': active_link==='i' }" (click)="link_click('i')">
+      <a [routerLink]="'itube'"><h3>ITube</h3></a>
     </li>
-    <li>
-      <a [routerLink]="'dbay'">DBay</a>
+    <li [ngClass]="{'clicked': active_link==='d' }" (click)="link_click('d')">
+      <a [routerLink]="'dbay'"><h3>DBay</h3></a>
     </li>
   </ul>
 </header>
