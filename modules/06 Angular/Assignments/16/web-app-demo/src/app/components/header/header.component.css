@@ -1,0 +1,14 @@
+header {
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #01A2A6;
+    color: #BDF271;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
