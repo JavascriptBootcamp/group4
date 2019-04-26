@@ -1,0 +1,10 @@
+<h1>My Favorite Actors:</h1>
+<div class="actors-gallery">
+  <div class="actor-container" *ngFor="let actor of actors">
+    <h3>{{ actor.name }}</h3>
+    <h3>Age: {{ actor.age }}</h3>
+    <a [href]="actor.info_url" target="_blank">
+      <img [src]="actor.img_url" />
+    </a>
+  </div>
+</div>

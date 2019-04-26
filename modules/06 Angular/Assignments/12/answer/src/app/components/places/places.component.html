@@ -1,0 +1,9 @@
+<h1>My Vacations Journal:</h1>
+<div class="places-gallery">
+  <div class="place-container" *ngFor="let place of places">
+    <h3>{{ place.name }}</h3>
+    <a [href]="place.info_url" target="_blank">
+      <img [src]="place.img_url" />
+    </a>
+  </div>
+</div>

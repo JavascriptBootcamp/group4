@@ -1,0 +1,30 @@
+h1 {
+    margin: 2rem;
+}
+
+.actors-gallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.actor-container {
+    text-align: center;
+}
+
+img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    margin: 1rem;
+    transition: border .2s;
+}
+
+img:hover {
+    cursor: pointer;
+    position: relative;
+    top: -4px;
+    box-shadow: 0 10px 10px -6px black;
+    border: #245C36 solid .5rem;
+}

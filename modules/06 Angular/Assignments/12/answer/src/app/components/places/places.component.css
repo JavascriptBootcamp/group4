@@ -1,0 +1,30 @@
+h1 {
+    margin: 2rem;
+}
+
+.places-gallery {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.place-container {
+    text-align: center;
+}
+
+img {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 10px;
+    margin: 1rem;
+    transition: border .2s;
+}
+
+img:hover {
+    cursor: pointer;
+    position: relative;
+    top: -4px;
+    box-shadow: 0 10px 10px -6px black;
+    border: #245C36 solid .5rem;
+}
