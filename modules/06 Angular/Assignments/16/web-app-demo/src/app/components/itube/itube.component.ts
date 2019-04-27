@@ -22,6 +22,7 @@ export class ItubeComponent implements OnInit {
 
   vidSelected(vid : Video) {
     this.selected_video = vid;
+    console.log(this.selected_video)
   }
 
 }

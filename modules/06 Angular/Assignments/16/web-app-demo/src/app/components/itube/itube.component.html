@@ -1,20 +1,26 @@
+<div class="itube-body">
+  <div class="big-vid-container">
+      <video controls [poster]="selected_video.poster"  class="big-vid">
+          <source [src]="selected_video.src">
+          Sorry, your browser doesn't support embedded videos.
+      </video>
+      <h2> {{ selected_video.title }} </h2>
+      <h3>By {{ selected_video.artist }} </h3>
+      <h4> Description:</h4>
+      <h4>{{ selected_video.description }}</h4>
+  </div>
 
-
-<!-- <video controls width="250" autoplay="true">
-
-  <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">
-
-  Sorry, your browser doesn't support embedded videos.
-</video> -->
-
-<video controls width="450" height="400" [poster]="selected_video.poster">
-    <source [src]="selected_video.src">
-    Sorry, your browser doesn't support embedded videos.
-</video>
-
-<div class="video-container" *ngFor="let vid of videos" (click)="vidSelected(vid)">
-    <video width="250" height="200" [poster]="vid.poster">
+  <div class="vid-list">
+    <div class="video-container" *ngFor="let vid of videos" (click)="vidSelected(vid)">
+      <video [poster]="vid.poster">
         <source [src]="vid.src">
         Sorry, your browser doesn't support embedded videos.
-    </video>
+      </video>
+      <div class="details">
+          <h3> {{ vid.title }} </h3>
+          <h4>By {{ vid.artist }} </h4>
+      </div>
+    </div>
+  </div>
+
 </div>
