@@ -1,0 +1,9 @@
+<div id="menu" >
+  <div *ngFor="let vid of videos" >
+    <img src="https://www.goldgenie.com/blog/wp-content/uploads/2014/04/video-image-1.png" width="150" height="150" (click)="passVideo(vid)" >
+    {{vid.title}} <br>
+    {{vid.artist}} <br>
+    {{vid.description}}
+  </div>
+  
+</div>

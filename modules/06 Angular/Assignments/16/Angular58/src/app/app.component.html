@@ -1,0 +1,17 @@
+<div id="content">
+  <div id="heder">ITube</div>
+  <div id="wrapper">
+    <div id="player">
+        <div id="container">
+          <video src="{{passedVid.video}}" id="player-video" controls></video>
+          <div id="player-details">
+            <h2 id="player-title">{{passedVid.title}}</h2>
+            <h3 id="player-artist">{{passedVid.artist}}</h3>
+            <h4 id="player-description">{{passedVid.description}}</h4>
+          </div>
+        </div>
+      </div>
+    <app-menu (passedVideo) = "passToPlayer($event)"></app-menu>
+  </div>
+
+</div>
