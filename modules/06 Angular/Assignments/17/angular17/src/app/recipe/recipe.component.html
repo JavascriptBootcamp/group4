@@ -1,0 +1,23 @@
+<ul>
+  <li id="moroccan_fish">{{recipe.name}}
+    <ul>
+      <br />
+      <li>
+        Ingredients:
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
+        </ul>
+      </li>
+      <br />
+      <li>Time of cooking: {{recipe.time}}</li>
+      <br />
+      <li> Rating: <img [src]="recipe.rating" height="20" width="100" id="rate" /></li>
+      <br />
+      <img [src]="recipe.image" height="200" width="200" />
+    </ul>
+  </li>
+  <br />
+  <a target="_blank" href="https://shop.hazi-hinam.co.il/#/">
+    <h4>Click here to purchase groceries</h4>
+  </a>
+</ul>

@@ -1,0 +1,5 @@
+import { Recipe } from "./recipe.model";
+export const recipes: Recipe[] = [
+    new Recipe("Moroccan Fish", ["Sweet red pepper", "Hot green pepper", "3 dried sweet peppers", "4 ripe tomatoes", "Head of garlic is broken into the teeth", "A bunch of chopped cilantro", "Sweet paprika", "Turmeric", "Salt", "Black pepper", "Oil", "1 1/2 cups water", "4 tilapia fish fillets", "Chick peas", "1/2 squeezed lemon"], "30m", "https://www.cwservicesinc.com/wp-content/uploads/star_rating-1.jpg", "https://www.yonit-tzukerman.co.il/wp-content/uploads/2017/01/13769584_1258985754112491_4560533970005129016_n.jpg"),
+    new Recipe("meatloaf", ["1 1/2 pounds ground beef", "1 egg", "1 onion, chopped", "1 cup dried bread crumbs"], "1h 30m", "https://www.cwservicesinc.com/wp-content/uploads/star_rating-1.jpg", "https://www.thekitchencoach.co.il/wp-content/uploads/2018/03/%D7%A7%D7%A6%D7%99%D7%A6%D7%95%D7%AA-19-654x386.jpg")
+];

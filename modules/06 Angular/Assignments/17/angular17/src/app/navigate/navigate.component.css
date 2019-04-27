@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: #2A363B;
+    box-shadow: 0 10px 6px -2px gray;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+ul li {
+    display: inline;
+    cursor: pointer;
+}
+
+nav a.current-page {
+    color: lightslategray;
+    font-weight: bold;
+}
