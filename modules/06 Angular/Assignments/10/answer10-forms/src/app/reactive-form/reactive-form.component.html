@@ -1,0 +1,72 @@
+<!-- <div class="form-group">
+  <label for="first-name">First Name:
+    <input type="text" [formControl]='firstName' class="form-control">
+  </label>
+ <p>
+    Value: {{firstName.value}}
+  </p>
+  <button (click)="updateFirstName()" class="btn btn-default">Update Name</button> 
+</div> -->
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div formGroupName="personalInfo" class="form-group">
+      <h3>Personal Info:</h3>
+      <label>
+        First Name:
+        <input type="text" formControlName="firstName" class="form-control">
+      </label>
+
+      <label>
+        Last Name:
+        <input type="text" formControlName="lastName" class="form-control">
+      </label>
+
+      <label>
+        Age:
+        <input type="number" formControlName="age" class="form-control">
+      </label>
+    </div>
+
+
+    <div formGroupName="credentioalsInfo" class="form-group">
+      <label>
+        User Name:
+        <input type="text" formControlName="userName" class="form-control">
+      </label>
+      <label>
+        Password:
+        <input type="password" formControlName="password" class="form-control">
+      </label>
+    </div>
+
+    <div formGroupName="contactInfo" class="form-group">
+      <label>
+        Phone Number:
+        <input type="number" formControlName="number" class="form-control">
+      </label>
+      <label>
+        Email:
+        <input type="email" formControlName="email" class="form-control">
+      </label>
+    </div>
+
+    <div formGroupName="miscInfo" class="form-group">
+      <label>
+        Comments:
+        <textarea formControlName="comments" class="form-control"></textarea>
+      </label>
+
+      <label>
+        Hobbies:
+        <select formControlName="hobbies" class="form-control">
+          <option *ngFor="let hobbie of hobbies" [value]="hobbie">{{hobbie}}</option>
+        </select>
+      </label>
+    </div>
+
+
+    <button type="submit" [disabled]="!userForm.valid" class="btn btn-success">Submit</button>
+  </form>
+
+</div>

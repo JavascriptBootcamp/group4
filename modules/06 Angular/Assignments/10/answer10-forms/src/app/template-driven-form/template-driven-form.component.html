@@ -1,0 +1,65 @@
+<div class="container" [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+    <h3>Personal Info:</h3>
+    <div class="form-group">
+      <label for="first-name">First Name:</label>
+      <input type="text" class="form-control" id="first-name" required [(ngModel)]="model.firstName" name="first-name">
+      <!-- TODO: remove this: {{model.firstName}} -->
+      <label for="last-name">Last Name:</label>
+      <input type="text" class="form-control" id="last-name" required [(ngModel)]="model.lastName" name="last-name">
+      <label for="age">Age:</label>
+      <input type="number" class="form-control" id="age" required [(ngModel)]="model.age" name="age">
+    </div>
+
+    <div class="form-group">
+      <h3>Credentials:</h3>
+      <label for="user-name">User Name:</label>
+      <input type="text" class="form-control" id="user-name" required [(ngModel)]="model.userName" name="user-name">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password">
+    </div>
+
+    <div class="form-group">
+      <h3>Contact:</h3>
+      <label for="phone-number">Phone Number:</label>
+      <input type="number" class="form-control" id="phone-number" [(ngModel)]="model.phoneNumber" name="phone-number">
+      <label for="email">Email Address:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email">
+    </div>
+
+    <div class="form-group">
+      <h3>Misc:</h3>
+      <label for="comments">Comments:</label>
+      <textarea id="comments" class="form-control" [(ngModel)]="model.comments" name="comments"></textarea>
+      <label for="hobbies">Hobbies:</label>
+      <select class="form-control" id="hobbies" [(ngModel)]="model.hobbies" name="hobbies">
+        <option *ngFor="let hobbie of hobbies" [value]="hobbie">{{hobbie}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="newUser(); userForm.reset()">New User</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{ model.firstName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">User Name</div>
+    <div class="col-xs-9">{{ model.userName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Email</div>
+    <div class="col-xs-9">{{ model.email }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Hobbie</div>
+      <div class="col-xs-9">{{ model.hobbies }}</div>
+    </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>

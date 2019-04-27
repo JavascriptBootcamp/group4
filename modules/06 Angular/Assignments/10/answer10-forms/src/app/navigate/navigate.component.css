@@ -1,0 +1,38 @@
+ul {
+    display: flex;
+    list-style: none;
+    background-color: lightblue;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    display: flex;
+    width: 100%;
+    align-self: center;
+    height: inherit;
+}
+
+a {
+    color: 2px solid rgb(6, 53, 92);
+    width: inherit;
+    height: inherit;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 70px;
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: 2px solid rgb(6, 53, 92);
+}
