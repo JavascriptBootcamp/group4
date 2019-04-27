@@ -1,3 +1,15 @@
-<p>
-  itube works!
-</p>
+
+
+<!-- <video controls width="250" autoplay="true">
+
+  <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">
+
+  Sorry, your browser doesn't support embedded videos.
+</video> -->
+
+<div class="video-container" *ngFor="let vid of videos">
+    <video controls width="350" [poster]="vid.poster">
+        <source [src]="vid.src">
+        Sorry, your browser doesn't support embedded videos.
+    </video>
+</div>

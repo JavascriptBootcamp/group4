@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Video } from "../../interfaces/video";
+import { VideosService } from "../../services/videos.service";
 
 @Component({
   selector: 'itube',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItubeComponent implements OnInit {
 
-  constructor() { }
+  videos: Video[];
+
+  constructor( private videosService: VideosService) { 
+  }
 
   ngOnInit() {
+    this.videos = this.videosService.getData();
   }
 
 }
