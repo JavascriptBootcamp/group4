@@ -1,0 +1,45 @@
+
+
+    .direction{
+        direction: rtl;
+
+    }
+
+    .wrapper{
+        top: 20%;
+        position: absolute;
+        left:50%;
+        transform: translate(-50%);
+        text-align: center;
+        border : 7px solid green;
+        border-radius: 30px;
+        height: 150px;
+        width:400px;
+        padding: 50px;
+        background-color: #999999  ;
+    }
+
+    .calculator{
+        top:3%;
+        position: absolute;
+        text-align: center;
+        left:50%;
+        transform: translate(-50%);
+
+
+    }
+
+    .input{
+        background-color: orange;
+    }
+
+    .submitBtn{
+        background-color: darkgreen;
+    }
+
+
+    .result{
+        top:70%;
+        position: absolute;
+        left:47%;
+    }
