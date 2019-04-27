@@ -1,0 +1,20 @@
+<div>
+  <h1>Forgot password</h1>
+  <form #forGotForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Email address:
+      <input type="email" placeholder="Enter validation email address" required [(ngModel)]="model.email">
+    </label>
+    <label>
+        Confirm Email address:
+        <input type="email" placeholder="Enter confirmation email address" required [(ngModel)]="model.cEmail">
+    </label>
+    </div>
+
+    <button type="submit">submit</button>
+  </form>
+
+  <button routerLink="..sign-in">
+      Back to Sign-IN page
+    </button>
+</div>

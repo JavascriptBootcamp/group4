@@ -1,0 +1,15 @@
+<div>
+  <h1>Sign-UP Form</h1>
+  <form #signupForm="ngForm">
+    <div>
+        <input type="text" placeholder="Enter your Full name (first+ last name)" required [(ngModel)]="model.fullname">
+        <input type="email" placeholder="Enter validation email address" required [(ngModel)]="model.email">
+        <input type="number"  placeholder="Enter your age" min="18" max="32" placeholder="Age" required [(ngModel)]="model.age">
+        <input type="text" placeholder="Enter user name" required [(ngModel)]="model.username">
+        <input type="password" placeholder="Enter password" required [(ngModel)]="model.password">
+    </div>
+ <button type="submit">Submit</button>
+ <button type="reset">Reset</button>
+  </form>
+  <button routerLink="">Back to sign-in</button>
+</div>

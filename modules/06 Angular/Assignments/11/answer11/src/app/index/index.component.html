@@ -1,0 +1,28 @@
+<div>
+  <h1>Sing-in</h1>
+  <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
+<div>
+  <label>
+    User Name:
+    <input type="text" id="username" required [(ngModel)]="model.username">
+
+  </label>
+  
+  <label>
+    Password:
+    <input type="password" id="password" required [(ngModel)]="model.password">
+    
+  </label>
+</div>
+
+<button type="submit">submit</button>
+
+  </form>
+  <button routerLink="forgot">
+    Forgot Password
+  </button>
+  
+  <button routerLink="..sign-up">
+    Sign-UP
+  </button>
+</div>
