@@ -1,0 +1,65 @@
+<div id="formContainer">
+  <form [formGroup]="userForm" (ngSubmit)="OnSubmit()">
+    <div formGroupName="piForm">
+      <h3>Personal Information:</h3>
+      <label>
+        First Name:
+        <input type="text" formControlName="firstName">
+
+      </label>
+
+      <label>
+        Last Name:
+        <input type="text" formControlName="lastName">
+
+      </label>
+      <label>
+        Age:
+        <input type="number" formControlName="age">
+
+      </label>
+    </div>
+    <div formGroupName="credentialsForm">
+      <h3>Credentials:</h3>
+      <label>
+        User Name:
+        <input type="text" formControlName="userName">
+
+      </label>
+      <label>
+        Password:
+        <input type="password" formControlName="password">
+
+      </label>
+    </div>
+    <div formGroupName="contactForm">
+      <h3>Contact:</h3>
+      <label>
+        Phone Number:
+        <input type="tel" formControlName="phoneNumber">
+
+      </label>
+
+      <label>
+        Email Address:
+        <input type="email" formControlName="email">
+
+      </label>
+    </div>
+    <div formGroupName="miscForm">
+    
+      <h3>Contact:</h3>
+      <label>Comments:<br>
+        <textarea rows="5" cols="20" formControlName="comments"></textarea>
+      </label><br><br>
+      <label>Hobbies:
+        <select formControlName="hobby">
+          <option *ngFor="let h of hobbies" [value]="hobby">{{h}}</option>
+        </select>
+      </label>
+    </div>
+  </form>
+  <p>
+    <button type="submit" [disabled]="!userForm.valid">Submit</button>
+  </p>
+</div>

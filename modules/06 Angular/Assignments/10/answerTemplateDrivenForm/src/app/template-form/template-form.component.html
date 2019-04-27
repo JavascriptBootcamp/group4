@@ -7,50 +7,49 @@
         <h3>Personal Information:</h3>
         <label for="firstName">First Name:</label>
         <input type="text" class="form-groupPI" id="firstName" required [(ngModel)]="model.firstName" name="firstName"
-          #firstName="ngModel"><br>
+          #firstName="ngModel">
 
         <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger"> First Name is required</div>
-        <br>
 
         <label for="lastName">Last Name:</label>
         <input type="text" class="form-groupPI" id="lastName" required [(ngModel)]="model.lastName" name="lastName"
-          #lastName="ngModel"><br>
-        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger"> Last Name is required</div><br>
+          #lastName="ngModel">
+        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger"> Last Name is required</div>
 
         <label for="age">Age:</label>
-        <input type="number" class="form-groupPI" id="age"><br>
+        <input type="number" class="form-groupPI" id="age">
       </div>
 
       <div class="form-groupU">
         <h3>Credentials:</h3>
         <label for="userName">User Name:</label>
-        <input type="text" class="form-groupU" id="userName" required name="userName"><br>
+        <input type="text" class="form-groupU" id="userName" required name="userName">
 
         <label for="password">Password:</label>
-        <input type="password" class="form-groupU" id="password" name="password" required><br>
+        <input type="password" class="form-groupU" id="password" name="password" required>
       </div>
 
       <div class="form-groupC">
         <h3>Contact:</h3>
         <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" class="form-groupC" id="phoneNumber"><br>
+        <input type="tel" class="form-groupC" id="phoneNumber">
 
         <label for="emailAddress">Email Address:</label>
-        <input type="Email" class="form-groupC" id="emailAddress" required><br>
+        <input type="Email" class="form-groupC" id="emailAddress" required>
       </div>
 
       <div class="form-groupM">
         <h3>Misc:</h3>
         <label for="comments">Comments:</label><br>
-        <textarea class="form-groupM" id="comments" rows="4" cols="50"></textarea><br>
-
+        <textarea class="form-groupM" id="comments" rows="5" cols="40"></textarea>
+<br><br>
         <label for="hobby">Hobbies:</label>
         <select class="form-groupM" id="hobby">
           <option *ngFor="let h of hobbies" [value]="h">{{h}}</option>
         </select>
       </div>
-      <button type="button" class="btn btn-success" (click)="newUser(); registrationForm.reset()"
-        [disabled]="!registrationForm.form.valid">Register Now</button>
+      <!-- <button type="button" class="btn btn-success" (click)="newUser(); registrationForm.reset()" -->
+        <!-- [disabled]="!registrationForm.form.valid">Register Now</button> -->
       <button type="submit" class="btn btn-success" [disabled]="!registrationForm.form.valid">Submit</button>
 
     </form>
