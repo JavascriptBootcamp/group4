@@ -1,0 +1,8 @@
+<div class="form-wrapper">
+  <form (submit)="calc($event, num1.value, num2.value)">
+    <input type="number" step=".01" placeholder="גובה" required #num1 min="0.5" max="2.19" /> <br>
+    <input type="number" placeholder="משקל" required #num2 min="30" max="200" /> <br>
+    <button>חישוב</button>
+  </form>
+</div>
+<div class="result" [style.visibility]="toggle"> ה-BMI שלך הוא: {{ result }}</div>
