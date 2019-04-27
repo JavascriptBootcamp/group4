@@ -1,6 +1,7 @@
 export interface Video {
-    description: string,
+    title: string,
     src: string,
+    description: string,
     poster: string,
-    title: string
+    artist: string
 }

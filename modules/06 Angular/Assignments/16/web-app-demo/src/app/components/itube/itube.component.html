@@ -7,8 +7,13 @@
   Sorry, your browser doesn't support embedded videos.
 </video> -->
 
-<div class="video-container" *ngFor="let vid of videos">
-    <video controls width="350" [poster]="vid.poster">
+<video controls width="450" height="400" [poster]="selected_video.poster">
+    <source [src]="selected_video.src">
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+<div class="video-container" *ngFor="let vid of videos" (click)="vidSelected(vid)">
+    <video width="250" height="200" [poster]="vid.poster">
         <source [src]="vid.src">
         Sorry, your browser doesn't support embedded videos.
     </video>
