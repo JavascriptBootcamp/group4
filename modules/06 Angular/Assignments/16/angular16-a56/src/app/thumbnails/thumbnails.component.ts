@@ -1,14 +1,13 @@
 import { Component, Input, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import { Image } from '../image.model';
 import { images } from '../images';
-import { Iselected } from "../selected.model";
 
 @Component({
   selector: 'app-thumbnails',
   templateUrl: './thumbnails.component.html',
   styleUrls: ['./thumbnails.component.css']
 })
-export class ThumbnailsComponent implements AfterViewChecked, Iselected {
+export class ThumbnailsComponent implements AfterViewChecked {
   @Input() images: Image[];
   @Input() selected: number;
   @Input() localMainImg: number;

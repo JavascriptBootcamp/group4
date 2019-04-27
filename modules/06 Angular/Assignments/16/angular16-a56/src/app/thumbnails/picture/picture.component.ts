@@ -1,14 +1,13 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { Image } from 'src/app/image.model';
 import { images } from "src/app/images";
-import { Iselected } from "src/app/selected.model";
 
 @Component({
   selector: 'app-picture',
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.css']
 })
-export class PictureComponent implements Iselected {
+export class PictureComponent {
   @Input() img: Image;
   @Input() selected: number;
   @Output() imgClicked = new EventEmitter<number>();
