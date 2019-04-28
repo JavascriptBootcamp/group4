@@ -23,7 +23,7 @@ export class ImageServiceService {
       ];
   }
 
-  getImages(){
+  getImages():Image[]{
     return this.images;
   }
 
