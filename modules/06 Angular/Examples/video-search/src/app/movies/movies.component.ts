@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { Movie } from '../movie.model';
 import { searchUrl } from '../endpoint';
+import { LoggerService } from '../logger.service';
+import { logTypes } from '../logTypes.model';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.css']
+  styleUrls: ['./movies.component.css'],
+  // providers: [LoggerService]
 })
 export class MoviesComponent {
 
@@ -18,22 +21,25 @@ export class MoviesComponent {
   favorites: Movie[];
 
   // 2. default values
-  constructor() {
+  constructor(private loggerService:LoggerService) {
     this.endpoint = searchUrl;
     this.search = "";
     this.initDefaultValues();
     this.favorites = [];
+    // this.loggerService.setLogType(logTypes.INFO);
   }
 
   // 3. logic
 
   initDefaultValues(){
+    this.loggerService.log("Initiating default value");
     this.movies = [];
     this.page = 1;
     this.hasMore = false;
   }
 
   searchMovie(e: Event, input: HTMLInputElement) {
+    this.loggerService.log('Searching movie: event ' + JSON.stringify(e) + ' input' + JSON.stringify(input));
     e.preventDefault();
     this.initDefaultValues();
     this.search = input.value;
@@ -41,7 +47,9 @@ export class MoviesComponent {
   }
 
   loadMovies() {
-    fetch(`${this.endpoint}&page=${this.page}&s=${this.search}`)
+    const url = `${this.endpoint}&page=${this.page}&s=${this.search}`;
+    this.loggerService.log(`fetching movies from url: ${url}`);
+    fetch(url)
     .then( response => response.json() )
     .then( data => data.Search ? this.setMovies(data.Search) : this.disableLoadMore() );
   }
