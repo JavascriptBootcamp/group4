@@ -21,4 +21,16 @@ export class CalcService implements CalcModel {
 
     return pair.num1 + pair.num2;
   }
+
+  public sub(pair: PairModel):number {
+    return +pair.num1 - +pair.num2;
+  }
+
+  public mul(pair: PairModel):number {
+    return +pair.num1 * +pair.num2;
+  }
+
+  public div(pair: PairModel):number {
+    return +pair.num1 / +pair.num2;
+  }
 }
