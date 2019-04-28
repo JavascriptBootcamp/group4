@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Img } from '../images/images.component';
+import { Img } from '../image.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
