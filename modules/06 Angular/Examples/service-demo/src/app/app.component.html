@@ -1,7 +1,10 @@
 <h1>מחשבון</h1>
-<form (submit)="calcSum($event, {num1: num1.value, num2: num2.value})">
-    <input type="number" placeholder="הכנס מספר" required #num1 />
-    <input type="number" placeholder="הכנס מספר" required #num2 />
-    <button>חשב</button>
-    <div>{{ result }}</div>
-</form>
+<nav>
+    <ul>
+        <li><a routerLink="חיבור">חיבור</a></li>
+        <li><a routerLink="חיסור">חיסור</a></li>
+        <li><a routerLink="חילוק">חילוק</a></li>
+        <li><a routerLink="כפל">כפל</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
