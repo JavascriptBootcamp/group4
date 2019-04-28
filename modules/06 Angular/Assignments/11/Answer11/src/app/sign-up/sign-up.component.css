@@ -1,0 +1,33 @@
+a{
+    text-align: center;
+    display: inline-block;
+}
+button
+{
+    margin: 10px;
+}
+
+*{
+    padding: 10px;
+}
+
+input{
+    margin-bottom: 15px;
+    text-align: center;
+}
+label{
+    text-align: center;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+#links{
+    text-align: center;
+}
+
+#buttons 
+{
+    text-align: center;
+}

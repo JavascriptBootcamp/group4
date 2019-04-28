@@ -1,0 +1,22 @@
+<!-- Template Driven Form -->
+<div class="container">
+  <form class="form-group" (ngSubmit)="onSubmit()" #f="ngForm">
+    <label for="userName">User name</label>
+    <input type="text" id="userName" class="form-control" [(ngModel)]="userName" name="userName" #userN="ngModel"
+      required minlength="8">
+    <span class="help-block" *ngIf="!userN.valid && userN.touched">Please enter a valid user name - more than 8
+      chars</span>
+    <label for="password">Password</label>
+    <input type="password" id="password" class="form-control" [(ngModel)]="userPassword" name="userPassword"
+      #pass="ngModel" required minlength="5">
+    <span class="help-block" *ngIf="!pass.valid && pass.touched">Please enter a valid password - more than 5
+      chars</span>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    <div id="links">
+      <a routerLink="/signUp">Sign Up</a>
+      <a routerLink="/forgotPassword">Forgot Your Password?</a>
+    </div>
+    <div *ngIf="isSubmitted">{{ userResult }}</div>
+  </form>
+
+</div>

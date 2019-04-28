@@ -1,0 +1,24 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" class="form-control" [(ngModel)]="fullName" name="fullName" #fn="ngModel" required>
+        <label for="emailAddress">Email Address</label>
+        <input type="email" id="emailAddress" class="form-control" [(ngModel)]="email" name="email" #e="ngModel" required>
+        <label for="age">Age</label>
+        <input type="number" id="age" class="form-control" [(ngModel)]="age" name="age" #a="ngModel" max="32" min="18" required>
+        <label for="userName">User Name</label>
+        <input type="text" id="userName" class="form-control" [(ngModel)]="userName" name="userName" #un="ngModel" maxlength="10" required>
+        <label for="password">Password</label>
+        <input type="password"  class="form-control" [(ngModel)]="password" name="password" #p="ngModel" required>
+        
+        <div id="buttons">
+                <button type="reset" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div id="links">
+                <a routerLink="/index">Home</a>
+        </div>
+
+    </form>
+</div>
