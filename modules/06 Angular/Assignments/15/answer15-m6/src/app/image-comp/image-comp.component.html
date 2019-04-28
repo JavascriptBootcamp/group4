@@ -7,14 +7,14 @@
             'img0':myImg.like == 0,
             'img1':myImg.like > 0 && myImg.like < 10,
             'img2':myImg.like > 9,
-            'addBorder':clicked 
+            'addBorder':clicked
            }" >
     </div>
-  
+
     <div class="likeSec" >
-      <button (click)="onClickLike($event, img)">like</button><span>{{myImg.like}}</span>
+      <button (click)="onClickLike($event)">like</button><span>{{myImg.like}}</span>
     </div>
-    <a [routerLink] = "authors/avi" > <div class="auther" >{{myImg.auther}} </div> </a>
+    <a href="" > <div class="auther" >{{myImg.auther}} </div> </a>
 
   </div>
 

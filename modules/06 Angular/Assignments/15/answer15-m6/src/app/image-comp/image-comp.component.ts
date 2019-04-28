@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-image-comp',
@@ -10,20 +10,20 @@ export class ImageCompComponent implements OnInit {
   @Input() myImg;
 
   clicked = false;
- 
- 
-    
+
+
+
   constructor() { }
 
   ngOnInit() {
 
   }
 
-  onClickLike(e, likeClick){
+  onClickLike(e) {
     this.myImg.like++;
   }
 
-  addBorder(){
+  addBorder() {
     this.clicked = !this.clicked;
   }
 
