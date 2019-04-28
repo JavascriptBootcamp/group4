@@ -43,7 +43,7 @@ h3 {
 }
 
 h3:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 h3:active {
@@ -53,7 +53,7 @@ h3:active {
 .clicked h3 {
   color: #01A2A6;
   text-shadow: none;
-  transform: scale(1.5);
+  transform: scale(1.2);
   cursor: default;
 }
 

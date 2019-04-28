@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: space-around;
   margin-top: 3px;
-  background: #01A1A5;
 }
 
 video {
@@ -24,12 +23,10 @@ video {
   width: 60%;
   height: 90%;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.big-vid {
-  width: 450px;
-  height: 400px;
-}
 
 h1,
 h2,
@@ -65,12 +62,5 @@ h4 {
 
   .vid-list {
     width: 100%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .big-vid {
-    width: 300px;
-    height: 250px;
   }
 }

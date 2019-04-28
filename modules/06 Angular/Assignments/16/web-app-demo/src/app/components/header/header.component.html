@@ -1,13 +1,13 @@
 <header>
   <h1>My Web App</h1>
   <ul>
-    <li [ngClass]="{'clicked': active_link==='g' }" (click)="link_click('g')">
+    <li [ngClass]="{'clicked': active_link==='/gallery' || active_link==='/' }" (click)="link_click('g')">
       <a [routerLink]="'gallery'"><h3>Gallery</h3></a>
     </li>
-    <li [ngClass]="{'clicked': active_link==='i' }" (click)="link_click('i')">
+    <li [ngClass]="{'clicked': active_link==='/itube' }" (click)="link_click('i')">
       <a [routerLink]="'itube'"><h3>ITube</h3></a>
     </li>
-    <li [ngClass]="{'clicked': active_link==='d' }" (click)="link_click('d')">
+    <li [ngClass]="{'clicked': active_link==='/dbay' }" (click)="link_click('d')">
       <a [routerLink]="'dbay'"><h3>DBay</h3></a>
     </li>
   </ul>

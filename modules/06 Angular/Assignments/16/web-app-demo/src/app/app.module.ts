@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ItubeComponent } from './components/itube/itube.component';
 import { DbayComponent } from './components/dbay/dbay.component';
+import { BigVideoComponent } from './components/big-video/big-video.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DbayComponent } from './components/dbay/dbay.component';
     HeaderComponent,
     GalleryComponent,
     ItubeComponent,
-    DbayComponent
+    DbayComponent,
+    BigVideoComponent
   ],
   imports: [
     BrowserModule,

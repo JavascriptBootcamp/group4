@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,14 @@ export class HeaderComponent implements OnInit {
 
   active_link: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.active_link = "g";
+    this.active_link = this.router.url;
   }
 
   link_click(link_type: string) {
-    this.active_link = link_type;
+    this.active_link = this.router.url;
   }
 
 }
