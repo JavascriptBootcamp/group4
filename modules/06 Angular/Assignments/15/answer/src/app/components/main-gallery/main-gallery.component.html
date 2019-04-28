@@ -1,0 +1,13 @@
+<div id="container" [ngClass]="{
+  'blur': bigPicSrc
+}">
+  <div id="gallery">
+    <div class="img" *ngFor="let img of imgs">
+      <app-image [img]="img" (showImgEvent)="showBigPic($event)" (incressLikeEvent)="sortTop3()"></app-image>
+    </div>
+  </div>
+</div>
+<div *ngIf="bigPicSrc">
+  <app-big-pic [src]="bigPicSrc" (closePicEvent)="closeBigPic()"></app-big-pic>
+</div>
+<app-top-pics (showImgEvent)="showBigPic($event)" [topPicSrcs]="topPicSrcs"></app-top-pics>
