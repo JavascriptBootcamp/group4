@@ -1,37 +1,36 @@
-import { Component, Input,Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Picture} from '../picture.model';
+import { Picture } from '../picture.model';
 
 @Component({
   selector: 'app-picture',
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.css']
 })
-export class PictureComponent{
-@Input() picture: Picture;
-@Output() showPictureEvent = new EventEmitter<Picture>();
-isImageClicked: boolean;
-fontSize: string;
+export class PictureComponent {
+  @Input() picture: Picture;
+  @Output() showPictureEvent = new EventEmitter<Picture>();
+  isImageClicked: boolean;
+  fontSize: string;
+  counter: number;
 
-counter: number;
-
-incCounter(): void{
-  this.picture.likeCounter++;
-  if(this.picture.likeCounter > 10){
-    this.fontSize = 'big';
+  incCounter(): void {
+    this.picture.likeCounter++;
+    if (this.picture.likeCounter > 10) {
+      this.fontSize = 'big';
+    }
+    else {
+      this.fontSize = 'normal';
+    }
   }
-  else{
-    this.fontSize = 'normal';
-  }
-}
-  constructor() { 
+  constructor() {
     this.isImageClicked = false;
     this.fontSize = 'small';
   }
 
-showPicture(){
-  this.isImageClicked = true;
-  this.showPictureEvent.emit(this.picture);
-}
+  showPicture() {
+    this.isImageClicked = true;
+    this.showPictureEvent.emit(this.picture);
+  }
 
 }
