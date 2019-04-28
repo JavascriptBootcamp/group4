@@ -1,0 +1,7 @@
+<form (submit)="calc($event, num1.value, num2.value)">
+  <input type="number" placeholder="הכנס מספר" required #num1 />
+  {{ sign }}
+  <input type="number" placeholder="הכנס מספר" required #num2 />
+  <button>חשב</button>
+  <div>{{ result }}</div>
+</form>
