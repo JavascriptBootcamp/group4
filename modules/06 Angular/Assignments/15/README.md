@@ -15,8 +15,8 @@ build it using Angular.
 <ol>
     <li>add an author name to each image and display it below</li>
     <li>clicking on the author's name - should lead to another page (use routing) in which all author's images should be displayed. For example: <code>http://localhost:4200/authors/joe</code> should lead to a page in which all images under the author "joe"</li>
-    <li><i>Bonus #1: </i>add the following details to each author: ID, profile picture, facebook profile URL and description. then add these details to the author's page and change the route to be the ID instead of name</li>
-    <li><i>Bonus #2: </i>extract all functionallity which is not related to the display, from the component - to a <b>service</b></li>
+    <li>add the following details to each author: ID, profile picture, facebook profile URL and description. then add these details to the author's page and change the route to be the ID instead of name</li>
+    <li>extract all functionallity which is not related to the display, from the component - to a <b>service</b></li>
 </ol>
 </p>
 <p>
