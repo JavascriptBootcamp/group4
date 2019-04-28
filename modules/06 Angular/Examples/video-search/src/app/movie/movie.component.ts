@@ -1,6 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Movie } from '../movie.model';
 import { rootUrl } from '../endpoint';
+import { ActivatedRoute } from '@angular/router';
+import { LoggerService } from '../logger.service';
+import { MovieService } from '../movie.service';
+import { logTypes } from '../logTypes.model';
 
 @Component({
   selector: 'app-movie',
@@ -9,45 +13,76 @@ import { rootUrl } from '../endpoint';
     .active {
       border: solid 5px green;
     }
-  `]
+  `],
+  // providers: [LoggerService]
   // styleUrls: ['./movie.component.css']
 })
-export class MovieComponent {
+export class MovieComponent implements OnInit {
   @Input() movie: Movie;
+  @Output('favoritesEventAlias') favoritesEvent = new EventEmitter<Movie>();
   endpoint: string;
   movieDetails: string[];
   condition: boolean;
+  isClicked: boolean;
+  activatedRoute: ActivatedRoute;
 
-  constructor() {
-      this.endpoint = rootUrl;
-      this.movieDetails = [];
-      this.condition = true;
-   }
+  constructor(
+    activatedRoute: ActivatedRoute,
+    private loggerService:LoggerService,
+    private movieService: MovieService
+    ) {
+    this.endpoint = rootUrl;
+    this.movieDetails = [];
+    this.condition = true;
+    this.isClicked = false;
+    this.activatedRoute = activatedRoute;
+    // this.loggerService.setLogType(logTypes.ERROR);
+  }
 
-   showDetails(id: string) {
-      fetch(`${this.endpoint}&i=${id}`)
-      .then( response => response.json() )
-      .then( data => this.setData(data) )
-   }
-
-   setData(data: object) {
-     for (let detail in data) {
-       if (detail === "Ratings"){
-          this.addRatings(data[detail]);
-       }
-       else {
-        this.movieDetails.push(`${detail}: ${data[detail]}`)
-       }
-     }
-   }
-
-   addRatings(ratings) {
-    ratings.map( rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`) );
-   }
-
-   width = this.getWidth();
-
-    public getWidth() {
-        return '333';
+  ngOnInit() {
+    if (!this.movie) {
+      this.setMovie(this.activatedRoute.snapshot.params.movieId);
     }
+  }
+
+  setMovie(id: string) {
+    this.movieService.loadMovie(id)
+      .then(data => this.movie = data)
+  }
+
+  showDetails(id: string) {
+    const url = `${this.endpoint}&i=${id}`;
+    this.loggerService.log(`fetching movie from url: ${url}`);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setData(data));
+
+    this.loggerService.log(JSON.stringify(this.loggerService.getMessages()));
+  }
+
+  setData(data: object) {
+    for (let detail in data) {
+      if (detail === "Ratings") {
+        this.addRatings(data[detail]);
+      }
+      else {
+        this.movieDetails.push(`${detail}: ${data[detail]}`)
+      }
+    }
+  }
+
+  addRatings(ratings) {
+    ratings.map(rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`));
+  }
+
+  onFavoritesClick() {
+    this.favoritesEvent.emit(this.movie);
+    this.isClicked = !this.isClicked;
+  }
+
+  width = this.getWidth();
+
+  public getWidth() {
+    return '333';
+  }
 }
