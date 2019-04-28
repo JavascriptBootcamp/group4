@@ -1,0 +1,15 @@
+img {
+  position: fixed;
+  top: 25%;
+  left: 35%;
+
+  width: 500px;
+  height: 550px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+img:hover {
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5), -5px -5px 10px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,43 @@
+img {
+  width: 200px;
+  height: 250px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+img:hover,
+.img_bottem>div:hover {
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5), -5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.img_bottem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+}
+
+.colored {
+  background: rgb(102, 45, 52);
+  color: rgb(213, 199, 177);
+  border-radius: 5px;
+  margin: 1px;
+  font-size: 1.5rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img_bottem>div {
+  width: 80%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.img_bottem>span {
+  width: 20%;
+  height: 100%;
+}
