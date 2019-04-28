@@ -1,0 +1,31 @@
+
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+      <h3>Personal Infromation:</h3>
+
+      First Name: <input type="text" ngModel name="firstName" required><br><br>
+      Last Name: <input type="text" ngModel name="lastName" required><br><br>
+      Age: <input type="number" ngModel name="age" required><br><br>
+
+      <h3>Credentials:</h3>
+      User name: <input type="text" ngModel name="userName" required><br><br>
+      Password: <input type="password" ngModel name="password" required><br><br>
+
+      <h3>Contact:</h3>
+      Phone Number: <input type="text" ngModel name="phoneNumber"><br><br>
+      Email Address: <input type="email" ngModel name="emailAddress" required #email="ngModel"><br><br>
+      <h4 *ngIf="!(email.valid)&&email.touched">Please enter a valid value!</h4>
+      <h3>Misc:</h3>
+      Comments: <textarea ngModel name="comments"></textarea><br><br>
+      Hobbies:
+      <select>
+              <option value="Music">Music</option>
+              <option value="Running">Running</option>
+              <option value="TV">TV</option>
+              <option value="Billiard">Billiard</option>
+      </select>
+      <br><br>
+
+      <button type="submit" [disabled]="!form.valid">Register</button>
+      <br><br>
+
+</form>

@@ -1,0 +1,31 @@
+<form [formGroup]='signUpForm' (ngSubmit)="onSubmit()">
+  <h3>Personal Infromation:</h3>
+
+  First Name: <input type="text" formControlName="firstName">
+  Last Name: <input type="text" formControlName="lastName">
+  Age: <input type="number" formControlName="age">
+
+  <h3>Credentials:</h3>
+  User name: <input type="text" formControlName="userName">
+  <span *ngIf="!signUpForm.get('userName').valid && signUpForm.get('userName').touched">Please enter a valid user name!</span>
+  Password: <input type="password" formControlName="password">
+
+  <h3>Contact:</h3>
+  Phone Number: <input type="text" formControlName="phoneNumber">
+  Email Address: <input type="email" formControlName="emailAddress">
+
+  <h3>Misc:</h3>
+  Comments: <textarea></textarea>
+  Hobbies:
+  <select>
+          <option value="Music">Music</option>
+          <option value="Running">Running</option>
+          <option value="TV">TV</option>
+          <option value="Billiard">Billiard</option>
+  </select>
+  <br><br>
+
+  <input type="submit" value="Register">
+  <br><br>
+
+</form>
