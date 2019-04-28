@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Movie } from '../movie.model';
 import { searchUrl } from '../endpoint';
+import { MovieService } from '../movie.service';
 import { LoggerService } from '../logger.service';
 import { logTypes } from '../logTypes.model';
 
@@ -21,7 +22,10 @@ export class MoviesComponent {
   favorites: Movie[];
 
   // 2. default values
-  constructor(private loggerService:LoggerService) {
+  constructor(
+    private loggerService:LoggerService,
+    private movieService: MovieService
+  ) {
     this.endpoint = searchUrl;
     this.search = "";
     this.initDefaultValues();
@@ -47,10 +51,11 @@ export class MoviesComponent {
   }
 
   loadMovies() {
-    const url = `${this.endpoint}&page=${this.page}&s=${this.search}`;
-    this.loggerService.log(`fetching movies from url: ${url}`);
-    fetch(url)
-    .then( response => response.json() )
+    // const url = `${this.endpoint}&page=${this.page}&s=${this.search}`;
+    // this.loggerService.log(`fetching movies from url: ${url}`);
+    // fetch(url)
+    // .then( response => response.json() )
+    this.movieService.loadMovies(this.page, this.search)
     .then( data => data.Search ? this.setMovies(data.Search) : this.disableLoadMore() );
   }
 
@@ -64,14 +69,14 @@ export class MoviesComponent {
     this.hasMore = false;
   }
 
-  onFavoritesChange(movie: Movie) {
-    if (this.favorites.includes(movie)){
-      const movieIndex = this.favorites.indexOf(movie);
-      this.favorites.splice(movieIndex, 1);
-    }
-    else {
-      this.favorites.push(movie);
-    }
-  }
+  // onFavoritesChange(movie: Movie) {
+    // if (this.favorites.includes(movie)){
+    //   const movieIndex = this.favorites.indexOf(movie);
+    //   this.favorites.splice(movieIndex, 1);
+    // }
+    // else {
+    //   this.favorites.push(movie);
+    // }
+  // }
 
 }

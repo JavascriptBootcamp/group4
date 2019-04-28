@@ -4,6 +4,7 @@ import { rootUrl } from '../endpoint';
 import { ActivatedRoute } from '@angular/router';
 import { LoggerService } from '../logger.service';
 import { MovieService } from '../movie.service';
+import { FavoritesService } from '../favorites.service';
 import { logTypes } from '../logTypes.model';
 
 @Component({
@@ -19,7 +20,7 @@ import { logTypes } from '../logTypes.model';
 })
 export class MovieComponent implements OnInit {
   @Input() movie: Movie;
-  @Output('favoritesEventAlias') favoritesEvent = new EventEmitter<Movie>();
+  // @Output('favoritesEventAlias') favoritesEvent = new EventEmitter<Movie>();
   endpoint: string;
   movieDetails: string[];
   condition: boolean;
@@ -29,7 +30,8 @@ export class MovieComponent implements OnInit {
   constructor(
     activatedRoute: ActivatedRoute,
     private loggerService:LoggerService,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private favoritesService: FavoritesService
     ) {
     this.endpoint = rootUrl;
     this.movieDetails = [];
@@ -51,13 +53,15 @@ export class MovieComponent implements OnInit {
   }
 
   showDetails(id: string) {
-    const url = `${this.endpoint}&i=${id}`;
-    this.loggerService.log(`fetching movie from url: ${url}`);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => this.setData(data));
+    // const url = `${this.endpoint}&i=${id}`;
+    // this.loggerService.log(`fetching movie from url: ${url}`);
+    // fetch(url)
+    //   .then(response => response.json())
+    //   .then(data => this.setData(data));
 
-    this.loggerService.log(JSON.stringify(this.loggerService.getMessages()));
+    // this.loggerService.log(JSON.stringify(this.loggerService.getMessages()));
+    this.movieService.loadMovie(id)
+    .then(data => this.setData(data))
   }
 
   setData(data: object) {
@@ -76,7 +80,8 @@ export class MovieComponent implements OnInit {
   }
 
   onFavoritesClick() {
-    this.favoritesEvent.emit(this.movie);
+    // this.favoritesEvent.emit(this.movie);
+    this.favoritesService.toggleFavorite(this.movie);
     this.isClicked = !this.isClicked;
   }
 
