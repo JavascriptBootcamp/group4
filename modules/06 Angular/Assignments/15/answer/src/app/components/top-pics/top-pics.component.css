@@ -1,0 +1,46 @@
+#top3 {
+  position: fixed;
+  bottom: 0;
+  left: 80%;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+img:hover,
+#top3Headline:hover {
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5), -5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#top3Headline {
+  background: rgb(102, 45, 52);
+  color: rgb(213, 199, 177);
+  cursor: pointer;
+
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+    transition: all 1s;
+    opacity: 0; 
+    height: 0;
+}
+
+.expand {
+    opacity: 1;
+    height: 500px;
+}
