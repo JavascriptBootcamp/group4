@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Sign Up</h1>
+    <form (ngSubmit)="onSubmit(signupForm.value)" #signupForm="ngForm">
+        <div class="form-group">
+
+            <input class="form-control" type="text" placeholder="Full Name" name="fullname" id="fullname" required ngModel>
+            <input class="form-control" type="email" placeholder="Email" name="email" id="email" required ngModel>
+            <input class="form-control" type="number" min="18" max="32" placeholder="Age" name="Age" id="Age" required ngModel>
+            <input class="form-control" type="text" name="username" id="username" placeholder="User Name" maxlength="10" required ngModel> 
+            <input class="form-control" type="password" placeholder="Password" name="password" id="password" required ngModel>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="reset" class="btn">Reset</button>
+        </div>
+    </form>
+</div>  

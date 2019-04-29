@@ -1,0 +1,12 @@
+<div id="container">
+  <h1>Forgot Pass</h1>
+  <form #emailForm="ngForm" (ngSubmit)="onSubmit(emailForm.value)">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" name="emaill" ngModel>
+        <label>Confirm Email</label>
+        <input type="email" class="form-control" name="cemail" ngModel>
+        <button class="form-control" type="submit" class="btn btn-primary">Send</button>
+      </div>
+  </form>
+</div>
