@@ -1,0 +1,19 @@
+#header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 25px;
+    box-shadow: 10px 13px 69px -27px rgba(20,44,51,1);
+    position: sticky;
+    border-bottom: 5px solid transparent;
+    border-image: linear-gradient(to right,#fff38a 33%, #df8453 66%, #e44761 100%);
+    border-image-slice: 1;
+    top:0;
+    z-index: 999;
+}
+#header-title{
+    color: rgb(31, 37, 37);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
