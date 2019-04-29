@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {iAuthor} from '../author.model';
-import {Img} from '../image.model';
-import {ImagesService } from '../images.service';
+import { Img } from '../image.model';
+import { ImagesService } from '../images.service';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-images',
@@ -9,12 +9,12 @@ import {ImagesService } from '../images.service';
   styleUrls: ['./images.component.css']
 })
 export class ImagesComponent implements OnInit {
-  storage : any;
+  storage: any;
   image: string;
   images: Img[];
   clicked: boolean;
   hidden: boolean;
-  constructor(private imagesService : ImagesService) {
+  constructor(private imagesService: ImagesService, private storageService: StorageService) {
     this.image = "";
     this.clicked = false;
     this.hidden = false;
@@ -30,16 +30,16 @@ export class ImagesComponent implements OnInit {
     this.hidden = false;
   }
   ngOnInit() {
-    this.storage = JSON.parse(localStorage.getItem("ins"));
+    this.storage = this.storageService.getLocalStorgae("ins");
     if (!this.storage) {
-     this.images = this.imagesService.getImages();
+      this.images = this.imagesService.getImages();
     }
-    else{
+    else {
       this.images = JSON.parse(localStorage.getItem("ins"));
     }
   }
-  addToLocal(){
-    localStorage.setItem("ins",JSON.stringify(this.images));
+  addToLocal() {
+    this.storageService.setLocalStorgae("ins",this.images);
   }
 
 }
