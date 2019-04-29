@@ -13,23 +13,34 @@ export class PicturesComponent implements OnInit {
   pictures: Picture[];
   currentPicture: Picture;
 
-  constructor(private activatedRoute: ActivatedRoute, private picturesService: PicturesService){
+  constructor(private activatedRoute: ActivatedRoute, private picturesService: PicturesService) {
     this.pictures = [];
     this.currentPicture = null;
   }
 
-  onImgClilcked(picture: Picture){
-     this.currentPicture = picture;
+  onImgClilcked(picture: Picture) {
+    this.currentPicture = picture;
+    localStorage.setItem("currentPictureID", (this.currentPicture.id.toString()));
   }
 
-  onBigImgClilcked(){
+  onBigImgClilcked() {
     this.currentPicture = null;
+    localStorage.removeItem("currentPictureID");
   }
 
-  ngOnInit(){
-    let authorInputUrl: string = this.activatedRoute.snapshot.params.authorName;
+  ngOnInit() {
+    const currentPictureId = localStorage.getItem("currentPictureID");
+    const authorInputUrl: string = this.activatedRoute.snapshot.params.author;
     this.pictures = this.picturesService.getPictures();
-    if(authorInputUrl)
-      this.pictures = this.pictures.filter((pic)=>{ return pic.author === authorInputUrl});
+
+    if (currentPictureId)
+      this.currentPicture = this.pictures.filter(pic => pic.id === +currentPictureId)[0];
+
+    if (authorInputUrl) {
+      if (Number(authorInputUrl))
+        this.pictures = this.pictures.filter(pic => pic.authorID === +authorInputUrl); 
+      else 
+        this.pictures = this.pictures.filter(pic => pic.author === authorInputUrl);
     }
+  }
 }

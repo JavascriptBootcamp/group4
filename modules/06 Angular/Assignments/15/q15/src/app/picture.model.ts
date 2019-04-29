@@ -1,6 +1,12 @@
 export interface Picture{
-    imgSrc: string,
+    id: number,
     author: string,
-    likeCounter: number,
-    id: number
+    authorID:number,
+    // profilePicture: string,
+    // facebookProfileURL: string,
+    // description: string,
+
+    imgSrc: string,
+    likeCounter: number
+
 }
