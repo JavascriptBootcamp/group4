@@ -9,7 +9,7 @@ import {ImagesService } from '../images.service';
   styleUrls: ['./images.component.css']
 })
 export class ImagesComponent implements OnInit {
-
+  storage : any;
   image: string;
   images: Img[];
   clicked: boolean;
@@ -30,7 +30,8 @@ export class ImagesComponent implements OnInit {
     this.hidden = false;
   }
   ngOnInit() {
-    if (this.images === null) {
+    this.storage = JSON.parse(localStorage.getItem("ins"));
+    if (!this.storage) {
      this.images = this.imagesService.getImages();
     }
     else{
