@@ -1,0 +1,3 @@
+<app-picture *ngFor="let pic of pictures" [imgSrc]="pic.source" [wikiPediaLink]="pic.wikiLink" [name]='pic.name'></app-picture>
+<hr>
+<app-actor *ngFor="let actor of actors" [imgSrc]="actor.imgSrc" [imdbLink]="actor.imdbLink" [name]='actor.name'></app-actor>
