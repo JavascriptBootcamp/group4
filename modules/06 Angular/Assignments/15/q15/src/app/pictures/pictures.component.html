@@ -6,5 +6,6 @@
 </div>
 
 <div *ngIf="currentPicture">
-  <app-image [imgSrc]="currentPicture.imgSrc" id="big-image" (click)="onBigImgClilcked($event)" [class]="currentPicture ?  show : hide"></app-image>
+  <app-image [imgSrc]="currentPicture.imgSrc" id="big-image" (click)="onBigImgClilcked($event)" ></app-image>
+  <!-- [class]="currentPicture ?  show : hide"  -->
 </div>
