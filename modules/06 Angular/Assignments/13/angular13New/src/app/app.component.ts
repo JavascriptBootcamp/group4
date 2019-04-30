@@ -1,6 +1,5 @@
 import { Component  , OnInit} from '@angular/core';
 import {QuestionsService} from './questions.service';
-import {answers} from './answers.model';
 import {questions} from './questions.model';
 
 @Component({
@@ -11,15 +10,23 @@ import {questions} from './questions.model';
 export class AppComponent implements OnInit{
   hidden : boolean;
   questions : questions[];
+  correctAnswers : number;
+  indexQ : number;
+  correctOrNot : boolean;
   constructor(private questionsService : QuestionsService){
     this.hidden = false;
     this.questions = [];
+    this.correctAnswers = 0;
+    this.indexQ = 0;
+    this.correctOrNot = false;
   }
   ngOnInit(){
     this.questions = this.questionsService._getAllQuestionsAndAnswers;
   }
-  submitForm(e : Event){
+  submitForm(e : Event , value : any){
     e.preventDefault();
     this.hidden = true;
+    this.correctAnswers = this.questionsService.numberOfCorrectAnswers(value);
+    this.correctOrNot = this.questionsService.correctOrNot(this.questions[this.indexQ] , value , this.indexQ);
   }
 }

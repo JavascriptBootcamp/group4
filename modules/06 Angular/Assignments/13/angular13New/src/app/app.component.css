@@ -1,0 +1,23 @@
+#form , #submitedForm{
+    text-align: left;
+    border:1px solid #ccc;
+    background-color: darkorange;
+    width: 100%;
+}
+#submit{
+    width:50%;
+    height:30px;
+    background-color: brown;
+    border:none;
+    position: relative;
+    left:50%;
+    margin-left:-113px;
+    border:1px solid #ccc;
+    border-radius: 10px;
+    transition: 0.3s all;
+    cursor: pointer;
+    color: #fff;
+}
+#submit:hover{
+    background-color: rgb(128, 36, 36);
+}

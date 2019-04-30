@@ -1,14 +1,19 @@
-<form (submit)="submitForm($event)" [hidden]="hidden">
+<form id="form" #myForm="ngForm" (submit)="submitForm($event , myForm.value)" [hidden]="hidden">
   <h1>Trivia - Quiz</h1>
   <div *ngFor="let q of questions; index as i">
     <app-question>
       <h3>{{q.question}}</h3>
-        <input type="radio" name="q{{i}}" value="1">{{q.answers.q1}}
-        <input type="radio" name="q{{i}}" value="2">{{q.answers.q2}}
-        <input type="radio" name="q{{i}}" value="3">{{q.answers.q3}}
-        <input type="radio" name="q{{i}}" value="4">{{q.answers.q4}}
+        <input type="radio" name="q{{i}}" value="1" ngModel>{{q.answers.q1}}
+        <input type="radio" name="q{{i}}" value="2" ngModel>{{q.answers.q2}}
+        <input type="radio" name="q{{i}}" value="3" ngModel>{{q.answers.q3}}
+        <input type="radio" name="q{{i}}" value="4" ngModel>{{q.answers.q4}}
     </app-question>
   </div>
   <input [hidden]="true" name="ts" value="1547375825757">
-  <button type="submit">submit</button>
+  <button id="submit" type="submit">submit</button>
 </form>
+
+<div id="submitedForm" [hidden]="!hidden">
+  <h1>Amount of correct answers {{correctAnswers}}</h1>
+  <h2>question {{indexQ+1}} is {{correctOrNot}}</h2>
+</div>
