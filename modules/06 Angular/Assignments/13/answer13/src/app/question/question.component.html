@@ -1,0 +1,35 @@
+<ng-content></ng-content>
+
+<h1><u>Please choose a correct answer to each question below</u></h1>
+
+<form method="post" (submit)="validateAnswers($event)">
+
+  <ul *ngFor="let questionAndAnswersObj of questionsAndAnswersArr; index as i">
+    <li> 
+      <h2> Question {{i+1}}: </h2>
+      <h3> {{questionAndAnswersObj.question}} = </h3>
+      <div *ngFor="let value of arrayOfPossibleAnswersArrays[i]; index as j">
+          <input type="radio" 
+                 name="{{i}}" class="radio-button" 
+                 value="{{questionAndAnswersObj.possibleAnswers[j]}}"
+          >  
+          &nbsp; {{questionAndAnswersObj.possibleAnswers[j]}} <br><br>
+      </div>
+    </li>
+    <br><br>
+  </ul>
+
+  <h2 *ngIf="!areAllQuestionsAnswered && areAllQuestionsAnswered !== undefined" style="color: red">
+    You already didn't submit {{unansweredQuestionsCount}} of {{QUANTITY_OF_QUESTIONS}} questions
+  </h2>
+
+  <nav>
+    <button *ngIf="!areAllQuestionsAnswered" class="submit-button" >Submit</button> 
+
+    <h2 *ngIf="areAllQuestionsAnswered">
+      <a routerLink='/results'>Click here</a>
+      to see a number of correct answers
+    </h2>
+  </nav>
+ 
+</form>
