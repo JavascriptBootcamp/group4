@@ -1,0 +1,22 @@
+<div style="text-align:center">
+  <h1> Welcome to {{ title }}! </h1>
+</div>
+
+
+
+
+<div id="container" dir="rtl">
+  <h1 style="color: blue">מחשבון BMI</h1>
+
+   <form id="calc-form" (submit)="getBMI($event, weight.value, height.value)">
+    <input type="number" name="weight" id="weight" placeholder='משקל ביחידות ק"ג' #weight min=2><br><br>
+    <input type="number" name="height" id="height" placeholder="גובה ביחידות מטר" #height required min=0.5 step="0.01"><br><br>
+    <button >חשב BMI</button> 
+   </form>
+
+  <h2 *ngIf="resultOfBMI < 18.5">  {{resultOfBMI}} = BMI <h3 class="bmi-indication"> תת משקל </h3> </h2> 
+  <h2 *ngIf="resultOfBMI > 18.5 && resultOfBMI < 25">   {{resultOfBMI}} = BMI <h3 class="bmi-indication">משקל תקין </h3> </h2> 
+  <h2 *ngIf="resultOfBMI > 25 && resultOfBMI < 30"> {{resultOfBMI}} = BMI   <h3 class="bmi-indication"> עודף משקל </h3> </h2> 
+  <h2 *ngIf="resultOfBMI > 30">  {{resultOfBMI}} = BMI  <h3 class="bmi-indication"> השמנת יתר </h3> </h2>  
+
+</div>
