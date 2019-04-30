@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Movie } from '../movie.model';
 import { searchUrl } from '../endpoint';
 import { MovieService } from '../movie.service';
@@ -12,6 +12,7 @@ import { logTypes } from '../logTypes.model';
   // providers: [LoggerService]
 })
 export class MoviesComponent {
+  @ViewChild('query') myQuery;
 
   // 1. variables declarations
   endpoint: string;
@@ -43,6 +44,7 @@ export class MoviesComponent {
   }
 
   searchMovie(e: Event, input: HTMLInputElement) {
+    this.loggerService.log('myQuery ' +  this.myQuery.nativeElement.value);
     this.loggerService.log('Searching movie: event ' + JSON.stringify(e) + ' input' + JSON.stringify(input));
     e.preventDefault();
     this.initDefaultValues();
