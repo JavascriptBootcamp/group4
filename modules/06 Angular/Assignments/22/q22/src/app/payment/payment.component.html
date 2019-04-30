@@ -1,0 +1,11 @@
+<a routerLink="">Go back to cart</a>
+<form #form="ngForm" (submit)="onSubmitForm()" id="myForm">
+  <div ngModelGroup="creditCard" #nameCtrl="ngModelGroup">
+    <input id="cn" name="_cardNumber" ngModel #cardNumber="ngModel" minlength="8" maxlength="16" placeholder="Card Number" required>
+    <input id="noc" name="_cardName" ngModel #cardName="ngModel" placeholder="Card Name" required>
+    <input id="exd" name="_expiryDate" ngModel #expiryDate="ngModel" type="date" maxlength="3" placeholder="Expiry Date" required>
+    <input id="sc" name="_securityCode" ngModel #securityCode="ngModel" maxlength="16" placeholder="Security Code" required>
+ 
+  </div>
+  <button id="sub">Submit</button>
+</form>

@@ -1,0 +1,34 @@
+<div align="center" id="cardcont">
+  <table id="cardtbl" border="1">
+      <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Action</th>
+      </tr>
+      <tr id="last">
+          <td id="items">
+              <select id="it">
+                  <option value="choose">Choose</option>
+                  <option value="banana">Banana</option>
+                  <option value="appel">Appel</option>
+                  <option value="candy">Candy</option>
+                  <option value="water">Water</option>
+                  <option value="carrot">Carrot</option>
+                  <option value="umbrella">Umbrella</option>
+                  <option value="juice">Juice</option>
+                  <option value="bred">Bred</option>
+                  <option value="chicken">Chicken</option>
+                  <option value="beef">Beef</option>
+              </select>
+          </td>
+          <td id="p">
+              <input type="number" id="price" min="0">
+          </td>
+          <td id="add">
+              <button id="addBtn" (click)="addItem()">Add</button>
+          </td>
+      </tr>
+
+  </table>
+  <b>Total Price:</b> <b id="tlp">0</b> $ <br><br>
+  <a routerLink="/payment">Checkout</a>
