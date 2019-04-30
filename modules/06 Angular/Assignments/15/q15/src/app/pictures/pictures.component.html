@@ -1,0 +1,11 @@
+<div id="wrapper">
+  <div class="wrapper-pictures" *ngFor="let picture of pictures">
+      <!-- <img src={{image}} alt="No image found" width="200px" height="200px"> -->
+      <app-picture [picture]="picture" (showPictureEvent)="onImgClilcked($event)"></app-picture>
+  </div>
+</div>
+
+<div *ngIf="currentPicture">
+  <app-image [imgSrc]="currentPicture.imgSrc" id="big-image" (click)="onBigImgClilcked($event)" ></app-image>
+  <!-- [class]="currentPicture ?  show : hide"  -->
+</div>

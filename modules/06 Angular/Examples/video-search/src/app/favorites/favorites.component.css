@@ -1,0 +1,27 @@
+#favorites {
+    width: 200px;
+    height: 500px;
+    max-height: 300px;
+    min-height: 20px;
+    overflow: auto;
+    background-color: darkkhaki;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    bottom: 0;
+    right: 50px;
+    position: fixed;
+
+    transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+#favorites.closed {
+    max-height: 20px;
+    overflow: hidden;
+}
+
+#favorites-header {
+    cursor: pointer;
+    color: yellow;
+}

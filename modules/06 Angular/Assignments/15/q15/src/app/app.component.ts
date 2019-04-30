@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+<<<<<<< HEAD
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -21,5 +22,9 @@ export class AppComponent {
   onImgClilcked(bigImgSrc: string){
    this.bigImgSrc = bigImgSrc;
   }
+=======
+  styleUrls: ['./app.component.css']})
+>>>>>>> b4e22d7284b171342d61ad89e8a94ae4805e8570
 
+export class AppComponent {
 }

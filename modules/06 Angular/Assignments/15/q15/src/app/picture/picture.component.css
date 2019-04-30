@@ -1,3 +1,4 @@
+
 .picture{
     display: flex;
     flex-direction: column;
@@ -8,11 +9,12 @@
     /* justify-content: space-around;  */
 }
 
-.likes .like{
+.picture-likes .picture-likes-like{
     /* display: flex; */
     /* align-items: flex-start; */
 }
 
+<<<<<<< HEAD
 .likes .likes-counter{
     display: flex;
     align-items: flex-end;
@@ -46,4 +48,30 @@
     color: rgb(190, 181, 181);
     justify-content: center;
     padding: 5px;
+=======
+.picture-likes .picture-likes-counter{
+    /* display: flex; */
+    text-align: right;
+>>>>>>> b4e22d7284b171342d61ad89e8a94ae4805e8570
+}
+
+.picture-image img{
+    width:200px;
+    height: 200px;
+}
+
+.clicked{
+    border:solid red;
+}
+
+.small{
+    font-size: 10px;
+}
+
+.normal{
+    font-size: 13px;
+}
+
+.big{
+    font-size: 16px;
 }
