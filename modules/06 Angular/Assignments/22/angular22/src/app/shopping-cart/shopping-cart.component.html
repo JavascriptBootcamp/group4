@@ -1,0 +1,37 @@
+<table id="shoppingCart">
+  <h1>shopping cart table</h1>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>
+      <select id="productsName" #productsName>
+        <option>t-shirt</option>
+        <option>pants</option>
+        <option>socks</option>
+        <option>gloves</option>
+        <option>jacket</option>
+        <option>shoes</option>
+        <option>coats</option>
+        <option>jeans</option>
+        <option>suits</option>
+        <option>swimwear</option>
+      </select>
+    </td>
+    <td>
+      <input id="price" type="number" #price>
+    </td>
+    <td>
+      <button id="action" (click)="addProduct()">Add</button>
+    </td>
+  </tr>
+  <tr *ngFor="let key of cart">
+      <td>{{key.name}}</td>
+      <td>{{key.price}}</td>
+      <td>remove</td>
+  </tr>
+</table>
+<h3>total</h3>
+<div id="total">{{totalPrice}}</div>
