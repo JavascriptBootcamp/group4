@@ -20,7 +20,7 @@ export class MovieService {
     return fetch(url).then(response => response.json())
   }
 
-  loadMovies(page: number, search: string): Promise<any> {
+  loadMovies(page: number, search: string): Promise<Movie> {
     const url = `${this.endpoint}&page=${page}&s=${search}`;
     this.loggerService.log(`fetching movies from url: ${url}`);
     return fetch(url)
