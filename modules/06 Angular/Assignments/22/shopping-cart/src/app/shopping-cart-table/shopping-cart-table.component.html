@@ -1,0 +1,22 @@
+<table id="productTable">
+  <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+  </tr>
+  <tr>
+      <td>
+          <select  id = "productName">
+              <option  *ngFor="let product of products"  [value] = "product"> {{product}}</option>
+          </select>
+      </td>
+      <td>
+          <input type="number" id="price" required>
+      </td>
+      <td>
+          <input type="button" value="Add" id="addButton" onclick="addProduct()">
+      </td>
+  </tr>
+
+</table>
+<h3> <mark>Total price :</mark> <div id = "totalPrice"> </div> </h3>
