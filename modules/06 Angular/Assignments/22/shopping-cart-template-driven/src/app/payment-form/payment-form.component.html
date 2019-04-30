@@ -1,0 +1,23 @@
+<form #form="ngForm">
+  <div ngModelGroup="card" #nameControl="ngModelGroup">
+
+      <p>
+          <label> Card Number: </label>
+          <input type="text" name="CardNumber" ngModel #CardNumber="ngModel" required><br>
+      </p>
+      <p>
+          <label> Name of Card: </label>
+          <input type="text" name="name" ngModel #name="ngModel" required><br>
+      </p>
+      <p>
+          <label> Expiry Date: </label>
+          <input type="date" name="date" ngModel #date="ngModel" required><br>
+      </p>
+      <p>
+          <label>Security Code: </label>
+          <input type="text" name="code" ngModel #code="ngModel" maxlength="3" required><br>
+      </p>
+      <button>Submit</button>
+
+  </div>
+</form>
