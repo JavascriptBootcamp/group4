@@ -7,7 +7,6 @@ import { Component, ViewChild } from '@angular/core';
 })
 export class AboutComponent {
   @ViewChild('content') myContent;
-
   checkValue() {
     console.log(this.myContent.nativeElement.value)
   }
