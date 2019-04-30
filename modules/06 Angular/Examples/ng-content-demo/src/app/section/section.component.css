@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    border: solid 4px #FF9E92;
+    margin-bottom: 20px;
+}
+
+.header, .body {
+    padding: 10px;
+}
+
+.header {
+    background-color :#FFDECB;
+    cursor: pointer;
+}
+
+.body {
+    background-color:  #FFF9E9;
+}
+
+.hidden {
+    display: none;
+}
