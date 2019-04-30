@@ -1,0 +1,34 @@
+<p>
+  payment!
+</p>
+
+<form #form="ngForm">
+   
+
+    <div ngModelGroup="details" #nameCtrl="ngModelGroup">
+        <label> Card Number: </label>
+        <input id="CardNumber" name="CardNumber" ngModel #numberElem="ngModel" required>
+        
+        <!-- <div *ngIf="numberElem.invalid && (numberElem.dirty || numberElem.touched)">
+          <span *ngIf="firstElem.errors.minlength">
+            Please enter more than 2 characters
+          </span>
+          <span *ngIf="firstElem.errors.maxlength">
+            Please enter less than 6 characters
+          </span>
+        </div> -->
+    
+        <input id="NameCard" name="NameCard" ngModel #nameElem="ngModel" required>
+      </div>
+
+      
+   
+  
+        <label> Expiry Date: </label>
+        <input type="date" required><br>
+   
+        <label>Security Code: </label>
+        <input type="text" maxlength="3" required><br>
+  
+    <button id="sub">Submit</button>
+</form>
