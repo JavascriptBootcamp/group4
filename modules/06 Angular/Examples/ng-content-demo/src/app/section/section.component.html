@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="header" (click)="toggle()">
+    {{ this.header }}
+  </div>
+  <div class="body" [class.hidden]="!isOpen">
+      <ng-content></ng-content>
+  </div>
+</div>
