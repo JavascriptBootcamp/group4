@@ -21,7 +21,7 @@ export class FavoritesService {
     }
   }
 
-  getFavorites(): Movie[] {
+  get _favorites(): Movie[] {
     return this.favorites;
   }
 }
