@@ -1,0 +1,68 @@
+<form >
+
+	<h1> Choose products you want to buy </h1>
+
+	<table id="shoppingCard">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Action</th>
+		</tr>
+
+		<tr>
+			<td>
+				<select id="productsNames" #productNameSelectElem>
+					<option>apple</option>
+					<option>candy</option>
+					<option>water</option>
+					<option>carrot</option>
+					<option>umbrella</option>
+					<option>proteinShake</option>
+					<option>banana</option>
+					<option>orange</option>
+					<option>tomatoes</option>
+					<option>batata</option>
+				</select>
+			</td>
+
+			<td >
+				<input #productPriceElem id="itemPrice" type="number" min="1" value="1" step="0.1">
+			</td>
+
+			<td>
+				<button 
+					(click)="logicServiceObj.addProduct(productNameSelectElem.value, productPriceElem.value)"> 
+					Add product 
+				</button>
+			</td>
+		</tr>
+
+		<tr *ngFor="let key of logicServiceObj.shoppingCard; index as i">
+			<td >
+				{{logicServiceObj.shoppingCard[i].productName}}
+			</td>
+			<td style="text-align: center">
+				{{logicServiceObj.shoppingCard[i].productPrice}}
+			</td>
+			<td>
+				<button (click)="logicServiceObj.removeProduct(logicServiceObj.shoppingCard[i].productName, logicServiceObj.shoppingCard[i].productPrice)">
+					Remove Product 
+				</button>
+			</td>
+		</tr>
+
+	</table>
+
+	<br><br>
+
+	<nav>
+		<input *ngIf="logicServiceObj.canGoToPay; else elseBlock" 
+			     routerLink="/payment" type="submit" name="submit" 
+		       value="Go to pay" 		
+		>
+		<ng-template #elseBlock>
+			<input type="submit" name="submit" value="Go to pay" disabled>
+		</ng-template>
+	</nav>
+
+</form>
