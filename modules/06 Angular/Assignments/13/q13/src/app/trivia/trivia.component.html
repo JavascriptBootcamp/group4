@@ -1,0 +1,8 @@
+<div>
+  <h1>Trivia</h1>
+  <div *ngFor="let q of questions"> 
+      <app-question [question]='q'></app-question>
+  </div>
+  <input type='submit' name='submit' value='Submit' />
+  <input type="hidden" name="ts" value="1547375825757">
+</div>
