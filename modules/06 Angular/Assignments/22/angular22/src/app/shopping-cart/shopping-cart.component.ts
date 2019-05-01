@@ -1,6 +1,6 @@
-import { Component, OnInit ,ViewChild} from '@angular/core'; 
-import {ShoppingService} from '../shopping.service';
-import {cart} from '../cart.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ShoppingService } from '../shopping.service';
+import { cart } from '../cart.model';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,24 +10,47 @@ import {cart} from '../cart.model';
 export class ShoppingCartComponent implements OnInit {
   @ViewChild('productsName') productsName;
   @ViewChild('price') price;
-  totalPrice : number;
-  newItem : cart;
-  cart : cart[];
-  constructor(private shoppingService : ShoppingService) { 
+  @ViewChild('productToRemove') productToRemove
+  totalPrice: number;
+  newItem: cart;
+  cart: cart[];
+  id: number;
+  constructor(private shoppingService: ShoppingService) {
     this.totalPrice = 0;
     this.newItem = null;
+    this.id = 0;
   }
-
   ngOnInit() {
   }
-  addProduct(){
+  createProductItem() {
     this.newItem = {
-      name : this.productsName.nativeElement,
-      price : this.price.nativeElement.value
+      id: this.id,
+      name: this.productsName.nativeElement.options[this.productsName.nativeElement.selectedIndex].value,
+      price: this.price.nativeElement.value
     }
-    this.shoppingService.addToCart(this.newItem);
-    this.cart = this.shoppingService._getCartArray;
-    console.log(this.cart);
+    this.incrementId();
+    this.addItemToCart();
   }
-
+  incrementId() {
+    this.id++;
+  }
+  addItemToCart() {
+    this.shoppingService.addToCart(this.newItem);
+    this.setDefaultPrice();
+    this.getCartArray();
+  }
+  setDefaultPrice() {
+    this.price.nativeElement.value = 0;
+  }
+  getCartArray() {
+    this.cart = this.shoppingService._getCartArray;
+    this.calculateTotalPrice();
+  }
+  calculateTotalPrice() {
+    this.totalPrice = this.shoppingService._getTotalPrice;
+  }
+  removeProduct(productId: number) {
+    this.shoppingService.removeFromCart(productId);
+    this.calculateTotalPrice();
+  }
 }
