@@ -22,6 +22,7 @@ export class ImageComponent implements OnInit {
   addLike() {
     this.img.likes++;
     this.incressLikeEvent.emit();
+    
   }
 
   showImg() {

@@ -2,6 +2,7 @@ img {
   position: fixed;
   top: 25%;
   left: 35%;
+   border:5px solid rgb(102, 45, 52);
 
   width: 500px;
   height: 550px;
