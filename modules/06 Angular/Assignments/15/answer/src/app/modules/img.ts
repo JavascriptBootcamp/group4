@@ -1,5 +1,6 @@
 export interface Img {
     src: string,
     likes: number,
-    id:number
+    author: string,
+    idAuthor: number
 }

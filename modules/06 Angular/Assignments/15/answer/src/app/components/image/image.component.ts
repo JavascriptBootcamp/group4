@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 import { Img } from "../../modules/img";
 
 @Component({
@@ -27,5 +26,6 @@ export class ImageComponent implements OnInit {
   showImg() {
     this.showImgEvent.emit(this.img.src);
   }
+
 
 }

@@ -1,0 +1,21 @@
+* {
+    color: black;
+}
+
+#imgProfile {
+    width: 100px;
+    height: 100px;
+}
+
+#myImgs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 5px;
+}

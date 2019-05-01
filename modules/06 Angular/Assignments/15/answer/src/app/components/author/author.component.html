@@ -1,0 +1,14 @@
+<br><br><br><br>
+<p>
+  author works!
+</p>
+
+<h1> {{author.name}}</h1>
+<img id="imgProfile" [src]="author.profile" alt="profile">
+<div> {{author.description}}</div>
+<h2>My Images:</h2>
+<div id="myImgs">
+  <img id="img" *ngFor="let img of author.images" [src]="img">
+</div>
+<a [href]="author.facebook">My Facebook</a>
+<br><br>

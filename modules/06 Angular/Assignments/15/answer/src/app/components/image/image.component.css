@@ -41,3 +41,9 @@ img:hover,
   width: 20%;
   height: 100%;
 }
+
+.author{
+  text-align:center;
+  color:black;
+   background-color:rgba(255, 0, 0, 0.3);
+}
