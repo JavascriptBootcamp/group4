@@ -9,15 +9,14 @@ export class SmlPictureComponent  {
   @Input() src:string;
   @Input() author:string;
   @Output() showOnBigPicture = new EventEmitter<string>();
-  likeAmount:number;
+  @Input() likesAmount:number;
   clicked:boolean;
   // activatedRoute: ActivatedRoute;
   constructor() {
-    this.likeAmount=0;
     this.clicked=false;
   }
   addlike(){
-    this.likeAmount++;
+    this.likesAmount++;
   }
   imgClicked(){
     this.showOnBigPicture.emit(this.src);

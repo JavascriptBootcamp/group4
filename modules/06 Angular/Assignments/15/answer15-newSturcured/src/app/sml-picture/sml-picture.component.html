@@ -1,16 +1,16 @@
 <div class="sml-img-wrapper">
   <div class="box" [ngClass]="{'clicked': clicked}"
-  [style.width.px]="likeAmount > 10 ? '220' : '200'" 
-  [style.height.px]="likeAmount > 10 ? '198' : '180'"
-  [style.height.px]="likeAmount === 0 ? '162' : '180'"
-  [style.width.px]="likeAmount === 0 ? '180' : '200'">
+  [style.width.px]="likesAmount > 10 ? '220' : '200'" 
+  [style.height.px]="likesAmount > 10 ? '198' : '180'"
+  [style.height.px]="likesAmount === 0 ? '162' : '180'"
+  [style.width.px]="likesAmount === 0 ? '180' : '200'">
     <img class="image" [src]="src" (click)="imgClicked()">
     <div class="box-footer">
         <button (click)="addlike()" class="like-buttons">
-          <img class="like-img" src="../../assets/images/like.png">{{likeAmount}}
+          <img class="like-img" src="../../assets/images/like.png">{{likesAmount}}
         </button>
         <a routerLink="author/{{author}}"><h2 class="author">{{author}}</h2></a>
-        <!-- <div class="amount-of-likes">{{likeAmount}}</div> -->
+        <!-- <div class="amount-of-likes">{{likesAmount}}</div> -->
     </div>
   </div>
 </div>

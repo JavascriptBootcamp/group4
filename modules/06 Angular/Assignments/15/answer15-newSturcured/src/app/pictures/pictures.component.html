@@ -1,6 +1,6 @@
 <div id="main-container">
   <div id="movies-wrapper">
-    <app-sml-picture *ngFor="let picture of pictures;" [src]="picture.src" [author]="picture.authorName" (showOnBigPicture)="onClickShow($event)"></app-sml-picture>
+    <app-sml-picture *ngFor="let picture of pictures;" [src]="picture.src" [author]="picture.authorName" [likesAmount]="picture.likesAmount" (showOnBigPicture)="onClickShow($event)"></app-sml-picture>
   </div>
   <div id="bigScreen" [hidden]="!show">
     <app-big-picture  [passedImage]="selectedImage" [show]="show" (showChanged)="this.show= $event"></app-big-picture>
