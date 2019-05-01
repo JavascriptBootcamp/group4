@@ -8,22 +8,6 @@
 
 #pictures{
     display: flex;
-<<<<<<< HEAD
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    margin: 3%;
-}
-
-#big-picture{
-    width: 600px;
-    height: 600px;
-
-    position: absolute;
-    z-index: 99;
-}
-
-=======
     justify-content: center;
     align-content: center;
     border: solid red 5px;
@@ -63,4 +47,3 @@
 
     border: solid red 5px;
 }
->>>>>>> b4e22d7284b171342d61ad89e8a94ae4805e8570

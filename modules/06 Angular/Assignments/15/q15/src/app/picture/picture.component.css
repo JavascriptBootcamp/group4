@@ -14,50 +14,14 @@
     /* align-items: flex-start; */
 }
 
-<<<<<<< HEAD
-.likes .likes-counter{
-    display: flex;
-    align-items: flex-end;
-}
-
-.likes{
-    display: flex;
-
-}
-
-.picture img{
-    /* border: green solid; */
-    width: 150px;
-    height: 150px;
-}
-
-.picture button{
-    /* border: blue solid; */
-    width: 75%;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: rgb(180, 164, 164);
-    color: white;
-
-}
-
-.likes-counter{
-    /* border: yellow solid; */
-    width: 25%;
-    background-color: rgb(41, 33, 33);
-    color: rgb(190, 181, 181);
-    justify-content: center;
-    padding: 5px;
-=======
 .picture-likes .picture-likes-counter{
     /* display: flex; */
     text-align: right;
->>>>>>> b4e22d7284b171342d61ad89e8a94ae4805e8570
 }
 
 .picture-image img{
-    width:200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }
 
 .clicked{

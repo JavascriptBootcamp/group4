@@ -1,11 +1,4 @@
 <div class="picture">
-<<<<<<< HEAD
-    <img [src]="image" alt="No image found" (click)="showPicture()">
-    <!-- [width]="getWidth()" [height]="getHeight()" -->
-    <div class="likes">
-      <button class="like" (click)="incCounter(src)">Like</button>
-      <div class="likes-counter">{{counter}}</div>
-=======
     <div class="picture-image">
       <div>
         <a routerLink="/author/{{picture.authorID}}">
@@ -18,6 +11,5 @@
     <div class="picture-likes">
       <button class="picture-likes-like" (click)="onLikeClicked()">Like</button>
       <span class="picture-likes-counter" [class]="fontSize">{{picture.likeCounter}} </span>
->>>>>>> b4e22d7284b171342d61ad89e8a94ae4805e8570
     </div>
   </div>

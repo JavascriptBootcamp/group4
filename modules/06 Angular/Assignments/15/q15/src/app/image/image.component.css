@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-.img-wrapper{
-    width: 600px;
-    height: 600px;
-}
-
-img{
-    width: 100%;
-    height: 100%;
-    /* border: red solid; */
-}
-
-.img-wrapper .visible{
-    visibility: visible;
-}
-
-.img-wrapper .hidden{
-    visibility: hidden;
-=======
 img{
 width: 100%;
 height: 100%;
->>>>>>> b4e22d7284b171342d61ad89e8a94ae4805e8570
 }
