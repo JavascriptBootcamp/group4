@@ -25,4 +25,10 @@ export class AuthorService {
   getAuthors(): Author[]{
     return this.Authors ;
   }
+  getAuthor(id): Author{
+    return this.Authors.find(function(element) {
+      return element.ID ===  id;
+    });
+     ;
+  }
 }
