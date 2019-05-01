@@ -1,0 +1,28 @@
+<div id="container">
+
+  <div>
+    <h3> {{total}} $ in Total</h3>
+  </div>
+  <br>
+  <form #form="ngForm">
+
+    <div ngModelGroup="details" #nameCtrl="ngModelGroup">
+      <label> Card Number: </label>
+      <input type="text" id="CardNumber" name="CardNumber" ngModel #numberElem="ngModel" minlength="9" maxlength="9" required><br>
+      <div *ngIf="numberElem.invalid && (numberElem.dirty || numberElem.touched)">
+        <span *ngIf="numberElem.errors.minlength">
+          Please enter more than 9 characters
+        </span>
+      </div>
+      <br>
+      <label> Name of Card: </label>
+      <input type="text" id="NameCard" name="NameCard" ngModel #nameElem="ngModel" required> <br><br>
+      <label> Expiry Date: </label>
+      <input type="date" id="Expiry" name="Expiry" ngModel #expiryElem="ngModel" required> <br><br>
+      <label>Security Code: </label>
+      <input type="text" id="Security" name="Security" ngModel #securityElem="ngModel" maxlength="3" required> <br><br>
+      <button>Submit</button>
+    </div>
+  </form>
+
+</div>

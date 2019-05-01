@@ -1,0 +1,53 @@
+<div id="container">
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  <tr id="last">
+    <td id="items">
+      <select id="it" #select required>
+              <option value="banana">Banana</option>
+              <option value="appel">Appel</option>
+              <option value="candy">Candy</option>
+              <option value="water">Water</option>
+              <option value="carrot">Carrot</option>
+              <option value="umbrella">Umbrella</option>
+              <option value="juice">Juice</option>
+              <option value="bred">Bred</option>
+              <option value="chicken">Chicken</option>
+              <option value="beef">Beef</option>
+          </select>
+    </td>
+    <td id="p">
+      <input type="number" id="price" min="1" value="1" #price required>$
+    </td>
+    <td id="add">
+      <button id="addBtn" (click)="addItem()">Add</button>
+    </td>
+  </tr>
+</table>
+<br> <h3>Your Cart:</h3>
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  <tr  *ngFor="let product of shoppingCart; let i=index">
+    <td>
+      {{product.name}}
+    </td>
+    <td>
+        {{product.price}} $
+    </td>
+    <td>
+        <button id="addBtn" (click)="remove(i,product.price)">remove</button>
+    </td>
+  </tr>
+</table>
+<h3 id="total">total price: {{sum}} $</h3>
+<a *ngIf="sum>0" routerLink="/payment/{{ sum }}">To Payment</a>
+
+</div>

@@ -1,0 +1,10 @@
+h1 {
+    text-align: center;
+}
+
+#container {
+    width: 100%;
+    background-color: brown;
+    padding: 20px;
+    color: wheat;
+}
