@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PictureComponent implements OnInit{
   @Input() picture: Picture;
+  @Input() isAuthorFromUrl: boolean;
   @Output() showPictureEvent = new EventEmitter<Picture>();
   isImageClicked: boolean;
   fontSize: string;

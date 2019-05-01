@@ -1,8 +1,8 @@
 <div class="picture">
     <div class="picture-image">
-      <div>
-        <a routerLink="/author/{{picture.authorID}}">
-            {{picture.author}}
+      <div *ngIf="!isAuthorFromUrl">
+        <a routerLink="/author/{{picture.author.id}}">
+            {{picture.author.name}}
         </a>
       </div>
       <img [src]="picture.imgSrc" alt="No image found" (click)="showPicture()" [class]="isImageClicked? 'clicked' : ''">

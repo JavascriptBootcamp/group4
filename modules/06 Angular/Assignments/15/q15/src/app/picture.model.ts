@@ -1,12 +1,7 @@
+import { Author } from './author.model';
 export interface Picture{
     id: number,
-    author: string,
-    authorID:number,
-    // profilePicture: string,
-    // facebookProfileURL: string,
-    // description: string,
-
+    author: Author;
     imgSrc: string,
     likeCounter: number
-
 }
