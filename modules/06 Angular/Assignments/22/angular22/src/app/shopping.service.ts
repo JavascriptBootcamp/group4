@@ -32,4 +32,11 @@ export class ShoppingService {
   get _getTotalPrice(): number {
     return this.totalPrice;
   }
+  removeAllItems(): void {
+    this.cart = [];
+    this.resetPrice();
+  }
+  resetPrice(){
+    this.totalPrice = 0;
+  }
 }

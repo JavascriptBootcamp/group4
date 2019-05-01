@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+#payment-container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+input{
+    display:inline-block;
+    width:100%;
+    height:30px;
+    margin:5px 0px;
+    border:none;
+    transition: 0.2s all;
+    padding:0px 10px;
+}
+button{
+    width:100%;
+    height: 30px;
+    background-color: #d26686;
+    border-style: solid;
+    border-color: #4e4e4e;
+    border-width: 0px 2px 2px 0px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #ca3461;
+    color:#fff;
+}
+form#payment {
+    min-width: 35%;
+}
+#error > h3{
+    text-align: center;
+}
+
+#CardNumber.ng-dirty.ng-invalid , #cardName.ng-dirty.ng-invalid , #ExpDate.ng-dirty.ng-invalid , #SecurityCode.ng-dirty.ng-invalid{
+    border-left: 10px solid red;
+}
+#CardNumber.ng-dirty.ng-valid , #cardName.ng-dirty.ng-valid , #ExpDate.ng-dirty.ng-valid , #SecurityCode.ng-dirty.ng-valid{
+    border-left: 10px solid rgb(0, 180, 69);
+}

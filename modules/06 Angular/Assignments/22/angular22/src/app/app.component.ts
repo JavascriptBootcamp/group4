@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import {ShoppingService} from './shopping.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular22';
+  constructor(private router: Router , private shoppingService : ShoppingService){
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart){
+        this.shoppingService.removeAllItems();
+      }
+    })
+  }
 }

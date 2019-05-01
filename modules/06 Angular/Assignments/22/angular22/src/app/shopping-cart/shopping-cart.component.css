@@ -14,11 +14,15 @@ table{
     border:1px solid;
 }
 td,th{
+    border-right:1px solid;
+}
+td,th{
     width:180px;
     height: 30px;
 }
 th{
    background-color:#9e98c7;
+   border-bottom: 1px solid;
 }
 select{
     width: 100%;
@@ -36,11 +40,18 @@ button{
     border-style: solid;
     border-color: #4e4e4e;
     border-width: 0px 2px 2px 0px;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #ca3461;
+    color:#fff;
 }
 #productId{
     text-align: center;
     background-color: rgb(190, 190, 190);
     opacity: 0.7;
+    cursor: not-allowed;
 }
 .cardId , .cardName , .cardPrice , .cardBtn{
     text-align: center;

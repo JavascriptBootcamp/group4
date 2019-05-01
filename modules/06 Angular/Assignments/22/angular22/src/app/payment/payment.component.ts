@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-payment',
@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild('form') form;
+  @ViewChild('cardNum') cardNum;
+  @ViewChild('card') card;
+  @ViewChild('Exp') Exp;
+  @ViewChild('Security') Security;
+  hidden: boolean;
+  submit: boolean;
+  constructor() {
+    this.hidden = true;
+    this.submit = false;
+  }
 
   ngOnInit() {
   }
-
+  onSubmit() {
+    if (this.form.invalid) {
+      this.hidden = false;
+      this.submit = false;
+    }
+    else {
+      this.hidden = true;
+      this.submit = true;
+    }
+  }
 }

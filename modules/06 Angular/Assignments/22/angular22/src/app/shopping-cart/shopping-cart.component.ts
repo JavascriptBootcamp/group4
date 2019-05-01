@@ -19,6 +19,7 @@ export class ShoppingCartComponent implements OnInit {
     this.totalPrice = 0;
     this.newItem = null;
     this.id = 0;
+    this.cart = null;
   }
   ngOnInit() {
   }

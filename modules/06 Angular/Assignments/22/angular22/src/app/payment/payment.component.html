@@ -1,9 +1,20 @@
-<form id="payment" method="post" action="http://localhost:3000/Order">
-  <input type="text" id="CardNumber" placeholder="Card Number" required>
-  <input type="text" id="NameOnCard" placeholder="Name on card" required>
-  <input type="date" id="ExpiryDate" placeholder="Expiry date" required>
-  <input type="text" pattern="[0-9]{3}" id="SecurityCode" placeholder="Security code" required>
-  <input type="submit" value="submit" (click)="validate()">
-</form>
-<h3>Error : </h3>
-<div id="error"></div>
+<div id="payment-container">
+  <h1>Payment</h1>
+  <form #form="ngForm" id="payment" (submit)="onSubmit()" [hidden]="submit">
+    <input type="text" id="CardNumber" placeholder="Card Number" required [(ngModel)]="cardNumber" name="cardNumber" #cardNum="ngModel">
+    <input type="text" id="cardName" placeholder="Card Name" required [(ngModel)]="cardName" name="cardName" #card="ngModel">
+    <input type="date" id="ExpDate" placeholder="Expiry date" required [(ngModel)]="ExpDate" name="ExpDate" #Exp="ngModel">
+    <input type="text" pattern="[0-9]{3}" id="SecurityCode" placeholder="Security code" required [(ngModel)]="SecurityCode" name="SecurityCode" #Security="ngModel">
+    <button>Submit</button>
+  </form>
+  <div id="error" [hidden]="hidden">
+    <h3 *ngIf="cardNum.invalid || card.invalid || Exp.invalid || Security.invalid">Error</h3>
+    <div *ngIf="cardNum.invalid">card number is required field</div>
+    <div *ngIf="card.invalid">card Name is required field</div>
+    <div *ngIf="Exp.invalid">Exp Date is required field</div>
+    <div *ngIf="Security.invalid">Security Code is required field and must be 3 letters</div>
+  </div>
+  <div [hidden]="!submit">
+      <h1>Submited!</h1>
+  </div>
+</div>
