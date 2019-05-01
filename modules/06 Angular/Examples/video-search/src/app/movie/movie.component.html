@@ -6,6 +6,7 @@
   <button type="button" (click)="onFavoritesClick()">
     {{ isClicked ? "Remove From Favorites" : "Add To Favorites" }}
   </button>
+  <a routerLink="movies/{{ movie.imdbID }}">Go To Movie</a>
 
   <div *ngIf="movieDetails.length > 0">
     <ul>
