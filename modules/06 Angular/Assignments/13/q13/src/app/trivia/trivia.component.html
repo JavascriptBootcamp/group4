@@ -1,8 +1,22 @@
-<div>
+<form #form="ngForm" (submit)= onSubmit($event,form.value)>
   <h1>Trivia</h1>
-  <div *ngFor="let q of questions"> 
-      <app-question [question]='q'></app-question>
+  <div *ngFor="let question of questions; index as i">
+    <!-- <app-question [question]='q'> -->
+    <app-question>
+      <div ngModelGroup="q{{i+1}}">
+        <h2>
+          <span class="wrong" *ngIf="!questionService.isCorrectAnswer(question.name,questionService.getAnswers()[question.name])">* </span>
+          {{i+1}}. {{question.question}}
+        </h2>
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value1}}' /> {{question.option1}}<br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value2}}' /> {{question.option2}}<br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value3}}' /> {{question.option3}}<br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value4}}' /> {{question.option4}}<br /><br />
+      </div>
+    </app-question>
   </div>
   <input type='submit' name='submit' value='Submit' />
   <input type="hidden" name="ts" value="1547375825757">
-</div>
+  <h2>Correct answers: {{questionService.correctAnswers}} / {{questionService.totalQuestions}}</h2>
+
+</form>
