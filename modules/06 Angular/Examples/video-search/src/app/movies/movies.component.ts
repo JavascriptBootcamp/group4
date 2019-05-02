@@ -4,6 +4,7 @@ import { searchUrl } from '../endpoint';
 import { MovieService } from '../movie.service';
 import { LoggerService } from '../logger.service';
 import { logTypes } from '../logTypes.model';
+import { FavoritesComponent } from '../favorites/favorites.component';
 
 @Component({
   selector: 'app-movies',
@@ -13,6 +14,7 @@ import { logTypes } from '../logTypes.model';
 })
 export class MoviesComponent {
   @ViewChild('query') myQuery;
+  @ViewChild(FavoritesComponent) favoritesComponent:FavoritesComponent
 
   // 1. variables declarations
   endpoint: string;
@@ -50,6 +52,7 @@ export class MoviesComponent {
     this.initDefaultValues();
     this.search = input.value;
     this.loadMovies();
+    this.favoritesComponent.isMenuOpen = false;
   }
 
   loadMovies() {
