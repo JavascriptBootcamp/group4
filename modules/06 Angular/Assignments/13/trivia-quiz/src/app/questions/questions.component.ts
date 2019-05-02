@@ -9,8 +9,8 @@ import { TrivaQuestion } from '../triva.model';
 })
 export class QuestionsComponent implements OnInit {
 
-  questions:TrivaQuestion[];
-  constructor(private questionsService :QuestionsService) {
+  questions: TrivaQuestion[];
+  constructor(private questionsService: QuestionsService) {
 
   /*   this.questionsService.myQuesions.subscribe(
       (myQ:TrivaQuestion[]) => console.log("my q:" + myQ)

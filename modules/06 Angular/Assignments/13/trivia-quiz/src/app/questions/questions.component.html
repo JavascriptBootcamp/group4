@@ -1,4 +1,6 @@
-<ol *ngFor="let qustion of questions">
-    <li> {{qustion.question}}</li>
+<ol >
+    <li *ngFor="let qustion of questions">
+      {{qustion.question}}
+    </li>
 </ol>
-<div (click) = "myClick()">click me</div>
+
