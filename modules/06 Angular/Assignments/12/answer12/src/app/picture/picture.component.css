@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+a {
+    margin: 2px;
+}
+
+img {
+    max-height: 200px;
+}
