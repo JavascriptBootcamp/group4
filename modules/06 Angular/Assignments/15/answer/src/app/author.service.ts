@@ -7,7 +7,7 @@ import { Guid } from "guid-typescript";
 })
 export class AuthorService {
   authors:Author[];
-  constructor() {  if(this.authors === undefined){ this.loadImgs() }}
+  constructor() { this.loadImgs() }
 
   loadImgs() {
     this.authors = [
