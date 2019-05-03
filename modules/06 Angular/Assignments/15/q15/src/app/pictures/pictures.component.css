@@ -22,19 +22,23 @@
 
     border: solid blue 5px; */
 
-    width: 70%;
-    height: 50%;
+    width: 600px;
+    height: 510px;
     z-index: 99;
     border: solid blue 5px;
     position: absolute;
-    margin-top: -54%;
-    margin-left: 16%;
+    top: 50%;
+    left: 50%;
+    top: 46%;
+    left: 51%;
+    margin-left: -310px;
+    margin-top: -240px;
 
 }
 
 #wrapper{
-    width: 70%;
-    height: 85%;
+    width: 50%;
+    height: 70;
     display: grid;
     grid-template-rows: repeat(4,25%);
     grid-template-columns: repeat(4,25%);
