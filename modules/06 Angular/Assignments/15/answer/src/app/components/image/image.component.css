@@ -47,3 +47,10 @@ img:hover,
   color:black;
    background-color:rgba(255, 0, 0, 0.3);
 }
+
+a{
+  text-decoration: none;
+}
+a:hover{
+color: black;
+}

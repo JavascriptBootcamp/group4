@@ -1,12 +1,12 @@
 #top3 {
   position: fixed;
-  bottom: 0;
+  bottom: 0px;
   left: 80%;
 }
 
 img {
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   border-radius: 15px;
   cursor: pointer;
   margin: 5px;
@@ -22,16 +22,15 @@ img:hover,
   background: rgb(102, 45, 52);
   color: rgb(213, 199, 177);
   cursor: pointer;
-
-  width: 150px;
+  width: 100px;
   height: 50px;
   border-radius: 5px;
   margin: 5px;
   font-size: 1.5rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
 ul {
@@ -42,5 +41,5 @@ ul {
 
 .expand {
     opacity: 1;
-    height: 500px;
+    height: 425px;
 }

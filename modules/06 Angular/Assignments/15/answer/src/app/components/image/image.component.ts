@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Img } from "../../modules/img";
+import {ImagesService} from '../../images.service'
+
 
 @Component({
   selector: 'app-image',
@@ -12,7 +14,7 @@ export class ImageComponent implements OnInit {
   @Output() showImgEvent = new EventEmitter<string>();
   @Output() incressLikeEvent = new EventEmitter();
 
-  constructor() {
+  constructor(private imgService:ImagesService) {
   }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class ImageComponent implements OnInit {
   addLike() {
     this.img.likes++;
     this.incressLikeEvent.emit();
+    this.imgService.saveLocalS();
   }
 
   showImg() {

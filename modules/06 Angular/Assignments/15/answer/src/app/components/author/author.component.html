@@ -1,10 +1,6 @@
-<br><br><br><br>
-<p>
-  author works!
-</p>
-
+<div id="container">
 <h1> {{author.name}}</h1>
-<img id="imgProfile" [src]="author.profile" alt="profile">
+<img id="imgProfile" [src]="author.profile" alt="profile" (click)="showImg(author.profile)">
 <div> {{author.description}}</div>
 <h2>My Images:</h2>
 <div id="myImgs">
@@ -12,3 +8,4 @@
 </div>
 <a [href]="author.facebook">My Facebook</a>
 <br><br>
+</div>
