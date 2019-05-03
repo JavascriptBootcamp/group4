@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {IActor} from '../iactor';
+import {ActorDataService} from '../actor-data.service';
 
 @Component({
   selector: 'app-actor',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActorComponent implements OnInit {
 
-  constructor() { }
+  actors : IActor[];
+  constructor(private actorDataService: ActorDataService) { }
 
   ngOnInit() {
+    this.getActors();
+  }
+
+  getActors() : void {
+    this.actors = this.actorDataService.getActors();
   }
 
 }

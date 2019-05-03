@@ -7,6 +7,10 @@ a {
     margin: 2px;
 }
 
+img:hover {
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.493);
+}
+
 img {
-    max-height: 200px;
+    max-height: 250px;
 }

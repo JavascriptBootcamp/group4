@@ -1,3 +1,7 @@
-<p>
-  actor works!
-</p>
+<div class="container">
+  <div class="actor-container" *ngFor="let actor of actors">
+    <a href="{{actor.profileLink}}">{{actor.name}}</a>
+    <label for="Age"> Age: {{actor.age}} </label>
+    <img src="{{actor.img}}">
+  </div>
+</div>

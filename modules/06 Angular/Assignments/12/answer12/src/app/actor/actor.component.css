@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.actor-container {
+    display: flex;
+    flex-direction: column;
+}
+label{
+    align-self: center;
+}
+
+img {
+    max-height: 300px;
+    margin: 2px;
+}
+
+a {
+    color: 2px solid rgb(6, 53, 92);
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
