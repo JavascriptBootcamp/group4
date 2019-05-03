@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from '../../image.service';
-import { AuthorService } from '../../Author.service';
+import { AuthorService } from '../../author.service';
 
 import { Img } from '../../modules/img';
 import { Author } from 'src/app/modules/Author';
@@ -19,8 +19,8 @@ export class AuthorComponent implements OnInit {
 
   ngOnInit() {
       this.imgs=this.imageService.getimgs();
-      console.log( this.authorService.getAuthor( this.route.snapshot.paramMap.get("ID")))
       this.author = this.authorService.getAuthor( this.route.snapshot.paramMap.get("ID"));
+      
 
   }
 

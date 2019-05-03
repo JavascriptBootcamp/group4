@@ -13,3 +13,9 @@
  .img {
   margin: 10px;
 }
+#author{
+  display: inline-table;
+  flex-wrap: wrap;
+  width: 20%;
+  color: rgb(102, 45, 52);
+}

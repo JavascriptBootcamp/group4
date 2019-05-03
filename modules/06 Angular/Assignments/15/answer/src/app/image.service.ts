@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Img } from './modules/img';
   import { AuthorService } from './author.service';
 import { Author } from './modules/Author';
@@ -13,7 +13,9 @@ export class ImageService {
     this.author= authorService.getAuthors(); 
     this.loadImgs();
    }
+   ngOnInit() {
 
+   }
   loadImgs() {
     this.imgs = [
       {src: "https://images.unsplash.com/photo-1553901753-215db344677a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",author:this.author[0], likes: 0},

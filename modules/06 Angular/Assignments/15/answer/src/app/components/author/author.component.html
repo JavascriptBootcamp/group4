@@ -1,13 +1,28 @@
-<div id="container" >
+<div id="container">
     <div id="author">
-        {{author.ID}}
+         name: {{author.name}}
+     <br>
+         profileFacebookUrl:  {{author.profileFacebookUrl}}
+         <br>
+         description:  {{author.description}}
+         <br>
+        <img  [src]="author.profilePicture" height="150px" >
+
+        
+        <!-- <span class="colored center">    {{author.ID}}</span> -->
+        
       </div>
-
-  
   <div id="gallery">
-    <div class="img" *ngFor="let img of imgs" >
-      <app-image [img]="img" ></app-image>
-    </div>
-  </div>
-</div>
 
+
+
+    <div class="img" *ngFor="let img of imgs"  >
+      <div *ngIf="img.author.name==author.name">
+          <app-image [img]="img"></app-image>
+      </div>
+     
+    </div>
+   
+  </div>
+ 
+</div>

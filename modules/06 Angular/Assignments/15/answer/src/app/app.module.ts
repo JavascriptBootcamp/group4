@@ -9,6 +9,8 @@ import { BigPicComponent } from './components/big-pic/big-pic.component';
 import { TopPicsComponent } from './components/top-pics/top-pics.component';
 import { MainGalleryComponent } from './components/main-gallery/main-gallery.component';
 import { AuthorComponent } from './components/author/author.component';
+import { AuthorService } from './author.service';
+import { ImageService } from './image.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { AuthorComponent } from './components/author/author.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthorService,ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
