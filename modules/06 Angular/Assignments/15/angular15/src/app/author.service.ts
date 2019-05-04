@@ -2,7 +2,7 @@
     import { Injectable } from '@angular/core';
  
             import { Observable, of } from 'rxjs';
-             import { ImgsDetails } from './app.component';
+             import { ImgsDetails } from './gallery/gallery.component';
             import { Author } from './Author.model'; 
            @Injectable({ providedIn: 'root' })
 

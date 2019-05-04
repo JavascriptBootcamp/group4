@@ -1,15 +1,3 @@
-<div [style.display]="!isDisplayed? 'block':'none'">
-  <!--[if lt IE 7]>
-          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-      <![endif]-->
-    <div class="Wrapper">
-     <div class="Gallery" id="Gallery" *ngFor="let imageSec of images; index as i" >
-      <app-image-section [ID]="imageSec.author.ID" [authorName]="imageSec.author.name" [imageSrc]="imageSec.imgUrl" [imgId]="i" (makeBigImg)="makeBigImg($event)"  ></app-image-section>
-          
-    </div>
-  </div>
-</div>
-<div class="bigPic"[style.display]="isDisplayed? 'block':'none'" ><span (click)="closeBigPic()">X  </span>
-    <img [src]="bigImgSrc"   align="top" > 
-   </div>
+  <app-nav></app-nav>
    <router-outlet></router-outlet>
+   

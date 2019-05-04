@@ -1,0 +1,30 @@
+
+
+.Wrapper {
+    background-color: beige;
+    margin-top: 2%;
+    height: 850px;
+    width: 900px;
+    margin:auto;
+
+      display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.Gallery{
+    margin: auto;
+}
+.bigPic{
+  left:50%;
+  top:50%;
+  margin-top: -190px; /* Half the height */
+   margin-left: -190px; 
+  position: fixed;
+
+}
+.bigPic img{
+  height: 300px;
+  width:350px;
+
+  }
