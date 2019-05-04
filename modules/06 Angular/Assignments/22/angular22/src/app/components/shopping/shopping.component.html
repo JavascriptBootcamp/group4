@@ -1,0 +1,40 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><select id="items" #productElem>
+            <option value="bread">bread</option>
+            <option value="milk">milk</option>
+            <option value="eggs">eggs</option>
+            <option value="cheese">cheese</option>
+            <option value="meat">meat</option>
+            <option value="rice">rice</option>
+            <option value="pasta">pasta</option>
+            <option value="ketchup">ketchup</option>
+            <option value="oil">oil</option>
+          </select>
+        </td>
+        <td><input type="text" id="price" placeholder="exmaple 10.00" #priceElem></td>
+        <td><button type="button" (click)="addClick(productElem.value,priceElem.value)">Add</button></td>
+      </tr>
+    </tbody>
+    <tfoot id="tdata">
+      <tr *ngFor="let product of shoppingService.products; let i=index">
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td><button (click)="removeClick(i,product.price)">Remove</button></td>
+      </tr>
+    </tfoot>
+  </table>
+  <div>
+    <h3>Price: {{shoppingService.totalSum | number}} $</h3>
+    <a class="btn" *ngIf="shoppingService.totalSum>0" routerLink="/payment">Checkout</a>
+  </div>
+</div>

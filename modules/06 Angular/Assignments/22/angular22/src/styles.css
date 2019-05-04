@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+.container {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    padding: 15px;
+    border: 2px solid #e5e5e5;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    width: 30%;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    padding: 15px;
+    border: 2px solid #e5e5e5;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wrap {
+    width: 100%;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+}
+
+input[type=text], input[type=date] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    text-align: center;
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}

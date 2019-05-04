@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="wrap">
+    <h2> {{shoppingService.totalSum | number}} $ in Total</h2>
+  </div>
+  <form #f="ngForm" (submit)="send()">
+    <label for="cardNumber">Card Number: </label>
+    <input type="text" id="cardNumber" name="cardNumber" ngModel #cardNumElem="ngModel" placeholder="Card Number"
+      minlength="16" pattern="\d*" required>
+    <div *ngIf="cardNumElem.invalid && (cardNumElem.dirty || cardNumElem.touched)">
+      <div *ngIf="cardNumElem.errors['pattern']">
+        Please enter numbers.
+      </div>
+      <div *ngIf="cardNumElem.errors['minlength']">
+        Please enter 16 numbers.
+      </div>
+    </div>
+    <label for="nameOnCard">Card Name: </label>
+    <input type="text" id="nameOnCard" name="nameOnCard" ngModel #cardNameElem="ngModel" pattern="[a-z A-z]*"
+      placeholder="Name on card" required>
+    <label for="expiryDate">Expiry Date: </label>
+    <input type="date" id="expiryDate" name="expiryDate" ngModel #expiryElem="ngModel" placeholder="Expiry date"
+      required>
+    <label for="cvvcode">Security Code: </label>
+    <input type="text" id="cvvcode" name="cvvcode" ngModel #cvvElem="ngModel" placeholder="CVV code" pattern="\d{3}"
+      required>
+    <!-- <div *ngIf="cvvElem.errors['pattern']">
+      Please enter 3 numbers.
+    </div> -->
+    <div class="wrap">
+      <input type="submit" [disabled]="!f.form.valid" value="Pay">
+    </div>
+  </form>
+</div>
