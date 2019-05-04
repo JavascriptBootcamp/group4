@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    color: #FF0B55;
+    background-color: rgb(213, 199, 177);
+    font-size: 1.5rem;
+    font-family: 'Lobster', cursive;
+
+}
+.questions
+{
+    font-weight: bold;
+}
+#title{
+
+    color: #323232;
+}

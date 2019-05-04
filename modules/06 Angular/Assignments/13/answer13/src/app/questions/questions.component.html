@@ -1,12 +1,12 @@
 <form #form="ngForm" (submit)=submitForm($event,form.value) [hidden]="hidden">
-  <h1>Trivia</h1>
+  <h1 id="title" >Trivia</h1>
 
 
 
 
   <div *ngFor="let answer of answers;let i=index  ">
     <!-- <div ngModelGroup="q{{i+1}}"> -->
-    <app-question [question]=questions[i]></app-question>
+    <app-question class="questions" [question]=questions[i]></app-question>
 
     <input type='radio' name={{i}} ngModel value='{{answer.option1}}'  /> {{answer.option1}}<br />
     <input type='radio' name={{i}} ngModel value='{{answer.option2}}' /> {{answer.option2}}<br />
@@ -28,6 +28,6 @@
 
 
 <div [hidden]="!hidden">
-    <h1>Amount of correct answers {{correctAnswers}}</h1>
+    <h3>Amount of correct answers: {{correctAnswers}}</h3>
     <!-- <h2>question {{indexQ+1}} is {{correctOrNot}}</h2> -->
   </div>
