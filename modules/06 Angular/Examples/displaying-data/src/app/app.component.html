@@ -1,0 +1,39 @@
+<h2>Colors</h2>
+<div *ngFor="let color of colors">
+  {{ color }}
+</div>
+<h2>Fetch</h2>
+{{ bookTitle }}
+<h2>Months</h2>
+<!-- <span *ngIf="isavailable; then months else nomonths"> -->
+<span *ngIf="isavailable; else nomonths">
+  <select (change)="changeMonths('moshiko is the king', $event)">
+    <option *ngFor="let month of months">
+      {{ month | lowercase | uppercase }}
+    </option>
+  </select>
+</span>
+<!-- 
+<ng-template #months>
+  There are some months...
+</ng-template> -->
+
+<ng-template #nomonths>
+  <h3>
+    Months are unavailable...
+</h3>
+</ng-template>
+
+<h2>Pipe</h2>
+<div>
+  {{ sampleObject | json }}
+</div>
+
+<h2>Custom Pipe</h2>
+<div>
+  {{ 16 | sqrt }}
+  {{ 25 | sqrt }}
+</div>
+
+<h2>Event Handlers</h2>
+<button (click)="sayHello()">Click Me</button>
