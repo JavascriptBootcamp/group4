@@ -1,0 +1,28 @@
+
+#author img{
+height: 380px;
+width:300px;
+}
+
+#author{
+    display: inline-block;
+
+}
+.authorsGallery img{
+    height: 130px;
+    width:110px;
+    padding:8px;
+}
+.authorsGallery {
+    display: inline-block;
+    vertical-align: top;
+    padding: 15px;
+
+}
+
+
+
+.wrapper{
+    display: inline-block;
+
+}

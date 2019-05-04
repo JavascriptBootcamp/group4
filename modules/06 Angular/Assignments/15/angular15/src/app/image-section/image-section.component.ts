@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import {AuthorService} from '../author.service';
 
 @Component({
   selector: 'app-image-section',
@@ -16,15 +17,12 @@ export class ImageSectionComponent implements OnInit {
       borderImg:string
       picSizeProp:string;
       counterId:string;
-  constructor() {
+  constructor(private auhtorService:AuthorService) {
    
    }
 
   ngOnInit() {
-    this.counterId="" +this.imgId;
-   if(window.localStorage.getItem(this.counterId))
-    this.counter=+window.localStorage.getItem(this.counterId);
-    else  this.counter=0;
+    this.counter=this.auhtorService.getFromLocalStorage(this.imgId);
     if(this.counter===0){
       this.picSizeProp="120";
 
@@ -42,9 +40,7 @@ export class ImageSectionComponent implements OnInit {
   }
   onclickaddLike(){
     this.counter+=1;
-    let toStrLocalStorCounter :string=""+ this.counter;
-
-    window.localStorage.setItem(this.counterId, toStrLocalStorCounter);
+      this.auhtorService.addToLocalStorage(this.imgId,this.counter);
 
     if(this.counter===0){
       this.picSizeProp="120";

@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AuthorComponent implements OnInit {
 
       author:Author;
+      authorsGallery:string[];
   constructor(private authorService : AuthorService ,  private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,7 +19,9 @@ export class AuthorComponent implements OnInit {
 
   getAuthor(){
     const authorID = this.route.snapshot.paramMap.get('ID');
-   this.authorService.getAuthor(authorID).subscribe(author=>this.author=author);
+   this.author=this.authorService.getAuthor(authorID).author;
+   this.authorsGallery=this.authorService.getAuthor(authorID).authorgallery;
+    
   }
 
 
