@@ -1,0 +1,7 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <input type="number" placeholder="enter card number" formControlName="cardNumber"><br>
+    <input type="text" placeholder="enter card ownder full name" formControlName="cardOwnerName"><br>
+    <input type="date" formControlName="exparationDate"><br>
+    <input type="number" placeholder="enter CVV" formControlName="CVV"> 
+    <button>Submit</button>
+</form>
