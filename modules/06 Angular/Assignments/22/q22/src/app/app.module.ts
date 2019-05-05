@@ -12,7 +12,7 @@ import { PaymentComponent } from './payment/payment.component';
     AppComponent,
     CartComponent,
     PaymentComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,34 +1,42 @@
 <div align="center" id="cardcont">
   <table id="cardtbl" border="1">
-      <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Action</th>
-      </tr>
-      <tr id="last">
-          <td id="items">
-              <select id="it">
-                  <option value="choose">Choose</option>
-                  <option value="banana">Banana</option>
-                  <option value="appel">Appel</option>
-                  <option value="candy">Candy</option>
-                  <option value="water">Water</option>
-                  <option value="carrot">Carrot</option>
-                  <option value="umbrella">Umbrella</option>
-                  <option value="juice">Juice</option>
-                  <option value="bred">Bred</option>
-                  <option value="chicken">Chicken</option>
-                  <option value="beef">Beef</option>
-              </select>
-          </td>
-          <td id="p">
-              <input type="number" id="price" min="0">
-          </td>
-          <td id="add">
-              <button id="addBtn" (click)="addItem()">Add</button>
-          </td>
-      </tr>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
 
+    <tr *ngFor="let i of cart; index as index">
+      <td id="item-name-{{index}}">{{i.name}}</td>
+      <td id="price-{{index}}">{{i.price}} </td>
+      <td class="action">
+        <button id="btn{{index}}" (click)="removeItem(index)">remove</button>
+      </td>
+    </tr>
+    
+    <tr id="last">
+      <td id="items">
+        <select id="it" #name>
+          <option value="choose">Choose</option>
+          <option value="banana">Banana</option>
+          <option value="appel">Appel</option>
+          <option value="candy">Candy</option>
+          <option value="water">Water</option>
+          <option value="carrot">Carrot</option>
+          <option value="umbrella">Umbrella</option>
+          <option value="juice">Juice</option>
+          <option value="bred">Bred</option>
+          <option value="chicken">Chicken</option>
+          <option value="beef">Beef</option>
+        </select>
+      </td>
+      <td id="p">
+        <input type="number" id="price" min="0" #price>
+      </td>
+      <td id="add">
+        <button id="addBtn" (click)="addItem(name.value,price.value,$event.target.textContent)">Add</button>
+      </td>
+    </tr>
   </table>
-  <b>Total Price:</b> <b id="tlp">0</b> $ <br><br>
+  <b>Total Price:</b> <b id="tlp">{{cartService.getTotal()}}</b> $ <br><br>
   <a routerLink="/payment">Checkout</a>

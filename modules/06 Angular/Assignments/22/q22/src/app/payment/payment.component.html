@@ -1,11 +1,46 @@
 <a routerLink="">Go back to cart</a>
-<form #form="ngForm" (submit)="onSubmitForm()" id="myForm">
-  <div ngModelGroup="creditCard" #nameCtrl="ngModelGroup">
-    <input id="cn" name="_cardNumber" ngModel #cardNumber="ngModel" minlength="8" maxlength="16" placeholder="Card Number" required>
+<form #form="ngForm" (submit)="onSubmitForm(form.valid,cardNumber.control.value,cardName.control.value,expiryDate.control.value,securityCode.control.value)" id="myForm">
+  <div ngModelGroup="creditCard" #nameCtrl="ngModelGroup" id="credit-card-info">
+
+    <input id="cn" name="_cardNumber" ngModel #cardNumber="ngModel" minlength="8" maxlength="19" placeholder="Card Number" required>
+    <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+        <span *ngIf="cardNumber.errors.minlength">
+          Please enter more than 7 characters
+        </span>
+        <span *ngIf="cardNumber.errors.maxlength">
+          Please enter less than 20 characters
+        </span>
+      </div>
+
     <input id="noc" name="_cardName" ngModel #cardName="ngModel" placeholder="Card Name" required>
-    <input id="exd" name="_expiryDate" ngModel #expiryDate="ngModel" type="date" maxlength="3" placeholder="Expiry Date" required>
-    <input id="sc" name="_securityCode" ngModel #securityCode="ngModel" maxlength="16" placeholder="Security Code" required>
- 
+    <div *ngIf="cardName.invalid && (cardName.dirty || cardName.touched)">
+        <span *ngIf="cardName.errors">
+          Please enter a card name
+        </span>
+        <span *ngIf="cardNumber.errors.maxlength">
+          Please enter less than 20 characters
+        </span>
+      </div>
+
+    <input id="exd" name="_expiryDate" ngModel #expiryDate="ngModel" type="date" placeholder="Expiry Date" required>
+    <div *ngIf="expiryDate.invalid && (expiryDate.dirty || expiryDate.touched)">
+        <span *ngIf="expiryDate.errors">
+          Please enter expiry date
+        </span>
+        <span *ngIf="cardNumber.errors.maxlength">
+          Please enter less than 20 characters
+        </span>
+      </div>
+
+    <input id="sc" name="_securityCode" ngModel #securityCode="ngModel" minlength="3" maxlength="3" placeholder="Security Code" required>
+    <div *ngIf="securityCode.invalid && (securityCode.dirty || securityCode.touched)">
+        <span *ngIf="securityCode.errors">
+          Please enter exactly 3 digits
+        </span>
+      </div>
+
+    <button id="sub" type="submit">Submit</button>
   </div>
-  <button id="sub">Submit</button>
 </form>
+
+<div>{{message}}</div>
