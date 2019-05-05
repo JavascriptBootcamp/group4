@@ -1,10 +1,9 @@
+<app-author id="wrapper-author" *ngIf="authorInputUrl && currentAuthor" [author]="currentAuthor"></app-author>
 <div id="wrapper">
-  <div class="wrapper-author" *ngIf="authorInputUrl && currentAuthor">
-    <app-author [author]="currentAuthor"></app-author>
-  </div>
   <div class="wrapper-pictures" *ngFor="let picture of pictures">
     <!-- <img src={{image}} alt="No image found" width="200px" height="200px"> -->
-    <app-picture [picture]="picture" [isAuthorFromUrl]="authorInputUrl ? true : false" (showPictureEvent)="onImgClilcked($event)"></app-picture>
+    <app-picture [picture]="picture" [isAuthorFromUrl]="authorInputUrl ? true : false"
+      (showPictureEvent)="onImgClilcked($event)"></app-picture>
   </div>
 </div>
 

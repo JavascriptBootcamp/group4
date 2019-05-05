@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin: 5px;
-    padding:7px;
+    /* margin: 5px; */
+    /* padding:7px; */
+    /* border: solid orange 5px; */
     /* margin: 20px; */
     /* justify-content: space-around;  */
 }
@@ -20,8 +21,9 @@
 }
 
 .picture-image img{
-    width: 185px;
-    height: 160px;
+    width: 250px;
+    height: 200px;
+    margin: 0 auto;
 }
 
 .clicked{

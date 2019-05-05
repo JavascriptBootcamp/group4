@@ -1,4 +1,24 @@
-.author-details{
-    border: solid green 2px;
+#author-details{
+    width: 100%;
+    /* border: solid green 2px; */
     margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px; 
 }
+
+#author-details div{
+    padding: 10px;
+}
+
+#author-details-img{
+    height: 150px;
+    width: 185px;
+    /* border: solid black 10px; */
+    margin: 0 auto;
+    }
+
+    #author-details-img img{
+        height: 100%;
+        width: 100%;
+        }
