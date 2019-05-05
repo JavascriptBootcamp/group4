@@ -1,0 +1,23 @@
+<form [formGroup]="f" (submit)="onSubmit()">
+
+  <div formGroupName="username">
+    <input formControlName="firstname">
+    <input formControlName="lastname">
+  </div>
+
+  <div *ngIf="f.invalid && (f.dirty || f.touched)">
+    <div *ngIf="f.get('username').get('lastname').errors.minlength">
+      Minimum 2 characters
+    </div>
+    <div *ngIf="f.get('username').get('lastname').errors.required">
+      Please fill Last Name
+    </div>
+  </div>
+  <div *ngIf="f.invalid && f.dirty">
+    <div *ngIf="f.get('username').get('lastname').errors.containsB">
+      Last Name must contain the character "B"
+    </div>
+  </div>
+
+  <button>Submit</button>
+</form>
