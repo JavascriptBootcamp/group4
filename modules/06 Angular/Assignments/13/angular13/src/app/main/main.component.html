@@ -1,0 +1,18 @@
+<div [style.display]="toDisplay ? 'block' : 'none'">
+<h2>Answer all the questions : QUIZE</h2>
+<form #form="ngForm" (submit)="submitForm($event,form.value)">
+  <div   *ngFor="let question of questions; index as i" >
+    <app-question>
+      <div ngModelGroup="question{{i}}">
+        <h3>{{i+1}}.{{question.question}}</h3>
+        <input type="radio" ngModel name='{{question.name}}' value='{{question.value1}}'>{{question.answer1.answer}}<br>
+        <input type="radio" ngModel name='{{question.name}}' value='{{question.value2}}'>{{question.answer2.answer}}<br>
+        <input type="radio" ngModel name='{{question.name}}' value='{{question.value3}}'>{{question.answer3.answer}}<br>
+        <input type="radio" ngModel name='{{question.name}}' value='{{question.value4}}'>{{question.answer4.answer}}<br><br>
+      </div>
+    </app-question>
+  </div>
+  <input type="submit" name='submit' value='Submit'>
+</form>
+</div>
+<div class="result" [style.display]="!toDisplay ? 'block' : 'none'"><h2>Your Quize result is {{correctAnswersAmount}} / 10 , you got {{correctAnswersAmount}} correct answers</h2></div>
