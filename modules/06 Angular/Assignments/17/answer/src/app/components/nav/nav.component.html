@@ -1,3 +1,19 @@
-<p>
-  nav works!
-</p>
+<nav>
+  <ul>
+    <li>
+      <a routerLink="home" [routerLinkActive]="'active'">
+       <h1>Home</h1> 
+      </a>
+    </li>
+    <li>
+      <a routerLink="about" [routerLinkActive]="'active'">
+        <h1>About Us</h1>
+      </a>
+    </li>
+    <li>
+      <a routerLink="recipes" [routerLinkActive]="'active'">
+        <h1>All Recipes</h1>
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Recipe } from "../classes/recipe";
+import { Recipe } from "../models/recipe";
 
 @Injectable({
   providedIn: 'root'
@@ -25,25 +25,11 @@ export class RecipesService {
         rating: { stars: 3, imgSrc: "https://www.garage-gyms.com/wp-content/uploads/2016/02/3-star-rating.png" }
       },
       {
-        id: "",
-        title: "",
-        ingredients: [""],
-        cookingTime: 30,
-        rating: { stars: 4, imgSrc: " " }
-      },
-      {
-        id: "",
-        title: "",
-        ingredients: [""],
-        cookingTime: 30,
-        rating: { stars: 4, imgSrc: " " }
-      },
-      {
-        id: "",
-        title: "",
-        ingredients: [""],
-        cookingTime: 30,
-        rating: { stars: 4, imgSrc: " " }
+        id: "OmletC",
+        title: "Omlet with cheese",
+        ingredients: ["Egg","Onion","Cooking Oil","cheese"],
+        cookingTime: 5,
+        rating: { stars: 5, imgSrc: "https://community.powerbi.com/oxcrx34285/attachments/oxcrx34285/QuickMeasuresGallery/207/1/5-star-rating.png" }
       }
     ]
   }
