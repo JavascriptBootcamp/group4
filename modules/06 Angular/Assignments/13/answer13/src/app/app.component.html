@@ -1,0 +1,22 @@
+
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+
+<app-questions>
+  <form>
+    <div *ngFor="let q of questions,index as i">
+        <h3>{{q.question}}</h3>
+        <fieldset id="question-{{i}}">
+        <ol>
+          <input type="radio" name="answer-{{i}}" id="q-{{i}}-answer1" /><li>{{q.answer1}}</li>
+          <input type="radio" name="answer-{{i}}" id="q-{{i}}-answer2" /><li>{{q.answer2}}</li>
+          <input type="radio" name="answer-{{i}}" id="q-{{i}}-answer3" /><li>{{q.answer3}}</li>
+          <input type="radio" name="answer-{{i}}" id="q-{{i}}-answer4" /><li>{{q.answer4}}</li>
+        </ol>
+        </fieldset>
+      </div>
+      <button>Submit</button>
+    </form>
+</app-questions>
