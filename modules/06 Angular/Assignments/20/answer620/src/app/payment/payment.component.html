@@ -1,16 +1,15 @@
 <form [formGroup]="f" (submit)="onSubmit()">
-    
-    <label> Card Number: </label>
-    <input id="cn" type="text" required><br>
-
-
-    <!-- //<div formGroupName="username"> -->
-      <input formControlName="CardNumber">
-      <input formControlName="cardname">
  
+  <label for="CardNumber"> Card Number:</label>
+  <input id="CardNumber"  formControlName="CardNumber">
 
-      <input formControlName="ExpiryDate">
-      <input formControlName="SecurityCode">
+      <label for="cardname"> Card name:</label>
+      <input id="cardname"  formControlName="cardname">
+      <label for="ExpiryDate"> Expiry Date:</label>
+      <input id="ExpiryDate"  formControlName="ExpiryDate">
+      <label for="SecurityCode"> Security Code:</label>
+      <input id="SecurityCode"  formControlName="SecurityCode">
+   
   <!-- //  </div> -->
   
     <!-- <div *ngIf="f.invalid && (f.dirty || f.touched)">
