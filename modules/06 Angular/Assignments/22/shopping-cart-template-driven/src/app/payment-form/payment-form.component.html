@@ -17,7 +17,12 @@
           <label>Security Code: </label>
           <input type="text" name="code" ngModel #code="ngModel" maxlength="3" required><br>
       </p>
+      <p>
+          Total Price: {{totalPrice}}
+      </p>
       <button>Submit</button>
+      <br>
+      <a routerLink="/">Back To Shooping Cart</a>
 
   </div>
 </form>
