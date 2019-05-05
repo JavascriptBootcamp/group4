@@ -1,0 +1,32 @@
+<form  #paymentForm="ngForm" (submit)="onSubmitForm(paymentForm)" id="myForm">
+  <p>
+      <label> Card Number: </label>
+      <input name="cardNumber" [(ngModel)]="creditCard" ngModel id="cn" type="text" required><br>
+  </p>
+  <p *ngIf="!valid">
+    Card number is Invalid
+  </p>
+  <p>
+      <label> Name of Card: </label>
+      <input name="nameCard" ngModel id="noc" [(ngModel)]="nameCard" type="text" required><br>
+  </p>
+  <p>
+      <label> Expiry Date: </label>
+      <input nameCard id="exd" type="date" required><br>
+  </p>
+  <p>
+      <label>Security Code: </label>
+      <input name="security" #sec="ngModel" [(ngModel)]="secCode" id="sc" type="text" maxlength="3" minlength="3" required><br>
+  </p>
+  <p *ngIf="sec.dirty && sec.invalid">
+        Security Code is less than 3
+  </p>
+
+
+  <button id="sub">Submit</button>
+
+  <div>Payment is {{sum}}</div>
+
+</form><br><br>
+
+{{paymentForm.value | json}}
