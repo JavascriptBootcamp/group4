@@ -1,0 +1,42 @@
+<div id="shopping-container">
+  <h1>shopping cart table</h1>
+  <table id="shoppingCart">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td id="productId">Auto incremented id</td>
+      <td>
+        <select id="productsName" #productsName>
+          <option>t-shirt</option>
+          <option>pants</option>
+          <option>socks</option>
+          <option>gloves</option>
+          <option>jacket</option>
+          <option>shoes</option>
+          <option>coats</option>
+          <option>jeans</option>
+          <option>suits</option>
+          <option>swimwear</option>
+        </select>
+      </td>
+      <td>
+        <input id="price" type="number" #price value="0">
+      </td>
+      <td>
+        <button id="action" (click)="createProductItem()">Add</button>
+      </td>
+    </tr>
+    <tr *ngFor="let key of cart">
+      <td class="cardId">{{key.id}}</td>
+      <td class="cardName">{{key.name}}</td>
+      <td class="cardPrice">{{key.price}}</td>
+      <td class="cardBtn"><button (click)="removeProduct(key.id)">remove</button></td>
+    </tr>
+  </table>
+  <h3>total</h3>
+  <div id="total">{{totalPrice}}</div>
+</div> 

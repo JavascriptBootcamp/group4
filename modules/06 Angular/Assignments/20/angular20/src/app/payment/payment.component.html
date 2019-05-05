@@ -1,0 +1,20 @@
+<div id="payment-container">
+  <h1>Payment</h1>
+  <form [formGroup]="profileForm" id="payment" (submit)="onSubmit()" [hidden]="submit">
+    <input type="text" id="CardNumber" placeholder="Card Number" formControlName="cardNumber">
+    <input type="text" id="cardName" placeholder="Card Name" formControlName="cardName">
+    <input type="date" id="ExpDate" placeholder="Expiry date" formControlName="expiryDate">
+    <input type="text" pattern="[0-9]{3}" id="SecurityCode" placeholder="Security code" formControlName="SecurityCode">
+    <button>Submit</button>
+  </form>
+  <div id="error" [hidden]="hidden">
+    <h3>Error</h3>
+    <div *ngIf="cardNum.invalid">card number is required field</div>
+    <div *ngIf="card.invalid">card Name is required field</div>
+    <div *ngIf="Exp.invalid">Exp Date is required field</div>
+    <div *ngIf="Security.invalid">Security Code is required field and must be 3 letters</div>
+  </div>
+  <div [hidden]="!submit">
+      <h1>Submited!</h1>
+  </div>
+</div> 
