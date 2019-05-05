@@ -20,7 +20,7 @@ export class FavoritesComponent implements OnInit {
    }
 
    ngOnInit() {
-    this.favorites = this.favoritesService.getFavorites();
+    this.favorites = this.favoritesService._favorites;
    }
 
   toggleFavorites() {
