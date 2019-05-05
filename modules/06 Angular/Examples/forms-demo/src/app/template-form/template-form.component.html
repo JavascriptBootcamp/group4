@@ -1,0 +1,28 @@
+<form #f="ngForm" (submit)="onSubmitForm(f)">
+
+  <p *ngIf="nameCtrl.invalid">Name is invalid.</p>
+
+  <div ngModelGroup="username" #nameCtrl="ngModelGroup">
+    <input id="firstName" name="first" ngModel #firstElem="ngModel" minlength="2" maxlength="6" (keydown)="onKeyDown()">
+    <input name="last" [(ngModel)]="lastModel" #last="ngModel" required>
+    
+    <div *ngIf="firstElem.invalid && (firstElem.dirty || firstElem.touched)">
+      <span *ngIf="firstElem.errors.minlength">
+        Please enter more than 2 characters
+      </span>
+      <span *ngIf="firstElem.errors.maxlength">
+        Please enter less than 6 characters
+      </span>
+    </div>
+
+  </div>
+
+  <label for="gender">Gender</label>
+  <select name="gender" [ngModel]="gender" #gender="ngModel">
+    <option>Male</option>
+    <option>Female</option>
+  </select>
+
+  <button>Submit</button>
+
+</form>
