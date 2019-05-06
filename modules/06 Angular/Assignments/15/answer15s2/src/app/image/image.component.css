@@ -1,0 +1,68 @@
+img {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.imgBorder {
+    border: 2px solid black;
+}
+
+img:hover { 
+    border: solid 1px rgb(46, 93, 110);
+}
+
+.wrapper {
+    height: 250px;
+}
+
+button {
+    padding: 0;
+    width: 70%;
+    height: 30px;
+    float: left;
+    font-size: 20px;
+    color: #FCFEFF;
+    border: none;
+    border-radius: 5px;
+    background: #38697E; 
+    cursor: pointer;
+    font-family: 'Yellowtail';
+}
+
+button:hover { 
+    border: solid 2px rgb(46, 93, 110);
+}
+
+.like {
+    width: 30%;
+    height: 27px;
+    float: left;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #3B3C40; 
+    color: #FCFEFF;
+    text-align: center;
+    padding-top: 3px;
+}
+
+.author {
+    text-align: center;
+    font-size: 20px; 
+    margin-top: 40px;
+}
+
+a:link {
+    color: #3B3C40;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: #3B3C40;
+} 
+  
+a:hover {
+    color: #125668;
+    font-weight: bold;
+}

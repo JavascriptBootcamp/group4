@@ -1,0 +1,21 @@
+<div class="author-wrapper">
+  <div class="author-profile">
+    <div class="author-profile-picture">
+      <img class="profile-picture" [src]="author.profilePicture">
+    </div>
+    <div class="author-details">
+      <h1>{{author.authorName}}</h1>
+      <h2>Description: {{author.description}}</h2>
+      <h2><a [href]="author.facebookUrl" target="_blank">visit facebook page</a></h2>
+    </div>
+  </div>
+  <div class="author-pictures">
+    <a class="back" routerLink="">
+      <h2>Back</h2>
+    </a>
+    <h2>{{author.authorName}}'s photos</h2>
+    <div *ngFor="let src of authorImages">
+      <img class="image" [src]="src" width="100px" height="100px">
+    </div>
+  </div>
+</div>

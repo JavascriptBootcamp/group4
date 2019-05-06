@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <img (click)="openImage()" [src]="img.srcImg" [className]="!isClicked? '': 'imgBorder'"
+        [style.height.px]="imageHeight" [style.width.px]="imageWidth">
+</div>
+<button (click)="addLike()">LIKE</button>
+<div class="like">{{counter}}</div>
+<div class="author"><a routerLink="authors/{{img.author.authorId}}">{{img.author.authorName}}</a></div>

@@ -1,0 +1,7 @@
+<div class="bg-blur" [style.visibility]="!blurVisible? 'hidden':'visible'" (click)="onBlur()"></div>
+<img id="large-picture" [style.visibility]="!pictureVisible? 'hidden':'visible'" [src]="mainImg">
+<div id="wrapper">
+    <div class="img-wrapper" *ngFor="let img of images; index as i">
+        <app-image (imgPressedEvent)="imgPressed($event)" [imageId]="i" [img]="img"></app-image>
+    </div>
+</div>

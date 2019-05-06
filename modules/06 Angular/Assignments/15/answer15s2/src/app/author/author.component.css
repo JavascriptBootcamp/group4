@@ -1,0 +1,56 @@
+.author-wrapper {
+    width: 55%;
+    height: 800px; 
+    display: grid;
+    grid-template-rows: 50% 50%; 
+    margin: 30px auto; 
+} 
+
+.author-profile {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.profile-picture {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    margin-bottom: 30px;  
+}
+
+.author-details {
+    margin-top: 40px; 
+    margin-left: 30px;
+}
+
+.author-pictures {
+    border-top: 3px solid rgb(8, 6, 29); 
+}
+
+.image {
+    float: left;
+    width: 220px;
+    height: 220px; 
+    margin: 15px;
+}
+
+.back {
+    float: right;
+}
+
+a:link {
+    color: #125668;
+    font-weight: bold;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: #125668;
+    font-weight: bold;
+} 
+  
+a:hover {
+    color: #3B3C40;
+    font-weight: bold;
+}
+
