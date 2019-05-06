@@ -1,24 +1,36 @@
-<form>
 <table id="productTable">
   <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Action</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Action</th>
   </tr>
   <tr>
-      <td>
-          <select  id = "productName">
-              <option  *ngFor="let product of products"  [value] = "product"> {{product}}</option>
-          </select>
-      </td>
-      <td>
-          <input type="number" id="price" required>
-      </td>
-      <td>
-          <input type="button" value="Add" id="addButton" onclick="addProduct()">
-      </td>
+    <td>
+      <select id="productName" name="product" #select >
+        <option *ngFor="let product of products" [value]="product.itemPrice" >
+          {{ product.itemName}}
+        </option>
+      </select>
+    </td>
+    <td>
+      <input id="price" required [value]="select.value" #price />
+    </td>
+    <td>
+      <input type="button"  value="add" id = "addButton" (click) = "addProductToList( {
+        itemName:'shnizel',
+        itemPrice:30.99
+      })">
+    </td>
   </tr>
-
+  <tr *ngFor="let mySelectedProduct of mySelectedProducts">
+    <td>{{ mySelectedProduct.itemName }}</td>
+    <td>{{ mySelectedProduct.itemPrice }}</td>
+    <td>  <input type="button" value="remove" (click)="removeProduct({
+      itemName:'shnizel',
+      itemPrice:30.99
+    })"> </td>
+  </tr>
 </table>
-</form>
-<h3> <mark>Total price :</mark> <div id = "totalPrice"> </div> </h3>
+
+  <mark>Total price :</mark>
+  <div id="totalPrice"></div>
