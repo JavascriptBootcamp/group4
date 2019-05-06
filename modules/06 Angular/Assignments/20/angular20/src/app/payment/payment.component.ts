@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -22,7 +23,11 @@ export class PaymentComponent implements OnInit {
 
   }
   validateDigitAndNumber(control: FormControl): { [key: string]: boolean } {
-    if (control.value.length === 16 && !isNaN(control.value)) {
+
+    if (control.value.length === 16 && !isNaN(control.value) && !control.value.includes('-')) {
+      return null
+    }
+    else if (control.value.length === 19 && control.value.includes('-') && !isNaN(control.value.split('-').join(''))) {
       return null
     }
     return {
@@ -30,7 +35,10 @@ export class PaymentComponent implements OnInit {
     }
   }
   validteFinalDigitEven(control: FormControl): { [key: string]: boolean } {
-    if (control.value[15] % 2 === 0) {
+    if (control.value[15] % 2 === 0 && !control.value.includes('-')) {
+      return null
+    }
+    else if (control.value[18] % 2 === 0 && control.value.includes('-')) {
       return null
     }
     return {
@@ -39,8 +47,18 @@ export class PaymentComponent implements OnInit {
   }
   validteSumGreater16(control: FormControl): { [key: string]: boolean } {
     let sum: number = 0;
-    for (let i = 0; i < control.value.length; i++) {
-      sum += Number(control.value[i]);
+    let ctl: string;
+    if(control.value.includes('-'))
+    {
+      ctl = control.value.split('-').join('');
+      for (let i = 0; i < ctl.length; i++) {
+        sum += Number(ctl[i]);
+      }
+    }
+    else{
+      for (let i = 0; i < control.value.length; i++) {
+        sum += Number(control.value[i]);
+      }
     }
     if (sum > 16) {
       return null
@@ -52,8 +70,18 @@ export class PaymentComponent implements OnInit {
   validteDiffrentDigits(control: FormControl): { [key: string]: boolean } {
     let duplicates: number = 0;
     let duplicatesArr: Array<number> = new Array(10).fill(0);
-    for (let i = 0; i < control.value.length; i++) {
-      duplicatesArr[control.value[i]]++;
+    let ctl: string;
+    if(control.value.includes('-'))
+    {
+      ctl = control.value.split('-').join('');
+      for (let i = 0; i < ctl.length; i++) {
+        duplicatesArr[ctl[i]]++;
+      }
+    }
+    else{
+      for (let i = 0; i < control.value.length; i++) {
+        duplicatesArr[control.value[i]]++;
+      }
     }
     for (let i = 0; i < duplicatesArr.length; i++) {
       if (duplicatesArr[i] > 0) {
@@ -67,8 +95,8 @@ export class PaymentComponent implements OnInit {
       "DiffrentDigits": true
     }
   }
-  get f() { 
-    return this.profileForm.controls; 
+  get f() {
+    return this.profileForm.controls;
   }
   onSubmit() {
     if (this.profileForm.valid) {
