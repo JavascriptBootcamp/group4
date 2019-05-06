@@ -4,13 +4,23 @@
   </h1>
 </div>
 
-<div >
-    <!-- [hidden]="hidden" -->
-  <form (submit)=onSubmit($event,form.value) #form="ngForm">
+<div>
+ 
+  <form (submit)=onSubmit($event,form) #form="ngForm">
 
     <app-question *ngFor="let question of questions; let i=index">
-        {{i+1}}. {{question.question}} <br>
-      <input type='radio' ngModel [name]='question.name' [value]='question.value1' /> {{question.option1}}<br />
+      {{i+1}}. {{question.question}} <br>
+      <div *ngIf="submit && quizService.isCorrect(optElem ,question.question); else inCorrect">
+        <p class="answerTrue">
+          Correct Answer!
+        </p>
+      </div>
+      <ng-template  #inCorrect>
+        <p class="answerFalse" *ngIf="submit">
+            inCorrect Answer!
+        </p>
+      </ng-template>
+      <input type='radio' ngModel [name]='question.name' [value]='question.value1' #optElem="ngModel" />{{question.option1}}<br />
       <input type='radio' ngModel [name]='question.name' [value]='question.value2' /> {{question.option2}}<br />
       <input type='radio' ngModel [name]='question.name' [value]='question.value3' /> {{question.option3}}<br />
       <input type='radio' ngModel [name]='question.name' [value]='question.value4' /> {{question.option4}}<br /><br />
@@ -20,10 +30,10 @@
 </div>
 <br>
 <div id="grade" [hidden]="!hidden">
-Grade = {{grade}} <br><br>
-These are the answers: <br>
-<span *ngFor="let answer of answers; let i=index">
-{{i+1}}. {{answer}} <br>
-</span>
+  Correct Answers = {{grade}}/10 <br><br>
+  These are the correct answers: <br>
+  <span *ngFor="let answer of answers; let i=index">
+    {{i+1}}. {{answer}} <br>
+  </span>
 </div>
 <router-outlet></router-outlet>

@@ -33,10 +33,23 @@ export class QuizService {
     return this.answers;
   }
 
-
-
-  isCorrect(){
+  isCorrect(optElem:any, question:string): boolean {
     
+    for (let i = 0; i < this.questions.length; i++) {
+      if (question == this.questions[i].question) {
+        console.log(question);
+        console.log(this.questions[i].question);
+        console.log(optElem.value+this.questions[i].correctAnswer);
+        if (optElem.value === this.questions[i].correctAnswer) {
+          console.log(optElem.value+this.questions[i].correctAnswer);
+          return true;
+        }
+        else {
+          break;
+        }
+      }
+    }
+    return false;
   }
 
   grade(value: object): number {

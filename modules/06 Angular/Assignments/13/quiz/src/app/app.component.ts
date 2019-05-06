@@ -14,14 +14,18 @@ export class AppComponent {
   answers:string[];
   hidden: boolean;
   grade:number=0;
+  submit: boolean;
+
   constructor(public quizService: QuizService) {
     this.questions = quizService.getAllQuestion();
+    this.submit = false;
   }
 
-  onSubmit(event, value: any):void {
+  onSubmit(event:any, form: NgForm):void {
+    this.submit = true;
     event.preventDefault();
     this.hidden = true;
-    this.grade =this.quizService.grade(value);
+    this.grade =this.quizService.grade(form.value);
     this.answers=this.quizService.getAllAnswers();
   }
 
