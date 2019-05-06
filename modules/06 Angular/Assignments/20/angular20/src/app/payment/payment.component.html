@@ -3,18 +3,55 @@
   <form [formGroup]="profileForm" id="payment" (submit)="onSubmit()" [hidden]="submit">
     <input type="text" id="CardNumber" placeholder="Card Number" formControlName="cardNumber">
     <input type="text" id="cardName" placeholder="Card Name" formControlName="cardName">
-    <input type="date" id="ExpDate" placeholder="Expiry date" formControlName="expiryDate">
-    <input type="text" pattern="[0-9]{3}" id="SecurityCode" placeholder="Security code" formControlName="SecurityCode">
+    <input type="date" id="ExpDate" formControlName="expiryDate">
+    <input type="text" id="SecurityCode" placeholder="Security code" formControlName="SecurityCode">
     <button>Submit</button>
   </form>
-  <div id="error" [hidden]="hidden">
-    <h3>Error</h3>
-    <div *ngIf="cardNum.invalid">card number is required field</div>
-    <div *ngIf="card.invalid">card Name is required field</div>
-    <div *ngIf="Exp.invalid">Exp Date is required field</div>
-    <div *ngIf="Security.invalid">Security Code is required field and must be 3 letters</div>
+
+  <div class="error" *ngIf="profileForm.invalid && f.cardNumber.errors" [hidden]="hidden">
+    <h3>Card number</h3>
+    <p *ngIf="f.cardNumber.errors.required">
+      card Number field is required
+    </p>
+    <p *ngIf="f.cardNumber.errors.DigitAndNumber">
+      card Number must contain 16 numbers digit
+    </p>
+    <p *ngIf="f.cardNumber.errors.DiffrentDigits">
+        digit must contain at least 2 diffrent digit
+      </p>
+    <p *ngIf="f.cardNumber.errors.FinalDigitEven">
+      final digit must be even
+    </p>
+    <p *ngIf="f.cardNumber.errors.SumGreater16">
+      sum of all digit must be greater then 16
+    </p>
   </div>
-  <div [hidden]="!submit">
-      <h1>Submited!</h1>
+
+  <div class="error" *ngIf="profileForm.invalid && f.cardName.errors" [hidden]="hidden">
+    <h3>Card name</h3>
+    <p *ngIf="f.cardName.errors.required">
+      card Number field is required
+    </p>
   </div>
-</div> 
+
+  <div class="error" *ngIf="profileForm.invalid && f.expiryDate.errors" [hidden]="hidden">
+    <h3>Expiry date</h3>
+    <p *ngIf="f.expiryDate.errors.required">
+      card Number field is required
+    </p>
+  </div>
+
+  
+  <div class="error" *ngIf="profileForm.invalid && f.SecurityCode.errors" [hidden]="hidden">
+    <h3>Security code</h3>
+    <p *ngIf="f.SecurityCode.errors.required">
+      card Number field is required
+    </p>
+    <p *ngIf="profileForm.get('SecurityCode').errors.minlength">
+      card Number field must contain at least 3 digit
+    </p>
+    <p *ngIf="profileForm.get('SecurityCode').errors.maxlength">
+      max digit can be 4 digit
+    </p>
+  </div>
+</div>
