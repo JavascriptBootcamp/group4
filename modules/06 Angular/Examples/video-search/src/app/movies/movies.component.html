@@ -5,7 +5,8 @@
 
 <div id="movies">
   <div id="movie-details" *ngFor="let currentMovie of movies">
-    <app-movie [movie]="currentMovie" (favoritesEventAlias)="onFavoritesChange($event)"></app-movie>
+    <!-- <app-movie [movie]="currentMovie" (favoritesEventAlias)="onFavoritesChange($event)"></app-movie> -->
+    <app-movie [movie]="currentMovie"></app-movie>
   </div>
 
   <button *ngIf="movies.length > 0" (click)="loadMovies()" [disabled]="!hasMore">
@@ -13,4 +14,4 @@
   </button>
 </div>
 
-<app-favorites [favorites]="favorites"></app-favorites>
+<app-favorites></app-favorites>
