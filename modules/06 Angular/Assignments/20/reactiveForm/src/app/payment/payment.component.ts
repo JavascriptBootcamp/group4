@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-payment',
@@ -8,27 +9,37 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class PaymentComponent implements OnInit {
   f: FormGroup;
-  constructor(builder: FormBuilder) {
+  total: number;
+  constructor(builder: FormBuilder, private cartService: CartService) {
 
     this.f = builder.group({
-      // cardNumber
+
       card: builder.group({
         CardNumber: [
           "", [
             Validators.required,
-            Validators.minLength(9),
+            Validators.minLength(16),
           ]
         ],
         NameCard: [
-          ""
-        ], Expiry: [],
-        Security: [""]
+          "", [
+            Validators.required]
+        ], Expiry: [, [
+          Validators.required]],
+          Security: ["", [
+          Validators.required]]
 
       })
     })
   }
 
   ngOnInit() {
+    if (localStorage.getItem("total"))
+      this.total = Number(localStorage.getItem("total"));
+    else {
+      this.total = this.cartService.sum;
+      localStorage.setItem("total", (this.total).toString());
+    }
   }
 
 }

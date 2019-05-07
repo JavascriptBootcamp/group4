@@ -40,5 +40,8 @@ export class ShoppingCartComponent implements OnInit {
     this.sum -=price;
   }
 
+  toPayment(sum:number){
+    this.cartService.sendSumToPayment(sum);
+  }
 
 }

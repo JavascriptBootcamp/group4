@@ -48,6 +48,6 @@
       </tr>
     </table>
     <h3 id="total">total price: {{sum}} $</h3>
-    <a *ngIf="sum>0" routerLink="/payment/{{ sum }}">To Payment</a>
+    <a *ngIf="sum>0" routerLink="/payment/{{ sum }}" (click)="toPayment(sum)">To Payment</a>
     
     </div>
