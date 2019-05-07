@@ -1,0 +1,10 @@
+
+<h2>your total amount to pay is : {{totalPrice}}$ </h2>
+
+<form #form (submit)="onSubmitForm($event,form.value)">
+  Card Number : <input name="cardnum" [ngModel]="cardNumber" #cardNum="ngModel" required><br><br>
+  Name on card :<input name="owner" [ngModel]="cardOwner" required><br><br>
+  Expiry date : <input name="exipreDate" type="date" [ngModel]="expirateDate" required><br><br>
+  Security code : <input name="cvs" [ngModel]="securityCode" size="3" maxlength="3" required><br><br>
+  <input type="submit">
+</form>

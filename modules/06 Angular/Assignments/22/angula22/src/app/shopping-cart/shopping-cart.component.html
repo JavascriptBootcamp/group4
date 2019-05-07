@@ -1,0 +1,34 @@
+<h1>shopping cart</h1>
+<table border="4">
+    <tr>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Action</td>
+    </tr>
+    <tr>
+        <td rowspan="2" id="">
+            <select id="product" #productSelect>
+                <option id="op1" vlaue="computer">computer</option>
+                <option id="op2" vlaue="chair">chair</option>
+                <option id="op3" vlaue="mouse">mouse</option>
+                <option id="op4" vlaue="dress">dress</option>
+                <option id="op5" vlaue="Water">Water</option>
+                <option id="op6" vlaue="car">car</option>
+                <option id="op7" vlaue="TV">TV</option>
+                <option id="op8" vlaue="Cake">Cake</option>
+                <option id="op9" vlaue="Chocolade">Chocolade</option>
+                <option id="op10" vlaue="Blouse">Blouse</option>
+            </select>
+        </td>
+        <td rowspan="2"><input type="number" id="price" #price required></td>
+        <td><button id="addProduct" (click)="addItem(productSelect,price);">Add</button></td>
+    </tr>
+    <tr>
+        <td><button id="removeProduct" (click)="removeItem();">Remove</button></td>
+    </tr>
+</table>
+<div *ngFor="let item of items">
+    {{item.product}}  costs {{item.price}}$
+
+</div>
+<b>Your Total Price is : {{totalPrice}}$</b>
