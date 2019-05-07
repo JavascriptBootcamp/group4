@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup" (submit)="onSubmit($event,formGroup)">
+  <div formGroupName="personal_details">
+    <input type="text" formControlName="fullname" name="fullname" placeholder="Full Name"><br><br>
+    <input type="text" formControlName="email" name="email" placeholder="Email"><br><br>
+    <input type="number" formControlName="age" name="age" min="18" max="32" placeholder="Age"><br><br>
+  </div>
+  <div formGroupName="user_details">
+    <input type="text" formControlName="username" name="username" placeholder="User Name"><br><br>
+    <input type="password" formControlName="password" name="password" placeholder="Password"><br><br>
+  </div>
+  <button type="submit">Submit</button> <button type="reset">Reset</button>
+  
+  <div *ngIf="formGroup.invalid && submitClicked">
+      <div *ngIf="formGroup.get('personal_details').get('fullname').errors?.required">
+        Please enter your full Name.
+      </div>
+      <div *ngIf="formGroup.get('personal_details').get('email').errors?.required">
+        Please enter your email.
+      </div>
+      <div *ngIf="formGroup.get('personal_details').get('age').errors?.required">
+        Please enter your age.
+      </div>
+      <div *ngIf="formGroup.get('user_details').get('username').errors?.required">
+        Please enter your user Name.
+      </div>
+      <div *ngIf="formGroup.get('user_details').get('password').errors?.required">
+        Please enter your password.
+      </div>
+      <div *ngIf="formGroup.get('personal_details').get('email').errors?.email">
+        Please enter a correct email.
+      </div>
+      <div *ngIf="formGroup.get('user_details').get('username').errors?.maxlength">
+        user Name can not be more then 10 chars.
+      </div>
+    </div>
+</form>
+<a routerLink="/signIn">Back to sign in</a>
+
+
+
+<div *ngIf="isSubmit">
+  Welcome {{formGroup.value.personal_details.fullname}}
+</div>
