@@ -15,14 +15,22 @@ export class TemplateFormComponent {
     this.firstModel = "Shai";
     this.lastModel = "Mesisterano";
   }
-  
-  onSubmitForm(f: NgForm) {
-    console.log("f", f);
-    console.log("firstName", this.firstName);
-  }
 
   onKeyDown() {
     console.log("this.firstModel onKeyDown",this.firstModel);
   }
+
+  onSubmitForm(f: NgForm) {
+    console.log("f", f);
+    console.log(this.firstName);
+  }
+  // fullNameModel: string;
+  // constructor() {
+  //   this.fullNameModel = "John";
+  // }
+
+  // onKeyDown() {
+  //   console.log(this.fullNameModel);
+  // }
 
 }
