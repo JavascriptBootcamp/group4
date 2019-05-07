@@ -1,0 +1,37 @@
+<a routerLink="">Go back to cart</a>
+<form [formGroup]="f" (submit)="onSubmitForm()" id="myForm">
+  <div formGroupName="creditCard" id="credit-card-info">
+
+    <input id="cn" formControlName="cardNum" placeholder="Card Number">
+    <input id="noc" formControlName="name" placeholder="Card Name">
+    <input id="exd" formControlName="expDate" type="date" placeholder="Expiry Date">
+    <input id="sc" formControlName="secCode" placeholder="Security Code">
+
+
+    <div *ngIf="f.invalid && (f.dirty || f.touched)">
+      <div *ngIf="f.get('creditCard').get('cardNum').errors?.minlength">
+          Card number - please enter more than 7 characters
+      </div>
+
+      <div *ngIf="f.get('creditCard').get('cardNum').errors?.maxlength">
+          Card number - please enter less than 20 characters
+      </div>
+
+      <div *ngIf="f.get('creditCard').get('name').errors">
+          Card name - please enter a card name
+      </div>
+
+      <div *ngIf="f.get('creditCard').get('expDate').errors">
+          Expiry date - please enter expiry date
+      </div>
+
+      <div *ngIf="f.get('creditCard').get('secCode').errors">
+          Security code - please enter exactly 3 digits
+      </div>
+    </div>
+
+    <button id="sub" type="submit">Submit</button>
+  </div>
+</form>
+
+<div>{{message}}</div>

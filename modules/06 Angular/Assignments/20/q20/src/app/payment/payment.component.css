@@ -1,0 +1,10 @@
+#credit-card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
+#credit-card-info *{
+    margin-top: 10px;
+}
