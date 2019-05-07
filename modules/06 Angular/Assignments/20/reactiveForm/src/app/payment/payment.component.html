@@ -1,0 +1,49 @@
+<div id="container">
+
+  <div>
+    <h3> {{total}} $ in Total</h3>
+  </div>
+  <br>
+  <form [formGroup]="f" (submit)="onSubmit()">
+
+    <div formGroupName="card">
+
+      <label> Card Number: </label>
+      <input type="text" id="CardNumber" formControlName="CardNumber" minlength="9" required><br>
+
+      <div *ngIf="f.invalid && (f.dirty || f.touched)">
+        <div *ngIf="f.get('card').get('CardNumber').errors.minlength">
+          Minimum 9 characters
+        </div>
+        <div *ngIf="f.get('card').get('CardNumber').errors.required">
+          Please fill Card Number
+        </div>
+      </div>
+
+      <br>
+      <label> Name of Card: </label>
+      <input type="text" id="NameCard" formControlName="NameCard" required> <br><br>
+      <label> Expiry Date: </label>
+      <input type="date" id="Expiry" formControlName="Expiry" required> <br><br>
+      <label>Security Code: </label>
+      <input type="text" id="Security" formControlName="Security" maxlength="3" required> <br><br>
+      <button>Submit</button>
+    </div>
+
+  </form>
+
+</div>
+
+
+
+
+<!-- <input formControlName="firstname">
+            <input formControlName="lastname"> -->
+
+
+<!-- 
+<div *ngIf="f.invalid && f.dirty">
+  <div *ngIf="f.get('card').get('lastname').errors.containsB">
+    Last Name must contain the character "B"
+  </div>
+</div> -->
