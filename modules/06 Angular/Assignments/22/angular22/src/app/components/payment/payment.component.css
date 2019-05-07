@@ -45,3 +45,8 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
+
+p {
+    color: red;
+    font-weight: bold;
+}

@@ -1,4 +1,5 @@
-<div class="wrapper">
+<!-- Template-driven Forms -->
+<!-- <div class="wrapper">
   <div class="wrap">
     <h2> {{shoppingService.totalSum | number}} $ in Total</h2>
   </div>
@@ -23,11 +24,70 @@
     <label for="cvvcode">Security Code: </label>
     <input type="text" id="cvvcode" name="cvvcode" ngModel #cvvElem="ngModel" placeholder="CVV code" pattern="\d{3}"
       required>
-    <!-- <div *ngIf="cvvElem.errors['pattern']">
+    <div *ngIf="cvvElem.errors['pattern']">
       Please enter 3 numbers.
-    </div> -->
+    </div>
     <div class="wrap">
       <input type="submit" [disabled]="!f.form.valid" value="Pay">
+    </div>
+  </form>
+</div>  -->
+<!-- Reactive Forms -->
+<div class="wrapper">
+  <div class="wrap">
+    <h2> {{shoppingService.totalSum | number}} $ in Total</h2>
+  </div>
+  <form [formGroup]="form" (submit)="send()">
+    <div formGroupName="card">
+      <label for="cardNumber">Card Number: </label>
+      <input type="text" id="cardNumber" formControlName="cardNumber" placeholder="Card Number">
+      <div class="error" *ngIf="form.invalid && cardNumber.errors">
+        <p *ngIf="cardNumber.hasError('required')">
+          Card number is required filed.
+        </p>
+        <p
+          *ngIf="cardNumber.hasError('minlength') || cardNumber.hasError('maxlength') || cardNumber.hasError('pattern')">
+          Card number must contain 16 numbers.
+        </p>
+        <p *ngIf="cardNumber.hasError('differentNumbers')">
+          Card must contain at least 2 different digit.
+        </p>
+        <p *ngIf="cardNumber.hasError('finalDigitOdd')">
+          Final digit must be even
+        </p>
+        <p *ngIf="cardNumber.hasError('sumGreater16')">
+          The sum of all the digits must be greater than 16.
+        </p>
+      </div>
+      <label for="nameCard">Card Name: </label>
+      <input type="text" id="nameCard" formControlName="nameCard" placeholder="Name on card">
+      <div class="error" *ngIf="form.invalid && nameCard.errors">
+        <p *ngIf="nameCard.hasError('required')">
+          Card name is required filed.
+        </p>
+        <p *ngIf="nameCard.hasError('pattern')">
+          Name must contain only letters.
+        </p>
+      </div>
+      <label for="expiryDate">Expiry Date: </label>
+      <input type="date" id="expiryDate" formControlName="expiryDate" placeholder="Expiry date"
+        min="{{curDate|date:'yyyy-MM-dd'}}">
+      <p *ngIf="expiryDate.hasError('required')">
+        Expiry Date is required filed.
+      </p>
+      <label for="cvvCode">Security Code: </label>
+      <input type="text" id="cvvCode" formControlName="cvvCode" placeholder="CVV code">
+      <div class="error" *ngIf="form.invalid && cvvCode.errors">
+        <p *ngIf="cvvCode.hasError('required')">
+          CVV is required filed.
+        </p>
+        <p *ngIf="cvvCode.hasError('pattern')">
+          CVV must contain only 3 Digits.
+        </p>
+      </div>
+    </div>
+    <div class="wrap">
+      <input type="submit" [disabled]="!form.valid" value="Pay">
     </div>
   </form>
 </div>
