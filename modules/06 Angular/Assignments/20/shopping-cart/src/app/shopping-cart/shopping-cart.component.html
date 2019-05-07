@@ -1,0 +1,44 @@
+<div>
+    <table id="cardtbl" border="1">
+      <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Action</th>
+      </tr>
+      <tr id="last">
+          <td id="items">
+              <select #selectedItem>
+                  <option value="choose" selected disabled hidden>Choose</option>
+                  <option value="banana">Banana</option>
+                  <option value="appel">Appel</option>
+                  <option value="candy">Candy</option>
+                  <option value="water">Water</option>
+                  <option value="carrot">Carrot</option>
+                  <option value="umbrella">Umbrella</option>
+                  <option value="juice">Juice</option>
+                  <option value="bred">Bred</option>
+                  <option value="chicken">Chicken</option>
+                  <option value="beef">Beef</option>
+              </select>
+          </td>
+          <td id="p">
+              <input type="number" id="price" min="0" placeholder="Price..." #price>
+          </td>
+          <td id="add">
+              <button (click)="addItem(selectedItem[selectedItem.selectedIndex].value,price.value)">Add</button>
+          </td>
+      </tr>
+    
+      <tr *ngFor="let item of cartArr,let i=index">
+        <td>{{item.item}}</td>
+        <td>{{item.price}}</td>
+        <td><button (click)="remove(i)">Remove</button></td>
+      </tr>
+    
+    </table>
+    <b>Total Price:</b> <b>{{totalPrice}}</b> $ <br>
+    
+    </div>
+    
+    
+    <a [routerLink]="['/payment',totalPrice]">Payment</a>

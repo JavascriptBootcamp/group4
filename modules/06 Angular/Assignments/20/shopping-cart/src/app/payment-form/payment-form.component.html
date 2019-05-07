@@ -1,0 +1,54 @@
+<form [formGroup]="form" (submit)="onSubmit($event,form,form.get('cardDetails').get('cardNumber').errors)">
+  <div formGroupName="cardDetails">
+
+    <p>
+      <label> Card Number: </label>
+      <input type="text" formControlName="cardNumber" name="CardNumber"><br>
+    </p>
+    <p>
+      <label> Name of Card: </label>
+      <input type="text" formControlName="cardName" name="name"><br>
+    </p>
+    <p>
+      <label> Expiry Date: </label>
+      <input type="date" formControlName="date" name="date"><br>
+    </p>
+    <p>
+      <label>Security Code: </label>
+      <input type="text" formControlName="code" name="code"><br>
+    </p>
+    <p>
+      Total Price: {{totalPrice}}
+    </p>
+    <button>Submit</button>
+    <br>
+    <a routerLink="/">Back To Shooping Cart</a>
+
+  </div>
+
+
+  <div *ngIf="form.invalid && submitClicked">
+    <div *ngIf="form.get('cardDetails').get('cardNumber').errors?.required">
+       Please enter card number.
+    </div>
+    <div *ngIf="form.get('cardDetails').get('cardName').errors?.required">
+      Please enter card name.
+    </div>
+    <div *ngIf="form.get('cardDetails').get('date').errors?.required">
+      Please enter card expire date.
+    </div>
+    <div *ngIf="form.get('cardDetails').get('code').errors?.required">
+      Please enter card code.
+    </div>
+    <div *ngIf="form.get('cardDetails').get('code').errors?.maxlength">
+      Code must be 3 digits .
+    </div>
+    <div *ngIf="form.get('cardDetails').get('cardNumber').errors?.cardNumber_invalid">
+      {{form.get('cardDetails').get('cardNumber').errors?.message}}
+    </div>
+  </div>
+
+
+
+
+</form>
