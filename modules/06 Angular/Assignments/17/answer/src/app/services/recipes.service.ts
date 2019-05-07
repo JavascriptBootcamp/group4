@@ -34,4 +34,13 @@ export class RecipesService {
     ]
   }
 
+  get_recipes(): Recipe[] {
+    return this.recipes;
+  }
+
+  get_recipe(id: string): Recipe {
+    return this.recipes.filter(recipe => recipe.id === id)[0];
+  }
+
+
 }

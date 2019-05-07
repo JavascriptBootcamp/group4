@@ -10,6 +10,21 @@ html, body {
 }
 
 body {
-    background: #D9C873;
-    color: #A64B17;
+    background: #F2D95E;
+    color: #172326;
+}
+
+.center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.center-full {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
