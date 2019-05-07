@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CreditCardService } from '../credit-card.service';
+// import { CreditCardService } from '../credit-card.service';
 
 @Component({
   selector: 'app-payment',
@@ -8,21 +8,26 @@ import { CreditCardService } from '../credit-card.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  @ViewChild('form') form;
+  @ViewChild('f') form;
+  cardNum: number;
+  name: string;
+  expDate: string;
+  secCode: string;
+
   message: string;
 
-  constructor(private creditCardService: CreditCardService) { 
+  constructor() { 
   }
 
   ngOnInit() {
     this.message = '';
   }
 
-  onSubmitForm(isValid:boolean,cardNumber: string,cardName: string,expDate: string,securityCode: string){
+  onSubmitForm(isValid:boolean){
+    console.log(this.cardNum,this.name,this.expDate,this.secCode);
     if(!isValid)
       return;
       this.message = 'Successfully ordered!'
-    // console.log(event,isValid,cardNumber,cardName,expDate,securityCode);
   }
 
 }
