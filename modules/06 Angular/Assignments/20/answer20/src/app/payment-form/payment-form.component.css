@@ -1,0 +1,16 @@
+.input{
+    height: 60px;
+}
+.payment-form{
+    display: flex;
+    border: 2px solid burlywood;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 360px;
+    padding: 10px;
+}
+.error{
+    font-size: 12px;
+    margin-bottom: 4px;
+    margin-left: 10px;
+}
