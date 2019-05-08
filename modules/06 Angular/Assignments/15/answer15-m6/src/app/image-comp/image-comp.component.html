@@ -1,21 +1,22 @@
+<div class="img-comp">
 
-  <div class="img" >
-
-    <div >
-      <img [src]="myImg.src" class="myImg" (click) ="addBorder()"
-           [ngClass] = "{
+  <div class = "imgSec">
+    <img [src]="myImg.src" (click)="addBorder()" [ngClass]="{
             'img0':myImg.like == 0,
             'img1':myImg.like > 0 && myImg.like < 10,
             'img2':myImg.like > 9,
             'addBorder':clicked
-           }" >
-    </div>
-
-    <div class="likeSec" >
-      <button (click)="onClickLike($event)">like</button><span>{{myImg.like}}</span>
-    </div>
-    <a href="" > <div class="auther" >{{myImg.auther}} </div> </a>
-
+           }">
   </div>
 
-  <router-outlet></router-outlet>
+  <div class="likeSec">
+    <button (click)="onClickLike($event)">like</button>
+    <span>{{myImg.like}}</span>
+  </div>
+  <a href="">
+    <div class="auther">{{myImg.auther}} </div>
+  </a>
+
+</div>
+
+<router-outlet></router-outlet>
