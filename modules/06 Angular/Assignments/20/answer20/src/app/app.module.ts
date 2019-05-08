@@ -14,11 +14,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material';
 import {  MatNativeDateModule,  MatFormFieldModule } from '@angular/material';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
     ShoppingCartComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

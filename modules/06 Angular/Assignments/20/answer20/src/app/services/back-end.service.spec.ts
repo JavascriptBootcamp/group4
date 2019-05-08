@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ManageDataService } from './manage-data.service';
+import { BackEndService } from './back-end.service';
 
-describe('ManageDataService', () => {
+describe('BackEndService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ManageDataService = TestBed.get(ManageDataService);
+    const service: BackEndService = TestBed.get(BackEndService);
     expect(service).toBeTruthy();
   });
 });

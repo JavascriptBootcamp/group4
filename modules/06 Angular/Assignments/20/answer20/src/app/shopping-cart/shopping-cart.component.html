@@ -32,4 +32,6 @@
         </tr>
     </tfoot>
 </table>
-<a routerLink="payment">Procced to Checkout</a>
+<button routerLink="payment">Procced to Checkout</button>
+
+<app-product *ngFor="let product of products" [src]="product.src"></app-product>

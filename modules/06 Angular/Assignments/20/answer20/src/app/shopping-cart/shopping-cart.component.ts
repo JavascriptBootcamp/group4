@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { BackEndService } from '../services/back-end.service';
+import { Product } from '../models/product';
+
 class Item{
   name:string;
   price:number;
@@ -16,7 +19,9 @@ class Item{
 export class ShoppingCartComponent {
   items:Item[];
   totalPrice:number;
-  constructor() {
+  products: Product[];
+  constructor(private BackEndService: BackEndService ) {
+    this.products = this.BackEndService.products;
     this.items=[];
     this.totalPrice=0;
   }
