@@ -1,6 +1,16 @@
-<ol >
-    <li *ngFor="let qustion of questions">
-      {{qustion.question}}
-    </li>
-</ol>
+<form *ngIf="!submited"
+    (submit) = "onSubmit($event)"
+    action= "http://www.ynet.co.il">
 
+<ol>
+  <li *ngFor="let qustion of questions;index as q" style="margin-top: 30px">
+    {{qustion.question}} ?
+    <div style="display: table" *ngFor="let opthion of qustion.answerOption; index as i">
+      <label  id ="id{{i}}"> {{opthion}} </label>
+      <input  #data type="radio"  id ="id{{i}}" name="name{{q}}"  [value]="opthion" (click) = "fun(data,qustion.answerOption[qustion.correctAnswer],q)">
+    </div>
+  </li>
+</ol>
+ <input type="submit" value="שלח את התשובות">
+</form>
+<div *ngIf="submited"> you answered {{correctAnswers}} correct answers</div>

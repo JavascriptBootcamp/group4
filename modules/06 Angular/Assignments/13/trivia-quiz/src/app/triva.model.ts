@@ -1,5 +1,9 @@
 export interface TrivaQuestion {
-id:string;
 question:string;
-answerId:string;
+answerOption:string[];
+correctAnswer:number;
+}
+
+interface Answers {
+
 }
