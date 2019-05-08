@@ -1,30 +1,43 @@
-<form [formGroup]="f" (submit)="onSubmit()">
- 
-  <label for="CardNumber"> Card Number:</label>
-  <input id="CardNumber"  formControlName="CardNumber">
+<form [formGroup]="f" (submit)="onSubmit($event) ">
+  <div>
+    <label for="CardNumber1"> Card Number:</label>
+    <input type="number" id="CardNumber1" formControlName="CardNumber">
+  </div>
+  <div> <label for="cardname"> Card name:</label>
+    <input id="cardname" formControlName="cardname"></div>
+  <div>
 
-      <label for="cardname"> Card name:</label>
-      <input id="cardname"  formControlName="cardname">
-      <label for="ExpiryDate"> Expiry Date:</label>
-      <input id="ExpiryDate"  formControlName="ExpiryDate">
-      <label for="SecurityCode"> Security Code:</label>
-      <input id="SecurityCode"  formControlName="SecurityCode">
-   
-  <!-- //  </div> -->
-  
-    <!-- <div *ngIf="f.invalid && (f.dirty || f.touched)">
-      <div *ngIf="f.get('username').get('lastname').errors.minlength">
-        Minimum 2 characters
-      </div>
-      <div *ngIf="f.get('username').get('lastname').errors.required">
-        Please fill Last Name
-      </div>
-    </div>
+    <label for="ExpiryDate"> Expiry Date:</label>
+    <input id="ExpiryDate" formControlName="ExpiryDate">
+  </div>
+
+  <div>
+    <label for="SecurityCode"> Security Code:</label>
+    <input type="number" id="SecurityCode" formControlName="SecurityCode">
+  </div>
+  <div *ngIf="f.invalid && (f.dirty || f.touched)">
     <div *ngIf="f.invalid && f.dirty">
-      <div *ngIf="f.get('username').get('lastname').errors.containsB">
-        Last Name must contain the character "B"
-      </div>
+      <div *ngIf="f.get('CardNumber').errors &&f.get('CardNumber').errors.containsB">
+        odd final number </div>
+    </div>
+    <div *ngIf="f.get('CardNumber').errors &&(f.get('CardNumber').errors.max ||f.get('CardNumber').errors.min)">
+      Credit Card Length Must Be 16 Digits
+    </div>
+
+    <!-- <div *ngIf="f.get('CardNumber').errors &&(!(f.get('CardNumber').errors.max ||f.get('CardNumber').errors.min))"> -->
+    <div *ngIf="f.get('CardNumber').errors && f.get('CardNumber').errors.invalid_characters">
+      only one type of number </div>
+    <div *ngIf="f.get('CardNumber').errors && f.get('CardNumber').errors.invalid_sum">
+      sum less than 16
+    </div>
+    <!-- </div> -->
+    <!-- <div *ngIf="f.get('CardNumber').errors.pattern">
+      Minimum 2 characters
     </div> -->
-  
-    <button>Submit</button>
-  </form>
+  </div>
+  <p>
+      Total Price: {{totalPrice}}
+    </p>
+
+  <button>Submit</button>
+</form>
