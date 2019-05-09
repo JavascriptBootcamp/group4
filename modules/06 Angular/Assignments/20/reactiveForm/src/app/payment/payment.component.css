@@ -1,0 +1,15 @@
+#container {
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: blanchedalmond;
+    padding: 15px;
+    border: 1px solid salmon;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.error{
+    color:red;
+}

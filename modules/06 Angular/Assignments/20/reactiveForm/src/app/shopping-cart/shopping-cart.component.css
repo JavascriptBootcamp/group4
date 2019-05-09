@@ -1,0 +1,44 @@
+#container {
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: blanchedalmond;
+    padding: 15px;
+    border: 1px solid salmon;
+    border-radius: 5px;
+    align-items: center;
+}
+
+table, tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+
+#total {
+    border: 1px solid;
+    width: fit-content;
+    padding: 5px;
+}
+
+a {
+    padding: 10px;
+    width: fit-content;
+    text-decoration: none;
+    background-color:sandybrown ;
+    color: black;
+}
+
+  a:hover {
+    background-color:salmon ;
+  }
+  #price
+  {
+      width: 50%;
+  }
+
+  #p{
+      text-align: center;
+  }

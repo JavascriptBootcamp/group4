@@ -10,38 +10,69 @@
 
       <label> Card Number: </label>
       <input type="text" id="CardNumber" formControlName="CardNumber" minlength="16" maxlength="16" required><br><br>
-      <label> Name of Card: </label>
-      <input type="text" id="NameCard" formControlName="NameCard" required> <br><br>
-      <label> Expiry Date: </label>
-      <input type="date" id="Expiry" formControlName="Expiry" required> <br><br>
-      <label>Security Code: </label>
-      <input type="text" id="Security" formControlName="Security" minlength="3" maxlength="3" required> <br><br>
-
-      <div *ngIf="f.invalid && (f.dirty || f.touched)">
+      <div class="error" *ngIf="f.invalid && (f.dirty || f.touched)">
         <div *ngIf="f.get('card').get('CardNumber').errors">
+          <div *ngIf="f.get('card').get('CardNumber').errors['pattern']">
+            Please enter only numbers.
+          </div>
           <div *ngIf="f.get('card').get('CardNumber').errors.minlength">
             Card Number must 16 characters
           </div>
           <div *ngIf="f.get('card').get('CardNumber').errors.required">
             Please fill Card Number
           </div>
+          <div *ngIf="f.get('card').get('CardNumber').errors.lastDigit">
+            The last digit must be two
+          </div>
+          <div *ngIf="f.get('card').get('CardNumber').errors.differentNumbers">
+            You must have at least two different digits
+          </div>
+          <div *ngIf="f.get('card').get('CardNumber').errors.sumDigits">
+            The sum of all the digits must be greater than 16
+          </div>
         </div>
+        <br>
+      </div>
 
-        <div *ngIf="f.get('card').get('NameCard').errors">
+      <label> Name of Card: </label>
+      <input type="text" id="NameCard" formControlName="NameCard" required> <br><br>
+      <div class="error" *ngIf="f.invalid && (f.dirty || f.touched)">
+          <div *ngIf="f.get('card').get('NameCard').errors">
+        <div *ngIf="f.get('card').get('NameCard').errors.required">
           Please fill NameCard
         </div>
+        <div *ngIf="f.get('card').get('NameCard').errors['pattern']">
+          Name Card must contain only letters.
+        </div>
+        </div>
+        <br>
+      </div>
+
+      <label> Expiry Date: </label>
+      <input type="date" id="Expiry" formControlName="Expiry" required> <br><br>
+      <div class="error" *ngIf="f.invalid && (f.dirty || f.touched)">
         <div *ngIf="f.get('card').get('Expiry').errors">
           Please fill Expiry
         </div>
+        <br>
+      </div>
+
+      <label>Security Code: </label>
+      <input type="text" id="Security" formControlName="Security" minlength="3" maxlength="3" required> <br><br>
+      <div class="error" *ngIf="f.invalid && (f.dirty || f.touched)">
         <div *ngIf="f.get('card').get('Security').errors">
           <div *ngIf="f.get('card').get('Security').errors.required">
             Please fill Security
           </div>
           <div *ngIf="f.get('card').get('Security').errors.minlength">
-            Security must 3 characters
+            Security Code must 3 characters
+          </div>
+          <div *ngIf="f.get('card').get('Security').errors['pattern']">
+            Security Code must contain only Digits.
           </div>
         </div>
       </div>
+
 
       <button>Submit</button>
     </div>

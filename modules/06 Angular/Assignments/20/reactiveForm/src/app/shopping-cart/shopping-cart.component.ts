@@ -19,28 +19,32 @@ export class ShoppingCartComponent implements OnInit {
     private cartService: CartService,
     private activeRoute: ActivatedRoute) {
 
-    this.sum=0;
   }
 
   ngOnInit() {
     this.getItems();
+    if (localStorage.getItem("total"))
+      this.sum = Number(localStorage.getItem("total"));
+    else
+      this.sum = 0;
   }
 
   addItem(): void {
     this.cartService.addItem(this.selected.nativeElement.value, this.priceSelected.nativeElement.value);
     this.sum += Number(this.priceSelected.nativeElement.value);
+    localStorage.setItem("total", JSON.stringify(this.sum));
   }
 
   getItems(): void {
     this.shoppingCart = this.cartService.getItems();
   }
 
-  remove(i: number,price:number) {
+  remove(i: number, price: number) {
     this.cartService.remove(i);
-    this.sum -=price;
+    this.sum -= price;
   }
 
-  toPayment(sum:number){
+  toPayment(sum: number) {
     this.cartService.sendSumToPayment(sum);
   }
 

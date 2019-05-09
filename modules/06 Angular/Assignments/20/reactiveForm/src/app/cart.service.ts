@@ -13,9 +13,13 @@ export class CartService {
 
   addItem(name: string, price: number) {
     this.shoppingCart.push({ name: name, price: price });
+    localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
+    
   }
 
   getItems(): Product[] {
+    if (localStorage.getItem("cart"))
+      this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
     return this.shoppingCart;
   }
 
