@@ -1,13 +1,7 @@
-import { Component} from '@angular/core';\
+import { Component} from '@angular/core';
+import {Item, BlService} from '../bl.service'
 
-class Item{
-  name:string;
-  price:number
-  constructor(name,price){
-    this.name=name;
-    this.price=price;
-  }
-}
+
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,22 +10,17 @@ class Item{
 })
 
 export class ShoppingCartComponent  {
-  items:Item[];
+  //blService:BlService
   totalPrice:number;
-  constructor() {
-    this.items=[];
+  constructor(private blService:BlService) {
     this.totalPrice=0;
+    
+   }
+   addItem(item,price){
+    this.totalPrice+= this.blService.addItem(item,price)
+   }
+   removeItem(i){
+    this.totalPrice-= this.blService.removeItem(i)
    }
 
-
-  addItem(item,price){
-    console.log(item,price)
-    this.items.push(new Item(item,price))
-    this.totalPrice+=Number(price);
-  }
-  removeItem(event){
-    console.log(event);
-    this.items.splice(event.path[2].id,1);
-    this.totalPrice-=Number(event.path[2].childNodes[1].innerText);
-  }
 }

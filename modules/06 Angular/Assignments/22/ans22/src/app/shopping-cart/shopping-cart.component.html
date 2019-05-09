@@ -27,10 +27,10 @@
           <button id="addBtn" (click)="addItem(products[products.selectedIndex].value,price.value)">Add</button>
       </td>
     </tr>
-      <tr *ngFor="let item of items;let i=index" id="{{i}}">
+      <tr *ngFor="let item of blService.items;let i=index" id="{{i}}">
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
-            <td><button (click)="removeItem($event)">Remove</button></td>
+            <td><button (click)="removeItem(i)">Remove</button></td>
         </tr>
   
 
