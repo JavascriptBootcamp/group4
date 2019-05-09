@@ -1,0 +1,68 @@
+<form [formGroup]="f" (submit)="onSubmitForm()" id="myForm">
+
+
+  <p>
+    <label> Card Number: </label>
+    <input formControlName="creditCard" id="cn" type="text" required><br>
+  </p>
+
+
+  <div *ngIf="creditCard.invalid && (creditCard.dirty || creditCard.touched)">
+
+    <p *ngIf="creditCard.errors.invalidCardNumber">
+      Card Number is invalid
+    </p>
+
+    <p *ngIf="creditCard.errors.required">
+      Card number is required
+    </p>
+
+  </div>
+
+  <p>
+    <label> Name of Card: </label>
+    <input formControlName="creditCardName" id="noc" type="text" required><br>
+  </p>
+
+
+  <div *ngIf="creditCardName.invalid && (creditCardName.dirty || creditCardName.touched)">
+    <p *ngIf="creditCardName.errors.required">
+      Card name is required
+    </p>
+  </div>
+
+  <p>
+    <label> Expiry Date: </label>
+    <input formControlName="date" id="exd" type="date" required><br>
+  </p>
+
+  <div *ngIf="date.invalid && (date.dirty || date.touched)">
+    <p *ngIf="date.errors.required">
+      Date is required
+    </p>
+  </div>
+
+  <p>
+    <label>Security Code: </label>
+    <input formControlName="securityCode" id="sc" type="text" maxlength="3" minlength="3" required><br>
+  </p>
+
+
+  <div *ngIf="securityCode.invalid && (securityCode.dirty || securityCode.touched)">
+
+    <p *ngIf="securityCode.errors.required">
+      Security Code is required
+    </p>
+
+    <p *ngIf="securityCode.errors.minlength">
+      Security Code is less than 3
+    </p>
+
+  </div>
+
+
+  <button id="sub" [disabled]="f.invalid">Submit</button>
+
+  <div>Payment is {{sum}}</div>
+
+</form><br><br>

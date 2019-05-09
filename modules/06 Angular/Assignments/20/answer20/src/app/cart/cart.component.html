@@ -1,0 +1,44 @@
+<table id="cardtbl" border="1">
+  <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+  </tr>
+  <tr id="last">
+      <td id="items">
+          <select id="it" #selectItem>
+              <option value="choose">Choose</option>
+              <option value="banana">Banana</option>
+              <option value="appel">Appel</option>
+              <option value="candy">Candy</option>
+              <option value="water">Water</option>
+              <option value="carrot">Carrot</option>
+              <option value="umbrella">Umbrella</option>
+              <option value="juice">Juice</option>
+              <option value="bred">Bred</option>
+              <option value="chicken">Chicken</option>
+              <option value="beef">Beef</option>
+          </select>
+      </td>
+      <td id="p">
+          <input type="number" id="price" min="0" #price>
+      </td>
+      <td id="add">
+          <button id="addBtn" (click)="addItem()">Add</button>
+      </td>
+  </tr>
+
+  <tr *ngFor="let prod of products">
+      <td>
+          {{prod.name}} 
+      </td>
+      <td >
+          {{prod.price}}
+      </td>
+      <td >
+          <button id="addBtn" (click)="removeItem(prod)">Remove</button>
+      </td>
+  </tr>
+</table>
+<div>{{sum}}</div>
+<a routerLink="/payment">Payment</a>
