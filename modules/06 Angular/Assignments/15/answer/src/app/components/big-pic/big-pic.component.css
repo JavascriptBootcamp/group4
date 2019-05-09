@@ -13,3 +13,29 @@ img:hover {
   /* offset-x | offset-y | blur-radius | color */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5), -5px -5px 10px rgba(0, 0, 0, 0.5);
 }
+
+@media only screen and (max-width: 1500px) {
+  img {
+    top: 20%;
+    left: 30%;
+    height: 450px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  img {
+    top: 20%;
+    left: 15%;
+    height: 450px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  img {
+    top: 25%;
+    left: 10%;
+  
+    width: 300px;
+    height: 350px;
+  }
+}
