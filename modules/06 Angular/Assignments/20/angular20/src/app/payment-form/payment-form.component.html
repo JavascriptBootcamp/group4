@@ -1,0 +1,30 @@
+<h2>your total amount to pay is : {{totalPrice}}$ </h2>
+
+<form [formGroup]="form" (submit)="onSubmitForm($event)">
+  Card Number : <input formControlName="cardNumber"><br><br>
+     <div  class="error" *ngIf="form.invalid && (form.dirty || form.touched)">
+      <div *ngIf="form.get('cardNumber').invalid">
+{{messageErrorType}}  
+</div>
+  </div>
+  <br>
+  Name on card :<input formControlName="cardOwner"><br><br><br>
+  <div class="error" *ngIf="form.invalid && (form.dirty || form.touched)">
+    <div *ngIf="form.get('cardOwner').invalid">
+      Please fill card Owner ...
+    </div>
+  </div>
+  Expiry date : <input type="date" formControlName="expirateDate"><br><br><br>
+  <div class="error" *ngIf="form.invalid && (form.dirty || form.touched)">
+    <div *ngIf="form.get('expirateDate').invalid">
+      Please fill valid expirate date ...
+    </div>
+  </div>
+  Security code : <input formControlName="securityCode"><br><br><br>
+  <div class="error" *ngIf="form.invalid && (form.dirty || form.touched)">
+    <div *ngIf="form.get('securityCode').invalid">
+      Please fill 3 numbers
+    </div>
+  </div>
+  <input type="submit">
+</form>
