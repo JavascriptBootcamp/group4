@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CustomizedValidatorsService } from '../services/customized-validators.service';
 import { BackEndService } from '../services/back-end.service';
+import { PaymentForm } from '../models/payment-form'
 
 @Component({
   selector: 'app-payment-form',
@@ -9,6 +10,8 @@ import { BackEndService } from '../services/back-end.service';
   styleUrls: ['./payment-form.component.css']
 })
 export class PaymentFormComponent implements OnInit {
+  model = new PaymentForm ("","",null,null)
+  submitted = false;
   paymentForm: FormGroup;
   constructor(private fb: FormBuilder,private CustomizedValidators: CustomizedValidatorsService, private BackEndService: BackEndService) { }
 
@@ -29,6 +32,7 @@ export class PaymentFormComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.paymentForm.value,this.BackEndService.cart);
+    this.submitted = true;
     this.BackEndService.postData(`http://localhost:3000/Order`, [this.paymentForm.value,this.BackEndService.cart])
     .then(data => console.log(JSON.stringify(data)))
     .catch(error => console.error(error));
