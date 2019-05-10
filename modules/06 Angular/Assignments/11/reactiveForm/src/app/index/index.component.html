@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Sign In</h1>
+  <form  [formGroup]="indexForm" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+      <label for="user">User Name: </label>
+      <input type="text" id="user" name="user" class="form-control"  formControlName="user" required><br>
+      <label for="password">Password: </label>
+      <input type="password" id="password" name="password" class="form-control"  formControlName="password" required><br>
+    </div>
+    <button type="submit" class="btn btn-success ">submit</button>
+  </form>
+
+<button routerLink="../forgot" class="btn">forgot password</button>
+<button routerLink="../sign-up" class="btn">sign-up</button>
+</div>
