@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Forgot Password</h1>
-  <form>
+  <form  [formGroup]="ForgotForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <input class="form-control" type="email" placeholder="Email"  formControlName="email" name="email" required ><br>
         <input class="form-control" type="email" placeholder="Confirm email"  formControlName="cEmail" name="cEmail" required ><br>
