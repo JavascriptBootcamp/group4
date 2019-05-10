@@ -1,4 +1,4 @@
-<table border="1" id="shoppingCart">
+<!-- <table border="1" id="shoppingCart">
     <thead>
         <tr>
             <th>Name</th>
@@ -7,7 +7,7 @@
         </tr>
         <tr>
             <td>
-                <select id="products" #products>
+                <select id="products">
                     <option id="option0" value="tomatos">Tomatos</option>
                     <option id="option1" value="carrots">Carrots</option>
                 </select>
@@ -31,7 +31,18 @@
             <td style=text-align:center; colspan="3">Total price: {{totalPrice}}<span id="totalPrice"></span></td>
         </tr>
     </tfoot>
-</table>
-<button routerLink="payment">Procced to Checkout</button>
+</table> -->
 
-<app-product *ngFor="let product of products" [src]="product.src"></app-product>
+<div class="grid-container">
+    <div id="cart">
+        <app-cart-product *ngFor="let car of cart" [car]="car"></app-cart-product>
+    </div>
+
+    <div id="products-container">
+    <app-product *ngFor="let product of products" [product]="product"></app-product>
+    </div>
+</div>
+<div id="cart-footer">
+    <h3 class="total-price">Total Price: {{BackEndService.totalPrice}}$</h3>
+    <button [disabled]="BackEndService.totalPrice===0" class="procced-button" routerLink="payment">Procced to Checkout</button>
+</div>

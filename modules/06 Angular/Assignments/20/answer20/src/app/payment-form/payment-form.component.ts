@@ -10,7 +10,7 @@ import { BackEndService } from '../services/back-end.service';
 })
 export class PaymentFormComponent implements OnInit {
   paymentForm: FormGroup;
-  constructor(private fb: FormBuilder,private CustomizedValidators: CustomizedValidatorsService, private BackEndService: BackEndService ) { }
+  constructor(private fb: FormBuilder,private CustomizedValidators: CustomizedValidatorsService, private BackEndService: BackEndService) { }
 
   ngOnInit() {
     this.paymentForm = this.fb.group({
@@ -28,8 +28,8 @@ export class PaymentFormComponent implements OnInit {
     })
   }
   onSubmit(){
-    // console.log(this.paymentForm.value);
-    this.BackEndService.postData(`http://localhost:3000/Order`, this.paymentForm.value)
+    console.log(this.paymentForm.value,this.BackEndService.cart);
+    this.BackEndService.postData(`http://localhost:3000/Order`, [this.paymentForm.value,this.BackEndService.cart])
     .then(data => console.log(JSON.stringify(data)))
     .catch(error => console.error(error));
   }

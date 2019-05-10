@@ -1,0 +1,12 @@
+<div class="cart-products">
+    <div class="cart-img-container"><div class="yellow-filter"></div><img [src]="car.src" alt="{{car.name}}"></div>
+    <h2>{{car.name}}</h2>
+    <div class="cart-products-right-side-wrapper">
+      <div class="cart-amount-container">
+          <button class="adjuct-amount-buttons" (click)="addOneItem()">+</button>
+          <h3>kg: {{car.amount}}</h3>
+          <button class="adjuct-amount-buttons" (click)="removeOneItem()">-</button>
+      </div>
+      <h3>{{car.priceOfOneProduct*car.amount}}$</h3>
+    </div>
+</div>

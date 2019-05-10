@@ -1,0 +1,91 @@
+.cart-products{
+    width: 230px;
+    height: 120px;
+    margin-top: 25px;
+    margin-bottom: 2px;
+    display: flex;
+    position: relative;
+    background-color: rgb(255, 225, 126);
+    color: rgb(36, 73, 53);
+    font-family: Roboto;
+}
+.cart-img-container img{
+    height: 100%;
+}
+.yellow-filter{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(219, 219, 206, 0.26);
+}
+
+.cart-img-container{
+    position: relative;
+    width: 35%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.cart-products h2{
+    position: absolute;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 20pt;
+    margin-top: -20px;
+    /* margin-left: 70px; */
+    top:0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    color: rgb(36, 73, 53);
+}
+.cart-amount-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed rgb(36, 73, 53);
+    border-bottom: 2px dashed rgb(36, 73, 53);
+    height: 50px;
+    width: 100%;
+}
+
+.cart-amount-container{
+    margin-top: 32px;
+    margin-bottom: -12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed rgb(36, 73, 53);
+    border-bottom: 2px dashed rgb(36, 73, 53);
+    height: 50px;
+}
+.adjuct-amount-buttons{
+    margin: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+    border: 2px dashed rgb(36, 73, 53);
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(36, 73, 53);
+    font-size: 12pt;
+    cursor: pointer;
+}
+.cart-products-right-side-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 65%;
+}
+
+.cart-products-right-side-wrapper h3{
+    font-family: 'Poppins', sans-serif;
+    margin-right: 10px;
+    text-align: right;
+}

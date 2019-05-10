@@ -1,6 +1,10 @@
 <div class="products">
-    <img [src]="src">
-    <h2>{{name}}</h2>
-    <h3>price: {{priceOfOneProduct}}</h3>
-    <h3>amount: {{amount}}</h3>
+    <div class="product-img-container"><div class="yellow-filter"></div><img [src]="product.src" alt="{{product.name}}"></div>
+    <h2>{{product.name}}</h2>
+    <div class="product-amount-container">
+        <button class="adjuct-amount-buttons" (click)="addOneItem()">+</button>
+        <h3>kg: {{product.amount}}</h3>
+        <button class="adjuct-amount-buttons" (click)="removeOneItem()">-</button>
+    </div>
+    <h3>{{product.priceOfOneProduct}}$/kg</h3>
 </div>

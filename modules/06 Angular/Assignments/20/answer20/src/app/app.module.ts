@@ -15,12 +15,15 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material';
 import {  MatNativeDateModule,  MatFormFieldModule } from '@angular/material';
 import { ProductComponent } from './product/product.component';
+import { CartProductComponent } from './cart-product/cart-product.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ShoppingCartComponent,
     PaymentFormComponent,
-    ProductComponent
+    ProductComponent,
+    CartProductComponent
   ],
   imports: [
     BrowserModule,

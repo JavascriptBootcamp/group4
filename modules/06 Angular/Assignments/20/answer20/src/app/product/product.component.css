@@ -1,0 +1,76 @@
+.products{
+    width: 230px;
+    height: 340px;
+    overflow: hidden;
+    margin: 14px;
+    background-color: rgb(255, 225, 126);
+    color: rgb(36, 73, 53);
+    font-family: Roboto;
+}
+.products img{
+    width: 100%;
+    /* filter: sepia(10%); */
+}
+.yellow-filter{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(219, 219, 206, 0.26);
+}
+
+.product-img-container{
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.product-h2-container{
+    width: 100%;
+    height: 20px;
+    background-color: white;
+}
+
+.products h2{
+    position: relative;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 28pt;
+    margin-top: -28px;
+    margin-left: -2px;
+    text-align: center;
+    z-index: 2;
+}
+
+.products h3{
+    font-family: 'Poppins', sans-serif;
+    margin-right: 14px;
+    margin-right: -1px;
+    text-align: right;
+}
+
+.product-amount-container{
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed rgb(36, 73, 53);
+    border-bottom: 2px dashed rgb(36, 73, 53);
+    height: 50px;
+}
+.adjuct-amount-buttons{
+    margin: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border: 2px dashed rgb(36, 73, 53);
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(36, 73, 53);
+    font-size: 16pt;
+    cursor: pointer;
+}
