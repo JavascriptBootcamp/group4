@@ -1,0 +1,39 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-detail {
+    width: 100%;
+    margin-top: 7rem;
+}
+
+.author-detail * {
+    color:rgb(102, 45, 52);
+}
+
+.profile-pic {
+    border-radius: 50%;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+}
+
+.author-gallery {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.author-gallery img {
+    border-radius: 10px;
+    margin: 10px;
+    width: 250px;
+    height: 250px;
+}

@@ -1,10 +1,12 @@
 <form #f="ngForm" (submit)="onSubmitForm(f)">
 
-  <p *ngIf="nameCtrl.invalid">Name is invalid.</p>
+  <!-- <p *ngIf="nameCtrl.invalid">Name is invalid.</p> -->
 
   <div ngModelGroup="username" #nameCtrl="ngModelGroup">
-    <input id="firstName" name="first" ngModel #firstElem="ngModel" minlength="2" maxlength="6" (keydown)="onKeyDown()">
-    <input name="last" [(ngModel)]="lastModel" #last="ngModel" required>
+    <label for="firstName">First:</label>
+    <input id="firstName" name="first" [(ngModel)]="firstModel" #firstElem="ngModel" minlength="2" maxlength="6" (keydown)="onKeyDown()">
+    <label for="lastName">Last:</label>
+    <input id="lastName" name="last" [(ngModel)]="lastModel" #last="ngModel" required>
     
     <div *ngIf="firstElem.invalid && (firstElem.dirty || firstElem.touched)">
       <span *ngIf="firstElem.errors.minlength">
@@ -17,12 +19,26 @@
 
   </div>
 
+  <input name="email" type="email" ngModel #email="ngModel" email="true" />
+
   <label for="gender">Gender</label>
-  <select name="gender" [ngModel]="gender" #gender="ngModel">
+  <select name="gender" ngModel #gender="ngModel">
     <option>Male</option>
     <option>Female</option>
   </select>
 
   <button>Submit</button>
+
+    <!-- Two Way Binding -->
+  <!-- <input type="text" id="fullName" name="fullName" [(ngModel)]="fullNameModel" #fullnameElem="ngModel" (keydown)="onKeyDown()" /> -->
+
+  <!-- One Way Binding -->
+  <!-- <input type="text" id="fullName" name="fullName" [ngModel]="fullNameModel" #fullnameElem="ngModel" (keydown)="onKeyDown()" /> -->
+
+  <!-- No Binding -->
+  <!-- <input type="text" id="fullName" name="fullName" ngModel #fullnameElem="ngModel" (keydown)="onKeyDown()" /> -->
+
+  <!-- No ngModel -->
+  <!-- <input type="text" id="fullName" name="fullName" #fullnameElem (keydown)="onKeyDown()" /> -->
 
 </form>
