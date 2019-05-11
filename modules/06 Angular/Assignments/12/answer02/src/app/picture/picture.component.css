@@ -1,0 +1,8 @@
+
+.picSrc {
+    width: 240px;
+    height:260px;
+    border-radius: 1rem;
+    transition: border .2s;
+    margin:30px;
+}

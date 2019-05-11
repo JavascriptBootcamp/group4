@@ -1,0 +1,39 @@
+<div [formGroup]="profileForm">
+
+  <label>Name:</label>
+  <input type="text" formControlName="name">
+
+  <label>last Name:</label>
+  <input type="text" formControlName="lastName">
+
+  
+  <label>Age</label>
+  <input type="text" formControlName="age">
+
+  
+  <label>User Name:</label>
+  <input type="text" formControlName="userName">
+  
+  <label>Password:</label>
+  <input type="text" formControlName="password">
+  
+  <label>Phone:</label>
+  <input type="text" formControlName="phone">
+  
+  <label>Email:</label>
+  <input type="text" formControlName="email">
+
+  <label>Comments:</label>
+  <textarea  cols="30" rows="5" type="text" formControlName="comments"></textarea>
+
+  <label>hobbies:</label>
+      <select>
+        <option selected disabled hidden>choosh</option>
+        <option *ngFor="let hobbie of hobbies">
+          {{hobbie}}
+        </option>
+      </select>
+
+
+      <button type="submit">Submit</button>
+</div>

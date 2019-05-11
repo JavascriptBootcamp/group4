@@ -1,0 +1,13 @@
+<div class="author-detail center col">
+  <div class="center">
+      <img [src]="author.profile_pic" class="profile-pic"> 
+      <h1>{{ author.name }}</h1>
+  </div>
+    <h3>{{ author.description }}</h3>
+    <a [href]="author.facebook_URL" target="_blank"> follow me on facebook</a>
+</div>
+
+<div class="center author-gallery">
+  <img *ngFor="let img of author_imgs" [src]="img">
+</div>
+
