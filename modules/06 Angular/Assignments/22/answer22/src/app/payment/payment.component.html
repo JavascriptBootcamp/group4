@@ -1,0 +1,55 @@
+<div class="payment-wrapper">
+  <div class="payment-center">
+    <div class="payment-total-price">
+      <h1>Total price: {{totalPrice}}$</h1>
+    </div>
+    <div class="payment-form">
+      <form #form="ngForm" (submit)="checkCard(form)">
+        <div>
+          <label for="credit-number">Card Number:</label>
+          <input type="text" id="card-number" name="number" ngModel #cardNumber="ngModel" placeholder="Card Number"
+            required>
+        </div>
+        <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+          <span class="red-error" *ngIf="cardNumber.errors.required">
+            Please enter a valid card number
+          </span>
+        </div>
+        <div>
+          <label for="name-card">Name on card:</label>
+          <input type="text" id="name-card" name="name" ngModel #cardName="ngModel" placeholder="Name On Card" required>
+        </div>
+        <div *ngIf="cardName.invalid && (cardName.dirty || cardName.touched)">
+          <span class="red-error" *ngIf="cardName.errors.required">
+            Please enter the name on card
+          </span>
+        </div>
+        <div>
+          <label for="date">Expiry date:</label>
+          <input type="date" id="date" name="date" ngModel #cardDate="ngModel" placeholder="Expiry Date" required>
+        </div>
+        <div *ngIf="cardDate.invalid && (cardDate.dirty || cardDate.touched)">
+          <span class="red-error" *ngIf="cardDate.errors.required">
+            Please enter a valid date
+          </span>
+        </div>
+        <div>
+          <label for="code">Security code:</label>
+          <input type="text" id="code" name="code" ngModel #cardCode="ngModel" placeholder="Code" size="3" minlength="3" maxlength="3"
+            required>
+        </div>
+        <div *ngIf="cardCode.invalid && (cardCode.dirty || cardCode.touched)">
+          <span class="red-error" *ngIf="cardCode.errors.minlength">
+            Please enter a code with 3 digits
+          </span>
+        </div>
+        <div>
+          <button class="btn-submit">Submit</button>
+        </div>
+      </form>
+      <div [style.display]="display ? 'block' : 'none'">
+        <h2>Order successful!</h2>
+      </div>
+    </div>
+  </div>
+</div>

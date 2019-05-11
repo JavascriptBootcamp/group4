@@ -1,0 +1,76 @@
+.shopping-wrapper{
+    width: 100%;
+}
+
+table{
+    width: 50%;
+    margin: 40px auto;
+    border: 1px solid #80B2F2;
+    box-shadow: 0px 2px 2px #aaa;
+    border-collapse: collapse;
+    background-color: #F2F2F2;
+}
+
+th{
+    color:#4BA4F2;
+    padding: 10px;
+}
+
+td{ 
+    border: 1px solid #80B2F2;
+    text-align: center;
+    padding: 10px;
+}
+
+.total-price{
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+button{
+    background-color: #63BBF2;
+    border: none;
+    color: #F2F2F2;
+    padding: 3px 10px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+input[type=number]{
+    border-radius: 3px;
+}
+
+input[type=number]:focus {
+    background-color: #80B2F2;
+    font-weight: bold;
+}
+
+.payment-link{
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+a:link{
+    text-decoration: none;
+    font-size: 18px;
+    color: #80B2F2;
+}
+
+a:visited{
+    color: #80B2F2;
+}
+
+a:hover{
+    color: #4BA4F2;
+    font-weight: bold;
+}
+
+  
+
+
