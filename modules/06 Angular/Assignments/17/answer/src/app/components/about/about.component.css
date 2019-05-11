@@ -5,3 +5,25 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#about-body.center-full {
+    flex-direction: column;
+    text-align: center;
+}
+
+.content {
+    width: 90%;
+}
+
+.content h3 {
+    margin: 2rem auto;
+}
+
+.font-family-Sofia {
+    font-family: 'Sofia', cursive;
+}
+
+.quot {
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 2px rgba(242, 217, 94, 0.7); 
+}

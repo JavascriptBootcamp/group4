@@ -1,3 +1,26 @@
 <div class="center-full" id="recipe-body">
-  <h1>recipe works!</h1>
+  <div class="content">
+    <section name="recipe_title">
+        <h1 class="theme">{{ recipe.title }}</h1>
+    </section>
+
+    <section  name="recipe_ingredients">
+        <h2 class="theme">Ingredients:</h2>
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredients">
+            <h2>{{ ingredient }}</h2>
+          </li>
+        </ul>
+    </section>
+
+    <section  name="recipe_cooking_time">
+        <h2>Cooking Time: {{ recipe.cookingTime }} minutes</h2>
+    </section>
+    
+    <section  name="recipe_rating">
+        <h2 class="theme">Rating:</h2>
+        <img [src]="recipe.rating.imgSrc" [alt]="recipe.rating.stars">
+    </section>
+
+  </div>
 </div>

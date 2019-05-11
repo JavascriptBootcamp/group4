@@ -12,24 +12,24 @@ export class RecipesService {
       {
         id: "Creamy",
         title: "Creamy Pasta Toss with Smoked Sausage",
-        ingredients: ["1 (8 ounce) package uncooked pappardelle pasta", "1 tablespoon olive oil", "1 (12 ounce) package Hillshire Farm® Rope Smoked Sausage, cut into 1/2",
-          "1 (8 ounce) package sliced cremini mushrooms"],
+        ingredients: ["1 (8 ounce) package of uncooked pappardelle pasta", "1 tablespoon of olive oil", "1 (12 ounce) package of Hillshire Farm® Rope Smoked Sausage, cut into 1/2",
+          "1 (8 ounce) package of sliced cremini mushrooms"],
         cookingTime: 30,
-        rating: { stars: 4, imgSrc: "https://www.butterflyfields.com/wp-content/uploads/2016/02/4-star-rating.png" }
+        rating: { stars: 4, imgSrc: "../../assets/stars pics/4_stars.png" }
       },
       {
         id: "Meatloaf",
         title: "Easy Meatloaf",
-        ingredients: ["1 1/2 pounds ground beef","1 egg","1 onion, chopped","1 cup dried bread crumbs"],
+        ingredients: ["1 1/2 pounds ground beef","1 egg","1 onion, chopped","1 cup of dried bread crumbs"],
         cookingTime: 70,
-        rating: { stars: 3, imgSrc: "https://www.garage-gyms.com/wp-content/uploads/2016/02/3-star-rating.png" }
+        rating: { stars: 3, imgSrc: "../../assets/stars pics/3_stars.png" }
       },
       {
         id: "OmletC",
         title: "Omlet with cheese",
-        ingredients: ["Egg","Onion","Cooking Oil","cheese"],
+        ingredients: ["2 Eggs","1 Onion, chopped","1 tablespoon of Cooking Oil","1 cup of cheese"],
         cookingTime: 5,
-        rating: { stars: 5, imgSrc: "https://community.powerbi.com/oxcrx34285/attachments/oxcrx34285/QuickMeasuresGallery/207/1/5-star-rating.png" }
+        rating: { stars: 5, imgSrc: "../../assets/stars pics/5_stars.png" }
       }
     ]
   }

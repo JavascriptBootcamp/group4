@@ -1,7 +1,34 @@
 #recipes-body {
-    background-image:
+  background-image:
     linear-gradient(to bottom, rgba(242, 217, 94, 1), rgba(242, 217, 94, .1)),
     url('https://images.unsplash.com/photo-1540660290370-8aa90e451e8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  width: 90%;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+    border-bottom: #172326 dotted 3px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited { 
+    color: #172326; 
+}
+
+
+a:hover h1{
+    transition: all .1s;
+    transform: scale(1.05);
 }

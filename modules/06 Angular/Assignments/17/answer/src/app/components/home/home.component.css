@@ -5,3 +5,17 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#home-body.center-full {
+    flex-direction: column;
+}
+
+.theme {
+    font-size: 5rem;
+    text-align: center;
+}
+
+#home-body.center-full h1 {
+    width:  60%;
+    text-align: center;
+}
