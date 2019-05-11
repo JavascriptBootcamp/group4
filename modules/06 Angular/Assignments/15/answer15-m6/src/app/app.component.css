@@ -1,9 +1,19 @@
-.myImg{
-display: flex;
-flex-flow: wrap;
+.myImg {
+  display: flex;
+  flex-flow: wrap;
 }
 
 app-image-comp {
   width: 30%;
   margin: 5px;
+}
+
+.bigImg {
+
+  position: absolute;
+  top:5vh;
+  left:20vw;
+  width: 60vw;
+  height: 90vh;
+  text-align: center;
 }

@@ -13,18 +13,20 @@ export class AppComponent implements OnInit{
   images:Img[] = [];
   imageLikes:number[] = [];
   zoom:boolean;
+  bigImg:string;
 
 
   constructor(private imageService:ImagesService){
    this.images = this.imageService.images;
   this.imageService.intialiazeLike();
    this.imageLikes = this.imageService.imageLikes;
-   this.zoom =  this.imageService.zoom;
-   console.log(this.zoom);
   }
 
   ngOnInit (){
-
+    this.imageService.imageToZoom.subscribe((data)=>{
+     this.bigImg = data.img;
+     this.zoom = data.zoom;
+    })
   }
 
 }

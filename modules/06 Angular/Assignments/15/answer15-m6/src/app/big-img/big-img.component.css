@@ -1,5 +1,6 @@
-.imageZoom {
-  position: absolute;
-  width: 90vw;
-  height: 90vw;
+
+.bigImg  {
+
+height: 100%;
+border: 5px solid darkgrey;
 }

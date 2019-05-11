@@ -11,6 +11,7 @@ export class ImageCompComponent implements OnInit, OnDestroy, OnChanges {
   @Input() imageLikes;
   clicked = false;
   imgToZoom: string;
+  zoom = false;
 
   constructor(private imageService:ImagesService) {}
 
@@ -23,17 +24,15 @@ export class ImageCompComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   addBorder() {
-    this.imageService.zoom = true;
+    this.zoom = !this.zoom;
     this.clicked = true;
-    this.imageService.bigImg = this.myImg.src;
-    console.log(this.myImg.src);
+    this.imageService.imageToZoom.emit({img:this.myImg.src,zoom:this.zoom});
   }
 
   unZoom() {
     this.imageService.zoom = false;
   }
   ngOnDestroy() {
-    alert("i des");
     localStorage.setItem("imageLikes", JSON.stringify(this.imageLikes));
   }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { EventEmitter } from '@angular/core';
 
 export interface Img {
   src: string;
@@ -12,10 +13,12 @@ export interface Img {
 export class ImagesService {
   images: Img[] = [];
   imageLikes: number[] = [];
-  bigImg: string;
+  bigImg: string ="";
   zoom = false;
+  imageToZoom =  new EventEmitter();
 
   constructor() {
+
     this.images = [
       {
         src:
@@ -76,9 +79,6 @@ export class ImagesService {
 
   }
 
-  fun(){
-    console.log("************");
-  }
   intialiazeLike() {
     if (localStorage.getItem("imageLikes") === null) {
       this.images.forEach(value => {

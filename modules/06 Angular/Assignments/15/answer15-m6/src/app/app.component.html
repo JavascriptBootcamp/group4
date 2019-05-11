@@ -1,8 +1,12 @@
-<div class="myImg" >
+<div class="myImg"  >
 <app-image-comp [myImg] = "img"
                 [imageLikes] = "imageLikes"
                  class = "imgComp"
                  *ngFor = "let img of images">
 </app-image-comp>
-<app-big-img  *ngIf="zoom"> </app-big-img>
 </div>
+<app-big-img [bigImg] = "bigImg" class="bigImg"
+             *ngIf="zoom"
+             >
+</app-big-img>
+
