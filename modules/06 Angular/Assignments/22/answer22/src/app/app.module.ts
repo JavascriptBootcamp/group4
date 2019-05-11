@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material';
 import {  MatNativeDateModule,  MatFormFieldModule } from '@angular/material';
 import { ProductComponent } from './product/product.component';
 import { CartProductComponent } from './cart-product/cart-product.component';
+import { CreditCardValidatorDirective } from './directives/credit-card-validator.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CartProductComponent } from './cart-product/cart-product.component';
     ShoppingCartComponent,
     PaymentFormComponent,
     ProductComponent,
-    CartProductComponent
+    CartProductComponent,
+    CreditCardValidatorDirective
   ],
   imports: [
     BrowserModule,

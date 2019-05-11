@@ -1,7 +1,7 @@
 <div class="form-warpper">
-    <form class="payment-form" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <form class="payment-form" #paymentForm="ngForm" (ngSubmit)="onSubmit(paymentForm.value)" validate>
         <mat-form-field class="input">
-            <input matInput type="text" placeholder="Card number" formControlName="cardNumber">
+            <input matInput type="text" appCreditCardValidator placeholder="Card number" name="cardNumber" required [(ngModel)]="model.cardNumber" #cardNumber="ngModel">
         </mat-form-field>
         <mat-error class="error" *ngIf="cardNumber.errors?.required && cardNumber.touched">
             card number is required
@@ -23,14 +23,14 @@
         </mat-error>
 
         <mat-form-field class="input">
-            <input matInput type="text" placeholder="Card ownder full name" formControlName="cardOwnerName">
+            <input matInput type="text" placeholder="Card ownder full name" name="cardOwnerName" required [(ngModel)]="model.cardOwnerName" #cardOwnerName="ngModel">
         </mat-form-field>
         <mat-error class="error" *ngIf="cardOwnerName.errors?.required && cardOwnerName.touched">
             name is required
         </mat-error>
 
         <mat-form-field class="input">
-            <input matInput [matDatepicker]="picker" placeholder="Exparation date" formControlName="exparationDate">
+            <input matInput [matDatepicker]="picker" placeholder="Exparation date" name="exparationDate" required [(ngModel)]="model.exparationDate" #exparationDate="ngModel">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -40,7 +40,7 @@
         </mat-error>
 
         <mat-form-field class="input">
-            <input matInput type="number" placeholder="enter CVV" formControlName="CVV"> 
+            <input matInput type="number" placeholder="enter CVV" name="CVV" required [(ngModel)]="model.CVV" #CVV="ngModel"> 
         </mat-form-field>
 
         <mat-error class="error" *ngIf="CVV.errors?.required && CVV.touched">

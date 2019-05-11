@@ -27,9 +27,9 @@ export class CustomizedValidatorsService {
     else
       return {"notAllAreNumbers":true}
   }
-  isNumber(currentValue) {
-    return !isNaN(currentValue);
-  }
+  // isNumber(currentValue) {
+  //   return !isNaN(currentValue);
+  // }
   validateSum(control:FormControl):{[key:string]:boolean}{
     let value = control.value + '';
     let valuesAsArray = value.split("");
