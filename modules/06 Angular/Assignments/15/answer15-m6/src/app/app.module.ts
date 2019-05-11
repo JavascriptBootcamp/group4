@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ImageCompComponent } from './image-comp/image-comp.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AutherPicsComponent } from './auther-pics/auther-pics.component';
+import { BigImgComponent } from './big-img/big-img.component';
 
 const appRoutes: Routes = [
   { path: 'authors/name', component: AutherPicsComponent}
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
     AppComponent,
     ImageCompComponent,
     AutherPicsComponent,
+    BigImgComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
