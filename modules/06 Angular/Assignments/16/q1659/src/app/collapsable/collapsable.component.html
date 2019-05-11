@@ -1,0 +1,372 @@
+<fieldset id="sec1" *ngIf="display === 'sec1'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Enter keywords or item number</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="keywords1">
+            <input type="text" placeholder="enter keywords or item number" name="keywords" value="">
+            <select id="Selectkeywords">
+                <option value="1" selected>All words, any order</option>
+                <option value="2">Any words, any order</option>
+                <option value="3">Exact words, exact order</option>
+                <option value="4">Any words, any order</option>
+            </select>
+        </div>
+        <div id="keywords2">
+            <div>
+                <label for="ExcludeWords">Exclude words from your search</label>
+                <div>
+                    <input type="text" name="ExcludeWords" id="ExcludeWords" value="">
+                </div>
+                <div id="searchTips">
+                    <div>
+                        See general
+                        <a href="https://www.ebay.com/pages/il/help/buy/contextual/search_tips.html"
+                            target="_blank">search
+                            tips</a>
+                        or
+                        <a href="https://pages.ebay.com/il/en-us/help/find/searchby-options.html" target="_blank">using
+                            advanced search options</a>
+                    </div>
+                </div>
+                <label for="InThisCategory">In this category:</label>
+                <select id="InThisCategory">
+                    <option value="0" selected>All Categories</option>
+                    <option value="1">Antiques</option>
+                    <option value="2">Art</option>
+                    <option value="3">Baby</option>
+                    <option value="4">Books</option>
+                </select>
+                <div>
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+<fieldset id="sec2" *ngIf="display === 'sec2'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Search including</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="SearchIncluding">
+            <div>
+                <input type="checkbox" name="Title_and_description" id="Title_and_description">
+                <label for="Title_and_description">Title and description</label>
+            </div>
+            <div>
+                <input type="checkbox" name="Completed_listings" id="Completed_listings">
+                <label for="Completed_listings">Completed listings</label>
+            </div>
+            <div>
+                <input type="checkbox" name="Sold_listings" id="Sold_listings">
+                <label for="Sold_listings">Sold listings</label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset id="sec3" *ngIf="display === 'sec3'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Price</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Price">
+
+            <input type="checkbox" name="priced_from_ILS" id="priced_from_ILS">
+            <label for="priced_from_ILS">Show items priced from ILS</label>
+            <input type="text" title="Enter minimum price range value" id="minPrice">
+            to ILS
+            <input type="text" title="Enter maximum price range value" id="maxPrice">
+        </div>
+    </div>
+</fieldset>
+
+
+
+<fieldset id="sec4" *ngIf="display === 'sec4'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Buying formats</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Buying formats">
+
+            <div>
+                <input type="checkbox" name="Auction" id="Auction">
+                <label for="Auction">Auction</label>
+            </div>
+            <div>
+                <input type="checkbox" name="Buy It Now" id="Buy It Now">
+                <label for="Buy It Now">Buy It Now</label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+
+
+<fieldset id="sec5" *ngIf="display === 'sec5'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Condition</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Condition">
+
+            <div>
+                <input type="checkbox" name="New" id="New">
+                <label for="New">New</label>
+            </div>
+            <div>
+                <input type="checkbox" name="Used" id="Used">
+                <label for="Used">Buy It Now</label>
+            </div>
+            <div>
+                <input type="checkbox" name="Not Specified" id="Not Specified">
+                <label for="Not Specified">Buy It Now</label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+
+<fieldset id="sec6" *ngIf="display === 'sec6'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Show results</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Show results">
+
+            <div>
+                <input type="checkbox" name="Listings" id="Listings">
+                <label for="Listings">Listings</label>
+                <select id="ListingsSelect">
+                    <option value="0" selected>Ending within</option>
+                    <option value="1">Ending in more than</option>
+                    <option value="2">Started within</option>
+                </select>
+                <select id="ListingsSelectHours">
+                    <option value="0" selected>1 hour</option>
+                    <option value="1">2 hour</option>
+                    <option value="2">3 hour</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" name="Number_of_bids" id="Number_of_bids">
+                <label for="Number_of_bids">Number of bids from:</label>
+                <input type="text" title="Enter minimum of bids" id="minBids">
+                to
+                <input type="text" title="Enter maximum of bids" id="maxBids">
+            </div>
+            <div>
+                <input type="checkbox" name="Multiple_item_listings" id="Multiple_item_listings">
+                <label for="Multiple_item_listings">Multiple item listings from:</label>
+                <input type="text" title="Enter minimum Multiple item listening value" id="minlistening">
+                to
+                <input type="text" title="Enter maximum Multiple item listening value" id="maxlistening">
+            </div>
+            <div>
+                <input type="checkbox" name="Items_listed_as_lots" id="Items_listed_as_lots">
+                <label for="Items_listed_as_lots">Items listed as lots</label>
+                <a href="https://pages.ebay.com/il/en-us/help/sell/contextual/lots.html" target="_blank">Learn
+                    more</a>
+            </div>
+            <div>
+                <input type="checkbox" name="Sale_items" id="Sale_items">
+                <label for="Sale_items">Sale items</label>
+            </div>
+            <div>
+                <input type="checkbox" name="Best_offer" id="Best_offer">
+                <label for="Best_offer"> Best offer</label>
+                <a href="https://pages.ebay.com/il/en-us/help/buy/best-offer.html" target="_blank">Learn
+                    more</a>
+            </div>
+            <div>
+                <input type="checkbox" name="eBay_for_Charity" id="eBay_for_Charity">
+                <label for="eBay_for_Charity">eBay for Charity</label>
+                <a href="https://pages.ebay.com/il/en-us/help/buy/buying-nonprofit.html" target="_blank">Learn
+                    more</a>
+            </div>
+            <legend>Shipping options</legend>
+            <div>
+                <input type="checkbox" name="Free_international_shipping" id="Free_international_shipping">
+                <label for="Free_international_shipping">Free international shipping</label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+
+
+
+<fieldset id="sec7" *ngIf="display === 'sec7'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Location</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Location">
+
+            <div>
+                <input type="checkbox" name="Located" id="Located">
+                <label for="Located">Located</label>
+                <select id="LocatedSelect">
+                    <option value="0" selected>15</option>
+                    <option value="1">20</option>
+                    <option value="2">30</option>
+                </select>
+                Miles of
+                <input type="text" name="LocatedText" id="LocatedText">
+            </div>
+            <div>
+                <input type="checkbox" name="From_preferred_locations" id="From_preferred_locations">
+                <label for="From_preferred_locations">From preferred locations</label>
+                <select id="From_preferred_locations_Select">
+                    <option value="0" selected>US Only</option>
+                    <option value="1">Worldwide</option>
+                    <option value="2">Asia</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" name="Located_in" id="Located_in">
+                <label for="Located_in">Located in</label>
+                <select id="Located_in_Select">
+                    <option value="0" selected>United States</option>
+                    <option value="1">Australia</option>
+                    <option value="2">Canada</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+
+<fieldset id="sec8" *ngIf="display === 'sec8'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Sellers</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Sellers">
+
+            <div>
+                <input type="checkbox" name="show_items_from" id="show_items_from">
+                <label for="show_items_from">Only show items from:</label>
+            </div>
+            <div class="m-left">
+                <div>
+                    <input type="checkbox" name="Specific_sellers" id="Specific_sellers" checked disabled>
+                    <label for="Specific_sellers">Specific sellers (enter seller's user IDs)</label>
+                </div>
+                <div>
+                    <select id="Include" disabled>
+                        <option value="0" selected>Include</option>
+                    </select>
+                    <input type="text" name="someTextDisabled" disabled>
+                </div>
+                <div>
+                    <input type="checkbox" name="My_saved_sellers" id="My_saved_sellers" disabled>
+                    <label for="My_saved_sellers">My saved sellers list</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="Sellers_with_eBay" id="Sellers_with_eBay" disabled>
+                    <label for="Sellers_with_eBay">Sellers with eBay stores</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+
+
+
+<fieldset id="sec9" *ngIf="display === 'sec9'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">Sort by</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="Sort_by">
+
+            <select id="Sort_by_Select">
+                <option value="0" selected>Best Match</option>
+                <option value="1">Time: ending soonest</option>
+                <option value="2">Time: newly listed</option>
+            </select>
+        </div>
+        <div id="View_results">
+            <legend>View results</legend>
+            <select id="View_results_Select">
+                <option value="0" selected>All items</option>
+                <option value="1">Picture Gallery</option>
+                <option value="2">Show item numbers</option>
+            </select>
+        </div>
+        <div id="Results_per_page">
+            <legend>Results per page</legend>
+            <select id="Results_per_page_select">
+                <option value="0" selected>50</option>
+                <option value="1">100</option>
+                <option value="2">150</option>
+            </select>
+        </div>
+    </div>
+</fieldset>
+
+
+
+
+<fieldset id="sec10" *ngIf="display === 'sec10'">
+    <legend [ngClass]="{
+        'default-symbool': true,
+        'minus': (isOpen)
+      }" (click)="toggle()">clear and search</legend>
+    <div [ngClass]="{
+        'sec-col': true,
+        'collapse': !(isOpen)
+      }">
+        <div id="searchSection">
+            <button type="submit">Search</button>
+            <button type="clear">Clear options</button>
+        </div>
+    </div>
+</fieldset>

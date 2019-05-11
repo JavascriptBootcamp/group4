@@ -1,0 +1,7 @@
+
+.actorImg{
+    width:240px;
+    height: 330px;
+    border-radius: 1rem;
+    transition: border .2s;
+}
