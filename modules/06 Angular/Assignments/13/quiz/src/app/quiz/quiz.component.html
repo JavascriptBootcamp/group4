@@ -1,0 +1,15 @@
+<div>
+    <form (submit)="onSubmit()">
+      <app-question *ngFor="let question of questions,let i = index">
+        <div>
+          <h4>{{question.question}}</h4>
+          <div *ngFor="let ans of questions[i].ans,let j=index" [className]="getClass(i,j)">
+            <input [disabled]="question.clicked" type="radio" name="gender" (change)="onChange(i,ans.answer_number)" [value]="ans.content">{{ans.content}}
+            <br>
+          </div>
+        </div>
+      </app-question>
+      <br>
+      <button>Submit</button>
+    </form>
+  </div>
