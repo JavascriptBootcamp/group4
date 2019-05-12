@@ -1,0 +1,9 @@
+<div>
+  <p>
+  {{min}}:{{sec}}
+  </p>
+  <div *ngIf="timeOut">
+    Time Out!
+  </div>
+  <button (click)="startTimer()" #btn >START</button> <button (click)="resetTimer()">RESET</button>
+  </div>
