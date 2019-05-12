@@ -17,6 +17,10 @@
       Card number is required
     </p>
 
+    <p *ngIf="creditCard.errors.fetchCardNumberInvalid">
+      Fetch was failed
+    </p>
+
   </div>
 
   <p>
@@ -26,6 +30,7 @@
 
 
   <div *ngIf="creditCardName.invalid && (creditCardName.dirty || creditCardName.touched)">
+    
     <p *ngIf="creditCardName.errors.required">
       Card name is required
     </p>
@@ -62,7 +67,12 @@
 
 
   <button id="sub" [disabled]="f.invalid">Submit</button>
+  
+  <div> Fetch String {{fetchString}}</div>
 
   <div>Payment is {{sum}}</div>
+
+
+
 
 </form><br><br>

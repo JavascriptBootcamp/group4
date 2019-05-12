@@ -12,14 +12,19 @@ export class PaymentComponent implements OnInit {
 
   f: FormGroup;
   sum: number;
+  fetchString: string;
+
+
 
   constructor(builder: FormBuilder, private manageService: ManageService) {
     this.f = builder.group({
-      creditCard: ["", [Validators.required, this.myvalidator]],
+      creditCard: ["", [Validators.required, this.cardnumberValidator]],
       creditCardName: ["", Validators.required],
       date: ["", Validators.required],
       securityCode: ["", [Validators.required, Validators.minLength(3)]],
     })
+
+    this.fetchString = null;
 
   }
 
@@ -39,7 +44,9 @@ export class PaymentComponent implements OnInit {
     return this.f.get('securityCode');
   }
 
-  myvalidator(control: FormControl): { [key: string]: boolean } {
+
+
+  cardnumberValidator(control: FormControl): { [key: string]: boolean } {
 
     if (control.value.length === 16) {
       if (validateCreditCard(control.value)) {
@@ -117,22 +124,27 @@ export class PaymentComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit() {
     console.log("payment", this.manageService.getProducts());
     this.sum = this.manageService.getSum();
   }
 
-  ngDoCheck() {
-    // validateCreditCard
-    console.log("get products", this.manageService.getProducts());
-  }
-
-
   onSubmitForm() {
     console.log("f is:", this.f);
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(this.f.value),
+      headers: {}
+    };
+
+    fetch('http://localhost:3000/Order', options)
+      .then((response) => {
+        this.fetchString = "The fetch is successful";
+        return response.json;
+      })
+      .catch((myJson) => {
+        this.fetchString = "The fetch failed";
+      });
   }
-
-
 }
