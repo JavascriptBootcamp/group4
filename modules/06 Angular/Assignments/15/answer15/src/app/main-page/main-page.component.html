@@ -1,0 +1,82 @@
+<body>
+
+  <div style="text-align:center">
+    <h1 style="font-size: 50px;color: chocolate"> {{ title }} Main Page </h1> 
+  </div>
+
+  <div id="outer-wrapper">
+
+    <div id="inner-wrapper" #innerWrapper>
+
+      <div *ngFor="let obj of instushService.imagesRelatedDataArr; let i = index">
+        <div 
+          [class.flex-item-no-likes]="
+            instushService.imagesRelatedDataArr[i].likesNum===0"
+          [class.flex-item-few-likes]="
+            instushService.imagesRelatedDataArr[i].likesNum>0 && 
+            instushService.imagesRelatedDataArr[i].likesNum<10"
+          [class.flex-item-many-likes]="
+            instushService.imagesRelatedDataArr[i].likesNum>=10"
+          >
+          
+            <img 
+              [src]="obj.imageSource"
+              (click)="displayImageOnMiddle(this, i)"
+              [class.image-without-border-without-likes]="
+                !instushService.imagesRelatedDataArr[i].isImageClicked &&
+                instushService.imagesRelatedDataArr[i].likesNum===0"
+              [class.image-with-border-without-likes]="
+                instushService.imagesRelatedDataArr[i].isImageClicked &&
+                instushService.imagesRelatedDataArr[i].likesNum===0"
+              [class.image-without-border-with-few-likes]="
+                !instushService.imagesRelatedDataArr[i].isImageClicked &&
+                instushService.imagesRelatedDataArr[i].likesNum>0 && 
+                instushService.imagesRelatedDataArr[i].likesNum<10"
+              [class.image-with-border-with-few-likes]="
+                instushService.imagesRelatedDataArr[i].isImageClicked &&
+                instushService.imagesRelatedDataArr[i].likesNum>0 && 
+                instushService.imagesRelatedDataArr[i].likesNum<10"
+              [class.image-without-border-with-many-likes]="
+                !instushService.imagesRelatedDataArr[i].isImageClicked &&
+                instushService.imagesRelatedDataArr[i].likesNum>=10"
+              [class.image-with-border-with-many-likes]="
+                instushService.imagesRelatedDataArr[i].isImageClicked &&
+                instushService.imagesRelatedDataArr[i].likesNum>=10"
+            > 
+            <br>
+
+            <nav>
+              <a                
+                role="presentation"
+                [routerLinkActiveOptions]="{exact: true}"
+                routerLinkActive="active-link"
+                (click)="instushService.getAuthorDataObj(obj.authorName)"
+                class="author-name" 
+                [routerLink]="['/authorImages', 
+                                instushService.getCurrentAuthorID(obj.authorID), 
+                                instushService.getCurrentAuthorName(obj.authorName) ]" >
+
+                
+                {{obj.authorName}}
+              </a>
+            </nav> 
+            <br><br>
+
+            <button type="button" class="like-button" (click)="obj.addLike(obj)" >
+              LIKE
+            </button>
+            
+            <input class="display-likes-num" value={{obj.likesNum}} /> 
+        </div>
+          
+      </div>
+
+    </div>
+
+    <div id="middle-of-screen" #middleOfScreen (click)="undisplayImageOnMiddle()"></div>
+
+  </div>
+
+  <div id="local-storage-message"></div>
+
+</body>

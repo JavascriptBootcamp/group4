@@ -1,0 +1,96 @@
+<body>
+  <br>
+  <nav>
+    <h3 style="text-align:center">
+      Back To
+      <a routerLink='' style="font-size: 23px">
+        Main Page
+      </a>
+    </h3>
+    <br> <br>
+
+    <!-- Programmaticaly Navigation -->
+    <h3 style="text-align:center">
+      To
+      <button 
+        class="load-author-details-button"
+        (click)="instushService.onLoadAuthorDetailsComponent(this)" >
+        {{authorName}} Details
+      </button>
+    </h3>
+
+  </nav> 
+
+  <div style="text-align:center">
+    <h1 style="font-size: 50px;color: chocolate">
+      {{authorName}} {{ title }} Images 
+    </h1>
+    <p style="font-size: 30px;color: chocolate">
+      {{instushService.authorImagesRelatedDataArr.length}} Images
+    </p> 
+  </div>
+
+
+  <div id="outer-wrapper">
+
+    <div id="inner-wrapper" #innerWrapper>
+
+      <div *ngFor="let obj of instushService.authorImagesRelatedDataArr; let i = index">
+        <div 
+          [class.flex-item-no-likes]="instushService.authorImagesRelatedDataArr[i].likesNum===0"
+          [class.flex-item-few-likes]="instushService.authorImagesRelatedDataArr[i].likesNum>0 && instushService.imagesRelatedDataArr[i].likesNum<10"
+          [class.flex-item-many-likes]="instushService.authorImagesRelatedDataArr[i].likesNum>=10"
+          >
+            <img  
+              [src]="obj.imageSource"
+              (click)="displayImageOnMiddle(this, i)"
+              [class.image-without-border-without-likes]="
+              !instushService.authorImagesRelatedDataArr[i].isImageClicked &&
+              instushService.authorImagesRelatedDataArr[i].likesNum===0"
+              [class.image-with-border-without-likes]="
+                instushService.authorImagesRelatedDataArr[i].isImageClicked &&
+                instushService.authorImagesRelatedDataArr[i].likesNum===0"
+              [class.image-without-border-with-few-likes]="
+                !instushService.authorImagesRelatedDataArr[i].isImageClicked &&
+                instushService.authorImagesRelatedDataArr[i].likesNum>0 && 
+                instushService.authorImagesRelatedDataArr[i].likesNum<10"
+              [class.image-with-border-with-few-likes]="
+                instushService.authorImagesRelatedDataArr[i].isImageClicked &&
+                instushService.authorImagesRelatedDataArr[i].likesNum>0 && 
+                instushService.authorImagesRelatedDataArr[i].likesNum<10"
+              [class.image-without-border-with-many-likes]="
+                !instushService.authorImagesRelatedDataArr[i].isImageClicked &&
+                instushService.authorImagesRelatedDataArr[i].likesNum>=10"
+              [class.image-with-border-with-many-likes]="
+                instushService.authorImagesRelatedDataArr[i].isImageClicked &&
+                instushService.authorImagesRelatedDataArr[i].likesNum>=10"
+            > 
+            <br>
+
+            <!-- <nav>
+              <a 
+                class="author-name" 
+                (click)="instushService.getAuthorDetails()" 
+                [routerLink]="['/authorImages', 
+                                instushService.getCurrentAuthorID(obj.authorID) ]" >
+                Author Details
+              </a>
+            </nav> 
+            <br><br> -->
+
+            <button type="button" class="like-button" (click)="obj.addLike(obj)" >
+              LIKE
+            </button>
+            <input class="display-likes-num" value={{obj.likesNum}} /> 
+        </div>
+          
+      </div>
+
+    </div>
+
+    <div id="middle-of-screen" #middleOfScreen (click)="undisplayImageOnMiddle()"></div>
+
+  </div>
+
+
+</body>
