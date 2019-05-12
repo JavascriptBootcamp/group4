@@ -2,5 +2,7 @@
 .bigImg  {
 
 height: 100%;
-border: 5px solid darkgrey;
+
+box-shadow:0px 0px 50px 30px #ff0000 ;
 }
+

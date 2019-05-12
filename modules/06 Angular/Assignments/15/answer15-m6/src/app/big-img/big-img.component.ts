@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ImagesService } from '../images.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ImagesService } from '../images.service';
   templateUrl: './big-img.component.html',
   styleUrls: ['./big-img.component.css']
 })
-export class BigImgComponent implements OnInit ,OnChanges{
+export class BigImgComponent implements OnInit{
   @Input() bigImg:string;
   zoom:boolean;
   constructor(private imageService:ImagesService) {
@@ -17,8 +17,9 @@ export class BigImgComponent implements OnInit ,OnChanges{
 
   }
 
-  ngOnChanges(){
-    console.log("change detect");
+  hideImg() {
+    this.imageService.hideImg.emit();
   }
+
 
 }

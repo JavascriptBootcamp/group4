@@ -26,7 +26,7 @@ export class ImageCompComponent implements OnInit, OnDestroy, OnChanges {
   addBorder() {
     this.zoom = !this.zoom;
     this.clicked = true;
-    this.imageService.imageToZoom.emit({img:this.myImg.src,zoom:this.zoom});
+    this.imageService.imageToZoom.emit(this.myImg.src);
   }
 
   unZoom() {

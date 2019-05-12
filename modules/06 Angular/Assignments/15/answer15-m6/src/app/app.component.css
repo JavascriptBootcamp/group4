@@ -17,3 +17,9 @@ app-image-comp {
   height: 90vh;
   text-align: center;
 }
+
+.filter {
+  filter: grayscale(50%) blur(5px);
+  -webkit-filter: grayscale(50%) blur(5px);
+  pointer-events: none;
+}

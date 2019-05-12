@@ -24,8 +24,11 @@ export class AppComponent implements OnInit{
 
   ngOnInit (){
     this.imageService.imageToZoom.subscribe((data)=>{
-     this.bigImg = data.img;
-     this.zoom = data.zoom;
+     this.bigImg = data;
+     this.zoom = true;
+    })
+    this.imageService.hideImg.subscribe(() => {
+      this.zoom = false;
     })
   }
 

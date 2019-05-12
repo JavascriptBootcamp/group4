@@ -16,6 +16,7 @@ export class ImagesService {
   bigImg: string ="";
   zoom = false;
   imageToZoom =  new EventEmitter();
+  hideImg = new EventEmitter()
 
   constructor() {
 
