@@ -1,0 +1,44 @@
+<div class="shopping-wrapper">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>
+        <select class="product" #selectedProduct>
+          <option id="op1" value="computer" selected>computer</option>
+          <option id="op2" value="chair">chair</option>
+          <option id="op3" value="mouse">mouse</option>
+          <option id="op4" value="dress">dress</option>
+          <option id="op5" value="Water">Water</option>
+          <option id="op6" value="car">car</option>
+          <option id="op7" value="TV">TV</option>
+          <option id="op8" value="Cake">Cake</option>
+          <option id="op9" value="Chocolade">Chocolade</option>
+          <option id="op10" value="Blouse">Blouse</option>
+        </select>
+      </td>
+      <td>
+        <input type="number" id="price" #price>
+      </td>
+      <td class="btn-add">
+        <button (click)="addProduct()">Add</button>
+      </td>
+    </tr>
+    <tr *ngFor="let item of cart; index as i">
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td class="btn-remove">
+        <button (click)="removeProduct(i)">remove</button>
+      </td>
+    </tr>
+  </table>
+  <div class="total-price">
+    <h2>The total price: {{totalPrice}}$</h2>
+  </div>
+  <div class="payment-link">
+    <a routerLink="../payment">Payment</a>
+  </div>
+</div>

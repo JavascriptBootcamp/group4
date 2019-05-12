@@ -1,0 +1,71 @@
+<div class="payment-wrapper">
+  <div class="payment-center">
+    <div class="payment-total-price">
+      <h1>Total price: {{totalPrice}}$</h1>
+    </div>
+    <div class="payment-form">
+      <form [formGroup]="form" (submit)="submit()">
+        <div>
+          <label for="card-number">Card Number:</label>
+          <input type="text" id="card-number" formControlName="number" placeholder="Card Number">
+        </div>
+        <div *ngIf="form.invalid && form.get('number').errors" [style.display]="displayError ? 'block' : 'none'">
+          <div class="red-error" *ngIf="form.get('number').errors.required">
+            Card number field is required
+          </div>
+          <div class="red-error" *ngIf="form.get('number').errors.lengthAndAllNumbers">
+            Number must be 16 digits, all must be numbers
+          </div>
+          <div class="red-error" *ngIf="form.get('number').errors.sum">
+            The sum of all the digits must be greater than 16
+          </div>
+          <div class="red-error" *ngIf="form.get('number').errors.lastDigitIsEven">
+            The final digit must be even
+          </div>
+          <div class="red-error" *ngIf="form.get('number').errors.allTheSame">
+            You must have at least two different digits
+          </div>
+        </div>
+        <div>
+          <label for="name-card">Name on card:</label>
+          <input type="text" id="name-card" formControlName="name" placeholder="Name On Card">
+        </div>
+        <div *ngIf="form.invalid && form.get('name').errors" [style.display]="displayError ? 'block' : 'none'">
+          <div class="red-error" *ngIf="form.get('name').errors.required">
+            Name on card field is required
+          </div>
+        </div>
+        <div>
+          <label for="date">Expiry date:</label>
+          <input type="date" id="date" formControlName="date" placeholder="Expiry Date">
+        </div>
+        <div *ngIf="form.invalid && form.get('date').errors" [style.display]="displayError ? 'block' : 'none'">
+          <div class="red-error" *ngIf="form.get('date').errors.required">
+            Date field is required
+          </div>
+        </div>
+        <div>
+          <label for="code">Security code:</label>
+          <input type="text" id="code" formControlName="code" placeholder="Code">
+        </div>
+        <div *ngIf="form.invalid && form.get('code').errors" [style.display]="displayError ? 'block' : 'none'">
+          <div class="red-error" *ngIf="form.get('code').errors.required">
+            Security code field is required
+          </div>
+          <div class="red-error" *ngIf="form.get('code').errors.minlength">
+            Security code with 3 digits - minimum 3 digits
+          </div>
+          <div class="red-error" *ngIf="form.get('code').errors.maxlength">
+            Security code with 3 digits - maximum 3 digits
+          </div>
+        </div>
+        <div>
+          <button class="btn-submit">Submit</button>
+        </div>
+      </form>
+      <div [style.display]="displaySuccess ? 'block' : 'none'">
+        <h2>Order successful!</h2>
+      </div>
+    </div>
+  </div>
+</div>

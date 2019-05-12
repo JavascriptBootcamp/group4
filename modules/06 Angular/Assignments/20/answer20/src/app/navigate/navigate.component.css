@@ -1,0 +1,33 @@
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #80B2F2;
+    margin: 0px auto;
+    box-shadow: 10px 10px 10px black;
+}
+
+ul {
+    width: 100%;
+    display:grid;
+    justify-content: center;
+    grid-template-columns: 50% 50% ;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+li a {
+    font-size: 25px;
+    display: block;
+    color: #F2F2F2;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+ 
+nav a:hover{
+    color: #4BA4F2;
+    font-weight: bold;
+    background-color: #5CC8F2;
+} 

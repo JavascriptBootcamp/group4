@@ -1,0 +1,43 @@
+.payment-wrapper{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.payment-center{
+    width: 320px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+input{
+    margin: 10px;
+    border-radius: 3px; 
+}
+
+input:focus {
+    background-color: #80B2F2;
+    font-weight: bold;
+}
+
+.btn-submit{ 
+    background-color: #63BBF2;
+    border: none;
+    color: #F2F2F2;
+    padding: 3px 10px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+#card-number.ng-touched.ng-invalid , #name-card.ng-touched.ng-invalid , #date.ng-touched.ng-invalid , #code.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+.red-error{
+    color:red;
+    font-size: 14px;
+}
