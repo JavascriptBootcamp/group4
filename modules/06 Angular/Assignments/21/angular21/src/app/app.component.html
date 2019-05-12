@@ -1,0 +1,16 @@
+<div>
+    <div>
+        <label for="timer">Timer</label>
+        <input id="timer" type="radio" name="timer" checked (change)="toggle()">
+        <label for="countdown">Countdown</label>
+        <input id="countdown" type="radio" name="timer" (change)="toggle()">
+        <input type="number">
+    </div>
+    <div *ngIf="timer; then timerBlock; else countdownBlock"></div>
+    <ng-template #timerBlock>
+        <app-timer></app-timer>
+    </ng-template>
+    <ng-template #countdownBlock>
+        <app-countdown></app-countdown>
+    </ng-template>
+</div>
