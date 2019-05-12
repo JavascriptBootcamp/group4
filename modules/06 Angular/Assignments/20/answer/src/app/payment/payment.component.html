@@ -1,0 +1,26 @@
+<b>Total Price:</b> <b name="tlp">{{this.actionsService.getTotal()}}</b> $ <br><br>
+<form name="f" #f="ngForm" (submit)="onSubmitForm(f)">
+    <p>
+        <label> Card Number: </label>
+        <input name="cn" ngModel #cn="ngModel" type="text" required><br>
+    </p>
+    <p>
+        <label> Name of Card: </label>
+        <input name="noc" ngModel #noc="ngModel" type="text" required><br>
+    </p>
+    <p>
+        <label> Expiry Date: </label>
+        <input name="exd" ngModel #exd="ngModel" type="date" required><br>
+    </p>
+    <p>
+        <label>Security Code: </label>
+        <input name="sc" ngModel #sc="ngModel" type="text" maxlength="3" required><br>
+    </p>
+    <button  ngModel type="submit">Submit</button>
+</form><br><br>
+
+<div name="validErr" style="color:darkred">
+    <!-- result here -->
+
+{{status}}
+</div>
