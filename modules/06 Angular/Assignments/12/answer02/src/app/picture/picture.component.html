@@ -1,0 +1,8 @@
+<h1>My Favorite Places</h1>
+<div class="pictures-gallery">
+<div *ngFor="let p of pictures" class="picture-container">
+  <a href="{{p.wikiHref}}">
+    <img src="{{p.imgSrc}}" class="picSrc">
+  </a>
+</div>
+</div>

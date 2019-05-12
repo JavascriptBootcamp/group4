@@ -41,3 +41,7 @@ img:hover,
   width: 20%;
   height: 100%;
 }
+
+a {
+  color: rgb(102, 45, 52);
+}
