@@ -1,0 +1,27 @@
+<b>Total Price:</b> <b name="tlp">{{this.actionsService.getTotal()}}</b> $ <br><br>
+<form [formGroup]="f" (submit)="onSubmit(f)">
+
+    <p>
+        <label> Card Number: </label>
+        <input formControlName="cn" type="text"><br>
+    </p>
+    <p>
+        <label> Name of Card: </label>
+        <input formControlName="noc" type="text"><br>
+    </p>
+    <p>
+        <label> Expiry Date: </label>
+        <input formControlName="exd" type="date"><br>
+    </p>
+    <p>
+        <label>Security Code: </label>
+        <input formControlName="sc" type="text"><br>
+    </p>
+    <button type="submit">Submit</button>
+</form><br><br>
+
+<div name="validErr" style="color:darkred">
+    <!-- result here -->
+
+{{status}}
+</div>
