@@ -1,0 +1,19 @@
+<div  style="background-color:wheat" class="main">
+  <div  style="display: flex;background-color: tomato" >
+    <div>
+      <input type = "radio" name="timer" id="timer" (click)="onTimerChecked()" checked/>
+      <label for="timer"> Timer</label>
+    </div>
+    <div>
+      <input type="radio" id="count" name="timer"   (click)="onCountChecked()"/>
+      <label for="count"> Countdown</label>
+    </div>
+    <div>
+      <input type="text" placeholder="Start from..." />
+    </div>
+  </div>
+  <div> {{now.getMinutes()}} : {{now.getSeconds()}} </div>
+  <app-countdown *ngIf="timer"></app-countdown>
+  <app-timer *ngIf="count"></app-timer>
+</div>
+
