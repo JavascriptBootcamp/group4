@@ -5,8 +5,8 @@
 }
 
 img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 15px;
   cursor: pointer;
   margin: 5px;
@@ -23,7 +23,7 @@ img:hover,
   color: rgb(213, 199, 177);
   cursor: pointer;
 
-  width: 150px;
+  width: 120px;
   height: 50px;
   border-radius: 5px;
   margin: 5px;
@@ -38,9 +38,30 @@ ul {
     transition: all 1s;
     opacity: 0; 
     height: 0;
+    list-style: none;
 }
 
 .expand {
     opacity: 1;
-    height: 500px;
+    height: 400px;
+}
+
+@media only screen and (max-width: 400px) {
+  #top3Headline {
+    width: 80px;
+    text-align: center;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .expand {
+    height: 280px; 
+  }
+
+  #top3 {
+    left: 77%;
+  }
 }

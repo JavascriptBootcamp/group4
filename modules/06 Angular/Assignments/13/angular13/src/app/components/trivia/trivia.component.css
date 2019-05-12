@@ -1,0 +1,83 @@
+.wrapper {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: blanchedalmond;
+    padding: 15px;
+    border: 2px solid #e5e5e5;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+    padding: 15px;
+}
+
+li {
+    display: block;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 8px 0;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+.options {
+    display: inline-block;
+    width: 40%;
+    margin-bottom: 15px;
+}
+
+.options input[type='radio'] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.options label {
+    vertical-align: top;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.wrong {
+    background-color: red;
+    color: white;
+}
+
+.true {
+    background-color: rgb(1, 255, 1);
+}
+
+.answerDiv {
+    width: 50%;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+p {
+    border-radius: 4px;
+}
