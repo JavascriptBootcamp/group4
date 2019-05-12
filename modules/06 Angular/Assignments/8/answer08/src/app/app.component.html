@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="container" style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+  <input type="text" placeholder="Enter first string" #firstString />
+  <input type="text" placeholder="Enter second string" #secondString />
+  <button (click)="addNewStringsPair(firstString.value, secondString.value)">Check if anagrams</button>
+  <p id="result" [style.visibility]="isResultVisible ? 'visible' : 'hidden'">{{firstStr | areanagrams: secondString.value}}</p>
+</div>

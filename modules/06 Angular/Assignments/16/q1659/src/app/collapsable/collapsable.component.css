@@ -1,0 +1,22 @@
+.collapse{
+    display:none;
+}
+
+.minus:before{
+    content:"-";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.displayAll {
+    display:block;
+}
+
+legend{
+    padding: 5px;
+    font-weight: bold;
+}
+
+fieldset:hover{
+    background-color: rgb(241, 228, 228);
+}
