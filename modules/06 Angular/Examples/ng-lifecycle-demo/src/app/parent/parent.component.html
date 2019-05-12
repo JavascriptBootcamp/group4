@@ -1,0 +1,4 @@
+<div *ngIf="!isHidden">
+  <app-child [data]="someData" (someOutput)="onSomeOutput($event)"></app-child>
+</div>
+<button (click)="isHidden=!isHidden">Toggle Child</button>
