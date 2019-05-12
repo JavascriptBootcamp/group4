@@ -8,6 +8,7 @@ import { ImageComponent } from './components/image/image.component';
 import { BigPicComponent } from './components/big-pic/big-pic.component';
 import { TopPicsComponent } from './components/top-pics/top-pics.component';
 import { MainGalleryComponent } from './components/main-gallery/main-gallery.component';
+import { AuthorComponent } from './components/author/author.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MainGalleryComponent } from './components/main-gallery/main-gallery.com
     ImageComponent,
     BigPicComponent,
     TopPicsComponent,
-    MainGalleryComponent
+    MainGalleryComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,
