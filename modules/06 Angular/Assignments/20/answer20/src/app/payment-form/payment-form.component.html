@@ -1,0 +1,163 @@
+<h1 style="text-align: center"><u>Credit card details</u></h1>
+
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+        <!-- <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()"> -->
+
+        <form 
+          [formGroup]="paymentForm" 
+          (ngSubmit)="logicServiceObj.cardValidate(paymentForm)">
+
+          <div class="form-group">
+            <label for="cardNumber">Card Number: </label>
+            <input
+              type="text"
+              id="cardNumber"
+              formControlName="cardNumber"
+              class="form-control"
+              placeholder="Credit Card Number"
+              maxlength="16">
+          </div>
+          <div 
+            *ngIf="!paymentForm.get('cardNumber').valid && 
+                  (paymentForm.get('cardNumber').touched || 
+                  paymentForm.get('cardNumber').dirty)"
+            class="help-block"
+            style="color: red">
+
+            <p *ngIf="paymentForm.get('cardNumber').errors['required']; 
+                      else invalidCardLengthBlock">
+              Card Number is required field!
+            </p>
+            <ng-template #invalidCardLengthBlock>
+                <p *ngIf="paymentForm.get('cardNumber').errors['invalidCardLength']; 
+                        else notEachCharIsDigitBlock">
+                  Card Number must contain 16 digits!
+                </p>
+                <ng-template #notEachCharIsDigitBlock>
+                    <p *ngIf="paymentForm.get('cardNumber').errors['notEachCharIsDigit']; 
+                            else allDigitsAreSameBlock">
+                      Card Number field can contain only digits!
+                    </p>
+                    <ng-template #allDigitsAreSameBlock>
+                        <p *ngIf="paymentForm.get('cardNumber').errors['allDigitsAreSame']; 
+                                else cardDigitsSumSmallerThan17Block">
+                          Card number can't contain only identical digits!
+                        </p>
+                        <ng-template #cardDigitsSumSmallerThan17Block>
+                            <p *ngIf="paymentForm.get('cardNumber').errors['cardDigitsSumSmallerThan17']; 
+                                    else lastCardDigitNotEvenBlock">
+                              Card number must contain digits which sum is bigger than 16!
+                            </p>
+                            <ng-template #lastCardDigitNotEvenBlock>
+                                <p *ngIf="paymentForm.get('cardNumber').errors['lastCardDigitNotEven']"> 
+                                  Card number last digit must be even!  
+                                </p>
+                            </ng-template>
+                        </ng-template>
+                    </ng-template>
+                </ng-template>
+            </ng-template>
+
+          </div>
+
+
+          <div class="form-group">
+            <label for="cardName">Card Name: </label>
+            <input
+              type="text"
+              id="cardName"
+              formControlName="cardName"
+              class="form-control"
+              placeholder="Name Of Credit Card">
+          </div>
+          <span 
+            *ngIf="!paymentForm.get('cardName').valid && 
+                  (paymentForm.get('cardName').touched || 
+                  paymentForm.get('cardName').dirty)"
+            class="help-block"
+            style="color: red">
+            Please enter a card name
+          </span>
+
+
+
+          <div class="form-group">
+            <label for="cardOwnerName">Card Owner Name: </label>
+            <input
+              type="text"
+              id="cardOwnerName"
+              formControlName="cardOwnerName"
+              class="form-control"
+              placeholder="Name Of Credit Card">
+          </div>
+          <span 
+            *ngIf="!paymentForm.get('cardOwnerName').valid && 
+                  (paymentForm.get('cardOwnerName').touched || 
+                  paymentForm.get('cardOwnerName').dirty)"
+            class="help-block"
+            style="color: red">
+            Please enter a Card Owner Name
+          </span>
+
+
+          <div formGroupName="cardRenewedData">
+            <div class="form-group">
+              <label for="expireDate">Expiration Date: </label>
+              <input
+                type="date"
+                id="expireDate"
+                formControlName="expireDate"
+                class="form-control">
+            </div>
+            <span 
+              *ngIf="!paymentForm.get('cardRenewedData.expireDate').valid && 
+                    (paymentForm.get('cardRenewedData.expireDate').touched || 
+                    paymentForm.get('cardRenewedData.expireDate').dirty)"
+              class="help-block"
+              style="color: red">
+              Please enter card expire date
+            </span>
+
+            <div class="form-group">
+              <label for="securityCode">Sequrity Code:  </label>
+              <input
+                type="password"
+                id="securityCode"
+                formControlName="securityCode"
+                class="form-control"
+                placeholder="Security Code" >
+            </div>
+            <span 
+              *ngIf="!paymentForm.get('cardRenewedData.securityCode').valid && 
+                    (paymentForm.get('cardRenewedData.securityCode').touched || 
+                    paymentForm.get('cardRenewedData.securityCode').dirty)"
+              class="help-block"
+              style="color: red">
+              <span *ngIf="paymentForm.get('cardRenewedData.securityCode').errors['codeIsForbidden']">
+               This code is invalid!
+              </span>
+              <span *ngIf="paymentForm.get('cardRenewedData.securityCode').errors['required']">
+               Please enter card security code!
+              </span>
+              <span *ngIf="paymentForm.get('cardRenewedData.securityCode').errors['minlength']">
+                Security code must contain at least 8 chars!
+              </span>
+              <span *ngIf="paymentForm.get('cardRenewedData.securityCode').errors['maxlength']">
+                Security Code can contain at the most 12 characters!
+              </span>
+            </span>
+          </div>
+
+          <button class="btn btn-primary" type="submit"> Submit </button>
+
+        </form>
+
+      </div>
+  </div>
+
+</div>

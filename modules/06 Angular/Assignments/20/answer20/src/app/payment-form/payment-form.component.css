@@ -1,0 +1,36 @@
+table,tr,td,th{
+    border:1px solid;
+}
+td,th{
+    height: 40px;
+    width:140px;	
+}
+select{
+    width: 100%;
+    height: 90%;
+}
+#itemPrice{
+    width:95%;
+    height: 90%;
+    text-align: center;
+}
+button{
+    width:100%;
+    height: 90%;
+}
+input{
+    text-align: center;
+}
+
+.error-message{
+    color: red;
+    font-family: david;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
