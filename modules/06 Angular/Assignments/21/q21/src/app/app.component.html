@@ -1,0 +1,11 @@
+<div>
+  <label for="">Timer</label>
+  <input type="radio" name="action" id="timer" checked #timer>
+  <label for="countDown">Count Down</label>
+  <input type="radio" name="action" id="countDown" #countDown>  
+  <input type="text" name="" id="start-value" [value]="startValue"> 
+</div>
+
+
+<app-timer *ngIf="isTimer"></app-timer>
+<app-timer *ngIf="!isTimer"></app-timer>
