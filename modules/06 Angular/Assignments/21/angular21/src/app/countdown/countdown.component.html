@@ -1,3 +1,6 @@
-<p>
-  countdown works!
-</p>
+<div class="timer-wrapper" #timerWrapper>
+  <h1>{{minutes | number:'2.0'}}:{{seconds | number:'2.0'}}</h1>
+  <button id="btn-start" (click)="start($event)">start</button>
+  <button id="btn-stop" (click)="stop($event)">stop</button>
+  <button id="btn-reset" (click)="reset($event)">reset</button>
+</div>

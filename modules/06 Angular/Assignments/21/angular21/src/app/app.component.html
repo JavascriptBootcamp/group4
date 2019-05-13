@@ -4,7 +4,7 @@
         <label for="timer">Timer</label>
         <input id="countdown" type="radio" name="timer" (change)="toggle()">
         <label for="countdown">Countdown</label>
-        <input id="start-from" type="number" placeholder="Start from..." [disabled]="timer">
+        <input id="start-from" type="number" placeholder="Start from..." [disabled]="timer" #startFrom>
     </div>
     <div *ngIf="timer; then timerBlock; else countdownBlock"></div>
     <div>
@@ -13,7 +13,9 @@
                 (stopEvent)="stop($event)" (resetEvent)="reset($event)"></app-timer>
         </ng-template>
         <ng-template #countdownBlock>
-            <app-countdown></app-countdown>
+            <app-countdown [seconds]="seconds" [minutes]="minutes" (startEvent)="startRev()"
+                (stopEvent)="stop($event)" (resetEvent)="reset($event)">
+            </app-countdown>
         </ng-template>
     </div>
 </div>
