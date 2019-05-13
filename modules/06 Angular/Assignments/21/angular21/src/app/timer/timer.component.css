@@ -1,0 +1,37 @@
+.timer-wrapper{
+    width:400px;
+    min-height:150px;
+    border:3px solid rgb(148, 143, 143);
+    border-radius:20px;
+    padding: 10px;
+    background-color: #eee;
+    text-align: center;
+}
+h1{
+    font-size: 3em;
+}
+button{
+    margin:0px 10px;
+    width:20%;
+    font-weight: bold;
+    border:none;
+    cursor: pointer;
+    height: 30px;
+    transition: .2s all;
+}
+button:hover{
+    opacity: 0.7;
+    color:white;
+}
+#btn-start{
+    background-color: rgb(150, 199, 170);
+    border:1px solid rgb(0, 136, 54);
+}
+#btn-stop{
+    background-color: rgb(235, 190, 149);
+    border:1px solid rgb(160, 92, 4);
+}
+#btn-reset{
+    background-color: rgb(150, 165, 199);
+    border:1px solid rgb(71, 51, 141);
+}

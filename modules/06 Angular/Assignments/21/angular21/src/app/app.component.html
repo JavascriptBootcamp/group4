@@ -1,16 +1,19 @@
 <div>
-    <div>
+    <div id="inputs-wrapper">
+        <input id="timer" type="radio" name="timer" checked (change)="toggle()" #inputTimer>
         <label for="timer">Timer</label>
-        <input id="timer" type="radio" name="timer" checked (change)="toggle()">
-        <label for="countdown">Countdown</label>
         <input id="countdown" type="radio" name="timer" (change)="toggle()">
-        <input type="number">
+        <label for="countdown">Countdown</label>
+        <input id="start-from" type="number" placeholder="Start from..." [disabled]="timer">
     </div>
     <div *ngIf="timer; then timerBlock; else countdownBlock"></div>
-    <ng-template #timerBlock>
-        <app-timer></app-timer>
-    </ng-template>
-    <ng-template #countdownBlock>
-        <app-countdown></app-countdown>
-    </ng-template>
+    <div>
+        <ng-template #timerBlock>
+            <app-timer [seconds]="seconds" [minutes]="minutes" [hours]="hours" (startEvent)="start($event)"
+                (stopEvent)="stop($event)" (resetEvent)="reset($event)"></app-timer>
+        </ng-template>
+        <ng-template #countdownBlock>
+            <app-countdown></app-countdown>
+        </ng-template>
+    </div>
 </div>

@@ -1,37 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.css']
 })
-export class TimerComponent implements OnInit {
-  seconds: number;
-  minutes: number;
-  hours: number;
+export class TimerComponent implements OnInit, OnDestroy {
+  @Input() seconds: number;
+  @Input() minutes: number;
+  @Input() hours: number;
+  @Output() startEvent: EventEmitter<any> = new EventEmitter();
+  @Output() stopEvent: EventEmitter<any> = new EventEmitter();
+  @Output() resetEvent: EventEmitter<any> = new EventEmitter();
   constructor() {
-    this.seconds = 0;
-    this.minutes = 0;
-    this.hours = 0;
   }
-
   ngOnInit() {
-    setInterval(() => {
-      if(this.seconds <10)
-      {
-      }
-      this.seconds++;
-      if(this.seconds === 60)
-      {
-        this.seconds = 0;
-        this.minutes++;
-      }
-      if(this.minutes === 24)
-      {
-        this.minutes = 0;
-        this.hours++;
-      }
-    }, 1000)
-  }
 
+  }
+  start() {
+    this.startEvent.emit();
+  }
+  stop() {
+    this.stopEvent.emit();
+  }
+  reset() {
+    this.resetEvent.emit();
+  }
+  ngOnDestroy() {
+    this.resetEvent.emit();
+  }
 }

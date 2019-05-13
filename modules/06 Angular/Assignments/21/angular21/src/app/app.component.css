@@ -1,0 +1,12 @@
+#inputs-wrapper{
+    margin-bottom: 15px;
+    text-align: center;
+}
+#timer+label{
+    margin-right:10px;
+}
+#start-from{
+    width:100px;
+    padding: 2px;
+    margin-left:10px;
+}
