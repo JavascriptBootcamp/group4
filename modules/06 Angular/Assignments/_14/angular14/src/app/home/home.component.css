@@ -1,0 +1,10 @@
+.link{
+    width:100px;
+    height:100px;
+    background-color:rgb(236, 108, 108);
+    display:inline-block;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
