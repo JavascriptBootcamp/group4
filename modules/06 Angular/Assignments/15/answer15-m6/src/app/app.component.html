@@ -1,8 +1,9 @@
 <div class="myImg"  [ngClass]="{'filter':zoom}">
 <app-image-comp [myImg] = "img"
-                [imageLikes] = "imageLikes"
-                 class = "imgComp"
-                 *ngFor = "let img of images">
+                [imageLikes] = "imageLikes[i]"
+                [indexLike] = "i"
+                class = "imgComp"
+                *ngFor = "let img of images;index as i">
 </app-image-comp>
 </div>
 <app-big-img [bigImg] = "bigImg" class="bigImg"

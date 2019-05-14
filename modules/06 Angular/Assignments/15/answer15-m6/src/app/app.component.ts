@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
 
   constructor(private imageService:ImagesService){
    this.images = this.imageService.images;
-  this.imageService.intialiazeLike();
+   this.imageService.intialiazeLike();
    this.imageLikes = this.imageService.imageLikes;
   }
 

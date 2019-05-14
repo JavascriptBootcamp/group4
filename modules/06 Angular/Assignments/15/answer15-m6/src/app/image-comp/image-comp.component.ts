@@ -9,6 +9,7 @@ import { Img, ImagesService } from "../images.service";
 export class ImageCompComponent implements OnInit, OnDestroy, OnChanges {
   @Input() myImg: Img;
   @Input() imageLikes;
+  @Input() indexLike;
   clicked = false;
   imgToZoom: string;
   zoom = false;
@@ -21,6 +22,9 @@ export class ImageCompComponent implements OnInit, OnDestroy, OnChanges {
   }
   onClickLike(e) {
     this.myImg.like++;
+    this.imageService.imageLikes[this.indexLike] = this.myImg.like;
+    localStorage.setItem("imageLikes", JSON.stringify(this.imageService.imageLikes));
+
   }
 
   addBorder() {
@@ -33,6 +37,7 @@ export class ImageCompComponent implements OnInit, OnDestroy, OnChanges {
     this.imageService.zoom = false;
   }
   ngOnDestroy() {
-    localStorage.setItem("imageLikes", JSON.stringify(this.imageLikes));
+
+    localStorage.setItem("imageLikes", JSON.stringify(this.imageService.imageLikes));
   }
 }

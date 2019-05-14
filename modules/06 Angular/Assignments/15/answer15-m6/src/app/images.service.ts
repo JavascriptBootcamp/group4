@@ -82,13 +82,16 @@ export class ImagesService {
 
   intialiazeLike() {
     if (localStorage.getItem("imageLikes") === null) {
+      console.log("aaa");
+
       this.images.forEach(value => {
         this.imageLikes.push(value.like);
       });
     } else {
       this.imageLikes = JSON.parse(localStorage.getItem("imageLikes"));
-      this.images.forEach((value, index) => {
-        value.like = this.imageLikes[index];
+      this.images.forEach((value, index ,arr) => {
+        console.log(this.imageLikes[index]);
+        arr[index].like = this.imageLikes[index];
       });
     }
   }
