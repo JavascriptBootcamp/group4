@@ -1,19 +1,26 @@
-<div  style="background-color:wheat" class="main">
-  <div  style="display: flex;background-color: tomato" >
-    <div>
+<div  style="background-color:wheat;
+             width: 400px;
+             height: 200px;
+             "
+      class="main">
+  <div  style="display: relative;
+               background-color: tomato;
+               width: 100%;
+               height: 50px;
+                margin-top: 10px" >
+    <div style = "width: 30% ;display: inline-block">
       <input type = "radio" name="timer" id="timer" (click)="onTimerChecked()" checked/>
       <label for="timer"> Timer</label>
     </div>
-    <div>
+    <div style = "width: 30% ;display: inline-block">
       <input type="radio" id="count" name="timer"   (click)="onCountChecked()"/>
       <label for="count"> Countdown</label>
     </div>
-    <div>
-      <input type="text" placeholder="Start from..." />
+    <div style = "width: 40% ;display: inline-block">
+      <input type="text" placeholder="Start from..."  #startFrom/>
     </div>
   </div>
-  <div> {{now.getMinutes()}} : {{now.getSeconds()}} </div>
-  <app-countdown *ngIf="timer"></app-countdown>
-  <app-timer *ngIf="count"></app-timer>
+  <app-countdown *ngIf="count" [startFrom]="startFrom.value"></app-countdown>
+  <app-timer *ngIf="timer"></app-timer>
 </div>
 
