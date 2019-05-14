@@ -1,21 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div id="container">
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}
   </h1>
+  <div id="timer">
+    <div id="wraper">
+      <div id="radioDiv">
+        <input type="radio" name="timer" value="timer" checked (change)="changeTimer()">Timer
+        <input type="radio" name="timer" value="countDown" (change)="changeTimer()">CountDown
+      </div>
+
+      <div *ngIf="!isTimer">
+        <app-countdown>
+        </app-countdown>
+      </div>
+
+      <div *ngIf="isTimer">
+        <app-timer>
+        </app-timer>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
 </div>
-
-<input type="radio" name="timer" value="timer" checked (change)="changeTimer()">Timer
-<input type="radio" name="timer" value="countDown" (change)="changeTimer()">CountDown
-
-<div *ngIf="!isTimer">
-<app-countdown>
-</app-countdown>
-</div>
-
-<div *ngIf="isTimer">
-<app-timer>
-</app-timer>
-</div>
-
-<router-outlet></router-outlet>

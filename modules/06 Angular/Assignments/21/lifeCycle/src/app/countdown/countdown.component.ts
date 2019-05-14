@@ -6,39 +6,76 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/co
   styleUrls: ['./countdown.component.css']
 })
 export class CountdownComponent implements OnInit {
-  @ViewChild('btn') btn: ElementRef;
+  @ViewChild('actionBtn') actionBtn: ElementRef;
   interval: any;
   sec: number;
   min: number;
-  timeOut:boolean;
+  secString: string;
+  minString: string;
+  timeOut: boolean;
 
   constructor() {
-   
+
   }
   ngOnInit() {
     this.resetTimer();
-    this.timeOut=false;
+    this.timeOut = false;
   }
 
-  startTimer(){
-    this.interval = setInterval(() => {
-      if (this.sec === 0) {
-        this.sec = 60;
-        this.min -=1;
-      }
-      this.sec -= 1;
 
-      if((this.min===0)&&(this.sec = 0)){
-        this.resetTimer();
-        this.timeOut=true;
-      }
-    }, 1000);
+  changeNameBtn(nameBtn: string) {
+    this.actionBtn.nativeElement.innerText = nameBtn;
   }
 
-  resetTimer(){
+  startTimer() {
+    if (this.actionBtn.nativeElement.innerText === "START") {
+      this.changeNameBtn("STOP");
+      this.timeOut = false;
+
+      this.interval = setInterval(() => {
+        if (this.sec === 0) {
+          console.log(this.sec);
+          this.sec = 60;
+          if (this.min > 0)
+            this.min -= 1;
+        }
+        this.sec--;
+        console.log(this.sec);
+        console.log(this.secString);
+        // string to 0+digit
+        if (this.sec < 10)
+          this.secString = "0" + this.sec;
+        else
+          this.secString = this.sec + "";
+        console.log(this.sec);
+        console.log(this.secString);
+        if (this.min < 10)
+          this.minString = "0" + this.min;
+        else
+          this.minString = this.min + "";
+
+
+        if ((this.min === 0) && (this.sec === 0)) {
+          this.resetTimer();
+          this.timeOut = true;
+        }
+      }, 1000);
+    }
+    
+    else {
+      this.changeNameBtn("START");
+      clearInterval(this.interval);
+    }
+  }
+
+  resetTimer() {
     clearInterval(this.interval);
+    this.changeNameBtn("START");
+    this.timeOut = false;
     this.min = 5;
     this.sec = 0;
+    this.minString = "05";
+    this.secString = "00";
   }
 
   ngOnDestroy() {
@@ -46,7 +83,7 @@ export class CountdownComponent implements OnInit {
     this.resetTimer();
   }
 
-  ngAfterViewChecked(){
+  ngAfterViewChecked() {
 
   }
 

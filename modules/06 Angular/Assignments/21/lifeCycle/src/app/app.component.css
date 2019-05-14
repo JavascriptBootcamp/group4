@@ -1,0 +1,54 @@
+#container {
+    text-align: center;
+}
+
+#radioDiv {
+    margin: 0 auto;
+    background-color: rgb(93, 168, 168);
+    border-radius: 10px;
+    border: solid 1px black;
+    width: fit-content;
+    padding: 10px;
+    color: white;
+    box-shadow: 3px 3px black;
+}
+
+#timer {
+    position: relative;
+    margin: 0 auto;
+    background-color: darkslategray;
+    border-radius: 10px;
+    border: solid 1px black;
+    width: 40%;
+    height: 250px;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    box-shadow: 3px 3px black;
+    display: inline-block;
+}
+
+#wraper {
+    position: relative;
+    top: 15%;
+}
+
+
+input {
+    appearance: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+  
+    border: 2px solid white;
+    transition: 0.2s all linear;
+    outline: none;
+    margin-right: 5px;
+  
+    position: relative;
+    top: 4px;
+  }
+  
+  input:checked {
+    border: 6px solid darkslategray;
+  }

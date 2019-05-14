@@ -1,0 +1,29 @@
+p {
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* text-shadow:  currentColor ;  */
+}
+
+#actionBtn {
+    border-radius: 8px 0 0 8px;
+}
+
+#resetBtn {
+    border-radius: 0 8px 8px 0;
+}
+
+button:hover {
+    background-color: white;
+    color: rgb(93, 168, 168);
+    font-weight: bold;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 5px;
+    background-color: rgb(93, 168, 168);
+    box-shadow: 1px 1px 1px 1px black;
+    border: 1px black solid;
+}
