@@ -1,0 +1,31 @@
+#form , #submitedForm{
+    text-align: left;
+    border:1px solid #ccc;
+    background-color: darkorange;
+    border-radius:10px;
+    width:450px;
+    min-height: 400px;
+    margin:10% auto;
+}
+#submitedForm{
+    text-align: center;
+}
+#btn-warpper{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+}
+#nextQ , #prevQ ,#submit{
+    width: 20%;
+    height: 30px;
+    background-color: brown;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: 0.3s all;
+    cursor: pointer;
+    color: #fff;
+}
+#submit:hover{
+    background-color: rgb(128, 36, 36);
+}

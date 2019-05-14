@@ -1,0 +1,24 @@
+<div id="form-wrapper">
+  <form id="form" #myForm="ngForm" (submit)="submitForm($event)" [hidden]="hidden">
+    <h1>Trivia - Quiz</h1>
+    <app-question>
+      <h3>{{currentQuestion.question}}</h3>
+      <input type="radio" name="q{{i}}" value="1" ngModel>{{currentQuestion.answers.q1}}
+      <input type="radio" name="q{{i}}" value="2" ngModel>{{currentQuestion.answers.q2}}
+      <input type="radio" name="q{{i}}" value="3" ngModel>{{currentQuestion.answers.q3}}
+      <input type="radio" name="q{{i}}" value="4" ngModel>{{currentQuestion.answers.q4}}
+    </app-question>
+
+    <input [hidden]="true" name="ts" value="1547375825757">
+    <div id="btn-warpper">
+      <button id="prevQ" (click)="prevQuestion($event , myForm.value)">Prev</button>
+      <button id="nextQ" (click)="nextQuestion($event , myForm.value)" [hidden]="hiddenBtn">Next</button>
+      <button id="submit" type="submit" [hidden]="!hiddenBtn">submit</button>
+    </div>
+  </form>
+
+  <div id="submitedForm" [hidden]="!hidden">
+    <h1>total questions : {{questions.length}}</h1>
+    <h3>Amount of correct answers {{correctAnswers}}</h3>
+  </div>
+</div>
