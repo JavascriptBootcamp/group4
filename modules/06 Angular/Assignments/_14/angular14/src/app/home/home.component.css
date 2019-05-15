@@ -1,8 +1,14 @@
 .link{
+    display: inline-block;
+}
+.link > a{
     width:100px;
     height:100px;
     background-color:rgb(236, 108, 108);
-    display:inline-block;
+    display:block;
+    margin: 0px 10px;
+    text-align: center;
+    line-height: 6;
 }
 a{
     text-decoration: none;

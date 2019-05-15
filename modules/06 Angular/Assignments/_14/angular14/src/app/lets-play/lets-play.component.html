@@ -2,7 +2,7 @@
   <form id="form" #myForm="ngForm" (submit)="submitForm($event)" [hidden]="hidden">
     <h1>Trivia - Quiz</h1>
     <app-question>
-      <h3>{{currentQuestion.question}}</h3>
+      <h3 class="title">{{currentQuestion.question}}</h3>
       <input type="radio" name="q{{i}}" value="1" ngModel>{{currentQuestion.answers.q1}}
       <input type="radio" name="q{{i}}" value="2" ngModel>{{currentQuestion.answers.q2}}
       <input type="radio" name="q{{i}}" value="3" ngModel>{{currentQuestion.answers.q3}}

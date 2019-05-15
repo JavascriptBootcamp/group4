@@ -22,7 +22,6 @@ export class QuestionsService {
     ];
     this.correctAnswers = 0;
   }
-
   get _getAllQuestionsAndAnswers(): questions[] {
     return this.question;
   }

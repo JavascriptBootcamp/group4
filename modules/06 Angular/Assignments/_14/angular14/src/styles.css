@@ -14,3 +14,9 @@ app-root {
     margin: 0;
     overflow-x: hidden;
 }
+app-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+}
