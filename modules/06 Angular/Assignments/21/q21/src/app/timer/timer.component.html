@@ -5,9 +5,9 @@
 
   <div id="wrapper-controlls">
     <div id="wrapper-controlls-buttons">
-      <button (click)=onStartClicked()>Start</button>
-      <button (click)=onStopClicked()>Stop</button>
-      <button (click)=onResetClicked()>Reset</button>
+      <button (click)="end ? onStartClicked() : ''" [disabled]="!isStartButtonEnabled" class="green">Start</button>
+      <button (click)="onStopClicked()" [disabled]="!isStopButtonEnabled" class="red">Stop</button>
+      <button (click)="onResetClicked()" [disabled]="!isResetButtonEnabled" class="blue">Reset</button>
     </div>
   </div>
 </div>

@@ -1,11 +1,18 @@
-<div>
-  <label for="">Timer</label>
-  <input type="radio" name="action" id="timer" checked #timer>
-  <label for="countDown">Count Down</label>
-  <input type="radio" name="action" id="countDown" #countDown>  
-  <input type="text" name="" id="start-value" [value]="startValue"> 
+<div id="wrapper">
+  <div id="wrapper-input">
+    <input type="radio" name="action" id="wrapper-input-timer" checked #timer (click)="toggleAction()">
+    <label for="timer">Timer</label>
+    <input type="radio" name="action" id="wrapper-input-countDown" #countDown (click)="toggleAction()">
+    <label for="countDown">Count Down</label>
+    <input type="text" name="" id="wrapper-input-start-value" [placeholder]="placeHolder" [value]="startValue"
+      (change)="onStartValueChange($event.target.value)">
+  </div>
+
+
+  <div id="wrapper-controlls">
+    <app-timer (resetEvent)="onResetEvent()" (stopEvent)="onStopEvent()" [end]="startValue" *ngIf="isTimer" id="wrapper-controlls-timer"></app-timer>
+    <app-count-down (resetEvent)="onResetEvent()" (stopEvent)="onStopEvent()" [end]="startValue" *ngIf="!isTimer" id="wrapper-controlls-count-down">
+    </app-count-down>
+  </div>
+
 </div>
-
-
-<app-timer *ngIf="isTimer"></app-timer>
-<app-timer *ngIf="!isTimer"></app-timer>
