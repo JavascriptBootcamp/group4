@@ -1,0 +1,71 @@
+<div id="whole-container">
+  
+
+  <div id="options-container">
+    <input 
+      #timer
+      type="radio" 
+      name="count-option" 
+      value="timer-choice"
+      class="count-radio-option"
+      checked
+    > 
+    &nbsp;
+    <span class="text-near-count-radio-option"> Timer </span>  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    
+    <input 
+      #countDown
+      type="radio" 
+      name="count-option" 
+      value="countdown-choice"
+      class="count-radio-option"
+      (change)="onclickCountDownRadio($event)"
+    > 
+    &nbsp;
+    
+    <span class="text-near-count-radio-option" >
+      Countdown 
+    </span> 
+    
+    <!-- <a routerLink="/count-down" routerLinkActive="active">count-down</a>  -->
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <input type="text" id="start-time-input" placeholder="Start from..." disabled>
+    
+  </div>
+
+
+  <div id="timer-container">
+
+    <div id="timer" #timer> {{passedMinutes}}:{{passedSeconds}} </div>
+
+    <button 
+      type="button" 
+      class="timer-button timer-start-button"
+      (click)="onclickStartButton()" >
+      Start
+    </button>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button 
+      type="button" 
+      class="timer-button timer-stop-button"
+      (click)="onclickStopButton()" >
+      Stop
+    </button>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button 
+      type="button" 
+      class="timer-button timer-reset-button"
+      (click)="onclickResetButton()" >
+      Reset
+    </button>
+    
+  </div>
+
+</div>
