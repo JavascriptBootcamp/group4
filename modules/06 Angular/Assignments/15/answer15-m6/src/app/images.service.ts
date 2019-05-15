@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { EventEmitter } from '@angular/core';
+import { UserImagesService } from './user-images.service';
 
 export interface Img {
   src: string;
@@ -18,14 +19,13 @@ export class ImagesService {
   imageToZoom =  new EventEmitter();
   hideImg = new EventEmitter()
 
-  constructor() {
+  constructor(private userImagesService :UserImagesService) {
 
     this.images = [
       {
-        src:
-          "https://cdn.dribbble.com/users/1463678/screenshots/3264921/full-stack-dribbble.png",
+        src:this.userImagesService.imagesUsers[0].images[0].src,
         like: 0,
-        auther: "auther1"
+        auther: this.userImagesService.imagesUsers[0].name
       },
       {
         src: "http://www.systemcomic.com/comics/2014-06-11-advancedanatomy.png",
