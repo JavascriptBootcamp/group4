@@ -10,13 +10,13 @@ import { Img, ImagesService } from './images.service';
 })
 export class AppComponent implements OnInit{
 
-  images:Img[] = [];
-  imageLikes:number[] = [];
-  zoom:boolean;
-  bigImg:string;
+  images: Img[] = [];
+  imageLikes: number[] = [];
+  zoom: boolean;
+  bigImg: string;
 
 
-  constructor(private imageService:ImagesService){
+  constructor(private imageService: ImagesService){
    this.images = this.imageService.images;
    this.imageService.intialiazeLike();
    this.imageLikes = this.imageService.imageLikes;

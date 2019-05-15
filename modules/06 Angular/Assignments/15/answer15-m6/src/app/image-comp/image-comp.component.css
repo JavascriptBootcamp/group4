@@ -1,6 +1,7 @@
 .img-comp {
   text-align: center;
   background-color: black;
+  font-size: xx-large;
 }
 
 .likeSec{
@@ -52,3 +53,7 @@ img:hover {
     border-color:blue;
 }
 
+.auther{
+color: wheat;
+
+}

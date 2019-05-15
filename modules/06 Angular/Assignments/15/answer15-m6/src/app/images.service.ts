@@ -19,62 +19,69 @@ export class ImagesService {
   imageToZoom =  new EventEmitter();
   hideImg = new EventEmitter()
 
-  constructor(private userImagesService :UserImagesService) {
+  constructor(private userImagesService : UserImagesService) {
 
     this.images = [
       {
+        auther: this.userImagesService.imagesUsers[0].name,
         src:this.userImagesService.imagesUsers[0].images[0].src,
-        like: 0,
-        auther: this.userImagesService.imagesUsers[0].name
+        like: this.userImagesService.imagesUsers[0].images[0].like
+
       },
       {
-        src: "http://www.systemcomic.com/comics/2014-06-11-advancedanatomy.png",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[0].name,
+        src:this.userImagesService.imagesUsers[0].images[1].src,
+        like: this.userImagesService.imagesUsers[0].images[1].like
+
       },
       {
-        src: "https://pbs.twimg.com/media/Cxneo79VEAA-utS.jpg",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[0].name,
+        src:this.userImagesService.imagesUsers[0].images[2].src,
+        like: this.userImagesService.imagesUsers[0].images[2].like
+
       },
       {
-        src: "https://i.redd.it/3dora5z6mae11.jpg",
-        like: 0,
-        auther: "auther2,"
+        auther: this.userImagesService.imagesUsers[0].name,
+        src:this.userImagesService.imagesUsers[0].images[3].src,
+        like: this.userImagesService.imagesUsers[0].images[3].like
+
       },
       {
-        src:
-          "http://www.inquisitiveone.in/wp-content/uploads/2017/02/HTML-vs-HTML-and-CSS.jpg",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[1].name,
+        src:this.userImagesService.imagesUsers[1].images[0].src,
+        like: this.userImagesService.imagesUsers[1].images[0].like
+
       },
       {
-        src: "https://img.devrant.com/devrant/rant/r_403948_ikGUk.jpg",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[1].name,
+        src:this.userImagesService.imagesUsers[1].images[1].src,
+        like: this.userImagesService.imagesUsers[1].images[1].like
+
       },
       {
-        src: "https://pics.me.me/bootstrap-html-css-31715884.png",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[1].name,
+        src:this.userImagesService.imagesUsers[1].images[2].src,
+        like: this.userImagesService.imagesUsers[1].images[2].like
+
       },
       {
-        src:
-          "https://www1.picturepush.com/photo/a/15883688/1024/CSS-Puns-and-CSS-,Jokes/Big-Bang---Web-Joke.png",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[2].name,
+        src:this.userImagesService.imagesUsers[2].images[0].src,
+        like: this.userImagesService.imagesUsers[2].images[0].like
+
       },
       {
-        src: "https://pbs.twimg.com/media/DVJmllgVQAE9nU6.jpg",
-        like: 0,
-        auther: "auther2"
+        auther: this.userImagesService.imagesUsers[2].name,
+        src:this.userImagesService.imagesUsers[2].images[1].src,
+        like: this.userImagesService.imagesUsers[2].images[1].like
+
       },
       {
-        src:
-          "https://i.pinimg.com/736x/ca/47/94/ca4794cfada458717c7aa99093a1f425.jpg",
-        like: 0,
-        auther: "auther2"
-      }
+        auther: this.userImagesService.imagesUsers[2].name,
+        src:this.userImagesService.imagesUsers[2].images[2].src,
+        like: this.userImagesService.imagesUsers[2].images[2].like
+
+      },
     ];
 
 
@@ -82,7 +89,6 @@ export class ImagesService {
 
   intialiazeLike() {
     if (localStorage.getItem("imageLikes") === null) {
-      console.log("aaa");
 
       this.images.forEach(value => {
         this.imageLikes.push(value.like);

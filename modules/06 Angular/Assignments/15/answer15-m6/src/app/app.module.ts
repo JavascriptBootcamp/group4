@@ -8,10 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AutherPicsComponent } from './auther-pics/auther-pics.component';
 import { BigImgComponent } from './big-img/big-img.component';
 
-const appRoutes: Routes = [
-  { path: 'authors/name', component: AutherPicsComponent}
 
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +17,6 @@ const appRoutes: Routes = [
     BigImgComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
     BrowserModule,
     AppRoutingModule
   ],
