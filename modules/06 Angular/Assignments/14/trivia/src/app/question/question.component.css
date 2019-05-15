@@ -1,0 +1,25 @@
+.correct{
+    background-color: green;
+    }
+.unCorrect{
+    background-color: red;
+    }
+.correct,.unCorrect {
+    color: white;
+    }
+.btnsDiv{
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+    button{
+        width: 200px;
+        margin-bottom: 10px;
+        background-color: lightblue;
+        color: blue;
+        border-radius: 10px;
+    }   
+    
+    button:hover{
+        background-color: lightgreen;
+    }

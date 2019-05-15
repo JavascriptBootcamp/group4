@@ -1,0 +1,13 @@
+<div>
+  <div>
+    {{sec}}
+  </div>
+  <div>
+      <h4>{{question.question}}</h4>
+  </div>
+   <div class="btnsDiv">
+     <button [disabled]="question.clicked" (click)="isAnswerCorrect(i)" [className]="getClass(i)" *ngFor="let ans of question.ans,let i = index">
+        {{ans.content}}
+     </button><br>
+   </div><br>
+</div>

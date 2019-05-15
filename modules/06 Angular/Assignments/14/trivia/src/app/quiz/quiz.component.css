@@ -1,0 +1,12 @@
+button{
+    box-sizing: border-box;
+    width: 100px;
+    background-color: blue;
+    color: white;
+    border-radius:10px; 
+}
+
+button:hover{
+    background-color: violet;
+    color: blue;
+}
