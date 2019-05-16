@@ -1,3 +1,8 @@
-<p>
-  timer works!
-</p>
+<div class="txtTime">
+  {{timerService.time}}
+</div>
+<div class="btnsTime">
+  <button id="start" (click)="start()">Start</button>
+  <button id="stop" (click)="stop()">Stop</button>
+  <button id="reset" (click)="reset()">Reset</button>
+</div>

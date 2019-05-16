@@ -1,0 +1,31 @@
+.txtTime {
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.btnsTime button {
+    margin-top: 10px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#start, #stop {
+    margin-right: 20px;
+}
+
+#start {
+    background-color: rgb(212, 235, 207);
+    border: 2px solid rgb(0, 180, 0);
+}
+
+#stop {
+    background-color: rgb(254, 238, 213);
+    border: 2px solid red;
+}
+
+#reset {
+    background-color: rgb(209, 226, 248);
+    border: 2px solid rgb(0, 110, 255);
+}
