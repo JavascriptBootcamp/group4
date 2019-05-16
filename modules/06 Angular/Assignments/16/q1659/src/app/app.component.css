@@ -1,0 +1,14 @@
+#formWrapper{
+    width: 50%;
+    margin: auto;
+}
+
+.formTitle{
+    text-align: center;
+}
+
+#exp-all{
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
