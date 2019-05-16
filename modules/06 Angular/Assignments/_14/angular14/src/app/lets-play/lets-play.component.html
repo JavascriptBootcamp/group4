@@ -1,8 +1,8 @@
 <div id="form-wrapper">
   <form id="form" #myForm="ngForm" (submit)="submitForm($event)" *ngIf="!hidden">
-    <h1>Trivia - Quiz</h1>
-    <app-question [time]="time" [interval]="interval">
-      <h3 class="title">{{currentQuestion.question}}</h3>
+    <h1 class="title">Trivia - Quiz</h1>
+    <app-question [time]="time" [interval]="interval" [hidden]="hiddenBtn">
+      <h3>{{currentQuestion.question}}</h3>
       <input type="radio" name="q{{i}}" value="1" ngModel #r1>{{currentQuestion.answers.q1}}
       <input type="radio" name="q{{i}}" value="2" ngModel #r2>{{currentQuestion.answers.q2}}
       <input type="radio" name="q{{i}}" value="3" ngModel #r3>{{currentQuestion.answers.q3}}

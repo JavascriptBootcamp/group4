@@ -69,7 +69,6 @@ export class LetsPlayComponent implements OnInit {
     this.incTime();
     if (this.id === this.questions.length - 1) {
       this.hiddenBtn = true;
-      this.clearTime();
       return;
     }
     this.correct = this.questionsService.correctAnswer(value, this.id);

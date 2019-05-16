@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy  } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -11,7 +11,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   constructor() {
   }
   ngOnInit() {
-  
+    
   }
   ngOnDestroy() {
     clearInterval(this.interval);
