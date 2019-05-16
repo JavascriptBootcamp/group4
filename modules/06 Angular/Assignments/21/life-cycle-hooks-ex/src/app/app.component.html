@@ -1,5 +1,16 @@
-<button (click)="Func_timerClicked()" >timer</button>
-<button (click)="Func_countdownClicked()">countdown</button>
-<app-timer *ngIf="timerClicked"></app-timer>
-<app-countdown  *ngIf="!timerClicked"></app-countdown>
+<button class="timeTypeBTN" (click)="Func_timerClicked()">timer</button>
+<button class="timeTypeBTN" (click)="Func_countdownClicked()">countdown</button>
+
+<div id="warpper">
+    <div id="warpper-timeDiv">
+        <app-timer [actionType]="action" *ngIf="timerClicked"></app-timer>
+        <app-countdown [actionType]="action" *ngIf="!timerClicked"></app-countdown>
+    </div>
+    <div id ="warpper-BTNdiv">
+        <button id="startBtn" (click)="start()">Start</button>
+        <button id="stopBtn" (click)="stop()">Stop</button>
+        <button id="resetBtn" (click)="reset()">Reset</button>
+    </div>
+</div>
+
 <router-outlet></router-outlet>

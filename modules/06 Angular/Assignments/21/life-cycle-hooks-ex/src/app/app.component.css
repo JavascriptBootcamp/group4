@@ -1,0 +1,39 @@
+.timeTypeBTN{
+border-radius: 10px;
+background-color: blue;
+color: white;
+}
+
+#warpper{
+border: 1px solid black;
+width: 300px;
+border-radius: 10px;
+}
+
+#warpper-timeDiv{
+    position: relative;
+    width: 20px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+
+#warpper-BTNdiv{
+    position: relative;
+    width: 200px;
+    left: 50%;
+    margin-left: -59px;
+}
+
+
+#startBtn{
+background-color: lightgreen;
+}
+
+#stopBtn{
+    background-color: lightcoral;
+}
+
+#resetBtn{
+    background-color: lightblue;
+}
