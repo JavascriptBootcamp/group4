@@ -1,4 +1,6 @@
-<div> IMAGES OF USER : <span>{{name}}</span></div>
-<div *ngFor="let userImg of userImages">
-  <img [src] = "userImg.src">
+<div class="name"> IMAGES OF USER : <span>{{name}}</span></div>
+<div class="user-images">
+  <div class="user-image" *ngFor="let userImg of userImages">
+    <img [src]="userImg.src">
+  </div>
 </div>

@@ -1,9 +1,7 @@
 <div class="img-comp">
 
-  <div class = "imgSec">
-    <img [src]="myImg.src"
-            (click)="addBorder()"
-            [ngClass]="{
+  <div class="imgSec">
+    <img [src]="myImg.src" (click)="addBorder()" [ngClass]="{
             'img0':myImg.like == 0,
             'img1':myImg.like > 0 && myImg.like < 10,
             'img2':myImg.like > 9,
@@ -15,11 +13,8 @@
     <button (click)="onClickLike($event)">like</button>
     <span>{{myImg.like}}</span>
   </div>
-  <a href = "" style="text-align:left">
-    <div class="auther"> <a routerLink ="authors/{{myImg.auther}}"> {{myImg.auther}}  </a> </div>
+  <a href="" style="text-align:left">
+    <div class="auther"> <a routerLink="authors/{{myImg.auther}}"> {{myImg.auther}} </a> </div>
   </a>
 
 </div>
-
-
-

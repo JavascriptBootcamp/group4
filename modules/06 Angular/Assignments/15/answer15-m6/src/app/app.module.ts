@@ -7,6 +7,7 @@ import { ImageCompComponent } from './image-comp/image-comp.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AutherPicsComponent } from './auther-pics/auther-pics.component';
 import { BigImgComponent } from './big-img/big-img.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -15,12 +16,13 @@ import { BigImgComponent } from './big-img/big-img.component';
     ImageCompComponent,
     AutherPicsComponent,
     BigImgComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent]
 })
 export class AppModule { }

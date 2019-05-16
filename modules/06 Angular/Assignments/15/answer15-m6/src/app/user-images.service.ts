@@ -47,10 +47,9 @@ export class UserImagesService {
       "https://pbs.twimg.com/media/Cxneo79VEAA-utS.jpg",
       "https://i.redd.it/3dora5z6mae11.jpg",
       "http://www.inquisitiveone.in/wp-content/uploads/2017/02/HTML-vs-HTML-and-CSS.jpg",
-      "http://www.inquisitiveone.in/wp-content/uploads/2017/02/HTML-vs-HTML-and-CSS.jpg",
+      "https://comic.browserling.com/baby.png",
       "https://img.devrant.com/devrant/rant/r_403948_ikGUk.jpg",
       "https://pics.me.me/bootstrap-html-css-31715884.png",
-// tslint:disable-next-line: quotemark
       "https://www1.picturepush.com/photo/a/15883688/1024/CSS-Puns-and-CSS-,Jokes/Big-Bang---Web-Joke.png",
       "https://pbs.twimg.com/media/DVJmllgVQAE9nU6.jpg",
       "https://i.pinimg.com/736x/ca/47/94/ca4794cfada458717c7aa99093a1f425.jpg",

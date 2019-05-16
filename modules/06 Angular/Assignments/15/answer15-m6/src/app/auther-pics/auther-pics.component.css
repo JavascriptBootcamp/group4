@@ -1,0 +1,18 @@
+.user-image img{
+  width:200px;
+  height: auto;
+  margin: 16px;
+  box-shadow:-3px -3px 0px 10px #aebaa8 ;
+}
+
+.user-images{
+display: flex;
+flex-wrap: wrap;
+}
+.name {
+text-align: center;
+background: blue;
+color: white;
+font-size: xx-large;
+
+}
