@@ -1,0 +1,5 @@
+<button (click)="Func_timerClicked()" >timer</button>
+<button (click)="Func_countdownClicked()">countdown</button>
+<app-timer *ngIf="timerClicked"></app-timer>
+<app-countdown  *ngIf="!timerClicked"></app-countdown>
+<router-outlet></router-outlet>
