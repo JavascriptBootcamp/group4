@@ -1,17 +1,16 @@
 <div id="wrapper">
-<div id="timer">
-  {{gameService.minString}}:{{gameService.secString}}
-  <input type="button" (click)="gameService.startTimer()" value="START">
-</div>
-  <div *ngIf="!gameService.hasWon; else won">
-
-    <app-card *ngFor="let c of cards" [card]="c"></app-card>
-
+  <div id="timer">
+    <input type="button" (click)="gameService.startTimer()" [disabled]="gameService.interval" value="START"><br><br>
+    <span id="time"> {{gameService.minString}}:{{gameService.secString}}</span>
   </div>
-
-  <ng-template #won>
-    You Won!
-    {{gameService.minString}}:{{gameService.secString}}
+  <br>
+  <img src="..\assets\img\n1PabXW.jpg">
+  <div *ngIf="!gameService.hasWon; else won">
+    <app-card *ngFor="let c of cards" [card]="c"></app-card>
+  </div>
+  <br>
+  <ng-template  #won>
+    <h1 id="won"> You Won!</h1>
   </ng-template>
 
 </div>

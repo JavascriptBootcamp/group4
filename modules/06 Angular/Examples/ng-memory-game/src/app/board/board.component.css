@@ -1,3 +1,29 @@
 #wrapper {
     width: 50%;
+    margin: 0 auto;
+}
+
+#time {
+    font-size: 20px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px gray;
+}
+
+img {
+    position: absolute;
+    width: 50%;
+    left: 26%;
+    border-radius: 15px;
+    z-index: -2;
+}
+
+#won{
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    top: 50px;
+    color: white;
+    font-size: 50px;
 }

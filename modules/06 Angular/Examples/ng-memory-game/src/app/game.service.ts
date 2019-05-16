@@ -12,16 +12,29 @@ export class GameService {
   interval: any;
   secString: string;
   minString: string;
+  level: number;
 
   constructor() {
+    this.level = 0;
     this.cards = [];
-    this.hasWon = false;
-    this.isGameActive = true;
     this.initAvailableCards();
+    this.restart();
+  }
+
+  restart() {
+    this.level++;
+    this.hasWon = false;
+    this.isGameActive = false;
     this.shuffle();
     this.secString = "00";
     this.minString = "00";
+    if (this.level > 1)
+      for (let c of this.cards) {
+        c.correct = false;
+        c.selected = false;
+      }
   }
+
   get gameCards(): Card[] {
     return this.cards;
   }
@@ -39,20 +52,26 @@ export class GameService {
   }
   shuffle() {
     let randomCard, randomIndex;
-    let allCards: Card[] = this.availableCards.concat(this.availableCards);
-    while (allCards.length > 0) {
-      randomIndex = Math.floor(Math.random() * allCards.length);
-      randomCard = allCards.splice(randomIndex, 1);
-      // this.cards.push(randomCard[0]);
-      // this.cards.push(JSON.parse(JSON.stringify(randomCard[0])));
-      this.cards.push({
-        ...randomCard[0]
-        /*
-          content: "",
-          selected: "",
-          correct: ""
-        */
-      });
+    let allCards: Card[];
+    if (this.level === 1) {
+      allCards = this.availableCards.concat(this.availableCards);
+      while (allCards.length > 0) {
+        randomIndex = Math.floor(Math.random() * allCards.length);
+        randomCard = allCards.splice(randomIndex, 1);
+        // this.cards.push(randomCard[0]);
+        // this.cards.push(JSON.parse(JSON.stringify(randomCard[0])));
+        this.cards.push({
+          ...randomCard[0]
+          /*
+            content: "",
+            selected: "",
+            correct: ""
+          */
+        });
+      }
+    }
+    else {  //random cards in new game
+      this.cards.sort(function (a, b) { return 0.5 - Math.random() });
     }
   }
   select(card: Card) {
@@ -80,14 +99,20 @@ export class GameService {
 
   checkWin() {
     this.hasWon = this.cards.every(card => card.correct);
-    if (this.hasWon)
+    if (this.hasWon) {
       clearInterval(this.interval);
+      this.interval = null;
+    }
   }
 
   startTimer() {
+
+    if (this.hasWon)
+      this.restart();
+
     let sec: number = 0;
     let min: number = 0;
-
+    this.isGameActive = true;
     this.interval = setInterval(() => {
       sec++;
       if (sec === 60) {
