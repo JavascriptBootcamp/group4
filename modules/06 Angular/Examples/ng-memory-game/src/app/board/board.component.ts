@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { GameService } from '../game.service';
 import { Card } from '../card.model';
 
@@ -7,12 +7,10 @@ import { Card } from '../card.model';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent {
+export class BoardComponent  {
   cards: Card[];
   constructor(private gameService: GameService) {
     this.cards = this.gameService.gameCards;
+    this.gameService.setTimer();
   }
-
-  
-
 }

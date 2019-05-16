@@ -1,4 +1,5 @@
 <span (click)="!card.selected && !card.correct && gameService.isGameActive && choose()">
   <app-picture [inactive]="card.selected || card.correct" [content]="card.content">
   </app-picture>
+  {{card.content}}
 </span>
