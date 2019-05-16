@@ -19,10 +19,10 @@ export class ChildComponent implements OnChanges, OnInit, OnDestroy {
 
     ngOnInit() {
       console.log("Lifecycle: ngOnInit");
-      this.interval = setInterval( () => {
-        this.someData = Math.random() * 1000;
-        console.warn("this.someData", this.someData);
-      }, 1000 );
+      // this.interval = setInterval( () => {
+      //   this.someData = Math.random() * 1000;
+      //   console.warn("this.someData", this.someData);
+      // }, 1000 );
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -34,6 +34,10 @@ export class ChildComponent implements OnChanges, OnInit, OnDestroy {
       else {
         console.log("do something!");
       }
+    }
+
+    ngDoCheck() {
+      console.log("Do Check");
     }
 
     ngOnDestroy() {
