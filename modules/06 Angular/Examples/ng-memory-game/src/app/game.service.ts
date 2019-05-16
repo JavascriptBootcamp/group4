@@ -10,8 +10,8 @@ export class GameService {
   hasWon: boolean;
   isGameActive: boolean;
   interval: any;
-  secString:string;
-  minString:string;
+  secString: string;
+  minString: string;
 
   constructor() {
     this.cards = [];
@@ -19,6 +19,8 @@ export class GameService {
     this.isGameActive = true;
     this.initAvailableCards();
     this.shuffle();
+    this.secString = "00";
+    this.minString = "00";
   }
   get gameCards(): Card[] {
     return this.cards;
@@ -75,13 +77,16 @@ export class GameService {
   isMatch(card: Card, selectedCards: Card[]) {
     return selectedCards.every(selectedCard => selectedCard.content === card.content);
   }
+
   checkWin() {
     this.hasWon = this.cards.every(card => card.correct);
+    if (this.hasWon)
+      clearInterval(this.interval);
   }
 
   startTimer() {
-    let sec:number=0;
-     let min:number=0;
+    let sec: number = 0;
+    let min: number = 0;
 
     this.interval = setInterval(() => {
       sec++;
@@ -89,6 +94,7 @@ export class GameService {
         sec = 0;
         min++;
       }
+
       if (sec < 10)
         this.secString = "0" + sec;
       else
