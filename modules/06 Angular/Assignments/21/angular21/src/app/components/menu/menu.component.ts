@@ -1,22 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+
 })
-export class MenuComponent implements OnInit {
-  radCheck: string;
+export class MenuComponent {
   startForm: string;
-
   constructor() {
-    this.radCheck = "timer";
-    this.startForm = "00:00";
+    this.startForm = "";
   }
-
-  ngOnInit() {
-
-  }
-
-
 }

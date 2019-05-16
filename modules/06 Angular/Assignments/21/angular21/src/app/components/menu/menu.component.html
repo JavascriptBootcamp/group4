@@ -1,15 +1,20 @@
 <div class="wrapper">
   <div class="choice">
     <form #form="ngForm">
-      <input type="radio" [ngModel]="radCheck" #radElem="ngModel" name="time" id="timer" value="timer"
-        checked="checked">
+      <input type="radio" [attr.disabled]="txtTime.valid?null:true" ngModel #radElem="ngModel" name="time" id="timer"
+        value="timer" required>
       <label for="timer">Timer</label>
-      <input type="radio" [ngModel]="radCheck" name="time" id="countdown" value="countdown">
+      <input type="radio" [attr.disabled]="txtTime.valid?null:true" ngModel name="time" id="countdown"
+        value="countdown">
       <label for="countdown">Countdown</label>
-      <input type="text" [(ngModel)]="startForm" [ngModelOptions]="{standalone: true}" placeholder="Start from....">
+      <input type="text" [(ngModel)]="startForm" #txtTime="ngModel" [ngModelOptions]="{standalone: true}"
+        placeholder="Start from...." pattern="^(\d\d):(\d\d)$" required>
+      <div *ngIf="txtTime.invalid" style="color:red;font-weight: bold">
+        Example: 00:00
+      </div>
     </form>
   </div>
-  <div class="time">
+  <div class="time" *ngIf="radElem.valid && txtTime.valid">
     <app-timer *ngIf="'timer'=== radElem.value" [startForm]="startForm"></app-timer>
     <app-countdown *ngIf="'countdown'=== radElem.value" [startForm]="startForm"></app-countdown>
   </div>
