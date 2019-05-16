@@ -13,4 +13,10 @@
 </ol>
  <input type="submit" value="שלח את התשובות">
 </form>
-<div *ngIf="submited"> you answered {{correctAnswers}} correct answers</div>
+
+<div *ngIf="submited">
+    <app-answers>
+        <span>  you answered {{correctAnswers}} correct answers </span>
+    </app-answers>
+
+</div>
