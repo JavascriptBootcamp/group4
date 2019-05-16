@@ -9,12 +9,16 @@ export class GameService {
   availableCards: Card[];
   hasWon: boolean;
   isGameActive: boolean;
+  timer:number;
+  interval:any;
   constructor() {
     this.cards = [];
+    this.timer=0;
     this.hasWon = false;
     this.isGameActive = true;
     this.initAvailableCards();
     this.shuffle();
+    this.startTime()
    }
    get gameCards(): Card[] {
      return this.cards;
@@ -73,5 +77,14 @@ export class GameService {
    }
    checkWin() {
       this.hasWon = this.cards.every(card => card.correct);
+      if(this.hasWon){
+        clearInterval(this.interval)
+      }
    }
+   startTime(){
+    this.interval = setInterval(()=>{
+      this.timer++;
+    },1000)
+  }
+
 }
