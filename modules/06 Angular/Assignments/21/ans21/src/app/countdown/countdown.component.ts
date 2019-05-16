@@ -14,6 +14,7 @@ export class CountdownComponent implements OnInit {
     this.message=null;
   }
   start(){
+    //this.time=
     if(!this.interval){
       this.interval= setInterval(()=>{
       
@@ -37,5 +38,10 @@ export class CountdownComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  ngOnDestroy(){
+    this.reset();
+  }
+  onTimeChange(event){
+    this.time=Number(event.target.value*60);
+  }
 }

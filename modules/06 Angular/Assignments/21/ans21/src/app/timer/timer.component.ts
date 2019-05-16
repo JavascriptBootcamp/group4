@@ -29,6 +29,8 @@ export class TimerComponent implements OnInit {
   }
   ngOnInit() {
   }
-
+  ngOnDestroy(){
+    this.reset();
+  }
 
 }

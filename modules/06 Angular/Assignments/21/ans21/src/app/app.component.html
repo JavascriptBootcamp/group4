@@ -1,7 +1,7 @@
 
 <input type="radio" (click)="timerTypeSel('timer')" name="clock" value="timer" checked> Timer<br>
 <input type="radio" (click)="timerTypeSel('countdown')" name="clock" value="countdown"> Countdown<br>
-<input type="text" placeholder="start from (in minutes)"><br>
+
 <app-timer *ngIf="timer"></app-timer>
 <app-countdown *ngIf="!timer"></app-countdown>
 <router-outlet></router-outlet>

@@ -1,3 +1,4 @@
+<input type="text" placeholder="start from (in minutes)" (change)=onTimeChange($event)><br>
 Countdown:{{time | clock}}
 <button (click)="start()">Start</button>
 <button (click)="pause()">Pause</button>
