@@ -7,22 +7,25 @@ import { Component, OnChanges, OnInit, OnDestroy, SimpleChanges } from '@angular
 })
 export class ParentComponent implements OnChanges, OnInit, OnDestroy {
   isHidden: boolean;
-  someData: string;
+  // someData: string;
+  person: {
+    name: string
+  }
   constructor() {
     this.isHidden = false;
-    this.someData = "Moshiko is the king";
+    // this.someData = "";
+    this.person = {
+      name: "Moshiko"
+    }
   }
   ngOnInit() {
     console.log("Parent - ngOnInit");
+    // setTimeout( () => {
+    //   this.someData = "Moshiko is the king";
+    // }, 1000 );
     setTimeout( () => {
-      this.someData = "Moshiko is the king";
-    }, 1000 );
-    setTimeout( () => {
-      this.someData = "Moshiko is the king";
-    }, 3000 );
-    setTimeout( () => {
-      this.someData = "Gabi is the king";
-    }, 5000 );
+      this.person.name = "Gabi";
+    }, 3000);
   }
   ngOnDestroy() {
     console.log("Parent - ngOnDestroy");
