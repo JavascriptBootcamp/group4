@@ -11,9 +11,13 @@ import { initDomAdapter } from '@angular/platform-browser/src/browser';
 export class QuizComponent {
   questionIndex:number;
   question:Question;
+  submitted:boolean;
+  score: number;
   constructor(private questionsService: ManageQuestionsService) {
     this.questionIndex=0;
     this.getData();
+    this.submitted=false;
+    this.score=0;
   }
   getData(){
     this.question=this.questionsService.getQuestionByID(this.questionIndex);
@@ -35,6 +39,15 @@ export class QuizComponent {
       this.getData();
     }
   }
-
-
+  onSubmit(){
+    this.submitted=true;
+    this.score=this.questionsService.checkUserScore();
+  }
+  resetQuiz(){
+    this.questionIndex=0;
+    this.score=0;
+    this.questionsService.resetQuiz();
+    this.getData();
+    this.submitted=false;
+  }
 }

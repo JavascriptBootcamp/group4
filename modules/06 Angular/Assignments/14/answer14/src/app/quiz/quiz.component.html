@@ -1,8 +1,8 @@
-<div class="quiz-container">
-  <button (click)="prevQuestion()" *ngIf="questionIndex > 0">previus</button>
+<div class="quiz-container" *ngIf="!submitted">
+  <button class="btn" (click)="prevQuestion()" *ngIf="questionIndex > 0">previus</button>
   <div class="question-container">
       <h4 class="pages">{{questionIndex+1 + '/' + questionsService.questions.length}}</h4>
-      <h2>{{question.question}}</h2>
+      <h2 class="question-header">{{question.question}}</h2>
       <div class="answers-container">
           <label *ngFor="let answer of question.answers;let i = index" class="quiz-answer"
           [class.correct]="question.correctAnswerIndex===i && question.userAnswer > -1"
@@ -14,6 +14,23 @@
           </label>
       </div>
   </div>
-  <button (click)="nextQuestion()" *ngIf="questionIndex+1 < questionsService.questions.length">next</button>
-  <button (click)="onSubmit()" *ngIf="questionIndex+1 === questionsService.questions.length">submit</button>
+  <button class="btn" (click)="nextQuestion()" *ngIf="questionIndex+1 < questionsService.questions.length">next</button>
+  <button class="submit" (click)="onSubmit()" *ngIf="questionIndex+1 === questionsService.questions.length">submit</button>
+</div>
+<div class="quiz-container" *ngIf="submitted">
+    <div class="question-container">
+        <h4 class="pages">Score: {{score}}/100</h4>
+        <h2 class="question-header">Here is your result summary:</h2>
+        <div class="results-container">
+          <div class="result" *ngFor="let result of questionsService.questions; let j = index">
+            <h4 class="question-in-results">{{j+1}}. {{result.question}}</h4>
+            <span *ngIf="result.userWasCorrect"><img class="result-status-img" src="../../assets/images/checked.png"></span>
+            <span *ngIf="!result.userWasCorrect"><img class="result-status-img" src="../../assets/images/cancel.png"></span>
+            <!-- <p class="result-p" *ngIf="result.userAnswer>0">your answer: {{result.answers[result.userAnswer]}}</p>
+            <p class="result-p" *ngIf="result.userAnswer<0">you didn't enter any answer</p>
+            <p class="result-p">the correct answer was: {{result.answers[result.correctAnswerIndex]}}</p> -->
+          </div>
+        </div>
+    </div>
+    <div class="reset-quiz" (click)="resetQuiz()"><p class="reset-quiz-text">Try again</p></div>
 </div>

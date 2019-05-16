@@ -6,8 +6,10 @@ import { Question } from './question';
 })
 export class ManageQuestionsService {
   questions: Question[];
+  score: number;
   constructor() { 
     this.questions=this.createFakeQuestions();
+    this.score=0;
   }
   createFakeQuestions(){
     let tempArray = [
@@ -28,6 +30,21 @@ export class ManageQuestionsService {
       this.questions[questionIndex].userWasCorrect=true;
     else
       this.questions[questionIndex].userWasCorrect=false;
+  }
+  checkUserScore(){
+    for(let i=0;i<this.questions.length;i++){
+      if(this.questions[i].userWasCorrect){
+        this.score++;
+      }
+    }
+    return this.score/this.questions.length*100;
+  }
+  resetQuiz(){
+    this.score=0;
+    for(let i=0;i<this.questions.length;i++){
+      this.questions[i].userWasCorrect = null;
+      this.questions[i].userAnswer = -1;
+    }
   }
 
 }
