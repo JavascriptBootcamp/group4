@@ -9,13 +9,28 @@ export class GameService {
   availableCards: Card[];
   hasWon: boolean;
   isGameActive: boolean;
+  timer: number;
+  interval: any;
+
   constructor() {
+    this.timer = 0;
+    this.interval = null;
     this.cards = [];
     this.hasWon = false;
     this.isGameActive = true;
     this.initAvailableCards();
     this.shuffle();
    }
+
+   startTimer(){
+    this.interval = setInterval( () => {
+      this.timer++;
+      console.log(this.checkWin());
+      if(this.hasWon)
+        clearInterval(this.interval);
+    }, 1000 );
+   }
+
    get gameCards(): Card[] {
      return this.cards;
    }
@@ -28,7 +43,7 @@ export class GameService {
        {content: "kitten", selected: false, correct: false},
        {content: "mouse", selected: false, correct: false},
        {content: "puppy", selected: false, correct: false},
-       {content: "rabbit", selected: false, correct: false},
+       {content: "rabbit", selected: false, correct: false}
      ]
    }
    shuffle() {
@@ -50,7 +65,6 @@ export class GameService {
     }
    }
    select(card: Card){
-     console.log("select", card);
      const selectedCards = this.cards.filter( card => card.selected);
      card.selected = true;
      if (selectedCards.length === 1){
