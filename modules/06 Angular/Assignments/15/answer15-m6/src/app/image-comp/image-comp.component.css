@@ -1,4 +1,8 @@
+.img-comp{
 
+  background-color:gold;
+  margin:5px;
+}
 .likeSec{
   display: flex;
   color: blue;
