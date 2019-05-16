@@ -1,22 +1,25 @@
 <form #form="ngForm" (submit)= onSubmit($event,form.value)>
   <h1>Trivia</h1>
-  <div *ngFor="let question of questions; index as i">
+  <div *ngFor="let question of questions">
     <!-- <app-question [question]='q'> -->
-    <app-question>
-      <div ngModelGroup="q{{i+1}}">
+    <app-question *ngIf="questionService.getCurrentQuestionId() === question.id">
+      <div ngModelGroup="q{{question.id+1}}">
+          <h1 style="text-align: center">{{timer}}</h1>
         <h2>
-          <span class="wrong" *ngIf="!questionService.isCorrectAnswer(question.name,questionService.getAnswers()[question.name])">* </span>
-          {{i+1}}. {{question.question}}
+          <!-- <span class="wrong" *ngIf="!questionService.isCorrectAnswer(question.name,questionService.getAnswers()[question.name])">* </span> -->
+          {{question.id+1}}. {{question.question}} 
         </h2>
-        <input type='radio' ngModel name='{{question.name}}' value='{{question.value1}}' /> {{question.option1}}<br />
-        <input type='radio' ngModel name='{{question.name}}' value='{{question.value2}}' /> {{question.option2}}<br />
-        <input type='radio' ngModel name='{{question.name}}' value='{{question.value3}}' /> {{question.option3}}<br />
-        <input type='radio' ngModel name='{{question.name}}' value='{{question.value4}}' /> {{question.option4}}<br /><br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value1}}' #radio1 (change)=setCurrentRadioSelection(0) [checked]="questionService.getSelection() === 0"/> {{question.option1}} <br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value2}}' #radio2 (change)=setCurrentRadioSelection(1) [checked]="questionService.getSelection() === 1"/> {{question.option2}} <br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value3}}' #radio3 (change)=setCurrentRadioSelection(2) [checked]="questionService.getSelection() === 2"/> {{question.option3}} <br />
+        <input type='radio' ngModel name='{{question.name}}' value='{{question.value4}}' #radio3 (change)=setCurrentRadioSelection(3) [checked]="questionService.getSelection() === 3"/> {{question.option4}} <br /><br />
       </div>
     </app-question>
   </div>
-  <input type='submit' name='submit' value='Submit' />
+  <button type="button" (click)="onPrevClicked(form.value);$event.preventDefault()" [disabled]="questionService.getCurrentQuestionId()===0">Prev</button>
+  <button type="button" (click)="onNextClicked(form.value);$event.preventDefault()" [disabled]="questionService.getCurrentQuestionId()===9">Next</button>
+  <input type='submit' name='submit' value='Submit' [disabled]="!(questionService.getAnsweredCounter() === 10)" />
   <input type="hidden" name="ts" value="1547375825757">
-  <h2>Correct answers: {{questionService.correctAnswers}} / {{questionService.totalQuestions}}</h2>
+  <h2 [hidden]="!(questionService.getAnsweredCounter() === 10)">Correct answers: {{questionService.correctAnswers}} / {{questionService.totalQuestions}}</h2>
 
 </form>

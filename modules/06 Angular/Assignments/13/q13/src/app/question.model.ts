@@ -1,4 +1,5 @@
 export interface Question{
+    id: number;
     question: string;
     name: string;
   
@@ -13,4 +14,5 @@ export interface Question{
     value4: string;
   
     correctAnswer: string;
+    correctIndex: number;
   }
