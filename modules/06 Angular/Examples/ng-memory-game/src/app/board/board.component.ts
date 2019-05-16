@@ -7,12 +7,11 @@ import { Card } from '../card.model';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
+
 export class BoardComponent {
   cards: Card[];
   constructor(private gameService: GameService) {
     this.cards = this.gameService.gameCards;
   }
-
-  
-
+ 
 }
