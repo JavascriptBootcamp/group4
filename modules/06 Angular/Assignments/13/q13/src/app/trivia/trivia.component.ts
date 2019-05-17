@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { QuestionService } from '../questions.service';
 import { Question } from '../question.model';
 import { NgForm } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-trivia',
@@ -12,19 +13,31 @@ export class TriviaComponent implements OnInit {
   questions: Question[];
   currentRadioSelection: number;
 
-  interval: any;
-  timer: number;
+  @ViewChild('radio1') radio1: ElementRef;
+  @ViewChild('radio2') radio2: ElementRef;
+  @ViewChild('radio3') radio3: ElementRef;
+  @ViewChild('radio4') radio4: ElementRef;
 
   constructor(private questionService: QuestionService) { 
     this.questions = [];
-    this.timer = 5;
-    this.currentRadioSelection = -1;
+  }
 
+  clearRadios(){
+    this.radio1.nativeElement.checked = false;
+    this.radio2.nativeElement.checked = false;
+    this.radio3.nativeElement.checked = false;
+    this.radio4.nativeElement.checked = false;
   }
 
   ngOnInit() {
     this.questions = this.questionService.getQuestions();
-    this.startTimer();
+    if(this.questionService.getSelection() !== -1)
+      this.setCurrentRadioSelection(this.currentRadioSelection);
+    
+    //this.startTimer();
+  }
+
+  ngOnDestroy(){
   }
 
   // ngAfterContentChecked(){
@@ -44,48 +57,56 @@ export class TriviaComponent implements OnInit {
   onPrevClicked( form: NgForm){
     const currentQuestionId = this.questionService.getCurrentQuestionId();
     const questionKey = 'q' + (currentQuestionId+1);
-    const answer = form[questionKey].current;
+    const name = this.questionService.getName(currentQuestionId);
+    const selected = form[questionKey][name];
+    const answer =  this.questionService.getAnswerBykey(currentQuestionId,'option'+(+selected+1))
     this.questionService.setAnswer(currentQuestionId,this.currentRadioSelection,answer);
+
+    console.log("this.currentRadioSelection:",this.currentRadioSelection,"currentQuestionId:",currentQuestionId,"this.questionService.answersIndex:",this.questionService.answersIndex);
+
 
     this.questionService.setCurrentQuestionId( this.questionService.getCurrentQuestionId()-1);
-    this.startTimer();
+    this.questionService.startTimer();
+    this.currentRadioSelection = -1;
   }
 
-  onNextClicked(event, form: NgForm){
+  onNextClicked( form: NgForm){
+    
     const currentQuestionId = this.questionService.getCurrentQuestionId();
     const questionKey = 'q' + (currentQuestionId+1);
-    const answer = form[questionKey].current;
+    const name = this.questionService.getName(currentQuestionId);
+    const selected = form[questionKey][name];
+    const answer =  this.questionService.getAnswerBykey(currentQuestionId,'option'+(+selected+1));
     this.questionService.setAnswer(currentQuestionId,this.currentRadioSelection,answer);
 
+    console.log("this.currentRadioSelection:",this.currentRadioSelection,"currentQuestionId:",currentQuestionId,"this.questionService.answersIndex:",this.questionService.answersIndex);
+
     this.questionService.setCurrentQuestionId( this.questionService.getCurrentQuestionId()+1);
-    this.startTimer();
+    this.questionService.startTimer();
+    this.currentRadioSelection = -1;
   }
 
   setCurrentRadioSelection(currentRadioSelection: number){
+    this.currentRadioSelection = currentRadioSelection;
+    if(currentRadioSelection === -1)
+      return;
+    this.clearRadios();
+    let currentRadio: ElementRef;
+    switch(currentRadioSelection){
+      case 0: currentRadio = this.radio1; break;
+      case 1: currentRadio = this.radio2; break;
+      case 2: currentRadio = this.radio3; break;
+      case 3: currentRadio = this.radio4; break;
+    }
+    console.log(currentRadio);
+    currentRadio.nativeElement.checked = true;
     this.questionService.setAnswerIndex(currentRadioSelection);
   }
 
-  nextQuestion(){
-    const currentQuestionId = this.questionService.getCurrentQuestionId();
-    if(currentQuestionId < 10){
-      this.questionService.setCurrentQuestionId(currentQuestionId+1);
-      this.startTimer();
-    }
+  onQuestionChange(currentRadioSelection: number){
+    console.log("Change question");
+    this.setCurrentRadioSelection(currentRadioSelection);
+    console.log(currentRadioSelection);
   }
-
-  startTimer(){
-    this.timer = 5;
-    if(this.interval)
-      clearInterval(this.interval);
-    this.interval = setInterval(() => {
-      this.timer--;
-      if (this.timer === 0){
-        clearInterval(this.interval);
-        if(this.questionService.getCurrentQuestionId() < 10)
-          this.nextQuestion();
-      }
-    }, 1000);
-  }
-
 
 }

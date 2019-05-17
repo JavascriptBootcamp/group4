@@ -13,6 +13,10 @@ totalQuestions: number;
 correctAnswers: number;
 currentQuestionId: number;
 answeredCounter: number;
+timer: number; 
+interval: any;
+startValueTimer: number
+
   constructor() { 
     let i =0;
     this.questions = [
@@ -34,6 +38,9 @@ answeredCounter: number;
     this.correctAnswers = 0;
     this.currentQuestionId = 0;
     this.answeredCounter = 0;
+    this.startValueTimer = 50;
+    this.timer = this.startValueTimer; 
+    this.interval = null;
   }
 
   getCurrentQuestionId(): number{
@@ -45,7 +52,7 @@ answeredCounter: number;
   }
 
   setCurrentQuestionId(currentQuestionId: number){
-    this.currentQuestionId = currentQuestionId;;
+    this.currentQuestionId = currentQuestionId;
   }
 
   incAnsweredCounter(){
@@ -120,6 +127,44 @@ answeredCounter: number;
 
   getSelection(): number{
     return this.answersIndex[this.currentQuestionId];
+  }
+
+  nextQuestion(){
+    const currentQuestionId = this.getCurrentQuestionId();
+    if(currentQuestionId < 10){
+      this.setCurrentQuestionId(currentQuestionId+1);
+      // console.log("timer:",this.timer);
+    }
+  }
+
+  startTimer(){
+    this.stopTimer();
+    this.timer = this.startValueTimer;
+    this.interval = setInterval(() => {
+      this.timer--;
+      if (this.timer === 0){
+        if(this.getCurrentQuestionId() < 10)
+          this.nextQuestion();
+      }
+    }, 1000);
+  }
+
+  stopTimer(){
+    if(this.interval)
+      clearInterval(this.interval);
+  }
+  resetTimer(){
+    this.stopTimer();
+    this.interval = null;
+    this.timer = this.startValueTimer;
+  }
+
+  getName(id: number){
+    return this.questions[id].name;
+  }
+
+  getAnswerBykey(id,key){
+    return this.questions[id][key];
   }
 
 }
