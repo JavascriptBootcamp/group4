@@ -20,6 +20,19 @@
     display: flex;
     justify-content: space-between;
 }
+.after-start{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.before-start{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .quiz-container .btn{
     bottom: 0;

@@ -1,0 +1,47 @@
+.quiz-container{
+    transition: width 1.5s;
+    background-image: linear-gradient(rgb(254, 255, 216), rgb(251, 220, 117));
+    color: rgb(31, 47, 40);
+    border-radius: 20px;
+    -webkit-box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    border: 2px dashed rgb(31, 47, 40);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.quiz-container-closed{
+    transition: width 1.5s;
+    background-image: linear-gradient(rgb(254, 255, 216), rgb(251, 220, 117));
+    color: rgb(31, 47, 40);
+    border-radius: 20px;
+    -webkit-box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    border: 2px dashed rgb(31, 47, 40);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    height: 300px;
+}
+
+.quiz-container-open{
+    transition: width 1.5s;
+    background-image: linear-gradient(rgb(254, 255, 216), rgb(251, 220, 117));
+    color: rgb(31, 47, 40);
+    border-radius: 20px;
+    -webkit-box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    box-shadow: 9px 10px 35px -20px rgba(0,0,0,0.75);
+    border: 2px dashed rgb(31, 47, 40);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    height: 300px;
+}

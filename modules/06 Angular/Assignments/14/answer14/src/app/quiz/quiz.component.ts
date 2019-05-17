@@ -13,6 +13,7 @@ export class QuizComponent {
   question:Question;
   submitted:boolean;
   score: number;
+  started:boolean;
   constructor(private questionsService: ManageQuestionsService) {
     this.questionIndex=0;
     this.getData();

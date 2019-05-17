@@ -1,18 +1,18 @@
 <div class="quiz-container" *ngIf="!submitted">
   <button class="btn" (click)="prevQuestion()" *ngIf="questionIndex > 0">previus</button>
   <div class="question-container">
-      <h4 class="pages">{{questionIndex+1 + '/' + questionsService.questions.length}}</h4>
-      <h2 class="question-header">{{question.question}}</h2>
-      <div class="answers-container">
-          <label *ngFor="let answer of question.answers;let i = index" class="quiz-answer"
-          [class.correct]="question.correctAnswerIndex===i && question.userAnswer > -1"
-          [class.not-correct]="question.userAnswer!==question.correctAnswerIndex && question.userAnswer===i">
-          <input [disabled]="question.userAnswer > -1" type="radio" 
-           (click)="checkIfCorrect(i)"
-           [checked]="i===question.userAnswer">
-          {{answer}}
-          </label>
-      </div>
+    <h4 class="pages">{{questionIndex+1 + '/' + questionsService.questions.length}}</h4>
+    <h2 class="question-header">{{question.question}}</h2>
+    <div class="answers-container">
+        <label *ngFor="let answer of question.answers;let i = index" class="quiz-answer"
+        [class.correct]="question.correctAnswerIndex===i && question.userAnswer > -1"
+        [class.not-correct]="question.userAnswer!==question.correctAnswerIndex && question.userAnswer===i">
+        <input [disabled]="question.userAnswer > -1" type="radio" 
+          (click)="checkIfCorrect(i)"
+          [checked]="i===question.userAnswer">
+        {{answer}}
+        </label>
+    </div>
   </div>
   <button class="btn" (click)="nextQuestion()" *ngIf="questionIndex+1 < questionsService.questions.length">next</button>
   <button class="submit" (click)="onSubmit()" *ngIf="questionIndex+1 === questionsService.questions.length">submit</button>
