@@ -1,9 +1,12 @@
 <div>
-  <p id="time" *ngIf="!timeOut">
+  <br>Enter time:
+  <input type="number" min="0" #min><b> : </b><input type="number" min="0" #sec><br>
+  <div id="time" *ngIf="!timeOut">
   {{minString}}:{{secString}}
-  </p>
-  <p id="timeIsUp" *ngIf="timeOut">
+  </div><br>
+  <div id="timeIsUp" *ngIf="timeOut">
     Time Is Up!
-  </p>
-  <button id="actionBtn" (click)="startTimer()"  #actionBtn >START</button> <button id="resetBtn" (click)="resetTimer()">RESET</button>
+  </div>
+  <br>
+  <button id="actionBtn" (click)="startTimer()" #actionBtn >START</button> <button id="resetBtn" (click)="resetTimer()">RESET</button>
   </div>

@@ -3,6 +3,16 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+input[type=number] {
+    width: 6%;
+    border: none;
+    background-color: rgb(93, 168, 168);
+}
+
+/* #enterTime{
+    background-color: rgb(93, 168, 168);
+} */
+
 #actionBtn {
     border-radius: 8px 0 0 8px;
 }
