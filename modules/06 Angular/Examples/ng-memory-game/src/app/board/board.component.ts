@@ -13,7 +13,6 @@ export class BoardComponent implements OnInit {
   constructor(private gameService: GameService) {
     this.cards = this.gameService.gameCards;
 
-    this.gameService.startTimer();
   }
 
   ngOnInit(){
