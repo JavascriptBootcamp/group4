@@ -1,0 +1,17 @@
+#greyStyle {
+    border-radius: 25px;
+    background: lightgray;
+    padding: 20px; 
+    width: 340px;
+    height: 80px;  
+    display: flex;
+    justify-content: center;
+    border: 3px solid grey;
+  }
+
+#wrapper {
+    display: flex;
+    align-items : center;
+    justify-content: center;
+    flex-direction: column ;
+}

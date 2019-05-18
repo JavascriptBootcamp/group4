@@ -1,0 +1,23 @@
+<div id="wrapper">
+  <form [formGroup]="userForm" (submit)="onFormSubmit()">
+    <div id="up">
+      <input type="radio" value="timer" formControlName="counters"> Timer
+      <input type="radio" value="countdown" formControlName="counters"> Countdown
+      <input *ngIf="getCounter === 'countdown'" (change)="setServiceTime(Input)" type="number" name="startTime"
+        formControlName="startTime" placeholder="Start From..." #Input>
+    </div>
+
+  </form>
+  
+  <div id="greyStyle">
+    <div *ngIf="getCounter === 'timer'">
+      <app-timer></app-timer>
+    </div>
+
+    <div *ngIf="getCounter === 'countdown'">
+      <app-countdown></app-countdown>
+    </div>
+
+  </div>
+
+</div>

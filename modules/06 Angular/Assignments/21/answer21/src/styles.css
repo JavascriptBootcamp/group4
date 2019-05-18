@@ -1,0 +1,31 @@
+.green {
+    color: green;
+    background-color: lightgreen;
+    width: 100px;
+}
+
+.orange {
+    color: red;
+    background-color: lightsalmon;
+    width: 100px;
+}
+
+.blue {
+    color: blue;
+    background-color: lightblue;
+    width: 100px;
+}
+
+
+.centerAndBold {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bold
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
