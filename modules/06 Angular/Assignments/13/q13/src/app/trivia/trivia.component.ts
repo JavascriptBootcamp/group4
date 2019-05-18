@@ -9,9 +9,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   templateUrl: './trivia.component.html',
   styleUrls: ['./trivia.component.css']
 })
-export class TriviaComponent implements OnInit {
+export class TriviaComponent implements OnInit{
   questions: Question[];
-  currentRadioSelection: number;
+  currentRadioSelection: string;
 
   @ViewChild('radio1') radio1: ElementRef;
   @ViewChild('radio2') radio2: ElementRef;
@@ -32,9 +32,15 @@ export class TriviaComponent implements OnInit {
   ngOnInit() {
     this.questions = this.questionService.getQuestions();
     if(this.questionService.getSelection() !== -1)
-      this.setCurrentRadioSelection(this.currentRadioSelection);
-    
+      this.setCurrentRadioSelection(+this.currentRadioSelection);
+  
     //this.startTimer();
+  }
+
+  ngAfterViewInit(){
+    // this.currentRadioSelection = ''+0;
+    // // this.radio1.nativeElement.checked = true;
+    // console.log(this.radio1);
   }
 
   ngOnDestroy(){
@@ -55,39 +61,36 @@ export class TriviaComponent implements OnInit {
   }
 
   onPrevClicked( form: NgForm){
+    this.questionService.stopTimer();
     const currentQuestionId = this.questionService.getCurrentQuestionId();
     const questionKey = 'q' + (currentQuestionId+1);
     const name = this.questionService.getName(currentQuestionId);
     const selected = form[questionKey][name];
     const answer =  this.questionService.getAnswerBykey(currentQuestionId,'option'+(+selected+1))
-    this.questionService.setAnswer(currentQuestionId,this.currentRadioSelection,answer);
-
-    console.log("this.currentRadioSelection:",this.currentRadioSelection,"currentQuestionId:",currentQuestionId,"this.questionService.answersIndex:",this.questionService.answersIndex);
-
+    console.log("selected",selected);
+    if(selected!=='-1')
+      this.questionService.setAnswer(currentQuestionId,+this.currentRadioSelection,answer);
 
     this.questionService.setCurrentQuestionId( this.questionService.getCurrentQuestionId()-1);
-    this.questionService.startTimer();
-    this.currentRadioSelection = -1;
+    console.log("prev",this.questionService.answersIndex,this.questionService.answers);
+    this.currentRadioSelection = ''+(-1);
   }
 
   onNextClicked( form: NgForm){
-    
+    this.questionService.stopTimer();
     const currentQuestionId = this.questionService.getCurrentQuestionId();
     const questionKey = 'q' + (currentQuestionId+1);
     const name = this.questionService.getName(currentQuestionId);
     const selected = form[questionKey][name];
     const answer =  this.questionService.getAnswerBykey(currentQuestionId,'option'+(+selected+1));
-    this.questionService.setAnswer(currentQuestionId,this.currentRadioSelection,answer);
-
-    console.log("this.currentRadioSelection:",this.currentRadioSelection,"currentQuestionId:",currentQuestionId,"this.questionService.answersIndex:",this.questionService.answersIndex);
+    this.questionService.setAnswer(currentQuestionId,+this.currentRadioSelection,answer);
 
     this.questionService.setCurrentQuestionId( this.questionService.getCurrentQuestionId()+1);
-    this.questionService.startTimer();
-    this.currentRadioSelection = -1;
+    this.currentRadioSelection = ''+(-1);
   }
 
   setCurrentRadioSelection(currentRadioSelection: number){
-    this.currentRadioSelection = currentRadioSelection;
+    this.currentRadioSelection = '' + currentRadioSelection;
     if(currentRadioSelection === -1)
       return;
     this.clearRadios();
@@ -98,15 +101,12 @@ export class TriviaComponent implements OnInit {
       case 2: currentRadio = this.radio3; break;
       case 3: currentRadio = this.radio4; break;
     }
-    console.log(currentRadio);
     currentRadio.nativeElement.checked = true;
     this.questionService.setAnswerIndex(currentRadioSelection);
   }
 
   onQuestionChange(currentRadioSelection: number){
-    console.log("Change question");
     this.setCurrentRadioSelection(currentRadioSelection);
-    console.log(currentRadioSelection);
   }
 
 }

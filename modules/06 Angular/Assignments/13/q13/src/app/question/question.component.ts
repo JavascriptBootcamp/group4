@@ -15,11 +15,14 @@ export class QuestionComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    if(this.questionService.getSelection() !== -1)
-    {
+    // if(this.questionService.getSelection() !== -1)
+    // {
       this.createdCompEvent.emit(this.questionService.getSelection());
-    }
+    // }
     this.questionService.startTimer();
+    console.log("on change question",this.questionService.answersIndex,this.questionService.answers);
+
+
   }
 
   ngOnDestroy(){

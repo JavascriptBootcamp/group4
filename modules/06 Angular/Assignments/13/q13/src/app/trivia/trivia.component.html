@@ -10,10 +10,10 @@
           <!-- <span class="wrong" *ngIf="!questionService.isCorrectAnswer(question.name,questionService.getAnswers()[question.name])">* </span> -->
           {{question.id+1}}. {{question.question}} 
         </h2>
-        <input type='radio' ngModel name='{{question.name}}' value='0' #radio1 (change)="setCurrentRadioSelection(0)"  /> {{question.option1}} <br />
-        <input type='radio' ngModel name='{{question.name}}' value='1' #radio2 (change)="setCurrentRadioSelection(1)" /> {{question.option2}} <br />
-        <input type='radio' ngModel name='{{question.name}}' value='2' #radio3 (change)="setCurrentRadioSelection(2)" /> {{question.option3}} <br />
-        <input type='radio' ngModel name='{{question.name}}' value='3' #radio4 (change)="setCurrentRadioSelection(3)" /> {{question.option4}} <br /><br />
+        <input type='radio' [(ngModel)]="currentRadioSelection" name='{{question.name}}' value='0' #radio1 (change)="setCurrentRadioSelection(0)"  /> {{question.option1}} <br />
+        <input type='radio' [(ngModel)]="currentRadioSelection" name='{{question.name}}' value='1' #radio2 (change)="setCurrentRadioSelection(1)" /> {{question.option2}} <br />
+        <input type='radio' [(ngModel)]="currentRadioSelection" name='{{question.name}}' value='2' #radio3 (change)="setCurrentRadioSelection(2)" /> {{question.option3}} <br />
+        <input type='radio' [(ngModel)]="currentRadioSelection" name='{{question.name}}' value='3' #radio4 (change)="setCurrentRadioSelection(3)" /> {{question.option4}} <br /><br />
       </div>
     </app-question>
   </div>

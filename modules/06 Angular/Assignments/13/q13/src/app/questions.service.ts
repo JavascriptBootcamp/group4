@@ -138,15 +138,19 @@ startValueTimer: number
   }
 
   startTimer(){
-    this.stopTimer();
+    console.log("timer:",this.timer);
+    // this.stopTimer();
     this.timer = this.startValueTimer;
     this.interval = setInterval(() => {
+      console.log("timer:",this.timer);
       this.timer--;
+      console.log("timer:",this.timer);
       if (this.timer === 0){
         if(this.getCurrentQuestionId() < 10)
           this.nextQuestion();
       }
     }, 1000);
+    console.log("interval:",this.interval);
   }
 
   stopTimer(){
