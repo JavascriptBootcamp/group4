@@ -122,6 +122,8 @@ startValueTimer: number
   }
 
   setAnswerIndex(answerIndex: number){
+    if(this.answersIndex[this.currentQuestionId] === -1 && answerIndex !== -1)
+      this.answeredCounter++;
     this.answersIndex[this.currentQuestionId] = answerIndex;
   }
 
