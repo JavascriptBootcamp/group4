@@ -1,12 +1,12 @@
 <div class="wrapper">
 
-  <form #form="ngForm" (submit)=onSubmit(form)>
-    <span id="questionNumber"> {{currentIndex}}</span>
+  <form #form="ngForm" (submit)=onSubmit(form) >
+    <span id="questionNumber" *ngIf="!endQuiz"> {{currentIndex}}</span>
     <h2 *ngIf="submit">{{questionsService.correctAnswers}} of {{questionsService.questions.length}}</h2>
     <ul>
       <li *ngFor="let question of questionsService.questions; index as i">
         <app-question>
-          <div [className]="currentIndex-1 === i? 'show': 'hide'">
+          <div [className]="currentIndex-1 === i|| endQuiz? 'show': 'hide'">
             <h3>{{question.question}}</h3>
             <div *ngIf="submit && questionsService.isCorrectAnswer(optElem ,question.question);else checkWrong">
               <p class="answerDiv true">
@@ -21,7 +21,7 @@
               </div>
             </ng-template>
             <div class="options">
-              <input type='radio' id="q-{{i+1}}-a-A" ngModel #optElem="ngModel" name='q{{i+1}}'
+              <input type='radio' id="q-{{i+1}}-a-A"  ngModel #optElem="ngModel" name='q{{i+1}}'
                 value='{{question.option1}}' required />
               <label for="q-{{i+1}}-a-A">{{question.option1}} </label>
             </div>
@@ -49,6 +49,6 @@
         value="Next >" [disabled]="currentIndex===questionsService.questions.length ? 'true' : null">
     </div>
     <br>
-    <input type='submit' name='submit' [disabled]="!form.form.valid" value='Submit' />
+    <input type='submit' name='submit'  routerLink="../{{'endQuiz'}}" [disabled]="!form.form.valid"  value='Submit' />
   </form>
 </div>

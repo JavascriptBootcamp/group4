@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QuestionsService } from 'src/app/service/questions.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,8 @@ export class TriviaComponent implements OnInit {
   submit: boolean;
   currentIndex: number;
   urlIndex: number;
+  endQuiz: boolean;
+
   constructor(public questionsService: QuestionsService,
     private activatedRoute: ActivatedRoute,
   ) {
@@ -21,13 +23,23 @@ export class TriviaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentIndex = Number(this.activatedRoute.snapshot.params.id) ;
-    console.log(this.currentIndex);
+   
   }
+    ngOnDestroy(){
+console.log("d");    }
+
+ngAfterContentChecked(){
+  if (this.activatedRoute.snapshot.params.id != "endQuiz"){
+    this.currentIndex = Number(this.activatedRoute.snapshot.params.id);
+}
+  else {
+  this.endQuiz = true;
+  }
+}
+
   onSubmit(form: NgForm) {
     this.questionsService.checkAnswers(form);
     this.submit = true;
-
   }
 
   switchQuestion(side: number) {
@@ -36,4 +48,5 @@ export class TriviaComponent implements OnInit {
     else
       this.currentIndex--;
   }
+
 }

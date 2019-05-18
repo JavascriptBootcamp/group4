@@ -7,13 +7,17 @@ import { TriviaComponent } from './components/trivia/trivia.component';
 import { QuestionComponent } from './components/question/question.component';
 import { FormsModule } from "@angular/forms";
 import { HeaderComponent } from './components/header/header.component';
+import { InstructionsComponent } from './components/instructions/instructions.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TriviaComponent,
     QuestionComponent,
-    HeaderComponent
+    HeaderComponent,
+    InstructionsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

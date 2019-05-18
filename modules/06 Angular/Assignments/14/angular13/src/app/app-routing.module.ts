@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TriviaComponent } from './components/trivia/trivia.component';
-import { QuestionComponent } from './components/question/question.component';
+import { InstructionsComponent } from './components/instructions/instructions.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: "", component: TriviaComponent, pathMatch: "full" },
-  { path: "ques/:id", component: TriviaComponent }
+  { path: "", component: HomeComponent, pathMatch: "full" },
+  { path: "Instructions", component: InstructionsComponent },
+  { path: "ques/:id", component: TriviaComponent },
   
 ];
 
