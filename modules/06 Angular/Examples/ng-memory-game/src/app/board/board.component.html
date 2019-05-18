@@ -5,9 +5,13 @@
     <app-card *ngFor="let c of cards" [card]="c"></app-card>
 
   </div>
+  <div class="timer">
+    {{gameService.timer}}
+  </div>
+
 
   <ng-template #won>
-    You Won!
+    You Won!     
   </ng-template>
 
 </div>
