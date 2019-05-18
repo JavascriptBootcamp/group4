@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <form #form="ngForm" (submit)=onSubmit()>
+    <h2 class="ansCount" *ngIf="questionsService.submit">{{questionsService.correctAnswers}} of
+      {{questionsService.questions.length}}
+    </h2>
+    <ul>
+      <div class="quesNum">{{questionsService.currentIndex}}</div>
+      <li *ngFor="let question of questionsService.questions; index as i">
+        <app-question>
+          <div [className]="questionsService.currentIndex-1 === i? 'show': 'hide'">
+            <div style="text-align: left;padding: 5px">{{questionsService.timer.time}}</div>
+            <h3>{{question.question}}</h3>
+            <div *ngIf="questionsService.submit && questionsService.isCorrectAnswer(optElem ,question);else checkWrong">
+              <p class="answerDiv true">
+                Correct Answer!
+              </p>
+            </div>
+            <ng-template #checkWrong>
+              <div *ngIf="questionsService.submit && !(questionsService.isCorrectAnswer(optElem,question))">
+                <p class="answerDiv wrong">
+                  The Answer Is {{question.answer}}!
+                </p>
+              </div>
+            </ng-template>
+            <div class="options">
+              <input type='radio' id="q-{{i+1}}-a-A" ngModel #optElem="ngModel" name='q{{i+1}}'
+                value='{{question.option1}}'
+                [disabled]="questionsService.toDisabled && questionsService.prev? 'true' : null" />
+              <label for="q-{{i+1}}-a-A">{{question.option1}} </label>
+            </div>
+            <div class="options">
+              <input type='radio' id="q-{{i+1}}-a-B" ngModel name='q{{i+1}}' value='{{question.option2}}'
+                [disabled]="questionsService.toDisabled && questionsService.prev? 'true' : null" />
+              <label for="q-{{i+1}}-a-B">{{question.option2}} </label>
+            </div>
+            <div class="options">
+              <input type='radio' id="q-{{i+1}}-a-C" ngModel name='q{{i+1}}' value='{{question.option3}}'
+                [disabled]="questionsService.toDisabled && questionsService.prev? 'true' : null" />
+              <label for="q-{{i+1}}-a-C">{{question.option3}}</label>
+            </div>
+            <div class="options">
+              <input type='radio' id="q-{{i+1}}-a-D" ngModel name='q{{i+1}}' value='{{question.option4}}'
+                [disabled]="questionsService.toDisabled && questionsService.prev? 'true' : null" />
+              <label for="q-{{i+1}}-a-D">{{question.option4}}</label>
+            </div>
+          </div>
+        </app-question>
+      </li>
+    </ul>
+    <div class="btns">
+      <button type="button" id="prev" class="switchQues" (click)="prevQuestion()"
+        [disabled]="questionsService.currentIndex === 1 ? 'true' : null"><span class="btnsTxt">Previous</span><span
+          class="arrw">
+          &lt;</span></button> <button type="button" id="next" class="switchQues" (click)="nextQuestion()"
+        [disabled]="questionsService.currentIndex === questionsService.questions.length ? 'true' : null">
+        <span class="btnsTxt">Next</span><span class="arrw">&gt;</span></button>
+    </div>
+    <input type='submit' name='submit' [disabled]="questionsService.submit" value='Submit' />
+  </form>
+</div>
