@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ManageQuizsService } from 'src/app/services/manage-quizs.service';
+import { Quiz } from 'src/app/models/quiz.model';
 
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.css']
+  styleUrls: ['../quiz/quiz.component.css']
 })
-export class QuestionsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class QuestionsComponent{
+  @Input() quiz:Quiz;
+  constructor(public manageQuizsService : ManageQuizsService) { }
 
 }

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Quiz } from '../models/quiz.model';
-import { stringify } from '@angular/compiler/src/util';
-import { startTimeRange } from '@angular/core/src/profile/wtf_impl';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +7,11 @@ import { startTimeRange } from '@angular/core/src/profile/wtf_impl';
 export class ManageQuizsService {
   quizes: Quiz[];
   currentQuiz: Quiz;
-  time: number;
   maximumTime: number;
   interval: any;
 
   constructor() {
     this.maximumTime = 5;
-    this.time=this.maximumTime;
     this.quizes = [];
     this.currentQuiz = null;
     this.addFakeQuiz();
@@ -23,8 +19,9 @@ export class ManageQuizsService {
 
   addFakeQuiz(){
     this.quizes.push({
+      time: this.maximumTime,
       quizIndex: 0,
-      quizName: "non sense",
+      quizName: "Non Sense",
       started:false,
       submmited: false,
       currentQuestionIndex: 0,
@@ -44,32 +41,32 @@ export class ManageQuizsService {
     this.startTimer();
   }
   startTimer(){
-    this.time = this.maximumTime;
-    if(!this.interval){
-      this.interval = setInterval(() => {
-        if(this.time>0){
-          this.time--;
-        }
-        else
-          this.nextQuestion();
-      },1000)
-    }
-    else{
-      clearInterval(this.interval);
-      this.startTimer();
-    }
+    clearInterval(this.interval);
+    this.currentQuiz.time = this.maximumTime;
+    this.interval = setInterval(() => {
+      if(this.currentQuiz.time>0){
+        this.currentQuiz.time--;
+      }
+      else
+        this.nextQuestion();
+    },1000)
   }
   stopTimer(){
     clearInterval(this.interval);
-    this.time = this.maximumTime;
+    this.currentQuiz.time = this.maximumTime;
   }
   enterAnswer(answerIndexInput){
     this.currentQuiz.questions[this.currentQuiz.currentQuestionIndex].userAnswerIndex = answerIndexInput;
   }
   nextQuestion(){
-    if(this.currentQuiz.currentQuestionIndex<this.currentQuiz.questions.length){
-      this.currentQuiz.currentQuestionIndex++;
-      this.startTimer();
+    if(this.currentQuiz.currentQuestionIndex+1!==this.currentQuiz.questions.length){
+      if(this.currentQuiz.currentQuestionIndex<this.currentQuiz.questions.length){
+        this.currentQuiz.currentQuestionIndex++;
+        this.startTimer();
+      }
+      else{
+        this.submitQuiz();
+      }
     }
     else{
       this.submitQuiz();
@@ -94,6 +91,7 @@ export class ManageQuizsService {
     this.currentQuiz.score=0;
     this.currentQuiz.started=false;
     this.currentQuiz.submmited=false;
+    this.currentQuiz.currentQuestionIndex=0;
     this.currentQuiz.questions.forEach((question)=>{question.userAnswerIndex=-1});
   }
 }

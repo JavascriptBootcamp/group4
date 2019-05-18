@@ -1,5 +1,5 @@
 <div class="quiz-container" [className]="quiz.started ? 'quiz-container-open' : 'quiz-container-closed'">
-  <!-- <p>someText</p>
-  <button *ngIf="!quiz.started" (click)="manageQuizsService.startQuiz(quiz.quizIndex)">get started</button> -->
-  <router-outlet></router-outlet>
+  <app-instructions *ngIf="!quiz.started" [quiz]="quiz"></app-instructions>
+  <app-questions *ngIf="quiz.started && !quiz.submmited" [quiz]="quiz"></app-questions>
+  <app-results *ngIf="quiz.submmited" [quiz]="quiz"></app-results>
 </div>

@@ -4,11 +4,7 @@ import { InstructionsComponent } from './components/instructions/instructions.co
 import { QuestionsComponent } from './components/questions/questions.component';
 import { ResultsComponent } from './components/results/results.component';
 
-const routes: Routes = [
-  {path: 'i',component: InstructionsComponent},
-  {path: 'q',component: QuestionsComponent},
-  {path: 'r',component: ResultsComponent}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
