@@ -1,0 +1,46 @@
+
+<div>
+
+  <p id="timer"> 
+    {{questionsServiceObj.currentMinutes | twoDigits}} : {{questionsServiceObj.currentSeconds | twoDigits}}   
+  </p>
+  
+
+  <h1 style="padding-top: 0%"> Question {{ questionsServiceObj.idx + 1 }} </h1>
+
+  <h2> {{ questionsServiceObj.questionsAndAnswers[questionsServiceObj.idx].question }} = </h2>
+
+  <p *ngFor="let value of questionsServiceObj.possibleAnswers[questionsServiceObj.idx]; index as i">
+    <input 
+      type="radio"
+      class="radio-button"
+      name="{{ questionsServiceObj.questionsAndAnswers[questionsServiceObj.idx].questionName }}"
+      value="{{questionsServiceObj.possibleAnswers[questionsServiceObj.idx][i]}}"
+      (click)="questionsServiceObj.validateAnswer($event, questionsServiceObj.idx)"
+      
+    >
+    <span style="font-size: 20px">
+      {{questionsServiceObj.possibleAnswers[questionsServiceObj.idx][i]}}
+    </span>
+    <br><br>
+  </p>
+
+  <p *ngIf="questionsServiceObj.isError" class="error-message">
+    {{questionsServiceObj.errorMessage}}
+  </p>
+
+  <button
+    class="previous-button"
+    [disabled]="false"
+    (click)="questionsServiceObj.onclickPrevious(idx)">
+    previous
+  </button>
+
+  <button
+    class="next-button"
+    (click)="questionsServiceObj.onclickNext(idx)">
+    Next
+  </button>
+
+</div>
+

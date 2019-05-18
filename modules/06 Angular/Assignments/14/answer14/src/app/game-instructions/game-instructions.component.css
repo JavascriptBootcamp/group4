@@ -1,0 +1,25 @@
+#header {
+    text-align: center;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #4c7000;
+    padding-top: 20px;
+}
+
+.link {
+    color: #853352;
+    font-weight: bold;
+    font-size: 25px;
+}
+.link:hover {
+    font-family: david;
+    color:  #ff991c;
+    font-size: 26px;
+}
+
+#instructions {
+    text-align: center;
+    font-family: david;
+    font-size: 22px;
+    color:  #005cd6;
+}

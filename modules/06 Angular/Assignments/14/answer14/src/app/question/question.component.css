@@ -1,0 +1,57 @@
+
+
+#timer {
+    font-family: david;
+    font-size: 50px;
+    color: #006AFF;
+}
+
+
+div {
+    margin-left: 15%;
+}
+
+.radio-button {
+    transform: scale(2);
+    /* border: 1px solid blue;	     */
+}
+
+.previous-button {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    font-family: Arial;
+    margin:10px;
+    height: 35px;
+    border-radius: 8px;
+    color: #EB3400;
+    border:3px solid #EB3400;  
+    background-color: #FFE887; 	
+}
+
+.previous-button:hover {
+    background-color: #35E1FF;
+}
+
+
+.next-button {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    font-family: Arial;
+    margin:10px;
+    height: 35px;
+    border-radius: 8px;
+    color: #00C412;
+    border:3px solid #00C412;  
+    background-color: #F9FFA2; 	
+}
+
+.next-button:hover {       
+    background-color: #35E1FF;
+}
+
+.error-message {
+    color: red;
+    font-size: 30px;
+}
