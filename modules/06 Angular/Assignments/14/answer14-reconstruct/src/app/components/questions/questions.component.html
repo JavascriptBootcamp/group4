@@ -1,8 +1,10 @@
 <div class="quiz-container">
   <div class="quiz-body">
-    <h4 class="timer">{{quiz.time}}</h4>
-    <h4 class="pages">{{quiz.currentQuestionIndex+1}}/{{quiz.questions.length}}</h4>
-    <h2 class="body-title">{{quiz.questions[quiz.currentQuestionIndex].questionTitle}}</h2>
+    <div class="quiz-header">
+        <h4 class="timer">{{quiz.time|clock}}</h4>
+        <h4 class="pages">{{quiz.currentQuestionIndex+1}}/{{quiz.questions.length}}</h4>
+        <h2 class="body-title">{{quiz.questions[quiz.currentQuestionIndex].questionTitle}}</h2>
+    </div>
     <div class="answers-container">
         <label *ngFor="let answer of quiz.questions[quiz.currentQuestionIndex].answers;let i = index" class="answer"
         [class.correct]="quiz.questions[quiz.currentQuestionIndex].correctAnswerIndex===i && quiz.questions[quiz.currentQuestionIndex].userAnswerIndex > -1"

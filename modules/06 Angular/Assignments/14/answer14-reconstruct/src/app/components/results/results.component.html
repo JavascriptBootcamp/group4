@@ -1,10 +1,12 @@
 <div class="quiz-container">
     <div class="quiz-body">
-      <div class="emojis">
-          <img class="face" *ngIf="quiz.score<=50" src="../../../assets/Images/sad.png">
-          <img class="face" *ngIf="quiz.score>50" src="../../../assets/Images/happy.png">
+      <div class="quiz-header">
+        <div class="emojis">
+            <img class="face" *ngIf="quiz.score<=50" src="../../../assets/Images/sad.png">
+            <img class="face" *ngIf="quiz.score>50" src="../../../assets/Images/happy.png">
+        </div>
+        <h2 class="body-title">Your score is {{quiz.score}}/100</h2>
       </div>
-      <h2 class="body-title">Your score is {{quiz.score}}/100</h2>
       <div class="results-container">
         <div class="result" *ngFor="let result of quiz.questions; let j = index">
           <h4 class="question-in-results">{{j+1}}. {{result.questionTitle}}</h4>

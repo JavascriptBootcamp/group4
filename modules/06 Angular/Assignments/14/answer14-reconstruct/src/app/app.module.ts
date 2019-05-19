@@ -7,6 +7,10 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { InstructionsComponent } from './components/instructions/instructions.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { ResultsComponent } from './components/results/results.component';
+import { ClockPipe } from './clock.pipe';
+import { LetsPlayComponent } from './components/lets-play/lets-play.component';
+import { HomeComponent } from './components/home/home.component';
+import { HowToPlayComponent } from './components/how-to-play/how-to-play.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { ResultsComponent } from './components/results/results.component';
     QuizComponent,
     InstructionsComponent,
     QuestionsComponent,
-    ResultsComponent
+    ResultsComponent,
+    ClockPipe,
+    LetsPlayComponent,
+    HomeComponent,
+    HowToPlayComponent
   ],
   imports: [
     BrowserModule,
