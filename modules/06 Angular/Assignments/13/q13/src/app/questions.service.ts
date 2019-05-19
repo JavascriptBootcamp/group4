@@ -16,6 +16,7 @@ answeredCounter: number;
 timer: number; 
 interval: any;
 startValueTimer: number
+totalTime: number;
 
   constructor() { 
     let i =0;
@@ -26,7 +27,7 @@ startValueTimer: number
       { id: i++, question: "Where was JFK murdered?", name: 'jfkPlace', option1: 'Dallas', option2: 'Houston', option3: 'New York', option4: 'Boston', value1: 'dallas', value2: 'houston', value3: 'newYork', value4: 'boston', correctAnswer: 'boston', correctIndex: 3},
       { id: i++, question: "What's the name of the 1st drummer of the Beatles?", name: 'drummer', option1: 'Ariel', option2: 'Jake', option3: 'Ringo', option4: 'Pete', value1: 'ariel', value2: 'jake', value3: 'ringo', value4: 'pete', correctAnswer: 'pete', correctIndex: 3},
       { id: i++, question: "What's the name of England queen before 500 years?", name: 'queen2', option1: 'Elizebeth the 1st', option2: 'Elizebeth the 2st', option3: 'Elizebeth the 3st', option4: 'Elizebeth the 4st', value1: '1st', value2: '2nd', value3: '3rd', value4: '4th', correctAnswer: '1st', correctIndex: 1},
-      { id: i++, question: "What's the surname of last U.S. president before Trump?", name: 'last', option1: 'Trump', option2: 'Tramp', option3: 'Trevor', option4: 'Obama', value1: 'trump', value2: 'tramp', value3: 'trevor', value4: 'obama', correctAnswer: 'obama', correctIndex: 4},
+      { id: i++, question: "What's the surname of last U.S. president before Trump?", name: 'last', option1: 'Trump', option2: 'Tramp', option3: 'Trevor', option4: 'Obama', value1: 'trump', value2: 'tramp', value3: 'trevor', value4: 'obama', correctAnswer: 'obama', correctIndex: 3},
       { id: i++, question: "When was JFK murdered?", name: 'jfk2',  option1: '1971', option2: '1951', option3: '1963', option4: '1990', value1: '1971', value2: '1951', value3: '1963', value4: '1990', correctAnswer: '1971', correctIndex: 1 },
       { id: i++, question: "Where was JFK murdered?", name: 'jfkPlace2',option1: 'Dallas', option2: 'Houston', option3: 'New York', option4: 'Boston', value1: 'dallas', value2: 'houston', value3: 'newYork', value4: 'boston', correctAnswer: 'boston', correctIndex: 3},
       { id: i++, question: "What's the name of the 2nd drummer of the Beatles?", name:'drummer2' , option1: 'Ariel', option2: 'Jake', option3: 'Ringo', option4: 'Pete', value1: 'ariel', value2: 'jake', value3: 'ringo', value4: 'pete', correctAnswer: 'pete', correctIndex: 3}
@@ -39,6 +40,7 @@ startValueTimer: number
     this.currentQuestionId = 0;
     this.answeredCounter = 0;
     this.startValueTimer = 50;
+    this.totalTime = 0;
     this.timer = this.startValueTimer; 
     this.interval = null;
   }
@@ -73,6 +75,18 @@ startValueTimer: number
 
   getTotalQuestions(): number{
     return this.totalQuestions;
+  }
+
+  setTotalCorrectAnswers(): void{
+    let i: number = 0;
+    this.correctAnswers = 0;
+
+    while(i<10)
+    {
+      if(this.questions[i].correctIndex === this.answersIndex[i])
+        this.correctAnswers++;
+      i++;
+    }
   }
 
   getCorrectAnswers(): number{
@@ -137,22 +151,29 @@ startValueTimer: number
       this.setCurrentQuestionId(currentQuestionId+1);
       // console.log("timer:",this.timer);
     }
+    else  
+      this.stopTimer();
   }
 
   startTimer(){
-    console.log("timer:",this.timer);
+    // console.log("timer:",this.timer);
     // this.stopTimer();
     this.timer = this.startValueTimer;
     this.interval = setInterval(() => {
-      console.log("timer:",this.timer);
+      // console.log("timer:",this.timer);
       this.timer--;
-      console.log("timer:",this.timer);
-      if (this.timer === 0){
+      this.totalTime++;
+      // console.log("timer:",this.timer);
+      // console.log("interval:",this.interval);
+
+      if (this.timer <= 0){
         if(this.getCurrentQuestionId() < 10)
           this.nextQuestion();
+        else
+          this.stopTimer();
       }
     }, 1000);
-    console.log("interval:",this.interval);
+    // console.log("interval:",this.interval);
   }
 
   stopTimer(){

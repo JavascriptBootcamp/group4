@@ -1,5 +1,5 @@
 <a href="">Home</a>
-<form #form="ngForm" (submit)= onSubmit($event,form.value)>
+<form #form="ngForm" (submit)= onSubmit($event)>
   <h1>Trivia</h1>
   <div *ngFor="let question of questions">
     <!-- <app-question [question]='q'> -->
@@ -17,10 +17,10 @@
       </div>
     </app-question>
   </div>
-  <button type="button" (click)="onPrevClicked(form.value);$event.preventDefault()" [disabled]="questionService.getCurrentQuestionId()===0">Prev</button>
-  <button type="button" (click)="onNextClicked(form.value);$event.preventDefault()" [disabled]="questionService.getCurrentQuestionId()===9">Next</button>
-  <input type='submit' name='submit' value='Submit' [disabled]="!(questionService.getAnsweredCounter() === 10)" />
+  <button type="button" (click)="onPrevClicked(form.value);$event.preventDefault()" [disabled]="questionService.getCurrentQuestionId()===0 || submited">Prev</button>
+  <button type="button" (click)="onNextClicked(form.value);$event.preventDefault()" [disabled]="questionService.getCurrentQuestionId()===9 || submited">Next</button>
+  <input type='submit' name='submit' value='Submit' [disabled]=" !(questionService.getAnsweredCounter() === 10)" />
   <input type="hidden" name="ts" value="1547375825757">
-  <h2 [hidden]="!(questionService.getAnsweredCounter() === 10)">Correct answers: {{questionService.correctAnswers}} / {{questionService.totalQuestions}}</h2>
+  <h2 [hidden]="!submited">Correct answers: {{questionService.correctAnswers}} / {{questionService.totalQuestions}} in {{questionService.totalTime}} Seconds!</h2>
 
 </form>
