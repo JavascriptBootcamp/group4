@@ -10,6 +10,7 @@ export interface Products {
 export class ShoppingService {
   products: Products[];
   myProducts: Products[] = [];
+  sum = 0 ;
   constructor() {
     this.products = [
       {
@@ -55,18 +56,20 @@ export class ShoppingService {
     return this.products;
   }
 
-  addProducts(myProduct: Products, myProducts: Products[]) {
-    console.log( myProducts);
-    myProducts.push(myProduct);
+  addProducts(myProduct: Products) {
+    this.myProducts.push(myProduct);
+    this.sum = this.sum + myProduct.itemPrice
   }
 
-  removeProduct(myProduct: Products, myProducts: Products[]) {
+  removeProduct(myProduct: Products) {
+    const index = this.myProducts.findIndex((val) => {
+      return  val.itemName === myProduct.itemName;
+     });
 
-    console.log("called",myProduct,myProducts);
-    const index = this.myProducts.indexOf(myProduct);
-    console.log(index);
     if (index > -1) {
       this.myProducts.splice(index, 1);
+      this.sum = this.sum - myProduct.itemPrice;
+
     }
   }
 }

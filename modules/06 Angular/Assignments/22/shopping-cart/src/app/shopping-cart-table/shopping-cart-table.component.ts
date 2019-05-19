@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { ShoppingService, Products } from "../shopping.service";
 
 @Component({
@@ -6,18 +6,20 @@ import { ShoppingService, Products } from "../shopping.service";
   templateUrl: "./shopping-cart-table.component.html",
   styleUrls: ["./shopping-cart-table.component.css"]
 })
-export class ShoppingCartTableComponent implements OnInit, OnChanges {
+export class ShoppingCartTableComponent implements OnInit{
   nameItem: string;
   priceItem: number;
   products: Products[] = [];
   mySelectedProducts: Products[] = [];
   productsCopy:Products[] = [];
+  sum = 0;
   constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
     this.products = this.shoppingService.getProducts();
-    //this.productsCopy =  this.shoppingService.getProducts().slice();
-    //this.mySelectedProducts = this.shoppingService.myProducts;
+    this.productsCopy =  this.shoppingService.getProducts().slice();
+    this.mySelectedProducts = this.shoppingService.myProducts;
+    this.sum = this.shoppingService.sum;
 
   }
 
@@ -28,22 +30,19 @@ export class ShoppingCartTableComponent implements OnInit, OnChanges {
     this.priceItem = this.products[index].itemPrice;
   }
   addProductToList(item:Products) {
-    console.log(item);
-    this.mySelectedProducts.push(item);
-    //this.shoppingService.addProducts(item, this.mySelectedProducts);
+
+    this.shoppingService.addProducts(item);
   }
 
   removeProduct(remove: Products) {
-    const index = this.mySelectedProducts.findIndex((val) => {
-      return  val.itemName === remove.itemName;
-     });
-    if (index > -1) {
-      this.mySelectedProducts.splice(index, 1);
-    }
+    this.shoppingService.removeProduct(remove);
+
   }
 
-  ngOnChanges() {
-   // this.products = this.shoppingService.getProducts();
-    //this.mySelectedProducts = this.shoppingService.myProducts;
+
+  ngDoCheck(){
+
+    this.sum = this.shoppingService.sum;
+
   }
 }

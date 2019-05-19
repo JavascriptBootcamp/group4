@@ -42,6 +42,6 @@
     </tr>
   </table>
 </form>
-<mark>Total price :</mark>
+<mark>Total price : {{sum.toFixed(2)}}</mark>
 <div id="totalPrice"></div>
-<a routerLink = "payment">Go To Payment</a>
+<a  routerLink = "payment" *ngIf="sum > 0"><button > To Payment </button> </a>
