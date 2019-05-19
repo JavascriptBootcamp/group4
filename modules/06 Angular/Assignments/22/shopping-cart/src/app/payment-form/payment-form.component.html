@@ -1,30 +1,43 @@
-<form >
-
 
   <h1>Payment form </h1>
-  
+  <form #payment = 'ngForm' (ngSubmit)= "onSubmit()">
   <table>
       <tr>
           <td>Card Number:</td>
-          <td> <input type="text" name="cardNum" id="cardNum" required> </td>
+          <td> <input type="text"
+                      name="cardNum"
+                      [(ngModel)] = 'cardNum'
+                      required> </td>
       </tr>
       <tr>
           <td>Name on card:</td>
-          <td><input type="text" name="cardName" id="" required></td>
+          <td><input type="text"
+                      name="cardName"
+                      required
+                      [(ngModel)] = 'cardName'></td>
       </tr>
       <tr>
           <td>Expiry date:</td>
-          <td><input type="date" name="exDate" id="" required></td>
+          <td><input  type="date"
+                      name="exDate"
+                      [(ngModel)] =  'exDate'
+                      required ></td>
       </tr>
       <tr>
           <td>Security code:</td>
-          <td><input type="number" name="secCode" id="" required maxlength="3" minlength="3"></td>
+          <td><input type="number"
+                       name="secCode"
+                       [(ngModel)] = 'secCode'
+                       required
+                       maxlength="3"
+                       minlength="3"></td>
       </tr>
       <tr>
           <td>Submit:</td>
-          <td><input type="submit" value="Submit"></td>
+          <td><input type="submit"
+                     value="Submit"
+                     [disabled]="payment.form.invalid"></td>
       </tr>
   </table>
 </form>
-
 <div id="validationTest"> </div>

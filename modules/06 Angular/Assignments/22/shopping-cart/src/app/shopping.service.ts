@@ -56,8 +56,8 @@ export class ShoppingService {
   }
 
   addProducts(myProduct: Products, myProducts: Products[]) {
+    console.log( myProducts);
     myProducts.push(myProduct);
-    console.log(myProduct);
   }
 
   removeProduct(myProduct: Products, myProducts: Products[]) {

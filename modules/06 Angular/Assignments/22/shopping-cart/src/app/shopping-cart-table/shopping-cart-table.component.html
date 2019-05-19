@@ -1,36 +1,47 @@
-<table id="productTable">
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Action</th>
-  </tr>
-  <tr>
-    <td>
-      <select id="productName" name="product" #select >
-        <option *ngFor="let product of products" [value]="product.itemPrice" >
-          {{ product.itemName}}
-        </option>
-      </select>
-    </td>
-    <td>
-      <input id="price" required [value]="select.value" #price />
-    </td>
-    <td>
-      <input type="button"  value="add" id = "addButton" (click) = "addProductToList( {
-        itemName:'shnizel',
-        itemPrice:30.99
-      })">
-    </td>
-  </tr>
-  <tr *ngFor="let mySelectedProduct of mySelectedProducts">
-    <td>{{ mySelectedProduct.itemName }}</td>
-    <td>{{ mySelectedProduct.itemPrice }}</td>
-    <td>  <input type="button" value="remove" (click)="removeProduct({
-      itemName:'shnizel',
-      itemPrice:30.99
-    })"> </td>
-  </tr>
-</table>
+<form #shoppingForm = 'ngForm'>
+  <table id="productTable">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>
+        <select id = "productName"
+               [(ngModel)]="nameItem"
+               name = "product"
+               (change) ="setPrice(nameItem)">
+          <option  *ngFor = "let product of products"
+                    [value] = 'product.itemName'>
+            {{ product.itemName}}
+          </option>
+        </select>
+      </td>
+      <td>
+        <input id="price" name="price"
+               [(ngModel)]= "priceItem"
+               required />
+      </td>
+      <td>
+        <input type="button"
+               value="add"
+               id="addButton"
+               (click) = "addProductToList(
+                         { itenName:nameItem,
+                          itemPrice:priceItem })">
 
-  <mark>Total price :</mark>
-  <div id="totalPrice"></div>
+      </td>
+    </tr>
+    <tr *ngFor="let mySelectedProduct of mySelectedProducts">
+      <td>{{ mySelectedProduct.itemName}}</td>
+      <td>{{ mySelectedProduct.itemPrice }} {{ mySelectedProduct.itemName}}</td>
+      <td> <input type="submit" value="remove" (click)="removeProduct({
+      itemName:mySelectedProduct.itemName,
+      itemPrice:mySelectedProduct.itemPrice
+    })"> </td>
+    </tr>
+  </table>
+</form>
+<mark>Total price :</mark>
+<div id="totalPrice"></div>
+<a routerLink = "payment">Go To Payment</a>

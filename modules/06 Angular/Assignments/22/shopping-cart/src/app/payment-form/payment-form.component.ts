@@ -7,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentFormComponent implements OnInit {
 
-  constructor() { }
+  cardNum: number;
+  cardName: string;
+  exDate : Date;
+  secCode: number;
 
+
+  constructor() { }
+  onSubmit() {
+    console.log("subm");
+  }
   ngOnInit() {
   }
 

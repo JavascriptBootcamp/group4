@@ -1,32 +1,50 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { ShoppingService, Products } from '../shopping.service';
+import { Component, OnInit, OnChanges } from "@angular/core";
+import { ShoppingService, Products } from "../shopping.service";
 
 @Component({
-  selector: 'app-shopping-cart-table',
-  templateUrl: './shopping-cart-table.component.html',
-  styleUrls: ['./shopping-cart-table.component.css']
+  selector: "app-shopping-cart-table",
+  templateUrl: "./shopping-cart-table.component.html",
+  styleUrls: ["./shopping-cart-table.component.css"]
 })
-export class ShoppingCartTableComponent implements OnInit ,OnChanges {
-
+export class ShoppingCartTableComponent implements OnInit, OnChanges {
+  nameItem: string;
+  priceItem: number;
   products: Products[] = [];
   mySelectedProducts: Products[] = [];
-  constructor(private shoppingService: ShoppingService) { }
+  productsCopy:Products[] = [];
+  constructor(private shoppingService: ShoppingService) {}
 
   ngOnInit() {
-    this.products  = this.shoppingService.getProducts();
-    this.mySelectedProducts = this.shoppingService.myProducts;
+    this.products = this.shoppingService.getProducts();
+    //this.productsCopy =  this.shoppingService.getProducts().slice();
+    //this.mySelectedProducts = this.shoppingService.myProducts;
+
   }
 
-  addProductToList(addProd: Products) {
-     this.shoppingService.addProducts(addProd , this.mySelectedProducts);
+  setPrice(select) {
+    let index =  this.products.findIndex((val)=> {
+         return val.itemName === select;
+    })
+    this.priceItem = this.products[index].itemPrice;
+    console.log(index, this.priceItem);
+  }
+  addProductToList(item:Products) {
+    console.log(item);
+    this.mySelectedProducts.push(item);
+    //this.shoppingService.addProducts(item, this.mySelectedProducts);
   }
 
   removeProduct(remove: Products) {
-    this.shoppingService.removeProduct(remove, this.mySelectedProducts);
+    this.mySelectedProducts;
+    const index = this.mySelectedProducts.indexOf(remove);
+    console.log(index);
+    if (index > -1) {
+      this.mySelectedProducts.splice(index, 1);
+    }
   }
 
-  ngOnChanges(){
-    this.products  = this.shoppingService.getProducts();
-    this.mySelectedProducts = this.shoppingService.myProducts;
+  ngOnChanges() {
+   // this.products = this.shoppingService.getProducts();
+    //this.mySelectedProducts = this.shoppingService.myProducts;
   }
 }
