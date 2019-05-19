@@ -9,10 +9,10 @@
 </head>
 
 <body>
-    <form>
+    <form action="http://localhost:5000" method="GET">
         <h3>Personal Information:</h3>
-        First Name: <input type="text" name="FirstName" pattern="[A-Za-z]"><br />
-        Last Name: <input type="text" name="LastName" pattern="[A-Za-z]"><br />
+        First Name: <input type="text" name="FirstName"><br />
+        Last Name: <input type="text" name="LastName"><br />
         Age: <input type="number" name="Age">
 
         <h3>Credentials:</h3>
@@ -34,7 +34,7 @@
         </select><br /><br />
 
 
-        <input type="Submit" value="Submit">
+        <button type="submit">Submit</button>
     </form>
 </body>
 
