@@ -1,3 +1,14 @@
-<p>
-  payment-form works!
-</p>
+<div class="center">
+  <!-- total price  -->
+  <h2>Total Price For Payment:</h2>
+  <span class="big-text"> {{ total_price | currency }}</span>
+
+  <!-- credit card form -->
+
+  <!-- back btn -->
+  <!-- <a routerLink="/" *ngIf="total_price !== 0"> -->
+  <a routerLink="/">
+    <button class="btn">Back To Your Cart</button>
+  </a>
+
+</div>

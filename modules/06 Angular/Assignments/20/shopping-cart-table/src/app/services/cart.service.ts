@@ -35,12 +35,10 @@ export class CartService {
     }
   }
 
-  remove_from_user_cart(item: Item) {
-    let index = this.user_cart.indexOf(item);
-    if(index !== -1) {
-      this.user_cart.splice(index,1);
-      this.total_price-=item.price;
-    }
+  remove_from_user_cart(i: number) {
+      let removed_item = this.user_cart.splice(i,1);
+      this.total_price-=removed_item[0].price;
+
   }
 
 }

@@ -12,6 +12,7 @@ export class ShoppingCartTableComponent implements OnInit {
 
   cart_items:string[] = [];
   shopping_items:Item[] = [];
+  total: number = 0;
 
   constructor(private cartService: CartService) {
   }
@@ -21,13 +22,16 @@ export class ShoppingCartTableComponent implements OnInit {
     this.shopping_items = this.cartService.get_user_cart();
   }
 
-  addItem(name: string, price: number) {
-    this.cartService.add_to_user_cart(name, price);
+  addItem(name: string, price: string) {
+    this.cartService.add_to_user_cart(name, Number(price));
+    this.total = this.cartService.get_total_price();
+    
   }
 
-  removeItem(name: string, price: number) {
-    let item: Item = {name, price};
-    this.cartService.remove_from_user_cart(item);
+  removeItem(index: string) {
+    let i = Number(index);
+    this.cartService.remove_from_user_cart(i);
+    this.total = this.cartService.get_total_price();
   }
 
 }
