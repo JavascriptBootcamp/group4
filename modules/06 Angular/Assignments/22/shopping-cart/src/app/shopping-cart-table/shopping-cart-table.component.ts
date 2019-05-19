@@ -26,7 +26,6 @@ export class ShoppingCartTableComponent implements OnInit, OnChanges {
          return val.itemName === select;
     })
     this.priceItem = this.products[index].itemPrice;
-    console.log(index, this.priceItem);
   }
   addProductToList(item:Products) {
     console.log(item);
@@ -35,9 +34,9 @@ export class ShoppingCartTableComponent implements OnInit, OnChanges {
   }
 
   removeProduct(remove: Products) {
-    this.mySelectedProducts;
-    const index = this.mySelectedProducts.indexOf(remove);
-    console.log(index);
+    const index = this.mySelectedProducts.findIndex((val) => {
+      return  val.itemName === remove.itemName;
+     });
     if (index > -1) {
       this.mySelectedProducts.splice(index, 1);
     }

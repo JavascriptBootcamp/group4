@@ -27,14 +27,14 @@
                value="add"
                id="addButton"
                (click) = "addProductToList(
-                         { itenName:nameItem,
+                         { itemName:nameItem,
                           itemPrice:priceItem })">
 
       </td>
     </tr>
     <tr *ngFor="let mySelectedProduct of mySelectedProducts">
       <td>{{ mySelectedProduct.itemName}}</td>
-      <td>{{ mySelectedProduct.itemPrice }} {{ mySelectedProduct.itemName}}</td>
+      <td>{{ mySelectedProduct.itemPrice }} </td>
       <td> <input type="submit" value="remove" (click)="removeProduct({
       itemName:mySelectedProduct.itemName,
       itemPrice:mySelectedProduct.itemPrice
