@@ -38,7 +38,11 @@ export class CartService {
   remove_from_user_cart(i: number) {
       let removed_item = this.user_cart.splice(i,1);
       this.total_price-=removed_item[0].price;
+  }
 
+  paid_all() {
+    this.total_price = 0;
+    this.user_cart = [];
   }
 
 }

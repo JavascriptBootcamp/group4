@@ -4,9 +4,72 @@
   <span class="big-text"> {{ total_price | currency }}</span>
 
   <!-- credit card form -->
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+    <div class="form-group">
+      <label for="cardNumber1">Credit Card Number:</label>
+      <input type="text" id="cardNumber1" class="form-control" formControlName="cardNumber1" class="card-section"> -
+      <input type="text" id="cardNumber2" class="form-control" formControlName="cardNumber2" class="card-section"> -
+      <input type="text" id="cardNumber3" class="form-control" formControlName="cardNumber3" class="card-section"> -
+      <input type="text" id="cardNumber4" class="form-control" formControlName="cardNumber4" class="card-section">
+    </div>
+    <!-- credit card 1 - error msg -->
+    <div class="alert alert-danger"
+      *ngIf="paymentForm.controls.cardNumber1.touched && paymentForm.controls.cardNumber1.invalid">
+      <div *ngIf="paymentForm.controls.cardNumber1.errors?.required">
+        1st section of the credit card number is required
+      </div>
+      <div
+        *ngIf="paymentForm.controls.cardNumber1.errors?.maxlength || paymentForm.controls.cardNumber1.errors?.minlength">
+        1st section need to be filled with 4 numbers
+      </div>
+    </div>
+
+    <!-- credit card 2 - error msg -->
+    <div class="alert alert-danger"
+      *ngIf="paymentForm.controls.cardNumber2.touched && paymentForm.controls.cardNumber2.invalid">
+      <div *ngIf="paymentForm.controls.cardNumber2.errors?.required">
+        2nd section of the credit card number is required
+      </div>
+      <div
+        *ngIf="paymentForm.controls.cardNumber2.errors?.maxlength || paymentForm.controls.cardNumber2.errors?.minlength">
+        2nd section need to be filled with 4 numbers
+      </div>
+    </div>
+
+    <!-- credit card 3 - error msg -->
+    <div class="alert alert-danger"
+      *ngIf="paymentForm.controls.cardNumber3.touched && paymentForm.controls.cardNumber3.invalid">
+      <div *ngIf="paymentForm.controls.cardNumber3.errors?.required">
+        3rd section of the credit card number is required
+      </div>
+      <div
+        *ngIf="paymentForm.controls.cardNumber3.errors?.maxlength || paymentForm.controls.cardNumber3.errors?.minlength">
+        3rd section need to be filled with 4 numbers
+      </div>
+    </div>
+
+    <!-- credit card 4 - error msg -->
+    <div class="alert alert-danger"
+      *ngIf="paymentForm.controls.cardNumber4.touched && paymentForm.controls.cardNumber4.invalid">
+      <div *ngIf="paymentForm.controls.cardNumber4.errors?.required">
+        4th section of the credit card number is required
+      </div>
+      <div
+        *ngIf="paymentForm.controls.cardNumber4.errors?.maxlength || paymentForm.controls.cardNumber4.errors?.minlength">
+        4th section need to be filled with 4 numbers
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="paymentForm.invalid">Confirm
+      Payment</button>
+  </form>
+
+  <!-- payment massege -->
+  <div class="alert alert-success" *ngIf="submitted">
+    <h1>{{ successMsg }}</h1>
+  </div>
 
   <!-- back btn -->
-  <!-- <a routerLink="/" *ngIf="total_price !== 0"> -->
   <a routerLink="/">
     <button class="btn">Back To Your Cart</button>
   </a>
