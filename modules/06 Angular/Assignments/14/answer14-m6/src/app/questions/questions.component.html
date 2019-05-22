@@ -5,7 +5,7 @@
 
 <div>
     <h1>  שאלה מספר :   {{numQuestions}}   </h1>
-    <app-qustion [qustion] = "questions[numQuestions]" [q] = "numQuestions-1"></app-qustion>
+    <app-qustion [qustion] = "questions[numQuestions-1]" [q] = "numQuestions-1"></app-qustion>
 </div>
 <input  type = "button" (click)="nextQuestions()" value = "שאלה הבאה">
 <input  type = "button" (click)="backQuestions()" value = " חזור לשאלה הקודמת">
