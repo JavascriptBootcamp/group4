@@ -25,12 +25,48 @@ const piece = (function () {
     this.el.style.left = `${randX}px`;
     this.el.style.top = `${randY}px`;
   };
+  const setColor = function (color) {
+    this.el.style.background = color;
+    this.el.style.border = "1px solid " + color;
+  };
   return {
     init,
     moveDelta,
     resetLocation,
-    randomLocation
+    randomLocation,
+    setColor
   };
+})();
+
+const Api = (function () {
+  let data = null;
+  const retriveData = function (url) {
+    fetch(url).then((res) => {
+      return res.json();
+    }).then((myJson) => {
+      this.data = JSON.stringify(myJson);
+      this.data = JSON.parse(this.data);
+      Api.setColorByCurrentTemp();
+    });
+  }
+  const setColorByCurrentTemp = function () {
+    if (this.data.current.temp_c <= 10) {
+      piece.setColor("blue");
+    }
+    else if (this.data.current.temp_c >= 11 && this.data.current.temp_c <= 20) {
+      piece.setColor("green");
+    }
+    else if (this.data.current.temp_c >= 21 && this.data.current.temp_c <= 30) {
+      piece.setColor("yellow");
+    }
+    else {
+      piece.setColor("red");
+    }
+  }
+  return {
+    retriveData,
+    setColorByCurrentTemp
+  }
 })();
 
 function handleClick(ev) {
@@ -72,6 +108,8 @@ function addClickEventsMoveCircle(...control) {
 }
 
 window.addEventListener("DOMContentLoaded", event => {
+  const URL = "http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv";
+  Api.retriveData(URL);
   piece.init(document.getElementById("piece"));
   init();
 });
