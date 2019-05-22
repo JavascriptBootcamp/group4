@@ -8,8 +8,12 @@ const piece = (function () {
   };
   const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    this.el.style.left = `${pos.left + dx}px`;
-    this.el.style.top = `${pos.top + dy}px`;
+    if (pos.left + dx >= 0 && pos.left + dx <= window.innerWidth - 100) {
+      this.el.style.left = `${pos.left + dx}px`;
+    }
+    if (pos.top + dy >= 0 && pos.top + dy <= window.innerHeight - 100) {
+      this.el.style.top = `${pos.top + dy}px`;
+    }
   };
   const resetLocation = function () {
     this.el.style.left = `${this.el.initX}px`;
