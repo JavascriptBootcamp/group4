@@ -1,0 +1,15 @@
+{
+  "name": "1",
+  "version": "1.0.0",
+  "description": "use group4/Modules/03 Front End Development/Assignments/14.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
