@@ -1,0 +1,6 @@
+
+{{qustion.question}} ?
+<div style="display: table" *ngFor="let opthion of qustion.answerOption; index as i">
+  <label  id ="id{{i}}"> {{opthion}} </label>
+  <input  #data type="radio"  id ="id{{i}}" name="name{{q}}"  [value]="opthion" (click) = "fun(data,qustion.answerOption[qustion.correctAnswer],q)">
+</div>
