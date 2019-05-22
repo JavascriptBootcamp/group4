@@ -1,3 +1,17 @@
 #wrapper {
     width: 50%;
 }
+
+#timer {
+    margin-left: 10%;
+    color: green;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+#win-message {
+    color: green;
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: david;
+}

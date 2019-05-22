@@ -4,21 +4,43 @@ import { Card } from './card.model';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class GameService {
   cards: Card[];
   availableCards: Card[];
   hasWon: boolean;
   isGameActive: boolean;
+
+  // Timer vars
+  intervalID: any;
+  totalSeconds: number;
+  minutesPassed: number;
+  secondsPassed: number;
+
+
   constructor() {
     this.cards = [];
     this.hasWon = false;
     this.isGameActive = true;
     this.initAvailableCards();
     this.shuffle();
+
+    // Timer vars
+    this.intervalID = null;
+    this.totalSeconds = 0;
+    this.minutesPassed = 0;
+    this.secondsPassed = 0;
+
+    this.startTimer();
    }
+
+
    get gameCards(): Card[] {
      return this.cards;
    }
+
+
    initAvailableCards() {
      this.availableCards = [
        {content: "cat", selected: false, correct: false},
@@ -31,30 +53,37 @@ export class GameService {
        {content: "rabbit", selected: false, correct: false},
      ]
    }
+
+
    shuffle() {
     let randomCard, randomIndex;
     let allCards: Card[] = this.availableCards.concat(this.availableCards);
+    // console.log(this.availableCards);
+    console.log('this.availableCards', this.availableCards.concat(this.availableCards));
+    console.log('allCards',allCards);
+
+    //console.log(this.cards);
+
     while (allCards.length > 0) {
         randomIndex = Math.floor(Math.random() * allCards.length);
         randomCard = allCards.splice(randomIndex, 1);
         // this.cards.push(randomCard[0]);
-        // this.cards.push(JSON.parse(JSON.stringify(randomCard[0])));
-        this.cards.push({
-          ...randomCard[0]
-          /*
-            content: "",
-            selected: "",
-            correct: ""
-          */
-        });
+        this.cards.push(JSON.parse(JSON.stringify(randomCard[0])));
+        // this.cards.push(randomCard[0]);
+        console.log("this.cards", this.cards);
     }
+    //console.log(this.cards);
    }
+
+
    select(card: Card){
-     console.log("select", card);
+     //console.log("select", card);
      const selectedCards = this.cards.filter( card => card.selected);
      card.selected = true;
+
      if (selectedCards.length === 1){
        this.isGameActive = false;
+
        setTimeout( ()=> {
         this.isGameActive = true;
         selectedCards[0].selected = false;
@@ -68,10 +97,24 @@ export class GameService {
        }
      }
    }
+
+
    isMatch(card: Card, selectedCards: Card[]) {
      return selectedCards.every( selectedCard => selectedCard.content === card.content );
    }
+
+
+   startTimer(){
+    this.intervalID = setInterval(() => {
+      this.totalSeconds++;
+      this.minutesPassed = Math.floor(this.totalSeconds/60);
+      this.secondsPassed = this.totalSeconds % 60;
+    }, 1000);
+   }
+
+
    checkWin() {
       this.hasWon = this.cards.every(card => card.correct);
+      if (this.hasWon) clearInterval(this.intervalID);   
    }
 }

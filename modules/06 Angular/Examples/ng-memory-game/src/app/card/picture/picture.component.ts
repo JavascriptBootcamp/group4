@@ -12,7 +12,7 @@ export class PictureComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.randomAngle = Math.random() * 180;
+    this.randomAngle = Math.random() * 50;
   }
 
 }

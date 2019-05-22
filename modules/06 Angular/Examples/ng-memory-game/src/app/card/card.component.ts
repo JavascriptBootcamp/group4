@@ -14,7 +14,8 @@ export class CardComponent {
 
   choose() {
     this.gameService.select(this.card);
-    console.log("this.gameService.gameCards", this.gameService.gameCards);
+    console.log(this.card);
+    //console.log("this.gameService.gameCards", this.gameService.gameCards);
   }
 
 }

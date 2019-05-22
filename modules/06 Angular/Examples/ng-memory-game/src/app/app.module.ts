@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { CardComponent } from './card/card.component';
 import { PictureComponent } from './card/picture/picture.component';
+import { TwoDigitsPipe } from './pipes/two-digits.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     CardComponent,
-    PictureComponent
+    PictureComponent,
+    TwoDigitsPipe
   ],
   imports: [
     BrowserModule,
