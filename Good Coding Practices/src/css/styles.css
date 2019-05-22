@@ -26,3 +26,7 @@ body {
   top: 100px;
   left: 50%;
 }
+.circle:hover{
+  border:1px solid blue;
+  background: none;
+}
