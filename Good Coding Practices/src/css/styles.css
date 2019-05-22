@@ -19,10 +19,16 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  background: blue;
+  background-color: blue;
+}
+.circle:hover{
+  border: solid blue ;
+  background-color: white !important;
 }
 #piece {
   position: absolute;
   top: 100px;
   left: 50%;
+
+  transition-duration: 1s;
 }
