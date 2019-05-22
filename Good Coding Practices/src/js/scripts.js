@@ -50,17 +50,21 @@ const Api = (function () {
     });
   }
   const setColorByCurrentTemp = function () {
+    const BLUE = "blue";
+    const GREEN = "green";
+    const YELLOW = "yellow";
+    const RED = "red";
     if (this.data.current.temp_c <= 10) {
-      piece.setColor("blue");
+      piece.setColor(BLUE);
     }
     else if (this.data.current.temp_c >= 11 && this.data.current.temp_c <= 20) {
-      piece.setColor("green");
+      piece.setColor(GREEN);
     }
     else if (this.data.current.temp_c >= 21 && this.data.current.temp_c <= 30) {
-      piece.setColor("yellow");
+      piece.setColor(YELLOW);
     }
     else {
-      piece.setColor("red");
+      piece.setColor(RED);
     }
   }
   return {
