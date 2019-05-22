@@ -3,15 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>FED Test</title>
-    <link href="css/styles.css" rel="stylesheet">
+
+    <link href="css/body.css" rel="stylesheet">
+    <link href="css/controls.css" rel="stylesheet">
+    <link href="css/functionalities.css" rel="stylesheet">
+    <link href="css/piece.css" rel="stylesheet">
 </head>
 <body>
     <div id="controls-wrapper">
         <button id="btn-up" class="btn-arrow">U</button><br/>
-        <button id="btn-left" class="btn-arrow">L</button><button id="btn-right" class="btn-arrow">R</button><br/>
+        <button id="btn-left" class="btn-arrow">L</button>
+        <button id="btn-right" class="btn-arrow">R</button><br/>
         <button id="btn-down" class="btn-arrow">D</button>
     </div>
-    <div id="piece" class="circle"></div>
+
+    <div id="functionalities-wrapper">
+        <button id="btn-reset" onclick="initialPieceLocation()">Reset</button><br/><br/>
+        <button id="btn-randomize" onclick="randomPieceLocation()">Randomize</button>
+    </div>
+
+    <div id="piece"></div>
+
     <script src="js/scripts.js"></script>
+    <script src="js/utils.js"></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+#controls-wrapper {
+    position: absolute;
+    top: 10px;
+    /* right: 2%; */
+    left: 2%;
+    text-align: center;
+}
+
+.btn-arrow {
+    width: 35px;
+    height: 35px;
+}
+.btn-arrow:hover {
+    background: #039cc4;
+}
+
+#btn-left {
+    margin-right: 35px;
+}
