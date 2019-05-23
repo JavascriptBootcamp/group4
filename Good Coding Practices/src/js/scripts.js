@@ -15,6 +15,7 @@ const piece = (function() {
   };
 })();
 
+
 const pieceEl = document.getElementById("piece");
 function handleClick(ev) {
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
@@ -25,22 +26,43 @@ function init() {
   btnRightInit();
   btnDownInit();
   btnLeftInit();
+  pieceEl.style.transition = "all 2s";
+
 }
 
+fetch('  http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv')
+.then(response => response.json())
+      .then(data => {
+        pieceEl.style.backgroundColor = getColorByTemp(data['current']['temp_c'])
 
+      });
 
+function getColorByTemp(temp) {
+  let _temp = Number(temp);
+  console.log(_temp);
+
+  if(_temp  < 10) {
+    return "blue" ;
+  } else if(_temp  > 11 && _temp < 20) {
+    return "green";
+  } else if (_temp  > 21 && _temp < 30) {
+    return "yellow"
+  } else if (_temp > 30) {
+     return "red";
+  }
+}
 
 function randomize(){
  
-    let w = Math.ceil(Math.random()*window.innerWidth);
-    let h = Math.ceil(Math.random()*window.innerHeight)
+    let w = Math.ceil(Math.random()*(window.innerWidth-pieceEl.clientWidth));
+    let h = Math.ceil(Math.random()*window.innerHeight-pieceEl.clientHeight);
   //console.log(window.innerWidth,h);
   return {left:w ,top:h};
 }
 
 document.getElementById('btn-randomize').addEventListener("click" ,()=> {
   pieceEl.style.top = `${randomize().top}px`;
-  pieceEl.style.left =`${randomize().left}%`;
+  pieceEl.style.left =`${randomize().left}px`;
 })
 
 
@@ -77,8 +99,8 @@ function btnDownInit(){
 const $btnReset = document.getElementById("btn-reset");
 
 $btnReset.addEventListener("click",event => {
- pieceEl.style.top = `${randomize().top}px`;
- pieceEl.style.left =`${randomize().left}%`;
+ pieceEl.style.top = '100px';
+ pieceEl.style.left ='50%';
 });
 
 
@@ -86,5 +108,4 @@ $btnReset.addEventListener("click",event => {
 window.addEventListener("DOMContentLoaded", event => {
   piece.init(pieceEl);
   init();
-  
 });
