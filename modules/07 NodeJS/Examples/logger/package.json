@@ -1,0 +1,11 @@
+{
+  "name": "moshiko_is_the_king",
+  "version": "24.0.0",
+  "description": "Moshiko is the king",
+  "main": "moshiko.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moshiko",
+  "license": "ISC"
+}
