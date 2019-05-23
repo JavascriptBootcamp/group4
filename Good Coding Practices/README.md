@@ -1,4 +1,4 @@
-Included with this file is a very simple client-side app.
+A very simple client-side app is under "src" folder.
 Your mission, is to improve it a bit by implementing some additional features.
 Please focus on good coding practices.  
 
@@ -19,6 +19,3 @@ What to do:
 
     You can use this URL to retrieve the weather data for Tel-Aviv:  
     http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv
-8) How would you improve the code of this project?   
-Meaning, how would you implement the same application differently (if at all) - did you have parts of the code that you didn't like? would you add anything? Use a different architecture?
-Create an additional HTML file and give some suggestions!
