@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Registration</title>
+    </head>
+    <body>
+        <form id="form">
+            <h3>Personal Information:</h4>
+            First Name: <br/>
+            <input id="firstName" type="text",Name="FirstName"><br/>
+            Last Name: <br/>
+            <input id="lastName" type="text",Name="LastName"><br/>
+            Age: <br/>
+            <input id="age" type="number",Name="Age">
+
+            <h3>Credentials:</h4>
+            Userame: <br/>
+            <input id="userName" type="text",Name="UserName"><br/>
+            Password: <br/>
+            <input id="password" type="Password",Name="Password">
+
+            <h3>Contact:</h4>
+            Phone Number: <br/>
+            <input id="phoneNumber" type="tel",Name="PhoneNumber"><br/>
+            Email Address: <br/>
+            <input id="email" type="Email",Name="EmailAddress">
+
+            <h3>Misc:</h4>
+            Comments: <br/>
+            <textarea id="comments" name="Comments" rows="4" cols="50"></textarea><br/><br/>
+            Hobbies: <br/>
+            <select id="hobby">
+                <option value="Soccer">Soccer</option>
+                <option value="Tennis">Tennis</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Hoki">Hoki</option>
+            </select><br/><br/>
+            <button type="submit" onclick="onSubmit(event)">Submit</button>
+        </form>
+        <script>
+            function onSubmit(e){
+                e.preventDefault();
+                let firstName=document.getElementById("firstName");
+                let lastName=document.getElementById("lastName");
+                let age=document.getElementById("age");
+                let userName=document.getElementById("userName");
+                let password=document.getElementById("password");
+                let phoneNumber=document.getElementById("phoneNumber");
+                let email=document.getElementById("email");
+                let comments=document.getElementById("comments");
+                let hobby=document.getElementById("hobby");
+                json = {
+                    "firstName":firstName,
+                }
+                console.log(form);
+            }
+        </script>
+    </body>
+</html> 
