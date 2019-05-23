@@ -10,7 +10,7 @@ export class AppComponent {
   result: string;
 
   constructor() {
-    this.content = 'John Doe';
+    this.content = 'Johnny Doe';
     this.result = '';
   }
 
@@ -19,6 +19,9 @@ export class AppComponent {
       method: 'POST',
       body: this.content
     }).then(response => response.text())
-      .then(data => this.result = data);
+      .then(data => {
+        console.log("DATA: " + data);
+        this.result = data;
+      });
   }
 }
