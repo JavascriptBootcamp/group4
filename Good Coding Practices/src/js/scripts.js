@@ -15,6 +15,7 @@ const piece = (function() {
   };
 })();
 
+const pieceEl = document.getElementById("piece");
 function handleClick(ev) {
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
 }
@@ -25,6 +26,24 @@ function init() {
   btnDownInit();
   btnLeftInit();
 }
+
+
+
+
+function randomize(){
+ 
+    let w = Math.ceil(Math.random()*window.innerWidth);
+    let h = Math.ceil(Math.random()*window.innerHeight)
+  //console.log(window.innerWidth,h);
+  return {left:w ,top:h};
+}
+
+document.getElementById('btn-randomize').addEventListener("click" ,()=> {
+  pieceEl.style.top = `${randomize().top}px`;
+  pieceEl.style.left =`${randomize().left}%`;
+})
+
+
 function btnLeftInit(){
   const $btnLeft = document.getElementById("btn-left");
   $btnLeft.dataset.dx = -100;
@@ -56,15 +75,16 @@ function btnDownInit(){
 
 
 const $btnReset = document.getElementById("btn-reset");
-$btnReset.addEventListener("click",event=>{
-  init();
-  piece.init(document.getElementById("piece"));
-  piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
+
+$btnReset.addEventListener("click",event => {
+ pieceEl.style.top = `${randomize().top}px`;
+ pieceEl.style.left =`${randomize().left}%`;
 });
 
 
 
 window.addEventListener("DOMContentLoaded", event => {
-  piece.init(document.getElementById("piece"));
+  piece.init(pieceEl);
   init();
+  
 });

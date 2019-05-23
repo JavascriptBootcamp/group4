@@ -25,10 +25,11 @@ color: white;
   border-radius: 50px;
   background: blue;
 }
-#piece {
+.circle {
   position: absolute;
   top: 100px;
   left: 50%;
+
 }
 
 .circle:hover {
