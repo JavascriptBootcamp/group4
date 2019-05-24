@@ -11,7 +11,9 @@
         <button id="btn-left" class="btn-arrow">L</button><button id="btn-right" class="btn-arrow">R</button><br/>
         <button id="btn-down" class="btn-arrow">D</button>
     </div>
-    <div id="piece" class="circle"></div>
+    <button onclick="backToStartLocation()">Reset</button>
+    <button onclick="randomLocation()">Random</button>
+    <div id="piece" class="circle" onmouseout="showHollow(false)" onmouseover="showHollow(true)"></div>
     <script src="js/scripts.js"></script>
 </body>
 </html>
