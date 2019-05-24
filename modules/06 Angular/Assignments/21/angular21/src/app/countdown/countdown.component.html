@@ -1,0 +1,15 @@
+   <div class="sf"> <input type="number" (change)="startFromFunc()" #startFrom></div>
+<div class="wrapper">
+
+  <div class="timer">
+   {{minutes}}:{{secondes}}
+
+  </div>
+  <div class="buttons">
+    <button type="button" id="startBtn" (click)="start()" [disabled]="disabledStartBtn">start</button>
+    <button type="button" id="stopBtn" (click)="stop()">stop</button>
+    <button type="button" id="resetBtn" (click)="reset()">reset</button>
+  </div>
+  
+  
+  </div>

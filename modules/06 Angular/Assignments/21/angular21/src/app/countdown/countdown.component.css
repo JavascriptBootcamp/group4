@@ -1,0 +1,34 @@
+.wrapper{
+    border: 3px solid black;
+
+}
+.sf{
+    margin-left: 250px;
+    margin-bottom: 50px;
+}
+.buttons{
+
+padding:70px;
+margin-left: 40px;
+
+}
+.timer{
+    padding: 50px;
+    text-align: center;
+    font-size: 40px;
+}
+#startBtn{
+    border: 3px solid green;
+    margin-left: 40px;
+
+}
+#stopBtn{
+    border: 3px solid red;
+    margin-left: 40px;
+
+}
+#resetBtn{
+    border: 3px solid blue;
+    margin-left: 40px;
+
+}

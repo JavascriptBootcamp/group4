@@ -1,0 +1,11 @@
+li{
+    display: inline;
+    padding :20px;
+    color:grey;
+}
+
+.wrapper{
+    text-align: center;
+    margin-top: 50px;
+}
+
