@@ -1,5 +1,6 @@
 body {
   background: white;
+  height: 100%;
 }
 
 #controls-wrapper {
@@ -15,6 +16,11 @@ body {
 #btn-left {
   margin-right: 32px;
 }
+.circle:hover{
+  border: 2px solid blue;
+  background: white !important;
+
+}
 .circle {
   width: 100px;
   height: 100px;
@@ -25,4 +31,6 @@ body {
   position: absolute;
   top: 100px;
   left: 50%;
+  transition:  all 0.8s ease 0s;
+  overflow-x: hidden
 }
