@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 
 import { CartService } from "../../services/cart.service";
 import { Item } from "../../models/item.models";
@@ -13,7 +13,9 @@ export class PaymentFormComponent implements OnInit {
 
   paymentForm: FormGroup;
   submitted: boolean = false;
+  validNumber: boolean = true;
   successMsg: string = "";
+  cardNumValidMsg: string = "";
 
   shopping_items: Item[] = [];
   total_price: number = 0;
@@ -39,38 +41,47 @@ export class PaymentFormComponent implements OnInit {
     this.paymentForm.controls.cardNumber4.value;
 
     //check valid card number
-    this.validate(card_number);
+    this.validNumber = this.validate(card_number);
 
     //card is valid
-    this.successMsg = `Payment approved!!`;
-    this.submitted = true;
-    this.cartService.paid_all();
-    this.total_price = 0;
-    //redirect to http://localhost:3000/Order
-    fetch(`http://localhost:3000/Order`)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    if(this.validNumber) {
+      this.successMsg = `Payment approved!!`;
+      this.submitted = true;
+      this.cartService.paid_all();
+      this.total_price = 0;
+      
+      fetch(`http://localhost:3000/Order`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
   }
 
   validate(card_number: string):boolean {
     if(card_number.length !== 16){
-      console.log("Credit Card Length Must Be 16 Digits");
+      this.cardNumValidMsg = "Credit Card Length Must Be 16 Digits";
       return false;
     }
     else if(isNaN(+card_number.replace(/\D/g,'*'))){
-      console.log("invalid characters");
+      this.cardNumValidMsg = "Invalid characters";
       return false;
     }
     else if(card_number === card_number[0].repeat(card_number.length) ){
-      console.log("only one type of number");
+      this.cardNumValidMsg = "Only one type of number";
+      return false;
+    } 
+    else if(card_number.split("").reduce(function(a, b) { return Number(a) + Number(b); }, 0) < 16 ){
+      this.cardNumValidMsg = "Sum of the card number is less than 16";
+      return false;
+    }
+    else if(Number(card_number[card_number.length - 1]) % 2 !== 0){
+      this.cardNumValidMsg = "odd final number";
       return false;
     }
 
-    console.log(card_number);
     return true;
   }
 

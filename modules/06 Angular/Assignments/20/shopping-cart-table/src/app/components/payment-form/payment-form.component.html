@@ -60,7 +60,13 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="paymentForm.invalid">Confirm
+    <!-- Card number validetion msg -->
+    <div *ngIf="!validNumber">
+      Card number is invalid - {{ cardNumValidMsg }}
+    </div>
+
+    <button type="submit" class="btn btn-success btn-lg btn-block"
+      [disabled]="paymentForm.invalid">Confirm
       Payment</button>
   </form>
 
