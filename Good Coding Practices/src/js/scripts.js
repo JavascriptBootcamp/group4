@@ -9,25 +9,23 @@ const piece = (function () {
 
   const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    switch (dx) {
-      case 0:
-        if ((pos.top + dy < window.innerHeight) && (pos.top + dy > 0))
-          this.el.style.top = `${pos.top + dy}px`;
-        else if (pos.top + dy <= 0) 
-          this.el.style.top = `${pos.top + dy + (pos.top + dy) * (-1)}px`;
-        break;
-      // when dx 100 / -100 
-      default:
-        if ((pos.left + dx < window.innerWidth) && (pos.left + dx > 0)) {
-          this.el.style.left = `${pos.left + dx}px`;
-          this.el.style.top = `${pos.top + dy}px`;
-        }
-        else if (pos.left + dx <= 0) {
-          this.el.style.left = `${pos.left + dx + (pos.left + dx) * (-1)}px`;
-          this.el.style.top = `${pos.top + dy}px`;
-        }
-        break;
+    const position = [pos.top, pos.left];
+    if (dx === 0) {
+      this.el.style.top = `${movePos(position[0], dy,window.innerHeight - 100)}px`;
     }
+    else
+      this.el.style.left = `${movePos(position[1], dx,window.innerWidth - 100)}px`;
+  }
+
+  const movePos = function(pos, px, screenSize) {   
+    let positionSide=0;
+    if ((pos + px < screenSize) && (pos + px > 0))
+      positionSide = pos + px;
+    else if (pos + px >= screenSize)
+      positionSide = screenSize;
+    else if (pos.top + px <= 0)
+      positionSide = 0;
+    return positionSide;
   }
 
   const pieceColor = function (temp) {
@@ -59,15 +57,13 @@ const piece = (function () {
   }
 
   const resetLocation = function () {
-    console.log(this.el);
     this.el.style.left = "50%";
     this.el.style.top = "100px";
   };
 
   const randomizeLocation = function () {
-    this.el.style.left = Math.floor(Math.random() * window.innerWidth - 100) + 50 + "px";
-    this.el.style.top = Math.floor(Math.random() * window.innerHeight - 100) + 50 + "px";
-    console.log(Math.floor(Math.random() * window.innerHeight - 100) + 50);
+    this.el.style.top = Math.floor(Math.random() * (window.innerHeight - 100)) + "px";
+    this.el.style.left = Math.floor(Math.random() * (window.innerWidth - 100)) + "px";
   };
 
   return {
@@ -81,40 +77,36 @@ const piece = (function () {
 
 })();
 
-function handleClick() {
-  piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
-
-}
-
-
-function init() {
-  console.log(window.innerHeight, window.innerWidth);
-  piece.resetLocation();
-  piece.weatherApi();
-  const $btnUp = document.getElementById("btn-up");
-  $btnUp.dataset.dx = 0;
-  $btnUp.dataset.dy = -100;
-  $btnUp.addEventListener("click", handleClick);
-  const $btnRight = document.getElementById("btn-right");
-  $btnRight.dataset.dx = 100;
-  $btnRight.dataset.dy = 0;
-  $btnRight.addEventListener("click", handleClick);
-  const $btnDown = document.getElementById("btn-down");
-  $btnDown.dataset.dx = 0;
-  $btnDown.dataset.dy = 100;
-  $btnDown.addEventListener("click", handleClick);
-  const $btnLeft = document.getElementById("btn-left");
-  $btnLeft.dataset.dx = -100;
-  $btnLeft.dataset.dy = 0;
-  $btnLeft.addEventListener("click", handleClick);
-  const $btnRandom = document.getElementById("btn-random");
-  $btnRandom.addEventListener("click", piece.randomizeLocation.bind(piece));
-  const $btnReset = document.getElementById("btn-reset");
-  $btnReset.addEventListener("click", piece.resetLocation.bind(piece));
-
-}
 
 window.addEventListener("DOMContentLoaded", event => {
   piece.init(document.getElementById("piece"));
   init();
 });
+
+function init() {
+  piece.resetLocation();
+  piece.weatherApi();
+  setClickEvent(document.getElementById("btn-up"),0,-100);
+  setClickEvent(document.getElementById("btn-right"),100,0);
+  setClickEvent(document.getElementById("btn-down"),0,100);
+  setClickEvent(document.getElementById("btn-left"),-100,00);
+  const btnRandom = document.getElementById("btn-random");
+  btnRandom.addEventListener("click", piece.randomizeLocation.bind(piece));
+  const btnReset = document.getElementById("btn-reset");
+  btnReset.addEventListener("click", piece.resetLocation.bind(piece));
+
+}
+
+
+function setClickEvent(elemBtn,x,y){
+  let elem = elemBtn;
+  elem.dataset.dx =x;
+  elem.dataset.dy = y;
+  elem.addEventListener("click", handleClick);
+  }
+  
+  
+  function handleClick() {
+    piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
+  }
+  
