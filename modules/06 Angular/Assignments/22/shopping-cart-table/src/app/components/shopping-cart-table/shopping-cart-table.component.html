@@ -1,0 +1,38 @@
+<div class="center">
+
+<!-- table start -->
+  <div class="table">
+    <div class="col">
+      <h1>Name</h1>
+      <select #item_name>
+          <option value="choose">Choose</option>
+          <option *ngFor="let item of cart_items"  [value]="item">{{ item }}</option>
+      </select>
+    </div>
+    <div class="col">
+        <h1>Price</h1>
+        <input #price type="number" min="0" max="100000">
+    </div>
+    <div class="col">
+        <h1>Action</h1>
+        <button (click)="addItem(item_name.value, price.value)" class="btn">Add</button>
+    </div>
+  </div>
+  
+  <!-- user shopping cart -->
+  <h2>Your Shopping Cart:</h2>
+  <ul>
+    <li *ngFor="let item of shopping_items; let i = index" class="big-text">
+      {{ item.name }} - {{ item.price | currency }} 
+      <button (click)="removeItem(i)" class="btn">Remove</button>
+    </li>
+  </ul>
+
+   <!-- total price  -->
+   <h2>Total Price For Payment:</h2>
+   <span class="big-text"> {{ total | currency }}</span>
+   <a routerLink="/payment" *ngIf="total !== 0">
+    <button class="btn big-text">Pay</button>
+  </a>
+
+</div>
