@@ -1,0 +1,29 @@
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+ 
+  <div class="wrapper" style="text-align:center">
+    <table class="contacts-table">
+      <tr class="table-header">
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+      </tr>
+      <tr *ngFor="let obj of contacts | keyvalue">
+          <td>{{obj.value.firsName}}</td>
+          <td>{{obj.value.lastName}}</td>
+          <td>{{obj.value.address}}</td>
+          <td>{{obj.value.phone}}</td>
+          <td> <a href="mailto:{{obj.value.email}}"> {{obj.value.email}}</a> </td> 
+        </tr>
+    </table>
+  </div> 
+
+  <br><br>
+  <button (click)="sendToServer()">Save To Server</button>
+

@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex; 
+  flex-direction: row;  
+  justify-content: center;
+}
+
+
+.contacts-table {
+  border: 4px solid rgba(0, 0, 0, 0.856);
+}
+th {
+  border: 3px solid rgba(0, 0, 0, 0.493);
+}
+td {
+  border: 2px dotted rgb(255, 165, 47);
+}
+
+.table-header {
+  color: rgb(0, 68, 255);
+  font-size: 24px;
+  font-weight: bolder;
+}
