@@ -30,9 +30,9 @@ export class BComponent {
   //   console.log("ngAfterViewChecked");
   // }
 
-  // changeB() {
-  //   this.BStatement.nativeElement.innerText = "Moshiko is the king";
-  // }
+  changeB() {
+    this.BStatement.nativeElement.innerText = "Moshiko is the king";
+  }
 
   ngAfterContentInit() {
     console.log("ngAfterContentInit");
