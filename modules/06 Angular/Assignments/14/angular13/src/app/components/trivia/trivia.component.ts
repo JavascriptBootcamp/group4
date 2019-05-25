@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { QuestionsService } from 'src/app/service/questions.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-
+import { TimerComponent } from './timer/timer.component';
 
 @Component({
   selector: 'app-trivia',
@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./trivia.component.css']
 })
 export class TriviaComponent implements OnInit {
+  @ViewChild(TimerComponent) 'timerComponent': TimerComponent;
   submit: boolean;
   currentIndex: number;
   urlIndex: number;
@@ -23,19 +24,20 @@ export class TriviaComponent implements OnInit {
   }
 
   ngOnInit() {
-   
-  }
-    ngOnDestroy(){
-console.log("d");    }
 
-ngAfterContentChecked(){
-  if (this.activatedRoute.snapshot.params.id != "endQuiz"){
-    this.currentIndex = Number(this.activatedRoute.snapshot.params.id);
-}
-  else {
-  this.endQuiz = true;
   }
-}
+  ngOnDestroy() {
+    console.log("d");
+  }
+
+  ngAfterContentChecked() {
+    if (this.activatedRoute.snapshot.params.id != "endQuiz") {
+      this.currentIndex = Number(this.activatedRoute.snapshot.params.id);
+    }
+    else {
+      this.endQuiz = true;
+    }
+  }
 
   onSubmit(form: NgForm) {
     this.questionsService.checkAnswers(form);
@@ -47,6 +49,7 @@ ngAfterContentChecked(){
       this.currentIndex++;
     else
       this.currentIndex--;
+    this.timerComponent.resetTimer();
   }
 
 }

@@ -1,5 +1,7 @@
 <div class="wrapper">
 
+<app-timer></app-timer>
+
   <form #form="ngForm" (submit)=onSubmit(form) >
     <span id="questionNumber" *ngIf="!endQuiz"> {{currentIndex}}</span>
     <h2 *ngIf="submit">{{questionsService.correctAnswers}} of {{questionsService.questions.length}}</h2>
