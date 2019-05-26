@@ -7,8 +7,6 @@ const writeToFile = (str)=>{
         else{
             console.log("Successful!");
         }
-        // console.log(str);
     })
 }
-
 module.exports = writeToFile;
