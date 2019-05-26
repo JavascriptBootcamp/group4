@@ -79,7 +79,12 @@ const readFileIfExistsPromise = async fileName => {
     }
 }
 
-writeFilePromise("./contact.json",JSON.stringify(a));
+// writeFilePromise("./contact.json",JSON.stringify(a));
+// readFilePromise("./contact.json");
+// appendFilePromise("./contact.json",JSON.stringify(a));
+// readFileIfExistsPromise("./contact.json");
+// unlinkPromise("./contact.json");
+
 
 // fsPromise.readFilePromise("./contact.json")
 // .then(res=>console.log(res))
