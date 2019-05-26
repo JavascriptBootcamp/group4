@@ -7,12 +7,27 @@ const piece = (function() {
   const moveDelta = function(dx, dy) {
     const pos = this.el.getBoundingClientRect();
 
-    if (Number(pos.right) - Number(pos.left) === Number(pos.width)) {
-      console.log(Number(pos.x),Number(pos.right) );
+    if (
+      dx > 0 &&
+      Number(window.innerWidth) - Number(pos.right) >= Number(pos.width)
+    ) {
       this.el.style.left = `${pos.left + dx}px`;
     }
 
-    this.el.style.top = `${pos.top + dy}px`;
+    if (dx < 0 && Number(pos.left) >= Number(pos.width)) {
+      this.el.style.left = `${pos.left + dx}px`;
+    }
+
+    if (
+      dy > 0 &&
+      Number(window.innerHeight) - Number(pos.bottom) >= Number(pos.height)
+    ) {
+      this.el.style.top = `${pos.top + dy}px`;
+    }
+
+    if (dy < 0 && Number(pos.top) >= Number(pos.height)) {
+      this.el.style.top = `${pos.top + dy}px`;
+    }
   };
   return {
     init,
@@ -57,7 +72,9 @@ function getColorByTemp(temp) {
 }
 
 function randomize() {
-  let w = Math.ceil(Math.random() * (window.innerWidth - pieceEl.clientWidth));
+  const pos = pieceEl.getBoundingClientRect();
+  
+  let w = Math.ceil(Math.random() * (window.innerWidth - pos.width));
   let h = Math.ceil(Math.random() * window.innerHeight - pieceEl.clientHeight);
   return { left: w, top: h };
 }
