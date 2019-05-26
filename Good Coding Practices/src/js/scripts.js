@@ -43,7 +43,7 @@ function ramdoDelta() {
 }
 
 function handleClick(ev) {
-debugger
+
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
 }
 
