@@ -15,7 +15,7 @@
 <pre>
 const fs = require('fs');
 ...
-fs.readFile('demo.html', (err, data) => {
+fs.readFile('recipe.json', (err, data) => {
     if (err) return "Error: The specified file does not exist";
     return data;
 });
@@ -29,7 +29,7 @@ fs.readFile('demo.html', (err, data) => {
 <pre>
 const promFs = require('./modules/prom-fs');
 ...
-promFs.readFile("demo.html")
+promFs.readFile("recipe.json")
 .then( (err, data) => {
     if (err) return "Error: The specified file does not exist";
     return data;
@@ -44,7 +44,7 @@ promFs.readFile("demo.html")
 const promFs = require('./modules/prom-fs');
 ...
 try {
-    const data = await promFs.readFile("demo.html");
+    const data = await promFs.readFile("recipe.json");
     return data;
 }
 catch(ex) {
