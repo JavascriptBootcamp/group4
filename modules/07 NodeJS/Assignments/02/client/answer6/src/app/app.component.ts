@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   clients: Client[];
   answerFromServer: string;
-  loadClients: Client[];
+  loadClients: any;
 
   constructor() {
     this.clients = [
