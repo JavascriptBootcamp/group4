@@ -1,5 +1,6 @@
 const http = require('http');
 const wf = require('./fsOperation');
+var url = require('url');
 
 http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -12,18 +13,29 @@ http.createServer((req, res) => {
             body += chunk.toString();
         });
         req.on('end', () => {
-            wf.writeToFile(body);
+            const fileNumber = JSON.parse(body).id
+            wf.writeToFile(fileNumber, body);
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.write('<h1 style="color: red">File was created</h1>');
             res.end();
         })
     }
     else if (req.method === "GET") {
-        const fileContent = wf.readFromFile("contacts.json");
-        if (fileContent) {
+        if (req.url === "/") {
+            const numberOfFiles = wf.getfiles();
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.write(fileContent);
+            res.write(JSON.stringify(numberOfFiles));
             res.end();
+        }
+        else {
+            const url_parts = url.parse(req.url, true);
+            const query = url_parts.query.tableNum;
+            const fileContent = wf.readFromFile("contacts_" + query);
+            if (fileContent) {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.write(fileContent);
+                res.end();
+            }
         }
     }
 }).listen(5000);

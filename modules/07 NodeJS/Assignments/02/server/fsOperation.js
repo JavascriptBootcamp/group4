@@ -1,7 +1,18 @@
 const fs = require("fs");
 
-const writeToFile = (fileContent) => {
-    fs.writeFile("contacts.json", fileContent, (err) => {
+const getfiles = () => {
+    let arrFiles = [];
+    let files = fs.readdirSync('../server/tableFiles');
+    for (var i in files) {
+        if (i) {
+            arrFiles.push(files[i].split('_')[1])
+        }
+    }
+    return arrFiles;
+}
+
+const writeToFile = (fileNumber, fileContent) => {
+    fs.writeFile("../server/tableFiles/contacts_" + fileNumber + ".json", fileContent, (err) => {
         if (err) {
             return console.log("err", err.message);
         }
@@ -10,7 +21,7 @@ const writeToFile = (fileContent) => {
 }
 const readFromFile = (fileName) => {
     try {
-        return fs.readFileSync(fileName, 'utf-8');
+        return fs.readFileSync("tableFiles/" + fileName, 'utf-8');
     }
     catch (ex) {
         console.error("Error: " + ex.message);
@@ -19,5 +30,6 @@ const readFromFile = (fileName) => {
 
 module.exports = {
     writeToFile,
-    readFromFile
+    readFromFile,
+    getfiles
 };
