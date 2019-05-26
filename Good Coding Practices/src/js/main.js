@@ -21,8 +21,7 @@ function setEventClickBtn(ele, clickFunc, funcType) {
 }
 function savePositin() {
   const pos = piece.el.getBoundingClientRect();
-  sessionStorage.setItem("defPosTop", pos.top);
-  sessionStorage.setItem("defPosLeft", pos.left);
+  sessionStorage.setItem("defPos", JSON.stringify({ top: pos.top, left: pos.left }));
 }
 function handleClick(ev) {
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));

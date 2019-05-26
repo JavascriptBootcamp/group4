@@ -7,12 +7,18 @@ const piece = (function () {
     }
     const moveDelta = function (dx, dy) {
         const pos = this.el.getBoundingClientRect();
-        let yPos = this.movePiece(pos.top, dy, (window.innerHeight - 100));
-        let xPos = this.movePiece(pos.left, dx, (window.innerWidth - 100));
+        let yPos;
+        let xPos;
+
+        if (dx === 0)
+            yPos = this.movePiece(pos.top, dy, (window.innerHeight - 100));
+        else
+            xPos = this.movePiece(pos.left, dx, (window.innerWidth - 100));
+
         this.setElePos(yPos, xPos);
     }
     const movePiece = function (curPos, ds, size) {
-        let pos;
+        let pos = 0;
         let tmpPos = curPos + ds;
         if (tmpPos > 0 && tmpPos < size)
             pos = tmpPos;
@@ -24,9 +30,8 @@ const piece = (function () {
         return pos;
     }
     const resetPieceLoc = function () {
-        const posTop = sessionStorage.getItem("defPosTop");
-        const posLeft = sessionStorage.getItem("defPosLeft");
-        this.setElePos(posTop, posLeft);
+        const pos = JSON.parse(sessionStorage.getItem("defPos"));
+        this.setElePos(pos.top, pos.left);
     }
     const randPieceLoc = function () {
         const randLocTop = Math.floor(Math.random() * (window.innerHeight - 100));
