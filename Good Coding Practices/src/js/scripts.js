@@ -6,12 +6,18 @@ const piece = (function () {
     this.el = el;
     this.initPos = this.el.getBoundingClientRect();
   };
+  const setPos = function (dx, dy) {
+    this.el.style.left = `${dx}px`;
+    this.el.style.top = `${dy}px`;
+  }
   const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    if (((pos.left + dx) < (window.innerWidth - 100)) && (pos.left + dx > 0)) {
-      if (((pos.top + dy) < (window.innerHeight - 100)) && (pos.top + dy > -1)) {
-        this.el.style.left = `${pos.left + dx}px`;
-        this.el.style.top = `${pos.top + dy}px`;
+    let newDx = (pos.left + dx);
+    let newDy = (pos.top + dy);
+    if ((newDx < (window.innerWidth - 100)) && (newDx > 0)) {
+      if ((newDy < (window.innerHeight - 100)) && (newDy > -1)) {
+        this.setPos(newDx, newDy);
+
       }
     }
   };
@@ -19,64 +25,63 @@ const piece = (function () {
   return {
     init,
     moveDelta,
-
+    setPos
   };
 })();
 function resetDelta() {
+  let dx = piece.initPos.left;
+  let dy = piece.initPos.top;
+  piece.setPos(dx, dy);
 
-  piece.el.style.left = `${piece.initPos.left}px`;
-  piece.el.style.top = `${piece.initPos.top}px`;
 }
 
-function ramdoDelta(){
-  const dx = Math.floor(Math.random() * Math.floor(window.innerWidth-100));
-  const dy = Math.floor(Math.random() * Math.floor(window.innerHeight-100));
-  
-  piece.el.style.left = `${dx}px`;
-  piece.el.style.top = `${dy}px`;
+function ramdoDelta() {
+  const dx = Math.floor(Math.random() * Math.floor(window.innerWidth - 100));
+  const dy = Math.floor(Math.random() * Math.floor(window.innerHeight - 100));
+  piece.setPos(dx, dy);
+
 }
 
 function handleClick(ev) {
-
+debugger
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
 }
 
 function setDataSet(el, dx, dy) {
+  
   if (el.id === "btn-random") {
     el.addEventListener("click", ramdoDelta);
   }
   else if (el.id === "btn-reset") {
-     el.addEventListener("click", resetDelta); 
-    }
-    else
-   {
+    el.addEventListener("click", resetDelta);
+  }
+  else {
+    
     el.dataset.dx = dx;
     el.dataset.dy = dy;
     el.addEventListener("click", handleClick);
   }
 }
-function fetchTemp()
-{
-    fetch(" http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv")
-    .then((res)=>res.json())
-    .then((data)=> {setColor(data.current.temp_c)});
+function fetchTemp() {
+  fetch(" http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv")
+    .then((res) => res.json())
+    .then((data) => { setColor(data.current.temp_c) });
 }
 
-function setColor(temp_c)
-{
-  if(temp_c <= 10){
-    piece.el.style.background= "blue";
+function setColor(temp_c) {
+  if (temp_c <= 10) {
+    piece.el.style.background = "blue";
   }
-    else  if(temp_c >= 11&& temp_c <= 20){
-      piece.el.style.background= "Green";
-    }
-    else  if(temp_c >= 21&& temp_c <= 30){
-      piece.el.style.background= "Yellow";
-    }
-    else  if(temp_c >= 30){
-      piece.el.style.background= "Red";
-    }
-  
+  else if (temp_c >= 11 && temp_c <= 20) {
+    piece.el.style.background = "Green";
+  }
+  else if (temp_c >= 21 && temp_c <= 30) {
+    piece.el.style.background = "Yellow";
+  }
+  else if (temp_c >= 30) {
+    piece.el.style.background = "Red";
+  }
+
 }
 function init() {
   const $btnUp = document.getElementById("btn-up");
