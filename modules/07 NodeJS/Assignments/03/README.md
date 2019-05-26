@@ -8,6 +8,7 @@
 </p>
 <p>add an additional method: <code>readFileIfExists</code> which first checks if the specificed file exists. If it does - it returns its content otherwise it returns the error message: "Error: The specified file does not exist"</p>
 <p>the module should allow running each of the methods in promise syntax and async-await syntax.</p>
+<p>add examples of create, read, update, delete and "read if exists" operation of a JSON file which contains a food recipe: Name of the recipe, ingredients and time of cooking</p>
 <h2>Examples</h2>
 <h3>Original Execution (Using A Callback)</h3>
 <code>
