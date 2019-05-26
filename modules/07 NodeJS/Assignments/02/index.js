@@ -1,9 +1,6 @@
-// require('./modules/create-and-read-file')();
-
-// const carf = require('./modules/create-and-read-file');
 
 const http = require('http');
-const writeFile = require('./modules/write-file');
+const writeFile = require('./write-file');
 
 http.createServer((req, res) => {
     // Set CORS headers
@@ -13,6 +10,7 @@ http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Headers', '*');
     
     let body = '';
+    
     req.on('data', chunk => {
         body += chunk.toString();
     });
