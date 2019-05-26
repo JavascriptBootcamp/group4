@@ -47,21 +47,21 @@ const recipe = {
 //init - for testing promFs 
 (async () => {
     try {
-        console.log("write recipe to recipe.json...");
+        console.log("\nwrite recipe to recipe.json...");
         let data = await promFs.writeFilePromise("recipe.json", JSON.stringify(recipe));
-        console.log(data);
+        console.log(data,"\n");
     
         console.log("read file recipe.json...");
         data = await promFs.readFilePromise("recipe.json");
-        console.log(data);
+        console.log(data,"\n");
     
         console.log("append test test to recipe.json...");
         data = await promFs.appendFilePromise("recipe.json", "testttt testtttttttt");
-        console.log(data);
+        console.log(data,"\n");
 
         console.log("Delete File recipe.json...");
         data = await promFs.unlinkFilePromise("recipe.json");
-        console.log(data);
+        console.log(data,"\n");
         
         console.log("Read File If Exists - recipe.json...");
         data = await promFs.readFileIfExistsPromise("recipe.json");

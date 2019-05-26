@@ -71,10 +71,13 @@ function readFileIfExistsPromise(filename) {
                 rej(`Error: ${ex}`);
               }
             }
+            else {
+                rej(`Error: The specified "${filename}" file does not exist`);
+            }
         } 
         catch(ex) {
             //catch fs.existsSync error
-            rej(`Error: The specified file does not exist - ${ex}`);
+            rej(`Error: ${ex}`);
         }
     });
 }
