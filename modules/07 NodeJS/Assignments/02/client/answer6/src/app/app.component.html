@@ -15,4 +15,24 @@
       <td><a [attr.href]="mailto(client.mail)"> {{ client.mail }}</a></td> 
   </tbody>
   <button (click)="saveTable()">Save</button>
+  <button (click)="loadTable()">Load</button>
+</table>
+
+<div>{{answerFromServer}}</div>
+
+<table>
+  <thead bgcolor="#FFCCFF">
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Email Address</th>
+  </thead>
+  <tbody *ngFor="let client of loadClients">
+      <td>{{ client.first_name }}</td>
+      <td>{{ client.last_name }}</td>
+      <td>{{ client.city }}</td>
+      <td>{{ client.phone }}</td>
+      <td><a [attr.href]="mailto(client.mail)"> {{ client.mail }}</a></td> 
+  </tbody>
 </table>

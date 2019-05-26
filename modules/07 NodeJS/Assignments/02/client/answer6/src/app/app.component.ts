@@ -16,6 +16,8 @@ interface Client {
 export class AppComponent implements OnInit {
 
   clients: Client[];
+  answerFromServer: string;
+  loadClients: Client[];
 
   constructor() {
     this.clients = [
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
       { first_name: "Daniel", last_name: "Brosh", city: "Ashkelon", phone: "054-5796354", mail: "daniel@gmail.com" },
       { first_name: "Uriel", last_name: "Alfasi", city: "Hafia", phone: "052-3396354", mail: "uriel@gmail.com" }
     ]
+    this.loadClients = [];
   }
 
   ngOnInit(): void {
@@ -33,10 +36,20 @@ export class AppComponent implements OnInit {
     return "mailto:" + mail;
   }
   saveTable() {
-    fetch("http://localhost:4200/", {
+    fetch("http://localhost:5000/", {
       method: 'POST',
       body: JSON.stringify(this.clients)
-    })
+    }).then(response => response.text())
+      .then(data => {
+        this.answerFromServer = data;
+      });
   }
-
+  loadTable() {
+    fetch("http://localhost:5000/").then((res) => {
+        return res.json();
+    }).then((data) => {
+      this.loadClients = JSON.stringify(data);
+      this.loadClients = JSON.parse(this.loadClients);
+    });
+  }
 }
