@@ -46,14 +46,15 @@ function init() {
   btnRightInit();
   btnDownInit();
   btnLeftInit();
-  pieceEl.style.transition = "all 2s";
+  pieceEl.style.transition = "all 1s";
 }
-
+let temperture ="";
 fetch(
   "  http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv"
 )
   .then(response => response.json())
   .then(data => {
+    temperture = data;
     pieceEl.style.backgroundColor = getColorByTemp(data["current"]["temp_c"]);
   });
 
@@ -71,17 +72,17 @@ function getColorByTemp(temp) {
   }
 }
 
-function randomize() {
+function randomizePosition() {
   const pos = pieceEl.getBoundingClientRect();
-  
   let w = Math.ceil(Math.random() * (window.innerWidth - pos.width));
-  let h = Math.ceil(Math.random() * window.innerHeight - pieceEl.clientHeight);
+  let h = Math.ceil(Math.random() * (window.innerHeight - pos.height));
+
   return { left: w, top: h };
 }
 
 document.getElementById("btn-randomize").addEventListener("click", () => {
-  pieceEl.style.top = `${randomize().top}px`;
-  pieceEl.style.left = `${randomize().left}px`;
+  pieceEl.style.top = `${randomizePosition().top}px`;
+  pieceEl.style.left = `${randomizePosition().left}px`;
 });
 
 function btnLeftInit() {
@@ -120,4 +121,10 @@ $btnReset.addEventListener("click", event => {
 window.addEventListener("DOMContentLoaded", event => {
   piece.init(pieceEl);
   init();
+});
+
+pieceEl.addEventListener("mouseover", ()=> {
+  pieceEl.style.backgroundColor = "white";
+  pieceEl.style.border = `thin solid yellow`;
+
 });
