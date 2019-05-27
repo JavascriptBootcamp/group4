@@ -35,6 +35,12 @@ export class GameService {
     return this.cards;
   }
   initAvailableCards() {
+    fetch('http://localhost:5000/?keyword=cat').then(response => {
+      return response.json();
+    }).then(images => {
+     console.log(images);
+    });
+    console.log(this.availableCards);
     this.availableCards = [
       { content: "cat", selected: false, correct: false },
       { content: "dog", selected: false, correct: false },
