@@ -1,8 +1,8 @@
 <h1>My Clients:</h1>
-<button (click)="saveContacts()">Save</button>
-<button (click)="loadContacts(fileNameToLoad)">Load</button>
-<select #fileNameToLoad >
-  <option *ngFor="let f of filesNames">{{f}}</option>
+<button (click)="filesService.saveContacts()">Save</button>
+<button (click)="filesService.loadContacts(fileNameToLoad)">Load</button>
+<select #fileNameToLoad (change)="filesService.loadContacts(fileNameToLoad)">
+  <option *ngFor="let f of filesService.filesNames">{{f}}</option>
 </select>
 <table>
   <thead bgcolor="#FFCCFF">
