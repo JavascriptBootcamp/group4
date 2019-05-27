@@ -17,8 +17,8 @@ export class GameService {
     this.cards = [];
     this.hasWon = false;
     this.isGameActive = true;
-    this.initAvailableCards();
-    this.shuffle();
+    //this.initAvailableCards();
+    //this.shuffle();
   }
   setTimer(): void {
     this.interval = setInterval(() => {
@@ -34,23 +34,30 @@ export class GameService {
   get gameCards(): Card[] {
     return this.cards;
   }
-  initAvailableCards() {
-    fetch('http://localhost:5000/?keyword=cat').then(response => {
-      return response.json();
-    }).then(images => {
-     console.log(images);
-    });
-    console.log(this.availableCards);
-    this.availableCards = [
-      { content: "cat", selected: false, correct: false },
-      { content: "dog", selected: false, correct: false },
-      { content: "goldfish", selected: false, correct: false },
-      { content: "guinea_pig", selected: false, correct: false },
-      { content: "kitten", selected: false, correct: false },
-      { content: "mouse", selected: false, correct: false },
-      { content: "puppy", selected: false, correct: false },
-      { content: "rabbit", selected: false, correct: false },
-    ]
+  getFromGoogle(keyword) {
+    return fetch('http://localhost:5000/?keyword=' + keyword).then(response => response.text());
+  }
+  initAvailableCards(cards) {
+    if (!cards) {
+      this.availableCards = [
+        { content: "assets/img/cat", selected: false, correct: false },
+        { content: "assets/img/dog", selected: false, correct: false },
+        { content: "assets/img/goldfish", selected: false, correct: false },
+        { content: "assets/img/guinea_pig", selected: false, correct: false },
+        { content: "assets/img/kitten", selected: false, correct: false },
+        { content: "assets/img/mouse", selected: false, correct: false },
+        { content: "assets/img/puppy", selected: false, correct: false },
+        { content: "assets/img/rabbit", selected: false, correct: false },
+      ]
+    }
+    else {
+      this.availableCards = [];
+      for (let card of cards) {
+        this.availableCards.push(
+          { content: card, selected: false, correct: false }
+        );
+      }
+    }
   }
   shuffle() {
     let randomCard, randomIndex;
