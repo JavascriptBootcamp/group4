@@ -15,4 +15,14 @@
       </li>
     </ul>
   </div>
+
+  <div *ngIf="actors.length > 0">
+    <h3>Actors</h3>
+    <ul>
+      <li *ngFor="let actor of actors" (mouseover)="showActorDetails(actor)">
+        {{ actor }}
+      </li>
+    </ul>
+    <div [innerHTML]="actorDetails"></div>
+  </div>
 </div>
