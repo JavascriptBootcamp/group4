@@ -62,17 +62,18 @@ function unlinkPromise(path) {
 function readFileIfExists(path) {
     return new Promise((res, rej) => {
         try {
-            if (!fs.existsSync(path)) {
-                rej(`file not exits`);
-            }
-            fs.readFile(path, 'utf-8', (error, data) => {
-                if (error) rej(`Error: ${error}`);
-
-                res(data);
+            fs.access(path, fs.F_OK, (err) => {
+                if (err) {
+                    console.error("file not exists")
+                }
+                fs.readFile(path, 'utf-8', (error, data) => {
+                    if (error) rej(`Error: ${error}`);
+                    res(data);
+                })
             })
         }
         catch (ex) {
-            rej("Error" , ex);
+            rej(ex);
         }
     });
 }
