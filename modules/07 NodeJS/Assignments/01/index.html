@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>registration form</h1>
+    <form method="GET" action="http://localhost:5000/">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="firstname">
+                            First name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="firstname" name="firstname" placeholder="First name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="lastname">
+                            Last name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="lastname" name="lastname" placeholder="Last name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="age">
+                            Age:</label>
+                    </td>
+                    <td>
+                        <input type="number" id="age" name="age" min="18" max="120" step="1" value="18" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Credentials</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="username">
+                            User Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="username" name="username" placeholder="User name" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">
+                            Password:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" name="password" minlength="8" placeholder="Password" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Contact</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="phone">
+                            Phone Number:</label>
+                    </td>
+                    <td>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{2,3}-[0-9]{7}" required=""
+                            placeholder="Eg. 050‐1234567" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">
+                            Email Address:</label>
+                    </td>
+                    <td>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Mics</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="comments">
+                            Comments:</label>
+                    </td>
+                    <td>
+                        <textarea name="comments" rows="4" cols="50"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="checkbox">
+                            Hobbies:</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobbies" value="dance" checked>dance<br>
+                        <input type="checkbox" name="hobbies" value="watching tv">watching tv<br>
+                        <input type="checkbox" name="hobbies" value="horseback riding">horseback riding<br>
+                        <input type="checkbox" name="hobbies" value="travel">travel<br>
+                        <input type="checkbox" name="hobbies" value="gaming">gaming<br><br>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
