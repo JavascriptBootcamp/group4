@@ -1,7 +1,7 @@
 const fileSystem = require('fs');
 
-const writeFile = str => {
-    fileSystem.writeFile('contacts.json', str, (error) => {
+const writeFile = (str,fileName) => {
+    fileSystem.writeFile(fileName, str, (error) => {
         if (error) {
             return console.log("Error: " + error);
         };

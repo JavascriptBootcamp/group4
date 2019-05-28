@@ -1,22 +1,26 @@
-
-
 <h1>My Clients:</h1>
+<label for="selectFile">Contacts Files:</label>
+<select name="selectFile" id="selectFile" #selectFile>
+  <option [value]="file" *ngFor="let file of funcToServerService.files">{{file}}</option>
+</select>
+<br><br>
+
 <table>
   <thead bgcolor="#FFCCFF">
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Address</th>
-      <th>Phone Number</th>
-      <th>Email Address</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Email Address</th>
   </thead>
-  <tbody *ngFor="let client of clients">
-      <td>{{ client.first_name }}</td>
-      <td>{{ client.last_name }}</td>
-      <td>{{ client.city }}</td>
-      <td>{{ client.phone }}</td>
-      <td><a [attr.href]="mailto(client.mail)"> {{ client.mail }}</a></td> 
+  <tbody *ngFor="let client of funcToServerService.clients">
+    <td>{{ client.first_name }}</td>
+    <td>{{ client.last_name }}</td>
+    <td>{{ client.city }}</td>
+    <td>{{ client.phone }}</td>
+    <td><a [attr.href]="mailto(client.mail)"> {{ client.mail }}</a></td>
   </tbody>
 </table>
 
 <input type="button" (click)="saveTable()" value="save">
-<input type="button" (click)="Loading()" value="Loading">
+<input type="button" (click)="funcToServerService.loadFromServer(selectFile.value)" value="Loading">

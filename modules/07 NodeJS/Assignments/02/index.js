@@ -1,23 +1,35 @@
 
 const http = require('http');
 const writeFile = require('./write-file');
+const readFile = require('./read-File');
+// const getAllFiles = require('./files');
+var url = require('url');
 
 http.createServer((req, res) => {
     // Set CORS headers
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-	res.setHeader('Access-Control-Request-Method', '*');
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Request-Method', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.setHeader('Access-Control-Allow-Headers', '*');
-    
-    let body = '';
-    
-    req.on('data', chunk => {
-        body += chunk.toString();
-    });
-    req.on('end', () => {
-        writeFile(body);
+
+    if (req.method === 'POST') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write('<h1 style="color: red">File was created</h1>');
-        res.end();
-    })
+        let data = '';
+        req.on('data', chunk => {
+            data += chunk.toString();
+        });
+
+        req.on('end', () => {
+            data = JSON.parse(data);
+            if (data["method"] === "POST") {
+                writeFile(JSON.stringify(data["data"]),data["fileName"]);
+            }
+
+            else if (data["method"] === "GET") {
+                content = readFile(data["fileName"]);
+                res.write(content);
+            } res.end();
+        })
+    }
+
 }).listen(5000);

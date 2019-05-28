@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Client {
-  first_name :string,
-  last_name :string,
-  city :string,
-  phone :string,
-  mail :string
-}
+import { FuncToServerService  } from "./func-to-server.service";
+import { Client } from "./Client.model";
 
 @Component({
   selector: 'app-root',
@@ -19,16 +13,12 @@ export class AppComponent  implements OnInit{
   
   clients:Client[];
   
-    constructor() {
-      this.clients = [
-        { first_name :"Matan", last_name :"Atiya", city :"Beer-Sheva", phone :"052-4404494", mail :"matan@gmail.com"},
-        { first_name :"Daniel", last_name :"Brosh", city :"Ashkelon", phone :"054-5796354", mail :"daniel@gmail.com"},
-        { first_name :"Uriel", last_name :"Alfasi", city :"Hafia", phone :"052-3396354", mail :"uriel@gmail.com"}
-      ]
+    constructor( private funcToServerService : FuncToServerService ) {
+      // this.clients = this.funcToServerService.clients;
     }
   
     ngOnInit(): void {
-      this.clients = this.clients.sort( (a,b)=> (a.first_name > b.first_name) ? 1 : ((b.first_name > a.first_name) ? -1 : 0))
+      this.funcToServerService.clients = this.funcToServerService.clients.sort( (a,b)=> (a.first_name > b.first_name) ? 1 : ((b.first_name > a.first_name) ? -1 : 0))
     }
   
     mailto(mail:string):string {
@@ -36,26 +26,9 @@ export class AppComponent  implements OnInit{
     }
 
     saveTable(){
-      console.log(this.clients);
-      fetch('http://localhost:5000', {
-        method: 'POST',
-        body: JSON.stringify(this.clients)
-      // }).then(response => response.text())
-      //   .then(data => {
-      //     console.log("DATA: " + data);
-      //     this.result = data;
-        });
+     this.funcToServerService.saveTofile(this.funcToServerService.clients);
     }
 
-    Loading(){
-      fetch('http://localhost:5000', {
-      }).then(response => response.text())
-        .then(data => {
-          console.log("DATA: " + data);
-          // this.clients = data;
-        });
-    }
-  
   }
   
 
