@@ -1,0 +1,33 @@
+.wrapper{
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -100px;
+}
+
+.nav{
+    text-align: center;
+}
+
+.nav input[type="radio"]{ 
+    border: 0px;
+    width: 50px;
+    height: 2em;
+    cursor: pointer;
+}
+
+.nav label{
+    width: 100px;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 10px; 
+}
+
+.nav input[type="text"]{
+    width: 140px;
+    border-radius: 5px;
+    margin-left: 20px;
+}

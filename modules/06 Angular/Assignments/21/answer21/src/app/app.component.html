@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="nav">
+    <input id="timer" type="radio" name="time" value="timer" (change)="isTimer=false" checked>
+    <label for="timer">Timer</label>
+    <input id="countdown" type="radio" name="time" value="countdown" (change)="isTimer=true">
+    <label for="countdown">Countdown</label>
+    <input type="text" placeholder="Start from..(minutes)" #start>
+  </div>
+  <div *ngIf="!isTimer; else isCountdown">
+    <app-timer [seconds]="seconds" [minutes]="minutes" (onStartEvent)="onStartTimer()" (onStopEvent)="onStop()"
+      (onResetEvent)="onReset()"></app-timer>
+  </div>
+  <ng-template #isCountdown>
+    <app-countdown [seconds]="seconds" [minutes]="minutes" (onStartEvent)="onStartCountdown()" (onStopEvent)="onStop()"
+      (onResetEvent)="onReset()"></app-countdown>
+  </ng-template>
+</div>

@@ -1,0 +1,10 @@
+<div class="wrapper-timer">
+  <div class="wrapper-time">
+    {{minutes| number:'2.'}}:{{seconds| number:'2.'}}
+  </div>
+  <div class="wrapper-buttons">
+      <button id="start-btn" type="button" (click)="onStartClick()" [disabled]= "startDisabled">Start</button>
+      <button id="stop-btn" type="button" (click)="onStopClick()" [disabled]= "stopDisabled">Stop</button>
+      <button id="reset-btn" type="button" (click)="onResetClick()" [disabled]= "resetDisabled">Reset</button>
+  </div>
+</div>

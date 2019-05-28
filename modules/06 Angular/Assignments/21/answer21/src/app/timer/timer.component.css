@@ -1,0 +1,45 @@
+.wrapper-timer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    margin: 20px;
+    border: 5px solid gray;
+    border-radius: 20px;
+    background-color: #E9E9E9; 
+}
+
+.wrapper-time{
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.wrapper-buttons{
+    margin-top: 20px;
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    margin: 0px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#start-btn{
+    background-color: #BDD9B0;
+    border:2px solid #81A6A6;
+}
+
+#stop-btn{
+    background-color: #D96459;
+    border:2px solid #F23827;
+}
+
+#reset-btn{
+    background-color: #81A6A6;
+    border:2px solid #4F6C73;
+}
