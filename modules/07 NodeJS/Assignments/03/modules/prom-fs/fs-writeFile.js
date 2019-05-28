@@ -6,7 +6,7 @@ return new Promise((resolve,reject)=>{
 
 fs.writeFile(fileName,info,(error)=>{
 
-if(error)reject(`error: ${error}`);
+if(error)reject(`error:${error}`);
 
 resolve(`file was writed`);
 

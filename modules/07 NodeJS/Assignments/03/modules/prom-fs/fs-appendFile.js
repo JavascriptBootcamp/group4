@@ -9,7 +9,7 @@ return new Promise((res,rej)=>{
 
         if(error)rej(`error: ${error}`);
 
-        res(`file updated`);
+        res(`file was updated`);
 
     });
 });

@@ -2,7 +2,7 @@ const writeFile = require('./modules/prom-fs/fs-writeFile');
 const readFile = require('./modules/prom-fs/fs-readFile');
 const appendFile = require('./modules/prom-fs/fs-appendFile');
 const unlinkFile = require('./modules/prom-fs/fs-unlink');
-const readFileIfExists = require('./modules/prom-fs/readFileIfExists');
+const readFileIfExists = require('./modules/prom-fs/readFileIfExists ');
 
 
 
@@ -10,7 +10,7 @@ const writeToFile = async (fileName, info) => {
 
     try {
 
-        const res = await writeFile(fileName);
+        const res = await writeFile(fileName,info);
         console.log(res)
     }
     catch (ex) {
@@ -18,7 +18,7 @@ const writeToFile = async (fileName, info) => {
     }
 }
 
-writeToFile('index.js', "who is the king?");
+writeToFile('index.js', "'We don’t see things as they are,");
 
 
 
@@ -26,7 +26,7 @@ const readFromFile = async fileName => {
 
     try {
         const res = await readFile(fileName);
-        console.log(res)
+        console.log("readFile:" + res)
     }
     catch (ex) {
         console.log(ex)
@@ -49,7 +49,7 @@ const appendToFile = async (fileName, info) => {
 
 }
 
-appendToFile('index.js', 'you know');
+appendToFile('index.js', "we see them as we are.'");
 
 
 
@@ -58,7 +58,7 @@ const readFile_IfExists = async (fileName) => {
 
     try {
         const res = await readFileIfExists(fileName);
-        console.log(res)
+        console.log("readFileIfExists:" + res)
     }
     catch (ex) {
         console.log(ex)

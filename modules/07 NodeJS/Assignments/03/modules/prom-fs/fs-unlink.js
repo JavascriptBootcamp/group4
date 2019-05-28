@@ -4,7 +4,7 @@ function unlinkFile(fileName){
     
     return new Promise((res,rej)=>{
     
-        fs.appendFile(fileName,(error)=>{
+        fs.unlink(fileName,(error)=>{
     
             if(error)rej(`error: ${error}`);
     
