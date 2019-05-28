@@ -8,10 +8,10 @@ const piece = (function () {
   };
   const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    if (pos.left + dx >= 0 && pos.left + dx <= window.innerWidth - this.el.innerWidth) {
+    if (pos.left + dx >= 0 && pos.left + dx <= window.innerWidth - pos.width) {
       this.el.style.left = `${pos.left + dx}px`;
     }
-    if (pos.top + dy >= 0 && pos.top + dy <= window.innerHeight - this.el.innerHeight) {
+    if (pos.top + dy >= 0 && pos.top + dy <= window.innerHeight - pos.height) {
       this.el.style.top = `${pos.top + dy}px`;
     }
   };
@@ -20,8 +20,8 @@ const piece = (function () {
     this.el.style.top = `${this.el.initY}px`;
   };
   const randomLocation = function () {
-    const CIRCLE_WIDTH = this.el.innerWidth;
-    const CIRCLE_HEIGHT = this.el.innerHeight;
+    const CIRCLE_WIDTH = piece.el.offsetWidth;
+    const CIRCLE_HEIGHT = piece.el.offsetHeight;
     const MAX_WIDTH = window.innerWidth;
     const MAX_HEIGHT = window.innerHeight;
     const randX = Math.random() * (MAX_WIDTH - (CIRCLE_WIDTH * 2)) + CIRCLE_WIDTH;
