@@ -27,14 +27,14 @@ function readFilePromise(filename) {
   });
 }
 
-function unlinkPromise() {
+function unlinkPromise(path) {
   return new Promise((result, reject) => {
     try {
       fs.unlink(path, error => {
         if (error) {
           reject(error);
         }
-        result(`file:${path} deleted`);
+        result(`file : ${path} deleted`);
       });
     } catch (ex) {
       reject(`Error: ${ex}`);
@@ -42,7 +42,7 @@ function unlinkPromise() {
   });
 }
 
-function writeFilePromise() {
+function writeFilePromise(path ,data) {
   return new Promise((result, reject) => {
     try {
       fs.writeFile(path, data, err => {
