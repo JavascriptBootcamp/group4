@@ -23,7 +23,7 @@ body {
 }
 .circle:hover{
   border: solid blue ;
-  background-color: white !important;
+  background-color: transparent !important;
 }
 #piece {
   position: absolute;
