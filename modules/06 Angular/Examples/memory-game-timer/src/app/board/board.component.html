@@ -1,0 +1,13 @@
+<div id="wrapper">
+  <div class="timer">Time: {{gameService.minutes| number:'2.'}}:{{gameService.seconds| number:'2.'}}</div>
+  <div *ngIf="!gameService.hasWon; else won">
+
+    <app-card *ngFor="let c of cards" [card]="c"></app-card>
+
+  </div>
+
+  <ng-template #won>
+    You Won in {{gameService.minutes}} minutes and {{gameService.seconds}} seconds!
+  </ng-template>
+
+</div>
