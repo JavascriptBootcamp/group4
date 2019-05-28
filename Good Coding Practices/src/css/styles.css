@@ -26,14 +26,9 @@ body {
   top: 100px;
   left: 50%;
   border:1px solid;
+  transition: 1s;
+  background-color:blue;
 }
 
 
 
-.hollow{
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  border:1px solid blue;
-  background-color: white;
-}

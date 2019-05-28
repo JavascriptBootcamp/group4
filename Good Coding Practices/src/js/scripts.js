@@ -1,113 +1,108 @@
-//api object
 
-const api = (function(){
 
-const temperature =  Math.floor(Math.random()*40);
+const getTemp = function () {
 
-const getColor = function() {
-switch(true){
-  case temperature < 10 : return "Blue";break;
-  case temperature > 11 && temperature < 20 : return "Green";break;
-  case temperature > 21 && temperature < 30 : return "Yellow";break;
-  case temperature > 30 : return "red";break;
-  default:return "Blue";break;
+  return fetch('http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=netanya')
+    .then(data => { console.log(data); return data.json() })
+    .then(res => { console.log(res); return getColor(res["current"]["temp_c"]) })
+    .catch(error => error)
 }
+
+const getColor = function (temp) {
+  if (temp <= 10) {
+    return "blue";
+  }
+  else if (temp >= 11 && temp <= 20) {
+    return "green";
+  }
+  else if (temp >= 21 && temp <= 30) {
+    return "yellow";
+  }
+  else if (temp > 30) {
+    return "red";
+  }
+
 };
 
-return{
-  getColor
-}
 
-})()
 
 // piece object
-const piece = (function(api) {
-  let el = null;
-  const color = api.getColor();
-  const init = function(el) {
+const piece = (function () {
+
+  const init = function (el) {
     this.el = el;
-    this.el.style.backgroundColor = color;
-    this.el.style.borderColor = color;
-
+    getTemp().then(res => { this.el.style.backgroundColor = res; this.el.style.borderColor = res; })
+      .catch(error => console.log(error));
   };
-  const moveDelta = function(dx, dy) {
+
+  const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    const el = this.el;
-    let x=pos.left,y=pos.top;
-    h = setInterval(function(){
-      if( dx !== 0){
-        if(x == pos.left + dx){
-          clearInterval(h);
-        }
-        x = x + dx/20;
-        el.style.left = `${x}px`;
-      }
-      if( dy !== 0){
-        if(y == pos.top + dy){
-          clearInterval(h);
-        }
-        y = y + dy/20;
-        el.style.top = `${y}px`;
-      }
-    }, 30);
+    if (dx > 0 && window.innerWidth - pos.left - pos.width > pos.width) {
+      this.el.style.left = pos.left + dx + "px";
+    }
+    if (dx < 0 && pos.left > pos.width) {
+      this.el.style.left = pos.left + dx + "px";
+    }
+    if (dy < 0 && pos.top > pos.height) {
+      this.el.style.top = pos.top + dy + "px";
+    }
+    if (dy > 0 && window.innerHeight - pos.top > pos.height) {
+      this.el.style.top = pos.top + dy + "px";
+    }
+
   };
 
-  const backToStartLocation = function(){
+  const backToStartLocation = function () {
     this.el.style.top = "100px";
     this.el.style.left = "50%";
-  
   }
 
-  const randomLocation = function(){
-    this.el.style.top = Math.floor(Math.random()*500) + "px";
-    this.el.style.left = Math.floor(Math.random()*80) + "%";
+  const randomLocation = function () {
+    const pos = this.el.getBoundingClientRect();
+    this.el.style.top = Math.floor(Math.random() * (window.innerHeight - pos.height)) + "px";
+    this.el.style.left = Math.floor(Math.random() * (window.innerWidth - pos.width)) + "px";
   }
 
-  const showHollow = function(isHollow){
-    if(isHollow)
-    this.el.style.backgroundColor = "white";
-    else
-    this.el.style.backgroundColor = color;
-  }
 
   return {
     init,
     moveDelta,
-    showHollow,
     backToStartLocation,
     randomLocation
   };
-})(api);
+})();
 
 function handleClick(ev) {
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
 }
 
-function showHollow(isHollow){
-  piece.showHollow(isHollow);
-}
-
-function backToStartLocation(){
-  piece.backToStartLocation();
-}
-
-function randomLocation(){
+document.getElementById("randomBtn").addEventListener("click", () => {
   piece.randomLocation();
-}
+})
+
+document.getElementById("backToStartBtn").addEventListener("click", () => {
+  piece.backToStartLocation();
+})
+
+document.getElementById("piece").addEventListener("mouseover", function () {
+  this.style.backgroundColor = "transparent";
+})
+document.getElementById("piece").addEventListener("mouseout", async function () {
+  this.style.backgroundColor = await getTemp().then(res => res).catch(error => console.log(error));;
+})
 
 function init() {
-  const arr = [ {btn:"btn-up",dx:0,dy:-100},
-    {btn:"btn-right",dx:100,dy:0},
-    {btn:"btn-down",dx:0,dy:100},
-    {btn:"btn-left",dx:-100,dy:0}
+  const arr = [{ btn: "btn-up", dx: 0, dy: -100 },
+  { btn: "btn-right", dx: 100, dy: 0 },
+  { btn: "btn-down", dx: 0, dy: 100 },
+  { btn: "btn-left", dx: -100, dy: 0 }
   ];
-  for(let i=0;i<arr.length;i++){
+  for (let i = 0; i < arr.length; i++) {
     const $btn = document.getElementById(arr[i].btn);
     $btn.dataset.dx = arr[i].dx;
     $btn.dataset.dy = arr[i].dy;
     $btn.addEventListener("click", handleClick);
   }
- 
 }
 
 window.addEventListener("DOMContentLoaded", event => {
