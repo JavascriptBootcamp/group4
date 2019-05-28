@@ -8,10 +8,10 @@ const piece = (function () {
   };
   const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    if (pos.left + dx >= 0 && pos.left + dx <= window.innerWidth - 100) {
+    if (pos.left + dx >= 0 && pos.left + dx <= window.innerWidth - this.el.innerWidth) {
       this.el.style.left = `${pos.left + dx}px`;
     }
-    if (pos.top + dy >= 0 && pos.top + dy <= window.innerHeight - 100) {
+    if (pos.top + dy >= 0 && pos.top + dy <= window.innerHeight - this.el.innerHeight) {
       this.el.style.top = `${pos.top + dy}px`;
     }
   };
@@ -20,8 +20,8 @@ const piece = (function () {
     this.el.style.top = `${this.el.initY}px`;
   };
   const randomLocation = function () {
-    const CIRCLE_WIDTH = 100;
-    const CIRCLE_HEIGHT = 100;
+    const CIRCLE_WIDTH = this.el.innerWidth;
+    const CIRCLE_HEIGHT = this.el.innerHeight;
     const MAX_WIDTH = window.innerWidth;
     const MAX_HEIGHT = window.innerHeight;
     const randX = Math.random() * (MAX_WIDTH - (CIRCLE_WIDTH * 2)) + CIRCLE_WIDTH;
@@ -44,12 +44,13 @@ const piece = (function () {
 
 const Api = (function () {
   let data = null;
-  const retriveData = function (url) {
-    fetch(url).then((res) => {
+  const retriveData = function (key) {
+    const url = "http://api.apixu.com/v1/current.json?";
+    fetch(url + key).then((res) => {
       return res.json();
+      return res;
     }).then((myJson) => {
-      this.data = JSON.stringify(myJson);
-      this.data = JSON.parse(this.data);
+      this.data = myJson;
       Api.setColorByCurrentTemp();
     });
   }
@@ -82,21 +83,23 @@ function handleClick(ev) {
 }
 
 function init() {
-  const NUM_0 = 0;
   const NUM_100 = 100;
   const NUM_MINUS_100 = -100;
   const $btnUp = document.getElementById("btn-up");
-  setDxDy($btnUp, NUM_0, NUM_MINUS_100);
+  setDxDy($btnUp, 0, NUM_MINUS_100);
+  $btnUp.addEventListener("click", handleClick);
   const $btnRight = document.getElementById("btn-right");
-  setDxDy($btnRight, NUM_100, NUM_0);
+  setDxDy($btnRight, NUM_100, 0);
+  $btnRight.addEventListener("click", handleClick);
   const $btnDown = document.getElementById("btn-down");
-  setDxDy($btnDown, NUM_0, NUM_100);
+  setDxDy($btnDown, 0, NUM_100);
+  $btnDown.addEventListener("click", handleClick);
   const $btnLeft = document.getElementById("btn-left");
-  setDxDy($btnLeft, NUM_MINUS_100, NUM_0);
-  addClickEventsMoveCircle($btnUp, $btnRight, $btnLeft, $btnDown);
+  setDxDy($btnLeft, NUM_MINUS_100, 0);
+  $btnLeft.addEventListener("click", handleClick);
   const $btnReset = document.getElementById("btn-reset");
   $btnReset.addEventListener("click", () => {
-    piece.resetLocation(NUM_0, NUM_0);
+    piece.resetLocation(0, 0);
   });
   const $randomize = document.getElementById("btn-randomize");
   $randomize.addEventListener("click", () => {
@@ -109,15 +112,10 @@ function setDxDy(el, dx, dy) {
   el.dataset.dy = dy;
 
 }
-function addClickEventsMoveCircle(...control) {
-  control.forEach((item) => {
-    item.addEventListener("click", handleClick);
-  });
-}
 
 window.addEventListener("DOMContentLoaded", event => {
-  const URL = "http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv";
-  Api.retriveData(URL);
+  const key = "key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv";
+  Api.retriveData(key);
   piece.init(document.getElementById("piece"));
   init();
 });
