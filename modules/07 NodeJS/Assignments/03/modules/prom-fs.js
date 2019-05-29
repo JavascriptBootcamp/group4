@@ -4,11 +4,16 @@ const fs = require('fs');
 function readFileIfExists(filename) {
     return new Promise((res, rej) => {
         try {
-            if (fs.exists(filename))
-                readFile(filename);
-        }
-        catch (ex) {
-            rej(`Error: The specified file does not exist ${ex}`);
+                fs.exists(filename, (exists) => {
+                if (exists)
+                    res(readFile(filename));
+                else
+                console.log (`Error: The specified file does not exist`);  
+                })
+            }
+        catch (ex) 
+        {
+            rej(`Error:${ex}`);
         }
     })
 }
@@ -81,4 +86,4 @@ function unlink(filename) {
 
 
 
-module.exports = { readFile, writeFile, appendFile, unlink , readFileIfExists };
+module.exports = { readFile, writeFile, appendFile, unlink, readFileIfExists };
