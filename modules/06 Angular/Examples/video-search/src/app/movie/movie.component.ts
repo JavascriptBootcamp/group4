@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoggerService } from '../logger.service';
 import { MovieService } from '../movie.service';
 import { FavoritesService } from '../favorites.service';
+import { ActorService } from '../actor.service';
 import { logTypes } from '../logTypes.model';
 
 @Component({
@@ -23,6 +24,8 @@ export class MovieComponent implements OnInit {
   // @Output('favoritesEventAlias') favoritesEvent = new EventEmitter<Movie>();
   endpoint: string;
   movieDetails: string[];
+  actors: string[];
+  actorDetails: string;
   condition: boolean;
   isClicked: boolean;
   activatedRoute: ActivatedRoute;
@@ -31,10 +34,13 @@ export class MovieComponent implements OnInit {
     activatedRoute: ActivatedRoute,
     private loggerService:LoggerService,
     private movieService: MovieService,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private actorService: ActorService
     ) {
     this.endpoint = rootUrl;
     this.movieDetails = [];
+    this.actors = [];
+    this.actorDetails = "";
     this.condition = true;
     this.isClicked = false;
     this.activatedRoute = activatedRoute;
@@ -69,6 +75,9 @@ export class MovieComponent implements OnInit {
       if (detail === "Ratings") {
         this.addRatings(data[detail]);
       }
+      else if (detail === "Actors") {
+        this.addActors(data[detail]);
+      }
       else {
         this.movieDetails.push(`${detail}: ${data[detail]}`)
       }
@@ -79,10 +88,19 @@ export class MovieComponent implements OnInit {
     ratings.map(rating => this.movieDetails.push(`${rating.Source}: ${rating.Value}`));
   }
 
+  addActors(actors) {
+    this.actors = actors.split(",");
+  }
+
   onFavoritesClick() {
     // this.favoritesEvent.emit(this.movie);
     this.favoritesService.toggleFavorite(this.movie);
     this.isClicked = !this.isClicked;
+  }
+
+  showActorDetails(actor) {
+    this.actorService.getActorDetails(actor)
+    .then( data => this.actorDetails = data )
   }
 
   width = this.getWidth();
