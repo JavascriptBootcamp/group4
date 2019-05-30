@@ -14,9 +14,9 @@ http.createServer((req, res) => {
     res.setHeader("Access-Control-Allow-Headers", "*");
 
     var query = url.parse(req.url, true).query;
-    const actorName = query.actorName;
-
-    const URL = `https://www.google.com/search?q=titanic&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjHj8Lo4L_iAhWoRhUIHcERDBQQ_AUIDigB&biw=1517&bih=694`;
+    const subjectOfPics = query.subjectOfPics;
+console.log(subjectOfPics);
+    const URL = `https://www.google.com/search?q=${subjectOfPics}&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjHj8Lo4L_iAhWoRhUIHcERDBQQ_AUIDigB&biw=1517&bih=694`;
 
     rp(URL).then(html => {
      
@@ -29,7 +29,7 @@ http.createServer((req, res) => {
             st.push(qs[i].getAttribute('src'));
        }
      // fs.writeFile('index.html',st ,(err)=>{}); 
-     console.log(st);
+     //console.log(st);
       res.end(st.toString());
     });
   })
