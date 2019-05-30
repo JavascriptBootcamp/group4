@@ -7,4 +7,16 @@
 <img src="ng-memory-game.jpg">
 <h2>npm modules</h2>
 <p>execute requests using the <a href="https://www.npmjs.com/package/request" target="_blank">request</a> npm module. Install it by running <code>npm init -y</code> and <code>npm install request</code>.</p>
-<p>read from querystring using the <a href="https://www.npmjs.com/package/query-string" target="_blank">query-string</a> npm module. Installation: <code>npm install query-string</code>.</p>
+<p>
+  read from querystring using the code from <code>group4/modules/06 Angular/Examples/video-search-server</code>:
+<code>
+<pre>
+const url = require('url');
+...
+const query = url.parse(req.url,true).query;
+const actorName = query.actorName;
+...
+</pre>
+</code>
+</p>
+<p>take the first 8 images from Google HTML page using <a href="https://www.npmjs.com/package/jsdom" target="_blank">jsdom</a> npm module. Install it by running <code>npm install jsdom</code>.</p>
