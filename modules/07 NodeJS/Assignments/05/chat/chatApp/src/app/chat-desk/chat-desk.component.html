@@ -1,0 +1,10 @@
+<h1>Chat</h1>
+<div>
+<p *ngFor="let massage of massages">
+</p>
+</div>
+<form id="chatForm" (submit)="sendMassage($event)" >
+  Massage:<input type="text">
+  Author:<input type="text">
+  <button></button>
+</form>
