@@ -6,13 +6,11 @@
 <p>initialize an Express application.</p>
 <p>support the following CRUD (Create, Read, Update, Delete) operations:</p>
 <ol>
-    <li>POST (Create): Create a new message. each chat message should contain the following fields: "ID" (random number), "Author", "Message" fields*</li>
+    <li>POST (Create): Create a new message. each chat message should contain the following fields: "ID" (random number), "Author", "Message" fields (all fields should be transferred as part of the request BODY)</li>
     <li>GET (Read): Read all chat messages</li>
-    <li>PUT (Update): Update "Message" field by "ID"*</li>
-    <li>DELETE (Delete): Delete "Message" field by "ID"*</li>
+    <li>PUT (Update): Update "Message" field by "ID" ("ID" should be transferred as querystring, message should be part of the request BODY)</li>
+    <li>DELETE (Delete): Delete "Message" field by "ID" ("ID" should be transferred as querystring)</li>
 </ol>
-<p>* all fields should be transferred as part of the request BODY</p>
-<p>** "ID" should be transferred as querystring</p>
 <h3>Bonus:</h3>
 <p>build an Angular application which displays all chat messages and a form with two fields: "Your Name" and "Message".<p>
 <p>submitting the form will initiate a POST request to the server and will add a new message.</p>
