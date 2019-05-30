@@ -12,7 +12,7 @@
     <li>DELETE (Delete): Delete "Message" field by "ID"*</li>
 </ol>
 <p>* all fields should be transferred as part of the request BODY</p>
-<p>** "ID" should be transferred as part of the request BODY</p>
+<p>** "ID" should be transferred as querystring</p>
 <h3>Bonus:</h3>
 <p>build an Angular application which displays all chat messages and a form with two fields: "Your Name" and "Message".<p>
 <p>submitting the form will initiate a POST request to the server and will add a new message.</p>
