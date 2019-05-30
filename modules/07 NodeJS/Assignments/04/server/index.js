@@ -5,6 +5,6 @@ const rp = require('request-promise');
 const url = require('url');
 
 const resp = rp('http://localhost:5000?actorName=israel').then( response => {
-
-console.log(response);
+    let ImgsList = response.split(",");
+console.log(ImgsList);
 });

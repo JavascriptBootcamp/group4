@@ -1,36 +1,36 @@
-const request = require('request');
-const http = require('http');
-const rp = require('request-promise');
-const url = require('url');
+const request = require("request");
+const http = require("http");
+const rp = require("request-promise");
+const url = require("url");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const fs = require("fs");
 
-
-http.createServer( (req, res) => {
+http.createServer((req, res) => {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    res.setHeader('Access-Control-Request-Method', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.setHeader("Access-Control-Request-Method", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+    res.setHeader("Access-Control-Allow-Headers", "*");
 
-    var query = url.parse(req.url,true).query;
+    var query = url.parse(req.url, true).query;
     const actorName = query.actorName;
 
-    console.log(actorName);
+    const URL = `https://www.google.com/search?q=titanic&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjHj8Lo4L_iAhWoRhUIHcERDBQQ_AUIDigB&biw=1517&bih=694`;
 
-   
-
-    rp('https://en.wikipedia.org/wiki/' + actorName)
-.then( html =>  { 
-    console.log (html);
-   const dom = new JSDOM(html);
-
-    //const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
-    console.log(dom.window.document.querySelectorAll("p").innerHTML);
-    //dom.window.document.querySelectorAll("li").textContent; // "Hello world"
-
-    res.end(dom.window.document.querySelectorAll("p").innerHTML);
-   // res.end(html)
-
-} ); 
-} ).listen(5000);
+    rp(URL).then(html => {
+     
+      const dom = new JSDOM(html);
+      
+       let st = [];
+       const IMG_LENGTH = 8;
+       const qs = dom.window.document.querySelectorAll('.images_table [src]');
+       for(let i = 0 ; i < IMG_LENGTH ;i++) {
+            st.push(qs[i].getAttribute('src'));
+       }
+     // fs.writeFile('index.html',st ,(err)=>{}); 
+     console.log(st);
+      res.end(st.toString());
+    });
+  })
+  .listen(5000);
