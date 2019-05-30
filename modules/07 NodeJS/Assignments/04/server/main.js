@@ -30,7 +30,7 @@ console.log(subjectOfPics);
        }
      // fs.writeFile('index.html',st ,(err)=>{}); 
      //console.log(st);
-      res.end(st.toString());
+      res.end(JSON.stringify(st));
     });
   })
   .listen(5000);

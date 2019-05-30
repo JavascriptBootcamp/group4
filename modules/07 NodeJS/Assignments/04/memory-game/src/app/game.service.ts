@@ -6,21 +6,42 @@ import { Card } from './card.model';
 })
 export class GameService {
   cards: Card[];
-  availableCards: Card[];
+  availableCards: Card[]= [];
+  imgsSrc;
   hasWon: boolean;
   isGameActive: boolean;
   constructor() {
     this.cards = [];
     this.hasWon = false;
     this.isGameActive = true;
-    this.initAvailableCards();
-    this.shuffle();
+    this.getPicsFromWeb("israel");
+
    }
    get gameCards(): Card[] {
      return this.cards;
    }
+
+   getPicsFromWeb(subjectOfPics){
+     const URL = `http://localhost:5000?subjectOfPics=${subjectOfPics}`;
+
+     fetch(URL)
+          .then(response => response.json())
+          .then(imglist=> {
+          this.imgsSrc =  imglist
+        this.initAvailableCards(),
+        this.shuffle();})
+          .catch(err =>{
+              console.log(err);
+            })
+
+   }
+
    initAvailableCards() {
-     this.availableCards = [
+    console.log(this.imgsSrc[0]);
+    this.imgsSrc.forEach(element => {
+      this.availableCards.push({content: element, selected: false, correct: false})
+    });
+    /*  this.availableCards = [
        {content: "cat", selected: false, correct: false},
        {content: "dog", selected: false, correct: false},
        {content: "goldfish", selected: false, correct: false},
@@ -29,7 +50,7 @@ export class GameService {
        {content: "mouse", selected: false, correct: false},
        {content: "puppy", selected: false, correct: false},
        {content: "rabbit", selected: false, correct: false},
-     ]
+     ] */
    }
    shuffle() {
     let randomCard, randomIndex;

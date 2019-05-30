@@ -9,8 +9,10 @@ import { GameService } from '../game.service';
 })
 export class CardComponent {
   @Input() card: Card;
-  
-  constructor(private gameService: GameService) { }
+  gameActive;
+  constructor(private gameService: GameService) {
+  this.gameActive = gameService.isGameActive;
+  }
 
   choose() {
     this.gameService.select(this.card);
