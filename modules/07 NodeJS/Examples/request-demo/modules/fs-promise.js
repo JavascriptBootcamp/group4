@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function readFilePromise(filename) {
-    return new Promise ( (res, rej) => {
+    const p = new Promise ( (res, rej) => {
         try{
             fs.readFile(filename, 'utf-8', (error, data) => {
                 if (error) rej(`Error: ${error}`);
@@ -13,6 +13,7 @@ function readFilePromise(filename) {
             rej(`Error: ${ex}`);
         }
     });
+    return p;
 }
 
 module.exports = { readFilePromise };

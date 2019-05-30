@@ -45,7 +45,8 @@ const url = 'http://www.google.com';
 
 // }
 
-const readFilePromise = async fileName => {
+// const readFilePromise = async fileName => {
+async function readFilePromise(fileName){
     try{
         const fileContent = await fileSystem.readFilePromise(fileName);
         console.log(fileContent);
