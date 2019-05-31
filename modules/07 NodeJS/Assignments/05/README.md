@@ -8,8 +8,8 @@
 <ol>
     <li>POST (Create): Create a new message. each chat message should contain the following fields: "ID" (random number), "Author", "Message" fields (all fields should be transferred as part of the request BODY)</li>
     <li>GET (Read): Read all chat messages</li>
-    <li>PUT (Update): Update "Message" field by "ID" ("ID" should be transferred as querystring, message should be part of the request BODY)</li>
-    <li>DELETE (Delete): Delete "Message" field by "ID" ("ID" should be transferred as querystring)</li>
+    <li>PUT (Update): Update "Message" field by "ID" ("ID" should be transferred as querystring, "Author" and "Message" should be part of the request BODY)</li>
+    <li>DELETE (Delete): Delete message details by "ID" ("ID" should be transferred as querystring)</li>
 </ol>
 <h3>Bonus:</h3>
 <p>build an Angular application which displays all chat messages and a form with two fields: "Your Name" and "Message".<p>
