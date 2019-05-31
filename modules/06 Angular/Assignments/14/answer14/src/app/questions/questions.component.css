@@ -1,0 +1,123 @@
+.form-wrapper{
+    width: 600px;
+    height: 320px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -160px;
+    border: 4px solid #F26938;
+    border-radius: 10px;
+    padding: 30px; 
+}
+
+.answers-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.answers-wrapper input{ 
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.answers-wrapper label{
+    float: left; 
+    width: 250px;
+    height: 30px; 
+    border-radius: 10px;
+    background-color: #F26938;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding: 6px 14px;
+    margin-bottom: 20px;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+[type="radio"]:checked + label{
+    background-color: #F21667;
+    color: #F2A81D;
+    font-weight: bold;
+}
+
+.question-header{
+    clear: both;
+}
+
+.question-wrapper{
+    text-align: center;
+}
+
+#submit{
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px; 
+}
+
+button{
+    width: 100px; 
+    height: 40px;
+    border-radius: 10px; 
+    color: black;
+    background-color: #F2275D;
+    border: #F21667;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    float: right;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.2);
+}
+
+.result-wrapper{ 
+    width: 600px;
+    height: 320px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -160px;
+    border: 4px solid #F26938;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.result-center{
+    width: 600px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -100px; 
+    text-align: center;
+}
+
+.timer{
+    font-size: 60px;
+}
+
+.btn-play-again{
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    margin-left: -65px;
+}
+
+.result-score{
+    font-size: 50px;
+    font-weight: bold;
+    margin: 30px 0px;
+}
+
+
+

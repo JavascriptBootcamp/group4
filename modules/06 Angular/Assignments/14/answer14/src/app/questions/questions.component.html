@@ -1,0 +1,36 @@
+<div class="form-wrapper">
+  <form #form="ngForm" (submit)="onSubmitForm($event)" [style.display]="isDisplayForm ? 'block' : 'none'">
+    <div class="question-wrapper">
+      <app-question>
+        <div class="timer" [style.visibility]="isTimerHidden">
+          {{timer}}
+        </div>
+        <h2 class="question-header">{{currentQuestion.question}}</h2>
+        <div class="answers-wrapper">
+          <input id="answer1-{{id}}" type="radio" name="quiz" value="{{currentQuestion.answer1}}" ngModel #answer1>
+          <label for="answer1-{{id}}">{{currentQuestion.answer1}}</label>
+          <input id="answer2-{{id}}" type="radio" name="quiz" value="{{currentQuestion.answer2}}" ngModel #answer2>
+          <label for="answer2-{{id}}">{{currentQuestion.answer2}}</label>
+          <input id="answer3-{{id}}" type="radio" name="quiz" value="{{currentQuestion.answer3}}" ngModel #answer3>
+          <label for="answer3-{{id}}">{{currentQuestion.answer3}}</label>
+          <input id="answer4-{{id}}" type="radio" name="quiz" value="{{currentQuestion.answer4}}" ngModel #answer4>
+          <label for="answer4-{{id}}">{{currentQuestion.answer4}}</label>
+        </div>
+        <div id="next-question">
+          <button (click)="onNextQuestion($event, form.value)"
+            [style.display]="isDisplayNext ? 'block' : 'none'">Next</button>
+        </div>
+      </app-question>
+    </div>
+    <div id="submit" [style.display]="isDisplaySubmit ? 'block' : 'none'">
+      <button class="btn-submit" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div class="result-wrapper" [style.display]="isDisplayResult ? 'block' : 'none'">
+  <div class="result-center">
+    <h2 class="result-score">Your score is: {{correctAnswers}}0/100</h2>
+    <a routerLink="../"><button class="btn-play-again">Play Again</button></a>
+  </div>
+</div>

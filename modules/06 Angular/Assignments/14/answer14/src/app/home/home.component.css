@@ -1,0 +1,23 @@
+.wrapper{
+    width: 800px;
+    padding: 5% 15%; 
+    margin: 0px auto;
+    text-align: center;
+}
+
+button{
+    width: 90px; 
+    height: 60px; 
+    padding: 10px;  
+    color: black;
+    background-color: #F26938;
+    font-size: 18px;
+    margin: 20px 20px;
+    border: #F26938; 
+    transition-property: border-radius;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+button:hover, button:focus, button:active{
+    border-radius: 1em;
+}
