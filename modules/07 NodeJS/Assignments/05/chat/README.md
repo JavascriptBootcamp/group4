@@ -1,27 +1,17 @@
-# Chat
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<p>create new folder.</p>
+<p>initialize <code>package.json</code> using <code>npm init</code>.<p>
+<p>install Express using <code>npm install express</code>
+<p>create a <code>main.js</code> file.</p>
+<p>create an empty array of chat messages.</p>
+<p>initialize an Express application.</p>
+<p>support the following CRUD (Create, Read, Update, Delete) operations:</p>
+<ol>
+    <li>POST (Create): Create a new message. each chat message should contain the following fields: "ID" (random number), "Author", "Message" fields (all fields should be transferred as part of the request BODY)</li>
+    <li>GET (Read): Read all chat messages</li>
+    <li>PUT (Update): Update "Message" field by "ID" ("ID" should be transferred as querystring, "Author" and "Message" should be part of the request BODY)</li>
+    <li>DELETE (Delete): Delete "Message" field by "ID" ("ID" should be transferred as querystring)</li>
+</ol>
+<h3>Bonus:</h3>
+<p>build an Angular application which displays all chat messages and a form with two fields: "Your Name" and "Message".<p>
+<p>submitting the form will initiate a POST request to the server and will add a new message.</p>
+<p>allow the rest of the operations as well: Updating a message (by clicking an "Edit" icon and modifying the message using a form) and Deleting a message (by clicking a "Delete" icon).</p>
