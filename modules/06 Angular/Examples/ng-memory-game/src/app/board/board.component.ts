@@ -13,6 +13,11 @@ export class BoardComponent {
     this.cards = this.gameService.gameCards;
   }
 
-  
+  searchImages(event ,serchInput:string){
+    event.preventDefault();
+    this.gameService.initAvailableCards(serchInput);
+    //this.gameService.shuffle();
+  }
+
 
 }

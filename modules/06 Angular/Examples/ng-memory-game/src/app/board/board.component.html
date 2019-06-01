@@ -1,5 +1,10 @@
 <div id="wrapper">
-
+  <div>
+    <form (submit)="searchImages($event,serchInput.value)">
+      <input type="text" placeholder="search image" #serchInput>
+      <button>Search</button>
+    </form>
+  </div>
   <div *ngIf="!gameService.hasWon; else won">
 
     <app-card *ngFor="let c of cards" [card]="c"></app-card>
