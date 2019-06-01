@@ -1,44 +1,107 @@
+const key = `dda6e762ae4f41efb7e173552192204`;
+const rootUrl = `http://api.apixu.com/v1/current.json?key=${key}`;
+const searchUrl = `${rootUrl}&q=tel%20aviv`;
+
 // piece object
-const piece = (function() {
+const piece = (function () {
   let el = null;
-  const init = function(el) {
+  const init = function (el) {
     this.el = el;
+    this.el.initX = el.getBoundingClientRect().left;
+    this.el.initY = el.getBoundingClientRect().top;
   };
-  const moveDelta = function(dx, dy) {
+  const moveDelta = function (dx, dy) {
     const pos = this.el.getBoundingClientRect();
-    this.el.style.left = `${pos.left + dx}px`;
-    this.el.style.top = `${pos.top + dy}px`;
+    const pieceWidth = this.el.offsetWidth;
+    const pieceHeight = this.el.offsetHeight;
+    if (((dx + pos.left) >= 0 && (dx + pos.left) <= (window.innerWidth - pieceWidth)) &&
+      ((dy + pos.top) >= 0 && (dy + pos.top) <= (window.innerHeight - pieceHeight))) {
+      this.el.style.left = `${pos.left + dx}px`;
+      this.el.style.top = `${pos.top + dy}px`;
+    }
   };
+  const resetToInitialLocation = function () {
+    this.el.style.left = `${this.el.initX}px`;
+    this.el.style.top = `${this.el.initY}px`;
+  };
+  const randomizeLocation = function () {
+    let randomX = Math.floor(Math.random() * (window.innerWidth - this.el.offsetWidth));
+    let randomY = Math.floor(Math.random() * (window.innerHeight - this.el.offsetHeight));
+    this.el.style.left = `${randomX}px`;
+    this.el.style.top = `${randomY}px`;
+  };
+  const setColorByTemp = function (temp) {
+    if (temp <= 10) {
+      color = "blue";
+    } else if (temp >= 11 && temp <= 20) {
+      color = "green";
+    } else if (temp >= 21 && temp <= 30) {
+      color = "yellow";
+    }
+    else color = "red";
+    this.el.style.background = color;
+    this.el.style.borderColor = color;
+  };
+
   return {
     init,
-    moveDelta
+    moveDelta,
+    resetToInitialLocation,
+    randomizeLocation,
+    setColorByTemp
   };
 })();
 
-function handleClick(ev) {
+function handleClick() {
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
 }
 
 function init() {
-  const $btnUp = document.getElementById("btn-up");
-  $btnUp.dataset.dx = 0;
-  $btnUp.dataset.dy = -100;
-  $btnUp.addEventListener("click", handleClick);
-  const $btnRight = document.getElementById("btn-right");
-  $btnRight.dataset.dx = 100;
-  $btnRight.dataset.dy = 0;
-  $btnRight.addEventListener("click", handleClick);
-  const $btnDown = document.getElementById("btn-down");
-  $btnDown.dataset.dx = 0;
-  $btnDown.dataset.dy = 100;
-  $btnDown.addEventListener("click", handleClick);
-  const $btnLeft = document.getElementById("btn-left");
-  $btnLeft.dataset.dx = -100;
-  $btnLeft.dataset.dy = 0;
-  $btnLeft.addEventListener("click", handleClick);
+  setBtnClick("btn-up", 0, -100);
+  setBtnClick("btn-right", 100, 0);
+  setBtnClick("btn-down", 0, 100);
+  setBtnClick("btn-left", -100, 0);
+  setBtnReset();
+  setRandomLocation();
 }
+
+const setBtnClick = function (btnId, xDataset, yDataset) {
+  const $btn = document.getElementById(btnId);
+  $btn.dataset.dx = xDataset;
+  $btn.dataset.dy = yDataset;
+  $btn.addEventListener("click", handleClick);
+};
+
+const setBtnReset = function () {
+  const $btnReset = document.getElementById("btn-reset");
+  $btnReset.addEventListener("click", () => {
+    piece.resetToInitialLocation();
+  });
+};
+
+const setRandomLocation = function () {
+  const $btnRandomize = document.getElementById("btn-randomize");
+  $btnRandomize.addEventListener("click", () => {
+    piece.randomizeLocation();
+  });
+};
+
+const initTemp = function () {
+  fetch(searchUrl)
+    .then(response => response.json())
+    .then(data => {
+      if (data) {
+        let temp = data.current.temp_c;
+        piece.setColorByTemp(temp);
+      }
+    })
+    .catch(err => {
+      throw err;
+    });
+};
 
 window.addEventListener("DOMContentLoaded", event => {
   piece.init(document.getElementById("piece"));
   init();
+  initTemp();
 });
