@@ -1,0 +1,46 @@
+body {
+  background: white;
+}
+
+#controls-wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+}
+.btn-arrow {
+  width: 30px;
+  height: 30px;
+}
+#btn-left {
+  margin-right: 32px;
+}
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: blue;
+}
+#piece {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transition: 3s ease;
+}
+#piece:hover {
+  background: transparent !important;
+  border: 1px solid blue;
+}
+#reset-btn-wrapper{
+  position: absolute;
+  width: 82px;
+  top: 120px;
+  right: 0px;
+  margin: 0px auto;
+}
+#randomize-btn-wrapper{
+  position: absolute;
+  width: 130px;
+  top: 150px;
+  right: 0px;
+}
