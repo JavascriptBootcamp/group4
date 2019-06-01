@@ -1,0 +1,32 @@
+#container{
+    width: 70%;
+    margin: 0 auto;
+}
+
+h1{
+    text-align: center;
+}
+
+#board{
+    background-color: aquamarine;
+    width: 70%;
+    height: 400px;
+    overflow: auto;
+    margin: 0 auto;
+    border-radius:5px;
+}
+
+#formDiv
+{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.messageView{
+    background-color: rgba(255, 255, 0, 0.678);
+    width: fit-content;
+    border-radius:3px;
+    padding: 8px;
+    font-size: 17px;
+    margin-left:5px; 
+}

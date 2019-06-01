@@ -1,58 +1,60 @@
 const express = require('express');
-
 const app = express();
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use(express.json()); // Middleware - for reading the BODY
 
-const messages = [{id:1,author:"dsd",massage:"sdsd"}];
+const messages = [];
 
 // Read
 app.get('/', (request, response) => {
-   
     responseJson(response, messages);
 });
 
 
- // Delete
- app.delete('/', (request, response) => {
-    const massageId = Number(request.query.id);
-    const massageIndex = getIndexById(messages, massageId);
-    messages.splice(massageIndex, 1);
+// Delete
+app.delete('/', (request, response) => {
+    const messageId = Number(request.query.id);
+    const messageIndex = getIndexById(messages, messageId);
+    messages.splice(messageIndex, 1);
     responseJson(response, "ok");
 });
 
 // Update
 app.put('/', (request, response) => {
-    const massageId = Number(request.query.id);
-    const massageIndex = getIndexById(messages, massageId);
-    messages[massageIndex].author = request.body.author;
-    messages[massageIndex].massage = request.body.massage;
+    const messageId = Number(request.query.id);
+    const messageIndex = getIndexById(messages, messageId);
+    messages[messageIndex].author = request.body.author;
+    messages[messageIndex].message = request.body.message;
     responseJson(response, "ok");
 });
 
 // Create
 app.post('/', (request, response) => {
-    const newMassageId = Math.floor(Math.random() * 10000);
-    const newMassageAuthor = request.body.author;
-    const newMassageMassage = request.body.massage;
-
+    const newMessageId = Math.floor(Math.random() * 10000);
+    const newMessageAuthor = request.body.author;
+    const newMessageMessage = request.body.message;
     messages.push({
-        id: newMassageId,
-        author: newMassageAuthor,
-        massage: newMassageMassage
+        id: newMessageId,
+        author: newMessageAuthor,
+        message: newMessageMessage
     });
-    responseJson(response, "ok");
+    response.json(messages[messages.length-1]);
+    // responseJson(response, "ok");
 });
 
 
 function getIndexById(arr, id) {
-    return arr.findIndex( item => item.id === id);
+    return arr.findIndex(item => item.id === id);
 }
 
 function responseJson(response, result) {
-    response.json({
-        result
-    });
+    response.json({result});
 }
 
 app.listen(8000, () => console.log("server is running in port 8000"));
