@@ -1,16 +1,16 @@
 <div id="controllers">
-  <select #selection>
+  <select #selection (change)="changeSelection(selection.value)">
     <option>POST</option>
     <option>GET</option>
     <option>PUT</option>
     <option>DELETE</option>
   </select>
-  <input type="text" placeholder="ID" #IDI>
-  <input type="text" placeholder="author" #authorI>
-  <input type="text" placeholder="message" #messageI>
-  <button (click)="go(selection.value,IDI.value,authorI.value,messageI.value)">Go</button>
+  <input type="text" placeholder="ID" [disabled]="isIDDisabled()" #IDI>
+  <input type="text" placeholder="author" [disabled]="isAuthorDisabled()" #authorI>
+  <input type="text" placeholder="message" [disabled]="isMessageDisabled()" #messageI>
+  <button (click)="run(selection.value,IDI.value,authorI.value,messageI.value)">Run</button>
 </div>
-<table class="title">
+<!-- <table class="title">
   <th>Id</th>
   <th>Author</th>
   <th>Message</th>
@@ -20,4 +20,17 @@
     <td>{{m.author}}</td>
     <td>{{m.message}}</td>
   </tr>
-</table>
+</table> -->
+
+<div id="wrapper">
+  <div id="message-column">
+    <div>ID</div>
+    <div>Author</div>
+    <div>Message</div>
+  </div>
+  <div class="message-row" *ngFor="let m of messageService.chat">
+      <div>{{m.id}}</div>
+      <div>{{m.author}}</div>
+      <div>{{m.message}}</div>
+  </div>
+</div>

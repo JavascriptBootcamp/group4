@@ -8,12 +8,7 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-
 app.use(bodyParser.json());
-
-// app.use(bodyParser.urlencoded({
-//     extended: true
-//   }));
 
 app.use(express.json()); // Middleware - for reading the BODY
 
@@ -37,8 +32,7 @@ app.delete('/', (request, response) => {
 app.put('/', (request, response) => {
     const currentId = Number(request.query.id);
     const currentIndex = getIndexById(chat, currentId);
-    // console.log("request.body", request.body);
-    chat[currentIndex].author = request.body.author;
+    // chat[currentIndex].author = request.body.author;
     chat[currentIndex].message = request.body.message;
     responseJson(response, "ok");
 });
@@ -46,7 +40,6 @@ app.put('/', (request, response) => {
 // Create
 app.post('/', (request, response) => {
     const id = Math.floor(Math.random() * 10000);
-    console.log("request.body:",request.body);
     const author = request.body.author;
     const message = request.body.message;
     chat.push({
