@@ -20,7 +20,6 @@ export class QuestionsComponent implements OnInit {
   isDisplayForm: boolean;
   isDisplaySubmit: boolean;
   isDisplayNext: boolean;
-  isTimerHidden: string;
   @ViewChild('form') form;
   @ViewChild('answer1') answer1: ElementRef;
   @ViewChild('answer2') answer2: ElementRef;
@@ -37,7 +36,6 @@ export class QuestionsComponent implements OnInit {
     this.isDisplayForm = true;
     this.isDisplaySubmit = false;
     this.isDisplayNext = true;
-    this.isTimerHidden = "visible";
   }
 
   ngOnInit() {
@@ -80,8 +78,7 @@ export class QuestionsComponent implements OnInit {
       this.onStartCountdown();
     }
     if (this.id === 11) {
-      this.isTimerHidden = "hidden";
-      this.answersDisabled();
+      this.onSubmitForm(null);
     }
   }
 
@@ -92,15 +89,10 @@ export class QuestionsComponent implements OnInit {
     this.answer4.nativeElement.checked = false;
   }
 
-  answersDisabled() {
-    this.answer1.nativeElement.disabled = true;
-    this.answer2.nativeElement.disabled = true;
-    this.answer3.nativeElement.disabled = true;
-    this.answer4.nativeElement.disabled = true;
-  }
-
   onSubmitForm(event: Event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     if (this.id === 10) {
       this.onNextQuestion(null, this.form.value);
     }
