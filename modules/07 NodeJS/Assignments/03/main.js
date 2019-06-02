@@ -9,27 +9,58 @@ const recipe = {
 const toJsonFile = [recipe];
 const fileName = "recipe.json";
 
-fs.stat(fileName, (err, stats) => {
+// fs.stat(fileName, (err, stats) => {
+//     if (err) {
+//         //Promise
+//         writeFileProm(fileName, "")
+//             .then(res => console.log(res))
+//             .catch(err => console.log(err));
+//     }
+//     else {
+//         toJsonFile.push({ Name: "shai" });
+//         appendFileProm(fileName, JSON.stringify(toJsonFile))
+//             .then(res => console.log(res))
+//             .catch(err => console.log(err));
+
+//         readFileProm(fileName)
+//             .then(res => console.log(res))
+//             .catch(err => console.log(err));
+
+//         unlikeFileProm(fileName)
+//             .then(res => console.log(res))
+//             .catch(err => console.log(err));
+
+
+//     }
+// })
+fs.stat(fileName, async (err, stats) => {
     if (err) {
-        //Promise
-        writeFileProm(fileName, "")
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        try {
+            const res = await writeFileProm(fileName, "");
+            console.log(res);
+        } catch (error) {
+            console.error(err);
+        }
     }
     else {
         toJsonFile.push({ Name: "shai" });
-        appendFileProm(fileName, JSON.stringify(toJsonFile))
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-
-        readFileProm(fileName)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-
-        unlikeFileProm(fileName)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-
-
+        try {
+            const res = await appendFileProm(fileName, JSON.stringify(toJsonFile));
+            console.log(res);
+        } catch (error) {
+            console.error(err);
+        }
+        try {
+            const res = await readFileProm(fileName);
+            console.log(res);
+        } catch (error) {
+            console.error(err);
+        }
+        try {
+            const res = await unlikeFileProm(fileName);
+            console.log(res);
+        } catch (error) {
+            console.error(err);
+        }
     }
 })
