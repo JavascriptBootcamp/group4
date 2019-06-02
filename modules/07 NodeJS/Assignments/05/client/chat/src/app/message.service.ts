@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import { Message } from './app.message.model';
 
 const urlServer = "http://localhost:8000";
+export enum Method{
+  POST = "POST",
+  GET = "GET",
+  PUT = "PUT",
+  DELETE = "DELETE"
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +19,7 @@ export class MessageService {
   }
 
   get() {
-    let conf = { method: 'GET'};
+    let conf = { method: Method.GET};
     fetch(urlServer,conf).then(data=>{
       this.chat = [];
       data.json().then(content=>{
@@ -26,7 +32,7 @@ export class MessageService {
     let body;
     body = { author:author, message:message
 };
-    let conf = { method: 'POST',
+    let conf = { method: Method.POST,
                  body: JSON.stringify(body),
                  headers:{'Content-Type': 'application/json'} };
 
@@ -41,7 +47,7 @@ export class MessageService {
 
   put(id: number, message: string) {
     let body = { message };
-    let conf = { method: 'Put',
+    let conf = { method: Method.PUT,
                  body: JSON.stringify(body),
                  headers:{'Content-Type': 'application/json'} };
     const newUrl = urlServer + `?id=${id}`;
@@ -55,7 +61,7 @@ export class MessageService {
 
   delete(id: number) {
     const newUrl = urlServer + `?id=${id}`;
-    let conf = { method: 'Delete',
+    let conf = { method: Method.DELETE,
                  headers:{'Content-Type': 'application/json'} };
     fetch(newUrl,conf).then(data=>{
       data.text().then(content=>{
@@ -68,16 +74,16 @@ export class MessageService {
   run(method: string, id: string, author: string, message: string) {
     console.log("method:",method);
     switch (method) {
-      case "POST":
+      case Method.POST:
         this.post(author, message);
         break;
-      case "GET":
+      case Method.GET:
         this.get();
         break;
-      case "PUT":
+      case Method.PUT:
         this.put(+id, message);
         break;
-      case "DELETE":
+      case Method.DELETE:
         this.delete(+id);
         break;
     }

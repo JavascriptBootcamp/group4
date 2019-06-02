@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Message } from './app.message.model';
 import { MessageService } from './message.service';
+import { Method } from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
 
   constructor(private messageService: MessageService){
     this.chat = [];
-    this.selection = "POST";
+    this.selection = Method.POST;
 
   }
   run(selection: string, id: string, author: string, message: string){
@@ -28,14 +29,14 @@ export class AppComponent {
   }
 
   isIDDisabled(): boolean{
-    return this.selection === "POST" || this.selection === "GET";
+    return this.selection === Method.POST || this.selection === Method.GET;
   }
 
   isAuthorDisabled(): boolean{
-    return ! (this.selection === "POST");
+    return ! (this.selection === Method.POST);
   }
 
   isMessageDisabled(): boolean{
-    return this.selection === "DELETE" || this.selection === "GET";
+    return this.selection === Method.DELETE || this.selection === Method.GET;
   }
 }
