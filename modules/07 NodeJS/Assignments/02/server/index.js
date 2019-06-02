@@ -1,6 +1,6 @@
 const http = require('http');
 const writeFile = require('./modules/write-file');
-// const readFile = require('./modules/read-file');
+const readFile = require('./modules/read-file');
 
 http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -10,12 +10,18 @@ http.createServer((req, res) => {
 
     let body = '';
     req.on('data', chunk => {
-        body += chunk.toString();
+        body += chunk;
     });
     req.on('end', () => {
-        writeFile(body);
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(body);
+        body = JSON.parse(body);
+        if (body["method"] === "POST") {
+            writeFile(JSON.stringify(body["body"]), body["fileName"]);
+        }
+        else if (body["method"] === "GET") {
+            let data = readFile(body["fileName"]);
+            res.write(data);
+        }
         res.end();
     })
 }).listen(5000);

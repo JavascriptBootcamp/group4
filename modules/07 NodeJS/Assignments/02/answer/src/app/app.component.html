@@ -1,4 +1,11 @@
 <h1>My Clients:</h1>
+<div *ngIf="clientsService.fileNames.length">
+  <label for="selectFile">Contacts Files:</label>
+  <select name="selectFile" id="selectFile" #selectFile>
+    <option [value]="file" *ngFor="let file of clientsService.fileNames">{{file}}</option>
+  </select>
+</div>
+
 <table>
   <thead bgcolor="#FFCCFF">
     <th>First Name</th>
@@ -7,7 +14,7 @@
     <th>Phone Number</th>
     <th>Email Address</th>
   </thead>
-  <tbody *ngFor="let client of clients">
+  <tbody *ngFor="let client of clientsService.clients">
     <td>{{ client.first_name }}</td>
     <td>{{ client.last_name }}</td>
     <td>{{ client.city }}</td>
@@ -16,7 +23,4 @@
   </tbody>
 </table>
 <button (click)="save()">Save clients</button>
-
-<div>
-  {{result}}
-</div>
+<button *ngIf="clientsService.fileNames.length" (click)="load(selectFile.value)">Load Clients</button>
