@@ -2,7 +2,7 @@
   <form #form="ngForm" (submit)="onSubmitForm($event)" [style.display]="isDisplayForm ? 'block' : 'none'">
     <div class="question-wrapper">
       <app-question>
-        <div class="timer" [style.visibility]="isTimerHidden">
+        <div class="timer">
           {{timer}}
         </div>
         <h2 class="question-header">{{currentQuestion.question}}</h2>
