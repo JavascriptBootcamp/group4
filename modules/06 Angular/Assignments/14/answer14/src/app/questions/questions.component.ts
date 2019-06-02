@@ -101,6 +101,9 @@ export class QuestionsComponent implements OnInit {
 
   onSubmitForm(event: Event) {
     event.preventDefault();
+    if (this.id === 10) {
+      this.onNextQuestion(null, this.form.value);
+    }
     this.isDisplayForm = false;
     this.isDisplayResult = true;
   }
