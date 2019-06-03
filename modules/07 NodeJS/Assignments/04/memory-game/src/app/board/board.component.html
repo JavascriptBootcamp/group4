@@ -1,5 +1,7 @@
 <div id="wrapper">
-
+  <label for="subject">Subject : </label>
+ <input type="text" #subject id="subject" value="titanic">
+ <button (click) = "startToPlay()">PLAY!</button>
   <div *ngIf="!gameService.hasWon; else won">
 
     <app-card *ngFor="let c of cards" [card]="c"></app-card>

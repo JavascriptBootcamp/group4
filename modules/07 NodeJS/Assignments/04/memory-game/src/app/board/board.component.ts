@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit,
+  ElementRef,
+  ViewChild,
+  DoCheck} from '@angular/core';
 import { GameService } from '../game.service';
 import { Card } from '../card.model';
 
@@ -7,12 +10,23 @@ import { Card } from '../card.model';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent {
+export class BoardComponent implements AfterViewInit{
   cards: Card[];
-  constructor(private gameService: GameService) {
-    this.cards = this.gameService.gameCards;
+  @ViewChild ('subject') subject:ElementRef;
+   constructor(private gameService: GameService) {
+
   }
 
-  
 
+ngAfterViewInit(){
+  this.startToPlay();
+}
+
+
+startToPlay() {
+console.log(this.subject.nativeElement.value);
+  this.gameService.cards = [];
+  this.gameService.getPicsFromWeb(this.subject.nativeElement.value);
+  this.cards = this.gameService.gameCards;
+}
 }
