@@ -1,19 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Message } from './app.message.model';
+import { Imessage } from './app.message.model';
+import { Method } from './method.model';
 
 const urlServer = "http://localhost:8000";
-export enum Method{
-  POST = "POST",
-  GET = "GET",
-  PUT = "PUT",
-  DELETE = "DELETE"
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  chat: Message[];
+  chat: Imessage[];
   constructor() {
     this.chat = [];
   }

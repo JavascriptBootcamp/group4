@@ -5,7 +5,7 @@
     <option>PUT</option>
     <option>DELETE</option>
   </select>
-  <input type="text" placeholder="ID" [disabled]="isIDDisabled()" #IDI>
+  <input type="text" placeholder="ID" [disabled]="isIDDisabled()" #IDI hidden>
   <input type="text" placeholder="author" [disabled]="isAuthorDisabled()" #authorI>
   <input type="text" placeholder="message" [disabled]="isMessageDisabled()" #messageI>
   <button (click)="run(selection.value,IDI.value,authorI.value,messageI.value)">Run</button>
@@ -23,14 +23,19 @@
 </table> -->
 
 <div id="wrapper">
-  <div id="message-column">
+  <!-- <div id="message-column">
     <div>ID</div>
     <div>Author</div>
     <div>Message</div>
-  </div>
-  <div class="message-row" *ngFor="let m of messageService.chat">
+  </div> -->
+  <!-- <div class="message-row" *ngFor="let m of messageService.chat">
       <div>{{m.id}}</div>
       <div>{{m.author}}</div>
       <div>{{m.message}}</div>
+  </div> -->
+  <div *ngFor="let m of messageService.chat"> 
+   {{m.author}} : {{m.message}}
+   <button (click)="onDeleteClicked(m.id)">Delete</button>
+   <button (click)="onEditClicked(m)">Edit</button>
   </div>
 </div>
