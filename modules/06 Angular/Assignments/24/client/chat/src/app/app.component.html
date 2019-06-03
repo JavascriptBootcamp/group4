@@ -1,0 +1,47 @@
+<div id="controllers">
+  <select #selection (change)="changeSelection(selection.value)">
+    <option>POST</option>
+    <option>GET</option>
+    <option>PUT</option>
+    <option>DELETE</option>
+  </select>
+  <input type="text" placeholder="ID" [disabled]="isIDDisabled()" #IDI hidden>
+  <input type="text" placeholder="author" [disabled]="isAuthorDisabled()" #authorI>
+  <input type="text" placeholder="message" [disabled]="isMessageDisabled()" #messageI>
+  <button (click)="run(selection.value,IDI.value,authorI.value,messageI.value)">Run</button>
+
+  <div>
+    <input type="text" required minlength="3" placeholder="search message" #searchI>
+    <button (click)="onSearchMessage(searchI.value)">Search</button>
+  </div>
+</div>
+<!-- <table class="title">
+  <th>Id</th>
+  <th>Author</th>
+  <th>Message</th>
+
+  <tr class="message-row" *ngFor="let m of messageService.chat">
+    <td>{{m.id}}</td>
+    <td>{{m.author}}</td>
+    <td>{{m.message}}</td>
+  </tr>
+</table> -->
+
+<div id="wrapper">
+  <!-- <div id="message-column">
+    <div>ID</div>
+    <div>Author</div>
+    <div>Message</div>
+  </div> -->
+  <!-- <div class="message-row" *ngFor="let m of messageService.chat">
+      <div>{{m.id}}</div>
+      <div>{{m.author}}</div>
+      <div>{{m.message}}</div>
+  </div> -->
+  <div *ngFor="let m of messageService.chat">
+    {{m.author}} : {{m.message}}
+    <button (click)="onDeleteClicked(m.id)">Delete</button>
+    <button (click)="onEditClicked(m)">Edit</button>
+  </div>
+  <button (click)="loadMore()" [hidden]="isLoadMoreHidden" [disabled]="!messageService.isInSearch">Load More</button>
+</div>
