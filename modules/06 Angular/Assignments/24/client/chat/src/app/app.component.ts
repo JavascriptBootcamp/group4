@@ -30,7 +30,7 @@ export class AppComponent {
   isLoadMoreHidden: boolean;
   minLengthFlag: boolean;
   authorReqFlag: boolean;
-
+  mode: string;
 
   constructor(private messageService: MessageService) {
     this.chat = [];
@@ -42,9 +42,14 @@ export class AppComponent {
     this.authorReqFlag = false;
   }
 
-  onSubmit() {
+  onSubmit(e) {
     this.authorReqFlag = false;
     this.minLengthFlag = false;
+    if(this.mode === "search"){
+      this.searchMessage();
+      this.mode = "";
+      return;
+    }
 
     // Input error handler
     switch (this.method) {
@@ -70,6 +75,8 @@ export class AppComponent {
         if (!messageI || (messageI && messageI.length < 4)) {
           this.minLengthFlag = true;
           this.messageService.clearChat();
+          this.clearInputs();
+          return;
         }
         if (!authorI || (authorI && authorI.length === 0)) {
             this.authorReqFlag = true;
@@ -123,14 +130,20 @@ export class AppComponent {
   }
 
   onSearchMessage(searchKey: string) {
+    this.mode = "search";
+    this.searchKey = searchKey;
+
+  }
+
+  searchMessage(){
     this.isLoadMoreHidden = true;
     this.isLoadMoreDisabled = false;
     this.messageService.isInSearch = false;
-    this.searchKey = searchKey;
 
     this.messageService.clearChat();
-    this.messageService.searchMessage(searchKey, 1);
-    
+    this.messageService.searchMessage(this.searchKey, 1);
+
+
     if (this.messageService.isInSearch)
       this.isLoadMoreHidden = false;
   }

@@ -1,4 +1,4 @@
-<form action="" #f="ngForm" (submit)="onSubmit()">
+<form action="" #f="ngForm" (submit)="onSubmit($event)">
     <div id="controllers" ngModelGroup="chatinputs" #nameCtrl="ngModelGroup">
       <select name="_method" [(ngModel)]="method" #selection="ngModel" (change)="changeSelection(selection.value)">
         <option >POST</option>
@@ -14,12 +14,13 @@
       <div *ngIf="authorReqFlag">* Author is required</div>
     
     </div>
-    </form>
-
     <div>
-        <input type="text" required placeholder="search message" #searchI>
+        <input type="text" minlength="3" placeholder="search message" #searchI>
         <button (click)="onSearchMessage(searchI.value)">Search</button>
       </div>
+    </form>
+
+ 
     <!-- <table class="title">
       <th>Id</th>
       <th>Author</th>
