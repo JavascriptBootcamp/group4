@@ -1,0 +1,32 @@
+<form #fAdd="ngForm" (submit)="onSubmitForm(fAdd)">
+  <label for="username">Your Name *</label>
+  <input type="text" id="username" [ngModel]="usernameModel" #usernameRef="ngModel" name="username" required />
+
+  <label for="message">Your Message *</label>
+  <input type="text" id="message" [ngModel]="messageModel" #messageRef="ngModel" name="message" required />
+
+<button [disabled]="fAdd.invalid">Send</button>
+</form>
+
+
+<app-search></app-search>
+
+<div *ngIf="searchClicked">
+  
+<div *ngIf="messages.length>0;else searchResultMessage">
+  <h3>Messages:</h3>
+  <app-message *ngFor="let message of messages">
+    <div>
+      {{message.author}}:{{message.message}}
+    </div>
+</app-message>
+<button [disabled]="!isloadMore" (click)="loadMore()">Load More</button>
+</div>
+
+<ng-template #searchResultMessage>
+   <strong>Not Found</strong>
+</ng-template>
+
+</div>
+
+<router-outlet></router-outlet>
