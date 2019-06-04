@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
 
     this.chatService.onSearchClicked.subscribe(
-      (obj:{searchValue:string,searchClicked:boolean})=>{
+      (obj)=>{
         this.searchClicked = obj.searchClicked;
         if(this.searchClicked){
           this.searchStartIndex = 0;
