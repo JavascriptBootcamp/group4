@@ -16,11 +16,18 @@ body {
   margin-right: 32px;
 }
 .circle {
-  width: 100px;
-  height: 100px;
+  width: 98px;
+  height: 98px;
+  border: 2px solid blue;
   border-radius: 50px;
   background: blue;
 }
+
+div.circle:hover { 
+  background: white;
+  border-color: blue;
+}
+
 #piece {
   position: absolute;
   top: 100px;
