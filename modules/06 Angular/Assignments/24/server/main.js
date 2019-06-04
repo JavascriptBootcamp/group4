@@ -31,7 +31,6 @@ app.get('/', (request, response) => {
 
  // Delete
 app.delete('/', (request, response) => {
-    // const partyId = parseInt(request.query.id, 10);
     const currentId = Number(request.query.id);
     const currentIndex = getIndexById(chat, currentId);
     chat.splice(currentIndex, 1);
@@ -76,10 +75,8 @@ function getSearchResult(searchKey){
         page = Math.ceil(filteredChat.length/steps);
     
     let currentFilteredChat = [];
-    console.log("i-start:",(page-1)*steps, "i-end:",(page)*steps);
     for(let i=(page-1)*steps;i< (page)*steps && i<filteredChat.length;i++)
         currentFilteredChat.push(filteredChat[i]);
-    console.log("currentFilteredChat:",currentFilteredChat);
 
     return currentFilteredChat;
 }

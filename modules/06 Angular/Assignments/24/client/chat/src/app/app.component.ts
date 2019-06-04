@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Imessage } from './app.message.model';
 import { MessageService } from './message.service';
 import { Method } from './method.model';
+import { NgForm } from '@angular/forms';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-root',
@@ -10,105 +12,140 @@ import { Method } from './method.model';
 })
 
 export class AppComponent {
-  @ViewChild("selection")
-  methodElement: ElementRef;
-
-  @ViewChild("IDI")
-  idElement: ElementRef;
-
-  @ViewChild("authorI")
-  authorElement: ElementRef;
-
-  @ViewChild("messageI")
-  messageElement: ElementRef;
-
   title = 'chat';
+  @ViewChild("f") form;
+  // @ViewChild("selection") methodElement;
+  // @ViewChild("IDI") idElement;
+  // @ViewChild("authorI") authorElement;
+  // @ViewChild("messageI") messageElement;
+
   method: string;
+  id: number;
+  author: string;
+  message: string;
+
   chat: Imessage[];
   searchKey: string;
   isLoadMoreDisabled: boolean;
   isLoadMoreHidden: boolean;
+  minLengthFlag: boolean;
+  authorReqFlag: boolean;
 
 
-  constructor(private messageService: MessageService){
+  constructor(private messageService: MessageService) {
     this.chat = [];
     this.method = Method.POST;
     this.isLoadMoreDisabled = false;
     this.isLoadMoreHidden = true;
-    this.searchKey ='';
-
+    this.searchKey = '';
+    this.minLengthFlag = false;
+    this.authorReqFlag = false;
   }
-  run(selection: string, id: string, author: string, message: string){
+
+  onSubmit() {
+    this.authorReqFlag = false;
+    this.minLengthFlag = false;
+
+    // Input error handler
+    switch (this.method) {
+      case Method.GET: {
+        break;
+      }
+
+      case Method.PUT: {
+        let authorI: string = this.form.controls.chatinputs.controls._author.value;
+        if (!authorI || (authorI && authorI.length === 0)) {
+          this.authorReqFlag = true;
+          this.messageService.clearChat();
+          this.clearInputs();
+          return;
+        }
+        break;
+      }
+
+      case Method.POST: {
+        let messageI: string = this.form.value.chatinputs._message;
+        let authorI: string = this.form.controls.chatinputs.controls._author.value;
+
+        if (!messageI || (messageI && messageI.length < 4)) {
+          this.minLengthFlag = true;
+          this.messageService.clearChat();
+        }
+        if (!authorI || (authorI && authorI.length === 0)) {
+            this.authorReqFlag = true;
+            this.messageService.clearChat();
+            this.clearInputs();
+          return;
+        }
+        break;
+      }
+    }
+
+    this.run(this.method, this.id, this.author, this.message);
+  }
+
+  clearChat(){
+    this.messageService.clearChat();
+  }
+
+  run(selection: string, id: number, author: string, message: string) {
+    this.messageService.run(selection, id, author, message);
+    this.clearInputs();
+  }
+
+  changeSelection(selection) {
     this.method = selection;
-    this.messageService.run(selection,id,author,message);
-    //this.clearInputs();
   }
 
-  changeSelection(selection){
-    this.method = selection;
-  }
-
-  isIDDisabled(): boolean{
+  isIDDisabled(): boolean {
     return this.method === Method.POST || this.method === Method.GET;
   }
 
-  isAuthorDisabled(): boolean{
-    return ! (this.method === Method.POST);
+  isAuthorDisabled(): boolean {
+    return !(this.method === Method.POST);
   }
 
-  isMessageDisabled(): boolean{
+  isMessageDisabled(): boolean {
     return this.method === Method.DELETE || this.method === Method.GET;
   }
 
-  onDeleteClicked(id: string){
-    this.messageService.run(Method.DELETE,id,null,null);
+  onDeleteClicked(id: number) {
+    this.messageService.run(Method.DELETE, id, null, null);
   }
 
-  onEditClicked(m: Imessage){
-    // console.log("this.idElement:",this.idElement);
-    // console.log("this.messageElement:",this.messageElement);
-    // console.log("this.authorElement:",this.authorElement);
+  onEditClicked(m: Imessage) {
+    this.id = m.id;
+    this.message = m.message;
+    this.author = m.author;
 
-    this.idElement.nativeElement.value = m.id;
-    this.messageElement.nativeElement.value = m.message;
-    this.authorElement.nativeElement.value = m.author;
-
-    this.methodElement.nativeElement.value = Method.PUT;
+    this.method = Method.PUT;
 
   }
 
-  onSearchMessage(searchKey: string){
+  onSearchMessage(searchKey: string) {
     this.isLoadMoreHidden = true;
     this.isLoadMoreDisabled = false;
     this.messageService.isInSearch = false;
-    this.isLoadMoreHidden = true;
-
     this.searchKey = searchKey;
-    console.log("searchKey:",searchKey);
-    this.messageService.searchMessage(searchKey,1);
-    if(this.messageService.isInSearch)
+
+    this.messageService.clearChat();
+    this.messageService.searchMessage(searchKey, 1);
+    
+    if (this.messageService.isInSearch)
       this.isLoadMoreHidden = false;
   }
 
-  loadMore(){
-    // this.isLoadMoreHidden = true;
-    // this.isLoadMoreDisabled = false;
-
+  loadMore() {
     this.messageService.loadMore(this.searchKey);
-    if(!this.messageService.isInSearch)
+    if (!this.messageService.isInSearch)
       this.isLoadMoreDisabled = true;
-
-
-    // this.isLoadMoreHidden = !this.messageService.isInSearch;
-    // this.isLoadMoreDisabled = !this.isLoadMoreHidden;
-
   }
 
-  clearInputs(){
-    this.idElement.nativeElement.value = "";
-    this.messageElement.nativeElement.value ="";
-    this.authorElement.nativeElement.value = "";
-    this.methodElement.nativeElement.value = Method.GET;
+  clearInputs() {
+    // this.id = "";
+    this.message = "";
+    this.author = "";
+    this.method = Method.GET;
     this.isLoadMoreHidden = true;
     this.isLoadMoreDisabled = false;
     this.searchKey = '';

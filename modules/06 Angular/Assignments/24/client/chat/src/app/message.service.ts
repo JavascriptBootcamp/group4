@@ -23,7 +23,6 @@ export class MessageService {
   get(query='') {
     let conf = { method: Method.GET};
     let url = this.urlServer + query;
-    console.log("url:",url);
     if(!this.isInSearch){
       this.isInSearch = true;
       this.chat = [];
@@ -31,7 +30,6 @@ export class MessageService {
     fetch(url,conf).then(data=>{
       // this.chat = [];
       data.json().then(content=>{
-        console.log("result:",content.result,content.result.length>0);
         if(content.result.length>0){
           this.chat=this.chat.concat(content.result);
           if(content.result.length < step)
@@ -53,7 +51,6 @@ export class MessageService {
 
     fetch(this.urlServer,conf).then(data=>{
       data.text().then(content=>{
-        console.log(content);
         this.get();
       })
     });
@@ -69,7 +66,6 @@ export class MessageService {
     fetch(newUrl,conf).then(data=>{
       data.text().then(content=>{
         this.get();
-        console.log(content);
       })
     });
   }
@@ -81,15 +77,18 @@ export class MessageService {
     fetch(newUrl,conf).then(data=>{
       data.text().then(content=>{
         this.get();
-        console.log(content);
       })
     });
   }
 
-  run(method: string, id: string, author: string, message: string) {
+  clearChat(){
+    this.chat = [];
+  }
+
+  run(method: string, id: number, author: string, message: string) {
     this.page = 1;
     this.chat = [];
-    console.log("method:",method);
+    this.isInSearch = false;
     switch (method) {
       case Method.POST:
         this.post(author, message);
@@ -108,13 +107,13 @@ export class MessageService {
 
   searchMessage(searchKey: string, page: number){
     this.page = page;
-    // console.log("page:",Math.floor(this.page));
+    // if(this.page === 1)
+    //   this.chat = [];
     this.get(`?searchKey=${searchKey}&page=${Math.floor(page)}`);
   }
 
   // onSearchMessage(searchKey: string, page: number=1){
   //   this.searchMessage(searchKey,page);
-  //     console.log("page:",Math.floor(this.page));
   //     this.get(`?searchKey=${searchKey}&page=${Math.floor(page)}`);
   // }
 
