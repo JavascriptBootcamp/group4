@@ -1,0 +1,43 @@
+<form #fAdd="ngForm" (submit)="onSubmitForm(fAdd)" *ngIf="!isEditing">
+  <label for="username">Your Name *</label>
+  <input type="text" id="username" [ngModel]="usernameModel" #usernameRef="ngModel" name="username" required />
+  <label for="message">Your Message *</label>
+  <input type="text" id="message" [ngModel]="messageModel" #messageRef="ngModel" name="message" required />
+  <button [disabled]="fAdd.invalid">Send</button>
+</form>
+
+<form #fUpdate="ngForm" (submit)="onUpdateForm(fUpdate)" *ngIf="isEditing">
+  <label for="message">Your Message *</label>
+  <input type="text" id="message" [ngModel]="messageModel" #messageRef="ngModel" name="message" required />
+  <button [disabled]="fUpdate.invalid">Update</button>
+</form>
+
+<br>
+
+<form ngNativeValidate (submit)="onSubmitSearch(valueSearch.value)">
+  <input type="text" placeholder="Search..." minlength="3" required #valueSearch>
+  <input type="submit" value="Go">
+</form>
+
+<div id="messages" *ngIf="!showSearchResult else showResult ">
+  <h3>Messages:</h3>
+  <ul *ngFor="let messageContent of messages">
+    <li><span id="author">{{ messageContent.author }}:</span> {{ messageContent.message }}&nbsp;
+      <button (click)="deleteMessage(messageContent.id)">Delete</button>
+      <button (click)="editMessage(messageContent)">Edit</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #showResult>
+    <h3>Search Results:</h3>
+  <div class="cssMessegeA"  *ngFor="let messageContent of resultSearch; index as i">
+    <span class="cssMessegeB" *ngIf="i<numberOfSearchResults">
+      <span id="author">{{ messageContent.author }}:</span> {{ messageContent.message }}&nbsp;
+      <button (click)="deleteMessage(messageContent.id)">Delete</button> 
+      <button (click)="editMessage(messageContent)">Edit</button>
+    </span>
+  </div>
+  <input type="button" value="Load More" (click)="loadResult()" [disabled]="loadDisable"> &nbsp; 
+  <input type="button" (click)="toggleSearch()" value="Back To Chat">
+</ng-template>
