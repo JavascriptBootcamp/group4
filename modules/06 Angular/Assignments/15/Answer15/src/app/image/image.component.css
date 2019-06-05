@@ -1,0 +1,66 @@
+#img-container{
+    border: 1px solid black;
+    margin: 10px;
+}
+#img-wrapper{
+    height: 60%;
+    width: 100%;
+}
+
+#likes-wrapper{
+    height: 20%;
+    width: 100%;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+img:hover{
+    cursor: pointer;
+}
+
+#likeCounter{
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    margin: 0;
+padding: 0;
+
+}
+button{
+    height:100%;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+
+}
+
+#author{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+padding: 0;
+height: 20%;
+width: 100%;
+background-color: lightblue;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-size: 30px;
+
+}
+
+span{
+    padding: 0;
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: lightcoral;
+}

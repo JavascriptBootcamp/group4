@@ -1,0 +1,36 @@
+#app-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: lightgray;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.lol{
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+#images-section{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+#bigImg{
+    z-index: 1;
+    position: absolute;
+    border: 3px solid black;
+}
+
+#bigImg:hover{
+    cursor: pointer;
+}

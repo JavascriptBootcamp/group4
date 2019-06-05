@@ -1,0 +1,15 @@
+<div id="img-container" [style.height.px]="height" [style.width.px]="width">
+  <div id="img-wrapper">
+    <img [src]="imgSrc" (click)="showImage()" >
+  </div>
+  
+  <div id="likes-wrapper">
+    <button (click)="onLikeClicked()">LIKE</button>
+    <div id="likeCounter">
+      <span>{{ currentLikes }}</span>
+    </div>
+  </div>
+  
+  <div id="author"><a routerLink="/authors/{{authorInfo.ID}}">{{ authorInfo.name }}</a></div>
+
+</div>

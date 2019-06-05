@@ -1,0 +1,7 @@
+<div id="app-container">
+    <div id="images-section" [ngClass]="{'lol': showBigImage}">
+            <app-image *ngFor="let imgRsc of imgResources;let i = index" [imgSrc]='imgRsc.imgUrl' [authorInfo]='imgRsc.authorInfo'  [imgID]='imgRsc.id' (displayBigPicture)="onImagePressed($event)"></app-image>
+    </div>
+
+    <img id="bigImg" *ngIf="showBigImage" [src]="bigImg" (click)="closeBigImage()">
+</div>
