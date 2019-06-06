@@ -14,6 +14,12 @@ app.get('/', (request, response) => {
  // Delete
 app.delete('/', (request, response) => {
     // const partyId = parseInt(request.query.id, 10);
+    const apiKey = request.query.apiKey;
+    const search = request.query.s;
+    const type = request.query.type;
+    const page = request.query.page;
+
+
     const partyId = Number(request.query.id);
     const partyIndex = getIndexById(parties, partyId);
     parties.splice(partyIndex, 1);
