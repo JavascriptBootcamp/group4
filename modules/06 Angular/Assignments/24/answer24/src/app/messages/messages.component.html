@@ -1,0 +1,16 @@
+<div class="messages-container">
+  <form id="form" (submit)="searchMessages($event, quary)">
+    <input type="text" id="messageInput" placeholder="enter text message" minlength="3" #quary>
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="messages">
+    <div id="messageDetails" *ngFor="let currentMessage of messages; let i=index">
+      
+      <app-message *ngIf="i<5" [message]="currentMessage"></app-message>
+     
+    </div>
+
+    <button *ngIf="messages.length > 0" (click)="loadMore()" [disabled]="!hasMore">Load More...</button>
+  </div>
+  </div>

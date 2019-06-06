@@ -1,0 +1,12 @@
+<div class="message-container">
+  <div class="message" (click)=showDetails(message.id)>
+    {{message.id}}
+  </div>
+  <div *ngIf="messageDetails.length>0">
+    <ul>
+      <li *ngFor="let detail of messageDetails">
+        {{detail}}
+      </li>
+    </ul>
+  </div>
+</div>
