@@ -19,4 +19,10 @@
 <h4><strong>API </strong></h4>
 <h5><strong>Search</strong></h5>
 <p><span style="font-weight: 400;">https://www.googleapis.com/books/v1/volumes?key=AIzaSyDKKvKwMhQxiehHW-ZTU0KBkxZ9VHHdnJc&amp;q=</span><span style="font-weight: 400;">[</span><em><span style="font-weight: 400;">the search term</span></em><span style="font-weight: 400;">]</span><span style="font-weight: 400;">&amp;startIndex=</span><span style="font-weight: 400;">[</span><em><span style="font-weight: 400;">the starting index</span></em><span style="font-weight: 400;">]</span></p>
+<p>Additional API keys:
+<ol>
+    <li>AIzaSyDKKb0AjOM-UpM45JXEucq3StNYSGeLom4</li>
+    <li>AIzaSyBQx_8AIKCiQdYGcIR2cvlo3ljjOq5bDNc</li>
+</ol>
+</p>
 <p><em><span style="font-weight: 400;">Good luck! </span></em></p>
