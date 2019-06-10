@@ -3,23 +3,25 @@ const piece = (function () {
     // let el = null;
     const init = function (el) {
         this.el = el;
-        this.setPieceColorByTemp()
+        this.defPos = el.getBoundingClientRect();
+        this.elWidth = Math.floor(this.defPos.width);
+        this.elHeight = Math.floor(this.defPos.height);
+        this.spaceForBorder = 2;
     }
     const moveDelta = function (dx, dy) {
         const pos = this.el.getBoundingClientRect();
         let yPos;
         let xPos;
 
-        if (dx === 0)
-            yPos = this.movePiece(pos.top, dy, (window.innerHeight - 100));
-        else
-            xPos = this.movePiece(pos.left, dx, (window.innerWidth - 100));
+        yPos = movePiece(pos.top, dy, (window.innerHeight - this.elHeight - this.spaceForBorder));
+        xPos = movePiece(pos.left, dx, (window.innerWidth - this.elWidth - this.spaceForBorder));
 
         this.setElePos(yPos, xPos);
     }
-    const movePiece = function (curPos, ds, size) {
+    function movePiece(curPos, ds, size) {
         let pos = 0;
         let tmpPos = curPos + ds;
+
         if (tmpPos > 0 && tmpPos < size)
             pos = tmpPos;
         else if (tmpPos > 0 && tmpPos > size)
@@ -30,23 +32,16 @@ const piece = (function () {
         return pos;
     }
     const resetPieceLoc = function () {
-        const pos = JSON.parse(sessionStorage.getItem("defPos"));
-        this.setElePos(pos.top, pos.left);
+        this.setElePos(this.defPos.top, this.defPos.left);
     }
     const randPieceLoc = function () {
-        const randLocTop = Math.floor(Math.random() * (window.innerHeight - 100));
-        const randLocLeft = Math.floor(Math.random() * (window.innerWidth - 100));
+        const randLocTop = Math.floor(Math.random() * (window.innerHeight - this.elHeight - this.spaceForBorder));
+        const randLocLeft = Math.floor(Math.random() * (window.innerWidth - this.elWidth - this.spaceForBorder));
         this.setElePos(randLocTop, randLocLeft);
     }
     const setElePos = function (topPos, leftPos) {
         this.el.style.top = `${topPos}px`;
         this.el.style.left = `${leftPos}px`;
-    }
-    const setPieceColorByTemp = function () {
-        const url = 'http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv';
-        fetch(url)
-            .then(response => response.json())
-            .then(data => this.setPieceColor(data.current.temp_c));
     }
     const setPieceColor = function (deg) {
         let color;
@@ -59,17 +54,14 @@ const piece = (function () {
         else
             color = "red";
 
-        this.el.style.backgroundColor = color;
-        this.el.style.borderColor = color;
+        this.el.classList.add(color);
     }
     return {
         init,
         moveDelta,
-        movePiece,
         resetPieceLoc,
         randPieceLoc,
         setElePos,
-        setPieceColorByTemp,
         setPieceColor
     };
 })();

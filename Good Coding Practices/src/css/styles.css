@@ -39,5 +39,24 @@ body {
 
 #piece.circle:hover {
   background-color: transparent !important;
+}
+
+.blue {
+  background: blue;
   border: 1px solid blue;
+}
+
+.green {
+  background: green;
+  border: 1px solid green;
+}
+
+.yellow {
+  background: yellow;
+  border: 1px solid yellow;
+}
+
+.red {
+  background: red;
+  border: 1px solid red;
 }
