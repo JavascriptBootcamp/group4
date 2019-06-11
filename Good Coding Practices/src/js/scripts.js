@@ -117,10 +117,6 @@ function setButtonProp(buttonObj, x, y, eventFunc) {
   buttonObj.addEventListener("click", eventFunc);
 }
 
-function getPixelSuffix() {
-  return 'px';
-}
-
 function setColorByTemperature() {
   fetch(url_weather).then(
     stream => stream.json().then(
