@@ -1,0 +1,38 @@
+<form>
+  <h3>Search</h3>
+  <label for="search">Search</label>
+  <input type="text" id="search" [ngModel]="searchModel" #searchRef="ngModel" name="search" minlength="3" />
+  <button (click)="search(searchRef)">Search</button>
+  <div *ngIf="isErr">{{errMsg}}</div>
+</form>
+<br>
+<form #fAdd="ngForm" (submit)="onSubmitForm(fAdd)">
+  <label for="username">Your Name *</label>
+  <input type="text" id="username" [ngModel]="usernameModel" #usernameRef="ngModel" name="username" required />
+
+   <label for="message">Your Message *</label>
+  <input type="text" id="message" [ngModel]="messageModel" #messageRef="ngModel" name="message" required />
+
+   <button [disabled]="fAdd.invalid">Send</button>
+</form>
+
+ <div id="messages">
+  <h3>Messages:</h3>
+  <ul *ngFor="let messageContent of messages">
+    <li>{{ messageContent.author }}: {{ messageContent.message }} 
+    </li>
+  </ul>
+</div>
+
+ <div id="search-results" *ngIf="pageMessages.length">
+  <h3>Search Results</h3>
+  <div *ngFor="let m of pageMessages">
+    <ul>
+      <li>
+        {{m.author}} : {{m.message}}
+      </li>
+    </ul>
+  </div>
+  <button (click)="nextPage()" [disabled]="pageNumber === numberOfPages">Load more...</button>
+</div> 
+<router-outlet></router-outlet>
