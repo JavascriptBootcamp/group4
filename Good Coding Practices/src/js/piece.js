@@ -1,20 +1,24 @@
 // piece object
 const piece = (function () {
     // let el = null;
+    let defPos = null;
+    let elWidth = null;
+    let elHeight = null;
+    let spaceForBorder = null;
     const init = function (el) {
         this.el = el;
-        this.defPos = el.getBoundingClientRect();
-        this.elWidth = Math.floor(this.defPos.width);
-        this.elHeight = Math.floor(this.defPos.height);
-        this.spaceForBorder = 2;
+        defPos = el.getBoundingClientRect();
+        elWidth = Math.floor(defPos.width);
+        elHeight = Math.floor(defPos.height);
+        spaceForBorder = 2;
     }
     const moveDelta = function (dx, dy) {
         const pos = this.el.getBoundingClientRect();
         let yPos;
         let xPos;
 
-        yPos = movePiece(pos.top, dy, (window.innerHeight - this.elHeight - this.spaceForBorder));
-        xPos = movePiece(pos.left, dx, (window.innerWidth - this.elWidth - this.spaceForBorder));
+        yPos = movePiece(pos.top, dy, (window.innerHeight - elHeight - spaceForBorder));
+        xPos = movePiece(pos.left, dx, (window.innerWidth - elWidth - spaceForBorder));
 
         this.setElePos(yPos, xPos);
     }
@@ -32,18 +36,18 @@ const piece = (function () {
         return pos;
     }
     const resetPieceLoc = function () {
-        this.setElePos(this.defPos.top, this.defPos.left);
+        this.setElePos(defPos.top, defPos.left);
     }
     const randPieceLoc = function () {
-        const randLocTop = Math.floor(Math.random() * (window.innerHeight - this.elHeight - this.spaceForBorder));
-        const randLocLeft = Math.floor(Math.random() * (window.innerWidth - this.elWidth - this.spaceForBorder));
+        const randLocTop = Math.floor(Math.random() * (window.innerHeight - elHeight - spaceForBorder));
+        const randLocLeft = Math.floor(Math.random() * (window.innerWidth - elWidth - spaceForBorder));
         this.setElePos(randLocTop, randLocLeft);
     }
     const setElePos = function (topPos, leftPos) {
         this.el.style.top = `${topPos}px`;
         this.el.style.left = `${leftPos}px`;
     }
-    const setPieceColor = function (deg) {
+    const setPieceColorByDeg = function (deg) {
         let color;
         if (deg < 10)
             color = "blue";
@@ -62,6 +66,6 @@ const piece = (function () {
         resetPieceLoc,
         randPieceLoc,
         setElePos,
-        setPieceColor
+        setPieceColorByDeg
     };
 })();

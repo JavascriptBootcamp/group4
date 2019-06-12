@@ -18,15 +18,18 @@ function setCtrlBtnProps(elId, dx, dy) {
 function handleClick(ev) {
   piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
 }
-function setPieceColorByTemp() {
+function getWeather() {
   const url = 'http://api.apixu.com/v1/current.json?key=';
   const key = "dda6e762ae4f41efb7e173552192204&q=tel%20aviv";
-  fetch(url + key)
+  return fetch(url + key)
     .then(response => response.json())
-    .then(data => piece.setPieceColor(data.current.temp_c));
+}
+async function initPieceColor() {
+  const data = await getWeather();
+  piece.setPieceColorByDeg(data.current.temp_c);
 }
 window.addEventListener("DOMContentLoaded", event => {
   piece.init(document.getElementById("piece"));
   initBtns();
-  setPieceColorByTemp();
+  initPieceColor();
 });
