@@ -1,0 +1,48 @@
+<form #fAdd="ngForm" (submit)="onSubmitForm(fAdd)" *ngIf="!isEditing">
+  <label for="username">Your Name *</label>
+  <input type="text" id="username" [ngModel]="usernameModel" #usernameRef="ngModel" name="username" required />
+
+  <label for="message">Your Message *</label>
+  <input type="text" id="message" [ngModel]="messageModel" #messageRef="ngModel" name="message" required />
+
+    <button [disabled]="fAdd.invalid">Send</button>
+</form>
+
+<form #fUpdate="ngForm" (submit)="onUpdateForm(fUpdate)" *ngIf="isEditing">
+    <label for="username">Your Name *</label>
+    <input type="text" id="username" [ngModel]="usernameModel" #usernameRef="ngModel" name="username" [value]="currentMessage.author" required />
+  
+    <label for="message">Your Message *</label>
+    <input type="text" id="message" [ngModel]="messageModel" #messageRef="ngModel" name="message" [value]="currentMessage.message" required />
+  
+    <button [disabled]="fUpdate.invalid">Update</button>
+  </form>
+
+  <form id="searchForm" (submit)="searchMassage($event, query)">
+    <input type="text" placeholder="Enter text to serch..." minlength="3" #query />
+    <button type="submit">Search</button>
+    <button (click)="cancelSearch($event)">Cancel Search</button>
+  </form>
+
+<div id="messages"  *ngIf="!isSearching">
+  <h3>Messages:</h3>
+  <ul *ngFor="let messageContent of messages">
+    <li>{{ messageContent.author }}: {{ messageContent.message }} <button
+        (click)="deleteMessage(messageContent.id)">Delete</button>
+
+      <button (click)="editMessage(messageContent)">Edit</button>
+    </li>
+  </ul>
+</div>
+
+<div id="messagesSearch"  *ngIf="isSearching">
+  <h3>Messages:</h3>
+  <ul *ngFor="let messageContent of fiveMessages">
+    <li>{{ messageContent.author }}: {{ messageContent.message }} <button
+        (click)="deleteMessage(messageContent.id)">Delete</button>
+
+      <button (click)="editMessage(messageContent)">Edit</button>
+    </li>
+  </ul>
+  <button #loadmr (click)="loadMore()">LoadMore</button>
+</div>
