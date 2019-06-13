@@ -12,7 +12,8 @@ const parties = [];
 
 // Read
 app.get('/', (request, response) => {
-    init();
+    const folder = request.query.folder;
+    init(folder);
     responseJson(response, "ok");
 });
 
@@ -29,12 +30,12 @@ function responseJson(response, result) {
 // const util = require('util');
 // const promisify = util.promisify;
 
-const zip = (source) => {
+const zip = (source,folder) => {
     return new Promise( (resolve, reject) => {
         try{
             fs.createReadStream(source) //read the stream
             .pipe(zlib.createGzip()) // zip the file
-            .pipe(fs.createWriteStream(path.join('backup', `${source}.gz`))) // create the zip file
+            .pipe(fs.createWriteStream(path.join(folder, `${source}.gz`))) // create the zip file
             .on('finish', () => ({message: 'File was zipped!!!'}));
         }
         catch(ex) {
@@ -43,11 +44,11 @@ const zip = (source) => {
     } )
 }
 
-const init =  async () => {
+const init =  async (folder) => {
     const fileName = 'Book1.csv';
     try{
         // resolve
-        const result = await zip(fileName);
+        const result = await zip(fileName,folder);
         console.log(result.message);
     }
     catch(ex) {
