@@ -5,6 +5,8 @@ const express = require('express');
 
 const app = express();
 
+const fileName = "students.csv";
+
 const zip = (source) => {
     const filePath = path.join("backup", `${source}.gz`);
 
@@ -22,7 +24,6 @@ const zip = (source) => {
 }
 // Read
 app.get('/', async (request, response) => {
-    const fileName = "students.csv";
     try {
         const result = await zip(fileName);
         console.log(result.message);
@@ -32,5 +33,15 @@ app.get('/', async (request, response) => {
         response.json({ mess: error });
     }
 });
+
+// Download
+app.get('/download', (request, response) => {
+    const filePath = path.join("backup", `${fileName}.gz`);
+
+    response.setHeader('Content-Disposition', 'attachment; filename=\"' + filePath);
+
+    fs.createReadStream(filePath)
+    .pipe(response);
+})
 
 app.listen(8500, () => console.log("server is running in port 8500"));
