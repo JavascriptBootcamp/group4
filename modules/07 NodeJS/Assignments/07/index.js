@@ -4,7 +4,7 @@ const app = express()
 const port = 8000
 const zlib = require('zlib');
 const { promisify } = require('util');
-const path = require('path').basename(__dirname);
+const path = require('path');
 
 app.get('/', async (req, res) => {
     const source = "students.csv";
@@ -24,7 +24,7 @@ const zip = (source, callback) => {
     try {
         fs.createReadStream(source) //read the stream
             .pipe(zlib.createGzip()) // zip the file
-            .pipe(fs.createWriteStream(`backup/${source}.gz`)) // create the zip file
+            .pipe(fs.createWriteStream(path.dirname(source) + `/backup/${source}.gz`)) // create the zip file
             .on('finish', () => callback(null, { message: 'File was zipped!!!' }));
     }
     catch (ex) {
