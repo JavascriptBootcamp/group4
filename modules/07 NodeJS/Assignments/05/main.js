@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json()); // Middleware - for reading the BODY
+app.use(cors());
 
 const chat = [];
 
@@ -32,6 +34,10 @@ app.post('/', (request, response) => {
     const id = Math.floor(Math.random() * 10000);
     const author = request.body.Author;
     const message = request.body.Message;
+
+    console.log("author", author);
+    console.log("message", message);
+
     chat.push({
         id,
         author,
