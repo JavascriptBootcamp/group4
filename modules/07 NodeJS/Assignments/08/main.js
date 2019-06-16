@@ -56,10 +56,7 @@ app.delete('/', (request, response) => {
     const chatIndex = getIndexById(chat, id);
     chat.splice(chatIndex, 1);
 
-    const promiseWriteFile = promisify(fs.appendFile);
-
-    promiseWriteFile('userActions.csv', `${response.locals.actionType} ${response.locals.currentDate} ${response.locals.currentTime} ${chat[0].id} ${chat[0].message} ${chat[0].author}`);
-
+   apeendToFile(response,chat[0].id,chat[0].author,chat[0].message);
 
     responseJson(response, "ok");
 });
@@ -75,13 +72,11 @@ app.put('/', (request, response) => {
 // Create
 app.post('/', (request, response) => {
 
-    const promiseWriteFile = promisify(fs.appendFile);
-
     const id = Math.floor(Math.random() * 10000);
     const author = request.body.Author;
     const message = request.body.Message;
 
-    promiseWriteFile('userActions.csv', `${response.locals.actionType} ${response.locals.currentDate} ${response.locals.currentTime} ${id} ${message} ${author}`);
+    apeendToFile(response,id,author,message);
     chat.push({
         id,
         author,
@@ -98,6 +93,14 @@ function responseJson(response, result) {
     response.json({
         result
     });
+}
+
+
+function apeendToFile(response,id,author,message){
+    const promiseWriteFile = promisify(fs.appendFile);
+    
+     promiseWriteFile('userActions.csv', `${response.locals.actionType} ${response.locals.currentDate} ${response.locals.currentTime} ${id} ${message} ${author} \n`);
+       
 }
 
 app.listen(8000, () => console.log("server is running in port 8000"));
