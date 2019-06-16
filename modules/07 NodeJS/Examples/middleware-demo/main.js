@@ -21,7 +21,7 @@ app.use( (request, response, next) => {
     next();
 });
 
-app.get('/', (req,res,next) => {
+app.get('/:num', (req,res,next) => {
     // readFromJSON();
     console.log("req.body", req.body);
     res.end("OK: " + req.body);
