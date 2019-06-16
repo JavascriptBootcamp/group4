@@ -1,4 +1,4 @@
-<p>Use <code>group4/Modules/07 NodeJS/Assignments/05/chat</code></p>
+<p>Use <code>group4/Modules/07 NodeJS/Assignments/05</code></p>
 <p>Add an express middleware which saves user actions in a CSV file.</p>
 <p>Each action should include: Time, action ("ADD"/"REMOVE"), message Id, message content and author.</p>
 
