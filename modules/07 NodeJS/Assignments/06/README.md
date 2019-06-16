@@ -1,7 +1,7 @@
 <h2>Server (Node.js)</h2>
 <p>create a folder named <code>documents</code> with 5 different files. for example: file1.json, file2.json, file3.json, file4.json, file4.json and file5.json.</p>
 <p>create an Express application.</p>
-<p>create a POST handler to the path <code>/file</code> which accepts a list of file names as part of the request BODY.</p>.</p>
+<p>create a POST handler to the path <code>/file</code> which accepts a list of file names as part of the request BODY.</p>
 <p>the POST handler should look for the files and create a new TXT file <code>found_files.txt</code> with the list of found files - one file name per line (using Node.js streams and pipe).</p>
 <p>the POST response should be "OK" (status code 200) on a success operation or "Error" (status code 500) on a failure.</p>
 <p>add a middleware which logs the list of file names using <code>console.log</code>.</p>
