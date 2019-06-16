@@ -29,7 +29,7 @@ export class GameService {
 
 
   initAvailableCards() {
-    fetch(`http://localhost:5000/?robot`)
+    fetch(`http://localhost:5000/?king`)
     .then( res => {
       return res.json();
     })
