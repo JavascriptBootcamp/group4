@@ -1,0 +1,25 @@
+<div id="chat">
+  <div id="chat-wrapper">
+    <h3 class="title">Chat With Us</h3>
+    <div class="chat-content">
+      <div class="message" *ngFor="let c of chat">
+        <div class="msg">
+          {{c.username}} : {{c.message}}
+        </div>
+        <div class="buttons">
+          <button class="btn" (click)="removeMessage(c.id)">Remove</button>
+          <button class="btn btn-edit" (click)="changeEditingState(c.id)">Edit</button>
+        </div>
+      </div>
+    </div>
+    <form (submit)="postMessage($event)" [hidden]="isEditing">
+      <input class="input" id="username" type="text" placeholder="username" #username>
+      <input class="input input-msg" id="post-message" type="text" placeholder="enter message..." #message>
+      <button class="btn btn-submit">Submit</button>
+    </form>
+    <form (submit)="updateMessage($event)" [hidden]="!isEditing">
+      <input class="input" id="update-message" type="text" placeholder="update message..." #updateMsg>
+      <button class="btn">Submit</button>
+    </form>
+  </div>
+</div>

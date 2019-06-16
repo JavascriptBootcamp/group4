@@ -1,0 +1,92 @@
+#chat , .chat-content{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+#chat{
+    height: 100%;
+}
+.chat-content{
+    height:300px;
+    width:100%;
+    overflow-y: scroll;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+#chat-wrapper{
+    width: 400px;
+    border: 1px solid;
+    border-radius: 10px;
+    height:500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.title{
+    background-color: rgb(99,206,163);
+    margin:0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px;
+    color:#fff;
+    text-align: center;
+}
+.message{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:5px 0px;
+    height: auto;
+}
+.btn{
+    width:auto;
+    margin:0px 2px;
+    border:none;
+    color:#fff;
+    border-radius:5px;
+    background-color: rgb(99,206,163);
+    cursor: pointer;
+    transition: 0.2s all;
+}
+.btn:hover{
+    background-color: rgb(87, 187, 147);
+}
+.btn-edit{
+    background-color: rgb(99, 158, 206);
+    transition: 0.2s all;
+}
+.btn-edit:hover{
+    background-color: rgb(84, 135, 177);
+}
+.msg{
+    background-color: rgb(232,249,242);
+    width:70%;
+    height: auto;
+    word-break: break-all;
+    border:1px solid #ccc;
+    border-radius: 5px;
+}
+.btn-submit{
+    height:30px;
+    position: absolute;
+    bottom:5px;
+    right:5px;
+}
+.input{
+    display: block;
+    height:20px;
+    width:70%;
+    border-radius:10px;
+    margin:10px 5px;
+    border:1px solid #ccc;
+    padding: 5px;
+}
+.input.input-msg{
+    height: 80px;
+}
+form{
+    height:30%;
+    position: relative;
+}
