@@ -1,8 +1,10 @@
 const express = require('express');
+// const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(express.json()); // Middleware - for reading the BODY
+// app.use(bodyParser.json());
 
 const parties = [];
 
@@ -14,6 +16,12 @@ app.get('/', (request, response) => {
  // Delete
 app.delete('/', (request, response) => {
     // const partyId = parseInt(request.query.id, 10);
+    const apiKey = request.query.apiKey;
+    const search = request.query.s;
+    const type = request.query.type;
+    const page = request.query.page;
+
+
     const partyId = Number(request.query.id);
     const partyIndex = getIndexById(parties, partyId);
     parties.splice(partyIndex, 1);
@@ -31,13 +39,14 @@ app.put('/', (request, response) => {
 
 // Create
 app.post('/', (request, response) => {
-    const newPartyId = Math.floor(Math.random() * 10000);
-    const newPartyName = request.body.name;
-    parties.push({
-        id: newPartyId,
-        name: newPartyName
-    });
-    responseJson(response, "ok");
+    // const newPartyId = Math.floor(Math.random() * 10000);
+    // const newPartyName = request.body.name;
+    console.log("request.body", request.body);
+    // parties.push({
+    //     id: newPartyId,
+    //     name: newPartyName
+    // });
+    // responseJson(response, "ok");
 });
 
 function getIndexById(arr, id) {
