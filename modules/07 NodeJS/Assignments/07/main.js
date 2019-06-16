@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const zlib = require('zlib');
+const fs = require('fs');
 const app = express();
 
 app.use(express.json()); // Middleware - for reading the BODY
@@ -14,7 +15,7 @@ const zip = (source) => {
             fs.createReadStream(source) //read the stream
             .pipe(zlib.createGzip()) // zip the file
             .pipe(fs.createWriteStream(path.join('backup',`${source}.gz`))) // create the zip file
-            .on('finish', () => ({message: 'File was zipped succesfully :)))))))))))))))))))'}));
+            .on('finish', () => resolve({message: 'File was zipped succesfully :)))))))))))))))))))'}));
         }
         catch(ex) {
             return new Error(ex);
@@ -28,13 +29,15 @@ app.get('/', async (request, response) => {
     try{
         // resolve
         const result = await zip(fileName);
+        console.log(result.message);
+        response.json({ mess: result.message });
     }
     catch(ex) {
         // reject
         console.error(ex);
-    }
 
-    responseJson(response, result);
+        response.json({ mess: ex.message });
+    }
 });
 
 
