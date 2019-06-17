@@ -80,4 +80,9 @@ export class ChatService {
     this.getMessages();
   }
 
+
+  DownloadFile(fileName){
+    fetch(this.url + "/download?fileName="+fileName);
+  }
+
 }

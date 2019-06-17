@@ -47,16 +47,30 @@ app.get('/', (request, response) => {
     else
         responseJson(response, chat);
 });
+
 function searchMess(mess) {
     return chat.filter((message) => message.message.indexOf(mess) !== -1)
 }
+
+
+app.get('/download',(request,response)=>{
+
+    const fileName = request.query.fileName;
+   // console.log(fileName);
+    response.setHeader('Content-Disposition', 'attachment; filename=\"'  + fileName);
+    fs.createReadStream(fileName)
+    .pipe(response);
+})
+
+
 // Delete
 app.delete('/', (request, response) => {
     const id = Number(request.query.id);
     const chatIndex = getIndexById(chat, id);
-    chat.splice(chatIndex, 1);
 
-   apeendToFile(response,chat[0].id,chat[0].author,chat[0].message);
+    apeendToFile(response,chat[chatIndex].id,chat[chatIndex].author,chat[chatIndex].message);
+
+    chat.splice(chatIndex, 1);
 
     responseJson(response, "ok");
 });
@@ -98,8 +112,10 @@ function responseJson(response, result) {
 
 function apeendToFile(response,id,author,message){
     const promiseWriteFile = promisify(fs.appendFile);
+
+    const {actionType,currentDate,currentTime} = response.locals;
     
-     promiseWriteFile('userActions.csv', `${response.locals.actionType} ${response.locals.currentDate} ${response.locals.currentTime} ${id} ${message} ${author} \n`);
+    promiseWriteFile('userActions.csv', `${actionType} ${currentDate} ${currentTime} ${id} ${message} ${author} \n`);
        
 }
 
