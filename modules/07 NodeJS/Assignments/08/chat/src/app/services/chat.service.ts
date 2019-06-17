@@ -82,7 +82,7 @@ export class ChatService {
 
 
   DownloadFile(fileName){
-    fetch(this.url + "/download?fileName="+fileName);
+    window.open(this.url + "/download?fileName="+fileName);
   }
 
 }
