@@ -76,12 +76,27 @@ app.post('/', (req, response) => {
     csvWriter.writeRecords(records).then(() => { console.log('...Done'); });
 });
 
-app.delete('/', (req, res) => {
+app.delete('/', (req, res ,next) => {
+    const id = req.query.id;
+    const chatIndex = findIndexById(id);
+    const date = new Date();
+    const action = "delete"; 
+    const username = chat[chatIndex].username;
+    const message = chat[chatIndex].message;
+    const obj = { date, action, id, message, username };
+    const records = [obj];
+    csvWriter.writeRecords(records).then(() => { console.log('...Done'); });
+    next();
+});
+
+app.delete('/', (req, res ) => {
     const id = req.query.id;
     const chatIndex = findIndexById(id);
     chat.splice(chatIndex, 1);
     responseJson(res, "ok");
 });
+
+
 
 app.put('/', (req, res) => {
     const id = req.query.id;

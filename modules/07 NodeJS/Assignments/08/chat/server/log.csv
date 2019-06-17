@@ -1,2 +1,3 @@
 DATE,ACTION,ID,MESSAGE,USERNAME
-Mon Jun 17 2019 08:59:51 GMT+0300 (Jerusalem Daylight Time),ADD,6367568,test,gaby
+Mon Jun 17 2019 10:38:34 GMT+0300 (Jerusalem Daylight Time),ADD,3770106,hello,gaby
+Mon Jun 17 2019 10:38:35 GMT+0300 (Jerusalem Daylight Time),delete,3770106,hello,gaby

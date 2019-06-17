@@ -67,6 +67,6 @@ export class AppComponent implements OnInit {
     this.id = Math.floor(Math.random() * 10000000);
   }
   downloadFile() {
-    fetch(this.url + "download");
+      window.open(this.url + "download");
   }
 }
