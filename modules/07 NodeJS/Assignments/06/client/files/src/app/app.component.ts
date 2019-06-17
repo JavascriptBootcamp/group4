@@ -7,12 +7,13 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 })
 export class AppComponent {
   @ViewChild('inputSearchFile') inputSearchFile: ElementRef;
-  searchFile() {
-    const url = "http://localhost/file"
+  searchFile(e : Event) {
+    e.preventDefault();
+    const url = "http://localhost:8000/file"
     fetch(url, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.inputSearchFile)
+      body: JSON.stringify(this.inputSearchFile.nativeElement.value)
     })
   }
 }
