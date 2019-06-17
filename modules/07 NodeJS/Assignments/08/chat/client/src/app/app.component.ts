@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
     const response = await fetch(this.url + "?id=" + this.editingId, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({message : this.updateMsg.nativeElement.value})
+      body: JSON.stringify({ message: this.updateMsg.nativeElement.value })
     })
     return response.json();
 
@@ -65,5 +65,8 @@ export class AppComponent implements OnInit {
   }
   generateId() {
     this.id = Math.floor(Math.random() * 10000000);
+  }
+  downloadFile() {
+    fetch(this.url + "download");
   }
 }
