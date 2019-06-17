@@ -12,7 +12,7 @@ app.post('/file', (req, res , next) => {
     next();
 });
 
-app.post('/file', (req, res , next) => {
+app.post('/file', (req, res) => {
     const listOfFiles = req.body.files;
    console.log(listOfFiles);
 });
