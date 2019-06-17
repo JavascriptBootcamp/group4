@@ -25,7 +25,7 @@ app.get('/', (request, response) => {
 });
 
 function searchMess(mess) {
-    return chat.filter((message) => message.message.indexOf(mess) !== -1)
+    return chat.filter((message) => message.message.indexOf(mess) !== -1);
 }
 // Delete
 app.delete('/', (request, response) => {
@@ -72,7 +72,7 @@ app.post('/', (request, response) => {
         author,
         message
     };
-    writeToCSV(toWrite);
+    writeToFile(logFile,'csv',Object.values(toWrite));
 
     responseJson(response, "ok");
 });
@@ -87,12 +87,20 @@ function responseJson(response, result) {
     });
 }
 
-function writeToCSV(data) {
-    const writer = csvWriter()    
-    writer.pipe(fs.createWriteStream(`${logFile}.csv`, { flags: 'a' }));
-    writer.write(data);
-    writer.end();
-}
+ function writeToFile(fileName,suffix,data) {
+     fs.appendFile(fileName+`.${suffix}`,data,(err)=>{
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+     });
+ }
+// function writeToCSV(data) {
+//     const writer = csvWriter()    
+//     writer.pipe(fs.createWriteStream(`${logFile}.csv`, { flags: 'a' }));
+//     writer.write(data);
+//     writer.end();
+// }
 
 //app.use()
 
