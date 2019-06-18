@@ -1,14 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
 
 const app = express();
 
 app.use(express.json()); // Middleware - for reading the BODY
 app.use(cors());
-
-app.use((req, res) => {
-  console.log(req.url);
-});
 
 const chat = [];
 
@@ -27,7 +24,11 @@ function searchMess(mess) {
 app.delete("/", (request, response) => {
   const id = Number(request.query.id);
   const chatIndex = getIndexById(chat, id);
+
+  writeCSVLog("DEL", id, chat[chatIndex].message, chat[chatIndex].author);
+
   chat.splice(chatIndex, 1);
+
   responseJson(response, "ok");
 });
 
@@ -36,6 +37,9 @@ app.put("/", (request, response) => {
   const id = Number(request.query.id);
   const chatIndex = getIndexById(chat, id);
   chat[chatIndex].message = request.body.message;
+
+  writeCSVLog("PUT", id, chat[chatIndex].message, chat[chatIndex].author);
+
   responseJson(response, "ok");
 });
 
@@ -50,7 +54,7 @@ app.post("/", (request, response) => {
     author,
     message
   });
-  WriteCSVLog("post", 2, "hi there", "avi");
+  writeCSVLog("ADD", id, message, author);
   responseJson(response, "ok");
 });
 
@@ -64,8 +68,28 @@ function responseJson(response, result) {
   });
 }
 
-function WriteCSVLog(method, msg_id, message, auther) {
-  console.log(new Date(), method, msg_id, message, auther);
+function writeCSVLog(method, msg_id, message, auther) {
+  const today = new Date();
+  const date =
+    today.getFullYear() +
+    "/" +
+    (today.getMonth() + 1) +
+    "/" +
+    today.getDate() +
+    " " +
+    today.getHours() +
+    ":" +
+    today.getMinutes() +
+    ":" +
+    today.getSeconds();
+  const log = `\n${date}, ${method},${msg_id},${message},${auther}`;
+  fs.appendFile("log.csv", log, err => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    //done!
+  });
 }
 
 app.listen(8000, () => console.log("server is running in port 8000"));

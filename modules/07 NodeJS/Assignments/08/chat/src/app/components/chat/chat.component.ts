@@ -1,14 +1,21 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { ChatService } from 'src/app/services/chat.service';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef
+} from "@angular/core";
+import { ChatService } from "src/app/services/chat.service";
+import { IMessage } from "src/app/models/imessage.model";
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  selector: "app-chat",
+  templateUrl: "./chat.component.html",
+  styleUrls: ["./chat.component.css"]
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  @ViewChild('inputName') inputName: ElementRef;
-  @ViewChild('inputMess') inputMess: ElementRef;
+  @ViewChild("inputName") inputName: ElementRef;
+  @ViewChild("inputMess") inputMess: ElementRef;
   isEditing: boolean;
   currentMessage: IMessage;
 
@@ -20,6 +27,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatService.getMessages();
   }
   onSubmitForm(username: string, message: string) {
+    console.log(username, message);
     this.chatService.sendMessage(username, message);
   }
   onUpdateForm(newMess: string) {
@@ -36,7 +44,10 @@ export class ChatComponent implements OnInit, OnDestroy {
   editMessage(messageContent: IMessage) {
     this.isEditing = true;
     this.currentMessage = messageContent;
-    this.setInputFields(this.currentMessage.author, this.currentMessage.message);
+    this.setInputFields(
+      this.currentMessage.author,
+      this.currentMessage.message
+    );
   }
   setInputFields(name, mess) {
     this.inputName.nativeElement.value = name;
@@ -51,5 +62,4 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     window.clearInterval(this.chatService.interval);
   }
-
 }

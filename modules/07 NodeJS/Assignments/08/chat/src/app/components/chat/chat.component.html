@@ -1,4 +1,5 @@
 <form ngNativeValidate>
+
   <label for="username">Your Name *</label>
   <input type="text" id="username" name="username" [disabled]="isEditing" required #inputName />
   <label for="message">Your Message *</label>
@@ -6,6 +7,7 @@
   <input *ngIf="!isEditing" type="submit" (click)="onSubmitForm(inputName.value,inputMess.value)" value="Send">
   <input *ngIf="isEditing" type="submit" (click)="onUpdateForm(inputMess.value)" value="Update">
 </form>
+
 <form ngNativeValidate (submit)="onSubmitSearch(inputSearch.value)">
   <input type="text" name="searchmess" id="searchmess" placeholder="Search..." required minlength="3" #inputSearch>
   <input type="submit" value="Search">

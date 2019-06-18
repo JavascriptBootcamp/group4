@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { IMessage } from "../models/imessage.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ChatService {
   url: string;
@@ -34,12 +35,11 @@ export class ChatService {
     window.clearInterval(this.interval);
     this.messages = data.result;
     this.searchMess = true;
-
   }
   async sendMessage(username: string, message: string) {
     await fetch(this.url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         Author: username,
         Message: message
@@ -48,23 +48,21 @@ export class ChatService {
   }
   async sendToDeleteMessage(id: number) {
     await this.deleteMessage(id);
-    if (this.searchMess)
-      this.searchMessages(this.messages[0].message);
+    if (this.searchMess) this.searchMessages(this.messages[0].message);
   }
   async deleteMessage(id: number) {
     await fetch(`${this.url}?id=${id}`, {
-      method: 'DELETE'
+      method: "DELETE"
     });
   }
   async sendToUpdateMessage(id: number, message: string) {
     await this.updateMessage(id, message);
-    if (this.searchMess)
-      this.searchMessages(this.messages[0].message);
+    if (this.searchMess) this.searchMessages(this.messages[0].message);
   }
   async updateMessage(id: number, message: string) {
     await fetch(`${this.url}?id=${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         message: message
       })
@@ -79,5 +77,4 @@ export class ChatService {
     this.messages = [];
     this.getMessages();
   }
-
 }
