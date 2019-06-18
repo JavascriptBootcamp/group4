@@ -1,9 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const csvWriter = require('csv-write-stream')
 
-// const writer = csvWriter()
 
 const app = express();
 
@@ -12,6 +10,13 @@ app.use(cors());
 
 const chat = [];
 const logFile = 'log';
+
+writeTitleCSVFile();
+
+function writeTitleCSVFile(){
+    const toWrite = "Date, Action, Id, Message, Author \n";
+    writeToFile(logFile, 'csv', toWrite,"n");
+}
 
 // Read
 app.get('/', (request, response) => {
@@ -24,12 +29,57 @@ app.get('/', (request, response) => {
         responseJson(response, chat);
 });
 
+app.get('/downlaod-log',(req, res)=>{
+    const logCSV = logFile + ".csv";
+    if(!fs.existsSync(logCSV)){
+        res.end("No such file!");
+    }
+    res.setHeader('Content-Disposition', `attachment;filename=\"${logCSV}`);
+    fs.createReadStream(logCSV).pipe(res);
+});
+
+app.get('/is-file-exists',(req, res)=>{
+    console.log("is-file-exists")
+    const logCSV = logFile + ".csv";
+    res.end(JSON.stringify(fs.existsSync(logCSV)));
+});
+
 function searchMess(mess) {
     return chat.filter((message) => message.message.indexOf(mess) !== -1);
 }
+
+app.use((request, response,next) => {
+    if (request.method === 'POST') {
+        const now = new Date().toLocaleString().replace(',', '');
+        const action = 'ADD';
+        const id = Math.floor(Math.random() * 10000);
+        response.locals.id = id;
+        const author = request.body.Author;
+        const message = request.body.Message;
+
+        const toWrite = `${now}, ${action}, ${id}, ${message}, ${author} \n`;
+        writeToFile(logFile, 'csv', toWrite,'a');
+        next();
+    }
+    if (request.method === 'DELETE') {
+        const now = new Date().toLocaleString().replace(',', '');
+        const action = 'DELETE';
+        const id = Number(request.query.id);
+        response.locals.id = id;
+        const chatIndex = getIndexById(chat, id);
+        const author = chat[chatIndex].author;
+        const message = chat[chatIndex].message;
+
+        const toWrite = `${now}, ${action}, ${id}, ${message}, ${author} \n`;
+        writeToFile(logFile, 'csv', toWrite,'a');
+
+        next();
+    }
+});
+
 // Delete
 app.delete('/', (request, response) => {
-    const id = Number(request.query.id);
+    const id = response.locals.id;
     const chatIndex = getIndexById(chat, id);
     chat.splice(chatIndex, 1);
     responseJson(response, "ok");
@@ -45,35 +95,14 @@ app.put('/', (request, response) => {
 
 // Create
 app.post('/', (request, response, next) => {
-    const id = Math.floor(Math.random() * 10000);
     const author = request.body.Author;
     const message = request.body.Message;
-    response.locals.id = id;
-
+    const id = response.locals.id;
     chat.push({
         id,
         author,
         message
     });
-    next();
-});
-
-app.post('/', (request, response) => {
-    const now = new Date();
-    const action = 'ADD';
-    const id = response.locals.id;
-    const author = request.body.Author;
-    const message = request.body.Message;
-
-    const toWrite = {
-        now,
-        action,
-        id,
-        author,
-        message
-    };
-    writeToFile(logFile,'csv',Object.values(toWrite));
-
     responseJson(response, "ok");
 });
 
@@ -87,23 +116,14 @@ function responseJson(response, result) {
     });
 }
 
- function writeToFile(fileName,suffix,data) {
-     fs.appendFile(fileName+`.${suffix}`,data,(err)=>{
-        if(err) {
+function writeToFile(fileName, suffix, data, mode) {
+    const writeFunc = mode === "a" ? fs.appendFile : fs.writeFile;
+    writeFunc(fileName + `.${suffix}`, data, (err) => {
+        if (err) {
             return console.log(err);
         }
-        console.log("The file was saved!");
-     });
- }
-// function writeToCSV(data) {
-//     const writer = csvWriter()    
-//     writer.pipe(fs.createWriteStream(`${logFile}.csv`, { flags: 'a' }));
-//     writer.write(data);
-//     writer.end();
-// }
-
-//app.use()
-
-
+        console.log("The file saved!");
+    });
+}
 
 app.listen(8000, () => console.log("server is running in port 8000"));

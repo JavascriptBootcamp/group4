@@ -6,6 +6,7 @@
   <input *ngIf="!isEditing" type="submit" (click)="onSubmitForm(inputName.value,inputMess.value)" value="Send">
   <input *ngIf="isEditing" type="submit" (click)="onUpdateForm(inputMess.value)" value="Update">
 </form>
+<button (click)="downloadLogFile()" [disabled]="!isLogFileExists">Download LOG</button>
 <form ngNativeValidate (submit)="onSubmitSearch(inputSearch.value)">
   <input type="text" name="searchmess" id="searchmess" placeholder="Search..." required minlength="3" #inputSearch>
   <input type="submit" value="Search">

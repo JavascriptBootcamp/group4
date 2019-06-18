@@ -1,9 +1,1 @@
-now,action,id,author,message
-Sun Jun 16 2019 21:01:12 GMT+0300 (GMT+03:00),ADD,3253,Daniel,check
-now,action,id,author,message
-Sun Jun 16 2019 21:01:22 GMT+0300 (GMT+03:00),ADD,8665,Daniel,check2
-now,action,id,author,message
-Sun Jun 16 2019 21:01:36 GMT+0300 (GMT+03:00),ADD,4582,Daniel,check3
-now,action,id,author,message
-Mon Jun 17 2019 17:27:59 GMT+0300 (Israel Daylight Time),ADD,713,דניאל,בדיקה
-Mon Jun 17 2019 17:36:21 GMT+0300 (Israel Daylight Time),ADD,5496,דניאל,2בדיקה
+Date, Action, Id, Message, Author 

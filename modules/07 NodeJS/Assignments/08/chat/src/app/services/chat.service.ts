@@ -80,4 +80,13 @@ export class ChatService {
     this.getMessages();
   }
 
+  downloadLogFile(){
+    const urlDownload = `${this.url}/downlaod-log`;
+      window.open(urlDownload);
+  }
+
+  isLogFileExists(){
+    return fetch(`${this.url}/is-file-exists`);
+  }
+
 }
