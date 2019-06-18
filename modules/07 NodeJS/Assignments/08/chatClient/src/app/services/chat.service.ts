@@ -68,6 +68,11 @@ export class ChatService {
       })
     });
   }
+
+  downloadFile() {
+    fetch(`${this.url}/download`);
+  }
+
   loadMoreMessages() {
     this.showMess += this.messInPage;
   }

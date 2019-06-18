@@ -2,12 +2,27 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 
+var path = require("path");
+var mime = require("mime");
+
 const app = express();
 
 app.use(express.json()); // Middleware - for reading the BODY
 app.use(cors());
 
 const chat = [];
+
+app.get("/download", function(req, res) {
+  const file = __dirname + "/log.csv";
+  const filename = path.basename(file);
+  const mimetype = mime.lookup(file);
+  console.log(req.url);
+  res.setHeader("Content-disposition", "attachment; filename=" + filename);
+  res.setHeader("Content-type", mimetype);
+
+  const filestream = fs.createReadStream(file);
+  filestream.pipe(res);
+});
 
 // Read
 app.get("/", (request, response) => {

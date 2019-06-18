@@ -41,6 +41,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   deleteMessage(id: number) {
     this.chatService.sendToDeleteMessage(id);
   }
+  downloadFile() {
+    this.chatService.downloadFile();
+  }
   editMessage(messageContent: IMessage) {
     this.isEditing = true;
     this.currentMessage = messageContent;
