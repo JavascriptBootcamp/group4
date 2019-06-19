@@ -10,6 +10,7 @@
   <input type="text" name="searchmess" id="searchmess" placeholder="Search..." required minlength="3" #inputSearch>
   <input type="submit" value="Search">
 </form>
+<button (click)="downloadLogChat()">Download Log Chat</button>
 <div id="messages">
   <h3>Messages:</h3>
   <ul *ngFor="let messageContent of this.chatService.messages;index as i">

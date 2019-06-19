@@ -72,6 +72,9 @@ export class ChatService {
       })
     });
   }
+  downloadLogFile() {
+    window.location.href = `${this.url}/download`;
+  }
   loadMoreMessages() {
     this.showMess += this.messInPage;
   }

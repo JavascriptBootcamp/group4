@@ -42,6 +42,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.inputName.nativeElement.value = name;
     this.inputMess.nativeElement.value = mess;
   }
+  downloadLogChat() {
+    this.chatService.downloadLogFile();
+  }
   loadMoreMessages() {
     this.chatService.loadMoreMessages();
   }
