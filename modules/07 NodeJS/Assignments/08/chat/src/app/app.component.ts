@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
   getMessages() {
     const delay = 2000;
-    setInterval(async () => {
+    window.setInterval(async () => {
       const response = await fetch(this.url);
       const data = await response.json();
       this.messages = data.result;
