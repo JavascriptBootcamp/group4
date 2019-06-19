@@ -9,9 +9,11 @@ export class AppComponent {
   title = 'search-file';
   files : string[];
   isFinishSearch:boolean;
+  status:boolean;
   constructor(private filesService:FilesService){
     this.files = [];
     this.isFinishSearch=false;
+    this.status = true;
   }
 
 
@@ -19,7 +21,15 @@ export class AppComponent {
     event.preventDefault();
     this.isFinishSearch=false;
     const {value} =  search;
-    this.files = await this.filesService.getFiles(value);
+    const filesList:string[] = value.split(",");
+    const {status,foundFiles} = await this.filesService.getFiles(filesList);
+    if(status === "OK"){
+      this.files = foundFiles?foundFiles:[];
+      this.status = true;
+    }
+    else if(status === "Error"){
+      this.status = false;
+    }
     this.isFinishSearch=true;
   }
 

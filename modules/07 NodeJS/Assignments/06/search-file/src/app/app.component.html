@@ -5,16 +5,22 @@
       <button>search</button>
     </form>
   </div>
+
   <div *ngIf="isFinishSearch">
-    <div *ngIf="files.length > 0;else NotFound"></div>
+    <div *ngIf="status,else Error">
+      <div *ngIf="files.length > 0;else NotFound"></div>
       <ul>
         <li *ngFor="let file of files">
           {{file}}
         </li>
       </ul>
+    </div>
+    <ng-template #NotFound>
+      <h4>file not found.</h4>
+    </ng-template>
   </div>
-  <ng-template #NotFound>
-    <h4>file not found.</h4>
+  <ng-template #Error>
+    <h4>There was an Error,Please try again later.</h4>
   </ng-template>
 </div>
 
