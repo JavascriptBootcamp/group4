@@ -4,3 +4,9 @@
     <button>Send</button>
   </form>
 </div>
+
+<div id="results" *ngIf="filesMatch.length > 0">
+  <div *ngFor="let filematch of filesMatch">
+    <span>{{filematch}}</span>
+  </div>
+</div>

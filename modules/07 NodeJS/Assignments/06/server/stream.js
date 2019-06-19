@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 const fileFounds = "found_files.txt";
 
 const writeToListFiles = (listOfFiles) => {
@@ -10,11 +9,11 @@ const writeToListFiles = (listOfFiles) => {
                 fileStream.write(`${file}\n`);
             }
         } catch (err) {
-            res.status(500).end("Error");
+            console.log(err);
         }
     }
 }
-  
+
 module.exports = {
     writeToListFiles
 }

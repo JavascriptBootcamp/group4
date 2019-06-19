@@ -7,13 +7,22 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 })
 export class AppComponent {
   @ViewChild('inputSearchFile') inputSearchFile: ElementRef;
-  searchFile(e : Event) {
+  filesMatch;
+
+  constructor() {
+    this.filesMatch = [];
+  }
+
+  searchFile(e: Event) {
     e.preventDefault();
-    const url = "http://localhost:8000/file"
+    const url = "http://localhost:8000/file";
+    const arr = this.inputSearchFile.nativeElement.value.split(',');
+    arr.map((item) => JSON.stringify(item));
+    const files = { files: arr };
     fetch(url, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.inputSearchFile.nativeElement.value)
-    })
+      body: JSON.stringify(files)
+    }).then(res => res.json()).then(data => this.filesMatch = [data.file.replace(/\n/g, ' ')])
   }
 }
