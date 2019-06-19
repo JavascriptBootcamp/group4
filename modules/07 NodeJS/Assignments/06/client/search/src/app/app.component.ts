@@ -8,16 +8,15 @@ import { SearchService } from './search.service';
 })
 export class AppComponent {
   title = 'search';
+  foundedFiles: string[];
   constructor(private searchService: SearchService){
+    this.foundedFiles = [];
   }
 
   async onSubmit(e,filesToSearch){
-    console.log("s");
-
     e.preventDefault();
     const searchObject = { files : filesToSearch.split(',') };
-    await this.searchService.post(searchObject);
-    // console.log(data);
+    this.foundedFiles = await this.searchService.post(searchObject);
   }
   
 }

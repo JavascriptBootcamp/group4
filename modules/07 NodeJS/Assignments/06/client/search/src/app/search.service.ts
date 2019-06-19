@@ -5,10 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SearchService {
   url = "http://localhost:5000/file";
-  data: string[];
 
   constructor() {
-    this.data = [];
    }
 
   async post(filesToSearch: object){
@@ -18,10 +16,6 @@ export class SearchService {
       body: JSON.stringify(filesToSearch)
     };
     const response = await fetch(this.url,md);
-    const data1 = await response.json();
-    console.log(data1);
-  }
-  getPostResult(){
-    return this.data;
+    return await response.json();
   }
 }

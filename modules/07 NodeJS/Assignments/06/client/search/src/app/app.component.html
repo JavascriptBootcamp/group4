@@ -2,3 +2,6 @@
   <input type="text" minlength="3" placeholder="search a file" #searchI>
   <button>Search</button>
 </form>
+
+<h3 *ngIf="foundedFiles.length > 0">Founded Files:</h3>
+<div *ngFor="let f of foundedFiles">{{f}}</div>
