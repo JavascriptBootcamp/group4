@@ -9,12 +9,13 @@ const fileFounds = "found_files.txt";
 app.use(cors());
 app.use(express.json());
 
-app.post('/file', (req, res, next) => {
+app.post('/file', async (req, res, next) => {
     const listOfFiles = req.body.files;
     let file = "";
     try {
         stream.writeToListFiles(listOfFiles);
-        fs.createReadStream(fileFounds).on("data", (data) => {
+        fs.createReadStream(fileFounds)
+        .on("data", (data) => {
                 file += data.toString();
         }).on('end', () => {
             res.status(200).end(res.json({file}));

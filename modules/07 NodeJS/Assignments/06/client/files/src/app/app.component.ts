@@ -15,6 +15,7 @@ export class AppComponent {
 
   searchFile(e: Event) {
     e.preventDefault();
+    this.filesMatch = [];
     const url = "http://localhost:8000/file";
     const arr = this.inputSearchFile.nativeElement.value.split(',');
     arr.map((item) => JSON.stringify(item));
