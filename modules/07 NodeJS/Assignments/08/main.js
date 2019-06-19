@@ -39,7 +39,6 @@ app.get('/downlaod-log',(req, res)=>{
 });
 
 app.get('/is-file-exists',(req, res)=>{
-    console.log("is-file-exists")
     const logCSV = logFile + ".csv";
     res.end(JSON.stringify(fs.existsSync(logCSV)));
 });
@@ -122,7 +121,11 @@ function writeToFile(fileName, suffix, data, mode) {
         if (err) {
             return console.log(err);
         }
-        console.log("The file saved!");
+        if(mode === "a")
+            console.log("The file saved!");
+        else{
+            console.log("The file was created!");
+        }
     });
 }
 
