@@ -7,8 +7,9 @@ const app = express();
 app.use(express.json()); // Middleware - for reading the BODY
 app.use(cors());
 
-const log_file_name = "chet_action_log.csv";
+const log_file = "chet_action_log.csv";
 const chat = [];
+let removedMsg = null;
 
 // Read
 app.get('/', (request, response) => {
@@ -20,14 +21,27 @@ app.get('/', (request, response) => {
     else
         responseJson(response, chat);
 });
+
 function searchMess(mess) {
     return chat.filter((message) => message.message.indexOf(mess) !== -1)
 }
+
+//download the backup file
+app.get('/download', function(req, res){
+    if(fs.existsSync(log_file)) {
+        res.download(log_file); // Set disposition and send it.
+    }
+    else {
+        res.status(500).send("File to download wasn't found");
+    }
+});
+
 // Delete
 app.delete('/', (request, response, next) => {
     const id = Number(request.query.id);
     const chatIndex = getIndexById(chat, id);
-    chat.splice(chatIndex, 1);
+    //save the delete massege for the use of the middlware that handele "REMOVE" action
+    removedMsg = chat.splice(chatIndex, 1)[0];
     responseJson(response, "ok");
     next();
 });
@@ -58,7 +72,7 @@ app.post('/', (request, response, next) => {
 });
 
 
-// Custom middleware - saves user actions in a CSV file.
+// Custom middleware for "ADD" AND "REMOVE" actions - saves user actions in a CSV file.
 app.use( (request, response, next) => {
     let action = "";
     let id = 0;
@@ -68,12 +82,11 @@ app.use( (request, response, next) => {
     let save = false;
 
     // identhify method
-    if (request.method === "DELETE") {
+    if (request.method === "DELETE" && removedMsg && removedMsg.id === Number(request.query.id)) {
         action = "REMOVE";
         id = Number(request.query.id);
-        const chatIndex = getIndexById(chat, id);
-        message = chat[chatIndex].Message;
-        author = chat[chatIndex].author;
+        message = removedMsg.message;
+        author = removedMsg.author;
         save = true;
     }
     else if (request.method === "POST") {
@@ -87,8 +100,8 @@ app.use( (request, response, next) => {
     if(save) {
         //creat the log data
         log_for_save = `${date},${action},${id},${message},${author}\n`;
-        //save the data in the csv file
-        fs.appendFileSync(log_file_name, log_for_save);
+        //save the data in the csv file - if the file dosnt exist creat it
+        fs.appendFileSync(log_file, log_for_save);
     }
 
     next();
