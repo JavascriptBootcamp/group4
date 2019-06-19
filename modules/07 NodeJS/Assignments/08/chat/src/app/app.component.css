@@ -1,0 +1,27 @@
+*{
+    font-size: 14px;
+}
+
+ul{
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: rgb(235, 161, 50);
+    width: fit-content;
+    list-style-type: none;
+}
+
+#author{
+    font-weight: bold;
+}
+
+.cssMessegeA{
+    margin: 20px 0;
+}
+
+.cssMessegeB{
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: blanchedalmond;
+    padding: 5px;
+}
