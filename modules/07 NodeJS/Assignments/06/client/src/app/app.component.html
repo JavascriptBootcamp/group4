@@ -1,7 +1,9 @@
 <h1>search form</h1>
 
 <label for="files">Search Files</label>
-<input type="text" name="files" id="files" #files />
+<input type="text" name="files" id="files" #files size="70" />
 <input type="button" value="serch Files" (click)="getResult(files.value)" />
 
-<div></div>
+<div>
+  {{ foundFiles }}
+</div>
