@@ -1,0 +1,12 @@
+{
+  "name": "03",
+  "version": "1.0.0",
+  "description": "<p>create a module named <code>prom-fs</code> (Promise File System) which provide a promise version of the following File System methods:\r <ol>\r     <li><code>fs.writeFile()</code></li>\r     <li><code>fs.readFile()</code></li>\r     <li><code>fs.appendFile()</code></li>\r     <li><code>fs.unlink()</code></li>\r </ol>\r </p>\r <p>add an additional method: <code>readFileIfExists</code> which first checks if the specified file exists. If it does - it returns its content otherwise it returns the error message: \"Error: The specified file does not exist\"</p>\r <p>the module should allow running each of the methods in promise syntax and async-await syntax.</p>\r <p>add examples of create, read, update, delete and \"read if exists\" operation of a JSON file which contains a food recipe: Name of the recipe, ingredients and time of cooking</p>\r <h2>Examples</h2>\r <h3>Original Execution (Using A Callback)</h3>\r <code>\r <pre>\r const fs = require('fs');\r ...\r fs.readFile('recipe.json', (err, data) => {\r     if (err) return \"Error: The specified file does not exist\";\r     return data;\r });\r ...\r </pre>\r </code>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
