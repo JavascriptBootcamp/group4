@@ -1,11 +1,11 @@
 const fs = require('fs');
 const fileFounds = "found_files.txt";
 
-const writeToListFiles = async (listOfFiles) => {
+const writeToListFiles = (listOfFiles) => {
     let fileStream = fs.createWriteStream(fileFounds);
     for (let file of listOfFiles) {
         try {
-            if (await fs.existsSync(`documents/${file}`)) {
+            if (fs.existsSync(`documents/${file}`)) {
                  fileStream.write(`${file}\n`);
             }
         } catch (err) {
