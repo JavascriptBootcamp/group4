@@ -37,6 +37,7 @@ function getReqFiles(checkForFiles){
     temp.push(specificFiles[specificFiles.length-1].trim());
     specificFiles = temp;
     streamify(specificFiles).pipe(writeStream);    
+    specificFiles = specificFiles.map(item=>item.replace('\n',''));
     return specificFiles;
     //fs.writeFileSync(outputFile,specificFiles.toString().replace(',',' '));
     }
