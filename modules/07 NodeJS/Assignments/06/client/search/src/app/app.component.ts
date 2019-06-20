@@ -17,7 +17,6 @@ export class AppComponent {
     e.preventDefault();
     const searchObject = { files : filesToSearch.split(',') };
     this.foundedFiles = await this.searchService.post(searchObject);
-    console.log(this.foundedFiles);
   }
   
 }
