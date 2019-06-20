@@ -1,0 +1,15 @@
+{
+  "name": "07",
+  "version": "1.0.0",
+  "description": "<p>create new CSV file <code>students.csv</code>.<p>\r <p>fill it with students data: First Name, Last Name, Gender, Occupation.</p>\r <p>create an Express application.</p>\r <p>create a GET handler to the root ('/') which uses Node.js streams and pipe in order to create a backup for the CSV file.</p>\r <p>place the file in a backup folder <code>backup/students.csv.gz</code> using the node core module <code>path</code>.</p>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
