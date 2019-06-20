@@ -7,14 +7,23 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/songs', (request, response, next) => {
+
+    if (Object.keys(request.query).length !== 0)
+        next();
+    else
+        response.send(songs.songs);
+});
 app.get('/songs', (request, response) => {
-    let sort = request.query.sort;
-    let tmpSongs = "";
     try {
-        sort ? tmpSongs = sortByTitle(sort) : tmpSongs = songs.songs;
+        let sort = request.query.sort;
+        if (sort)
+            sortSongs = sortByTitle(sort);
+        else
+            throw "sort is undefined";
 
         response.statusCode = 200;
-        response.send(tmpSongs);
+        response.send(sortSongs);
     } catch (error) {
         response.statusCode = 500;
         response.send({ response: error });
