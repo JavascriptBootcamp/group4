@@ -1,0 +1,16 @@
+{
+  "name": "09",
+  "version": "1.0.0",
+  "description": "<ul>\r <li>\r     create an object \"songs\" which contains an array of 5 songs\r </li>\r <li>\r     each song should contain:\r     <ol>\r         <li>id</li>\r         <li>title</li>\r         <li>singer</li>\r         <li>words</li>\r     </ol>\r </li>\r <li>create an express application</li>\r <li>create a GET endpoint \"/songs\" which sends all songs as JSON response. for example: <code>http://localhost:5000/songs</code></li>\r <li>create a GET endpoint \"/songs\" which sorts and sends sorted songs by \"sort\" querystring. for example: <code>http://localhost:5000/songs?sort=title</code></li>\r <li>create a POST endpoint \"/song\" which adds a new song. the endpoint should generate a random ID and accept BODY as JSON: title, singer and words. the endpoint should add the song and send a response with the relevant status (\"success\"/\"error\") as a JSON object. for example: <code>http://localhost:5000/song, BODY { title: \"...\", singer: \"...\", words: \"...\" }</code></li>\r <li>create a DELETE endpoint \"/song\" which deletes a song by \"id\". accept the \"id\" as a URL parameter. send a response with \"success\"/\"error\". for example: <code>http://localhost:5000/song/123</code></li>\r <li>create a PUT endpoint \"/song\" which updates a song by \"id\". accept the \"id\" as a URL parameter. accept the song details (\"title\", \"singer\", \"words\") as JSON BODY. send a response with \"success\"/\"error\". for example: <code>http://localhost:5000/song/123, BODY { title: \"...\", singer: \"...\", words: \"...\" }</code></li>\r </ul>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
