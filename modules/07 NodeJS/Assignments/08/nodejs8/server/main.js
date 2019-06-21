@@ -69,7 +69,7 @@ app.post('/', (request, response, next) => {
     next();
 });
 
-app.use((request, response, next) => {
+const addData = (request, response, next) => {
     const date = new Date();
     const currentDate = date.toLocaleString("en-US");
     let action = "";
@@ -82,19 +82,19 @@ app.use((request, response, next) => {
         message = request.body.Message;
         author = request.body.Author;
         action = "ADD";
-        const objData = { currentDate, action, id, message, author };
-        saveToCsvFile(objData);
     }
     else if (request.method === "DELETE") {
         id = Number(request.query.id);
         message = response.locals.requestMessage;
         author = response.locals.requestAuthor;
         action = "REMOVE";
-        const objData = { currentDate, action, id, message, author };
-        saveToCsvFile(objData);
     }
+    const objData = { currentDate, action, id, message, author };
+    saveToCsvFile(objData);
     next();
-});
+}
+
+app.use(addData);
 
 function saveToCsvFile(obj) {
     const data = `${obj.currentDate}, ${obj.action}, ${obj.id}, ${obj.message}, ${obj.author}\n`;
