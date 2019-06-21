@@ -16,11 +16,12 @@ const data = {
 };
 
 app.get('/songs', (request, response) => {
+
     try {
         const sortBy = request.query.sort;
-        if (sortBy != undefined) {
+        if (sortBy != undefined) {     //if get /songs?sort=""
             console.log(data.songs);
-            data.songs.sort(sortSongs(sortBy));
+            data.songs = sortSongs(sortBy);
             console.log(sortBy);
         }
 
@@ -33,6 +34,12 @@ app.get('/songs', (request, response) => {
         })
     }
 });
+
+
+function sortSongs(sortBy) {
+    console.log(sortBy);
+    return data.songs.sort((a, b) => a[sortBy] < b[sortBy] ? -1 : a[sortBy] > b[sortBy] ? 1 : 0);
+}
 
 
 app.post('/song', (request, response) => {
@@ -92,20 +99,12 @@ app.put('/song/:id', (request, response) => {
     }
 });
 
-function sortSongs(a, b) {
-    console.log(sortBy);
-    if (a[sortBy] < b[sortBy]) {
-        return -1;
-    }
-    if (a[sortBy] > b[sortBy]) {
-        return 1;
-    }
-    return 0;
-}
+
 
 function getIndexById(arr, id) {
     return arr.findIndex(item => item.id === id);
 }
+
 
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
