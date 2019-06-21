@@ -1,0 +1,13 @@
+
+<div id="wrapper">
+  <div *ngIf="_resultsService.foundFiles.length > 0" >
+
+    <h1><u>Files found by your search</u></h1>
+
+    <div *ngFor="let file of _resultsService.foundFiles">
+      <h3>{{ file }}</h3>
+    </div>
+
+  </div>
+</div>
+ 

@@ -1,0 +1,41 @@
+#form-wrapper {
+  text-align: center;
+  align-content: center;
+  position: fixed;
+  top: 100px;
+  left: 100px;
+}
+
+
+#search-header {
+  color: #00F0CA;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+#search-input {
+  text-align: center;
+  border-radius: 5px;
+  border: solid 4px #FFB263;
+  font-size: 30px;
+  font-weight: bold;
+  color: blue;
+}
+
+#submit-btn {
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #5A90E8;
+  border: solid 3px #FFD463;
+  background: #5AE3E8;
+}
+#submit-btn:hover {
+  color: #0045EB;
+}
+
+.error-message {
+  color: red;
+  font-size: 30px;
+}

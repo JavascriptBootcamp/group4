@@ -1,0 +1,36 @@
+<div id="form-wrapper" >
+  <form (ngSubmit)="onSubmitSearchForm(searchInput.value)" #f="ngForm">
+
+    <label for="search-input" id="search-header">Search Field</label> &nbsp;&nbsp;
+    <input 
+      type="text" 
+      id="search-input" 
+      placeholder="Search Input..."
+      ngModel
+      name="search-input"
+      required
+      minlength="2"
+      #searchInput="ngModel"
+    >
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button 
+      type="submit" 
+      id="submit-btn"
+      >
+      Search
+    </button>
+
+    <br>
+
+    <p 
+      *ngIf="!searchInput.valid && (searchInput.touched || searchInput.dirty)" 
+      class="error-message"
+      >
+      <span *ngIf="searchInput.errors.required">Search field is required</span>
+      <span *ngIf="searchInput.errors.minlength">
+          Search value must contain at least 2 characters!
+      </span> 
+    </p>
+
+  </form>
+</div>
