@@ -1,65 +1,46 @@
 const promFS = require('./moduleFs');
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-// Custom middleware
-// app.use( (request, response, next) => {
-//     console.log("Received a request...");
-//     request.body = "moshiko is the king";
-
-//     // identhify method
-//     console.log("request.method", request.method);
-//     if (request.method === "GET") {
-//         // do something
-//         // readFromJSON();
-//     }
-//     else if (request.method === "POST") {
-//         // do something
-//         // writeToJSON();
-//     }
-
-//     next();
-// });
 
 
-app.get('/', (req, res, next) => {
-    // readFromJSON();
-    res.end("OK")
+app.use((req, res, next) => {
+    if (req.method === "POST") {
+        const filesList = req.body;
+        console.log(filesList);
+        next();
+    }
 });
 
-async function writeFile(data) {
+ function isExixtsWrite(data) {
     let fileExists = "";
+    const fileFounds = "found_files.txt";
 
     for (let fileOfData of data) {
-        await promFS.readFileIfExists(`.\\documents\\${fileOfData}`)
-            .then(isExists => {
-                console.log(`isExists:${isExists}`);
-                fileExists += `${fileOfData} `;
-            })
-            .catch(isExists => {
-                console.error(`isExists: ${isExists}`);
-            });
+        if (fs.existsSync(path.join(`documents`, fileOfData))) {
+            fileExists += `${fileOfData} \n`;
+        }
     }
 
-    await promFS.writeFilePromise(fileExists)
-        .then(status => {
-            console.log(`The files exists are: ${status}`);
-        })
-        .catch(error => {
-            console.error(`The error is ${error}`);
-        });
+    let fileStream = fs.createWriteStream(fileFounds);
+    fileStream.write(fileExists);
+    console.log(`isExists: ${fileExists}`);
+    return fileExists;
+
 };
 
 app.post('/file', (req, res) => {
-    // writeToJSON();
-    console.log(req.body.file);
-    writeFile(req.body.file);
 
-    res.end("OK");
+    let files = isExixtsWrite(req.body.file);
+    console.log((files));
+    res.end( JSON.stringify(files));
 });
 
-app.listen(5000, console.log("server on"));
+
+app.listen(5000, console.log("server is running in port 5000"));
