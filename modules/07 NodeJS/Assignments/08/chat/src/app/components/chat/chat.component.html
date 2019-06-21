@@ -1,0 +1,34 @@
+<form ngNativeValidate>
+  <label for="username">Your Name *</label>
+  <input type="text" id="username" name="username" [disabled]="isEditing" required #inputName />
+  <label for="message">Your Message *</label>
+  <input type="text" id="message" name="message" required #inputMess />
+  <input *ngIf="!isEditing" type="submit" (click)="onSubmitForm(inputName.value,inputMess.value)" value="Send">
+  <input *ngIf="isEditing" type="submit" (click)="onUpdateForm(inputMess.value)" value="Update">
+</form>
+<form ngNativeValidate (submit)="onSubmitSearch(inputSearch.value)">
+  <input type="text" name="searchmess" id="searchmess" placeholder="Search..." required minlength="3" #inputSearch>
+  <input type="submit" value="Search">
+</form>
+<div id="messages">
+  <h3>Messages:</h3>
+  <ul *ngFor="let messageContent of this.chatService.messages;index as i">
+    <li *ngIf="!this.chatService.searchMess; else searchMess">{{ messageContent.author }}:
+      {{ messageContent.message }}
+      <button (click)="deleteMessage(messageContent.id)">Delete</button>
+      <button (click)="editMessage(messageContent)">Edit</button>
+    </li>
+    <ng-template #searchMess>
+      <li *ngIf="i < this.chatService.showMess">{{ messageContent.author }}: {{ messageContent.message }}
+        <button (click)="deleteMessage(messageContent.id)">Delete</button>
+        <button (click)="editMessage(messageContent)">Edit</button>
+      </li>
+    </ng-template>
+  </ul>
+  <div *ngIf="this.chatService.searchMess">
+    <button (click)="loadMoreMessages()" [disabled]="this.chatService.showMess>=this.chatService.messages.length">Load
+      More</button>
+    <button (click)="backToChat()">Back To Chat</button>
+  </div>
+  <button (click)="downloadFile()">Download File</button>
+</div>
