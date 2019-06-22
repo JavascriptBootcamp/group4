@@ -1,0 +1,5 @@
+<form #f="ngForm" (submit)="onSubmitForm(f)">
+  <input type="search" id="searchFile" [ngModel]="searchFileModel" 
+  #searchFileRef="ngModel" name="searchFile" required />
+  <button [disabled]="f.invalid">Send</button>
+</form>
