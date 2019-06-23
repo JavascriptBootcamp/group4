@@ -1,0 +1,8 @@
+<div class="search">
+  <h1>Search Files</h1>
+  <form ngNativeValidate (submit)="onSubmitSearch(inputSearch.value,$event)">
+    <input type="text" name="searchmess" id="searchmess" placeholder="Search..." required #inputSearch>
+    <input type="submit" value="Search">
+  </form>
+  <h2>{{this.foundedFiles}}</h2>
+</div>
