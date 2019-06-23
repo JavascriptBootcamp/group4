@@ -3,6 +3,7 @@
 // const app = express();
 
 const app = require("express")();
+const path = require("path");
 const port = 7777;
 
 app.get('/', (request, response) => {
@@ -51,7 +52,20 @@ app.get('/json', (request, response) => {
     // response.send({
     //     ok: true
     // });
-    response.send("<h3>Gabi is the king</h3>");
-})
+    // response.send("<h3>Gabi is the king</h3>");
+    response.sendStatus(500);
+});
+
+app.get('/file', (request, response) => {
+    response.download('log.txt');
+});
+
+app.get('/google', (request, response) => {
+    response.redirect("http://www.google.com")
+});
+
+app.get('/log', (request, response) => {
+    response.sendFile(path.join(__dirname, 'log.txt'));
+});
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
