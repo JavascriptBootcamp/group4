@@ -1,7 +1,8 @@
-const express = require("express");
-const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
+
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
@@ -10,9 +11,10 @@ const app = express();
 app.use(express.json()); // Middleware - for reading the BODY
 app.use(cors());
 
-const matchingFileNames = [];
+let matchingFileNames = [];
 
 app.post("/file", (req, res) => {
+  matchingFileNames = [];
   //const writeStream = fs.createWriteStream("./found_files.txt");
   const serchFiles = req.body;
   testFolder = path.resolve(__dirname, "documents");
@@ -30,9 +32,8 @@ app.post("/file", (req, res) => {
         }
       });
     });
+    res.send(matchingFileNames);
   });
-  console.log(matchingFileNames);
-  res.json(matchingFileNames);
 });
 /* fs.readdir(testFolder, (err, files) => {
     files.forEach(file => {
