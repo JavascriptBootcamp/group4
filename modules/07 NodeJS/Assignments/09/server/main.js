@@ -41,7 +41,7 @@ app.post('/song', (req, res) => {
         res.send({ response: "success" });
     } catch (e) {
         res.statusCode = 500;
-        res.send({ response: error });
+        res.send({ response: e });
     }
 });
 
@@ -55,7 +55,7 @@ app.delete('/song/:id', (req, res) => {
     }
     catch (e) {
         res.statusCode = 500;
-        res.send({ response: error });
+        res.send({ response: e });
     }
 });
 
@@ -70,7 +70,7 @@ app.put('/song/:id' , (req , res)=>{
     }
     catch (e) {
         res.statusCode = 500;
-        res.send({ response: error });
+        res.send({ response: e });
     }
 });
 
