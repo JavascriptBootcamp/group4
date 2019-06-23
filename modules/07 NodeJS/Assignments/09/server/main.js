@@ -49,9 +49,15 @@ app.delete('/song/:id', (req, res) => {
     const { id } = req.params;
     try {
         const index = getIndex(+id);
-        songs.songs.splice(index, 1);
-        res.statusCode = 200;
-        res.send({ response: "success" });
+        if (index > 0) {
+            songs.songs.splice(index, 1);
+            res.statusCode = 200;
+            res.send({ response: "success" });
+        }
+        else {
+            res.statusCode = 500;
+            res.send({ response: "id number does not exist" });
+        }
     }
     catch (e) {
         res.statusCode = 500;
@@ -59,12 +65,12 @@ app.delete('/song/:id', (req, res) => {
     }
 });
 
-app.put('/song/:id' , (req , res)=>{
+app.put('/song/:id', (req, res) => {
     const { id } = req.params;
     const { title, singer, words } = req.body;
     try {
         const index = getIndex(+id);
-        songs.songs[index] = {id , title , singer , words}
+        songs.songs[index] = { id, title, singer, words }
         res.statusCode = 200;
         res.send({ response: "success" });
     }
