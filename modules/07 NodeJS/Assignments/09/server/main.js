@@ -7,11 +7,11 @@ app.use(cors());
 
 let songs = {
     "songs": [
-        { id: "1", title: "song15", singer: "singer1", words: "words1" },
-        { id: "2", title: "song2", singer: "singer2", words: "words2" },
-        { id: "3", title: "song33", singer: "singer3", words: "words3" },
-        { id: "4", title: "song1", singer: "singer4", words: "words4" },
-        { id: "5", title: "song9", singer: "singer5", words: "words5" }
+        { id: 1, title: "song15", singer: "singer1", words: "words1" },
+        { id: 2, title: "song2", singer: "singer2", words: "words2" },
+        { id: 3, title: "song33", singer: "singer3", words: "words3" },
+        { id: 4, title: "song1", singer: "singer4", words: "words4" },
+        { id: 5, title: "song9", singer: "singer5", words: "words5" }
     ]
 }
 
@@ -32,6 +32,50 @@ app.get('/songs', (req, res) => {
     res.status(200).send(songs);
 });
 
+app.post('/song', (req, res) => {
+    const id = Math.floor(Math.random() * 10000);
+    const { title, singer, words } = req.body;
+    try {
+        songs.songs.push({ id, title, singer, words });
+        res.statusCode = 200;
+        res.send({ response: "success" });
+    } catch (e) {
+        res.statusCode = 500;
+        res.send({ response: error });
+    }
+});
 
+app.delete('/song/:id', (req, res) => {
+    const { id } = req.params;
+    try {
+        const index = getIndex(+id);
+        songs.songs.splice(index, 1);
+        res.statusCode = 200;
+        res.send({ response: "success" });
+    }
+    catch (e) {
+        res.statusCode = 500;
+        res.send({ response: error });
+    }
+});
+
+app.put('/song/:id' , (req , res)=>{
+    const { id } = req.params;
+    const { title, singer, words } = req.body;
+    try {
+        const index = getIndex(+id);
+        songs.songs[index] = {id , title , singer , words}
+        res.statusCode = 200;
+        res.send({ response: "success" });
+    }
+    catch (e) {
+        res.statusCode = 500;
+        res.send({ response: error });
+    }
+});
+
+function getIndex(id) {
+    return songs.songs.findIndex(item => item.id === id);
+}
 
 app.listen(port, () => console.log(`listen on port ${port}`));
