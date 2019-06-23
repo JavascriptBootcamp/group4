@@ -1,0 +1,16 @@
+{
+  "name": "08",
+  "version": "1.0.0",
+  "description": "<p>Use <code>group4/Modules/06 Angular/Assignments/24</code></p> <p>Add an express middleware which saves user actions in a CSV file.</p> <p>Each action should include: Time, action (\"ADD\"/\"REMOVE\"), message Id, message content and author.</p>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
