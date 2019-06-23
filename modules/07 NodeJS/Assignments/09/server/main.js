@@ -16,11 +16,9 @@ let songs = {
 
 app.get('/songs',(req,res,next)=>{
     const sortBy = req.query.sort;
-    console.log("sortBy:",sortBy);
     if(sortBy){
         let sortedSongs = [].concat(songs.songs);
         sortedSongs.sort( (a,b)=> a[sortBy] > b[sortBy] ? 1 : -1);
-        console.log("sortedSongs:",sortedSongs,songs.songs);
         res.status(200).send({songs : sortedSongs});
     }
     else
@@ -41,25 +39,33 @@ app.post('/song',(req,res)=>{
     const id = Math.floor(Math.random()*10000);
     let song = req.body;
     song.id = id;
-    console.log("song",song);
     songs.songs.push(song);
     res.status(200).send("OK");
 });
 
-app.delete('/song',(req,res)=>{
-    const id = req.params;  
-    const songIndex = getSongIndex(+id);
-    songs.songs.splice()  
+app.delete('/song/:id',(req,res)=>{
+    const { id }= req.params;  
+    const songIndex = +getSongIndex(id);
+
+    if( songIndex === -1)
+        res.status(500).send("ID is not exists!");
+
+    songs.songs.splice(songIndex,1);  
+    res.status(200).send("OK");
 });
 
-function getSongIndex(id){
-    return songs.songs.filter((item,index)=>{
-        item.id === id ? index : -1;
-    })[0];
-    // for(let i=0;i<songs.songs.length;i++){
-    //     songs.songs[i] . id
-    // }
+app.put('/song/:id',(req,res)=>{
+    const { id }= req.params;  
+    const { title, singer, words} = req.body;
+    const songIndex = getSongIndex(id);
 
-}
+    if( songIndex === -1)
+        res.status(500).send("ID is not exists!");
+    songs.songs[songIndex] = { id, title, singer, words};
+    res.status(200).send("OK");
+});
+
+const getSongIndex = (id)=> songs.songs.findIndex((item)=> item.id === id);
+
 app.listen(port, ()=>console.log(`Server is running on port ${port}`));
 
