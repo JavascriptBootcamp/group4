@@ -24,6 +24,6 @@ export class AppComponent {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(files)
-    }).then(res => res.json()).then(data => this.filesMatch = [data.file.replace(/\n/g, ' ')])
+    }).then(res => res.json()).then(data => this.filesMatch = [data.files])
   }
 }
