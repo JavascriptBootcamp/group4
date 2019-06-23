@@ -13,7 +13,7 @@ export class AppComponent {
     const url = "http://localhost:8000/file";
     fetch(url, {
       method: "POST",
-      body: JSON.stringify(files),
+      body: files,
       headers: {
         "Content-Type": "application/json"
       }

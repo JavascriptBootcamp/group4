@@ -12,10 +12,6 @@ app.use(cors());
 
 const matchingFileNames = [];
 
-app.use("/file", (req, res, next) => {
-  console.log(req.body.files);
-  next();
-});
 app.post("/file", (req, res) => {
   //const writeStream = fs.createWriteStream("./found_files.txt");
   const serchFiles = req.body;
