@@ -1,0 +1,6 @@
+<form ngNativeValidate (submit)="onSubmitSearch(inputSearch.value, $event)" >
+  <input type="text" name="searchmess" id="searchmess" placeholder="Search..." required minlength="3" #inputSearch>
+  <input type="submit" value="Search">
+</form>
+
+<router-outlet></router-outlet>
