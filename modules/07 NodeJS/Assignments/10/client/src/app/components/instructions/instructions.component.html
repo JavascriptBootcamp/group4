@@ -1,0 +1,9 @@
+<form #f="ngForm" (submit)="manageQuizsService.startQuiz(quiz.quizIndex,playerNameRef.value)" class="quiz-container">
+  <div class="quiz-body">
+    <div class="quiz-header">
+        <h2 class="body-title">{{quiz.quizName}} </h2>
+    </div>
+    <input name="playerName" id="playerName" [ngModel]="playerNameModel" type="text" placeholder="Enter Your Name" class="body-text" #playerNameRef="ngModel" required>
+  </div>
+  <button [disabled]="f.invalid" class="quiz-btn">Start Quiz</button>
+</form>
