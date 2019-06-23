@@ -17,14 +17,15 @@ app.post('/file', (request, response, next) => {
         const arrFiles = request.body.files;
         const foundFiles = isFilesExists(arrFiles);
         response.locals.requestFiles = foundFiles;
+        next();
         response.status(200);
+        //responseJson(response, "Ok");
         responseJson(response, foundFiles);
     }
     catch{
         response.status(500);
         responseJson(response, "Internal Server Error");
     }
-    next();
 });
 
 app.use(saveFile);
