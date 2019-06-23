@@ -1,0 +1,13 @@
+<header>
+  <h1>Search Files</h1>
+</header>
+<div id="form">
+  <form (submit)="onSubmitForm($event, fileNames)">
+    <input type="text" placeholder="Enter file names.." #fileNames>
+    <button>Submit</button>
+  </form>
+</div>
+<div class="results" *ngIf="existsFiles">
+  <h3>Files:</h3>
+  {{existsFiles}}
+</div>
