@@ -12,9 +12,11 @@ export class TriviaComponent implements OnInit {
   submit: boolean;
   submitScore : boolean;
   topTen: boolean;
+  scores;
   constructor(public questionsService: QuestionsService) {
     this.submit = false;
     this.submitScore = false;
+    this.scores = null;
   }
 
   ngOnInit() {
@@ -31,6 +33,6 @@ export class TriviaComponent implements OnInit {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(obj)
-    });
+    }).then(res => res.json()).then(data => this.scores = JSON.stringify(data))
   }
 }

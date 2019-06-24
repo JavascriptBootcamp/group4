@@ -46,4 +46,7 @@
     <input type="text" name="name" ngModel required>
     <input type='submit' name='submit' [disabled]="submitScore" value='Submit' />
   </form>
+  <div *ngIf="submitScore">
+    {{scores}}
+  </div>
 </div>

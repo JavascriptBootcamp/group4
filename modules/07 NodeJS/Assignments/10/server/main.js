@@ -1,15 +1,20 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+
 const app = express();
+const port = 8000;
+
 app.use(cors());
 app.use(express.json());
-const port = 8000;
+app.use(express.static(path.join(__dirname, 'trivia')));
+
 
 let highscore = [];
 
 app.get('/highscore', (req, res) => {
     highscore.sort((a, b) => Number(a.score) < Number(b.score) ? 1 : -1);
-    res.send(highscore);
+    res.json(highscore);
 });
 
 app.post('/score', (req, res, next) => {
@@ -17,7 +22,7 @@ app.post('/score', (req, res, next) => {
     if (highscore.length < maxScores) {
         const { name, score } = req.body;
         highscore.push({ name, score });
-        res.send("ok");
+        res.json(highscore);
     }
     else {
         next();
@@ -31,7 +36,7 @@ app.post('/score', (req, res) => {
         highscore.pop();
         highscore.push({ name, score })
     }
-    res.send("ok");
+    res.json(highscore);
 });
 
 app.listen(port, () => console.log(`listen port ${port}`));
