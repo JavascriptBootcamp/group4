@@ -1,0 +1,30 @@
+.video{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid blue;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.video-image{
+    width: 80%;
+    height: 20%;
+}
+
+.video-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.video-info{
+    width: 80%;
+    height: 20%;
+    text-align: left;
+}
+
+
+.video-title{
+    border-bottom: 2px solid dodgerblue;
+}
