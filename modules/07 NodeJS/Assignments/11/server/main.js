@@ -117,7 +117,7 @@ const data = {
       id: 4,
       title: "Thriller",
       singer: "Michael Jackson",
-      url: "https://youtu.be/sOnqjkJTMaA",
+      url: "sOnqjkJTMaA",
       words: `
       Ahahahahahahahaha
       It's close to midnight

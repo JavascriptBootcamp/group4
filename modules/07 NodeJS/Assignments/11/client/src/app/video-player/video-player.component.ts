@@ -20,7 +20,8 @@ export class VideoPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.trustUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.videoUrl
+      "https://www.youtube.com/embed/" + this.videoUrl
     );
+    console.log(this.trustUrl);
   }
 }
