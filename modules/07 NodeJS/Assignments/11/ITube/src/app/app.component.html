@@ -1,0 +1,23 @@
+<div id="content" class="middle">
+  <div id="container">
+    <h1>ITube</h1>
+    <div id="wrapper">
+      <div id="player">
+        <app-player *ngIf="playVideo" [video]="playVideo">
+        </app-player>
+      </div>
+      <div id="menu" *ngIf="videoService.videos.length">
+        <div id="sort">
+          Sort:
+          <select (change)="changeSort($event)">
+            <option value="title">Title</option>
+            <option value="artistName">Artist</option>
+            <option value="id">Id</option>
+          </select>
+        </div>
+        <br>
+        <app-menu *ngFor="let video of videoService.videos" [video]="video" (videoClicked)="videoToPlayer($event)">
+        </app-menu>
+      </div>
+    </div>
+  </div>

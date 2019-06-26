@@ -1,0 +1,14 @@
+
+#player{
+    display: grid;
+    grid-template-rows: 80% 20%;
+    width: 100%;
+    height: 100%;
+   margin: 5px 5px;
+}
+
+
+iframe{
+    width:100%;
+    height: 100%;
+} 

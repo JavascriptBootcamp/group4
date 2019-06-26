@@ -1,0 +1,7 @@
+<div id="player">
+  <iframe [src]="video.videoSrc | srcYoutube" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div id="player-details">
+    <h2 class="video-title">{{video.title}}</h2>
+    <h3 class="video-artistName">{{video.artistName}}</h3>
+  </div>
+</div>

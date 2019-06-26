@@ -1,0 +1,39 @@
+.middle {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-column-gap: 10px;
+    background: rgb(160, 153, 153);
+    box-shadow: rgb(77, 77, 77) 10px 5px 5px 5px ;
+
+}
+
+#container {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    width: 70%;
+    height: 95%;
+}
+
+h1 {
+    margin: 0 auto;
+    color: royalblue;
+    text-shadow: gray 2px 2px 2px;
+}
+
+#menu {
+    background: royalblue;
+    overflow: auto;
+}
+
+#sort{
+    position: fixed;
+    background-color: rgba(160, 153, 153, 0.479);
+    width: fit-content;
+}
