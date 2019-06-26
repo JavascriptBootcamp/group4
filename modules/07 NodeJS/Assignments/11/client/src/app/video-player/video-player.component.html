@@ -1,0 +1,29 @@
+<div id="player">
+
+  <input
+    type="text"
+    [value]="_videoServiceObj.clickedVideo.src"
+    #videoSrcRef
+  >
+
+  <iframe
+    #videoRef
+    width="560"
+    height="350"
+    src="_videoServiceObj.clickedVideo.src"
+    frameborder="2"
+    controls
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+  <div id="player-details" >
+      <h2 id="player-title">  {{_videoServiceObj.clickedVideo.title}} </h2>
+      <h3 id="player-artist"> {{_videoServiceObj.clickedVideo.singer}} </h3>
+      <h3 id="player-artist"> {{_videoServiceObj.clickedVideo.url}} </h3>
+      <h3 id="player-artist"> {{_videoServiceObj.clickedVideo.src}} </h3>
+  </div>
+
+</div>
+
+
