@@ -26,7 +26,7 @@ const data = {
       But the kid is not my son
       She says I am the one, but the kid is not my son
       For forty…`,
-      url: "https://youtu.be/Zi_XLOBDo_Y"
+      url: "Zi_XLOBDo_Y"
     },
     {
       id: 2,
@@ -57,7 +57,7 @@ const data = {
       It was your doom
       Annie, are you okay, you okay, you okay, Annie?
       Annie, are…`,
-      url: "https://youtu.be/h_D3VFfhvs4"
+      url: "h_D3VFfhvs4"
     },
     {
       id: 3,
@@ -111,7 +111,7 @@ const data = {
       It's black, it's white
       It's tough for them to get by
       It's black, it's white, (x3) whoo`,
-      url: "https://youtu.be/F2AitTPI5U0"
+      url: "F2AitTPI5U0"
     },
     {
       id: 4,
@@ -186,7 +186,7 @@ const data = {
       id: 5,
       title: "Man In The Mirror",
       singer: "Michael Jackson",
-      url: "https://youtu.be/PivWY9wn5ps",
+      url: "PivWY9wn5ps",
       words: `I'm gonna make a change,
       For once I'm my life
       It's gonna feel real good,
@@ -308,6 +308,7 @@ const data = {
       id: 5,
       title: "Man In The Mirror",
       singer: "Michael Jackson",
+      url: "",
       words: `I'm gonna make a change,
         For once I'm my life
         It's gonna feel real good,
@@ -429,7 +430,7 @@ const data = {
       id: 6,
       title: "I Want You Back",
       singer: "The Jackson 5",
-      url: "https://youtu.be/s3Q80mk7bxE",
+      url: "s3Q80mk7bxE",
       words: `Uh ohh
         Let me tell you now
         Uh huh
@@ -502,7 +503,7 @@ const data = {
       id: 7,
       title: "Bad",
       singer: "Michael Jackson",
-      url: "https://youtu.be/dsUXAEzaC3Q",
+      url: "dsUXAEzaC3Q",
       words: `Your butt is mine
         Gonna tell you right
         Just show your face
@@ -581,7 +582,7 @@ const data = {
       id: 8,
       title: "Beat It",
       singer: "Michael Jackson",
-      url: "https://youtu.be/oRdxUFDoQe0",
+      url: "oRdxUFDoQe0",
       words: `They told him don't you ever come around here
         Don't want to see your face, you better disappear
         The fire's in their eyes and their words are really clear
