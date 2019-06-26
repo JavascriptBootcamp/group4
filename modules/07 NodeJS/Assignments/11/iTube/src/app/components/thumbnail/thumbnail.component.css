@@ -1,0 +1,28 @@
+.thumbnail {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+h4, h5 {
+    margin: 5px;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 40%;
+}
+
+.img {
+    width: 50%;
+}
+
+.details {
+    width: 50%;
+    margin-left: 5px;
+    word-wrap: break-word;
+}

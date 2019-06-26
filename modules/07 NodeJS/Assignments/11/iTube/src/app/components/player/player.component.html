@@ -1,0 +1,12 @@
+<div id="content" class="middle">
+  <div id="container">
+    <div id="header">{{title}}</div>
+    <div id="wrapper">
+      <app-video *ngIf="videoPlay" [video]="videoPlay"></app-video>
+      <div id="menu" *ngIf="playerService.videos.length">
+        <app-thumbnail *ngFor="let video of playerService.videos" [video]="video" (videoToPlay)="videoToPlay($event)">
+        </app-thumbnail>
+      </div>
+    </div>
+  </div>
+</div>

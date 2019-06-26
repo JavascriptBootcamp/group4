@@ -1,0 +1,19 @@
+#video {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #e2e2e2;
+    padding: 10px;
+}
+
+#video-details {
+    padding: 0 10px;
+    width: 100%;
+    text-align: left;
+}
+
+#video-description {
+    width: 28%;
+}

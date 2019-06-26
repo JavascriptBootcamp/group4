@@ -1,0 +1,33 @@
+.middle {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: 10% 90%;
+    width: 80%;
+    height: 80%;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 20px;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: #4169e1;
+    overflow: auto;
+}
