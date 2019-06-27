@@ -299,7 +299,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    width: 70%;\r\n    mar
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\r\n  <form #form=\"ngForm\" (submit)=onSubmit(form)>\r\n    <h2 *ngIf=\"submit\">{{questionsService.correctAnswers}} of {{questionsService.questions.length}}</h2>\r\n    <ul>\r\n      <li *ngFor=\"let question of questionsService.questions; index as i\">\r\n        <app-question>\r\n          <div>\r\n            <h3>{{question.question}}</h3>\r\n            <div *ngIf=\"submit && questionsService.isCorrectAnswer(optElem ,question.question);else checkWrong\">\r\n              <p class=\"answerDiv true\">\r\n                Correct Answer!\r\n              </p>\r\n            </div>\r\n            <ng-template #checkWrong>\r\n              <div *ngIf=\"submit && !(questionsService.isCorrectAnswer(optElem,question.question))\">\r\n                <p class=\"answerDiv wrong\">\r\n                  The Answer Is {{question.answer}}!\r\n                </p>\r\n              </div>\r\n            </ng-template>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-A\" ngModel #optElem=\"ngModel\" name='q{{i+1}}'\r\n                value='{{question.option1}}' required />\r\n              <label for=\"q-{{i+1}}-a-A\">{{question.option1}} </label>\r\n            </div>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-B\" ngModel name='q{{i+1}}' value='{{question.option2}}' />\r\n              <label for=\"q-{{i+1}}-a-B\">{{question.option2}} </label>\r\n            </div>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-C\" ngModel name='q{{i+1}}' value='{{question.option3}}' />\r\n              <label for=\"q-{{i+1}}-a-C\">{{question.option3}}</label>\r\n            </div>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-D\" ngModel name='q{{i+1}}' value='{{question.option4}}' />\r\n              <label for=\"q-{{i+1}}-a-D\">{{question.option4}}</label>\r\n            </div>\r\n          </div>\r\n        </app-question>\r\n      </li>\r\n    </ul>\r\n    <input type='submit' name='submit' [disabled]=\"!form.form.valid\" value='Submit' />\r\n  </form>\r\n  <form #form2=\"ngForm\" (submit)=sendScore(form2) *ngIf=\"topTen\">\r\n    <h3>enter your name:</h3>\r\n    <input type=\"text\" name=\"name\" ngModel required>\r\n    <input type='submit' name='submit' [disabled]=\"submitScore\" value='Submit' />\r\n  </form>\r\n</div>"
+module.exports = "<div class=\"wrapper\">\r\n  <form #form=\"ngForm\" (submit)=onSubmit(form) *ngIf=\"!submitScore\">\r\n    <h2 *ngIf=\"submit\">{{questionsService.correctAnswers}} of {{questionsService.questions.length}}</h2>\r\n    <ul>\r\n      <li *ngFor=\"let question of questionsService.questions; index as i\">\r\n        <app-question>\r\n          <div>\r\n            <h3>{{question.question}}</h3>\r\n            <div *ngIf=\"submit && questionsService.isCorrectAnswer(optElem ,question.question);else checkWrong\">\r\n              <p class=\"answerDiv true\">\r\n                Correct Answer!\r\n              </p>\r\n            </div>\r\n            <ng-template #checkWrong>\r\n              <div *ngIf=\"submit && !(questionsService.isCorrectAnswer(optElem,question.question))\">\r\n                <p class=\"answerDiv wrong\">\r\n                  The Answer Is {{question.answer}}!\r\n                </p>\r\n              </div>\r\n            </ng-template>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-A\" ngModel #optElem=\"ngModel\" name='q{{i+1}}'\r\n                value='{{question.option1}}' required />\r\n              <label for=\"q-{{i+1}}-a-A\">{{question.option1}} </label>\r\n            </div>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-B\" ngModel name='q{{i+1}}' value='{{question.option2}}' />\r\n              <label for=\"q-{{i+1}}-a-B\">{{question.option2}} </label>\r\n            </div>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-C\" ngModel name='q{{i+1}}' value='{{question.option3}}' />\r\n              <label for=\"q-{{i+1}}-a-C\">{{question.option3}}</label>\r\n            </div>\r\n            <div class=\"options\">\r\n              <input type='radio' id=\"q-{{i+1}}-a-D\" ngModel name='q{{i+1}}' value='{{question.option4}}' />\r\n              <label for=\"q-{{i+1}}-a-D\">{{question.option4}}</label>\r\n            </div>\r\n          </div>\r\n        </app-question>\r\n      </li>\r\n    </ul>\r\n    <input type='submit' name='submit' [disabled]=\"!form.form.valid\" value='Submit' />\r\n  </form>\r\n  <form #form2=\"ngForm\" (submit)=sendScore(form2) *ngIf=\"topTen && !submitScore\">\r\n    <h3>enter your name:</h3>\r\n    <input type=\"text\" name=\"name\" ngModel required>\r\n    <input type='submit' name='submit' [disabled]=\"submitScore\" value='Submit' />\r\n  </form>\r\n  <div *ngIf=\"submitScore\">\r\n    <div *ngFor=\"let s of scores\">\r\n        {{s.name}} : {{s.score}}\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -324,6 +324,7 @@ var TriviaComponent = /** @class */ (function () {
         this.questionsService = questionsService;
         this.submit = false;
         this.submitScore = false;
+        this.scores = [];
     }
     TriviaComponent.prototype.ngOnInit = function () {
     };
@@ -345,12 +346,15 @@ var TriviaComponent = /** @class */ (function () {
         });
     };
     TriviaComponent.prototype.sendScore = function (form) {
+        var _this = this;
         this.submitScore = true;
         var obj = { name: form.value.name, score: this.questionsService.correctAnswers };
         fetch("http://localhost:8000/score", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(obj)
+        }).then(function (res) { return res.json(); }).then(function (data) {
+            _this.scores = data;
         });
     };
     TriviaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

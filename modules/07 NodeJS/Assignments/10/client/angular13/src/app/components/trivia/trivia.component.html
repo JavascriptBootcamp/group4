@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <form #form="ngForm" (submit)=onSubmit(form)>
+  <form #form="ngForm" (submit)=onSubmit(form) *ngIf="!submitScore">
     <h2 *ngIf="submit">{{questionsService.correctAnswers}} of {{questionsService.questions.length}}</h2>
     <ul>
       <li *ngFor="let question of questionsService.questions; index as i">
@@ -41,12 +41,14 @@
     </ul>
     <input type='submit' name='submit' [disabled]="!form.form.valid" value='Submit' />
   </form>
-  <form #form2="ngForm" (submit)=sendScore(form2) *ngIf="topTen">
+  <form #form2="ngForm" (submit)=sendScore(form2) *ngIf="topTen && !submitScore">
     <h3>enter your name:</h3>
     <input type="text" name="name" ngModel required>
     <input type='submit' name='submit' [disabled]="submitScore" value='Submit' />
   </form>
   <div *ngIf="submitScore">
-    {{scores}}
+    <div *ngFor="let s of scores">
+        {{s.name}} : {{s.score}}
+    </div>
   </div>
 </div>

@@ -10,13 +10,13 @@ import { NgForm } from '@angular/forms';
 })
 export class TriviaComponent implements OnInit {
   submit: boolean;
-  submitScore : boolean;
+  submitScore: boolean;
   topTen: boolean;
-  scores;
+  scores: any[];
   constructor(public questionsService: QuestionsService) {
     this.submit = false;
     this.submitScore = false;
-    this.scores = null;
+    this.scores = [];
   }
 
   ngOnInit() {
@@ -33,6 +33,8 @@ export class TriviaComponent implements OnInit {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(obj)
-    }).then(res => res.json()).then(data => this.scores = JSON.stringify(data))
+    }).then(res => res.json()).then(data => {
+      this.scores = data;
+    })
   }
 }
