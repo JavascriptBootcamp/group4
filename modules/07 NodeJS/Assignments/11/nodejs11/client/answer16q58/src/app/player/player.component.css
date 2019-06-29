@@ -1,0 +1,10 @@
+#player-video{
+    width: 560px; 
+    height: 315px;
+}
+@media screen and (max-width: 768px) {
+    #player-video{
+        width: 200px;
+        height: 150px;
+    }
+}
