@@ -1,0 +1,13 @@
+.main-container{
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #CDD8DD;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

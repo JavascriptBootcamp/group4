@@ -1,0 +1,26 @@
+.videos-container{
+    height: 600px;
+    overflow-y: auto;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+/* width */
+.videos-container::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+.videos-container::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+/* Handle */
+.videos-container::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+.videos-container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
