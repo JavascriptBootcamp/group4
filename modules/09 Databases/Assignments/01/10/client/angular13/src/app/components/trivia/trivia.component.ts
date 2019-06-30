@@ -29,7 +29,7 @@ export class TriviaComponent implements OnInit {
   sendScore(form: NgForm) {
     this.submitScore = true;
     const obj = { name: form.value.name, score: this.questionsService.correctAnswers };
-    fetch("http://localhost:8000/score", {
+    fetch("http://localhost:8000/highscore/score", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(obj)

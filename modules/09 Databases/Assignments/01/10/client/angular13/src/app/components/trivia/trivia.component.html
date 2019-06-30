@@ -39,7 +39,7 @@
         </app-question>
       </li>
     </ul>
-    <input type='submit' name='submit' [disabled]="!form.form.valid" value='Submit' />
+    <input type='submit' name='submit' [disabled]="!form.form.valid || submitScore" value='Submit' />
   </form>
   <form #form2="ngForm" (submit)=sendScore(form2) *ngIf="topTen && !submitScore">
     <h3>enter your name:</h3>
