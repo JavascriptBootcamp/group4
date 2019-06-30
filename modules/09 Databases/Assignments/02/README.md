@@ -1,5 +1,5 @@
 <p>build a MongoDB collection for storing car details.</p>
-<p>the collection includes:
+<p>each document in the collection includes:
 <ol>
 <li>License Number (12-345-67 etc.)</li>
 <li>Manufacturer (Toyota etc.)</li>
@@ -17,6 +17,6 @@
 <li>display cars details by year range</li>
 <li>display cars models by manufacturer</li>
 <li>display cars models and prices by model</li>
-<li>receive two license numbers and display the car which is more expensive</li>
+<li>receive two license numbers and display the details of the more expensive car</li>
 </ol>
 </p>
