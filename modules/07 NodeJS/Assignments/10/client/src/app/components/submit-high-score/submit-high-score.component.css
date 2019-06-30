@@ -1,0 +1,11 @@
+.high-score{
+    width: 300px;
+}
+.high-score-container{
+    width: 400px;
+    background-color: #f8e3d8;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
