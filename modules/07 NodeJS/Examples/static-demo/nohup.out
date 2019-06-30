@@ -20,3 +20,35 @@ Emitted 'error' event at:
     at Function.Module.runMain (internal/modules/cjs/loader.js:757:11)
     at startup (internal/bootstrap/node.js:283:19)
     at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
+internal/modules/cjs/loader.js:584
+    throw err;
+    ^
+
+Error: Cannot find module 'C:\Users\frontm\Documents\projects\group4\modules\07 NodeJS\Examples\static-demo\.index.js'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:582:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:508:25)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:754:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
+internal/modules/cjs/loader.js:584
+    throw err;
+    ^
+
+Error: Cannot find module 'C:\Users\frontm\Documents\projects\group4\modules\07 NodeJS\Examples\static-demo\.index.js'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:582:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:508:25)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:754:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
+internal/modules/cjs/loader.js:584
+    throw err;
+    ^
+
+Error: Cannot find module 'C:\Users\frontm\Documents\projects\group4\modules\07 NodeJS\Examples\static-demo\.index.js'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:582:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:508:25)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:754:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
+Server is running on 9999
+Server is running on 9999
