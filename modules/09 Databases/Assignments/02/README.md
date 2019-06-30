@@ -1,5 +1,5 @@
 <p>build a MongoDB collection for storing car details.</p>
-<p>the collection includes:
+<p>each document in the collection includes:
 <ol>
 <li>License Number (12-345-67 etc.)</li>
 <li>Manufacturer (Toyota etc.)</li>
