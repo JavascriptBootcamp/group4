@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.row{
+    margin:10px 0px;
+}
+input{
+    width:100%;
+    
+}
+input[type="text"] , input[type="date"] ,input[type="submit"]{
+    margin:5px 0px;
+}
