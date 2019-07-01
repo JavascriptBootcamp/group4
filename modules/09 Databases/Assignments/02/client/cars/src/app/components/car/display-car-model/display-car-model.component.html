@@ -1,0 +1,11 @@
+<div class="display-car-model-wrapper">
+    <form (submit)="display($event)">
+      <input type="text" placeholder="enter model..." #model>
+      <input type="submit" value="display">
+    </form>
+  </div>
+  <div *ngIf="cars">
+    <div *ngFor="let car of cars">
+      <div>model: {{car.model}} : price : {{car.price}}</div>
+    </div>
+  </div>

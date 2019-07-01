@@ -1,0 +1,11 @@
+<div class="display-car-manufacturer-wrapper">
+    <form (submit)="display($event)">
+      <input type="text" placeholder="enter manufacturer..." #manufacturer>
+      <input type="submit" value="display">
+    </form>
+  </div>
+  <div *ngIf="cars">
+    <div *ngFor="let car of cars">
+      <div>manufacturer: {{manufacturer.value}} : model : {{car.model}}</div>
+    </div>
+  </div>

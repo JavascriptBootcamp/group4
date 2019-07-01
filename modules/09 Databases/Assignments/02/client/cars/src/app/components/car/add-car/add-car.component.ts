@@ -24,7 +24,7 @@ export class AddCarComponent implements OnInit {
     const license = this.license.nativeElement.value;
     const manufacturer = this.manufacturer.nativeElement.value;
     const model = this.model.nativeElement.value;
-    const year = this.year.nativeElement.value;
+    const year = this.year.nativeElement.value.split('-')[0];
     const km = this.km.nativeElement.value;
     const price = this.price.nativeElement.value;
     const obj = { license, manufacturer, model, year, km, price };

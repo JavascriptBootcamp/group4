@@ -1,0 +1,17 @@
+<div class="display-car-range-wrapper">
+    <form (submit)="display($event)">
+      <input type="text" placeholder="from year" #yearStart>
+      <input type="text" placeholder="to year" #yearEnd>
+      <input type="submit" value="display">
+    </form>
+  </div>
+  <div *ngIf="cars">
+    <div *ngFor="let car of cars">
+      <div>license number : {{car.license}}</div>
+      <div>manufacturer : {{car.manufacturer}}</div>
+      <div>model : {{car.model}}</div>
+      <div>year : {{car.year}}</div>
+      <div>km : {{car.km}}</div>
+      <div>price : {{car.price}}</div>
+    </div>
+  </div>

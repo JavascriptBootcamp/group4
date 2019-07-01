@@ -1,0 +1,15 @@
+<div class="display-car-expensive-wrapper">
+  <form (submit)="display($event)">
+    <input type="text" placeholder="enter license one..." #licenseOne>
+    <input type="text" placeholder="enter license two..." #licenseTwo>
+    <input type="submit" value="display">
+  </form>
+</div>
+<div *ngIf="car">
+    <div>license number : {{car.license}}</div>
+    <div>manufacturer : {{car.manufacturer}}</div>
+    <div>model : {{car.model}}</div>
+    <div>year : {{car.year}}</div>
+    <div>km : {{car.km}}</div>
+    <div>price : {{car.price}}</div>
+</div>

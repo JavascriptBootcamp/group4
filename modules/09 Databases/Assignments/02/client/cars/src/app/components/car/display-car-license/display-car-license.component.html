@@ -5,12 +5,12 @@
   </form>
 </div>
 <div *ngIf="car">
-  <div *ngFor="let item of car">
-    <div>license number : {{item.license}}</div>
-    <div>manufacturer : {{item.manufacturer}}</div>
-    <div>model : {{item.model}}</div>
-    <div>year : {{item.year}}</div>
-    <div>km : {{item.km}}</div>
-    <div>price : {{item.price}}</div>
+  <div *ngFor="let c of car">
+    <div>license number : {{c.license}}</div>
+    <div>manufacturer : {{c.manufacturer}}</div>
+    <div>model : {{c.model}}</div>
+    <div>year : {{c.year}}</div>
+    <div>km : {{c.km}}</div>
+    <div>price : {{c.price}}</div>
   </div>
 </div>
