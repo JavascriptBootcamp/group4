@@ -1,0 +1,14 @@
+<div class="add-car-wrapper">
+    <form (submit)="addCar($event)">
+        <input type="text" placeholder="enter license number..." #license>
+        <input type="text" placeholder="enter manufacturer..." #manufacturer>
+        <input type="text" placeholder="enter model..." #model>
+        <input type="date" placeholder="enter year..." #year>
+        <input type="text" placeholder="enter km..." #km>
+        <input type="text" placeholder="enter price..." #price>
+        <input type="submit" value="add car">
+    </form>
+</div>
+<div *ngIf="msg">
+    {{msg}}
+</div>

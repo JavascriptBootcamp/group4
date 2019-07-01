@@ -15,10 +15,10 @@ MongoClient.connect(url, (err, dbs) => {
     const collection = db.collection(collectionName);
 
     app.post('/car', (req, res) => {
-        const { lisence, manufacturer, model, year, km, price } = req.body;
-        if (!lisence || !manufacturer || !model || !year || !km || !price) return responseWithStatus(500, res, "Missing Data");
+        const { license, manufacturer, model, year, km, price } = req.body;
+        if (!license || !manufacturer || !model || !year || !km || !price) return responseWithStatus(500, res, "Missing Data");
         try {
-            const obj = { lisence, manufacturer, model, year, km, price };
+            const obj = { license, manufacturer, model, year, km, price };
             collection.insertOne(obj);
             responseWithStatus(200, res, "car added");
         } catch (error) {
@@ -28,11 +28,11 @@ MongoClient.connect(url, (err, dbs) => {
     });
 
     app.get('/car', async (req, res, next) => {
-        const { lisence } = req.query;
-        if (!lisence) next();
+        const { license } = req.query;
+        if (!license) next();
         else {
             try {
-                const car = await collection.find({ lisence }).toArray();
+                const car = await collection.find({ license }).toArray();
                 responseWithStatus(200, res, car);
             } catch (error) {
                 responseWithStatus(500, res, "something wrong..." + error);
@@ -98,11 +98,11 @@ MongoClient.connect(url, (err, dbs) => {
     });
 
     app.get('/car', async (req, res) => {
-        const { lisenceOne, lisenceTwo } = req.query;
-        if (!lisenceOne || !lisenceTwo) return responseWithStatus(500, res, "Missing Data");
+        const { licenseOne, licenseTwo } = req.query;
+        if (!licenseOne || !licenseTwo) return responseWithStatus(500, res, "Missing Data");
         try {
-            const car1 = await collection.find({ lisence: lisenceOne }).toArray();
-            const car2 = await collection.find({ lisence: lisenceTwo }).toArray();
+            const car1 = await collection.find({ license: licenseOne }).toArray();
+            const car2 = await collection.find({ license: licenseTwo }).toArray();
             const car = Number(car1[0].price) > Number(car2[0].price) ? car1[0] : car2[0];
             responseWithStatus(200, res, car);
         } catch (error) {
