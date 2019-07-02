@@ -34,7 +34,7 @@ const onConnect = (err,databases)=>{
 
             }
         })
-        app.get('/car/:LicenseNumber',(req,res)=>{
+        app.get('/car/LicenseNumber/:LicenseNumber',(req,res,next)=>{
             const _licenseNumber=req.params.LicenseNumber;
             collection.find({LicenseNumber:_licenseNumber}).toArray((err,data)=>{
                 if(err)return console.error("cannotFind Because",err)
@@ -43,27 +43,68 @@ const onConnect = (err,databases)=>{
                     res.send(data)
                 }
             })
+            next()
         })
-        app.get('/car/:startDate/:endDate',(req,res)=>{
-            const _start =req.params.startDate
-            const _endtDate =req.params.endDate
-            collection.find({LicenseNumber:_licenseNumber}).toArray((err,data)=>{
+        app.get('/car/year',(req,res)=>{
+            let _startYear =req.query.startyear
+            let _endYear =req.query.endyear
+            collection.find({ Year : { $gt :  _startYear, $lt : _endYear}}).toArray((err,data)=>{
                 if(err)return console.error("cannotFind Because",err)
                 else{
-                    console.log("123")
                     res.send(data)
                 }
             })
         })
-        app.get('/car/:LicenseNumber',(req,res)=>{
-            const _licenseNumber=req.params.LicenseNumber;
-            collection.find({LicenseNumber:_licenseNumber}).toArray((err,data)=>{
+        app.get('/car/manufacturer/:Manufacturer',(req,res,next)=>{
+            const _Manufacturer=req.params.Manufacturer;
+            collection.find({Manufacturer:_Manufacturer}).toArray((err,data)=>{
                 if(err)return console.error("cannotFind Because",err)
                 else{
-                    console.log("123")
+                    data.forEach(function(element) {
+                        delete element._id
+                        delete element.LicenseNumber
+                        delete element.Manufacturer
+                        delete element.Year
+                        delete element.KM
+                        delete element.Price
+                    }, this)
                     res.send(data)
                 }
             })
+        })
+        app.get('/car/model/:Model',(req,res,next)=>{
+            const _Model=req.params.Model;
+            collection.find({Model:_Model}).toArray((err,data)=>{
+                if(err)return console.error("cannotFind Because",err)
+                else{
+                    data.forEach(function(element) {
+                        delete element._id
+                        delete element.LicenseNumber
+                        delete element.Manufacturer
+                        delete element.Year
+                        delete element.KM
+                    }, this)
+                    res.send(data)
+                }
+            })
+        })
+        app.get('/car/expansivecar',(req,res,next)=>{
+            const firstLicence = req.quary.license1
+            const secondLicence = req.quary.license2
+
+            let car1 = collection.find({LicenseNumber:firstLicence})
+            let car2 = collection.find({LicenseNumber:secondLicence})
+            if (car1[0] && car2[0]) {
+                if (car1[0].Price > car2[0].Price) {
+                    res.send(car1[0])
+                } else {
+                    res.send(car2[0])
+                }
+            } else {
+                res.send({ error: "one or both licene number not exist" })
+            }
+
+            next()
         })
     }
 }
