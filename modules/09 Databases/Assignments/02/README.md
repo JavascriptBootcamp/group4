@@ -17,6 +17,6 @@
 <li>display cars details by year range</li>
 <li>display cars models by manufacturer</li>
 <li>display cars models and prices by model</li>
-<li>receive two license numbers and display the car which is more expensive</li>
+<li>receive two license numbers and display the details of the more expensive car</li>
 </ol>
 </p>
