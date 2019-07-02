@@ -9,8 +9,9 @@ import { Router } from "@angular/router";
 export class AdminComponent implements OnInit {
   @ViewChild('username') username: ElementRef;
   @ViewChild('password') password: ElementRef;
+  msg : string;
   constructor(private router: Router) {
-
+    this.msg = "";
   }
 
   ngOnInit() {
@@ -23,6 +24,9 @@ export class AdminComponent implements OnInit {
     const data = await res.json();
     if (data.message) {
       this.router.navigate(['admin-area']);
+    }
+    else{
+      this.msg = "wrong username or password..."
     }
   }
 }
