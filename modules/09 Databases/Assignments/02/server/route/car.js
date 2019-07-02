@@ -110,6 +110,31 @@ MongoClient.connect(url, (err, dbs) => {
 
     });
 
+    router.put('/car', (req, res) => {
+        const { license, manufacturer, model, year, km, price } = req.body;
+
+        if (!license || !manufacturer || !model || !year || !km || !price) return responseWithStatus(500, res, "Missing Data");
+        try {
+            collection.updateOne({ license }, { $set: { manufacturer, model, year, km, price } });
+            responseWithStatus(200, res, "car updated");
+        } catch (error) {
+            responseWithStatus(500, res, "something wrong..." + error);
+        }
+
+    });
+
+    router.delete('/car', (req, res) => {
+        const { license } = req.body;
+        if (!license) return responseWithStatus(500, res, "Missing Data");
+        try {
+            collection.deleteOne({ license });
+            responseWithStatus(200, res, "car deleted");
+        } catch (error) {
+            responseWithStatus(500, res, "something wrong..." + error);
+        }
+
+    });
+
     function responseWithStatus(status, response, message) {
         response.status(status).send({
             message
