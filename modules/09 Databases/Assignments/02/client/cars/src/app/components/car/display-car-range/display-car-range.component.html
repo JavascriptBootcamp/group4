@@ -1,5 +1,5 @@
 <div class="container display-car-range-wrapper">
-  <h2 class="text-center border-bottom border-dark">Display cars by range</h2>
+  <h2 class="text-center border-bottom border-dark bg-dark text-light">Display cars by range</h2>
   <form class="row" (submit)="display($event)">
     <div class="col">
       <input type="text" placeholder="from year" #yearStart>
@@ -11,7 +11,7 @@
       <input type="submit" value="display">
     </div>
     <div class="col-12" *ngIf="cars">
-      <div *ngFor="let car of cars">
+      <div *ngFor="let car of cars" class="car">
         <div>license number : {{car.license}}</div>
         <div>manufacturer : {{car.manufacturer}}</div>
         <div>model : {{car.model}}</div>

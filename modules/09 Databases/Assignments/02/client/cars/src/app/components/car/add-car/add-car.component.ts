@@ -36,6 +36,10 @@ export class AddCarComponent implements OnInit {
     })
     const data = await res.json();
     this.msg = data.message;
+    this.cleanFields();
   }
-
+  cleanFields() {
+    this.license.nativeElement.value = this.manufacturer.nativeElement.value = this.model.nativeElement.value =
+      this.year.nativeElement.value = this.km.nativeElement.value = this.price.nativeElement.value = "";
+  }
 }
