@@ -10,6 +10,8 @@ import { DisplayCarRangeComponent } from './components/car/display-car-range/dis
 import { DisplayCarManufacturerComponent } from './components/car/display-car-manufacturer/display-car-manufacturer.component';
 import { DisplayCarModelComponent } from './components/car/display-car-model/display-car-model.component';
 import { DisplayCarExpensiveComponent } from './components/car/display-car-expensive/display-car-expensive.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminAreaComponent } from './components/admin-area/admin-area.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DisplayCarExpensiveComponent } from './components/car/display-car-expen
     DisplayCarRangeComponent,
     DisplayCarManufacturerComponent,
     DisplayCarModelComponent,
-    DisplayCarExpensiveComponent
+    DisplayCarExpensiveComponent,
+    AdminComponent,
+    AdminAreaComponent
   ],
   imports: [
     BrowserModule,

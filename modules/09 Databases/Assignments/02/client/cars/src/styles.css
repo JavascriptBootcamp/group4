@@ -16,7 +16,7 @@ input {
     width: 100%;
 }
 
-input[type="text"], input[type="date"], input[type="submit"] {
+input[type="text"], input[type="date"], input[type="submit"] , input[type="password"] {
     margin: 5px 0px;
 }
 

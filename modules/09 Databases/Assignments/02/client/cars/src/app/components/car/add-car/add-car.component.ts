@@ -35,6 +35,9 @@ export class AddCarComponent implements OnInit {
       body: JSON.stringify(obj)
     })
     const data = await res.json();
+    setInterval(() => {
+      this.msg = null;
+    }, 1000)
     this.msg = data.message;
     this.cleanFields();
   }
