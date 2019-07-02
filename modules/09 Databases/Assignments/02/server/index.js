@@ -183,7 +183,7 @@ const onConnect = (err, databases) => {
         }
     });
 
-    //update a car by license number - "/car?license=1234567" body...
+    //update a car by license number - "/car?license=1234567" body - newManufacturer, newmModel, newYear, newKm, newPrice
     app.put('/car', (request, response) => {
         const { license } = request.query;
         const { newManufacturer, newmModel, newYear, newKm, newPrice } = request.body;
