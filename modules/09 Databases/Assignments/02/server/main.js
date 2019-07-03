@@ -24,10 +24,23 @@ const onConnect = (err, databases) => {
       response.send(data);
     });
   });
-  app.get("/cars/:number", (request, response) => {
+  /*   app.get("/cars/:number", (request, response) => {
     const { number } = request.params;
     console.log(request.params);
     collection.find({ licenseNumber: number }).toArray((err, data) => {
+      if (err) return console.error("ERROR OCCURED:", err);
+
+      console.log("data", data);
+      response.send(data);
+    });
+  });
+ */
+  app.get("/cars/year", (request, response) => {
+    const { startYear, endYear } = request.query;
+    console.log("in year range");
+    console.log(request.query);
+    //db.student.find({ u1 : { $gt :  30, $lt : 60}});
+    collection.find({ year: Number(startYear) }).toArray((err, data) => {
       if (err) return console.error("ERROR OCCURED:", err);
 
       console.log("data", data);
@@ -55,40 +68,9 @@ const onConnect = (err, databases) => {
         km,
         price
       });
-      // response.sendStatus(200);
-      // response.status(200).send({
-      //     message: "Added successfully"
-      // });
+
+      console.log("added");
       responseWithStatus(200, response, "Added successfully");
-    } catch (ex) {
-      responseWithStatus(500, response, ex);
-    }
-  });
-
-  app.delete("/car", (request, response) => {
-    const { name } = request.query;
-    if (!name) responseWithStatus(200, response, "Missing Data");
-    try {
-      collection.deleteOne({ name });
-      responseWithStatus(200, response, "Deleted successfully");
-    } catch (ex) {
-      responseWithStatus(500, response, ex);
-    }
-  });
-
-  app.put("/car", (request, response) => {
-    const { name } = request.query;
-    const { newName, newIngredients, newPrice } = request.body;
-    if (!name || !newName || !newIngredients || !newPrice)
-      responseWithStatus(500, response, "Missing Data");
-    try {
-      collection.updateOne(
-        { name },
-        {
-          $set: { name: newName, ingredients: newIngredients, price: newPrice }
-        }
-      );
-      responseWithStatus(200, response, "Updated successfully");
     } catch (ex) {
       responseWithStatus(500, response, ex);
     }
