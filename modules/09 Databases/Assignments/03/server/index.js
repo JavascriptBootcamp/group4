@@ -29,7 +29,7 @@ app.post('/shirt', (req, res) => {
     }
     else {
         try {
-            const sql = "insert into shirt (Size , Color , Fit , Price) VALUES ('" + mysql.escape(size) + "' , '" + mysql.escape(color) + "' , '" + mysql.escape(fit) + "' , '" + mysql.escape(price) + "');"
+            const sql = "insert into shirt (Size , Color , Fit , Price) VALUES (" + mysql.escape(size) + " , " + mysql.escape(color) + " , " + mysql.escape(fit) + " , " + mysql.escape(price) + ");"
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 resp(200, res, "record inserted");
@@ -48,7 +48,7 @@ app.get('/shirt', (req, res, next) => {
     }
     else {
         try {
-            const sql = "select * from shirt WHERE ID='" + mysql.escape(id) + "';"
+            const sql = "select * from shirt WHERE ID=" + mysql.escape(id) + ";"
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 resp(200, res, result);
@@ -66,7 +66,7 @@ app.get('/shirts', (req, res, next) => {
     }
     else {
         try {
-            const sql = "select * from shirt WHERE price >='" + mysql.escape(fromprice) + "' and price <= '" + mysql.escape(toprice) + "';"
+            const sql = "select * from shirt WHERE price >=" + mysql.escape(fromprice) + " and price <= " + mysql.escape(toprice) + ";"
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 resp(200, res, result);
@@ -84,7 +84,7 @@ app.get('/shirts', (req, res, next) => {
     }
     else {
         try {
-            const sql = "select * from shirt WHERE size ='" + mysql.escape(size) + "';"
+            const sql = "select color from shirt WHERE size =" + mysql.escape(size) + ";"
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 resp(200, res, result);
@@ -103,7 +103,7 @@ app.get('/shirts', (req, res) => {
     }
     else {
         try {
-            const sql = "select size , color from shirt WHERE fit ='" + mysql.escape(fit) + "';"
+            const sql = "select size , color from shirt WHERE fit =" + mysql.escape(fit) + ";"
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 resp(200, res, result);
