@@ -1,0 +1,52 @@
+<form (submit)="onSubmit($event,form,action.value,[ln,company,model,year,km,price])" #form>
+  <div>
+    <span>Select action:</span>
+    <select name="" id="" #action (click)="setAction(action.value)">
+      <option value="addCar">Add car</option>
+      <option value="getCar">Get car</option>
+      <option value="getCars">Get cars</option>
+    </select>
+  </div>
+
+  <div *ngIf="action.value === 'addCar'">
+    <div>
+      <input type="text" #ln>
+      <input type="text" #company>
+      <input type="text" #model>
+      <input type="text" #year>
+      <input type="text" #km>
+      <input type="text" #price>
+    </div>
+  </div>
+
+  <div *ngIf="action.value === 'getCar'">
+    <span>Search by:</span>
+    <select name="" id="" #carSearchBy (click)="setCarSearchBy(carSearchBy.value)">
+      <option name="" id="" value="All">All</option>
+      <option name="" id="">License number</option>
+      <option name="" id="">Compare price of cars(license number)</option>
+    </select>
+    <div *ngIf="carSearchBy.value !== 'All'">
+      <input type="text" placeholder="" #carI1>
+      <span *ngIf="carSearchBy.value === 'Compare price of cars(license number)'">
+        <input type="text" name="" id="" #carI2>
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="action.value === 'getCars'">
+    <span>Search by:</span>
+    <select name="" id="" #carsSearchBy (click)="setCarsSearchBy(carsSearchBy.value)">
+      <option name="" id="">Year range</option>
+      <option name="" id="">manufacturer</option>
+      <option name="" id="">model</option>
+    </select>
+    <div>
+      <input type="text" placeholder="" #carsI1>
+      <span *ngIf="carsSearchBy.value === 'Year range'">
+        <input type="text" name="" id="" #carsI2>
+      </span>
+    </div>
+  </div>
+  <button>Submit</button>
+</form>

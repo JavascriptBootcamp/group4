@@ -16,8 +16,10 @@ const onConnect = (err, databases)=>{
     const collectionName = "cars";
     const collection = db.collection(collectionName);
 
+    // Display car details by license number
     app.get("/car", async(req,res)=>{
         const licenseNumber = req.query.ln;
+        console.log("licenseNumber:",licenseNumber);
         try{
         const cars = await collection.find({licenseNumber}).toArray();
         res.status(200).send(cars);
@@ -27,24 +29,73 @@ const onConnect = (err, databases)=>{
         }
     });
 
+    // Display cars models by manufacturer
     app.get("/cars", async(req,res,next)=>{
+        console.log("manufacturer");
         const {manufacturer} = req.query;
-        if(!manufacturer)
+        if(!manufacturer){
             next();
-        else{
+            return;
+        }
         try{
             const cars = await collection.find({manufacturer}).toArray();
-            console.log(cars);
-            res.status(200).send(getModels(cars,manufacturer));    
+            res.status(200).send(getModels(cars));    
         }
         catch(err){
             res.status(500).send(`Error:${err}`);            
-        } 
-    }       
+        }      
     });
 
-    app.get("/cars", async(req,res)=>{
+    // Display cars models and prices by model
+    app.get("/cars", async(req,res,next)=>{
+        console.log("model");
+        let {model} = req.query;
+        model = model;
+        if(!model){
+            next();
+            return;
+        }
+            try{
+                const cars = await collection.find({model}).toArray();
+                res.status(200).send(getModelsAndPrices(cars));    
+            }
+            catch(err){
+                res.status(500).send(`Error:${err}`);            
+            }      
+    });
+    
+    // Receive two license numbers and display the car which is more expensive
+    app.get("/cars", async(req,res,next)=>{
+        console.log("two license");
+        let {ln1,ln2} = req.query;
+        console.log(ln1,ln2);
+        if(!ln1 || !ln2){
+            next();
+            return;
+        }
+            try{
+
+                const car1 = (await collection.find({"licenseNumber":ln1}).toArray())[0];
+                const car2 = (await collection.find({"licenseNumber":ln2}).toArray())[0];
+                console.log(car1,car2);
+                const car = getExpensiveCar(car1,car2);
+                console.log("car:",car);
+                res.status(200).send(car);    
+            }
+            catch(err){
+                res.status(500).send(`Error:${err}`);            
+            }       
+    });
+
+    // Display cars details by year range
+    app.get("/cars", async(req,res,next)=>{
+        console.log("year range");
         const {from, to} = req.query;
+        if(!from || !to){
+            next();
+            return;
+        }
+        
         try{
             const cars = await collection.find({"year":{$gte: from, $lte: to}}).toArray();
             res.status(200).send(cars);    
@@ -54,6 +105,18 @@ const onConnect = (err, databases)=>{
         }        
     });
 
+    app.get("/cars", async(req,res)=>{
+        console.log("all");
+        try{
+            const cars = await collection.find().toArray();
+            res.status(200).send(cars);    
+        }
+        catch(err){
+            res.status(500).send(`Error:${err}`);   
+        }        
+    });
+
+    // Adding a car
     app.post("/car",(req,res)=>{
         const {licenseNumber, manufacturer, model,year, km, price} = req.body;
         try{
@@ -64,28 +127,23 @@ const onConnect = (err, databases)=>{
             res.status(500).send(`Error:${err}`);   
         }
     });
-
 }
 
-getModels = (cars,manufacturer)=>{
+const getModels = (cars)=>{
     const arr = [];
-    cars.forEach(element=> {
-        console.log("element:",element);
-        console.log("elementmanufacturer:",element["manufacturer"],manufacturer,element.model);
-        console.log("as:",arr.findIndex((item)=>item.model === element.model));
-        if(element["manufacturer"] === manufacturer){
-            console.log("model:",element.model);
-            if(arr.findIndex((item)=>{
-                console.log(item.model,element.model)
-                return item.model === element.model
+    cars.map((item)=>arr.push(item.model));
+    return [...new Set(arr)]; 
+};
 
-            }) === -1)
-                arr.push(element.model);
-        }
-    }, this);
-    console.log("arr:",arr);
+const getModelsAndPrices = (cars)=>{
+    const arr=[];
+    cars.map((item)=>
+        {arr.push( { model:item.model,price:item.price } ) 
+        });
     return arr;
-}
+};
 
-mongo.MongoClient.connect(dbUrl,onConnect);
+const getExpensiveCar = (car1,car2)=> +car1["price"] > +car2["price"] ? car1 : car2;
+
+mongo.MongoClient.connect(dbUrl,{ useNewUrlParser: true },onConnect);
 app.listen(port,()=>console.log(`Server is running in port ${port}`));
