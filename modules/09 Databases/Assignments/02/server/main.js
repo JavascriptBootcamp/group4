@@ -39,7 +39,6 @@ const onConnect = (err, databases) => {
     const { startYear, endYear } = request.query;
     console.log("in year range");
     console.log(request.query);
-    //db.student.find({ u1 : { $gt :  30, $lt : 60}});
     collection
       .find({ year: { $gte: +startYear, $lte: +endYear } })
       .toArray((err, data) => {
@@ -50,6 +49,36 @@ const onConnect = (err, databases) => {
       });
   });
 
+  app.get("/cars/models", (request, response) => {
+    const { manufacturer } = request.query;
+    collection
+      .find({ manufacturer: manufacturer })
+      .project({ model: 1, manufacturer: 1, _id: 0 })
+      .toArray((err, data) => {
+        if (err) return console.error("ERROR OCCURED:", err);
+
+        console.log("data", data);
+        response.send(data);
+      });
+  });
+
+  app.get("/cars/expensive", (request, response) => {
+    let expenseCar;
+    const { license1, license2 } = request.query;
+
+    collection
+      .find({ licenseNumber: { $in: [license1, license2] } })
+      .toArray((err, data) => {
+        if (err) return console.error("ERROR OCCURED:", err);
+        if (data[0].price > data[1].price) expenseCar = data[0];
+        else if (data[0].price < data[1].price) expenseCar = data[1];
+        else response.send("equel");
+
+        console.log("Expense car", expenseCar); //response.send(data);
+        response.send(expenseCar);
+      });
+  });
+  //expensive
   app.post("/car", (request, response) => {
     const {
       licenseNumber,
