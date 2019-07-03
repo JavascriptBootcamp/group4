@@ -1,11 +1,13 @@
 const express = require("express");
 const mongo = require("mongodb");
+const cors = require("cors");
 
 const app = express();
 
 const port = 5000;
 const dbUrl = "mongodb://127.0.0.1:27017";
 
+app.use(cors());
 app.use(express.json());
 
 const onConnect = (err, databases) => {
@@ -16,15 +18,16 @@ const onConnect = (err, databases) => {
   const collectionName = "cars";
   const collection = db.collection(collectionName);
 
-  app.get("/cars", (request, response) => {
+  /*   app.get("/cars", (request, response) => {
     collection.find().toArray((err, data) => {
       if (err) return console.error("ERROR OCCURED:", err);
 
       console.log("data", data);
       response.send(data);
     });
-  });
-  /*   app.get("/cars/:number", (request, response) => {
+  }); */
+
+  app.get("/car/:number", (request, response) => {
     const { number } = request.params;
     console.log(request.params);
     collection.find({ licenseNumber: number }).toArray((err, data) => {
@@ -34,7 +37,7 @@ const onConnect = (err, databases) => {
       response.send(data);
     });
   });
- */
+
   app.get("/cars/year", (request, response) => {
     const { startYear, endYear } = request.query;
     console.log("in year range");
@@ -49,11 +52,24 @@ const onConnect = (err, databases) => {
       });
   });
 
-  app.get("/cars/models", (request, response) => {
-    const { manufacturer } = request.query;
+  app.get("/cars/manufacturers/:manufacturer", (request, response) => {
+    const { manufacturer } = request.params;
     collection
       .find({ manufacturer: manufacturer })
-      .project({ model: 1, manufacturer: 1, _id: 0 })
+      .project({ model: 1, _id: 0 })
+      .toArray((err, data) => {
+        if (err) return console.error("ERROR OCCURED:", err);
+
+        console.log("data", data);
+        response.send(data);
+      });
+  });
+
+  app.get("/cars/models/:model", (request, response) => {
+    const { model } = request.params;
+    collection
+      .find({ model: model })
+      .project({ model: 1, price: 1, _id: 0 })
       .toArray((err, data) => {
         if (err) return console.error("ERROR OCCURED:", err);
 
