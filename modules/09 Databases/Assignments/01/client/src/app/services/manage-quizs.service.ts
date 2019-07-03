@@ -37,8 +37,8 @@ export class ManageQuizsService {
         {questionTitle: "Who said 'imaginiation is more importent then knowledge?", answers: ["Leonardo De Vinich","Pablo Picaso","Albert Einstein","Pablo Escobar"],correctAnswerIndex: 2,userAnswerIndex: -1},
         {questionTitle: "The best character on game of throne?", answers: ["Daneris","John Snow","Sansa","Tirion Lanister"],correctAnswerIndex: 3,userAnswerIndex: -1},
         {questionTitle: "Guess a number?", answers: ["0","1","2","3"],correctAnswerIndex: 1,userAnswerIndex: -1}
-      ] 
-    })
+      ]
+    });
   }
   startQuiz(quizIndex,_playerName){
     this.currentQuiz=this.quizes[quizIndex];
@@ -107,7 +107,7 @@ export class ManageQuizsService {
     this.currentQuiz.questions.forEach((question)=>{question.userAnswerIndex=-1});
   }
   async postPlayerScore(){
-      const response = await fetch("http://192.168.25.31:8000/high-score",{
+      const response = await fetch("http://localhost:8000/high-score",{
         method:'POST',
         headers:{'content-Type': 'application/json'},
         body: JSON.stringify({

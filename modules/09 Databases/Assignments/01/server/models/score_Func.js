@@ -7,7 +7,7 @@ function sortArray(arr, sortBy) {
     
     function isArrayFull() {
     
-        return data.players.length < 10;
+        return data.players.length === 10;
     
     }
 
