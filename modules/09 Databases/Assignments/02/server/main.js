@@ -40,12 +40,14 @@ const onConnect = (err, databases) => {
     console.log("in year range");
     console.log(request.query);
     //db.student.find({ u1 : { $gt :  30, $lt : 60}});
-    collection.find({ year: Number(startYear) }).toArray((err, data) => {
-      if (err) return console.error("ERROR OCCURED:", err);
+    collection
+      .find({ year: { $gte: +startYear, $lte: +endYear } })
+      .toArray((err, data) => {
+        if (err) return console.error("ERROR OCCURED:", err);
 
-      console.log("data", data);
-      response.send(data);
-    });
+        console.log("data", data);
+        response.send(data);
+      });
   });
 
   app.post("/car", (request, response) => {
