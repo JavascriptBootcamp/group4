@@ -1,0 +1,60 @@
+<h2 style="text-align:left">Display Cars Details by Years Range (includes)</h2>
+
+<form (ngSubmit)="onSubmitYearsRangeForm(yearsRangeForm)" #yearsRangeForm="ngForm">
+    
+      <label for="startYear">From Year:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="1980"
+        max="2019"
+        #fromYear="ngModel"
+        required
+        id="startYear"
+        name="startYear"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!fromYear.valid && (fromYear.touched || fromYear.dirty)">
+        You must choose 'From Year' value
+      </span>
+
+
+      <br><br>
+
+      <label for="endYear">To Year:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="2005"
+        max="2019"
+        #toYear="ngModel"
+        required
+        id="endYear"
+        name="endYear"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!toYear.valid && (toYear.touched || toYear.dirty)">
+        You must choose 'To Year' value
+    </span>
+
+      <br><br>
+
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Cars Details"
+      >
+
+    
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
