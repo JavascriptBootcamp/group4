@@ -17,7 +17,6 @@ export class MonthDirective implements AfterViewInit{
       };
   }
 
-  @HostBinding('style.color')color:string;
   
   ngAfterViewInit() {
 
