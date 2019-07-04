@@ -14,13 +14,21 @@
         <div id="big-picture">
             <div class="arrow arrow-left" onclick="setNextImg(event)"></div>
             <div id="big-picture-wrapper">
-                <img id="big-picture-img" src="" imgnumber="tm1">
+                <img id="big-picture-img" src="blank.png" imgnumber="tm1">
             </div>
             <div class="arrow arrow-right" onclick="setPrevImg(event)"></div>
         </div>
         <div id="thumbnails">
         </div>
     </div>
+    <form onsubmit="getAlbum(event);">
+        <select id="select-album">
+            <option value="1">Surfing</option>
+            <option value="2">Animals</option>
+            <option value="3">countries</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>

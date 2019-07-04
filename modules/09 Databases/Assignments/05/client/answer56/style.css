@@ -39,12 +39,20 @@ img{
     text-align:center;
     height:600px;
 }
-#big-picture , #thumbnails{
+#big-picture{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin:15px 0;
     position: relative;
+}
+#thumbnails{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+#thumbnails img{
+    width:25%;
 }
 #big-picture .arrow , #thumbnails .arrow{
    width:10%;  
