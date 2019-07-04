@@ -1,0 +1,52 @@
+<form (submit)="onSubmit($event,form,action.value,[ln,company,model,year,km,price])" #form>
+  <div>
+    <span>Select action:</span>
+    <select name="" id="" #action (click)="setAction(action.value)">
+      <option value="addCar">Add car</option>
+      <option value="getCar">Get car</option>
+      <option value="getCars">Get cars</option>
+    </select>
+  </div>
+
+  <div *ngIf="action.value === 'addCar'">
+    <div>
+      <input type="text" [placeholder]="input1Text" #ln required>
+      <input type="text" [placeholder]="input2Text" #company required>
+      <input type="text" [placeholder]="input3Text" #model required>
+      <input type="text" [placeholder]="input4Text" #year required>
+      <input type="text" [placeholder]="input5Text" #km required>
+      <input type="text" [placeholder]="input6Text" #price required>
+    </div>
+  </div>
+
+  <div *ngIf="action.value === 'getCar'">
+    <span>Search by:</span>
+    <select name="" id="" #carSearchBy (click)="setSearchBy(carSearchBy.value)">
+      <option name="" id="" value="license">License number</option>
+      <option name="" id="" value="two licenses">Compare price of cars(license number)</option>
+    </select>
+    <div>
+      <input type="text" [placeholder]="input1TextGet" #carI1 required>
+      <span *ngIf="carSearchBy.value === 'two licenses'">
+        <input type="text" name="" id="" [placeholder]="input2TextGet" #carI2 required>
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="action.value === 'getCars'">
+    <span>Search by:</span>
+    <select name="" id="" #carsSearchBy (click)="setSearchBy(carsSearchBy.value)">
+      <option name="" id="" value="all">All</option>
+      <option name="" id="" value="year range">Year range</option>
+      <option name="" id="" value="company">manufacturer</option>
+      <option name="" id="" value="model">model</option>
+    </select>
+    <div *ngIf="carsSearchBy.value !== 'all'">
+      <input type="text" placeholder="" [placeholder]="input1TextGet" #carsI1 required>
+      <span *ngIf="carsSearchBy.value === 'year range'">
+        <input type="text" name="" id="" [placeholder]="input2TextGet" #carsI2 required>
+      </span>
+    </div>
+  </div>
+  <button>Submit</button>
+</form>
