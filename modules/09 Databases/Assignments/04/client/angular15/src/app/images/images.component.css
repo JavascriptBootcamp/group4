@@ -1,0 +1,47 @@
+div#wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 53%;
+    min-height: 150px;
+    flex-wrap: wrap;
+    background-color: #c2c2c2;
+    border: 1px solid;
+    border-radius: 10px;
+    margin:20px;
+}
+#container{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.instush-comp{
+    margin:5px;
+}
+.header{
+    color:white;
+}
+.modalWindow{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:600px;
+    height:600px;
+    margin-top:-300px;
+    margin-left:-300px;
+    z-index:999;
+    visibility:hidden;
+}
+.modalWindow.visible{
+    visibility:visible;
+}
+.hideModal{
+    visibility:hidden;
+}
+img{
+    width:100%;
+    height:100%;
+}

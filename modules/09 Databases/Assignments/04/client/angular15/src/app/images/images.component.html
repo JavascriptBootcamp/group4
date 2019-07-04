@@ -1,0 +1,14 @@
+<div id="container">
+  <h2 class="header">Instush</h2>
+  <div id="wrapper">
+    <div class="instush-comp" *ngFor="let img of images">
+      <app-image [img]="img" (addToOpenModal)="onAddToOpenModal($event)" (addToLocal)="addToLocal()"></app-image>
+    </div>
+  </div>
+  <div [ngClass]="{
+    'modalWindow': true, 
+    'visible': clicked
+ }">
+    <img [src]="image" (click)="hideModal()" [className]="hidden ? 'hideModal' : ''">
+  </div>
+</div>
