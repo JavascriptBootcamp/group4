@@ -1,0 +1,23 @@
+.thumbnail-left{
+    width:20%;
+    text-align: center;
+    cursor: pointer;
+}
+.video-image{
+    width:70%;
+    transition: 2s all;
+    border-radius: 50%;
+}
+.thumbnail-right{
+    width:75%;
+    text-align: left;
+    overflow: hidden;
+    padding-top: 2px;
+}
+.video-image:hover{
+    transform: rotate(360deg);
+    background-color: #314856;
+}
+.video-title{
+    font-weight: bold;
+}
