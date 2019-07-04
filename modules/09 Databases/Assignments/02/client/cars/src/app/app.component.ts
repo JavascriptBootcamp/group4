@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { CarsService } from './services/cars.service';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -60,9 +61,9 @@ export class AppComponent implements OnInit {
     // { carsSearchBy:  }"All","License","Licenses","Years","Company","Model"
   }
 
-  async onSubmit(e: Event, form, action: string, postInputs: HTMLElement[]) {
+  async onSubmit(e: Event, form, action: string, postInputs: ElementRef[]) {
     e.preventDefault();
-    console.log("ln:", this.ln.nativeElement.value );
+    console.log("postInputs:", postInputs );
     let isQueryForOneCar: boolean;
     let input, input1, input2, searchBy, data;
     if (action !== "addCar") {
