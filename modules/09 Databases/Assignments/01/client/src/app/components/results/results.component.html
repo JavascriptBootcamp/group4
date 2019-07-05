@@ -9,9 +9,9 @@
       </div>
       <div class="results-container">
         <div class="result" *ngFor="let result of quiz.questions; let j = index">
-          <h4 class="question-in-results">{{j+1}}. {{result.questionTitle}}</h4>
-          <span *ngIf="result.correctAnswerIndex===result.userAnswerIndex"><img class="result-status-img" src="../../../assets/Images/checked.png"></span>
-          <span *ngIf="result.correctAnswerIndex!==result.userAnswerIndex"><img class="result-status-img" src="../../../assets/Images/cancel.png"></span>
+          <h4 class="question-in-results">{{j+1}}. {{result.Title}}</h4>
+          <span *ngIf="result.correctAnswerIndex==result.userAnswerIndex"><img class="result-status-img" src="../../../assets/Images/checked.png"></span>
+          <span *ngIf="result.correctAnswerIndex!=result.userAnswerIndex"><img class="result-status-img" src="../../../assets/Images/cancel.png"></span>
         </div>
       </div>
     </div>

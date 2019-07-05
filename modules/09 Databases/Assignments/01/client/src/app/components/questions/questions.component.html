@@ -3,12 +3,12 @@
     <div class="quiz-header">
         <h4 class="timer">{{quiz.time|clock}}</h4>
         <h4 class="pages">{{quiz.currentQuestionIndex+1}}/{{quiz.questions.length}}</h4>
-        <h2 class="body-title">{{quiz.questions[quiz.currentQuestionIndex].questionTitle}}</h2>
+        <h2 class="body-title">{{quiz.questions[quiz.currentQuestionIndex].Title}}</h2>
     </div>
     <div class="answers-container">
         <label *ngFor="let answer of quiz.questions[quiz.currentQuestionIndex].answers;let i = index" class="answer"
-        [class.correct]="quiz.questions[quiz.currentQuestionIndex].correctAnswerIndex===i && quiz.questions[quiz.currentQuestionIndex].userAnswerIndex > -1"
-        [class.not-correct]="quiz.questions[quiz.currentQuestionIndex].userAnswerIndex!==quiz.questions[quiz.currentQuestionIndex].correctAnswerIndex && quiz.questions[quiz.currentQuestionIndex].userAnswerIndex===i">
+        [class.correct]="quiz.questions[quiz.currentQuestionIndex].correctAnswerIndex==i && quiz.questions[quiz.currentQuestionIndex].userAnswerIndex > -1"
+        [class.not-correct]="quiz.questions[quiz.currentQuestionIndex].userAnswerIndex!=quiz.questions[quiz.currentQuestionIndex].correctAnswerIndex && quiz.questions[quiz.currentQuestionIndex].userAnswerIndex===i">
           <input [disabled]="quiz.questions[quiz.currentQuestionIndex].userAnswerIndex > -1" type="radio" (click)="manageQuizsService.enterAnswer(i)"
           [checked]="i===quiz.questions[quiz.currentQuestionIndex].userAnswerIndex">
           {{answer}}

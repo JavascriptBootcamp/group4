@@ -11,7 +11,7 @@ const quizRouter = require('./routes/quiz');
 app.use('/',scoreRouter);
 
 
-app.use('/quiz',quizRouter);
+app.use('/',quizRouter);
 
 
 

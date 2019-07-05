@@ -19,10 +19,13 @@ export class ManageQuizsService {
     this.quizes = [];
     this.currentQuiz = null;
     this.highScore = [];
-    this.addFakeQuiz();
+    this.getQuiz();
    }
 
-  addFakeQuiz(){
+  async getQuiz(){
+
+    const response = await fetch("http://127.0.0.1:8000/quiz");
+    const data = await response.json();
     this.quizes.push({
       time: this.maximumTime,
       quizIndex: 0,
@@ -31,13 +34,7 @@ export class ManageQuizsService {
       submmited: false,
       currentQuestionIndex: 0,
       score: 0,
-      questions: [
-        {questionTitle: "Who created this quiz?", answers: ["ofek","oren","moshiko","shimon"],correctAnswerIndex: 0,userAnswerIndex: -1},
-        {questionTitle: "Best movie ever created??", answers: ["Spiderman","Titanic","Metrix","Inseption"],correctAnswerIndex: 2,userAnswerIndex: -1},
-        {questionTitle: "Who said 'imaginiation is more importent then knowledge?", answers: ["Leonardo De Vinich","Pablo Picaso","Albert Einstein","Pablo Escobar"],correctAnswerIndex: 2,userAnswerIndex: -1},
-        {questionTitle: "The best character on game of throne?", answers: ["Daneris","John Snow","Sansa","Tirion Lanister"],correctAnswerIndex: 3,userAnswerIndex: -1},
-        {questionTitle: "Guess a number?", answers: ["0","1","2","3"],correctAnswerIndex: 1,userAnswerIndex: -1}
-      ] 
+      questions: data
     })
   }
   startQuiz(quizIndex,_playerName){
@@ -64,6 +61,8 @@ export class ManageQuizsService {
   }
   enterAnswer(answerIndexInput){
     this.currentQuiz.questions[this.currentQuiz.currentQuestionIndex].userAnswerIndex = answerIndexInput;
+    console.log(this.currentQuiz.questions[this.currentQuiz.currentQuestionIndex])
+    console.log(this.quizes[0].questions)
   }
   nextQuestion(){
     if(this.currentQuiz.currentQuestionIndex+1!==this.currentQuiz.questions.length){
@@ -91,7 +90,7 @@ export class ManageQuizsService {
     let correctAnswersCount=0;
     let questions = this.currentQuiz.questions;
     for(let i=0;i<questions.length;i++){
-      if(questions[i].correctAnswerIndex===questions[i].userAnswerIndex){
+      if(questions[i].correctAnswerIndex==questions[i].userAnswerIndex){
         correctAnswersCount++;
       }
     }
@@ -107,14 +106,15 @@ export class ManageQuizsService {
     this.currentQuiz.questions.forEach((question)=>{question.userAnswerIndex=-1});
   }
   async postPlayerScore(){
-      const response = await fetch("http://192.168.25.31:8000/high-score",{
+        const response = await fetch("http://localhost:8000/high-score",{
         method:'POST',
         headers:{'content-Type': 'application/json'},
         body: JSON.stringify({
           player: this.player
         })
       });
-      const data = await response.json();
+      const scores = await fetch("http://localhost:8000/high-score");
+      const data = await scores.json();
       console.log(data);
       this.highScore = data;
       console.log(this.highScore);

@@ -35,43 +35,44 @@ catch(ex){
 
 router.post('/',(req,res)=>{
     const {Title,answers,correctAnswerIndex,userAnswerIndex} = req.body;
-    if (!Title || !answers || !correctAnswerIndex || !userAnswerIndex )responseWithStatus(200, response, "Missing Data");
+    if (!Title || !answers || !correctAnswerIndex || !userAnswerIndex )responseWithStatus(200, res, "Missing Data");
+    const identifier = Math.floor(Math.random()*100000000);
     try{
-        collection.insertOne({Title,answers,correctAnswerIndex,userAnswerIndex});
-        responseWithStatus(200, response, "Added Succussfuly");
+        collection.insertOne({Title,answers,correctAnswerIndex,userAnswerIndex,identifier});
+        responseWithStatus(200, res, "Added Succussfuly");
         }
         catch(ex){
-            responseWithStatus(500, response, "Missing Data");
+            responseWithStatus(500, res, "Missing Data");
         }
 
 })
 
-router.put('/:id',(req,res)=>{
+router.put('/:identifier',(req,res)=>{
 
-  
-        const {id} = req.params;  
+        const {identifier} = req.params;  
         const {Title,answers,correctAnswerIndex,userAnswerIndex} = req.body;
-        if (!Title || !answers || !correctAnswerIndex || !userAnswerIndex )responseWithStatus(200, response, "Missing Data");
+        if (!Title || !answers || !correctAnswerIndex || !userAnswerIndex )responseWithStatus(200, res, "Missing Data");
         try{
-            collection.updateOne({_id:id},{$set:{Title,answers,correctAnswerIndex,userAnswerIndex}})
-            responseWithStatus(200, response, "updated Succussfuly");
+            collection.updateOne({identifier:+identifier},{$set:{Title,answers,correctAnswerIndex,userAnswerIndex}})
+            responseWithStatus(200, res, "updated Succussfuly");
         }
         catch(ex){
-            responseWithStatus(500, response, "Missing Data");
+            responseWithStatus(500, res, "Missing Data");
         }
 
 })
 
 
-router.delete('/:id',(req,res)=>{
-    const {id} = req.params; 
-    if (!id)responseWithStatus(200, response, "Missing Data");
+router.delete('/:identifier',(req,res)=>{
+    const {identifier} = req.params; 
+     console.log(identifier);
+    if (!identifier)responseWithStatus(200, res, "Missing Data");
     try{ 
-        collection.deleteOne({id});
-        responseWithStatus(200, response, "deleted Succussfuly");
+        collection.deleteOne({identifier:+identifier});
+        responseWithStatus(200, res, "deleted Succussfuly");
         }
         catch(ex){
-            responseWithStatus(500, response, "Missing Data");
+            responseWithStatus(500, res, "Missing Data");
         }
 
 })
