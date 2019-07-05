@@ -1,13 +1,13 @@
 const express = require('express');
 const mongo = require('mongodb');
-
+const cors = require('cors')
 const app = express();
 
-const port = 8000;
+const port = 5000;
 const dbUrl = 'mongodb://127.0.0.1:27017';
 
 app.use(express.json());
-
+app.use(cors());
 
 const onConnect = (err, databases) => {
     if (err) return console.error("ERROR OCCURED:", err);
@@ -31,26 +31,26 @@ const onConnect = (err, databases) => {
         }
     })
 
-    app.get('/car/:license', (req, res) => {
-        console.log("license:", req.params)
-        const { license } = req.params;
-
+    app.get('/car', (req, res,next) => {
+        console.log("license:", req.query)
+        const { license } = req.query;
+        if(license){
         collection.find({ license }).toArray((err, data) => {
             if (err) return console.error("ERROR OCCURED:", err);
 
             console.log("data", data);
             res.send(data);
         })
-
-
+    }
+ 
 
     })
 
 
-    app.get('/cars/:fromYear/:untilYear', (request, response, next) => {
-        console.log("years:")
-        const { fromYear, untilYear } = request.params;
-        console.log("years", request.params)
+    app.get('/cars', (request, response, next) => {
+        const { fromYear, untilYear } = request.query;
+        console.log("years", request.query)
+        if(fromYear && untilYear){
         collection.find({ Year: { $gte: +fromYear, $lte: +untilYear } }).toArray((err, data) => {
             if (err) return console.error("ERROR OCCURED:", err);
 
@@ -58,12 +58,15 @@ const onConnect = (err, databases) => {
             response.send(data);
         })
 
+    }
+
     })
 
 
-    app.get('/car/models/:Manufacturer', (request, response) => {
-        const { Manufacturer } = request.params;
-        console.log("Manufacturer", Manufacturer)
+    app.get('/car/models', (request, response,next) => {
+        const { Manufacturer } = request.query;
+        //console.log("Manufacturer", Manufacturer,request.query)
+        if(Manufacturer){
         collection.find({ Manufacturer }, { projection: { Model: 1, _id: 0 } }).toArray((err, data) => {
             if (err) return console.error("ERROR OCCURED:", err);
 
@@ -71,18 +74,23 @@ const onConnect = (err, databases) => {
             const models = modelsArr.filter((m, index) => modelsArr.indexOf(m) === index)
             response.send(models);
         })
+    }
+
     })
 
 
-    app.get('/cars/models/prices/:Model', (request, response) => {
-        const { Model } = request.params;
-        console.log("Model", Model)
+    app.get('/cars/models/prices', (request, response,next) => {
+        const { Model } = request.query;
+        //console.log("Model", Model)
+        if(Model){
         collection.createIndex( { Model: "text" } );
         collection.find({ $text: { $search:  Model }}, { projection: { Model: 1,Year:1,Price:1, _id: 0 } }).toArray((err, data) => {
             if (err) return console.error("ERROR OCCURED:", err);
 
             response.send(data);
         })
+    }
+ 
     })
 
     app.get('/car/:licenseOne/:licenseTwo', (request, response) => {
