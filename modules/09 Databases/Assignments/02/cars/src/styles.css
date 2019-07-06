@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image:url("https://www.port2port.co.il/uploads/articles/article_94649_large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
