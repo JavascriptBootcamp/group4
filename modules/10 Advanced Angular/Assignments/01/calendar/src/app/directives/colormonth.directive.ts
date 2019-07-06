@@ -1,4 +1,4 @@
-import { Directive, Renderer2, ElementRef, HostListener } from '@angular/core';
+import { Directive, Renderer2, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[appColormonth]'
@@ -7,56 +7,56 @@ export class ColormonthDirective {
 
   constructor(private renderer: Renderer2, private el: ElementRef) { }
 
-  @HostListener('onload') addColor() {
+  ngAfterViewChecked(): void {
     const month = this.el.nativeElement;
-    console.log(month);
-    switch (month) {
+    month.className = "";
+    switch (month.innerText) {
       case "January": {
-        this.renderer.addClass(this.el.nativeElement, "red");
+        this.renderer.addClass(month, "red");
         break;
       }
       case "February": {
-        this.renderer.addClass(this.el.nativeElement, "blue");
+        this.renderer.addClass(month, "blue");
         break;
       }
       case "March": {
-        this.renderer.addClass(this.el.nativeElement, "green");
+        this.renderer.addClass(month, "green");
         break;
       }
       case "April": {
-        this.renderer.addClass(this.el.nativeElement, "black");
+        this.renderer.addClass(month, "black");
         break;
       }
       case "May": {
-        this.renderer.addClass(this.el.nativeElement, "purple");
+        this.renderer.addClass(month, "purple");
         break;
       }
       case "June": {
-        this.renderer.addClass(this.el.nativeElement, "yellow");
+        this.renderer.addClass(month, "yellow");
         break;
       }
       case "July": {
-        this.renderer.addClass(this.el.nativeElement, "pink");
+        this.renderer.addClass(month, "pink");
         break;
       }
       case "August": {
-        this.renderer.addClass(this.el.nativeElement, "gray");
+        this.renderer.addClass(month, "gray");
         break;
       }
       case "September": {
-        this.renderer.addClass(this.el.nativeElement, "brown");
+        this.renderer.addClass(month, "brown");
         break;
       }
       case "October": {
-        this.renderer.addClass(this.el.nativeElement, "cyan");
+        this.renderer.addClass(month, "cyan");
         break;
       }
       case "November": {
-        this.renderer.addClass(this.el.nativeElement, "beige");
+        this.renderer.addClass(month, "beige");
         break;
       }
       case "December": {
-        this.renderer.addClass(this.el.nativeElement, "orange");
+        this.renderer.addClass(month, "orange");
         break;
       }
       default: {
