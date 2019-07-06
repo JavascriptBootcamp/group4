@@ -1,1 +1,77 @@
-<p>display-list works!</p>
+<div>
+
+    <div [ngSwitch]="displayObj.displayValue">
+        <div *ngSwitchCase="0">
+            <div *ngFor="let carParmeter of displayObj.displayData">
+                <label>License:{{carParmeter.license}}</label><br>
+                <label>Manufacturer:{{carParmeter.Manufacturer}}</label><br>
+                <label>Model:{{carParmeter.Model}}</label><br>
+                <label>Year:{{carParmeter.Year}}</label><br>
+                <label>KM:{{carParmeter.KM}}</label><br>
+                <label>Price:{{carParmeter.Price}}</label><br>
+            </div>
+        </div>
+        <div *ngSwitchCase="1">
+            <table>
+                <thead>
+                    <th>License</th>
+                    <th>Manufacturer</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>KM</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let car of displayObj.displayData">
+                        <td>{{car.license}}</td>
+                        <td>{{car.Manufacturer}}</td>
+                        <td>{{car.Model}}</td>
+                        <td>{{car.Year}}</td>
+                        <td>{{car.KM}}</td>
+                        <td>{{car.Price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div *ngSwitchCase="2">
+            <ul>Models:
+                <li *ngFor="let model of displayObj.displayData">
+                    {{model}}
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchCase="3">
+            <table>
+                <thead>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let model of displayObj.displayData">
+                        <td>{{model.Model}}</td>
+                        <td>{{model.Year}}</td>
+                        <td>{{model.Price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngSwitchCase="4">
+            <div *ngFor="let carParmeter of displayObj.displayData">
+                <label>License:{{carParmeter.license}}</label><br>
+                <label>Manufacturer:{{carParmeter.Manufacturer}}</label><br>
+                <label>Model:{{carParmeter.Model}}</label><br>
+                <label>Year:{{carParmeter.Year}}</label><br>
+                <label>KM:{{carParmeter.KM}}</label><br>
+                <label>Price:{{carParmeter.Price}}</label><br>
+            </div>
+        </div>
+        <div *ngSwitchDefault>
+
+        </div>
+    </div>
+
+
+
+</div>

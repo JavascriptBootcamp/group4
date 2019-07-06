@@ -1,14 +1,34 @@
 import { Injectable } from '@angular/core';
 
+
+interface Icar{
+  license:string,
+  Manufacturer:string,
+  Model:string,
+  Year:string,
+  KM:string,
+  Price:string,
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class CarsService {
   url: string;
   constructor() {
     this.url = "http://localhost:5000/";
   }
 
+  addCar(car:Icar){
+    fetch(this.url + 'car',{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(car)
+    })
+  }
 
   async getCarByLicense(license) {
 

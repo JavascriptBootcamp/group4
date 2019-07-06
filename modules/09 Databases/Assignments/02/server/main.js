@@ -22,6 +22,7 @@ const onConnect = (err, databases) => {
 
         const { license, Manufacturer, Model, Year, KM, Price } = request.body;
         if (!license || Manufacturer || Model || Year || KM || Price) responseWithStatus(500, response, "Missing Data");
+        console.log(license, Manufacturer, Model, Year, KM, Price )
         try {
             collection.insertOne({ license, Manufacturer, Model, Year, KM, Price });
             responseWithStatus(200, response, "Added Succussfuly");

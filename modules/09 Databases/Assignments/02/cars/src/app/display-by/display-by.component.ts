@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CarsService} from '../cars.service';
-import { async } from 'q';
+
+interface IdisplayObj{displayValue:string,displayData:any}
 @Component({
   selector: 'app-display-by',
   templateUrl: './display-by.component.html',
@@ -9,9 +10,14 @@ import { async } from 'q';
 export class DisplayByComponent implements OnInit {
   selectedValue:string;
   data:any;
+  displayObj:IdisplayObj;
   constructor(private carsService:CarsService) { 
     this.selectedValue = null;
     this.data = null;
+    this.displayObj = {
+      displayValue : "",
+      displayData : []
+    }
   }
 
   ngOnInit() {
@@ -36,6 +42,9 @@ export class DisplayByComponent implements OnInit {
     default : break;
     }
 
-    console.log(this.data);        
+    console.log(this.data); 
+    
+    this.displayObj["displayValue"] = this.selectedValue;
+    this.displayObj["displayData"] = this.data;
   }
 }
