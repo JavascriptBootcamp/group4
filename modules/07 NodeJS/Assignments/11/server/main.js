@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const { removeSong } = require('./song');
 app.use(cors());
 app.use(express.json());
 
@@ -13,30 +12,40 @@ const data = {
             title: "xx",
             singer: "xxxxxx",
             words: "xxxxxxxxxxx xxx xxxxx",
+            url: 'https://www.youtube.com/embed/sPBVzqOax3Y',
+            image:'assets/images/play.png'
         },
         {
             id: 2,
             title: "yyy",
             singer: "yyyyyy",
             words: "yyyyy yyyy",
+            url: 'https://www.youtube.com/embed/XJZA3_e3SBw',
+            image:'assets/images/play.png'
         },
         {
             id: 3,
             title: "zzz",
             singer: "zzzzzzzz",
             words: "zzzzzz xxzzx xxxzzzzzzzzzzzxx",
+            url: 'https://www.youtube.com/embed/sPBVzqOax3Y',
+            image:'assets/images/play.png'
         },
         {
             id: 4,
             title: "eeeee",
             singer: "eeeeeeeeee",
             words: "eeeeeeeeeeeeeeee xxx xxxxx",
+            url: 'https://www.youtube.com/embed/sPBVzqOax3Y',
+            image:'assets/images/play.png'
         },
         {
             id: 5,
             title: "rrrrrrr",
             singer: "rrrrrrrrrrr",
             words: "rrrrrrrrrrrrrrrrr xxx xxxxx",
+            url: 'https://www.youtube.com/embed/sPBVzqOax3Y',
+            image:'assets/images/play.png'
         }
     ]
 };
@@ -96,15 +105,14 @@ app.delete('/song/:id', (req, res) => {
     try {
         const { id } = req.params;
         const index = getIndex(data.songs, +id);
-        // data.songs.splice(index, 1);
-        data.songs = removeSong(data.songs, index);
+        data.songs.splice(index, 1);
         res.status(200);
         res.json(data.songs);
     }
     catch (ex) {
         res.status(500);
     }
-});
+})
 
 
 function getIndex(arr, identifyer) {

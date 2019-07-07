@@ -1,8 +1,8 @@
 {
-  "name": "mongo-demo",
+  "name": "calc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongo": "^0.1.0",
-    "mongoose": "^5.6.2"
+    "jest": "^24.8.0"
   }
 }
