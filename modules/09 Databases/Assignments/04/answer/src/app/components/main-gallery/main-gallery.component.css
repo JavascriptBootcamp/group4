@@ -1,0 +1,21 @@
+#container {
+    position: relative;
+    top: 100px;
+    display: flex;
+    width:100%;
+    justify-content: center;
+  }
+  
+  #gallery {
+     display: flex;
+     flex-wrap: wrap;
+     width: 60%;
+  }
+  
+  .img {
+      margin: 10px;
+  }
+  
+  .blur {
+    filter: blur(8px);
+  }
