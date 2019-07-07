@@ -59,7 +59,7 @@ const onConnect = (err, databases)=>{
 
     // Display cars models by manufacturer
     app.get("/cars", async(req,res,next)=>{
-        console.log("manufacturer");
+        console.log("manufacturer",req.query);
         const {manufacturer} = req.query;
         if(!manufacturer){
             next();
@@ -67,6 +67,7 @@ const onConnect = (err, databases)=>{
         }
         try{
             const cars = await collection.find({manufacturer}).toArray();
+            console.log("cars:",getModels(cars));
             res.status(200).send(getModels(cars));    
         }
         catch(err){
@@ -138,7 +139,7 @@ const onConnect = (err, databases)=>{
 const getModels = (cars)=>{
     const arr = [];
     cars.map((item)=>arr.push(item.model));
-    return [...new Set(arr)]; 
+    return { model: [...new Set(arr)]}; 
 };
 
 const getModelsAndPrices = (cars)=>{

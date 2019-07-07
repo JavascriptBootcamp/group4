@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { CarsService } from './services/cars.service';
-import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +7,7 @@ import { ElementRef } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  data: string[];
   ngOnInit(): void {
     console.log("this.carSearchBy:", this.carSearchBy);
     console.log("this.carsSearchBy:", this.carsSearchBy);
@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
   // carsSearchBy : string
 
   constructor(private carsService: CarsService) {
+    this.data = [];
     this.action = "";
     this.carSearchBy = "";
     this.carsSearchBy = "";
@@ -61,16 +62,14 @@ export class AppComponent implements OnInit {
     // { carsSearchBy:  }"All","License","Licenses","Years","Company","Model"
   }
 
-  async onSubmit(e: Event, form, action: string, postInputs: ElementRef[]) {
+  async onSubmit(e: Event, form, action: string, postInputs: HTMLElement[]) {
     e.preventDefault();
-    console.log("postInputs:", postInputs );
     let isQueryForOneCar: boolean;
-    let input, input1, input2, searchBy, data;
+    let input, input1, input2, searchBy,data;
     if (action !== "addCar") {
       if(this.carsSearchBy && this.carsSearchBy.nativeElement.value === "all"){
         data = this.carsService.getData({searchBy:"all"});
-        data = this.getJsonData(data);
-
+        this.getJsonData(data);
         return;
       }
       isQueryForOneCar = !( this.carsI1 || this.carsI2 );
@@ -79,6 +78,8 @@ export class AppComponent implements OnInit {
       input2 = isQueryForOneCar ? (this.carI2 ? this.carI2.nativeElement.value : this.carI2) : (this.carsI2 ? this.carsI2.nativeElement.value : this.carsI2);
       searchBy = isQueryForOneCar ? this.carSearchBy.nativeElement.value : this.carsSearchBy.nativeElement.value;
       input = { action, searchBy, isQueryForOneCar, input1, input2 };
+      data = this.carsService.getData(input);
+      this.getJsonData(data);
     }
     else {
       const licenseNumber = this.ln.nativeElement.value;
@@ -90,18 +91,9 @@ export class AppComponent implements OnInit {
 
       const body = {licenseNumber, manufacturer, model, year, km, price};
       data = this.carsService.getData({action:"addCar",body});
-      data = this.getJsonData(data);
+      this.getJsonData(data);
       return;
-      
-      // input1 = postInputs;
-      // input = { action, input1 };
     }
-
-    console.log("input:",input);
-    data = this.carsService.getData(input);
-    data = this.getJsonData(data);
-    // console.log(e,form, action,`carSearchBy:${carSearchBy}`,carsSearchBy,carI1,carI2,carsI1,carsI2);
-
   }
 
   setAction(action: string) {
@@ -110,7 +102,8 @@ export class AppComponent implements OnInit {
   }
 
   getJsonData(data){
-    return data.then(stream=>stream.text().then(data=>console.log(data)));
+    console.log(data);
+    data.then(stream=>stream.text().then(data=>this.data = JSON.parse(data)));
   }
 
   setSearchBy(carSearchBy: string) {
@@ -135,8 +128,8 @@ export class AppComponent implements OnInit {
         input2 = "To Year";
         break;
     }
-    this.input1Text = `${input1}`;
-    this.input2Text = `${input2}`;
+    this.input1TextGet = `${input1}`;
+    this.input2TextGet = `${input2}`;
   }
 }
 

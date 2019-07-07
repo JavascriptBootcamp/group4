@@ -18,8 +18,7 @@ export class CarsService {
     let query;
     if(action === 'addCar'){
       query = `${this.url}/car`;
-      const header = {method:"POST",body:JSON.stringify(input.body)};
-      console.log(query,header);
+      const header = { method:"POST", headers: { "Content-Type": "application/json" } ,body:JSON.stringify(input.body) };
       return fetch(query,header);
     }
     console.log("searchBy:",searchBy);

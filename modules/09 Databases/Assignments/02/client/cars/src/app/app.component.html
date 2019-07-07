@@ -49,4 +49,24 @@
     </div>
   </div>
   <button>Submit</button>
+  <div *ngIf="data.length>0">
+    <table>
+      <tr>
+        <th>licenseNumber</th>
+        <th>manufacturer</th>
+        <th>model</th>
+        <th>year</th>
+        <th>km</th>
+        <th>price</th>
+      </tr>
+      <tr *ngFor="let d of data">
+        <td>{{d.licenseNumber}}</td>
+        <td>{{d.manufacturer}}</td>
+        <td>{{d.model}}</td>
+        <td>{{d.year}}</td>
+        <td>{{d.km}}</td>
+        <td>{{d.price}}</td>
+      </tr>
+    </table>
+  </div>
 </form>
