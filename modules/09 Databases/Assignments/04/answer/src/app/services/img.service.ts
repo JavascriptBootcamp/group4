@@ -69,7 +69,6 @@ export class ImgService {
   addLike(likes,src){
     const index =  this.imgs.findIndex(img=>img.src===src);
     this.imgs[index].likes++;
-    
     fetch(this.url + 'images/like',{
       method:'PUT',
       headers:{'content-type':'json/application'},
