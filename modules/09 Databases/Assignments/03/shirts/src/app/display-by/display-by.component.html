@@ -1,0 +1,57 @@
+<div>
+    <div>
+        <select (change)="onDisplaySelected($event)">
+            <option selected disabled hidden>Choose Display</option>
+            <option value="0">shirt details by ID number</option>
+            <option value="1">cars details by price range</option>
+            <option value="2">cars colors by size</option>
+            <option value="3">shirts sizes and colors by fit</option>
+            <option value="4">the less expensive shirt  by two IDs numbers</option>
+        </select>
+    </div>
+
+    <div>
+
+        <div [ngSwitch]="selectedValue">
+
+            <div *ngSwitchCase="0">
+                <form (submit)="onSubmit($event,idNumber.value)">
+                    <input type="text" placeholder="ID" #idNumber />
+                    <button>Display</button>
+                </form>
+            </div>
+            <div *ngSwitchCase="1">
+                <form (submit)="onSubmit($event,minPrice.value,maxPrice.value)">
+                    <input type="number" placeholder="minimum price" #minPrice />
+                    <input type="number" placeholder="maximum price" #maxPrice />
+                    <button>Display</button>
+                </form>
+            </div>
+            <div *ngSwitchCase="2">
+                <form (submit)="onSubmit($event,size.value)">
+                    <input type="text" placeholder="size" #size />
+                    <button>Display</button>
+                </form>
+            </div>
+            <div *ngSwitchCase="3">
+                <form (submit)="onSubmit($event,fit.value)">
+                    <input type="text" placeholder="fit" #fit />
+                    <button>Display</button>
+                </form>
+            </div>
+            <div *ngSwitchCase="4">
+                <form (submit)="onSubmit($event,id1.value,id2.value)">
+                    <input type="text" placeholder="First ID" #id1 />
+                    <input type="text" placeholder="Second ID" #id2 />
+                    <button>Display</button>
+                </form>
+            </div>
+            <div *ngSwitchDefault></div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<app-display-list *ngIf="data" [displayObj]="displayObj"></app-display-list>
