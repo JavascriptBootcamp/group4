@@ -1,0 +1,48 @@
+<div id="container">
+    <div style="text-align:center">
+        <h1>
+            CARS
+        </h1>
+    
+    <h3> Add new car:</h3>
+    <form #Form="ngForm" (submit)="onSubmit(Form)">
+        <input type="text" (ngModel)="car.license" name="license" placeholder="License Number" required maxlength="9"
+            minlength="9"><br>
+        <input type="text" (ngModel)="car.manufacturer" name="manufacturer" placeholder="Manufacturer" required><br>
+        <input type="text" (ngModel)="car.model" name="model" placeholder="Model" required><br>
+        <input type="number" (ngModel)="car.year" name="year" placeholder="Year" required maxlength="4"
+            minlength="4"><br>
+        <input type="number" (ngModel)="car.km" name="km" placeholder="KM" required><br>
+        <input type="number" (ngModel)="car.price" name="price" placeholder="Price" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+
+    <h3> search license car:</h3>
+    <input type="text" #license name="license" placeholder="License Number" required maxlength="9" minlength="9"><br>
+    <input type="submit" value="Submit" (click)="carService.licenseSearch(license.value)">
+    <br><br>
+
+    <h3> search cars bettwen the years :</h3>
+    <input type="number" #from name="year1" placeholder="From" required maxlength="4" minlength="4"><br>
+    <input type="number" #until name="year2" placeholder="Until" required maxlength="4" minlength="4"><br>
+    <input type="submit" value="Submit" (click)="carService.yearsSearch(from.value,until.value)">
+    <br><br>
+
+    <h3> search cars by manufacturer :</h3>
+    <input type="text" #manufacturer name="manufacturer" placeholder="Manufacturer" required><br>
+    <input type="submit" value="Submit" (click)="carService.manufacturerSearch(manufacturer.value)">
+    <br><br>
+
+    <h3> search cars by model :</h3>
+    <input type="text" #model name="model" placeholder="Model" required><br>
+    <input type="submit" value="Submit" (click)="carService.modelSearch(model.value)">
+    <br><br>
+
+    <h3> search expensive car between 2 licenses :</h3>
+    <input type="text" #license1 name="license1" placeholder="License Number" required maxlength="9" minlength="9"><br>
+    <input type="text" #license2 name="license2" placeholder="License Number" required maxlength="9" minlength="9"><br>
+    <input type="submit" value="Submit" (click)="carService.expensiveCarSearch(license1.value,license2.value)">
+    <br><br>
+</div>
+</div>

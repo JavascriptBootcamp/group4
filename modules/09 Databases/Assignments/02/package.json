@@ -1,0 +1,17 @@
+{
+  "name": "02",
+  "version": "1.0.0",
+  "description": "<p>build a MongoDB collection for storing car details.</p>\r <p>each document in the collection includes:\r <ol>\r <li>License Number (12-345-67 etc.)</li>\r <li>Manufacturer (Toyota etc.)</li>\r <li>Model (Corola etc.)</li>\r <li>Year (2018 etc.)</li>\r <li>KM (10000 etc.)</li>\r <li>Price (120000 etc.)</li>\r </ol>\r </p>\r <hr />\r <p>build an application (with both client and server) which allows:\r <ol>\r <li>adding a car</li>\r <li>display car details by license number</li>\r <li>display cars details by year range</li>\r <li>display cars models by manufacturer</li>\r <li>display cars models and prices by model</li>\r <li>receive two license numbers and display the car which is more expensive</li>\r </ol>\r </p>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.2.7"
+  }
+}
