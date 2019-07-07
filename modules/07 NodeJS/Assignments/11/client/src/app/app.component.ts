@@ -33,6 +33,7 @@ export class AppComponent {
       this.videos=data;
       console.log(data);
     })
+
     // this.videos = [
     //   // { title: "title1 funny movie ", desc: "short film ..... click and take a look", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", artist: "simply dummy text of the printing and typesetting industry. Lorem simply dummy text of the printing and typesetting industry. Lorem", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
     //   { title: "title1", desc: "desc1", url: "http://techslides.com/demos/sample-videos/small.mp4", artist: "artist1", imageSrc: "http://downloadicons.net/sites/default/files/windows-media-player-icon-66464.png" },
@@ -65,6 +66,7 @@ export class AppComponent {
 
   onChangeVideoEvent(video: Video){
     this.player = video;
+
   }
 
 

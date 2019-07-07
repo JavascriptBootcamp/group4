@@ -8,38 +8,24 @@ app.use(express.json());
 const data = {
     songs: [
         {
-            title: "let it go",
+            title: "bananot",
             desc: "",
-            url: "https://www.youtube.com/embed/L0MK7qz13bU",
-            artist: "ann",
+            url: "https://www.youtube.com/embed/zOYrSyN9M0g",
+            artist: "static",
             imageSrc: ""
         },
         {
-            title: "",
+            title: "masa",
             desc: "",
-            url: "",
-            artist: "",
+            url: "https://www.youtube.com/embed/zRIn7W-kXhs",
+            artist: "eliad",
             imageSrc: ""
         },
         {
-            title: "",
+            title: "masa",
             desc: "",
-            url: "",
-            artist: "",
-            imageSrc: ""
-        },
-        {
-            title: "",
-            desc: "",
-            url: "",
-            artist: "",
-            imageSrc: ""
-        },
-        {
-            title: "",
-            desc: "",
-            url: "",
-            artist: "",
+            url: "https://www.youtube.com/embed/zRIn7W-kXhs",
+            artist: "eliad",
             imageSrc: ""
         }
     ]
@@ -47,17 +33,17 @@ const data = {
 
 
 
-app.get('/songs', (req, res, next) => {
+// app.get('/songs', (req, res, next) => {
 
-    const { sort } = req.query;
-    if (sort) {
-        const songsArr = [...data.songs];
-        songsArr.sort(compare);
-        res.json(songsArr);
-    }
-    else
-        next();
-})
+//     const { sort } = req.query;
+//     if (sort) {
+//         const songsArr = [...data.songs];
+//         songsArr.sort(compare);
+//         res.json(songsArr);
+//     }
+//     else
+//         next();
+// })
 
 app.get('/songs', (req, res) => {
 
