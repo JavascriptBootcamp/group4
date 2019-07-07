@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const { removeSong } = require('./song');
 app.use(cors());
 app.use(express.json());
 
@@ -95,14 +96,15 @@ app.delete('/song/:id', (req, res) => {
     try {
         const { id } = req.params;
         const index = getIndex(data.songs, +id);
-        data.songs.splice(index, 1);
+        // data.songs.splice(index, 1);
+        data.songs = removeSong(data.songs, index);
         res.status(200);
         res.json(data.songs);
     }
     catch (ex) {
         res.status(500);
     }
-})
+});
 
 
 function getIndex(arr, identifyer) {
