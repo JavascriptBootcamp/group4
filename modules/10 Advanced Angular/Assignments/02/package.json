@@ -1,0 +1,12 @@
+{
+  "name": "02",
+  "version": "1.0.0",
+  "description": "<p>use <code>group4/Modules/07 NodeJS/Assignments/11/server</code>.</p>\r <p>extract functions from Express handlers s that every function will have clear inputs and outputs.</p>\r <h2>For Example - Extract functionality from DELETE:</h2>\r <h4>Before:</h4>\r <code>\r app.delete('/song/:id', (req, res) => {",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
