@@ -44,7 +44,7 @@ export class AuthorsService {
   }
 
   async get_authors() {
-    const response = await fetch( this.url + 'images');
+    const response = await fetch( this.url + 'authors');
     const data = await response.json();
     this.authors = data;
     return this.authors;
