@@ -1,16 +1,15 @@
-import { Directive, HostBinding, HostListener, ElementRef } from '@angular/core';
+import { Directive, HostBinding, HostListener, ElementRef, AfterViewChecked } from '@angular/core';
 
 @Directive({
   selector: '[appMonthColored]'
 })
-export class MonthColoredDirective {
+export class MonthColoredDirective implements AfterViewChecked  {
 
   colors: Object;
-  @HostBinding('style.color') color:string;
+  @HostBinding('style.color') color: string;
   @HostBinding('style.border') border: string;
-  @HostBinding('attr.value') value: string;
 
-  constructor(private el: ElementRef) { 
+  constructor(private el: ElementRef) {
     this.colors = {
       January: "red",
       February: "blue",
@@ -25,19 +24,34 @@ export class MonthColoredDirective {
       November: "beige",
       December: "orange"
     };
-
-    this.color = "black";
   }
 
-  @HostListener('DOMCharacterDataModified') newColor() {
+  ngAfterViewChecked() {
     let month = this.el.nativeElement.innerText;
-    console.log(month);
-    console.log(this.colors[month]);
-    debugger
-    if( month in this.colors) {
-      this.color = this.colors[month];
-      this.border = `${this.colors[month]} 2px solid`;
+
+    if (month in this.colors) {
+      this.el.nativeElement.style.color = this.colors[month];
+      this.el.nativeElement.style.border = `${this.colors[month]} 2px solid`;
+    }
+    else {
+      this.el.nativeElement.style.color = "black";
+      this.el.nativeElement.style.border = "none";
     }
   }
+
+  // ############################## another way to implement the solution #########################
+
+  // @HostListener('DOMCharacterDataModified') newColor() {
+  //   let month = this.el.nativeElement.innerText;
+
+  //   if (month in this.colors) {
+  //     this.el.nativeElement.style.color = this.colors[month];
+  //     this.el.nativeElement.style.border = `${this.colors[month]} 2px solid`;
+  //   }
+  //   else {
+  //     this.el.nativeElement.style.color = "black";
+  //     this.el.nativeElement.style.border = "none";
+  //   }
+  // }
 
 }

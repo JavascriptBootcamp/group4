@@ -28,7 +28,7 @@ export class MonthPipe implements PipeTransform {
     if (value in this.months ) {
       return this.months[value];
     }
-
+    
     return value;
   }
 

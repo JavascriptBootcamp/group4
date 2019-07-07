@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'pipe-directive-ex';
-  month: string;
+  month: string = '';
 
   inputChange(value: string) {
     this.month = value;
