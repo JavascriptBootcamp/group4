@@ -37,11 +37,12 @@
 // Object of Calsses
 class Calc {
     constructor(num1, num2) {
+        if (isNaN(num1) || isNaN(num2)) this.error = "Wrong input";
         this.num1 = num1;
         this.num2 = num2;
     }
     sum() {
-        return this.num1 + this.num2;
+        return this.error || this.num1 + this.num2;
     }
     sub() {
         return this.num1 - this.num2;
