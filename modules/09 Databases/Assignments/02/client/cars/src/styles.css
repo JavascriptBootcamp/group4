@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: cursive!important;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.row {
+    margin: 10px 0px;
+}
+
+input {
+    width: 100%;
+}
+
+input[type="text"], input[type="date"], input[type="submit"] , input[type="password"] {
+    margin: 5px 0px;
+}
+
+form.row {
+    background-color: #d0d0d0a8;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    animation: mymove 0.5s;
+    position: relative;
+}
+
+input[type="submit"] {
+    border: 1px solid #6d6565;
+    border-radius: 5px;
+    background-color: #53a059;
+    color: white;
+    transition: 0.2s all;
+}
+
+input[type="submit"]:hover {
+    background-color: #345b88;
+}
+
+@keyframes mymove {
+    0% {
+        left: -600px;
+    }
+    100% {
+        left: 0px;
+    }
+}

@@ -1,0 +1,9 @@
+{"_id":{"$oid":"5d19c51e4319094054acf09d"},"license":"123-12-123","manufacturer":"nissan","model":"micra","year":"2019","km":"12000","price":"56000"}
+{"_id":{"$oid":"5d19c5334319094054acf09e"},"license":"121-19-191","manufacturer":"nissan","model":"micra","year":"2018","km":"30000","price":"45000"}
+{"_id":{"$oid":"5d19c5624319094054acf09f"},"license":"121-19-888","manufacturer":"toyota","model":"corola","year":"2017","km":"25000","price":"90000"}
+{"_id":{"$oid":"5d19c56e4319094054acf0a0"},"license":"121-19-886","manufacturer":"toyota","model":"corola","year":"2012","km":"25000","price":"60000"}
+{"_id":{"$oid":"5d19c57c4319094054acf0a1"},"license":"121-19-444","manufacturer":"toyota","model":"yaris","year":"2001","km":"25000","price":"25000"}
+{"_id":{"$oid":"5d19cc2d491f5031a01f24a1"},"license":"112-11-333","manufacturer":"peague","model":"306","year":"2014","km":"102000","price":"22900"}
+{"_id":{"$oid":"5d1aef8a5e30ab2b646e2907"},"license":"123-123-123","manufacturer":"toyoya","model":"yaris","year":"2019","km":"150000","price":"35453"}
+{"_id":{"$oid":"5d1af0db5e30ab2b646e2909"},"license":"123-12-645","manufacturer":"fiat","model":"punto","year":"2019","km":"44000","price":"18000"}
+{"_id":{"$oid":"5d1b01229e4e6617781f2a31"},"license":"913-15-153","manufacturer":"skoda","model":"octabia","year":"2016","km":"15000","price":"10000"}
