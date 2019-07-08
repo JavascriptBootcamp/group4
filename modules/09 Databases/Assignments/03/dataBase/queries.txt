@@ -1,0 +1,28 @@
+use shirts_db;
+create table shirts(
+
+id int primary key not null AUTO_INCREMENT,
+size varchar(6) not null,
+color varchar(30) not null,
+fit varchar(30) not null,
+price int not null
+)
+
+
+insert into shirts(id,size,color,fit,price) values (1,"L","Blue","Slim",150);
+insert into shirts(id,size,color,fit,price) values (2,"XL","Black","Regular",300);
+insert into shirts(id,size,color,fit,price) values (3,"S","Yellow","Super",200);
+insert into shirts(id,size,color,fit,price) values (4,"L","Green","Fitted",120);
+insert into shirts(id,size,color,fit,price) values (5,"XS","Pink","Slim",100);
+insert into shirts(id,size,color,fit,price) values (6,"XXL","Red","Super",200);
+insert into shirts(id,size,color,fit,price) values (7,"L","White","Fitted",320);
+insert into shirts(id,size,color,fit,price) values (8,"L","Black","Slim",140);
+insert into shirts(id,size,color,fit,price) values (9,"S","Green","Fitted",120);
+insert into shirts(id,size,color,fit,price) values (10,"XL","Blue","Slim",200);
+
+
+SELECT * FROM shirts_db.shirts;
+select * from shirts where id=1;
+select color from shirts where size="L";
+select size,color from shirts where fit='slim';
+select * from shirts where id=1 or id=2 order by price desc LIMIT 1;
