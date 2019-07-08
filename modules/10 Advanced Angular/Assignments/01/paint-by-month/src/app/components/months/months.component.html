@@ -1,0 +1,11 @@
+<input 
+  type="number" 
+  (change)="getMonthNumber()" 
+  min="1"
+  max="12"
+  #monthInput
+/>
+
+<span appColorByMonth>
+  {{ getMonthNumber() | monthNumberToWord }} 
+</span>
