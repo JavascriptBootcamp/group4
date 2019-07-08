@@ -32,9 +32,9 @@
 
         </div>
         <div *ngSwitchCase="2">
-            <ul>Models:
+            <ul>Colors:
                 <li *ngFor="let color of displayObj.displayData">
-                    {{color}}
+                    {{color.color}}
                 </li>
             </ul>
         </div>
@@ -54,10 +54,10 @@
         </div>
         <div *ngSwitchCase="4">
             <div *ngFor="let shirt of displayObj.displayData">
-                <label>License:{{shirt.id}}</label><br>
-                <label>Manufacturer:{{shirt.size}}</label><br>
-                <label>Model:{{shirt.color}}</label><br>
-                <label>Year:{{shirt.fit}}</label><br>
+                <label>Id:{{shirt.id}}</label><br>
+                <label>Size:{{shirt.size}}</label><br>
+                <label>Color:{{shirt.color}}</label><br>
+                <label>Fit:{{shirt.fit}}</label><br>
                 <label>Price:{{shirt.price}}</label><br>
             </div>
         </div>

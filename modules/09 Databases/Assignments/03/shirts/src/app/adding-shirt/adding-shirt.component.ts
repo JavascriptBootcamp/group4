@@ -8,9 +8,9 @@ import {ShirtsService} from '../shirts.service';
 })
 export class AddingShirtComponent implements OnInit {
 
-  carForm: FormGroup;
+  shirtForm: FormGroup;
   constructor(builder: FormBuilder,private shirtsService:ShirtsService) { 
-  this.carForm = builder.group({
+  this.shirtForm = builder.group({
     size: ["", [
       Validators.required
     ]

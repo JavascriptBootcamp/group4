@@ -29,7 +29,7 @@ export class ShirtsService {
 
   async getShirtById(id) {
 
-    const response = await fetch(this.url + `car?id=${id}`);
+    const response = await fetch(this.url + `shirt?id=${id}`);
     const data = response.json();
     return data;
   }

@@ -8,6 +8,8 @@ import { AddingShirtComponent } from './adding-shirt/adding-shirt.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { DisplayByComponent } from './display-by/display-by.component';
 import { DisplayListComponent } from './display-list/display-list.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
