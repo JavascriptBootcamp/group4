@@ -39,12 +39,12 @@ describe('Given an array of songs , song updated and a index of song', () => {
     const updatedSong = { "id":11, "title":"song updated", "singer":"idan", "words":"la la la" };
     const index =1;
     describe('When update a song', () => {
-        const newSampleSongs = updatedSong(sampleSongs, index , updatedSong);
+        const newSampleSongs = updateSong(sampleSongs, index , updatedSong);
         it('Then array length should be same length', () => {
             expect(newSampleSongs.length).toBe(sampleSongs.length);
         });
-        // it('Then this song should be contained in the last ndex in the array', () => {
-        //     expect(newSampleSongs[newSampleSongs.length-1].id).toBe(newSong.id);
-        // });
+        it('Then this song should be contained in the last index in the array', () => {
+            expect(newSampleSongs[newSampleSongs.length-1]).toBe(updatedSong);
+        });
     })
 });
