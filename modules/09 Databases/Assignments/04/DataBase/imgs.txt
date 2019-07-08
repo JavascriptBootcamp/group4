@@ -1,0 +1,34 @@
+use authors_db;
+create table imgs(
+
+id int primary key not null AUTO_INCREMENT,
+src varchar(4000) not null,
+likes int not null,
+author_id int not null,
+CONSTRAINT FK_author_id FOREIGN KEY(author_id) REFERENCES authors(id)
+
+)
+
+
+insert into imgs(id,src,likes,author_id)
+values (1,"https://images.unsplash.com/photo-1553901753-215db344677a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",0,1);
+insert into imgs(id,src,likes,author_id)
+values (2,"https://images.unsplash.com/photo-1553548146-50f0bdf09f0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80",0,1);
+insert into imgs(id,src,likes,author_id)
+values (3,"https://images.unsplash.com/photo-1551300263-00574a9d9b89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,2);
+insert into imgs(id,src,likes,author_id)
+values (4,"https://images.unsplash.com/photo-1551367456-16ac556dfef2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,2);
+insert into imgs(id,src,likes,author_id)
+values (5,"https://images.unsplash.com/photo-1550795598-717619d32900?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,3);
+insert into imgs(id,src,likes,author_id)
+values (6,"https://images.unsplash.com/photo-1550639264-38c3059c4620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,3);
+insert into imgs(id,src,likes,author_id)
+values (7,"https://images.unsplash.com/photo-1549945676-4fdf5f18a9fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,4);
+insert into imgs(id,src,likes,author_id)
+values (8,"https://images.unsplash.com/photo-1508662790687-257eefcdccfc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,4);
+insert into imgs(id,src,likes,author_id)
+values (9,"https://images.unsplash.com/photo-1547974497-bb2a93b333ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",0,4);
+
+
+
+

@@ -10,9 +10,9 @@ app.use(cors());
 
 const connection = mysql.createConnection({
     host: "localhost",
-    user: "yourusername",
-    password: "yourpassword",
-    database: 'mydb'
+    user: "root",
+    password: "npmimysql",
+    database: 'authors_db'
 });
 
 
@@ -26,10 +26,10 @@ const onConnect = (err) => {
 
         const {likes,src} = request.body;
         if (!likes || !src ) responseWithStatus(500, response, "Missing Data");
-        console.log(id, size, color, fit, price)
+        console.log(likes,src)
         try {
-            const sql = `update images set likes = ${likes} where src=${src} )`;  
-            con.query(sql, function (err, result) {
+            const sql = `update imgs set likes = ${likes} where src='${src}' `;  
+            connection.query(sql, function (err, result) {
                 if (err) return console.error("ERROR OCCURED:", err);
                 console.log("Result: " + result);
                 responseWithStatus(200, response, "updated Succussfuly");
@@ -42,8 +42,8 @@ const onConnect = (err) => {
 
     app.get('/images', (req, res, next) => {
         try {
-            const sql = `select * from images`;
-            con.query(sql, function (err, data) {
+            const sql = `select * from imgs`;
+            connection.query(sql, function (err, data) {
                 if (err) return console.error("ERROR OCCURED:", err);
                 console.log("data: " + data);
                 res.status(200).send(data);
@@ -60,10 +60,10 @@ const onConnect = (err) => {
     app.get('/authors', (request, response, next) => {
         try {
             const sql = `select * from authors`;
-            con.query(sql, function (err, data) {
+            connection.query(sql, function (err, data) {
                 if (err) return console.error("ERROR OCCURED:", err);
                 console.log("data: " + data);
-                res.status(200).send(data);
+                response.status(200).send(data);
             });
         }
         catch (ex) {

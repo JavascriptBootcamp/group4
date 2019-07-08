@@ -20,8 +20,8 @@ export class MainGalleryComponent implements OnInit {
     this.bigPicSrc = null;
   }
 
-  ngOnInit(): void {
-    this.getImages();
+  async ngOnInit() {
+    await this.getImages();
     this.getTopPic();
   }
 

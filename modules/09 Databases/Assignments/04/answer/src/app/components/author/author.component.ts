@@ -22,10 +22,10 @@ export class AuthorComponent implements OnInit {
     ) { 
     }
 
-  async ngOnInit() {
+   ngOnInit() {
     let id = Number(this.activatedRoute.snapshot.params.id);
     this.author_imgs = this.imgService.get_imgs_by_author(id);
-    this.author = await this.authorsService.get_author(id);
+    this.author = this.authorsService.get_author(id);
   }
 
 }

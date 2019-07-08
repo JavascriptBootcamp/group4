@@ -20,7 +20,8 @@ export class ImageComponent implements OnInit {
     this.author_name = "";
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.authorsService.get_authors();
     this.author_name = this.authorsService.get_author(this.img.author_id).name;
   }
 
