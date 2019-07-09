@@ -50,7 +50,7 @@ const onConnect = (err) => {
             });
         }
         catch (ex) {
-            responseWithStatus(500, response, "ERROR OCCURED:" + ex);
+            responseWithStatus(500, res, "ERROR OCCURED:" + ex);
         }
 
 
