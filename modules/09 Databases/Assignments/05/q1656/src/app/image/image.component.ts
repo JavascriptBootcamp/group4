@@ -9,10 +9,11 @@ export class ImageComponent implements OnInit {
 @Input() imgSrc: string;
 @Input() imgSrcIndex: number;
 @Output() showBigPictureEvent = new EventEmitter<number>();
+@Input() classNameType:string;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.imgSrcIndex);
+    
   }
 
   showBigPicture(){

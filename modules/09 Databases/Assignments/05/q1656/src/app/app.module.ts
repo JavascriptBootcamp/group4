@@ -9,7 +9,7 @@ import { AlbumsListComponent } from './albums-list/albums-list.component';
   declarations: [
     AppComponent,
     ImageComponent,
-    AlbumsListComponent
+    AlbumsListComponent,
   ],
   imports: [
     BrowserModule

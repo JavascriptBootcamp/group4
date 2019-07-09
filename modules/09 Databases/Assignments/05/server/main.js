@@ -10,9 +10,9 @@ app.use(cors());
 
 const connection = mysql.createConnection({
     host: "localhost",
-    user: "yourusername",
-    password: "yourpassword",
-    database: 'mydb'
+    user: "root",
+    password: "npmimysql",
+    database: 'albums_db'
 });
 
 
@@ -27,17 +27,17 @@ const onConnect = (err) => {
     app.get('/album/Pictures', (req, res, next) => {
         console.log("id:", req.query)
         const { id } = req.query;
-        if (!id) responseWithStatus(500, response, "Missing Data");
+        if (!id) responseWithStatus(500, res, "Missing Data");
         try {
             const sql = `select * from Pictures where albumId=${id}`;
-            con.query(sql, function (err, data) {
+            connection.query(sql, function (err, data) {
                 if (err) return console.error("ERROR OCCURED:", err);
                 console.log("data: " + data);
                 res.status(200).send(data);
             });
         }
         catch (ex) {
-            responseWithStatus(500, response, "Missing Data");
+            responseWithStatus(500, res, "Missing Data");
         }
 
 
@@ -47,10 +47,10 @@ const onConnect = (err) => {
     app.get('/albums', (request, response, next) => {
         try {
             const sql = `select * from Albums`;
-            con.query(sql, function (err, data) {
+            connection.query(sql, function (err, data) {
                 if (err) return console.error("ERROR OCCURED:", err);
                 console.log("data: " + data);
-                res.status(200).send(data);
+                response.status(200).send(data);
             });
         }
         catch (ex) {

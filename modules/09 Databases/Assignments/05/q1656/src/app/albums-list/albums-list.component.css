@@ -1,0 +1,11 @@
+ul{
+    list-style-type: none;
+    color:lightgreen;
+}
+
+ul li{
+color: white;
+text-decoration: underline;
+cursor: pointer;
+}
+

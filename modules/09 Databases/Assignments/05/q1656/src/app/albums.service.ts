@@ -20,7 +20,7 @@ export class AlbumsService {
    async getPictures(id){
     const response = await fetch(this.url + `album/Pictures?id=${id}`);
     const data = await response.json();
-    return data;
+    return data.map(d=>d.src);
   }
   
 

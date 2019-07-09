@@ -11,7 +11,7 @@ export class AppComponent implements OnInit,OnDestroy {
   imgSrcIndex: number;
   subsActivated:Subscription;
   constructor(private albumsService:AlbumsService){
-   /* this.images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsw9q1gKQhk3M3krgRtn9vCgYaKDvQD_GgJdL-y-jNiJRLbgC",
+    /*this.images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsw9q1gKQhk3M3krgRtn9vCgYaKDvQD_GgJdL-y-jNiJRLbgC",
                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKIN7mbSbgvFXj2PXLzjXbC_NnVVOBoqHMgv9p8tw1KZuV-ngJGw",
                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ82DqniYRM-q3SKuf-ziG1u9Fc4gGuD8O8exGkZazb6SurMllSmw",
                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ4mFHp-axQIxtrs-yV_DRePjPn6C2tCT7EFnVAJUayne7ZfaG",
@@ -23,18 +23,18 @@ export class AppComponent implements OnInit,OnDestroy {
                    "https://www.barraquer.com/wp-content/uploads/2017/07/el-ojo-del-surfista-p-08-2017.jpg"];
 */
   // this.imgSrcIndex = 0;
-  this.images = [];
-  this.imgSrcIndex = Number(localStorage.getItem("imgSrcIndex"));
-  this.imgSrcIndex = this.imgSrcIndex ? this.imgSrcIndex : 0;  
-  console.log(this.imgSrcIndex,(!this.imgSrcIndex));
+    this.images = [];
+    this.imgSrcIndex = Number(localStorage.getItem("imgSrcIndex"));
+    this.imgSrcIndex = this.imgSrcIndex ? this.imgSrcIndex : 0; 
   }
 
   async ngOnInit(){
-    this.images = await this.albumsService.getPictures(0);
+    this.images = await this.albumsService.getPictures(1);
 
     this.subsActivated = this.albumsService.albumPicEventActivated.subscribe(pictures=>{
       this.images = pictures;
     })
+
   }
 
   ngOnDestroy(){
