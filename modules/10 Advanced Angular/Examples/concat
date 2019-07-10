@@ -1,0 +1,21 @@
+Definision :
+
+Creates an output Observable which sequentially emits all values from given Observable and then moves on to the next.
+
+
+
+import { concat, interval } from 'rxjs';
+import { take } from 'rxjs/operators';
+ 
+const timer1 = interval(1000).pipe(take(10)); // timer1 is Observable that will have 10 steps every every 1 sec
+const timer2 = interval(2000).pipe(take(6));  // timer2 is Observable that will have  6 steps every 2 sec
+const timer3 = interval(500).pipe(take(10));  // timer3 is Observable that will have 10 steps every half a sec
+ 
+const result = concat(timer1, timer2, timer3); // concat the 3 sequences i.e the first seq will go first, the socond will go second etc.
+result.subscribe(x => console.log(x));  // in all sequnces will console
+ 
+// results in the following:
+// (Prints to console sequentially)
+// -1000ms-> 0 -1000ms-> 1 -1000ms-> ... 9 
+// -2000ms-> 0 -2000ms-> 1 -2000ms-> ... 5
+// -500ms-> 0 -500ms-> 1 -500ms-> ... 9
