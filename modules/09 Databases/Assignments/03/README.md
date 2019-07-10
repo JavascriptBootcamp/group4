@@ -19,3 +19,5 @@
 <li>receive two shirt IDs and display the shirt which is less expensive</li>
 </ol>
 </p>
+<h3>Bonus</h3>
+Write Unit Tests for the applications.

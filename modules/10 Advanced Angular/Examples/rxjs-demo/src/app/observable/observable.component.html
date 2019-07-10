@@ -1,0 +1,12 @@
+<h1>Observable Example</h1>
+
+<h5>Values:</h5>
+<div *ngFor="let value of values">{{value}}</div>
+
+<h5>Errors:</h5>
+<div>Errors: {{ anyErrors }}</div>
+
+<h5>Completed:</h5>
+<div>Completed: {{ completed }}</div>
+
+<button (click)="start()">Start</button>
