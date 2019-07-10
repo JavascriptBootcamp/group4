@@ -1,4 +1,4 @@
-Scan sounds scary, but works just like reduce for Arrays in JavaScript.
+It's like reduce, but emits the current accumulation whenever the source emits a value.
 It keeps track of the accumulated total of emitted values, so you can combine the emitted values from an observable together.
 
 Let’s imagine you’re building a game that records a high score. 
