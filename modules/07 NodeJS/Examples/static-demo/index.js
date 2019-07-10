@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-const port = 9999;
+const port = process.env.PORT || 8000;
 
 app.use(express.static(path.join(__dirname, 'search')));
 app.use(express.json());
