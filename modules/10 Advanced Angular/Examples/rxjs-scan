@@ -1,0 +1,11 @@
+Scan sounds scary, but works just like reduce for Arrays in JavaScript. It keeps track of the accumulated total of emitted values, so you can combine the emitted values from an observable together.
+
+Let’s imagine you’re building a game that records a high score. We can simulate this with mouse clicks and assign a random score to each click.
+
+const clicks = Rx.Observable.fromEvent(document, 'click')
+
+clicks
+  .map(e => Math.random() * 100 )
+  .scan((totalScore, current) => totalScore + current)
+  .subscribe()
+The result is a high score that increases after each click.
