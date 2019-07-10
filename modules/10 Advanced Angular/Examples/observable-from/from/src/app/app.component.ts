@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { from, interval , fromEvent  } from 'rxjs';
+import { from, interval, fromEvent } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +24,11 @@ export class AppComponent implements OnInit {
 
     //create new observable from time interval
     const secondsCounter = interval(1000);
-    secondsCounter.subscribe(n =>
-      console.log(`It's been ${n} seconds since subscribing!`))
+    secondsCounter.subscribe(n => console.log(`It's been ${n} seconds since subscribing!`));
+
+    //create new observable  ajax
+    const apiData = ajax('http://worldtimeapi.org/api/timezone/Asia/Jerusalem');
+    apiData.subscribe(res => console.log(res.status, res.response));
   }
 
 }
