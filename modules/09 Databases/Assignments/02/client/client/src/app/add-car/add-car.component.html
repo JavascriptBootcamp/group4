@@ -1,0 +1,103 @@
+
+
+<form (ngSubmit)="AddCarForm(car)" #car>
+    <div>
+      <label for="carLicenseNum">Car License Number:</label>
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Car License Number"
+        required
+        name="carLicenseNum"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carManufacturer">Car Manufactorer:</label>
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Manufacturer"
+        name="carManufacturer"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carModel">Car Model:</label>
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Car Model"
+        required
+        name="carModel"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carProductionYear">Car Production Year:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="1980"
+        max="2019"
+        #year
+        required
+        id="carProductionYear"
+        name="carProductionYear"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carMileage">Car KM:</label>
+      <input
+        class="input-field"
+        type="number"
+        min="0"
+        max="200000"
+        required
+        name="carMileage"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carPrice">Car Price:</label>
+      <input
+        class="input-field"
+        type="number"
+        #price
+        min="10"
+        max="500000"
+        name="carPrice"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div class="col-md-12">
+        <input
+          class="submit-button"
+          type="submit"
+          value="Add Car"
+        >
+    </div>
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
