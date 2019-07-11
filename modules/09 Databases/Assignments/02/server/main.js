@@ -88,7 +88,7 @@ const onConnect = (err,databases)=>{
                 }
             })
         })
-        app.get('/car/expansivecar',(req,res,next)=>{
+        app.get('/car/:firstLicence/:secondLicence',(req,res,next)=>{
             const firstLicence = req.quary.license1
             const secondLicence = req.quary.license2
 
