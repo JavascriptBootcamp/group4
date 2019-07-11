@@ -1,0 +1,9 @@
+* input{
+    width:100%;
+}
+.row{
+    margin-bottom:10px;
+}
+div[class^="col"]{
+    margin:5px 0px;
+}
