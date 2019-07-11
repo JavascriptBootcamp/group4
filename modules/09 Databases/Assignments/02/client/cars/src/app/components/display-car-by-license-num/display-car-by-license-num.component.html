@@ -1,0 +1,37 @@
+<h2 style="text-align:left">Display Car Details by License Number</h2>
+
+<form (ngSubmit)="onSubmitLicenseForm(licenseForm)" #licenseForm="ngForm">
+    
+      <label for="carLicenseNum">Car License Number:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Car License Number"
+        #licenseNum="ngModel"
+        required
+        id="carLicenseNum"
+        name="carLicenseNum"
+        ngModel
+      >
+      
+    
+      &nbsp;&nbsp;
+    
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Car Details"
+      >
+
+      <p
+        class="input-error-message"
+        *ngIf="!licenseNum.valid && (licenseNum.touched || licenseNum.dirty)">
+        Car License Number is a required field
+      </p>
+    
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>

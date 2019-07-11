@@ -1,0 +1,36 @@
+<h2 style="text-align:left">Display Cars Models by Manufactorer</h2>
+
+<form (ngSubmit)="onSubmitManufactorerForm(manufactorerForm)" #manufactorerForm="ngForm">
+    
+      <label for="manufactorer">Manufactorer:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Manufactorer"
+        #manufactorer="ngModel"
+        required
+        id="manufactorer"
+        name="manufactorer"
+        ngModel
+      >
+      
+      &nbsp;&nbsp;
+    
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Cars Models"
+      >
+
+      <p
+        class="input-error-message"
+        *ngIf="!manufactorer.valid && (manufactorer.touched || manufactorer.dirty)">
+        Manufactorer is a required field
+      </p>
+    
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
