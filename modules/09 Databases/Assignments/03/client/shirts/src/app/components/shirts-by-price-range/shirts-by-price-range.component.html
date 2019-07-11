@@ -1,0 +1,62 @@
+<h2 style="text-align:left">Display Shirts Details by Price Range (includes)</h2>
+
+<form (ngSubmit)="onSubmitPriceRangeForm(priceRangeForm)" #priceRangeForm="ngForm">
+
+      <label for="startPrice">From Price(ILS):</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="50"
+        max="250"
+        #fromPrice="ngModel"
+        required
+        id="startPrice"
+        name="startPrice"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!fromPrice.valid && (fromPrice.touched || fromPrice.dirty)">
+          Please choose 'From Price' value
+      </span>
+
+
+      <br><br>
+
+      <label for="endPrice">To Price(ILS):</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="60"
+        max="250"
+        #toPrice="ngModel"
+        required
+        id="endPrice"
+        name="endPrice"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!toPrice.valid && (toPrice.touched || toPrice.dirty)">
+          Please choose 'To Price' value
+    </span>
+
+      <br><br>
+
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Cars Details"
+      >
+
+
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
+
