@@ -21,7 +21,6 @@ export class CarsService {
       const header = { method:"POST", headers: { "Content-Type": "application/json" } ,body:JSON.stringify(input.body) };
       return fetch(query,header);
     }
-    console.log("searchBy:",searchBy);
 
     if(searchBy === 'all'){
       query = `${this.url}/cars`;
@@ -36,13 +35,10 @@ export class CarsService {
     const p1 = `${keyInput1}=${input1}`;
     const p2 = keyInput2 ? `&${keyInput2}=${input2}` : '';
     query = `${this.url}/${car}?${p1}${p2}`;
-    console.log("query:",query);
-
     return fetch(query);
   }
 
   getKeysInputs(input) {
-    console.log("input:",input);
     let searchBy;
     if (input.action !== "addCar") {
       let keyInput1 = "";
@@ -59,7 +55,7 @@ export class CarsService {
         case "model":
           keyInput1 = "model";
           break;
-        case "company":
+        case "manufacturer":
           keyInput1 = "manufacturer";
           break;
         case "year range":
@@ -68,7 +64,6 @@ export class CarsService {
           break;
       }
       input = { keyInput1, keyInput2 };
-      console.log("newInput:",input);
     }
     else {
       // input1 = input.postInputs;

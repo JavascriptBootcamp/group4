@@ -12,7 +12,7 @@ const dbUrl = 'mongodb://127.0.0.1:27017';
 const onConnect = (err, databases)=>{
     if (err) 
         return console.error("ERROR OCCURED:", err);
-    const dbName = "cars";
+    const dbName = "carsDB";
     const db = databases.db(dbName);
     const collectionName = "cars";
     const collection = db.collection(collectionName);
@@ -21,7 +21,6 @@ const onConnect = (err, databases)=>{
         app.get("/car", async(req,res,next)=>{
             console.log("two license");
             let {ln1,ln2} = req.query;
-            console.log(ln1,ln2);
             if(!ln1 || !ln2){
                 next();
                 return;
@@ -30,9 +29,7 @@ const onConnect = (err, databases)=>{
     
                     const car1 = (await collection.find({"licenseNumber":ln1}).toArray())[0];
                     const car2 = (await collection.find({"licenseNumber":ln2}).toArray())[0];
-                    console.log(car1,car2);
                     const car = getExpensiveCar(car1,car2);
-                    console.log("car:",car);
                     res.status(200).send(car);    
                 }
                 catch(err){
@@ -47,7 +44,7 @@ const onConnect = (err, databases)=>{
             next();
             return;
         }
-        console.log("licenseNumber:",licenseNumber);
+        console.log("licenseNumber");
         try{
         const cars = await collection.find({licenseNumber}).toArray();
         res.status(200).send(cars);
@@ -59,7 +56,7 @@ const onConnect = (err, databases)=>{
 
     // Display cars models by manufacturer
     app.get("/cars", async(req,res,next)=>{
-        console.log("manufacturer",req.query);
+        console.log("manufacturer");
         const {manufacturer} = req.query;
         if(!manufacturer){
             next();
@@ -67,7 +64,6 @@ const onConnect = (err, databases)=>{
         }
         try{
             const cars = await collection.find({manufacturer}).toArray();
-            console.log("cars:",getModels(cars));
             res.status(200).send(getModels(cars));    
         }
         catch(err){
@@ -125,7 +121,6 @@ const onConnect = (err, databases)=>{
     // Adding a car
     app.post("/car",(req,res)=>{
         const {licenseNumber, manufacturer, model,year, km, price} = req.body;
-        console.log({licenseNumber, manufacturer, model,year, km, price});
         try{
             collection.insertOne({licenseNumber, manufacturer, model,year, km, price});
             res.status(200).send("Car added successfully!");
@@ -138,8 +133,8 @@ const onConnect = (err, databases)=>{
 
 const getModels = (cars)=>{
     const arr = [];
-    cars.map((item)=>arr.push(item.model));
-    return { model: [...new Set(arr)]}; 
+    cars.map((item)=>arr.push({model:item.model}));
+    return [...new Set(arr)]; 
 };
 
 const getModelsAndPrices = (cars)=>{
@@ -150,7 +145,7 @@ const getModelsAndPrices = (cars)=>{
     return arr;
 };
 
-const getExpensiveCar = (car1,car2)=> +car1["price"] > +car2["price"] ? car1 : car2;
+const getExpensiveCar = (car1,car2)=> +car1["price"] > +car2["price"] ? [car1] : [car2];
 
 mongo.MongoClient.connect(dbUrl,{ useNewUrlParser: true },onConnect);
 app.listen(port,()=>console.log(`Server is running in port ${port}`));

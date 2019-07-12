@@ -9,9 +9,6 @@ import { CarsService } from './services/cars.service';
 export class AppComponent implements OnInit {
   data: string[];
   ngOnInit(): void {
-    console.log("this.carSearchBy:", this.carSearchBy);
-    console.log("this.carsSearchBy:", this.carsSearchBy);
-
     // this.input1Text = this.carSearchBy ? `Please insert ${this.carSearchBy.nativeElement.value}` : '';
     // this.input2Text = this.carSearchBy ? `Please insert ${this.carSearchBy.nativeElement.value}` : '';
   }
@@ -24,7 +21,7 @@ export class AppComponent implements OnInit {
   @ViewChild('carsI2') carsI2;
 
   @ViewChild('ln') ln;
-  @ViewChild('company') company;
+  @ViewChild('manufacturer') manufacturer;
   @ViewChild('model') model;
   @ViewChild('year') year;
   @ViewChild('km') km;
@@ -59,7 +56,7 @@ export class AppComponent implements OnInit {
     this.input4Text = "Year";
     this.input5Text = "KM";
     this.input6Text = "Price";
-    // { carsSearchBy:  }"All","License","Licenses","Years","Company","Model"
+    // { carsSearchBy:  }"All","License","Licenses","Years","manufacturer","Model"
   }
 
   async onSubmit(e: Event, form, action: string, postInputs: HTMLElement[]) {
@@ -83,26 +80,25 @@ export class AppComponent implements OnInit {
     }
     else {
       const licenseNumber = this.ln.nativeElement.value;
-      const manufacturer = this.company.nativeElement.value;
+      const manufacturer = this.manufacturer.nativeElement.value;
       const model = this.model.nativeElement.value;
       const year = this.year.nativeElement.value;
       const km = this.km.nativeElement.value;
       const price = this.price.nativeElement.value;
 
       const body = {licenseNumber, manufacturer, model, year, km, price};
-      data = this.carsService.getData({action:"addCar",body});
-      this.getJsonData(data);
+      this.carsService.getData({action:"addCar",body});
+      this.data = null;
+      //this.getJsonData(data);
       return;
     }
   }
 
   setAction(action: string) {
     // this.action = action;
-    console.log(action);
   }
 
   getJsonData(data){
-    console.log(data);
     data.then(stream=>stream.text().then(data=>this.data = JSON.parse(data)));
   }
 
@@ -120,7 +116,7 @@ export class AppComponent implements OnInit {
       case "model":
         input1 = "model";
         break;
-      case "company":
+      case "manufacturer":
         input1 = "manufacturer";
         break;
       case "year range":

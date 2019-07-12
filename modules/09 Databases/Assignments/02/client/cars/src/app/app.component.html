@@ -1,4 +1,4 @@
-<form (submit)="onSubmit($event,form,action.value,[ln,company,model,year,km,price])" #form>
+<form (submit)="onSubmit($event,form,action.value,[ln,manufacturer,model,year,km,price])" #form>
   <div>
     <span>Select action:</span>
     <select name="" id="" #action (click)="setAction(action.value)">
@@ -11,7 +11,7 @@
   <div *ngIf="action.value === 'addCar'">
     <div>
       <input type="text" [placeholder]="input1Text" #ln required>
-      <input type="text" [placeholder]="input2Text" #company required>
+      <input type="text" [placeholder]="input2Text" #manufacturer required>
       <input type="text" [placeholder]="input3Text" #model required>
       <input type="text" [placeholder]="input4Text" #year required>
       <input type="text" [placeholder]="input5Text" #km required>
@@ -38,7 +38,7 @@
     <select name="" id="" #carsSearchBy (click)="setSearchBy(carsSearchBy.value)">
       <option name="" id="" value="all">All</option>
       <option name="" id="" value="year range">Year range</option>
-      <option name="" id="" value="company">manufacturer</option>
+      <option name="" id="" value="manufacturer">manufacturer</option>
       <option name="" id="" value="model">model</option>
     </select>
     <div *ngIf="carsSearchBy.value !== 'all'">
