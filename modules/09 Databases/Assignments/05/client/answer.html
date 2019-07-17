@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Answer 56 Front End</title>
+
+  <link rel="stylesheet" href="answer.css"/>
+</head>
+
+
+<body>
+
+    <h1>Choose images album</h1>
+    <form onsubmit="onSelectAlbum(event);">
+        <select id="album-selector">
+            <option value="numbers"> Numbers </option>
+            <option value="cars"> Cars </option>
+            <option value="synthesizers"> Synthesizers </option>
+        </select>
+        <button type="submit">Select</button>
+    </form>
+
+    <div id="primary-image-container">
+        <img 
+            class="arrow-near-main-image flex-item" 
+            onclick="onclickMainLeftArrow()" 
+            src="https://images.all-free-download.com/images/graphiclarge/button_previous_100860.jpg" 
+        />      
+        <img id="main-image" class="flex-item"/> 
+        <img 
+            class="arrow-near-main-image flex-item" 
+            onclick="onclickMainRightArrow()" 
+            src="http://www.clker.com/cliparts/n/O/8/9/V/V/next-button-md.png"
+        />      
+    </div>
+
+    <div id="slide-images-container"></div>
+        
+    
+    <script type="text/javascript" src="answer.js"></script>
+</body>
+
+</html>
