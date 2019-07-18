@@ -1,0 +1,49 @@
+#pictures-wrapper{
+    width: 48%;
+    margin: 0 auto;
+    border: brown solid;
+
+    margin-top: 6%;
+}
+
+#pictures{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: solid red 5px;
+}
+
+#big-image img{
+    width: 100%;
+    height: 100%;
+
+    border: solid yellow 5px;
+}
+
+#big-image{
+    /* width: 70%;
+    height: 20%;
+    z-index: 99;
+
+    border: solid blue 5px; */
+
+    width: 70%;
+    height: 50%;
+    z-index: 99;
+    border: solid blue 5px;
+    position: absolute;
+    margin-top: -54%;
+    margin-left: 16%;
+
+}
+
+#wrapper{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    border: solid red 5px;
+}
