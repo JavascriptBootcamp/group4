@@ -1,0 +1,76 @@
+<form (submit)="onSubmit($event,form,action.value)" #form>
+  <div class="header">
+    <div>
+      <span>Select action:</span>
+      <select name="" id="" #action (click)="setAction(action.value)">
+        <option value="addShirt">Add shirt</option>
+        <option value="getAllShirts">Get all shirts</option>
+        <option value="getShirtByID">Get shirt by ID</option>
+        <option value="getShirtsByPriceRange">Get shirts by price range</option>
+        <option value="getColorsBySize">Get colors by size</option>
+        <option value="getSizeAndColorByFit">Get size and color by fit</option>
+        <option value="getLessExpensiveShirt">Get less expensive shirt</option>
+      </select>
+    </div>
+
+    <div *ngIf="action.value === 'addShirt'">
+      <div>
+        <input type="text" placeholder="Please insert size" #input1 required>
+        <input type="text" placeholder="Please insert color" #input2 required>
+        <input type="text" placeholder="Please insert fit" #input3 required>
+        <input type="text" placeholder="Please insert price" #input4 required>
+      </div>
+    </div>
+
+    <div *ngIf="action.value === 'getShirtByID'">
+      <div>
+        <input type="text" placeholder="Please insert id" #input1 required>
+      </div>
+    </div>
+    <div *ngIf="action.value === 'getShirtsByPriceRange'">
+      <div>
+        <input type="text" placeholder="Please insert from price" #input1 required>
+        <input type="text" placeholder="Please insert to price" #input2 required>
+      </div>
+    </div>
+    <div *ngIf="action.value === 'getColorsBySize'">
+      <div>
+        <input type="text" placeholder="Please insert size" #input1 required>
+      </div>
+    </div>
+    <div *ngIf="action.value === 'getSizeAndColorByFit'">
+      <div>
+        <input type="text" placeholder="Please insert fit" #input1 required>
+      </div>
+    </div>
+
+    <div *ngIf="action.value === 'getLessExpensiveShirt'">
+      <div>
+        <input type="text" placeholder="Please insert first id" #input1 required>
+        <input type="text" placeholder="Please insert second id" #input2 required>
+      </div>
+    </div>
+    <div>
+      <button>Submit</button>
+    </div>
+  </div>
+  <div *ngIf='addShirtMessage'>{{addShirtMessage}}</div>
+  <div *ngIf="data.length>0">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Fit</th>
+        <th>Price</th>
+      </tr>
+      <tr *ngFor="let d of data">
+        <td>{{d.id}}</td>
+        <td>{{d.size}}</td>
+        <td>{{d.color}}</td>
+        <td>{{d.fit}}</td>
+        <td>{{d.price}}</td>
+      </tr>
+    </table>
+  </div>
+</form>

@@ -120,7 +120,7 @@ con.connect(async function (err) {
             if(err)
                 res.status(500).send(err);
             console.log(result);
-            res.status(200).send(result);
+            res.status(200).send('Shirt added successfully!');
         });
 
     });
