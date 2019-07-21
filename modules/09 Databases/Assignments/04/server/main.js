@@ -24,8 +24,7 @@ con.connect((err)=>{
 
     app.get('/likes',(req,res,next)=>{
         const counterID = req.query.counterID;
-        console.log(counterID);
-        if(!counter){
+        if(!counterID){
             next();
             return;
         }
@@ -37,11 +36,10 @@ con.connect((err)=>{
         });
     });
 
-    app.post('/like',(req,res,next)=>{
+    app.put('/like',(req,res)=>{
         const counterID = req.query.counterID;
-        const likeCounter = req.body.likeCounter;
+        const { likeCounter }  = req.body;
         if(!counterID || !likeCounter){
-            next();
             return;
         }
         const query = `update ${table} set counter = ${likeCounter} where id = ${counterID}`;
@@ -54,12 +52,10 @@ con.connect((err)=>{
 
     app.post('/like',(req,res)=>{
         const { counterID, likeCounter}  = req.body;
-        console.log(req.body);
         if(!counterID || !likeCounter){
             return;
         }
         const query = `insert into ${table} values(${counterID},${likeCounter})`;
-        console.log(query);
         con.query(query,(err,result)=>{
             if(err)
                 res.status(500).send(err);
