@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="gallery">
+        <div>
+            <select name="" id="selectAlbum" onchange="changeAlbum()">
+                <option value="waves">waves</option>
+                <option value="extream">extream</option>
+                <option value="calm">calm</option>
+            </select>
+        </div>
+
+        <div id="big-picture">
+            <div class="arrow arrow-left" onclick="setPrevImg(event)"></div>
+            <div id="big-picture-wrapper">
+                <img id="big-picture-img" src="" imgnumber="tm1">
+            </div>
+            <div class="arrow arrow-right" onclick="setNextImg(event)"></div>
+        </div>
+        <div id="thumbnails">
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
