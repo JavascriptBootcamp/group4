@@ -5,13 +5,9 @@ import { __await } from 'tslib';
   providedIn: 'root'
 })
 export class SearchService {
-  url: string;
-
-  constructor() {
-    this.url = "http://localhost:8000";
-  }
+  constructor() {}
   async searchFiles(files: string): Promise<string> {
-    const response = await fetch(`${this.url}/file`, {
+    const response = await fetch(`/file`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
