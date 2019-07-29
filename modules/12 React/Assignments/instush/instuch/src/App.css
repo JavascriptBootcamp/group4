@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  position: relative;
+  height: 100%;
+  background-color: orange;
+}
+
+.Header {
+  width: 100%;
+  background-color: grey;
+}
+
+.Fotter {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  color: white;
+  bottom: 0%;
+}
