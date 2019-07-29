@@ -18,6 +18,9 @@ class Main extends React.Component {
         }, 1000 );
     }
     render() {
+        this.setState({timer: 50});
+
+
         const cssPadding = 0;
         const { src, title } = this.props.mainImage;
         return (
