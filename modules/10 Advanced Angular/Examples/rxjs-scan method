@@ -1,0 +1,27 @@
+It's like reduce, but emits the current accumulation whenever the source emits a value.
+It keeps track of the accumulated total of emitted values, so you can combine the emitted values from an observable together.
+
+Let’s imagine you’re building a game that records a high score. 
+We can simulate this with mouse clicks and assign a random score to each click.
+
+const clicks = Rx.Observable.fromEvent(document, 'click')
+
+clicks
+  .map(e => Math.random() * 100 )
+  .scan((totalScore, current) => totalScore + current)
+  .subscribe()
+The result is a high score that increases after each click.
+
+
+Returns an Observable that applies a specified accumulator function to each item emitted by the source Observable.
+If a seed value is specified, then that value will be used as the initial value for the accumulator. 
+If no seed value is specified, the first item of the source is used as the seed.
+
+import { fromEvent } from 'rxjs';
+import { scan, mapTo } from 'rxjs/operators';
+
+const clicks = fromEvent(document, 'click');
+const ones = clicks.pipe(mapTo(1));
+const seed = 0;
+const count = ones.pipe(scan((acc, one) => acc + one, seed));
+count.subscribe(x => console.log(x));

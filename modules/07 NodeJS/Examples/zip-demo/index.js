@@ -10,6 +10,7 @@ const zip = (source) => {
     return new Promise( (resolve, reject) => {
         try{
             fs.createReadStream(source) //read the stream
+            .pipe(process.stdout)
             .pipe(zlib.createGzip()) // zip the file
             .pipe(fs.createWriteStream(`${source}.gz`)) // create the zip file
             .on('finish', () => ({message: 'File was zipped!!!'}));
@@ -21,11 +22,11 @@ const zip = (source) => {
 }
 
 const init = ( async () => {
-    const fileName = 'moshiko.txt';
+    const fileName = 'output.txt';
     try{
         // resolve
         const result = await zip(fileName);
-        console.log(result.message);
+        console.log("RESULT", result.message);
     }
     catch(ex) {
         // reject
