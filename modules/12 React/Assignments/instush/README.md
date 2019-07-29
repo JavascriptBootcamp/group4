@@ -1,0 +1,1 @@
+<h1>React Application Example</h1>
