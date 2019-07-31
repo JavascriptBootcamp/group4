@@ -6,7 +6,12 @@ class Button extends React.Component{
     }
 
     render(){
-        return <button onClick={this.props.setTs}>{this.props.operation}</button>;
+        return <button onClick={this.onClicked}>{this.props.operation}</button>;
+    }
+
+    onClicked = ()=>{
+
+        this.props.onSubmit();
     }
 }
 
