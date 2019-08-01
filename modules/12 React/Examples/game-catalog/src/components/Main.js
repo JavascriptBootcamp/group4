@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Menu from './Menu';
 import MainImage from './MainImage';
 import { About } from './About';
@@ -55,12 +55,18 @@ class Main extends React.Component {
                     <MainImage src={ src } title={ title } />
                 </div>
                 <div className="row">
+                    <Route exact path="/" render={ () => (
+                        <Catalog
+                        games={ this.state.games }
+                        onAddToWishList={ this.addToWishList }
+                        onRemoveGame={this.removeGame} />
+                    ) } />
+                    <Route path="/home" render={ () => (
+                        <Redirect to="/" />
+                    ) } />
                     <Route path="/about" component={ About } />
                     <Route path="/contact" component={ Contact } />
-                    <Catalog
-                    games={ this.state.games }
-                    onAddToWishList={ this.addToWishList }
-                    onRemoveGame={this.removeGame} />
+                     
                 </div>
                 {/* <WishList /> */}
             </div>
