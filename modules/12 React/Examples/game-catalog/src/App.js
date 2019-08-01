@@ -10,9 +10,9 @@ export function App() {
   };
   return (
     <div className="container">
-      <Header title="Game Catalog" className="row" />
-      <Main mainImage={image} className="row" />
-      <Footer symbol="Copyrights: " data="All Rights Reserved" year="2019" className="row" />
+      <Header title="Game Catalog" className="row"></Header>
+      <Main mainImage={image} className="row"></Main>
+      <Footer symbol="Copyrights: " data="All Rights Reserved" year="2019" className="row"></Footer>
     </div>
   );
 }
