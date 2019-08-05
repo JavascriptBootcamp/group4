@@ -1,0 +1,3 @@
+<label for="month">Enter Month Number: </label>
+<input type="text" id="month" (keyup)="showMonth(monthNumber.value)" #monthNumber>
+<div *ngIf="monthName" appColormonth>{{monthName|monthnumtoword}}</div>
