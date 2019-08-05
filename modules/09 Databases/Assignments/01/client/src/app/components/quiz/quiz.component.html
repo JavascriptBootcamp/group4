@@ -1,0 +1,7 @@
+<div class="quiz-container" [className]="quiz.started ? 'quiz-container-open' : 'quiz-container-closed'">
+  <app-instructions *ngIf="!quiz.started" [quiz]="quiz"></app-instructions>
+  <app-questions *ngIf="quiz.started && !quiz.submmited" [quiz]="quiz"></app-questions>
+  <app-results *ngIf="quiz.submmited" [quiz]="quiz"></app-results>
+</div>
+
+<app-submit-high-score *ngIf="quiz.submmited"></app-submit-high-score>
