@@ -1,0 +1,48 @@
+<div id="container">
+  <div class="collapse">
+    <h3> search license car:</h3>
+    <input type="text" #license name="license" placeholder="License Number" class="form-control" required maxlength="9"
+      minlength="9"><br><br>
+    <input type="submit" value="Submit" class="btn btn-primary" (click)="carService.licenseSearch(license.value)">
+    <br><br>
+  </div>
+
+  <div>
+    <h3> search cars bettwen the years :</h3>
+    <input type="number" #from name="year1" placeholder="From" class="form-control" required maxlength="4"
+      minlength="4"><br>
+    <input type="number" #until name="year2" placeholder="Until" class="form-control" required maxlength="4"
+      minlength="4"><br><br>
+    <input type="submit" value="Submit" class="btn btn-primary"
+      (click)="carService.yearsSearch(from.value,until.value)">
+    <br><br>
+  </div>
+
+  <div>
+    <h3> search cars by manufacturer :</h3>
+    <input type="text" #manufacturer class="form-control" name="manufacturer" placeholder="Manufacturer" required><br>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary"
+      (click)="carService.manufacturerSearch(manufacturer.value)">
+    <br><br>
+  </div>
+
+  <div>
+    <h3> search cars by model :</h3>
+    <input type="text" #model name="model" class="form-control" placeholder="Model" required><br><br>
+    <input type="submit" value="Submit" class="btn btn-primary" (click)="carService.modelSearch(model.value)">
+    <br><br>
+  </div>
+
+  <div>
+    <h3> search expensive car between 2 licenses :</h3>
+    <input type="text" #license1 name="license1" class="form-control" placeholder="License Number" required
+      maxlength="9" minlength="9"><br>
+    <input type="text" #license2 name="license2" class="form-control" placeholder="License Number" required
+      maxlength="9" minlength="9"><br><br>
+    <input type="submit" value="Submit" class="btn btn-primary"
+      (click)="carService.expensiveCarSearch(license1.value,license2.value)">
+    <br><br>
+  </div>
+  
+</div>
