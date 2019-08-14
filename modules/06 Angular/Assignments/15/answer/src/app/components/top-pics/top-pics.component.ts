@@ -9,9 +9,9 @@ export class TopPicsComponent implements OnInit {
 
   @Input() topPicSrcs: string[];
   @Output() showImgEvent = new EventEmitter<string>();
-  toggle:boolean;
+  toggle: boolean;
 
-  constructor() { 
+  constructor() {
     this.toggle = false;
   }
 
@@ -19,7 +19,7 @@ export class TopPicsComponent implements OnInit {
   }
 
   toggleUl() {
-    this.toggle= !this.toggle;
+    this.toggle = !this.toggle;
   }
 
   showImg(e) {

@@ -13,7 +13,7 @@ export class MainGalleryComponent implements OnInit {
   imgs:Img[];
   bigPicSrc:string;
   topPicSrcs:string[];
-  
+
   constructor(private imgService: ImgService) {
     this.topPicSrcs = this.imgService.get_Top3();
     this.imgs = this.imgService.get_imgs();
