@@ -1,44 +1,45 @@
-// piece object
-const piece = (function() {
-  let el = null;
-  const init = function(el) {
-    this.el = el;
-  };
-  const moveDelta = function(dx, dy) {
-    const pos = this.el.getBoundingClientRect();
-    this.el.style.left = `${pos.left + dx}px`;
-    this.el.style.top = `${pos.top + dy}px`;
-  };
-  return {
-    init,
-    moveDelta
-  };
+const el = document.getElementById("piece");
+const startingPosition = el.getBoundingClientRect();
+let temprature = null;
+
+(() => {
+  fetch('http://api.apixu.com/v1/current.json?key=dda6e762ae4f41efb7e173552192204&q=tel%20aviv')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    temprature = myJson.current.temp_c;
+    changePieceColor(temprature);
+  });
 })();
 
-function handleClick(ev) {
-  piece.moveDelta(parseInt(this.dataset.dx), parseInt(this.dataset.dy));
+const changePieceColor = (temp) => {
+  let color= null;
+  if (Number(temp) < 11)
+    color = "blue"
+  if (Number(temp) >= 11 && Number(temp) < 21)
+  color = "blue"
+  if (Number(temp) >= 21 && Number(temp) <= 30)
+  color = "yellow"   
+  if (Number(temp) > 30)
+    color = "red"
+  el.style.background = color;
 }
 
-function init() {
-  const $btnUp = document.getElementById("btn-up");
-  $btnUp.dataset.dx = 0;
-  $btnUp.dataset.dy = -100;
-  $btnUp.addEventListener("click", handleClick);
-  const $btnRight = document.getElementById("btn-right");
-  $btnRight.dataset.dx = 100;
-  $btnRight.dataset.dy = 0;
-  $btnRight.addEventListener("click", handleClick);
-  const $btnDown = document.getElementById("btn-down");
-  $btnDown.dataset.dx = 0;
-  $btnDown.dataset.dy = 100;
-  $btnDown.addEventListener("click", handleClick);
-  const $btnLeft = document.getElementById("btn-left");
-  $btnLeft.dataset.dx = -100;
-  $btnLeft.dataset.dy = 0;
-  $btnLeft.addEventListener("click", handleClick);
+const moveDelta = (dx, dy) => {
+  const pos = el.getBoundingClientRect();
+  el.style.left = `${pos.left + dx}px`;
+  el.style.top = `${pos.top + dy}px`;
+};
+
+const reset = () => {
+  el.style.left = `${startingPosition.x}px`;
+  el.style.top = `${startingPosition.y}px`;
 }
 
-window.addEventListener("DOMContentLoaded", event => {
-  piece.init(document.getElementById("piece"));
-  init();
-});
+const randomPosition = () => {
+  el.style.left = `${Math.floor(Math.random() * (window.innerWidth - el.getBoundingClientRect().width))}px`;
+  el.style.top = `${Math.floor(Math.random() * (window.innerHeight - el.getBoundingClientRect().height))}px`;
+}
+
+

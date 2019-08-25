@@ -7,11 +7,16 @@
 </head>
 <body>
     <div id="controls-wrapper">
-        <button id="btn-up" class="btn-arrow">U</button><br/>
-        <button id="btn-left" class="btn-arrow">L</button><button id="btn-right" class="btn-arrow">R</button><br/>
-        <button id="btn-down" class="btn-arrow">D</button>
+        <button id="btn-up" class="btn-arrow" onclick="moveDelta(0, -100)">U</button><br/>
+        <button id="btn-left" class="btn-arrow" onclick="moveDelta(-100, 0)">L</button>
+        <button id="btn-right" class="btn-arrow" onclick="moveDelta(100, 0)">R</button><br/>
+        <button id="btn-down" class="btn-arrow" onclick="moveDelta(0, 100)">D</button>
     </div>
+    <button id="reset" onclick="reset()">Reset</button>
+    <button id="reset" onclick="randomPosition()">Random</button>
     <div id="piece" class="circle"></div>
     <script src="js/scripts.js"></script>
+
+
 </body>
 </html>
