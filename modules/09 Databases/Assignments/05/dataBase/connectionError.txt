@@ -1,0 +1,6 @@
+in case Error:Client does not support authentication protocol requested by server; consider upgrading MySQL client;
+Execute the following query in MYSQL Workbench:
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'YourRootPassword';
+
+Where root as your user localhost as your URL and YourRootPassword as your password
+Try connecting using node after you do so.

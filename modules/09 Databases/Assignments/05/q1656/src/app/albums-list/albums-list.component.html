@@ -1,0 +1,5 @@
+<div>
+  <ul>Albums:
+    <li *ngFor="let album of albums" (click)="OnAlbumClicked(album.id)">{{album.name}}</li>
+  </ul>
+</div>
