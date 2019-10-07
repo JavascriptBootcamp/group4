@@ -1,0 +1,9 @@
+.myApp {
+  text-align: center;
+}
+
+.actions > button {
+  width: 300px;
+  margin: auto;
+  display: block;
+}
