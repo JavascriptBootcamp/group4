@@ -1,0 +1,6 @@
+<div>
+  <input type="text" (keyup)="inputChange($event.target.value)" >
+  <h1>Input: <span appMonthColored>{{ month | monthPipe }}</span></h1>
+</div>
+
+<router-outlet></router-outlet>
