@@ -1,0 +1,71 @@
+<div>
+
+    <div [ngSwitch]="displayObj.displayValue">
+        <div *ngSwitchCase="0">
+            <div *ngFor="let shirt of displayObj.displayData">
+                <label>Id:{{shirt.id}}</label><br>
+                <label>Size:{{shirt.size}}</label><br>
+                <label>Color:{{shirt.color}}</label><br>
+                <label>Fit:{{shirt.fit}}</label><br>
+                <label>Price:{{shirt.price}}</label><br>
+            </div>
+        </div>
+        <div *ngSwitchCase="1">
+            <table>
+                <thead>
+                    <th>Id</th>
+                    <th>Size</th>
+                    <th>Color</th>
+                    <th>Fit</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shirt of displayObj.displayData">
+                        <td>{{shirt.id}}</td>
+                        <td>{{shirt.size}}</td>
+                        <td>{{shirt.color}}</td>
+                        <td>{{shirt.fit}}</td>
+                        <td>{{shirt.price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div *ngSwitchCase="2">
+            <ul>Colors:
+                <li *ngFor="let color of displayObj.displayData">
+                    {{color.color}}
+                </li>
+            </ul>
+        </div>
+        <div *ngSwitchCase="3">
+            <table>
+                <thead>
+                    <th>Size</th>
+                    <th>Color</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shirt of displayObj.displayData">
+                        <td>{{shirt.size}}</td>
+                        <td>{{shirt.color}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngSwitchCase="4">
+            <div *ngFor="let shirt of displayObj.displayData">
+                <label>Id:{{shirt.id}}</label><br>
+                <label>Size:{{shirt.size}}</label><br>
+                <label>Color:{{shirt.color}}</label><br>
+                <label>Fit:{{shirt.fit}}</label><br>
+                <label>Price:{{shirt.price}}</label><br>
+            </div>
+        </div>
+        <div *ngSwitchDefault>
+
+        </div>
+    </div>
+
+
+
+</div>

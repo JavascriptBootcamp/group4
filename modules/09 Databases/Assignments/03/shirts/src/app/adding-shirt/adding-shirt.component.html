@@ -1,0 +1,12 @@
+<div>
+    <form [formGroup]="shirtForm" (ngSubmit)="onSubmit(shirtForm)">
+        <h4>Add a Shirt</h4>
+        <input type="text" placeholder="Size" formControlName="size" /><br>
+        <input type="text" placeholder="Color" formControlName="color"/><br>
+        <input type="text" placeholder="Fit" formControlName="fit"/><br>
+        <input type="text" placeholder="Price" formControlName="price"/><br>
+
+        <button [disabled]="!shirtForm.valid">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+</div>
