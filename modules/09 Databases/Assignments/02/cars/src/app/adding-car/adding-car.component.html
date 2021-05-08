@@ -1,0 +1,15 @@
+
+<div>
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit(carForm)">
+        <h4>Add a car</h4>
+        <input type="text" placeholder="License" formControlName="license" /><br>
+        <input type="text" placeholder="Manufacturer" formControlName="Manufacturer"/><br>
+        <input type="text" placeholder="Model" formControlName="Model"/><br>
+        <input type="text" placeholder="Year" formControlName="Year"/><br>
+        <input type="text" placeholder="KM" formControlName="KM"/><br>
+        <input type="text" placeholder="Price" formControlName="Price"/><br>
+
+        <button [disabled]="!carForm.valid">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+</div>
