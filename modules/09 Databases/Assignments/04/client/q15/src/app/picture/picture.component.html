@@ -1,0 +1,15 @@
+<div class="picture">
+    <div class="picture-image">
+      <div *ngIf="!isAuthorFromUrl">
+        <a routerLink="/author/{{picture.author.id}}">
+            {{picture.author.name}}
+        </a>
+      </div>
+      <img [src]="picture.imgSrc" alt="No image found" (click)="showPicture()" [class]="isImageClicked? 'clicked' : ''">
+    </div>
+    <!-- [width]="getWidth()" [height]="getHeight()" -->
+    <div class="picture-likes">
+      <button class="picture-likes-like" (click)="onLikeClicked()">Like</button>
+      <span class="picture-likes-counter" [class]="fontSize">{{picture.likeCounter}} </span>
+    </div>
+  </div>
