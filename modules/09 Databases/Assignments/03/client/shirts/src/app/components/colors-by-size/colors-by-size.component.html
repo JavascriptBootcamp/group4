@@ -1,0 +1,41 @@
+<h2 style="text-align:left">Display Existing Shirt Colors by Shirt Size</h2>
+
+<form (ngSubmit)="onSubmitForm(f)" #f="ngForm">
+
+      <label for="size">Shirt Size:</label>
+      &nbsp;
+      <select
+        class="input-field"
+        #size="ngModel"
+        id="size"
+        name="size"
+        ngModel
+        required>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+      </select>
+
+
+      &nbsp;&nbsp;
+
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Shirt Colors"
+      >
+
+      <p
+        class="input-error-message"
+        *ngIf="!size.valid && (size.touched || size.dirty)">
+         Shirt Size is a required field
+      </p>
+
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>

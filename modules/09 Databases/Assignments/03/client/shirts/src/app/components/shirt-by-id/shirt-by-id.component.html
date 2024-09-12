@@ -1,0 +1,43 @@
+<h2 style="text-align:left">Display Shirt Details by ID:</h2>
+
+<form (ngSubmit)="onSubmitForm(f)" #f="ngForm">
+
+      <label for="sId">Shirt ID:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Shirt ID"
+        #sId="ngModel"
+        required
+        minlength="1"
+        id="sId"
+        name="shirtId"
+        ngModel
+      >
+
+
+      &nbsp;&nbsp;
+
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Shirt Details"
+        [disabled]="f.invalid"
+      >
+
+      <p
+        class="input-error-message"
+        *ngIf="!sId.valid && (sId.touched || sId.dirty)">
+
+          <span *ngIf="sId.errors.required">
+            Shirt ID is a required field
+          </span>
+
+      </p>
+
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>

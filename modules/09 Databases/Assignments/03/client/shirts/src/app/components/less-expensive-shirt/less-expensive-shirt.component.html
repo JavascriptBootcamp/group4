@@ -1,0 +1,59 @@
+<h2 style="text-align:left">Display Less Expensive Shirt by 2 Shirts IDs:</h2>
+
+<form (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+
+      <label for="id1">Shirt1 ID:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        #id1="ngModel"
+        required
+        placeholder="Enter first shirt ID"
+        id="id1"
+        name="id1"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!id1.valid && (id1.touched || id1.dirty)">
+          'Shirt1 ID' is a required field
+      </span>
+
+
+      <br><br>
+
+      <label for="id2">Shirt2 ID:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        #id2="ngModel"
+        required
+        placeholder="Enter Car Licence"
+        id="id2"
+        name="id2"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!id2.valid && (id2.touched || id2.dirty)">
+         'Shirt2 ID' is a required field
+      </span>
+
+      <br><br>
+
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display Less Expensive Shirt"
+      >
+
+
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>

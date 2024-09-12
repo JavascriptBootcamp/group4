@@ -1,0 +1,168 @@
+<h2 style="text-align:left">Add shirt data by filling the fields below</h2>
+
+<form (ngSubmit)="onSubmitAddShirtForm(addShirtForm)" #addShirtForm="ngForm">
+    <div>
+      <label for="shirtId">Shirt Code:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Shirt ID"
+        #shirtCode="ngModel"
+        required
+        minlength="2"
+        maxlength="8"
+        id="shirtCode"
+        name="shirtCode"
+        ngModel
+      >
+      <p
+        class="input-error-message"
+        *ngIf="!shirtCode.valid && (shirtCode.touched || shirtCode.dirty)">
+
+        <span *ngIf="shirtCode.errors.required">
+          Shirt Code is a required field
+        </span>
+        <span *ngIf="shirtCode.errors.minlength">
+          Shirt Code must contain at least 2 characters
+        </span>
+
+      </p>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="shirtSize">Shirt Size:</label>
+      &nbsp;
+      <select
+        class="input-field"
+        id="shirtSize"
+        name="shirtSize"
+        #shirtSize="ngModel"
+        ngModel
+        required
+        >
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+        <option value="XXXL">XXXL</option>
+      </select>
+    </div>
+    <p
+      class="input-error-message"
+      *ngIf="!shirtSize.valid && shirtSize.touched ">
+      <span *ngIf="shirtSize.errors.required">
+        Shirt Size is a required field
+      </span>
+    </p>
+
+    <br>
+
+    <div>
+      <label for="shirtColor">Shirt Color:</label>
+      &nbsp;
+      <select
+        class="input-field"
+        id="shirtColor"
+        name="shirtColor"
+        #shirtColor="ngModel"
+        ngModel
+        required
+        >
+        <option value="blue">blue</option>
+        <option value="black">black</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="yellow"> yellow</option>
+        <option value="orange">orange</option>
+      </select>
+    </div>
+    <p
+      class="input-error-message"
+      *ngIf="!shirtColor.valid && shirtColor.touched">
+        Shirt Color is a required field
+    </p>
+
+
+    <br>
+
+    <div>
+      <label for="fit">Shirt Fit:</label>
+      &nbsp;
+      <select
+        class="input-field"
+        id="fit"
+        name="fit"
+        #fit="ngModel"
+        ngModel
+        required
+        >
+        <option value="slim">slim</option>
+        <option value="normal">normal</option>
+        <option value="fat">fat</option>
+      </select>
+    </div>
+    <p
+      class="input-error-message"
+      *ngIf="!fit.valid && fit.touched">
+        Shirt Fit is a required field
+    </p>
+
+    <br>
+
+    <div>
+      <label for="height">Height(cm):</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="10"
+        max="250"
+        #height="ngModel"
+        required
+        id="height"
+        name="height"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="shirtPrice">Shirt Price(ILS):</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        #shirtPrice="ngModel"
+        min="20"
+        max="280"
+        required
+        id="shirtPrice"
+        name="shirtPrice"
+        ngModel
+      >
+    </div>
+    <p
+      class="input-error-message"
+      *ngIf="!shirtPrice.valid && shirtPrice.touched">
+        Shirt Price is a required field
+    </p>
+
+    <br>
+
+    <div class="col-md-12">
+        <input
+          class="submit-button"
+          type="submit"
+          value="Add Shirt"
+        >
+    </div>
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
