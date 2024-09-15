@@ -1,0 +1,20 @@
+<div class="quiz-container">
+    <div class="quiz-body">
+      <div class="quiz-header">
+        <div class="emojis">
+            <img class="face" *ngIf="quiz.score<=50" src="../../../assets/Images/sad.png">
+            <img class="face" *ngIf="quiz.score>50" src="../../../assets/Images/happy.png">
+        </div>
+        <h2 class="body-title">Your score is {{quiz.score}}/100</h2>
+      </div>
+      <div class="results-container">
+        <div class="result" *ngFor="let result of quiz.questions; let j = index">
+          <h4 class="question-in-results">{{j+1}}. {{result.questionTitle}}</h4>
+          <span *ngIf="result.correctAnswerIndex===result.userAnswerIndex"><img class="result-status-img" src="../../../assets/Images/checked.png"></span>
+          <span *ngIf="result.correctAnswerIndex!==result.userAnswerIndex"><img class="result-status-img" src="../../../assets/Images/cancel.png"></span>
+        </div>
+      </div>
+    </div>
+    <div class="reset-quiz" (click)="manageQuizsService.restartQuiz()"><p class="reset-quiz-text">Try again</p></div>
+  </div>
+

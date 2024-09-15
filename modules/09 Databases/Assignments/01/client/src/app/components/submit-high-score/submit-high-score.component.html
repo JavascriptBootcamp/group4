@@ -1,0 +1,8 @@
+<div class="high-score-container">
+  <div class="high-score" *ngFor="let score of manageQuizsService.highScore;let i=index">
+    <div>
+      <h2>{{i+1}} Name: {{score.name}} Score:{{score.score}}</h2>
+    </div>
+  </div>
+</div>
+
