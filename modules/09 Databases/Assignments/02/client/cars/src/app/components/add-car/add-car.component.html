@@ -1,0 +1,127 @@
+
+<h2 style="text-align:left">Add car data by filling all the fields below</h2>
+
+<form (ngSubmit)="onSubmitAddCarForm(addCarForm)" #addCarForm="ngForm">
+    <div>
+      <label for="carLicenseNum">Car License Number:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Car License Number"
+        #licenseNum="ngModel"
+        required
+        id="carLicenseNum"
+        name="carLicenseNum"
+        ngModel
+      >
+      <p
+        class="input-error-message"
+        *ngIf="!licenseNum.valid && (licenseNum.touched || licenseNum.dirty)">
+        Car License Number is a required field
+      </p>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carManufacturer">Car Manufactorer:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Manufacturer"
+        #manufacturer
+        required
+        id="carManufacturer"
+        name="carManufacturer"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carModel">Car Model:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Car Model"
+        #model
+        required
+        id="carModel"
+        name="carModel"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carProductionYear">Car Production Year:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="1980"
+        max="2019"
+        #year
+        required
+        id="carProductionYear"
+        name="carProductionYear"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carMileage">Car Mileage(km):</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        min="0"
+        max="200000"
+        #km
+        required
+        id="carMileage"
+        name="carMileage"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="carPrice">Car Price:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="number"
+        #price
+        min="100"
+        max="300000"
+        required
+        id="carPrice"
+        name="carPrice"
+        ngModel
+      >
+    </div>
+
+    <br>
+
+    <div class="col-md-12">
+        <input
+          class="submit-button"
+          type="submit"
+          value="Add Car"
+        >
+    </div>
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
+

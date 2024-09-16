@@ -1,0 +1,57 @@
+<h2 style="text-align:left">Display More Expensive Car by Cars Licenses</h2>
+
+<form (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+    
+      <label for="license1">License 1:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        #license1="ngModel"
+        required
+        placeholder="Enter Car Licence"
+        id="license1"
+        name="license1"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!license1.valid && (license1.touched || license1.dirty)">
+        Licence 1 is a required field
+      </span>
+
+      <br><br>
+
+      <label for="license2">To Year:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        #license2="ngModel"
+        required
+        placeholder="Enter Car Licence"
+        id="license2"
+        name="license2"
+        ngModel
+      >
+      &nbsp;
+      <span
+        class="input-error-message"
+        *ngIf="!license2.valid && (license2.touched || license2.dirty)">
+        You must choose 'To Year' value
+    </span>
+
+      <br><br>
+
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display More Expensive Car"
+      >
+
+    
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>

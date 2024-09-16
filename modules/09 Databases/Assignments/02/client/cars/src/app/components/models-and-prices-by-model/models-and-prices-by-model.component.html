@@ -1,0 +1,36 @@
+<h2 style="text-align:left">Display Cars Models and Prices by Car Model</h2>
+
+<form (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+    
+      <label for="model">Car Model:</label>
+      &nbsp;
+      <input
+        class="input-field"
+        type="text"
+        placeholder="Enter Car Model"
+        #model="ngModel"
+        required
+        id="model"
+        name="model"
+        ngModel
+      >
+      
+      &nbsp;&nbsp;
+    
+      <input
+        class="submit-button"
+        type="submit"
+        value="Display "
+      >
+
+      <p
+        class="input-error-message"
+        *ngIf="!model.valid && (model.touched || model.dirty)">
+        Car Model is a required field
+      </p>
+    
+
+    <div class="result-message" *ngIf="resultMessage">
+      {{resultMessage}}
+    </div>
+</form>
