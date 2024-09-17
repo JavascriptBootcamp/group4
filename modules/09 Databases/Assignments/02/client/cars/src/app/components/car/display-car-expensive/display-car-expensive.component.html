@@ -1,0 +1,22 @@
+<div class="container display-car-expensive-wrapper">
+  <h2 class="text-center border-bottom border-dark bg-dark text-light">Compare expensive car</h2>
+  <form class="row" (submit)="display($event)">
+    <div class="col">
+      <input type="text" placeholder="enter license one..." #licenseOne>
+    </div>
+    <div class="col">
+      <input type="text" placeholder="enter license two..." #licenseTwo>
+    </div>
+    <div class="col">
+      <input type="submit" value="display">
+    </div>
+    <div class="col-12" *ngIf="car">
+      <div>license number : {{car.license}}</div>
+      <div>manufacturer : {{car.manufacturer}}</div>
+      <div>model : {{car.model}}</div>
+      <div>year : {{car.year}}</div>
+      <div>km : {{car.km}}</div>
+      <div>price : {{car.price}}</div>
+    </div>
+  </form>
+</div>

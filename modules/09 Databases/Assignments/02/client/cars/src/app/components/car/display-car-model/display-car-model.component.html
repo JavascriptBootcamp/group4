@@ -1,0 +1,16 @@
+<div class="container display-car-model-wrapper">
+  <h2 class="text-center border-bottom border-dark bg-dark text-light">Display cars models and prices</h2>
+  <form class="row" (submit)="display($event)">
+    <div class="col">
+      <input type="text" placeholder="enter model..." #model>
+    </div>
+    <div class="col-4">
+      <input type="submit" value="display">
+    </div>
+    <div class="col-12" *ngIf="cars">
+      <div *ngFor="let car of cars">
+        <div>model: {{car.model}} : price : {{car.price}}</div>
+      </div>
+    </div>
+  </form>
+</div>

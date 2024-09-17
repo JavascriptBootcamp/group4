@@ -1,0 +1,21 @@
+<div class="container display-car-license-wrapper">
+  <h2 class="text-center border-bottom border-dark bg-dark text-light">Display car by license</h2>
+  <form class="row" (submit)="display($event)">
+    <div class="col">
+      <input type="text" placeholder="enter license number..." #license>
+    </div>
+    <div class="col-4">
+      <input type="submit" value="display">
+    </div>
+    <div class="col-12" *ngIf="car">
+      <div *ngFor="let c of car">
+        <div>license number : {{c.license}}</div>
+        <div>manufacturer : {{c.manufacturer}}</div>
+        <div>model : {{c.model}}</div>
+        <div>year : {{c.year}}</div>
+        <div>km : {{c.km}}</div>
+        <div>price : {{c.price}}</div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="container add-car-wrapper">
+    <h2 class="text-center border-bottom border-dark bg-dark text-light">Add car</h2>
+    <form class="row" (submit)="addCar($event)">
+        <div class="col-md-4">
+            <input type="text" placeholder="enter license number..." #license pattern="[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{3}|[0-9]{3}[-]{1}[0-9]{3}[-]{1}[0-9]{3}" required>
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="enter manufacturer..." #manufacturer pattern="[a-z]{1,10}" required>
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="enter model..." #model pattern="[a-z1-9]{1,10}" required>
+        </div>
+        <div class="col-md-4">
+            <input type="date" placeholder="enter year..." #year required>
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="enter km..." pattern="[0-9]{1,9}" #km required>
+        </div>
+        <div class="col-md-4">
+            <input type="text" placeholder="enter price..." #price pattern="[0-9]{1,10}" required>
+        </div>
+        <div class="col-md-12">
+            <input type="submit" value="add car">
+        </div>
+        <div class="msg col-md-12" *ngIf="msg">
+            {{msg}}
+        </div>
+    </form>
+</div>

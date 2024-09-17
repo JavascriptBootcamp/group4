@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="text-center border-bottom border-dark bg-dark text-light">Admin Login</h2>
+  <form class="row" (submit)="login($event)">
+    <div class="col-md-6">
+      <input type="text" placeholder="enter username" #username required>
+    </div>
+    <div class="col-md-6">
+      <input type="password" placeholder="enter password" #password required>
+    </div>
+    <div class="col-12">
+      <input type="submit" value="submit">
+    </div>
+    <div class="col-12">
+      {{msg}}
+    </div>
+  </form>
+  <div class="row">
+    <div class="col">
+      <a routerLink="../car" class="text-center d-block bg-info text-light">go back</a>
+    </div>
+  </div>
+</div>
