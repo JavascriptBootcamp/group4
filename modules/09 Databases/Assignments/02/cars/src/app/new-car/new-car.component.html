@@ -1,0 +1,16 @@
+<div id="container">
+    <h3> Add new car:</h3>
+    <form #Form="ngForm" (submit)="onSubmit(Form)">
+        <input type="text" class="form-control" (ngModel)="car.license" name="license" placeholder="License Number" required maxlength="9"
+            minlength="9"><br>
+        <input type="text" class="form-control" (ngModel)="car.manufacturer" name="manufacturer" placeholder="Manufacturer" required><br>
+        <input type="text" class="form-control" (ngModel)="car.model" name="model" placeholder="Model" required><br>
+        <input type="number" class="form-control" (ngModel)="car.year" name="year" placeholder="Year" required maxlength="4"
+            minlength="4"><br>
+        <input type="number" class="form-control" (ngModel)="car.km" name="km" placeholder="KM" required><br>
+        <input type="number" class="form-control" (ngModel)="car.price" name="price" placeholder="Price" required><br>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+    <br><br>
+</div>

@@ -1,0 +1,40 @@
+#container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    /* background-image:url("https://www.port2port.co.il/uploads/articles/article_94649_large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: #afcac5;
+    color: white;
+    box-shadow: 2px 2px 5px 2px gray;
+}
+
+#main {
+    background-color: rgba(248, 248, 248, 0.7);
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    top: 110px;
+    left: 0;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #afcac5;
+    opacity: 0.7;
+    color: white;
+    text-align: center;
+}

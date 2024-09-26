@@ -1,0 +1,30 @@
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: black;
+    box-shadow: 2px 2px 5px 2px gray;
+}
+nav a {
+    color: white;
+    font-size: 3vmin;
+    text-decoration: none;
+}
+ul {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+ul li {
+    display: inline;
+}
+
+nav a :hover{
+    color: rgb(45, 115, 155);
+}
+
+nav a.current-page {
+    font-weight: bolder;
+    color: rgb(45, 115, 155);
+    cursor: auto;
+}
