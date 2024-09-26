@@ -1,0 +1,7 @@
+<form action="" (submit)="onSubmit($event,mn.value)">
+    <input type="text" placeholder="Insert month as number" #mn required>
+  <div appPaintByMonth>
+     {{ value | numberToMonth}}
+  </div>
+  <button>submit</button>
+</form>
