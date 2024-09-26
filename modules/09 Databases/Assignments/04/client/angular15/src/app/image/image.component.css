@@ -1,0 +1,76 @@
+img{
+    width:200px;
+    height:200px;
+    display: block;
+}
+.like-wrapper{
+    display:block;
+}
+.number-of-likes{
+    display: inline-block;
+    background-color: #70db96;
+    width: 30%;
+    height: 23px;
+    text-align: center;
+    line-height: 1.5;
+}
+.btn-like{
+    display: inline-block;
+    background-color: #3838de;
+    box-shadow: none;
+    border: none;
+    width: 70%;
+    color: white;
+    height: 23px;
+    cursor: pointer;
+    padding: 0;
+    padding: 5px 0px;
+}
+.btn-like:hover{
+    font-weight: bold;
+}
+.active{
+    border:1px solid red;
+}
+.inc{
+    width:250px;
+    height:250px;
+}
+.dec{
+    width:150px;
+    height:150px;
+}
+.author{
+    text-align: center;
+    background-color: #f4bb41;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#goBack{
+    position: relative;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 150px;
+    border: none;
+    height: 30px;
+    font-weight: bold;
+    cursor:pointer;
+    transition: 0.5s all;
+}
+#goBack:hover{
+    box-shadow: 4px 4px 5px #000000;
+}
+.authorProp{
+    position: relative;
+    left: 50%;
+    margin-left: -75px;
+    width: 150px;
+    color:white;
+    text-align: center;
+    display: block;
+}
