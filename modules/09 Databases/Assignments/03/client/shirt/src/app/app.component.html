@@ -1,0 +1,122 @@
+<div class="container">
+
+  <h4 class="border-bottom">Add shirt</h4>
+  <form class="row">
+    <div class="col-md-6">
+      <input type="text" placeholder="enter size..." #size>
+    </div>
+    <div class="col-md-6">
+      <input type="text" placeholder="enter color..." #color>
+    </div>
+    <div class="col-md-6">
+      <input type="text" placeholder="enter fit..." #fit>
+    </div>
+    <div class="col-md-6">
+      <input type="text" placeholder="enter price..." #price>
+    </div>
+    <div class="col-12">
+      <input type="submit" (click)="addShirt($event)" value="submit">
+    </div>
+    <div *ngIf="msg1">
+      {{msg1}}
+    </div>
+  </form>
+
+  <h4 class="border-bottom">Display shirt by id</h4>
+  <form class="row">
+    <div class="col">
+      <input type="text" placeholder="enter id..." #id>
+    </div>
+    <div class="col-12">
+      <input type="submit" (click)="displayShirtById($event)" value="submit">
+    </div>
+  </form>
+  <div *ngIf="msg2">
+    <div *ngFor="let shirt of msg2">
+      <h6 class="border-bottom">Shirt details</h6>
+      <div>size : {{shirt.Size}}</div>
+      <div>color :{{shirt.Color}}</div>
+      <div>fit : {{shirt.Fit}}</div>
+      <div>price :{{shirt.Price}}</div>
+    </div>
+  </div>
+
+  <h4 class="border-bottom">Display shirt by price range</h4>
+  <form class="row">
+    <div class="col-md-6">
+      <input type="text" placeholder="enter first price..." #price2>
+    </div>
+    <div class="col-md-6">
+      <input type="text" placeholder="enter second price..." #price3>
+    </div>
+    <div class="col-12">
+      <input type="submit" (click)="displayShirtByPriceRange($event)" value="submit">
+    </div>
+  </form>
+  <div *ngIf="msg3">
+    <div *ngFor="let shirt of msg3">
+      <h6 class="border-bottom">Shirts details</h6>
+      <div>size : {{shirt.Size}}</div>
+      <div>color :{{shirt.Color}}</div>
+      <div>fit : {{shirt.Fit}}</div>
+      <div>price :{{shirt.Price}}</div>
+    </div>
+  </div>
+
+
+  <h4 class="border-bottom">Display shirt colors by size</h4>
+  <form class="row">
+    <div class="col">
+      <input type="text" placeholder="enter size..." #size2>
+    </div>
+    <div class="col-12">
+      <input type="submit" (click)="displayShirtColorsBySize($event)" value="submit">
+    </div>
+  </form>
+  <div *ngIf="msg4">
+    <h6 class="border-bottom">Shirts details</h6>
+    <div *ngFor="let shirt of msg4">
+      <div>color :{{shirt.color}}</div>
+    </div>
+  </div>
+
+  <h4 class="border-bottom">Display sizes and colors by fit</h4>
+  <form class="row">
+    <div class="col">
+      <input type="text" placeholder="enter size..." #fit2>
+    </div>
+    <div class="col-12">
+      <input type="submit" (click)="displaySizedAndColorByFit($event)" value="submit">
+    </div>
+  </form>
+  <div *ngIf="msg5">
+    <div *ngFor="let shirt of msg5">
+      <h6 class="border-bottom">Shirts details</h6>
+      <div>size : {{shirt.size}}</div>
+      <div>color :{{shirt.color}}</div>
+    </div>
+  </div>
+
+  <h4 class="border-bottom">Display less expensive shirt</h4>
+  <form class="row">
+    <div class="col">
+      <input type="text" placeholder="enter first id..." #id2>
+    </div>
+    <div class="col">
+      <input type="text" placeholder="enter second id..." #id3>
+    </div>
+    <div class="col-12">
+      <input type="submit" (click)="displayLessExpensiveShirt($event)" value="submit">
+    </div>
+  </form>
+  <div *ngIf="msg6">
+    <div *ngFor="let shirt of msg6">
+      <h6 class="border-bottom">Shirts details</h6>
+      <div>size : {{shirt.Size}}</div>
+      <div>color :{{shirt.Color}}</div>
+      <div>fit : {{shirt.Fit}}</div>
+      <div>price :{{shirt.Price}}</div>
+    </div>
+  </div>
+
+</div>
